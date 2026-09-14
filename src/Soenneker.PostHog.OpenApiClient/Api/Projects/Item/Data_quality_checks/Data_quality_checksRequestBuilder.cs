@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Metric_subjects;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder Health
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metric_subjects property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Metric_subjects.Metric_subjectsRequestBuilder Metric_subjects
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Metric_subjects.Metric_subjectsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Data_quality_checksRequestBuilder"/> and sets the default values.

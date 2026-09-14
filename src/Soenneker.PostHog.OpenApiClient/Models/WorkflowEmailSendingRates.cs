@@ -19,6 +19,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BounceRate { get; private set; }
         /// <summary>Spam complaints / emails sent over the last 30 days (0-1). Complaints are counted when the feedback arrives, so the ratio is approximate at the window boundary and capped at 1.</summary>
         public double? ComplaintRate { get; private set; }
+        /// <summary>True when PostHog paused this workflow&apos;s email automatically because its complaint or hard bounce rate crossed a threshold. Independent of the AWS tenant verdict and of the project-wide suspension.</summary>
+        public bool? EmailSendingPaused { get; private set; }
+        /// <summary>When the pause started; null when not paused.</summary>
+        public DateTimeOffset? EmailSendingPausedAt { get; private set; }
+        /// <summary>Plain-language reason for the pause, naming the signal and the window. Empty when not paused.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EmailSendingPausedReason { get; private set; }
+#nullable restore
+#else
+        public string EmailSendingPausedReason { get; private set; }
+#endif
         /// <summary>Emails sent in the last 30 days.</summary>
         public int? EmailsSent { get; private set; }
         /// <summary>The workflow these rates are for.</summary>
@@ -58,6 +70,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "bounce_rate", n => { BounceRate = n.GetDoubleValue(); } },
                 { "complaint_rate", n => { ComplaintRate = n.GetDoubleValue(); } },
+                { "email_sending_paused", n => { EmailSendingPaused = n.GetBoolValue(); } },
+                { "email_sending_paused_at", n => { EmailSendingPausedAt = n.GetDateTimeOffsetValue(); } },
+                { "email_sending_paused_reason", n => { EmailSendingPausedReason = n.GetStringValue(); } },
                 { "emails_sent", n => { EmailsSent = n.GetIntValue(); } },
                 { "hog_flow_id", n => { HogFlowId = n.GetGuidValue(); } },
                 { "hog_flow_name", n => { HogFlowName = n.GetStringValue(); } },

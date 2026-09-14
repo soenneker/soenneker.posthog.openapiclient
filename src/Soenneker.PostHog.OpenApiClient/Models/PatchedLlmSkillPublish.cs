@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>List of pre-approved tools the skill may use. Tool names cannot contain whitespace.</summary>
+        /// <summary>Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AllowedTools { get; set; }

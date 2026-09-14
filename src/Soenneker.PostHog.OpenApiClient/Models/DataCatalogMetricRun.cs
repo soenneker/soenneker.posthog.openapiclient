@@ -31,6 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CompiledQuery { get; set; }
 #endif
+        /// <summary>True when the query hit its row limit and more rows exist. Narrow the window or the interval and run the metric again. A HogQLQuery metric fixes its window in SQL and rejects those overrides, so report the window the definition itself covers, or ask for a parameterized metric. Either way, do not re-derive the series by hand. False whenever row_limit is null, because no row cap was reported for that run.</summary>
+        public bool? HasMore { get; set; }
         /// <summary>For a markdown (agent-calculated) metric, the steps to follow to compute it. Null for an executable metric.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,6 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults Results { get; set; }
 #endif
+        /// <summary>Row limit applied to this run. Null when no row cap was reported: a markdown metric, an insight or trends query, or a HogQL metric that sets its own LIMIT or uses a UNION. This field cannot verify the completeness of those runs.</summary>
+        public int? RowLimit { get; set; }
         /// <summary>Lifecycle state of the metric that produced these results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -116,12 +120,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "compiled_query", n => { CompiledQuery = n.GetStringValue(); } },
+                { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "is_drifted", n => { IsDrifted = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "posthog_url", n => { PosthogUrl = n.GetStringValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults.CreateFromDiscriminatorValue); } },
+                { "row_limit", n => { RowLimit = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "unit", n => { Unit = n.GetStringValue(); } },
             };
@@ -135,12 +141,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("columns", Columns);
             writer.WriteStringValue("compiled_query", CompiledQuery);
+            writer.WriteBoolValue("has_more", HasMore);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteBoolValue("is_drifted", IsDrifted);
             writer.WriteStringValue("kind", Kind);
             writer.WriteStringValue("posthog_url", PosthogUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults>("results", Results);
+            writer.WriteIntValue("row_limit", RowLimit);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("unit", Unit);
             writer.WriteAdditionalData(AdditionalData);

@@ -59,6 +59,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The `ReplayScanner.scanner_version` value at the moment the workflow ran.</summary>
         public int? ScannerVersion { get; set; }
+        /// <summary>How a monitor `yes` was re-checked at run time: `off` (one pass, the default), `shadow` (second draw recorded only), or `enforce` (the `yes` stands only when the second draw agrees).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? VerifyPositives { get; set; }
+#nullable restore
+#else
+        public string VerifyPositives { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot"/> and sets the default values.
         /// </summary>
@@ -91,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "scanner_config", n => { ScannerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig.CreateFromDiscriminatorValue); } },
                 { "scanner_type", n => { ScannerType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType.CreateFromDiscriminatorValue); } },
                 { "scanner_version", n => { ScannerVersion = n.GetIntValue(); } },
+                { "verify_positives", n => { VerifyPositives = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -107,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig>("scanner_config", ScannerConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType>("scanner_type", ScannerType);
             writer.WriteIntValue("scanner_version", ScannerVersion);
+            writer.WriteStringValue("verify_positives", VerifyPositives);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

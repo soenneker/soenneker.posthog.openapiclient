@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Check_types;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Health;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Output_schema;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Run_all;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Schedule;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -31,6 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Health.HealthRequestBuilder Health
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Health.HealthRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The output_schema property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Output_schema.Output_schemaRequestBuilder Output_schema
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Output_schema.Output_schemaRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The run_all property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.Run_all.Run_allRequestBuilder Run_all

@@ -147,10 +147,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatEffectiveMembershipLevel EffectiveMembershipLevel { get; private set; }
 #endif
-        /// <summary>The team&apos;s events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. Read-only: this value follows your plan&apos;s data retention entitlement, so neither you nor PostHog support can change it unless your organization is on the enterprise plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031</summary>
-        public int? EventRetentionMonths { get; private set; }
-        /// <summary>Whether events data retention is currently enforced for this team (cohort/flag gated). Read-only: neither you nor PostHog support can turn enforcement off, and the retention window itself only changes with your plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031</summary>
-        public bool? EventsRetentionEnforced { get; private set; }
         /// <summary>The extra_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -563,8 +559,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "default_evaluation_contexts_enabled", n => { DefaultEvaluationContextsEnabled = n.GetBoolValue(); } },
                 { "default_modifiers", n => { DefaultModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatDefaultModifiersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatDefaultModifiersProperty.CreateFromDiscriminatorValue); } },
                 { "effective_membership_level", n => { EffectiveMembershipLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatEffectiveMembershipLevel>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatEffectiveMembershipLevel.CreateFromDiscriminatorValue); } },
-                { "event_retention_months", n => { EventRetentionMonths = n.GetIntValue(); } },
-                { "events_retention_enforced", n => { EventsRetentionEnforced = n.GetBoolValue(); } },
                 { "extra_settings", n => { ExtraSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatExtraSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatExtraSettings.CreateFromDiscriminatorValue); } },
                 { "feature_flag_confirmation_enabled", n => { FeatureFlagConfirmationEnabled = n.GetBoolValue(); } },
                 { "feature_flag_confirmation_message", n => { FeatureFlagConfirmationMessage = n.GetStringValue(); } },

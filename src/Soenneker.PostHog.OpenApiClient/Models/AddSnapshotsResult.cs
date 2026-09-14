@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Added { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Where to upload the story-to-file map, as a presigned POST with a JSON body. Null when the request sent no map, or the store already holds a map with that hash.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget? StoryIndexUpload { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget StoryIndexUpload { get; set; }
+#endif
         /// <summary>The uploads property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "added", n => { Added = n.GetIntValue(); } },
+                { "story_index_upload", n => { StoryIndexUpload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>(global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget.CreateFromDiscriminatorValue); } },
                 { "uploads", n => { Uploads = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>(global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -61,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("added", Added);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>("story_index_upload", StoryIndexUpload);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>("uploads", Uploads);
             writer.WriteAdditionalData(AdditionalData);
         }

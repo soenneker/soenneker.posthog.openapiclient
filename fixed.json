@@ -26427,6 +26427,51 @@
         ]
       }
     },
+    "/api/projects/{projectId}/data_catalog/metrics/{metricId}/checks/output_schema": {
+      "get": {
+        "tags": [
+          "data_catalog"
+        ],
+        "description": "CRUD for one subject\u0027s checks, plus the actions that run them and report on them.",
+        "operationId": "DataCatalogMetricsChecksOutputSchemaRetrieve",
+        "parameters": [
+          {
+            "name": "metricId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The data catalog metric this check evaluates. Exclusive with table and saved_query.",
+              "format": "uuid"
+            }
+          },
+          {
+            "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataQualityOutputSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "data_catalog:read",
+              "query:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{projectId}/data_catalog/metrics/{metricId}/checks/run_all": {
       "post": {
         "tags": [
@@ -27855,6 +27900,41 @@
         "security": [
           {
             "PersonalAPIKeyAuth": [
+              "query:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{projectId}/data_quality_checks/metric_subjects": {
+      "get": {
+        "tags": [
+          "data_quality_checks"
+        ],
+        "description": "Every check in the project, and the health of every subject that has one.\n\nThe per-subject surfaces answer \u0022what is wrong with this table\u0022. This answers \u0022what is wrong\nacross the project\u0022, which they cannot: each is nested under one parent. Read-only -- authoring\nstill happens against the subject that owns the check.",
+        "operationId": "DataQualityChecksMetricSubjectsList",
+        "parameters": [
+          {
+            "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataQualityChecksMetricSubjectsList200ResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "data_catalog:read",
               "query:read"
             ]
           }
@@ -44810,52 +44890,29 @@
             }
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "Number of results to return per page.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "The initial index from which to return the results.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchedExternalDataSourceBulkUpdateSchemas"
+                "$ref": "#/components/schemas/ExternalDataSourceBulkUpdateSchemas"
               }
             },
             "application/x-www-form-urlencoded": {
               "schema": {
-                "$ref": "#/components/schemas/PatchedExternalDataSourceBulkUpdateSchemas"
+                "$ref": "#/components/schemas/ExternalDataSourceBulkUpdateSchemas"
               }
             },
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/PatchedExternalDataSourceBulkUpdateSchemas"
+                "$ref": "#/components/schemas/ExternalDataSourceBulkUpdateSchemas"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -44863,12 +44920,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedExternalDataSchemaList"
+                  "$ref": "#/components/schemas/ExternalDataSourcesBulkUpdateSchemasPartialUpdate200ResponseSchema"
                 }
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "external_data_source:write"
+            ]
+          }
+        ]
       }
     },
     "/api/projects/{projectId}/external_data_sources/{id}/cdc_status": {
@@ -52503,7 +52567,7 @@
           {
             "name": "type",
             "in": "query",
-            "description": "Filter by workflow type. \u0060messaging\u0060 returns workflows with an email, SMS, or push action; \u0060automation\u0060 returns the rest.",
+            "description": "Filter by workflow type. \u0060loop\u0060 returns workflows owned by a Desktop loop; \u0060messaging\u0060 returns the remaining workflows with an email, SMS, or push action; \u0060automation\u0060 returns the rest.",
             "schema": {
               "$ref": "#/components/schemas/HogFlowsListTypeParameter"
             }
@@ -54113,6 +54177,50 @@
               "hog_flow:write",
               "person:read",
               "group:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{projectId}/hog_flows/{id}/resume_email_sending": {
+      "post": {
+        "tags": [
+          "hog_flows"
+        ],
+        "description": "Resume email sending for a workflow PostHog paused automatically.\n\nSelf-serve on purpose. Resuming re-arms the detector rather than exempting the workflow, so\na workflow that is still generating complaints or hard bounces pauses again within minutes,\nwhile a customer who has cleaned up their audience does not have to wait on support.",
+        "operationId": "HogFlowsResumeEmailSending",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A UUID string identifying this hog flow.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowEmailPauseStatus"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "hog_flow:write"
             ]
           }
         ]
@@ -74111,7 +74219,7 @@
         "tags": [
           "metrics"
         ],
-        "description": "Distinct attribute keys seen on the team\u0027s metrics (datapoint and\nresource attributes merged), most frequent first. Backs the filter\nbar\u0027s key autocomplete.",
+        "description": "Attribute keys ordered by distinct series count, from highest to\nlowest. \u0060metricName\u0060 limits choices to one metric.",
         "operationId": "MetricsAttributesRetrieve",
         "parameters": [
           {
@@ -74147,6 +74255,16 @@
               "minimum": 1,
               "type": "integer",
               "default": 100
+            }
+          },
+          {
+            "name": "metricName",
+            "in": "query",
+            "description": "Exact metric name to limit attribute keys to. Omit to list keys across all metrics.",
+            "schema": {
+              "maxLength": 255,
+              "type": "string",
+              "default": ""
             }
           },
           {
@@ -74380,6 +74498,70 @@
         ]
       }
     },
+    "/api/projects/{projectId}/metrics/names": {
+      "get": {
+        "tags": [
+          "metrics"
+        ],
+        "description": "Distinct metric names for the viewer picker, without sparklines or caching.",
+        "operationId": "MetricsNamesRetrieve",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Max number of names to return. Defaults to 100; maximum 1000.",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
+            "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "description": "Comma-separated services to narrow the list to, e.g. \u0060service=web,worker\u0060. Omit for every service. Send it empty to select only series whose sender did not set \u0060service.name\u0060. A service name containing a comma cannot be selected.",
+            "schema": {
+              "maxLength": 1024,
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Substring filter (case-insensitive) applied to metric names.",
+            "schema": {
+              "maxLength": 255,
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricPickerNamesResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "metrics:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{projectId}/metrics/overview": {
       "get": {
         "tags": [
@@ -74526,7 +74708,7 @@
         "tags": [
           "metrics"
         ],
-        "description": "Distinct metric names for the team. Backs the picker UI.",
+        "description": "Distinct metric names for the team. Backs the catalog UI.",
         "operationId": "MetricsValuesRetrieve",
         "parameters": [
           {
@@ -74564,6 +74746,58 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricNamesResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "metrics:read"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "metrics"
+        ],
+        "description": "Distinct metric names for the team. Backs the catalog UI.",
+        "operationId": "MetricsValuesCreate",
+        "parameters": [
+          {
+            "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetricCatalogValuesParams"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/MetricCatalogValuesParams"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/MetricCatalogValuesParams"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "200 response",
@@ -107057,6 +107291,88 @@
         ]
       }
     },
+    "/api/projects/{projectId}/vision/scanners/watch_feed": {
+      "get": {
+        "tags": [
+          "vision"
+        ],
+        "description": "Succeeded observations in the window worth watching, ranked \u2014 feeds the What to watch tab.",
+        "operationId": "VisionScannersWatchFeedRetrieve",
+        "parameters": [
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Only observations created at or after this time. Accepts ISO 8601, a relative date like \u0060-7d\u0060, or \u0060now\u0060; values without an explicit offset are interpreted in the project\u0027s timezone. The window between \u0060date_from\u0060 and \u0060date_to\u0060 may span at most 90 days.",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "default": "-7d"
+            }
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "Only observations created at or before this time. Same formats as \u0060date_from\u0060; omit it to query through the current time.",
+            "schema": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Feed items to return, at most 50. The feed is bounded, not paginated.",
+            "schema": {
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
+            "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "scanner_ids",
+            "in": "query",
+            "description": "Comma-separated scanner UUIDs to restrict the feed to. Defaults to every scanner you can read.",
+            "schema": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "scanner_type",
+            "in": "query",
+            "description": "Restrict the feed to observations from scanners of this type.\n\n* \u0060monitor\u0060 - Monitor\n* \u0060classifier\u0060 - Classifier\n* \u0060scorer\u0060 - Scorer\n* \u0060summarizer\u0060 - Summarizer",
+            "schema": {
+              "$ref": "#/components/schemas/VisionScannersWatchFeedRetrieveScannerTypeParameter"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WatchFeedResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "replay_scanner:read",
+              "session_recording:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{projectId}/visual_review/repos": {
       "get": {
         "tags": [
@@ -123154,6 +123470,10 @@
           },
           "baseline_hashes": {
             "$ref": "#/components/schemas/AddSnapshotsInputBaselineHashesProperty"
+          },
+          "story_index_hash": {
+            "type": "string",
+            "description": "SHA-256 of the story-to-file map the CLI built from the Storybook index.json of this run\u0027s build. Every shard of a run sends the same value. Empty when the run sends no map."
           }
         }
       },
@@ -123164,6 +123484,9 @@
         ],
         "type": "object",
         "properties": {
+          "story_index_upload": {
+            "$ref": "#/components/schemas/AddSnapshotsResultStoryIndexUpload"
+          },
           "added": {
             "type": "integer"
           },
@@ -123804,7 +124127,7 @@
               "null",
               "string"
             ],
-            "description": "Local time that starts alert checks in HH:MM format. Updating this value changes checks after the already scheduled next_check_at. Set null to remove the custom start time. The current next_check_at stays unchanged. Future checks use the alert interval\u0027s existing scheduling behavior."
+            "description": "Local time that starts alert checks in HH:MM format. Updating this value recalculates the next check. Set null to remove the custom start time."
           },
           "next_check_at": {
             "type": [
@@ -146530,12 +146853,14 @@
         "required": [
           "columns",
           "compiled_query",
+          "has_more",
           "instructions",
           "is_drifted",
           "kind",
           "posthog_url",
           "query_status",
           "results",
+          "row_limit",
           "status",
           "unit"
         ],
@@ -146585,6 +146910,17 @@
           },
           "query_status": {
             "$ref": "#/components/schemas/DataCatalogMetricRunQueryStatus"
+          },
+          "has_more": {
+            "type": "boolean",
+            "description": "True when the query hit its row limit and more rows exist. Narrow the window or the interval and run the metric again. A HogQLQuery metric fixes its window in SQL and rejects those overrides, so report the window the definition itself covers, or ask for a parameterized metric. Either way, do not re-derive the series by hand. False whenever row_limit is null, because no row cap was reported for that run."
+          },
+          "row_limit": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Row limit applied to this run. Null when no row cap was reported: a markdown metric, an insight or trends query, or a HogQL metric that sets its own LIMIT or uses a UNION. This field cannot verify the completeness of those runs."
           },
           "posthog_url": {
             "type": [
@@ -147517,6 +147853,64 @@
           }
         },
         "description": "The team-level materialization gate. Checks always run and warn; this only toggles blocking."
+      },
+      "DataQualityMetricSubject": {
+        "required": [
+          "display_name",
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Metric identifier used by the nested check endpoints.",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "Queryable metric name."
+          },
+          "display_name": {
+            "type": "string",
+            "description": "Metric label shown in the data catalog."
+          }
+        }
+      },
+      "DataQualityOutputColumn": {
+        "required": [
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Output column name available through the {metric} relation."
+          },
+          "type": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ClickHouse type, or null when it could not be inferred."
+          }
+        }
+      },
+      "DataQualityOutputSchema": {
+        "required": [
+          "columns"
+        ],
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataQualityOutputColumn"
+            },
+            "description": "Columns returned by the saved metric query."
+          }
+        }
       },
       "DataQualityOverviewCheck": {
         "required": [
@@ -148792,6 +149186,7 @@
           "status",
           "suspended",
           "sync_frequency_bounds",
+          "updated_at",
           "user_access_level"
         ],
         "type": "object",
@@ -148826,6 +149221,14 @@
           },
           "created_at": {
             "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
             "readOnly": true
           },
@@ -169675,6 +170078,21 @@
           }
         }
       },
+      "ExternalDataSourceBulkUpdateSchemas": {
+        "required": [
+          "schemas"
+        ],
+        "type": "object",
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExternalDataSourceBulkUpdateSchema"
+            },
+            "description": "Schema updates to apply in a single batch."
+          }
+        }
+      },
       "ExternalDataSourceConnectionOption": {
         "required": [
           "access_method",
@@ -174689,7 +175107,8 @@
               "null",
               "integer"
             ],
-            "description": "Split download into multiple files of at most this size in MB"
+            "description": "Split the download into files of about this size in MiB. A file can go a little over. Set it to null or 0 to write a single file of any size.",
+            "default": 1024
           }
         },
         "description": "Typed configuration for a FileDownload batch-export destination."
@@ -175425,6 +175844,13 @@
           },
           "quarantine": {
             "$ref": "#/components/schemas/FlakinessEntryQuarantine"
+          },
+          "owner_team": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Slug of the team that owns the file this snapshot\u0027s story lives in, from the repository\u0027s ownership files. \u0060unowned\u0060 when no entry covers the file. Null when ownership is unknown: the snapshot is not a Storybook snapshot, the newest default-branch run sent no story index, the story is not in it, or the ownership files could not be read."
           },
           "identifier": {
             "type": "string"
@@ -180841,6 +181267,11 @@
           "created_at",
           "created_by",
           "draft_updated_at",
+          "email_sending_pause_requires_support",
+          "email_sending_paused_at",
+          "email_sending_paused_by",
+          "email_sending_paused_reason",
+          "email_sending_resumed_at",
           "id",
           "schedules",
           "updated_at",
@@ -180956,6 +181387,39 @@
           },
           "action_redirects": {
             "$ref": "#/components/schemas/HogFlowActionRedirectsProperty"
+          },
+          "email_sending_paused_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When PostHog paused this workflow\u0027s email automatically because its spam complaint or hard bounce rate crossed a threshold. Null when sending is not paused. Read-only: only the resume_email_sending endpoint clears a pause, so a normal update or publish can\u0027t lift it.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "email_sending_paused_reason": {
+            "type": "string",
+            "description": "Plain-language reason for the pause, naming the signal and the window. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_paused_by": {
+            "type": "string",
+            "description": "Who paused it: \u0022auto\u0022 for the deliverability detector, \u0022staff\u0022 for PostHog staff. A staff pause can only be resumed by staff, so the resume endpoint refuses it. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_pause_requires_support": {
+            "type": "boolean",
+            "description": "True when only PostHog staff can lift the current pause: staff placed it, or it landed shortly after a resume, so another self-serve resume is not offered. False when not paused or when the resume endpoint would accept the caller.",
+            "readOnly": true
+          },
+          "email_sending_resumed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When sending was last resumed. Every detector window starts after this, so resuming does not immediately re-trip on the feedback that caused the pause. Null if never paused.",
+            "format": "date-time",
+            "readOnly": true
           }
         },
         "description": "Mixin for serializers to add user access control fields"
@@ -181970,6 +182434,11 @@
           "created_by",
           "draft",
           "draft_updated_at",
+          "email_sending_pause_requires_support",
+          "email_sending_paused_at",
+          "email_sending_paused_by",
+          "email_sending_paused_reason",
+          "email_sending_resumed_at",
           "id",
           "origin_product",
           "schedules",
@@ -182096,6 +182565,39 @@
           },
           "action_redirects": {
             "$ref": "#/components/schemas/HogFlowUpdateActionRedirectsProperty"
+          },
+          "email_sending_paused_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When PostHog paused this workflow\u0027s email automatically because its spam complaint or hard bounce rate crossed a threshold. Null when sending is not paused. Read-only: only the resume_email_sending endpoint clears a pause, so a normal update or publish can\u0027t lift it.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "email_sending_paused_reason": {
+            "type": "string",
+            "description": "Plain-language reason for the pause, naming the signal and the window. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_paused_by": {
+            "type": "string",
+            "description": "Who paused it: \u0022auto\u0022 for the deliverability detector, \u0022staff\u0022 for PostHog staff. A staff pause can only be resumed by staff, so the resume endpoint refuses it. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_pause_requires_support": {
+            "type": "boolean",
+            "description": "True when only PostHog staff can lift the current pause: staff placed it, or it landed shortly after a resume, so another self-serve resume is not offered. False when not paused or when the resume endpoint would accept the caller.",
+            "readOnly": true
+          },
+          "email_sending_resumed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When sending was last resumed. Every detector window starts after this, so resuming does not immediately re-trip on the feedback that caused the pause. Null if never paused.",
+            "format": "date-time",
+            "readOnly": true
           }
         },
         "description": "Mixin for serializers to add user access control fields"
@@ -188502,6 +189004,8 @@
           "last_refresh_at",
           "last_refresh_error",
           "last_refresh_status",
+          "learned_from_ticket_number",
+          "learned_from_ticket_url",
           "name",
           "next_refresh_at",
           "original_filename",
@@ -188605,6 +189109,23 @@
           },
           "embedding_status": {
             "$ref": "#/components/schemas/KnowledgeSourceEmbeddingStatus"
+          },
+          "learned_from_ticket_number": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Support ticket number this learned source came from. Null for sources you added yourself.",
+            "readOnly": true
+          },
+          "learned_from_ticket_url": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "App URL of the originating support ticket. Null for sources you added yourself.",
+            "format": "uri",
+            "readOnly": true
           },
           "crawl_mode": {
             "$ref": "#/components/schemas/KnowledgeSourceCrawlMode"
@@ -189500,6 +190021,7 @@
           "name",
           "outline",
           "owners",
+          "spec_problems",
           "updated_at",
           "version",
           "version_count",
@@ -189554,7 +190076,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of pre-approved tools the skill may use. Tool names cannot contain whitespace."
+            "description": "Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant."
           },
           "metadata": {
             "$ref": "#/components/schemas/LlmSkillMetadataProperty"
@@ -189586,6 +190108,14 @@
               "$ref": "#/components/schemas/LlmSkillOutlineEntry"
             },
             "description": "Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents.",
+            "readOnly": true
+          },
+          "spec_problems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LlmSkillSpecProblem"
+            },
+            "description": "Why this skill is left out of the skills bundle and the plugin marketplace, as stable codes with author-facing messages. Empty when the skill packages cleanly.",
             "readOnly": true
           },
           "version": {
@@ -189651,6 +190181,7 @@
           "latest_version",
           "name",
           "outline",
+          "spec_problems",
           "updated_at",
           "version",
           "version_count",
@@ -189705,7 +190236,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of pre-approved tools the skill may use. Tool names cannot contain whitespace."
+            "description": "Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant."
           },
           "metadata": {
             "$ref": "#/components/schemas/LlmSkillCreateMetadataProperty"
@@ -189739,6 +190270,14 @@
               "$ref": "#/components/schemas/LlmSkillOutlineEntry"
             },
             "description": "Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents.",
+            "readOnly": true
+          },
+          "spec_problems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LlmSkillSpecProblem"
+            },
+            "description": "Why this skill is left out of the skills bundle and the plugin marketplace, as stable codes with author-facing messages. Empty when the skill packages cleanly.",
             "readOnly": true
           },
           "version": {
@@ -189917,7 +190456,9 @@
         "required": [
           "char_count",
           "line_count",
-          "path"
+          "path",
+          "sha256",
+          "size"
         ],
         "type": "object",
         "properties": {
@@ -189936,6 +190477,20 @@
           "char_count": {
             "type": "integer",
             "description": "Number of characters in the file content."
+          },
+          "size": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Size of the file content in bytes. Null on rows written before digests were stamped."
+          },
+          "sha256": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Hex SHA-256 of the file content. Null on rows written before digests were stamped."
           }
         }
       },
@@ -189990,6 +190545,7 @@
           "name",
           "outline",
           "owners",
+          "spec_problems",
           "updated_at",
           "version",
           "version_count",
@@ -190027,7 +190583,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of pre-approved tools the skill may use. Tool names cannot contain whitespace."
+            "description": "Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant."
           },
           "metadata": {
             "$ref": "#/components/schemas/LlmSkillListMetadataProperty"
@@ -190051,6 +190607,14 @@
               "$ref": "#/components/schemas/LlmSkillOutlineEntry"
             },
             "description": "Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents.",
+            "readOnly": true
+          },
+          "spec_problems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LlmSkillSpecProblem"
+            },
+            "description": "Why this skill is left out of the skills bundle and the plugin marketplace, as stable codes with author-facing messages. Empty when the skill packages cleanly.",
             "readOnly": true
           },
           "version": {
@@ -190392,6 +190956,31 @@
               "$ref": "#/components/schemas/LlmSkillSearchMatch"
             },
             "description": "Up to two locations that matched the search query, ordered by field relevance."
+          }
+        }
+      },
+      "LlmSkillSpecProblem": {
+        "required": [
+          "code",
+          "file_path",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Stable machine-readable code for the problem, e.g. description_too_long or file_path_collides."
+          },
+          "message": {
+            "type": "string",
+            "description": "What is wrong and what to change, written for the skill\u0027s author."
+          },
+          "file_path": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The bundled file the problem is about. Null when it is about the skill itself."
           }
         }
       },
@@ -207705,7 +208294,9 @@
           "dataframe_name",
           "dependents",
           "depends_on",
+          "end",
           "node_id",
+          "start",
           "status"
         ],
         "type": "object",
@@ -207716,7 +208307,7 @@
           },
           "cell_type": {
             "type": "string",
-            "description": "Cell kind: \u0027sql\u0027, \u0027python\u0027, or \u0027saved_insight\u0027 (embedded insight, never runs)."
+            "description": "Cell kind: \u0027sql\u0027, \u0027python\u0027, \u0027saved_insight\u0027 (embedded insight, never runs), or \u0027markdown\u0027 (prose, a heading, or a fenced block; never runs and joins no dependency graph)."
           },
           "dataframe_name": {
             "type": "string",
@@ -207724,7 +208315,15 @@
           },
           "code": {
             "type": "string",
-            "description": "The cell\u0027s source, truncated with a marker past 8KB."
+            "description": "The cell\u0027s source, truncated with a marker past 8KB. For a markdown cell this is the block\u0027s markdown."
+          },
+          "start": {
+            "type": "integer",
+            "description": "Offset where the cell\u0027s source starts in the notebook\u0027s markdown, in UTF-16 code units, the same unit the collaboration diffs use."
+          },
+          "end": {
+            "type": "integer",
+            "description": "Offset just past the cell\u0027s source, in UTF-16 code units, excluding the blank lines that separate it from the next cell."
           },
           "status": {
             "type": "string",
@@ -219670,7 +220269,7 @@
               "null",
               "string"
             ],
-            "description": "Local time that starts alert checks in HH:MM format. Updating this value changes checks after the already scheduled next_check_at. Set null to remove the custom start time. The current next_check_at stays unchanged. Future checks use the alert interval\u0027s existing scheduling behavior."
+            "description": "Local time that starts alert checks in HH:MM format. Updating this value recalculates the next check. Set null to remove the custom start time."
           },
           "next_check_at": {
             "type": [
@@ -221498,6 +222097,14 @@
           },
           "created_at": {
             "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "date-time",
             "readOnly": true
           },
@@ -223443,18 +224050,6 @@
         },
         "description": "A schema of an external data source: its sync configuration and the warehouse table it syncs into."
       },
-      "PatchedExternalDataSourceBulkUpdateSchemas": {
-        "type": "object",
-        "properties": {
-          "schemas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExternalDataSourceBulkUpdateSchema"
-            },
-            "description": "Schema updates to apply in a single batch."
-          }
-        }
-      },
       "PatchedExternalDataSourceSerializers": {
         "type": "object",
         "properties": {
@@ -224303,6 +224898,39 @@
           },
           "action_redirects": {
             "$ref": "#/components/schemas/PatchedHogFlowUpdateActionRedirectsProperty"
+          },
+          "email_sending_paused_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When PostHog paused this workflow\u0027s email automatically because its spam complaint or hard bounce rate crossed a threshold. Null when sending is not paused. Read-only: only the resume_email_sending endpoint clears a pause, so a normal update or publish can\u0027t lift it.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "email_sending_paused_reason": {
+            "type": "string",
+            "description": "Plain-language reason for the pause, naming the signal and the window. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_paused_by": {
+            "type": "string",
+            "description": "Who paused it: \u0022auto\u0022 for the deliverability detector, \u0022staff\u0022 for PostHog staff. A staff pause can only be resumed by staff, so the resume endpoint refuses it. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_pause_requires_support": {
+            "type": "boolean",
+            "description": "True when only PostHog staff can lift the current pause: staff placed it, or it landed shortly after a resume, so another self-serve resume is not offered. False when not paused or when the resume endpoint would accept the caller.",
+            "readOnly": true
+          },
+          "email_sending_resumed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When sending was last resumed. Every detector window starts after this, so resuming does not immediately re-trip on the feedback that caused the pause. Null if never paused.",
+            "format": "date-time",
+            "readOnly": true
           }
         },
         "description": "Mixin for serializers to add user access control fields"
@@ -225120,7 +225748,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of pre-approved tools the skill may use. Tool names cannot contain whitespace."
+            "description": "Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant."
           },
           "metadata": {
             "$ref": "#/components/schemas/PatchedLlmSkillPublishMetadataProperty"
@@ -227083,16 +227711,6 @@
               "null",
               "boolean"
             ]
-          },
-          "event_retention_months": {
-            "type": "integer",
-            "description": "The team\u0027s events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. Read-only: this value follows your plan\u0027s data retention entitlement, so neither you nor PostHog support can change it unless your organization is on the enterprise plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031",
-            "readOnly": true
-          },
-          "events_retention_enforced": {
-            "type": "boolean",
-            "description": "Whether events data retention is currently enforced for this team (cohort/flag gated). Read-only: neither you nor PostHog support can turn enforcement off, and the retention window itself only changes with your plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031",
-            "readOnly": true
           }
         },
         "description": "A project and its settings, including the settings that live on its passthrough Team.\n\nThis shape is a superset of TeamSerializer\u0027s, so a request rewritten from /api/environments/\nonto /api/projects/ never loses a field."
@@ -228218,6 +228836,15 @@
               "format": "uuid"
             },
             "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
+          },
+          "repositories": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
             "maxItems": 7,
@@ -233813,8 +234440,6 @@
           "created_at",
           "default_modifiers",
           "effective_membership_level",
-          "event_retention_months",
-          "events_retention_enforced",
           "group_types",
           "has_group_types",
           "id",
@@ -234322,16 +234947,6 @@
               "null",
               "boolean"
             ]
-          },
-          "event_retention_months": {
-            "type": "integer",
-            "description": "The team\u0027s events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. Read-only: this value follows your plan\u0027s data retention entitlement, so neither you nor PostHog support can change it unless your organization is on the enterprise plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031",
-            "readOnly": true
-          },
-          "events_retention_enforced": {
-            "type": "boolean",
-            "description": "Whether events data retention is currently enforced for this team (cohort/flag gated). Read-only: neither you nor PostHog support can turn enforcement off, and the retention window itself only changes with your plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031",
-            "readOnly": true
           }
         },
         "description": "A project and its settings, including the settings that live on its passthrough Team.\n\nThis shape is a superset of TeamSerializer\u0027s, so a request rewritten from /api/environments/\nonto /api/projects/ never loses a field."
@@ -256732,6 +257347,7 @@
       "RetrieveCompletedOutput": {
         "required": [
           "files",
+          "records_completed",
           "status"
         ],
         "type": "object",
@@ -256746,6 +257362,13 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          "records_completed": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Number of rows this run exported."
           }
         },
         "description": "Typed output for view set \u0060retrieve\u0060 with completed status."
@@ -256810,6 +257433,13 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          "records_completed": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Number of rows this run exported."
           },
           "error": {
             "type": "string"
@@ -260957,7 +261587,8 @@
       "ScannerResult": {
         "required": [
           "model_output",
-          "signals_count"
+          "signals_count",
+          "verification"
         ],
         "type": "object",
         "properties": {
@@ -260968,6 +261599,9 @@
             "minimum": 0,
             "type": "integer",
             "description": "Number of PostHog Signals emitted from this observation."
+          },
+          "verification": {
+            "$ref": "#/components/schemas/ScannerResultVerification"
           }
         },
         "description": "Mirrors \u0060temporal.types.ScannerResult\u0060 for OpenAPI generation."
@@ -261053,7 +261687,8 @@
           "provider",
           "scanner_config",
           "scanner_type",
-          "scanner_version"
+          "scanner_version",
+          "verify_positives"
         ],
         "type": "object",
         "properties": {
@@ -261082,6 +261717,10 @@
           },
           "scanner_config": {
             "$ref": "#/components/schemas/ScannerSnapshotScannerConfig"
+          },
+          "verify_positives": {
+            "type": "string",
+            "description": "How a monitor \u0060yes\u0060 was re-checked at run time: \u0060off\u0060 (one pass, the default), \u0060shadow\u0060 (second draw recorded only), or \u0060enforce\u0060 (the \u0060yes\u0060 stands only when the second draw agrees)."
           }
         },
         "description": "Mirrors \u0060temporal.types.ScannerSnapshot\u0060 for OpenAPI generation."
@@ -268651,6 +269290,15 @@
             "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run.",
             "readOnly": true
           },
+          "repositories": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
+          },
           "write_scopes": {
             "maxItems": 7,
             "type": "array",
@@ -268725,6 +269373,51 @@
         ],
         "type": "object",
         "properties": {
+          "model": {
+            "maxLength": 200,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
+          },
+          "tags": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
+          },
+          "structured_output_schema": {
+            "$ref": "#/components/schemas/SignalScoutConfigCreateStructuredOutputSchemaProperty"
+          },
+          "mcp_gateway_server_ids": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
+          },
+          "repositories": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
+          },
+          "write_scopes": {
+            "maxItems": 7,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
+          },
           "enabled": {
             "type": "boolean",
             "description": "Whether this scout runs on its schedule. Defaults to true."
@@ -268756,42 +269449,6 @@
               "string"
             ],
             "description": "Optional five-field cron expression, e.g. \u002730 9 * * *\u0027 (daily at 09:30), \u00270 9,17 * * *\u0027 (twice daily), or \u00270 9 * * 1-5\u0027 (weekday mornings). Evaluated in the project timezone. Takes precedence over \u0060run_interval_minutes\u0060; occurrences must be at least 30 minutes apart."
-          },
-          "model": {
-            "maxLength": 200,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
-          },
-          "tags": {
-            "maxItems": 10,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
-          },
-          "structured_output_schema": {
-            "$ref": "#/components/schemas/SignalScoutConfigCreateStructuredOutputSchemaProperty"
-          },
-          "mcp_gateway_server_ids": {
-            "maxItems": 100,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
-          },
-          "write_scopes": {
-            "maxItems": 7,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
           },
           "skill_name": {
             "maxLength": 200,
@@ -268827,6 +269484,51 @@
       "SignalScoutConfigOptions": {
         "type": "object",
         "properties": {
+          "model": {
+            "maxLength": 200,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
+          },
+          "tags": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
+          },
+          "structured_output_schema": {
+            "$ref": "#/components/schemas/SignalScoutConfigOptionsStructuredOutputSchemaProperty"
+          },
+          "mcp_gateway_server_ids": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
+          },
+          "repositories": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
+          },
+          "write_scopes": {
+            "maxItems": 7,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
+          },
           "enabled": {
             "type": "boolean",
             "description": "Whether this scout runs on its schedule. Defaults to true."
@@ -268858,42 +269560,6 @@
               "string"
             ],
             "description": "Optional five-field cron expression, e.g. \u002730 9 * * *\u0027 (daily at 09:30), \u00270 9,17 * * *\u0027 (twice daily), or \u00270 9 * * 1-5\u0027 (weekday mornings). Evaluated in the project timezone. Takes precedence over \u0060run_interval_minutes\u0060; occurrences must be at least 30 minutes apart."
-          },
-          "model": {
-            "maxLength": 200,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
-          },
-          "tags": {
-            "maxItems": 10,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
-          },
-          "structured_output_schema": {
-            "$ref": "#/components/schemas/SignalScoutConfigOptionsStructuredOutputSchemaProperty"
-          },
-          "mcp_gateway_server_ids": {
-            "maxItems": 100,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
-          },
-          "write_scopes": {
-            "maxItems": 7,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
           }
         },
         "description": "Schedule, enablement, and delivery options accepted while creating a scout."
@@ -272528,12 +273194,12 @@
           },
           "install_url": {
             "type": "string",
-            "description": "GitHub install URL (github.com/apps/\u003Cslug\u003E/installations/new) the user opens to install the App, or blank if the App slug is unconfigured. Used for the genuinely-not-installed case; the primary \u0027Connect\u0027 button uses authorize_url instead.",
+            "description": "GitHub install URL (github.com/apps/\u003Cslug\u003E/installations/new) the \u0027Connect\u0027 button opens. The user picks a GitHub account there and chooses which repositories the App can reach, including an account where the App is already installed. Blank if the App slug is unconfigured.",
             "readOnly": true
           },
           "authorize_url": {
             "type": "string",
-            "description": "GitHub authorize URL (github.com/login/oauth/authorize) the \u0027Connect\u0027 button opens. Authorize-first: an already-installed user is redirected straight back with an OAuth code (no installation_id), and sync_installation then discovers their installations server-side. Blank if the App client id is unconfigured.",
+            "description": "GitHub authorize URL (github.com/login/oauth/authorize). GitHub\u0027s redirect after configuring an existing installation carries no OAuth code, so the client passes through this URL once: an installed App redirects straight back with a code, which sync_installation uses to prove ownership. Blank if the App client id is unconfigured.",
             "readOnly": true
           }
         },
@@ -283038,6 +283704,22 @@
           },
           "email_tracking_consent_mode": {
             "$ref": "#/components/schemas/TeamWorkflowsConfigEmailTrackingConsentMode"
+          },
+          "workflow_task_rate_limit_per_day": {
+            "minimum": 0,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "How many AI tasks one workflow can create in a rolling 24 hours. Null uses the default of 100; zero pauses task creation for every workflow in the project. Support raises the limit above 500."
+          },
+          "workflow_task_team_rate_limit_per_day": {
+            "minimum": 0,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "How many AI tasks all workflows in the project can create together in a rolling 24 hours. Null uses the default of 500; zero pauses task creation for the project. Support raises the limit above 2500."
           }
         }
       },
@@ -293133,6 +293815,45 @@
         },
         "additionalProperties": false
       },
+      "VerificationRecord": {
+        "required": [
+          "draws",
+          "mode",
+          "resolved_verdict",
+          "served_verdict",
+          "skipped_reason"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "Verify-positives mode the scan ran with: \u0060shadow\u0060 records the second draw only, \u0060enforce\u0060 serves the settled verdict."
+          },
+          "draws": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Monitor verdicts in draw order: the pass that triggered verification, then the second draw when it ran."
+          },
+          "resolved_verdict": {
+            "type": "string",
+            "description": "The verdict verification settled on: the first pass when the second draw agrees, else the dissent."
+          },
+          "served_verdict": {
+            "type": "string",
+            "description": "The verdict \u0060model_output\u0060 carries: the resolved one under \u0060enforce\u0060, the first draw under \u0060shadow\u0060."
+          },
+          "skipped_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why verification stopped early (\u0060no_cache\u0060, \u0060no_budget\u0060, \u0060draw_failed\u0060), leaving the first pass in place. Null when every draw ran."
+          }
+        },
+        "description": "Mirrors \u0060temporal.types.VerificationRecord\u0060 for OpenAPI generation."
+      },
       "VerifyEmailRequest": {
         "required": [
           "code",
@@ -294541,6 +295262,161 @@
           }
         },
         "description": "Response for a successfully warmed successor run on an existing task."
+      },
+      "WatchFeedItem": {
+        "required": [
+          "observation",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "observation": {
+            "$ref": "#/components/schemas/WatchFeedItemObservation"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/WatchFeedItemReason"
+          }
+        },
+        "description": "One feed entry: the observation plus why it ranked."
+      },
+      "WatchFeedReason": {
+        "required": [
+          "kind"
+        ],
+        "type": "object",
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/WatchFeedReasonKind"
+          },
+          "signals_count": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Signals this observation emitted, for \u0060signal_emitted\u0060."
+          },
+          "verdict": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The monitor\u0027s answer, for \u0060unusual_verdict\u0060."
+          },
+          "verdict_share": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Share (0-1) of the scanner\u0027s window observations with this answer, for \u0060unusual_verdict\u0060.",
+            "format": "double"
+          },
+          "score": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "The observation\u0027s score, for \u0060outlier_score\u0060.",
+            "format": "double"
+          },
+          "window_mean": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "The scanner\u0027s mean score in the window, for \u0060outlier_score\u0060.",
+            "format": "double"
+          },
+          "tag": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The rare tag that ranked the observation, for \u0060rare_tag\u0060."
+          },
+          "tag_share": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Share (0-1) of the scanner\u0027s window observations carrying \u0060tag\u0060, for \u0060rare_tag\u0060.",
+            "format": "double"
+          }
+        },
+        "description": "Machine-readable reason an observation made the feed; the frontend renders the copy."
+      },
+      "WatchFeedReasonEnum": {
+        "enum": [
+          "signal_emitted",
+          "unusual_verdict",
+          "verdict_yes",
+          "outlier_score",
+          "rare_tag",
+          "novel_summary",
+          "friction",
+          "unviewed_recent",
+          "recent"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* \u0060signal_emitted\u0060 - Signal Emitted\n* \u0060unusual_verdict\u0060 - Unusual Verdict\n* \u0060verdict_yes\u0060 - Verdict Yes\n* \u0060outlier_score\u0060 - Outlier Score\n* \u0060rare_tag\u0060 - Rare Tag\n* \u0060novel_summary\u0060 - Novel Summary\n* \u0060friction\u0060 - Friction\n* \u0060unviewed_recent\u0060 - Unviewed Recent\n* \u0060recent\u0060 - Recent",
+        "x-ms-enum": {
+          "name": "WatchFeedReasonEnum",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "signal_emitted",
+              "name": "SignalEmitted"
+            },
+            {
+              "value": "unusual_verdict",
+              "name": "UnusualVerdict"
+            },
+            {
+              "value": "verdict_yes",
+              "name": "VerdictYes"
+            },
+            {
+              "value": "outlier_score",
+              "name": "OutlierScore"
+            },
+            {
+              "value": "rare_tag",
+              "name": "RareTag"
+            },
+            {
+              "value": "novel_summary",
+              "name": "NovelSummary"
+            },
+            {
+              "value": "friction",
+              "name": "Friction"
+            },
+            {
+              "value": "unviewed_recent",
+              "name": "UnviewedRecent"
+            },
+            {
+              "value": "recent",
+              "name": "Recent"
+            }
+          ]
+        }
+      },
+      "WatchFeedResponse": {
+        "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WatchFeedItem"
+            },
+            "description": "Succeeded observations in the window worth watching, most interesting first: signal emitters, then type-specific hits, then unviewed before viewed, then newest."
+          }
+        },
+        "description": "Response of GET /vision/scanners/watch_feed/."
       },
       "WebAgentAnalyticsQuery": {
         "title": "WebAgentAnalyticsQuery",
@@ -299855,10 +300731,53 @@
           }
         }
       },
+      "WorkflowEmailPauseStatus": {
+        "required": [
+          "email_sending_paused",
+          "email_sending_paused_at",
+          "email_sending_paused_reason",
+          "email_sending_resumed_at"
+        ],
+        "type": "object",
+        "properties": {
+          "email_sending_paused": {
+            "type": "boolean",
+            "description": "True while this workflow\u0027s email is paused because its spam complaint or hard bounce rate crossed a threshold. Other workflows in the project keep sending.",
+            "readOnly": true
+          },
+          "email_sending_paused_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the pause started; null when not paused.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "email_sending_paused_reason": {
+            "type": "string",
+            "description": "Plain-language reason for the pause, naming the signal and the window. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_resumed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When sending was last resumed. Detector windows start after this, so resuming does not immediately re-trip on older feedback. Null if never paused.",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "description": "Whether PostHog paused this one workflow\u0027s email sending, and why."
+      },
       "WorkflowEmailSendingRates": {
         "required": [
           "bounce_rate",
           "complaint_rate",
+          "email_sending_paused",
+          "email_sending_paused_at",
+          "email_sending_paused_reason",
           "emails_sent",
           "hog_flow_id",
           "hog_flow_name"
@@ -299891,6 +300810,25 @@
           "hog_flow_name": {
             "type": "string",
             "description": "Display name of the workflow; empty for unnamed workflows.",
+            "readOnly": true
+          },
+          "email_sending_paused": {
+            "type": "boolean",
+            "description": "True when PostHog paused this workflow\u0027s email automatically because its complaint or hard bounce rate crossed a threshold. Independent of the AWS tenant verdict and of the project-wide suspension.",
+            "readOnly": true
+          },
+          "email_sending_paused_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the pause started; null when not paused.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "email_sending_paused_reason": {
+            "type": "string",
+            "description": "Plain-language reason for the pause, naming the signal and the window. Empty when not paused.",
             "readOnly": true
           }
         },
@@ -303490,13 +304428,18 @@
       },
       "MetricAttributeKey": {
         "required": [
-          "name"
+          "name",
+          "series_count"
         ],
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
             "description": "Attribute key as it appears on the team\u0027s metrics (e.g. \u0027env\u0027, \u0027k8s.pod.name\u0027)."
+          },
+          "series_count": {
+            "type": "integer",
+            "description": "Number of distinct recent series with this attribute, based on series metadata."
           }
         }
       },
@@ -303512,7 +304455,7 @@
             "items": {
               "$ref": "#/components/schemas/MetricAttributeKey"
             },
-            "description": "Distinct attribute keys (datapoint and resource attributes merged), most frequent first."
+            "description": "Distinct attribute keys (datapoint and resource attributes merged), ordered by series count descending."
           },
           "count": {
             "type": "integer",
@@ -303653,6 +304596,41 @@
               "boolean"
             ],
             "description": "Whether the two values match. False means one of the reductions is wrong, and the series breakdown shows where they parted. Null when the raw read was truncated, so the two are not comparable."
+          }
+        }
+      },
+      "MetricCatalogValuesParams": {
+        "required": [
+          "names"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "maxLength": 255,
+            "type": "string",
+            "description": "Substring filter (case-insensitive) applied to metric names."
+          },
+          "limit": {
+            "maximum": 1000,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Max number of names to return. Defaults to 100; maximum 1000.",
+            "default": 100
+          },
+          "service": {
+            "maxLength": 1024,
+            "type": "string",
+            "description": "Comma-separated services to narrow the list to, e.g. \u0060service=web,worker\u0060. Omit for every service. Send it empty to select only series whose sender did not set \u0060service.name\u0060. A service name containing a comma cannot be selected."
+          },
+          "names": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "Exact metric names to load as a batch. Overrides value and limit."
           }
         }
       },
@@ -303972,6 +304950,38 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MetricName"
+            },
+            "description": "Distinct metric names ordered by recent activity."
+          }
+        }
+      },
+      "MetricPickerName": {
+        "required": [
+          "metric_type",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Metric name as it appears in the team\u0027s data."
+          },
+          "metric_type": {
+            "type": "string",
+            "description": "OTel metric type (gauge, sum, histogram, summary, exponential_histogram)."
+          }
+        }
+      },
+      "MetricPickerNamesResponse": {
+        "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricPickerName"
             },
             "description": "Distinct metric names ordered by recent activity."
           }
@@ -312019,6 +313029,29 @@
             "description": "Resource types the user has access restrictions on, referenced by the query, e.g. [\u0022insight\u0022, \u0022dashboard\u0022]"
           }
         }
+      },
+      "AddSnapshotsResultStoryIndexUpload": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UploadTarget"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "content_hash": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "fields": {
+            "$ref": "#/components/schemas/UploadTargetFieldsProperty"
+          }
+        },
+        "description": "Where to upload the story-to-file map, as a presigned POST with a JSON body. Null when the request sent no map, or the store already holds a map with that hash."
       },
       "AiFeedbackRequestRating": {
         "required": [
@@ -329759,7 +330792,7 @@
             "$ref": "#/components/schemas/ActionabilityEnum"
           }
         },
-        "description": "The scout\u0027s actionability call: \u0060immediately_actionable\u0060 -\u003E the report surfaces READY; \u0060requires_human_input\u0060 -\u003E PENDING_INPUT; \u0060not_actionable\u0060 -\u003E suppressed. A safety-judge failure suppresses the report regardless.\n\n* \u0060immediately_actionable\u0060 - immediately_actionable\n* \u0060requires_human_input\u0060 - requires_human_input\n* \u0060not_actionable\u0060 - not_actionable"
+        "description": "The scout\u0027s actionability call: \u0060immediately_actionable\u0060 -\u003E the report surfaces READY; \u0060requires_human_input\u0060 -\u003E PENDING_INPUT; \u0060not_actionable\u0060 -\u003E suppressed. A safety-judge failure suppresses the report regardless. A root cause you have not found is not human input: a report that names the evidence, the code surface, or a reproducible failure path is \u0060immediately_actionable\u0060, because investigating it is the action. Reserve \u0060requires_human_input\u0060 for a report blocked on a decision only a person can make.\n\n* \u0060immediately_actionable\u0060 - immediately_actionable\n* \u0060requires_human_input\u0060 - requires_human_input\n* \u0060not_actionable\u0060 - not_actionable"
       },
       "EmitReportRequestPriority": {
         "type": "object",
@@ -362434,6 +363467,11 @@
           "created_at",
           "created_by",
           "draft_updated_at",
+          "email_sending_pause_requires_support",
+          "email_sending_paused_at",
+          "email_sending_paused_by",
+          "email_sending_paused_reason",
+          "email_sending_resumed_at",
           "id",
           "schedules",
           "updated_at",
@@ -362549,6 +363587,39 @@
           },
           "action_redirects": {
             "$ref": "#/components/schemas/HogFlowInvocationConfigurationActionRedirects"
+          },
+          "email_sending_paused_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When PostHog paused this workflow\u0027s email automatically because its spam complaint or hard bounce rate crossed a threshold. Null when sending is not paused. Read-only: only the resume_email_sending endpoint clears a pause, so a normal update or publish can\u0027t lift it.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "email_sending_paused_reason": {
+            "type": "string",
+            "description": "Plain-language reason for the pause, naming the signal and the window. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_paused_by": {
+            "type": "string",
+            "description": "Who paused it: \u0022auto\u0022 for the deliverability detector, \u0022staff\u0022 for PostHog staff. A staff pause can only be resumed by staff, so the resume endpoint refuses it. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_pause_requires_support": {
+            "type": "boolean",
+            "description": "True when only PostHog staff can lift the current pause: staff placed it, or it landed shortly after a resume, so another self-serve resume is not offered. False when not paused or when the resume endpoint would accept the caller.",
+            "readOnly": true
+          },
+          "email_sending_resumed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When sending was last resumed. Every detector window starts after this, so resuming does not immediately re-trip on the feedback that caused the pause. Null if never paused.",
+            "format": "date-time",
+            "readOnly": true
           }
         },
         "description": "Optional override; omit to use saved definition.",
@@ -362831,6 +363902,39 @@
           },
           "action_redirects": {
             "$ref": "#/components/schemas/HogFlowActionRedirectsProperty"
+          },
+          "email_sending_paused_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When PostHog paused this workflow\u0027s email automatically because its spam complaint or hard bounce rate crossed a threshold. Null when sending is not paused. Read-only: only the resume_email_sending endpoint clears a pause, so a normal update or publish can\u0027t lift it.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "email_sending_paused_reason": {
+            "type": "string",
+            "description": "Plain-language reason for the pause, naming the signal and the window. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_paused_by": {
+            "type": "string",
+            "description": "Who paused it: \u0022auto\u0022 for the deliverability detector, \u0022staff\u0022 for PostHog staff. A staff pause can only be resumed by staff, so the resume endpoint refuses it. Empty when not paused.",
+            "readOnly": true
+          },
+          "email_sending_pause_requires_support": {
+            "type": "boolean",
+            "description": "True when only PostHog staff can lift the current pause: staff placed it, or it landed shortly after a resume, so another self-serve resume is not offered. False when not paused or when the resume endpoint would accept the caller.",
+            "readOnly": true
+          },
+          "email_sending_resumed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When sending was last resumed. Every detector window starts after this, so resuming does not immediately re-trip on the feedback that caused the pause. Null if never paused.",
+            "format": "date-time",
+            "readOnly": true
           }
         },
         "description": "The workflow after publishing (only set when published=true)."
@@ -483279,6 +484383,10 @@
           },
           "scanner_config": {
             "$ref": "#/components/schemas/ScannerSnapshotScannerConfig"
+          },
+          "verify_positives": {
+            "type": "string",
+            "description": "How a monitor \u0060yes\u0060 was re-checked at run time: \u0060off\u0060 (one pass, the default), \u0060shadow\u0060 (second draw recorded only), or \u0060enforce\u0060 (the \u0060yes\u0060 stands only when the second draw agrees)."
           }
         },
         "description": "Frozen view of the scanner at run time; scanner edits do not retroactively mutate this observation.",
@@ -483302,6 +484410,9 @@
             "minimum": 0,
             "type": "integer",
             "description": "Number of PostHog Signals emitted from this observation."
+          },
+          "verification": {
+            "$ref": "#/components/schemas/ScannerResultVerification"
           }
         },
         "description": "Result data persisted on success; null until the observation succeeds.",
@@ -498194,9 +499305,94 @@
         },
         "description": "How often to refresh the materialized table, defaulting to daily. Rejected with a 400 when it falls outside what the query\u0027s lineage allows: no more often than its sources deliver new data, and no less often than a downstream view or endpoint needs.\n\n* \u006015min\u0060 - 15min\n* \u006030min\u0060 - 30min\n* \u00601hour\u0060 - 1hour\n* \u00606hour\u0060 - 6hour\n* \u006012hour\u0060 - 12hour\n* \u006024hour\u0060 - 24hour\n* \u00607day\u0060 - 7day\n* \u006030day\u0060 - 30day"
       },
+      "ScannerResultVerification": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/VerificationRecord"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "Verify-positives mode the scan ran with: \u0060shadow\u0060 records the second draw only, \u0060enforce\u0060 serves the settled verdict."
+          },
+          "draws": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Monitor verdicts in draw order: the pass that triggered verification, then the second draw when it ran."
+          },
+          "resolved_verdict": {
+            "type": "string",
+            "description": "The verdict verification settled on: the first pass when the second draw agrees, else the dissent."
+          },
+          "served_verdict": {
+            "type": "string",
+            "description": "The verdict \u0060model_output\u0060 carries: the resolved one under \u0060enforce\u0060, the first draw under \u0060shadow\u0060."
+          },
+          "skipped_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why verification stopped early (\u0060no_cache\u0060, \u0060no_budget\u0060, \u0060draw_failed\u0060), leaving the first pass in place. Null when every draw ran."
+          }
+        },
+        "description": "Extra draws taken to verify a monitor \u0060yes\u0060 verdict. Null when the scan did not verify one."
+      },
       "ScannerScoutCreateConfig": {
         "type": "object",
         "properties": {
+          "model": {
+            "maxLength": 200,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
+          },
+          "tags": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
+          },
+          "structured_output_schema": {
+            "$ref": "#/components/schemas/ScannerScoutCreateConfigStructuredOutputSchema"
+          },
+          "mcp_gateway_server_ids": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
+          },
+          "repositories": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
+          },
+          "write_scopes": {
+            "maxItems": 7,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
+          },
           "enabled": {
             "type": "boolean",
             "description": "Whether this scout runs on its schedule. Defaults to true."
@@ -498228,42 +499424,6 @@
               "string"
             ],
             "description": "Optional five-field cron expression, e.g. \u002730 9 * * *\u0027 (daily at 09:30), \u00270 9,17 * * *\u0027 (twice daily), or \u00270 9 * * 1-5\u0027 (weekday mornings). Evaluated in the project timezone. Takes precedence over \u0060run_interval_minutes\u0060; occurrences must be at least 30 minutes apart."
-          },
-          "model": {
-            "maxLength": 200,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
-          },
-          "tags": {
-            "maxItems": 10,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
-          },
-          "structured_output_schema": {
-            "$ref": "#/components/schemas/ScannerScoutCreateConfigStructuredOutputSchema"
-          },
-          "mcp_gateway_server_ids": {
-            "maxItems": 100,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
-          },
-          "write_scopes": {
-            "maxItems": 7,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
           }
         },
         "description": "Optional schedule, enablement, dry-run posture, and delivery settings. Defaults to an enabled, emitting scout on the daily interval with no external destination."
@@ -498385,6 +499545,15 @@
             },
             "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run.",
             "readOnly": true
+          },
+          "repositories": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
             "maxItems": 7,
@@ -504701,6 +505870,51 @@
       "SignalScoutCreateConfig": {
         "type": "object",
         "properties": {
+          "model": {
+            "maxLength": 200,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
+          },
+          "tags": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
+          },
+          "structured_output_schema": {
+            "$ref": "#/components/schemas/SignalScoutCreateConfigStructuredOutputSchema"
+          },
+          "mcp_gateway_server_ids": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
+          },
+          "repositories": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "maxLength": 255,
+              "type": "string"
+            },
+            "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
+          },
+          "write_scopes": {
+            "maxItems": 7,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
+          },
           "enabled": {
             "type": "boolean",
             "description": "Whether this scout runs on its schedule. Defaults to true."
@@ -504732,42 +505946,6 @@
               "string"
             ],
             "description": "Optional five-field cron expression, e.g. \u002730 9 * * *\u0027 (daily at 09:30), \u00270 9,17 * * *\u0027 (twice daily), or \u00270 9 * * 1-5\u0027 (weekday mornings). Evaluated in the project timezone. Takes precedence over \u0060run_interval_minutes\u0060; occurrences must be at least 30 minutes apart."
-          },
-          "model": {
-            "maxLength": 200,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Optional model id this scout\u0027s runs are pinned to, e.g. \u0060claude-opus-4-5\u0060. Must be one of the platform\u0027s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it."
-          },
-          "tags": {
-            "maxItems": 10,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Free-form labels for grouping the fleet, e.g. \u0060[\u0022revenue\u0022, \u0022on-call\u0022]\u0060. Normalized to lowercase kebab-case (\u0060On Call\u0060 and \u0060on_call\u0060 both become \u0060on-call\u0060), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set \u2014 a write replaces the existing tags rather than merging into them. Filter the config list with the \u0060tags\u0060 query parameter."
-          },
-          "structured_output_schema": {
-            "$ref": "#/components/schemas/SignalScoutCreateConfigStructuredOutputSchema"
-          },
-          "mcp_gateway_server_ids": {
-            "maxItems": 100,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "MCP gateway servers (by id) this scout\u0027s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout\u0027s next run."
-          },
-          "write_scopes": {
-            "maxItems": 7,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Extra write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060dashboard:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant. Applies from the scout\u0027s next run."
           }
         },
         "description": "Optional schedule, enablement, dry-run posture, and delivery settings. Defaults to an enabled, emitting scout on the daily interval with no external destination."
@@ -526166,6 +527344,224 @@
         },
         "description": "Initial permission mode for the warmed successor\u0027s agent session.\n\n* \u0060default\u0060 - default\n* \u0060acceptEdits\u0060 - acceptEdits\n* \u0060plan\u0060 - plan\n* \u0060bypassPermissions\u0060 - bypassPermissions\n* \u0060auto\u0060 - auto\n* \u0060read-only\u0060 - read-only\n* \u0060full-access\u0060 - full-access"
       },
+      "WatchFeedItemObservation": {
+        "required": [
+          "backfill_id",
+          "created_at",
+          "distinct_id",
+          "error_reason",
+          "id",
+          "label",
+          "next_observation_id",
+          "previous_observation_id",
+          "recording_subject_email",
+          "scanner_id",
+          "scanner_origin",
+          "scanner_result",
+          "scanner_snapshot",
+          "session_id",
+          "status",
+          "triggered_by",
+          "triggered_by_user",
+          "viewed",
+          "workflow_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "scanner_id": {
+            "type": "string",
+            "description": "The scanner that produced this observation.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "scanner_origin": {
+            "$ref": "#/components/schemas/ReplayObservationScannerOrigin"
+          },
+          "session_id": {
+            "type": "string",
+            "description": "Session recording id this scanner was applied to.",
+            "readOnly": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReplayObservationStatus"
+          },
+          "error_reason": {
+            "type": "string",
+            "description": "Populated on terminal non-success statuses; formatted as \u0060kind:human-readable message\u0060. For \u0060ineligible\u0060, kind is one of no_recording / too_short / too_inactive / too_long / no_events / no_snapshots / too_large. For \u0060failed\u0060, kind is one of provider_transient / provider_rejected / rasterization_failed / validation_failed / infra_transient / internal_error / orphaned.",
+            "readOnly": true
+          },
+          "workflow_id": {
+            "type": "string",
+            "description": "Temporal workflow id for progress queries and debugging. Empty until the workflow starts.",
+            "readOnly": true
+          },
+          "scanner_snapshot": {
+            "$ref": "#/components/schemas/ReplayObservationScannerSnapshot"
+          },
+          "scanner_result": {
+            "$ref": "#/components/schemas/ReplayObservationScannerResult"
+          },
+          "triggered_by": {
+            "$ref": "#/components/schemas/ReplayObservationTriggeredBy"
+          },
+          "triggered_by_user": {
+            "$ref": "#/components/schemas/ReplayObservationTriggeredByUser"
+          },
+          "backfill_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Backfill that dispatched this observation; null for live, on-demand, and retry triggers.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "distinct_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Distinct id of the person in the recorded session (the subject being watched); null if unknown.",
+            "readOnly": true
+          },
+          "recording_subject_email": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Email of the person in the recorded session (the subject being watched, not the user who triggered the observation), captured at scan time. Null when the session had no identified person.",
+            "readOnly": true
+          },
+          "previous_observation_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Id of the preceding sibling observation for the same scanner (prev/next nav), honoring any list filters and ordering passed to retrieve; only set on retrieve, null at the start of the set.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "next_observation_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Id of the following sibling observation for the same scanner (prev/next nav), honoring any list filters and ordering passed to retrieve; only set on retrieve, null at the end of the set.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "label": {
+            "$ref": "#/components/schemas/ReplayObservationLabelComposed"
+          },
+          "viewed": {
+            "type": "boolean",
+            "description": "Whether the calling user has opened this observation.",
+            "readOnly": true
+          },
+          "started_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "completed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "description": "The observation, in the standard shape."
+      },
+      "WatchFeedItemReason": {
+        "required": [
+          "kind"
+        ],
+        "type": "object",
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/WatchFeedReasonKind"
+          },
+          "signals_count": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Signals this observation emitted, for \u0060signal_emitted\u0060."
+          },
+          "verdict": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The monitor\u0027s answer, for \u0060unusual_verdict\u0060."
+          },
+          "verdict_share": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Share (0-1) of the scanner\u0027s window observations with this answer, for \u0060unusual_verdict\u0060.",
+            "format": "double"
+          },
+          "score": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "The observation\u0027s score, for \u0060outlier_score\u0060.",
+            "format": "double"
+          },
+          "window_mean": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "The scanner\u0027s mean score in the window, for \u0060outlier_score\u0060.",
+            "format": "double"
+          },
+          "tag": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The rare tag that ranked the observation, for \u0060rare_tag\u0060."
+          },
+          "tag_share": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Share (0-1) of the scanner\u0027s window observations carrying \u0060tag\u0060, for \u0060rare_tag\u0060.",
+            "format": "double"
+          }
+        },
+        "description": "Why this observation made the feed."
+      },
+      "WatchFeedReasonKind": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/WatchFeedReasonEnum"
+          }
+        },
+        "description": "Highest-priority rule the observation satisfied: \u0060signal_emitted\u0060 (it pushed a signal), \u0060unusual_verdict\u0060 (a monitor answer that is the minority for that scanner this window), \u0060verdict_yes\u0060 (a monitor hit, when the window is too thin to know which answer is unusual), \u0060outlier_score\u0060 (far from the scanner\u0027s window average), \u0060rare_tag\u0060 (a tag uncommon for the scanner this window), \u0060novel_summary\u0060 (a summary that reads unlike the scanner\u0027s other sessions this window), \u0060friction\u0060 (the scan describes errors, retries, or dead ends), \u0060unviewed_recent\u0060 (new to you), \u0060recent\u0060 (nothing special, newest available).\n\n* \u0060signal_emitted\u0060 - Signal Emitted\n* \u0060unusual_verdict\u0060 - Unusual Verdict\n* \u0060verdict_yes\u0060 - Verdict Yes\n* \u0060outlier_score\u0060 - Outlier Score\n* \u0060rare_tag\u0060 - Rare Tag\n* \u0060novel_summary\u0060 - Novel Summary\n* \u0060friction\u0060 - Friction\n* \u0060unviewed_recent\u0060 - Unviewed Recent\n* \u0060recent\u0060 - Recent"
+      },
       "WebAgentAnalyticsQueryCompareFilter": {
         "type": "object",
         "anyOf": [
@@ -547298,6 +548694,12 @@
           "$ref": "#/components/schemas/DataQualitySubjectHealth"
         }
       },
+      "DataQualityChecksMetricSubjectsList200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/DataQualityMetricSubject"
+        }
+      },
       "DatasetItemsPartialUpdateRequest": {
         "required": [
           "base_version"
@@ -547454,6 +548856,12 @@
           "detail": {
             "type": "string"
           }
+        }
+      },
+      "ExternalDataSourcesBulkUpdateSchemasPartialUpdate200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ExternalDataSchema"
         }
       },
       "ExternalDataSourcesRepairCdcCreate200Response": {
@@ -562548,6 +563956,17 @@
           }
         }
       },
+      "WatchFeedReasonEnumWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/WatchFeedReasonEnum"
+          }
+        }
+      },
       "WebAgentContentGroupingWrapper": {
         "required": [
           "value"
@@ -564217,6 +565636,12 @@
           "$ref": "#/components/schemas/DataQualitySubjectHealth"
         }
       },
+      "DataQualityChecksMetricSubjectsList200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/DataQualityMetricSubject"
+        }
+      },
       "DatasetsExportsContentRetrieve200XNdjsonResponseSchema": {
         "type": "string",
         "format": "binary"
@@ -564318,6 +565743,12 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ExperimentsPromptTemplatesRetrieve200ResponseSchemaItem"
+        }
+      },
+      "ExternalDataSourcesBulkUpdateSchemasPartialUpdate200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ExternalDataSchema"
         }
       },
       "ExternalDataSourcesConnectionsList200ResponseSchema": {
@@ -576355,6 +577786,7 @@
       "HogFlowsListTypeParameter": {
         "enum": [
           "automation",
+          "loop",
           "messaging"
         ],
         "type": "string",
@@ -576366,6 +577798,10 @@
             {
               "value": "automation",
               "name": "Automation"
+            },
+            {
+              "value": "loop",
+              "name": "Loop"
             },
             {
               "value": "messaging",
@@ -579644,6 +581080,39 @@
             {
               "value": "status",
               "name": "Status1"
+            }
+          ]
+        }
+      },
+      "VisionScannersWatchFeedRetrieveScannerTypeParameter": {
+        "minLength": 1,
+        "enum": [
+          "monitor",
+          "classifier",
+          "scorer",
+          "summarizer"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "VisionScannersWatchFeedRetrieveScannerTypeParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "monitor",
+              "name": "Monitor"
+            },
+            {
+              "value": "classifier",
+              "name": "Classifier"
+            },
+            {
+              "value": "scorer",
+              "name": "Scorer"
+            },
+            {
+              "value": "summarizer",
+              "name": "Summarizer"
             }
           ]
         }

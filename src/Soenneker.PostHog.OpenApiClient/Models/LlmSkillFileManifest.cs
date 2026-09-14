@@ -34,6 +34,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
+        /// <summary>Hex SHA-256 of the file content. Null on rows written before digests were stamped.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Sha256 { get; set; }
+#nullable restore
+#else
+        public string Sha256 { get; set; }
+#endif
+        /// <summary>Size of the file content in bytes. Null on rows written before digests were stamped.</summary>
+        public int? Size { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileManifest"/> and sets the default values.
         /// </summary>
@@ -63,6 +73,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "line_count", n => { LineCount = n.GetIntValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
+                { "sha256", n => { Sha256 = n.GetStringValue(); } },
+                { "size", n => { Size = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -76,6 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteIntValue("line_count", LineCount);
             writer.WriteStringValue("path", Path);
+            writer.WriteStringValue("sha256", Sha256);
+            writer.WriteIntValue("size", Size);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

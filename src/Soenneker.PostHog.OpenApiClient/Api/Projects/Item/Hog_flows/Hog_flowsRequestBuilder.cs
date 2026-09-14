@@ -200,7 +200,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             [QueryParameter("trigger")]
             public string Trigger { get; set; }
 #endif
-            /// <summary>Filter by workflow type. `messaging` returns workflows with an email, SMS, or push action; `automation` returns the rest.</summary>
+            /// <summary>Filter by workflow type. `loop` returns workflows owned by a Desktop loop; `messaging` returns the remaining workflows with an email, SMS, or push action; `automation` returns the rest.</summary>
             [QueryParameter("type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsListTypeParameter? Type { get; set; }
             #pragma warning disable CS1591

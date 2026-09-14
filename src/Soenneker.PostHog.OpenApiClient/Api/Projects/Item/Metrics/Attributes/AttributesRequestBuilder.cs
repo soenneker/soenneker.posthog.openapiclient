@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttributesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/metrics/attributes{?dateFrom*,dateTo*,limit*,search*}", pathParameters)
+        public AttributesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/metrics/attributes{?dateFrom*,dateTo*,limit*,metricName*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttributesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/metrics/attributes{?dateFrom*,dateTo*,limit*,search*}", rawUrl)
+        public AttributesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/metrics/attributes{?dateFrom*,dateTo*,limit*,metricName*,search*}", rawUrl)
         {
         }
         /// <summary>
-        /// Distinct attribute keys seen on the team&apos;s metrics (datapoint andresource attributes merged), most frequent first. Backs the filterbar&apos;s key autocomplete.
+        /// Attribute keys ordered by distinct series count, from highest tolowest. `metricName` limits choices to one metric.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricAttributeKeysResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.MetricAttributeKeysResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.MetricAttributeKeysResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Distinct attribute keys seen on the team&apos;s metrics (datapoint andresource attributes merged), most frequent first. Backs the filterbar&apos;s key autocomplete.
+        /// Attribute keys ordered by distinct series count, from highest tolowest. `metricName` limits choices to one metric.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes.AttributesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Distinct attribute keys seen on the team&apos;s metrics (datapoint andresource attributes merged), most frequent first. Backs the filterbar&apos;s key autocomplete.
+        /// Attribute keys ordered by distinct series count, from highest tolowest. `metricName` limits choices to one metric.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AttributesRequestBuilderGetQueryParameters 
@@ -94,6 +94,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes
             /// <summary>Max number of keys to return. Defaults to 100; maximum 1000.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Exact metric name to limit attribute keys to. Omit to list keys across all metrics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("metricName")]
+            public string? MetricName { get; set; }
+#nullable restore
+#else
+            [QueryParameter("metricName")]
+            public string MetricName { get; set; }
+#endif
             /// <summary>Substring filter (case-insensitive) applied to attribute keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

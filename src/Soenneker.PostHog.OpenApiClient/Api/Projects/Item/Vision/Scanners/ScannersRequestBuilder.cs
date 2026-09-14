@@ -10,6 +10,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Inline_s
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Stats;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Suggest_tags;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -53,6 +54,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Suggest_tags.Suggest_tagsRequestBuilder Suggest_tags
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Suggest_tags.Suggest_tagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The watch_feed property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed.Watch_feedRequestBuilder Watch_feed
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed.Watch_feedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.vision.scanners.item collection</summary>
         /// <param name="position">A UUID string identifying this replay scanner.</param>

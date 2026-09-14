@@ -12,6 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Automation,
         #pragma warning restore CS1591
+        [EnumMember(Value = "loop")]
+        #pragma warning disable CS1591
+        Loop,
+        #pragma warning restore CS1591
         [EnumMember(Value = "messaging")]
         #pragma warning disable CS1591
         Messaging,

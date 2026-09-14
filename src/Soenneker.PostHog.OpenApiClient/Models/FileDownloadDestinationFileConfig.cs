@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat Format { get; set; }
 #endif
-        /// <summary>Split download into multiple files of at most this size in MB</summary>
+        /// <summary>Split the download into files of about this size in MiB. A file can go a little over. Set it to null or 0 to write a single file of any size.</summary>
         public int? MaxSizeMb { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig"/> and sets the default values.
@@ -39,6 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public FileDownloadDestinationFileConfig()
         {
             AdditionalData = new Dictionary<string, object>();
+            MaxSizeMb = 1024;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

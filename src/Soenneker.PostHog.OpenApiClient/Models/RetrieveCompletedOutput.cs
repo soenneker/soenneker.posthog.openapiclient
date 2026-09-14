@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> Files { get; set; }
 #endif
+        /// <summary>Number of rows this run exported.</summary>
+        public int? RecordsCompleted { get; set; }
         /// <summary>* `Completed` - Completed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RetrieveCompletedOutputStatusEnum? Status { get; set; }
         /// <summary>
@@ -51,6 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "files", n => { Files = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
+                { "records_completed", n => { RecordsCompleted = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetrieveCompletedOutputStatusEnum>(); } },
             };
         }
@@ -62,6 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<Guid?>("files", Files);
+            writer.WriteIntValue("records_completed", RecordsCompleted);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetrieveCompletedOutputStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

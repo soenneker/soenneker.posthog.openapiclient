@@ -75,6 +75,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge> Edges { get; set; }
 #endif
+        /// <summary>When PostHog paused this workflow&apos;s email automatically because its spam complaint or hard bounce rate crossed a threshold. Null when sending is not paused. Read-only: only the resume_email_sending endpoint clears a pause, so a normal update or publish can&apos;t lift it.</summary>
+        public DateTimeOffset? EmailSendingPausedAt { get; private set; }
+        /// <summary>Who paused it: &quot;auto&quot; for the deliverability detector, &quot;staff&quot; for PostHog staff. A staff pause can only be resumed by staff, so the resume endpoint refuses it. Empty when not paused.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EmailSendingPausedBy { get; private set; }
+#nullable restore
+#else
+        public string EmailSendingPausedBy { get; private set; }
+#endif
+        /// <summary>Plain-language reason for the pause, naming the signal and the window. Empty when not paused.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EmailSendingPausedReason { get; private set; }
+#nullable restore
+#else
+        public string EmailSendingPausedReason { get; private set; }
+#endif
+        /// <summary>True when only PostHog staff can lift the current pause: staff placed it, or it landed shortly after a resume, so another self-serve resume is not offered. False when not paused or when the resume endpoint would accept the caller.</summary>
+        public bool? EmailSendingPauseRequiresSupport { get; private set; }
         /// <summary>Optional email pacing for deliverability: {count, period: &apos;minute&apos; | &apos;hour&apos;}. The email worker spreads this workflow&apos;s sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,6 +103,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit EmailSendingRateLimit { get; set; }
 #endif
+        /// <summary>When sending was last resumed. Every detector window starts after this, so resuming does not immediately re-trip on the feedback that caused the pause. Null if never paused.</summary>
+        public DateTimeOffset? EmailSendingResumedAt { get; private set; }
         /// <summary>exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs &apos;conversion&apos;; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs &apos;conversion&apos;).* `exit_on_conversion` - Conversion* `exit_on_trigger_not_matched` - Trigger Not Matched* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion* `exit_only_at_end` - Only At End</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -187,7 +209,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "draft_updated_at", n => { DraftUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "edges", n => { Edges = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "email_sending_pause_requires_support", n => { EmailSendingPauseRequiresSupport = n.GetBoolValue(); } },
+                { "email_sending_paused_at", n => { EmailSendingPausedAt = n.GetDateTimeOffsetValue(); } },
+                { "email_sending_paused_by", n => { EmailSendingPausedBy = n.GetStringValue(); } },
+                { "email_sending_paused_reason", n => { EmailSendingPausedReason = n.GetStringValue(); } },
                 { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit.CreateFromDiscriminatorValue); } },
+                { "email_sending_resumed_at", n => { EmailSendingResumedAt = n.GetDateTimeOffsetValue(); } },
                 { "exit_condition", n => { ExitCondition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },

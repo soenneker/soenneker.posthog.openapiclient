@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; set; }
 #endif
-        /// <summary>Local time that starts alert checks in HH:MM format. Updating this value changes checks after the already scheduled next_check_at. Set null to remove the custom start time. The current next_check_at stays unchanged. Future checks use the alert interval&apos;s existing scheduling behavior.</summary>
+        /// <summary>Local time that starts alert checks in HH:MM format. Updating this value recalculates the next check. Set null to remove the custom start time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScheduleStartTime { get; set; }

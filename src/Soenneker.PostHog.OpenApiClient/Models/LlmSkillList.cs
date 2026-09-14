@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>List of pre-approved tools the skill may use. Tool names cannot contain whitespace.</summary>
+        /// <summary>Tools the skill asks to use. Tool names cannot contain whitespace. A harness that reads the skill from a file (zip export, git marketplace, a content=full bundle) treats the list as pre-approved. A harness that loads the skill over MCP, including the default content=stub bundle, ignores the list until the user approves that grant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AllowedTools { get; set; }
@@ -113,6 +113,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic> Owners { get; private set; }
 #endif
+        /// <summary>Why this skill is left out of the skills bundle and the plugin marketplace, as stable codes with author-facing messages. Empty when the skill packages cleanly.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSpecProblem>? SpecProblems { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSpecProblem> SpecProblems { get; private set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The version property</summary>
@@ -168,6 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "outline", n => { Outline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillOutlineEntry>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillOutlineEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "owners", n => { Owners = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "spec_problems", n => { SpecProblems = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSpecProblem>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSpecProblem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
                 { "version_count", n => { VersionCount = n.GetIntValue(); } },

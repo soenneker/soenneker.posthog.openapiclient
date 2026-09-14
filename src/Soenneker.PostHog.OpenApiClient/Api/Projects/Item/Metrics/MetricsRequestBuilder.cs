@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Error_spikes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Explain;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Has_metrics;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Names;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Overview;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Samples;
@@ -53,6 +54,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Has_metrics.Has_metricsRequestBuilder Has_metrics
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Has_metrics.Has_metricsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The names property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Names.NamesRequestBuilder Names
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Names.NamesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The overview property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Overview.OverviewRequestBuilder Overview

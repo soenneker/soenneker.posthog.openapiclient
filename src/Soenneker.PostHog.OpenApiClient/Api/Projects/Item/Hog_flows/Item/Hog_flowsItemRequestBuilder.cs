@@ -15,6 +15,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Publish;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Rerun;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Resume_email_sending;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Revisions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Run;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Schedules;
@@ -91,6 +92,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Rerun.RerunRequestBuilder Rerun
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Rerun.RerunRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The resume_email_sending property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Resume_email_sending.Resume_email_sendingRequestBuilder Resume_email_sending
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Resume_email_sending.Resume_email_sendingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The revisions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Revisions.RevisionsRequestBuilder Revisions

@@ -74,6 +74,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastFlakedAt { get; set; }
         /// <summary>True when an active quarantine has run out, is about to, or covers a snapshot that has stopped failing the gate. All three mean a human has to extend it or lift it.</summary>
         public bool? NeedsDecision { get; set; }
+        /// <summary>Slug of the team that owns the file this snapshot&apos;s story lives in, from the repository&apos;s ownership files. `unowned` when no entry covers the file. Null when ownership is unknown: the snapshot is not a Storybook snapshot, the newest default-branch run sent no story index, the story is not in it, or the ownership files could not be read.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OwnerTeam { get; set; }
+#nullable restore
+#else
+        public string OwnerTeam { get; set; }
+#endif
         /// <summary>Active quarantine details when `is_quarantined` is true. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -150,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_quarantined", n => { IsQuarantined = n.GetBoolValue(); } },
                 { "last_flaked_at", n => { LastFlakedAt = n.GetDateTimeOffsetValue(); } },
                 { "needs_decision", n => { NeedsDecision = n.GetBoolValue(); } },
+                { "owner_team", n => { OwnerTeam = n.GetStringValue(); } },
                 { "quarantine", n => { Quarantine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary.CreateFromDiscriminatorValue); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "soft_count", n => { SoftCount = n.GetIntValue(); } },
@@ -183,6 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_quarantined", IsQuarantined);
             writer.WriteDateTimeOffsetValue("last_flaked_at", LastFlakedAt);
             writer.WriteBoolValue("needs_decision", NeedsDecision);
+            writer.WriteStringValue("owner_team", OwnerTeam);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary>("quarantine", Quarantine);
             writer.WriteStringValue("run_type", RunType);
             writer.WriteIntValue("soft_count", SoftCount);

@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem> Snapshots { get; set; }
 #endif
+        /// <summary>SHA-256 of the story-to-file map the CLI built from the Storybook index.json of this run&apos;s build. Every shard of a run sends the same value. Empty when the run sends no map.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StoryIndexHash { get; set; }
+#nullable restore
+#else
+        public string StoryIndexHash { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput"/> and sets the default values.
         /// </summary>
@@ -57,6 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "baseline_hashes", n => { BaselineHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty.CreateFromDiscriminatorValue); } },
                 { "snapshots", n => { Snapshots = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "story_index_hash", n => { StoryIndexHash = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -68,6 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty>("baseline_hashes", BaselineHashes);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>("snapshots", Snapshots);
+            writer.WriteStringValue("story_index_hash", StoryIndexHash);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

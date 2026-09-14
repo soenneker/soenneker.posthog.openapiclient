@@ -93,6 +93,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason PauseReason { get; private set; }
 #endif
+        /// <summary>GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project&apos;s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout&apos;s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project&apos;s GitHub connection. Applies from the scout&apos;s next run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Repositories { get; set; }
+#nullable restore
+#else
+        public List<string> Repositories { get; set; }
+#endif
         /// <summary>Optional five-field cron expression evaluated in the project timezone, e.g. &apos;30 9 * * *&apos;. Takes precedence over `run_interval_minutes` when set. Null means the rolling interval schedule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -209,6 +217,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "output_destinations", n => { OutputDestinations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigOutputDestinations>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigOutputDestinations.CreateFromDiscriminatorValue); } },
                 { "owners", n => { Owners = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pause_reason", n => { PauseReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason.CreateFromDiscriminatorValue); } },
+                { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "scout_origin", n => { ScoutOrigin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin.CreateFromDiscriminatorValue); } },
@@ -230,6 +239,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("display_name", DisplayName);
+            writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateResponseConfigStructuredOutputSchema>("structured_output_schema", StructuredOutputSchema);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);

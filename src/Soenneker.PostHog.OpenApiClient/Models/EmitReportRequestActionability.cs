@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The scout&apos;s actionability call: `immediately_actionable` -&gt; the report surfaces READY; `requires_human_input` -&gt; PENDING_INPUT; `not_actionable` -&gt; suppressed. A safety-judge failure suppresses the report regardless.* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable
+    /// The scout&apos;s actionability call: `immediately_actionable` -&gt; the report surfaces READY; `requires_human_input` -&gt; PENDING_INPUT; `not_actionable` -&gt; suppressed. A safety-judge failure suppresses the report regardless. A root cause you have not found is not human input: a report that names the evidence, the code surface, or a reproducible failure path is `immediately_actionable`, because investigating it is the action. Reserve `requires_human_input` for a report blocked on a decision only a person can make.* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmitReportRequestActionability : IAdditionalDataHolder, IParsable

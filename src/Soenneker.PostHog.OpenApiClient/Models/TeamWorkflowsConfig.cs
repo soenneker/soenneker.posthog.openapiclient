@@ -24,6 +24,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode EmailTrackingConsentMode { get; set; }
 #endif
+        /// <summary>How many AI tasks one workflow can create in a rolling 24 hours. Null uses the default of 100; zero pauses task creation for every workflow in the project. Support raises the limit above 500.</summary>
+        public int? WorkflowTaskRateLimitPerDay { get; set; }
+        /// <summary>How many AI tasks all workflows in the project can create together in a rolling 24 hours. Null uses the default of 500; zero pauses task creation for the project. Support raises the limit above 2500.</summary>
+        public int? WorkflowTaskTeamRateLimitPerDay { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig"/> and sets the default values.
         /// </summary>
@@ -51,6 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "capture_workflows_engagement_events", n => { CaptureWorkflowsEngagementEvents = n.GetBoolValue(); } },
                 { "email_tracking_consent_mode", n => { EmailTrackingConsentMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode>(global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode.CreateFromDiscriminatorValue); } },
+                { "workflow_task_rate_limit_per_day", n => { WorkflowTaskRateLimitPerDay = n.GetIntValue(); } },
+                { "workflow_task_team_rate_limit_per_day", n => { WorkflowTaskTeamRateLimitPerDay = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -62,6 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("capture_workflows_engagement_events", CaptureWorkflowsEngagementEvents);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode>("email_tracking_consent_mode", EmailTrackingConsentMode);
+            writer.WriteIntValue("workflow_task_rate_limit_per_day", WorkflowTaskRateLimitPerDay);
+            writer.WriteIntValue("workflow_task_team_rate_limit_per_day", WorkflowTaskTeamRateLimitPerDay);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

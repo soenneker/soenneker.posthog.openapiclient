@@ -88,6 +88,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus LastRefreshStatus { get; private set; }
 #endif
+        /// <summary>Support ticket number this learned source came from. Null for sources you added yourself.</summary>
+        public int? LearnedFromTicketNumber { get; private set; }
+        /// <summary>App URL of the originating support ticket. Null for sources you added yourself.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LearnedFromTicketUrl { get; private set; }
+#nullable restore
+#else
+        public string LearnedFromTicketUrl { get; private set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -191,6 +201,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_refresh_at", n => { LastRefreshAt = n.GetDateTimeOffsetValue(); } },
                 { "last_refresh_error", n => { LastRefreshError = n.GetStringValue(); } },
                 { "last_refresh_status", n => { LastRefreshStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus.CreateFromDiscriminatorValue); } },
+                { "learned_from_ticket_number", n => { LearnedFromTicketNumber = n.GetIntValue(); } },
+                { "learned_from_ticket_url", n => { LearnedFromTicketUrl = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_refresh_at", n => { NextRefreshAt = n.GetStringValue(); } },
                 { "original_filename", n => { OriginalFilename = n.GetStringValue(); } },

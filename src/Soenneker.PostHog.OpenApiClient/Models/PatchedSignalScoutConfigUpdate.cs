@@ -61,6 +61,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations OutputDestinations { get; set; }
 #endif
+        /// <summary>GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project&apos;s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout&apos;s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project&apos;s GitHub connection. Applies from the scout&apos;s next run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Repositories { get; set; }
+#nullable restore
+#else
+        public List<string> Repositories { get; set; }
+#endif
         /// <summary>Optional five-field cron expression, e.g. &apos;30 9 * * *&apos; (daily at 09:30), &apos;0 9,17 * * *&apos; (twice daily), or &apos;0 9 * * 1-5&apos; (weekday mornings). Evaluated in the project timezone. Takes precedence over `run_interval_minutes`; occurrences must be at least 30 minutes apart. Set null to return to the rolling interval schedule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -128,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "network_access", n => { NetworkAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateNetworkAccess>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateNetworkAccess.CreateFromDiscriminatorValue); } },
                 { "output_destinations", n => { OutputDestinations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations.CreateFromDiscriminatorValue); } },
+                { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
@@ -150,6 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateNetworkAccess>("network_access", NetworkAccess);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations>("output_destinations", OutputDestinations);
+            writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("run_cron_schedule", RunCronSchedule);
             writer.WriteIntValue("run_interval_minutes", RunIntervalMinutes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);

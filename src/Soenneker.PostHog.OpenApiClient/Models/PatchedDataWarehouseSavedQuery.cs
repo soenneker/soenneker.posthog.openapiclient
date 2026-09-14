@@ -165,6 +165,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuerySyncFrequencyBounds SyncFrequencyBounds { get; private set; }
 #endif
+        /// <summary>The updated_at property</summary>
+        public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -225,6 +227,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "suspended", n => { Suspended = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuerySuspendedProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuerySuspendedProperty.CreateFromDiscriminatorValue); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuerySyncFrequency>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuerySyncFrequency.CreateFromDiscriminatorValue); } },
                 { "sync_frequency_bounds", n => { SyncFrequencyBounds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuerySyncFrequencyBounds>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuerySyncFrequencyBounds.CreateFromDiscriminatorValue); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
