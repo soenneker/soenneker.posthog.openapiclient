@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? CpuCores { get; set; }
         /// <summary>What this sandbox shape costs per hour in USD while it is alive, at this region&apos;s rates. It tracks the running sandbox while a kernel is live, otherwise the configured shape. After a failed resize this stays the running sandbox&apos;s rate, not the size that failed to apply.</summary>
         public double? HourlyPrice { get; set; }
-        /// <summary>Configured idle timeout in seconds; null means the default.</summary>
+        /// <summary>Configured maximum sandbox lifetime in seconds; null means the default.</summary>
         public int? IdleTimeoutSeconds { get; set; }
         /// <summary>Configured memory in GB; null means the default applies.</summary>
         public double? MemoryGb { get; set; }

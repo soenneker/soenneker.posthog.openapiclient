@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Structured profile content. v1 has `inventory` only.
+    /// Structured profile content. v1 has `inventory` only. Omitted when `summary_only=true`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfilePayloadComposed : IAdditionalDataHolder, IParsable

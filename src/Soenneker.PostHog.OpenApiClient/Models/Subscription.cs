@@ -41,6 +41,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionByweekdayItem?> Byweekday { get; set; }
 #endif
+        /// <summary>Dashboards and insights that ground this AI report. Deleted resources are omitted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionContext>? Contexts { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionContext> Contexts { get; private set; }
+#endif
         /// <summary>Total number of deliveries before the subscription stops. Null for unlimited.</summary>
         public int? Count { get; set; }
         /// <summary>The created_at property</summary>
@@ -210,6 +218,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ai_query_plan_status", n => { AiQueryPlanStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionAiQueryPlanStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionAiQueryPlanStatus.CreateFromDiscriminatorValue); } },
                 { "bysetpos", n => { Bysetpos = n.GetIntValue(); } },
                 { "byweekday", n => { Byweekday = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionByweekdayItem>()?.AsList(); } },
+                { "contexts", n => { Contexts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionContext>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionContext.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionCreatedBy.CreateFromDiscriminatorValue); } },

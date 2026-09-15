@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Notebook content as a ProseMirror JSON document structure.
+    /// Notebook content as a ProseMirror JSON document. On create, the server stores it as a markdown notebook.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountNotebookContent : IAdditionalDataHolder, IParsable

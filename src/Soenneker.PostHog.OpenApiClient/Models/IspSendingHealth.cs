@@ -17,16 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Hard (permanent) bounces at this provider, divided by emails sent to it (0-1). Null when the underlying metric could not be loaded from AWS.</summary>
         public double? BounceRate { get; private set; }
+        /// <summary>Deliveries the provider reports complaints for, which is what `complaint_rate` divides by. Far smaller than `emails_sent`, so a caller deciding whether the rate rests on enough volume has to weigh it against this. Zero when there is no base.</summary>
+        public int? ComplaintBase { get; private set; }
         /// <summary>Spam complaints from this provider, divided by the deliveries it reports complaints for (0-1). Null when there is no rate to state — the provider runs no feedback loop, or nothing was delivered — and also when the metric could not be loaded from AWS.</summary>
         public double? ComplaintRate { get; private set; }
-        /// <summary>Sending history for this provider, oldest first, so a drop can be dated rather than averaged into the window. Dates this provider received nothing are omitted.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IspDailyPoint>? Daily { get; private set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IspDailyPoint> Daily { get; private set; }
-#endif
         /// <summary>Emails this provider accepted, divided by emails sent to it (0-1). Acceptance is not inbox placement: a provider can accept a message and still file it as spam. Null when the underlying metric could not be loaded from AWS, which is not the same as zero.</summary>
         public double? DeliveryRate { get; private set; }
         /// <summary>Emails sent to this provider during the window.</summary>
@@ -39,7 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Isp { get; private set; }
 #endif
-        /// <summary>Rates AWS did not return for this provider, from `delivery`, `bounce` and `complaint`. A rate named here is missing, not zero, and the UI says so rather than showing a number.</summary>
+        /// <summary>Soft (transient) bounces at this provider, divided by emails sent to it (0-1). These are deferrals the provider may accept on a retry, such as a full mailbox, greylisting or rate limiting, so they are counted apart from permanent bounces. Null when the underlying metric could not be loaded from AWS.</summary>
+        public double? TransientBounceRate { get; private set; }
+        /// <summary>Rates AWS did not return for this provider, from `delivery`, `bounce`, `transient_bounce` and `complaint`. A rate named here is missing, not zero, and the UI says so rather than showing a number.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Unavailable { get; private set; }
@@ -73,11 +69,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "bounce_rate", n => { BounceRate = n.GetDoubleValue(); } },
+                { "complaint_base", n => { ComplaintBase = n.GetIntValue(); } },
                 { "complaint_rate", n => { ComplaintRate = n.GetDoubleValue(); } },
-                { "daily", n => { Daily = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IspDailyPoint>(global::Soenneker.PostHog.OpenApiClient.Models.IspDailyPoint.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "delivery_rate", n => { DeliveryRate = n.GetDoubleValue(); } },
                 { "emails_sent", n => { EmailsSent = n.GetIntValue(); } },
                 { "isp", n => { Isp = n.GetStringValue(); } },
+                { "transient_bounce_rate", n => { TransientBounceRate = n.GetDoubleValue(); } },
                 { "unavailable", n => { Unavailable = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

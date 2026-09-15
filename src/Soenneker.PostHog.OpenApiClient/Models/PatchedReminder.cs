@@ -32,6 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CronExpression { get; set; }
 #endif
+        /// <summary>The deleted property</summary>
+        public bool? Deleted { get; set; }
         /// <summary>Optional: recurring reminders stop (status=completed) after this time.</summary>
         public DateTimeOffset? EndDate { get; set; }
         /// <summary>The id property</summary>
@@ -132,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReminderCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReminderCreatedBy.CreateFromDiscriminatorValue); } },
                 { "cron_expression", n => { CronExpression = n.GetStringValue(); } },
+                { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_fired_at", n => { LastFiredAt = n.GetDateTimeOffsetValue(); } },
@@ -157,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cron_expression", CronExpression);
+            writer.WriteBoolValue("deleted", Deleted);
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
             writer.WriteStringValue("message", Message);
             writer.WriteGuidValue("organization", Organization);

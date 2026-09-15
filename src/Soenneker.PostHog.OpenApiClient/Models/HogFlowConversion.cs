@@ -38,7 +38,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty> Filters { get; set; }
 #endif
-        /// <summary>Conversion window in minutes after a person enters the workflow. null = no explicit window.</summary>
+        /// <summary>How long after entering the workflow a conversion still counts, as a duration string: &apos;7d&apos;, &apos;12h&apos;, &apos;30m&apos;, &apos;45s&apos;. Same form the delay steps use. Maximum &apos;365d&apos;. Omit it to use the default window. Set this or &apos;window_minutes&apos;, not both.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Window { get; set; }
+#nullable restore
+#else
+        public string Window { get; set; }
+#endif
+        /// <summary>DEPRECATED, use &apos;window&apos; instead. Conversion window in MINUTES (not seconds) after a person enters the workflow. Maximum 129600 (90 days). null = use the default window. Set this or &apos;window&apos;, not both.</summary>
         public int? WindowMinutes { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion"/> and sets the default values.
@@ -68,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode.CreateFromDiscriminatorValue); } },
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "window", n => { Window = n.GetStringValue(); } },
                 { "window_minutes", n => { WindowMinutes = n.GetIntValue(); } },
             };
         }
@@ -81,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode>("bytecode", Bytecode);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent>("events", Events);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty>("filters", Filters);
+            writer.WriteStringValue("window", Window);
             writer.WriteIntValue("window_minutes", WindowMinutes);
             writer.WriteAdditionalData(AdditionalData);
         }

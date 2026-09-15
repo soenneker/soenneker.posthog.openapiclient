@@ -25,6 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> FailingWorkflows { get; set; }
 #endif
+        /// <summary>Latest runs that completed without a pass-or-fail verdict: cancelled, skipped, neutral, or action required. Together with the three counts above this covers every run, so a PR whose CI was entirely cancelled is not readable as passing.</summary>
+        public int? Inconclusive { get; set; }
         /// <summary>Latest runs that completed with conclusion &apos;success&apos;.</summary>
         public int? Passing { get; set; }
         /// <summary>Latest runs not yet completed (queued or in progress).</summary>
@@ -58,6 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "failing", n => { Failing = n.GetIntValue(); } },
                 { "failing_workflows", n => { FailingWorkflows = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "inconclusive", n => { Inconclusive = n.GetIntValue(); } },
                 { "passing", n => { Passing = n.GetIntValue(); } },
                 { "pending", n => { Pending = n.GetIntValue(); } },
                 { "runs", n => { Runs = n.GetIntValue(); } },
@@ -72,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("failing", Failing);
             writer.WriteCollectionOfPrimitiveValues<string>("failing_workflows", FailingWorkflows);
+            writer.WriteIntValue("inconclusive", Inconclusive);
             writer.WriteIntValue("passing", Passing);
             writer.WriteIntValue("pending", Pending);
             writer.WriteIntValue("runs", Runs);

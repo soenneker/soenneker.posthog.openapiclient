@@ -119,6 +119,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin ScoutOrigin { get; private set; }
 #endif
+        /// <summary>What this scout is to the harness: `specialist` for one that watches a product surface, or `operational` for one PostHog ships to watch the self-driving system itself. An operational scout is exempt from the inactivity sweep and from the enabled-scout cap, and is not a scout a project should delete. Always `specialist` for a custom scout.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole? ScoutRole { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole ScoutRole { get; private set; }
+#endif
         /// <summary>The skill this config controls as a scout. Set at creation, not editable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -169,7 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
-        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `insight:write`, `llm_skill:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
+        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? WriteScopes { get; private set; }
@@ -221,6 +229,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "scout_origin", n => { ScoutOrigin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin.CreateFromDiscriminatorValue); } },
+                { "scout_role", n => { ScoutRole = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole.CreateFromDiscriminatorValue); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
                 { "source_product", n => { SourceProduct = n.GetStringValue(); } },

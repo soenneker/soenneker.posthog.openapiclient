@@ -44,6 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>GitHub Actions run id.</summary>
         public int? Id { get; set; }
+        /// <summary>True when a merge queue pushed this run to gate pr_number, rather than the author pushing it. Count it when measuring CI; drop it when counting what the author did.</summary>
+        public bool? IsMergeQueue { get; set; }
         /// <summary>Pull request this run ran for, from the run&apos;s own-repo PR association; 0 when unattributed (a default-branch push, or a fork PR).</summary>
         public int? PrNumber { get; set; }
         /// <summary>Repository the run belongs to.</summary>
@@ -107,6 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "head_branch", n => { HeadBranch = n.GetStringValue(); } },
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
+                { "is_merge_queue", n => { IsMergeQueue = n.GetBoolValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailRepo>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailRepo.CreateFromDiscriminatorValue); } },
                 { "run_attempt", n => { RunAttempt = n.GetIntValue(); } },
@@ -129,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("head_branch", HeadBranch);
             writer.WriteStringValue("head_sha", HeadSha);
             writer.WriteIntValue("id", Id);
+            writer.WriteBoolValue("is_merge_queue", IsMergeQueue);
             writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailRepo>("repo", Repo);
             writer.WriteIntValue("run_attempt", RunAttempt);

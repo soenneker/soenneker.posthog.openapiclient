@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BillableMinutes { get; set; }
         /// <summary>Estimated cost in USD via the runner-tier rate ladder; null when every instance ran on an unknown tier.</summary>
         public double? EstimatedCostUsd { get; set; }
-        /// <summary>Decisive failures (&apos;failure&apos;, &apos;timed_out&apos;) over completed instances (0-1). Null if none completed.</summary>
+        /// <summary>Decisive failures over job instances with a pass-or-fail verdict (0-1). Skipped, cancelled, neutral, and action-required instances are excluded. Null if none reached a verdict.</summary>
         public double? FailureRate { get; set; }
         /// <summary>Job instances observed in the window (all shards, all attempts).</summary>
         public int? JobCount { get; set; }

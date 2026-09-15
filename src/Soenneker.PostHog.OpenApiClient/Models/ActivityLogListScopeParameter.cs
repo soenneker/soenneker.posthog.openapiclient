@@ -60,6 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Notebook,
         #pragma warning restore CS1591
+        [EnumMember(Value = "GeneratedWidget")]
+        #pragma warning disable CS1591
+        GeneratedWidget,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Canvas")]
         #pragma warning disable CS1591
         Canvas,
@@ -103,6 +107,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "SessionRecordingPlaylist")]
         #pragma warning disable CS1591
         SessionRecordingPlaylist,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReplayScanner")]
+        #pragma warning disable CS1591
+        ReplayScanner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "VisionAlertConfiguration")]
+        #pragma warning disable CS1591
+        VisionAlertConfiguration,
         #pragma warning restore CS1591
         [EnumMember(Value = "Comment")]
         #pragma warning disable CS1591

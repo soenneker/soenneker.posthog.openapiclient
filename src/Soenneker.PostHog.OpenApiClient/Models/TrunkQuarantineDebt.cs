@@ -16,6 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when no TrunkIo source has the QuarantinedTests endpoint synced; not an error.</summary>
         public bool? Available { get; set; }
+        /// <summary>Maximum tests returned, oldest quarantine first.</summary>
+        public int? Limit { get; set; }
         /// <summary>False when the repository&apos;s ownership files could not be read, so every test reads as &apos;unowned&apos; for that reason rather than because no team claims it.</summary>
         public bool? OwnersResolved { get; set; }
         /// <summary>The &apos;owner/name&apos; repository the debt was read for; test file paths are relative to it.</summary>
@@ -42,6 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest> Tests { get; set; }
 #endif
+        /// <summary>True when more tests are quarantined than limit. The per-team counts then cover only the returned tests, so treat them as lower bounds.</summary>
+        public bool? Truncated { get; set; }
         /// <summary>The Trunk app&apos;s flaky-tests page for this repository; null when the connected source has no organization slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,10 +82,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "available", n => { Available = n.GetBoolValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
                 { "owners_resolved", n => { OwnersResolved = n.GetBoolValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt>(global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "tests", n => { Tests = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest>(global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "truncated", n => { Truncated = n.GetBoolValue(); } },
                 { "trunk_url", n => { TrunkUrl = n.GetStringValue(); } },
                 { "ttl_days", n => { TtlDays = n.GetIntValue(); } },
             };
@@ -94,10 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("available", Available);
+            writer.WriteIntValue("limit", Limit);
             writer.WriteBoolValue("owners_resolved", OwnersResolved);
             writer.WriteStringValue("repository", Repository);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt>("teams", Teams);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest>("tests", Tests);
+            writer.WriteBoolValue("truncated", Truncated);
             writer.WriteStringValue("trunk_url", TrunkUrl);
             writer.WriteIntValue("ttl_days", TtlDays);
             writer.WriteAdditionalData(AdditionalData);

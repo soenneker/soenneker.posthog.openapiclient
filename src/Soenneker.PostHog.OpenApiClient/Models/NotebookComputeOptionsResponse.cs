@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<double?> AllowedCpuCores { get; set; }
 #endif
-        /// <summary>Idle timeouts in seconds the kernel config endpoint accepts.</summary>
+        /// <summary>Maximum sandbox lifetimes in seconds that the kernel config endpoint accepts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? AllowedIdleTimeoutSeconds { get; set; }

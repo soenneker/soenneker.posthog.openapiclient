@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `Cohort` - Cohort* `FeatureFlag` - FeatureFlag* `Person` - Person* `Group` - Group* `Insight` - Insight* `Plugin` - Plugin* `PluginConfig` - PluginConfig* `HogFunction` - HogFunction* `HogFlow` - HogFlow* `DataManagement` - DataManagement* `EventDefinition` - EventDefinition* `PropertyDefinition` - PropertyDefinition* `Notebook` - Notebook* `Canvas` - Canvas* `Endpoint` - Endpoint* `EndpointVersion` - EndpointVersion* `Dashboard` - Dashboard* `Replay` - Replay* `Experiment` - Experiment* `ExperimentHoldout` - ExperimentHoldout* `ExperimentSavedMetric` - ExperimentSavedMetric* `Survey` - Survey* `EarlyAccessFeature` - EarlyAccessFeature* `SessionRecordingPlaylist` - SessionRecordingPlaylist* `Comment` - Comment* `Team` - Team* `Project` - Project* `ErrorTrackingIssue` - ErrorTrackingIssue* `DataWarehouseExpression` - DataWarehouseExpression* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery* `LegalDocument` - LegalDocument* `Organization` - Organization* `OrganizationDomain` - OrganizationDomain* `IdentityProviderConfig` - IdentityProviderConfig* `OrganizationMembership` - OrganizationMembership* `Role` - Role* `UserGroup` - UserGroup* `BatchExport` - BatchExport* `BatchImport` - BatchImport* `ExportedAsset` - ExportedAsset* `Integration` - Integration* `Annotation` - Annotation* `Tag` - Tag* `TaggedItem` - TaggedItem* `Subscription` - Subscription* `PersonalAPIKey` - PersonalAPIKey* `ProjectSecretAPIKey` - ProjectSecretAPIKey* `OAuthApplication` - OAuthApplication* `User` - User* `Action` - Action* `AlertConfiguration` - AlertConfiguration* `Threshold` - Threshold* `AlertSubscription` - AlertSubscription* `ExternalDataSource` - ExternalDataSource* `ExternalDataSchema` - ExternalDataSchema* `Evaluation` - Evaluation* `EvaluationDirectory` - EvaluationDirectory* `LLMPrompt` - LLMPrompt* `LLMPromptLabel` - LLMPromptLabel* `LLMTrace` - LLMTrace* `AIGatewayCredit` - AIGatewayCredit* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset* `CustomerProfileConfig` - CustomerProfileConfig* `Log` - Log* `LogsAlertConfiguration` - LogsAlertConfiguration* `LogsExclusionRule` - LogsExclusionRule* `LogsRetentionRule` - LogsRetentionRule* `DashboardWidget` - DashboardWidget* `ProductTour` - ProductTour* `Ticket` - Ticket* `InstanceSetting` - InstanceSetting* `SignalReport` - SignalReport* `SignalScoutConfig` - SignalScoutConfig* `SignalTeamConfig` - SignalTeamConfig* `StreamlitApp` - StreamlitApp* `Metric` - Metric* `TableCertification` - TableCertification* `DataQualityCheck` - DataQualityCheck* `DataQualityCheckSchedule` - DataQualityCheckSchedule* `Billing` - Billing* `Loop` - Loop* `StamphogRepoConfig` - StamphogRepoConfig</summary>
+    /// <summary>* `Cohort` - Cohort* `FeatureFlag` - FeatureFlag* `Person` - Person* `Group` - Group* `Insight` - Insight* `Plugin` - Plugin* `PluginConfig` - PluginConfig* `HogFunction` - HogFunction* `HogFlow` - HogFlow* `DataManagement` - DataManagement* `EventDefinition` - EventDefinition* `PropertyDefinition` - PropertyDefinition* `Notebook` - Notebook* `GeneratedWidget` - GeneratedWidget* `Canvas` - Canvas* `Endpoint` - Endpoint* `EndpointVersion` - EndpointVersion* `Dashboard` - Dashboard* `Replay` - Replay* `Experiment` - Experiment* `ExperimentHoldout` - ExperimentHoldout* `ExperimentSavedMetric` - ExperimentSavedMetric* `Survey` - Survey* `EarlyAccessFeature` - EarlyAccessFeature* `SessionRecordingPlaylist` - SessionRecordingPlaylist* `ReplayScanner` - ReplayScanner* `VisionAlertConfiguration` - VisionAlertConfiguration* `Comment` - Comment* `Team` - Team* `Project` - Project* `ErrorTrackingIssue` - ErrorTrackingIssue* `DataWarehouseExpression` - DataWarehouseExpression* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery* `LegalDocument` - LegalDocument* `Organization` - Organization* `OrganizationDomain` - OrganizationDomain* `IdentityProviderConfig` - IdentityProviderConfig* `OrganizationMembership` - OrganizationMembership* `Role` - Role* `UserGroup` - UserGroup* `BatchExport` - BatchExport* `BatchImport` - BatchImport* `ExportedAsset` - ExportedAsset* `Integration` - Integration* `Annotation` - Annotation* `Tag` - Tag* `TaggedItem` - TaggedItem* `Subscription` - Subscription* `PersonalAPIKey` - PersonalAPIKey* `ProjectSecretAPIKey` - ProjectSecretAPIKey* `OAuthApplication` - OAuthApplication* `User` - User* `Action` - Action* `AlertConfiguration` - AlertConfiguration* `Threshold` - Threshold* `AlertSubscription` - AlertSubscription* `ExternalDataSource` - ExternalDataSource* `ExternalDataSchema` - ExternalDataSchema* `Evaluation` - Evaluation* `EvaluationDirectory` - EvaluationDirectory* `LLMPrompt` - LLMPrompt* `LLMPromptLabel` - LLMPromptLabel* `LLMTrace` - LLMTrace* `AIGatewayCredit` - AIGatewayCredit* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset* `CustomerProfileConfig` - CustomerProfileConfig* `Log` - Log* `LogsAlertConfiguration` - LogsAlertConfiguration* `LogsExclusionRule` - LogsExclusionRule* `LogsRetentionRule` - LogsRetentionRule* `DashboardWidget` - DashboardWidget* `ProductTour` - ProductTour* `Ticket` - Ticket* `InstanceSetting` - InstanceSetting* `SignalReport` - SignalReport* `SignalScoutConfig` - SignalScoutConfig* `SignalTeamConfig` - SignalTeamConfig* `StreamlitApp` - StreamlitApp* `Metric` - Metric* `TableCertification` - TableCertification* `DataQualityCheck` - DataQualityCheck* `DataQualityCheckSchedule` - DataQualityCheckSchedule* `Billing` - Billing* `Loop` - Loop* `StamphogRepoConfig` - StamphogRepoConfig</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ActivityLogListScopesParameterItem
     {
@@ -59,6 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Notebook,
         #pragma warning restore CS1591
+        [EnumMember(Value = "GeneratedWidget")]
+        #pragma warning disable CS1591
+        GeneratedWidget,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Canvas")]
         #pragma warning disable CS1591
         Canvas,
@@ -102,6 +106,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "SessionRecordingPlaylist")]
         #pragma warning disable CS1591
         SessionRecordingPlaylist,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReplayScanner")]
+        #pragma warning disable CS1591
+        ReplayScanner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "VisionAlertConfiguration")]
+        #pragma warning disable CS1591
+        VisionAlertConfiguration,
         #pragma warning restore CS1591
         [EnumMember(Value = "Comment")]
         #pragma warning disable CS1591

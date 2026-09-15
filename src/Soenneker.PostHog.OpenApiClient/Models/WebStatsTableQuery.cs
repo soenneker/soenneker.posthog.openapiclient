@@ -56,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IncludeRevenue { get; set; }
         /// <summary>The includeScrollDepth property</summary>
         public bool? IncludeScrollDepth { get; set; }
+        /// <summary>The includeTrafficMetrics property</summary>
+        public bool? IncludeTrafficMetrics { get; set; }
         /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -157,6 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "includeHost", n => { IncludeHost = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "includeScrollDepth", n => { IncludeScrollDepth = n.GetBoolValue(); } },
+                { "includeTrafficMetrics", n => { IncludeTrafficMetrics = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
@@ -193,6 +196,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("includeHost", IncludeHost);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteBoolValue("includeScrollDepth", IncludeScrollDepth);
+            writer.WriteBoolValue("includeTrafficMetrics", IncludeTrafficMetrics);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25>("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);

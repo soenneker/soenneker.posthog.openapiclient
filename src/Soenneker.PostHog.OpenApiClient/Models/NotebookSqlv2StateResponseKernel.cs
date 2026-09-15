@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>CPU cores the notebook&apos;s sandbox is configured with.</summary>
         public double? CpuCores { get; set; }
-        /// <summary>Seconds of inactivity before the sandbox shuts down.</summary>
+        /// <summary>Maximum lifetime of the sandbox in seconds. It shuts down this long after it starts, even while in use.</summary>
         public int? IdleTimeoutSeconds { get; set; }
         /// <summary>Memory in GB the notebook&apos;s sandbox is configured with.</summary>
         public double? MemoryGb { get; set; }

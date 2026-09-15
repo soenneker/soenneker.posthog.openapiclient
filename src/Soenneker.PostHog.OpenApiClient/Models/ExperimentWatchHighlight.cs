@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Everything this recording carries that earned it the place, ready to render as-is, for example &apos;6 rage clicks, 6 errors&apos; or &apos;1 error, did this 4 times&apos;. Every signal the session shows is listed, so the phrase is the whole picture rather than the single strongest part of it. Friction counts cover the whole session; &apos;did this N times&apos; counts the card&apos;s own event. Not a comparison and not a reason the card exists.</summary>
+        /// <summary>Everything this recording carries that earned it the place, ready to render as-is, for example &apos;6 rage clicks, 6 errors&apos; or &apos;1 error, did this 4 times&apos;. Every signal the session shows is listed, so the phrase is the whole picture rather than the single strongest part of it. Friction counts run from the moment the person was exposed to the end of the session, so friction before they met the variant is left out; &apos;did this N times&apos; counts the card&apos;s own event. Not a comparison and not a reason the card exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }

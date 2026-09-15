@@ -15,6 +15,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Annotations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Announcements;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Approval_policies;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync;
@@ -101,6 +102,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_preferences;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_suppressions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebook_widgets;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Object_media_previews;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Paths_v2;
@@ -237,6 +239,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Approval_policies.Approval_policiesRequestBuilder Approval_policies
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Approval_policies.Approval_policiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The autoresearch property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.AutoresearchRequestBuilder Autoresearch
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.AutoresearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The batch_exports property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Batch_exportsRequestBuilder Batch_exports
@@ -667,6 +674,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.MetricsRequestBuilder Metrics
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The notebook_widgets property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebook_widgets.Notebook_widgetsRequestBuilder Notebook_widgets
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebook_widgets.Notebook_widgetsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The notebooks property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.NotebooksRequestBuilder Notebooks

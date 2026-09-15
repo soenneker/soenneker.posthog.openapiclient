@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>CPU cores for the notebook&apos;s sandbox kernel; must be a supported option.</summary>
         public double? CpuCores { get; set; }
-        /// <summary>Seconds of inactivity before the sandbox kernel shuts down.</summary>
+        /// <summary>Maximum lifetime of the sandbox kernel in seconds. It shuts down this long after it starts, even while in use. A running kernel keeps its current lifetime until it restarts.</summary>
         public int? IdleTimeoutSeconds { get; set; }
         /// <summary>Memory in GB for the notebook&apos;s sandbox kernel; must be a supported option.</summary>
         public double? MemoryGb { get; set; }

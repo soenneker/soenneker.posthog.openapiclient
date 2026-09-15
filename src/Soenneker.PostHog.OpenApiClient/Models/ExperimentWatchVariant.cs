@@ -23,9 +23,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Exposed people the comparison covered for this variant. People rather than sessions because a variant can change how often the flag is evaluated again later, which moves a variant&apos;s session count without anyone behaving differently. Each person is read from the first session the comparison covers them in, so every variant gets the same amount of behavior per person.</summary>
+        /// <summary>Exposed people the comparison read for this variant: the most recently exposed people, each read from their first session after being exposed. Someone selected who had no session in that horizon is not counted here, so this sits at or below the variant&apos;s enrollment between date_from and date_to. People rather than sessions because a variant can change how often the flag is evaluated again later, which moves a variant&apos;s session count without anyone behaving differently. One session each, from the moment of exposure on, so every variant gets the same amount of behavior per person.</summary>
         public int? Persons { get; set; }
-        /// <summary>Exposed sessions those people were seen in, which is more than the comparison reads: it says how much recorded material sits behind the variant.</summary>
+        /// <summary>Sessions those people had within 24 hours of being exposed, and before the experiment ended or this request was made, which is more than the comparison reads: it says how much recorded material sits behind the variant.</summary>
         public int? Sessions { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant"/> and sets the default values.

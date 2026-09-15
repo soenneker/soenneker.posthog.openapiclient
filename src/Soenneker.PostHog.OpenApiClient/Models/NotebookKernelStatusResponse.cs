@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>What this sandbox shape costs per hour in USD while it is alive, at this region&apos;s rates. Charged on the sandbox&apos;s lifetime, not on how much of it a cell uses. Resizing through the kernel config endpoint restarts a live kernel, so this tracks the running sandbox.</summary>
         public double? HourlyPrice { get; set; }
-        /// <summary>Seconds of inactivity before the sandbox shuts down.</summary>
+        /// <summary>Maximum lifetime of the sandbox in seconds. It shuts down this long after it starts, even while in use.</summary>
         public int? IdleTimeoutSeconds { get; set; }
         /// <summary>Jupyter kernel identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

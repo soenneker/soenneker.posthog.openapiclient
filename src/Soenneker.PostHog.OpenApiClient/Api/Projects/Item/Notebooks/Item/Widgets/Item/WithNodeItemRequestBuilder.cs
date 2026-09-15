@@ -2,9 +2,13 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Attach;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Cancel;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Fork;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Frames;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Generate;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Pin;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Publish;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Revert;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Source;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Status;
@@ -21,10 +25,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widge
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithNodeItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The attach property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Attach.AttachRequestBuilder Attach
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Attach.AttachRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The cancel property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Cancel.CancelRequestBuilder Cancel
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The fork property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Fork.ForkRequestBuilder Fork
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Fork.ForkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The frames property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Frames.FramesRequestBuilder Frames
@@ -35,6 +49,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widge
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Generate.GenerateRequestBuilder Generate
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Generate.GenerateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pin property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Pin.PinRequestBuilder Pin
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Pin.PinRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The publish property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Publish.PublishRequestBuilder Publish
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Publish.PublishRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The revert property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item.Revert.RevertRequestBuilder Revert
