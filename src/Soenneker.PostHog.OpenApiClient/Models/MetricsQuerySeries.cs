@@ -44,6 +44,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint> Points { get; set; }
 #endif
+        /// <summary>UCUM unit of the metric as ingested, e.g. &quot;By&quot;, &quot;ms&quot;, &quot;1&quot;. Empty when the SDK did not set one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Unit { get; set; }
+#nullable restore
+#else
+        public string Unit { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -66,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
                 { "points", n => { Points = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "unit", n => { Unit = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -79,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty>("labels", Labels);
             writer.WriteStringValue("metricName", MetricName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>("points", Points);
+            writer.WriteStringValue("unit", Unit);
         }
     }
 }

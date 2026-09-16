@@ -35,6 +35,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
+        /// <summary>Experiments using this shared metric (soft-deleted experiments excluded). Populated only on single-metric retrieve; always an empty list in list responses.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSavedMetricLinkedExperiment>? LinkedExperiments { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSavedMetricLinkedExperiment> LinkedExperiments { get; private set; }
+#endif
         /// <summary>Name of the shared metric. Must be unique within the project (case-insensitive).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentSavedMetricCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentSavedMetricCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
+                { "linked_experiments", n => { LinkedExperiments = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSavedMetricLinkedExperiment>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSavedMetricLinkedExperiment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentSavedMetricQuery>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentSavedMetricQuery.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentSavedMetricTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentSavedMetricTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },

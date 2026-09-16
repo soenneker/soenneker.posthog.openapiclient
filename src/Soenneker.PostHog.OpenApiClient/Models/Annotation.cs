@@ -95,10 +95,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed? Scope { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed Scope { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -142,7 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "insight_derived_name", n => { InsightDerivedName = n.GetStringValue(); } },
                 { "insight_name", n => { InsightName = n.GetStringValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -161,7 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("emoji", Emoji);
             writer.WriteBoolValue("hidden_in_user_interface", HiddenInUserInterface);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>("scope", Scope);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed>("scope", Scope);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

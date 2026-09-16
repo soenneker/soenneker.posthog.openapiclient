@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of a previous run to resume from. Must belong to the same task.</summary>
         public Guid? ResumeFromRunId { get; set; }
-        /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report</summary>
+        /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report* `agent` - agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaRunSource? RunSource { get; set; }

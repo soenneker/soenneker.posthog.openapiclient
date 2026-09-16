@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConclusionComment { get; set; }
 #endif
-        /// <summary>When true, open a draft pull request that removes the experiment&apos;s feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Desktop (403 otherwise). Only acts for allowlisted teams; ignored otherwise.</summary>
+        /// <summary>When true, open a draft pull request that removes the experiment&apos;s feature-flag code from the linked repository. A personal API key needs the task:write scope (403 otherwise). Skipped when the conclusion is empty, or when no connected repository can be resolved.</summary>
         public bool? OpenCleanupPr { get; set; }
         /// <summary>GitHub repository to open the cleanup pull request in, in `organization/repository` format. Only used when open_cleanup_pr is true. It must be one of the team&apos;s connected repositories (see the flag_cleanup_target action); it is then saved as the experiment&apos;s repository. When omitted, the experiment&apos;s saved repository, the team&apos;s default cleanup repository, or the team&apos;s only connected repository is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

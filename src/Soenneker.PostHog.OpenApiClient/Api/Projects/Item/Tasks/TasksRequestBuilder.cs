@@ -107,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TasksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,basic*,channel*,ci_status*,commented_by*,created_by*,exclude_origin_product*,hog_flow_id*,internal*,limit*,mentions*,offset*,ordering*,organization*,origin_product*,pinned*,pr_state*,repository*,search*,stage*,status*}", pathParameters)
+        public TasksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,basic*,channel*,ci_status*,client_provenance*,commented_by*,created_by*,exclude_origin_product*,hog_flow_id*,internal*,limit*,mentions*,offset*,ordering*,organization*,origin_product*,pinned*,pr_state*,repository*,search*,stage*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -115,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TasksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,basic*,channel*,ci_status*,commented_by*,created_by*,exclude_origin_product*,hog_flow_id*,internal*,limit*,mentions*,offset*,ordering*,organization*,origin_product*,pinned*,pr_state*,repository*,search*,stage*,status*}", rawUrl)
+        public TasksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,basic*,channel*,ci_status*,client_provenance*,commented_by*,created_by*,exclude_origin_product*,hog_flow_id*,internal*,limit*,mentions*,offset*,ordering*,organization*,origin_product*,pinned*,pr_state*,repository*,search*,stage*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         /// <summary>
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateResponseDto"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -149,11 +149,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateResponseDto?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateResponseDto> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -165,7 +165,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateResponseDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateResponseDto.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, created_by, and the workflow (hog_flow_id) that created the task. By default, each row includes description. Pass basic=true for a summary row that omits description and includes description_preview, its first 1000 characters. Use the search parameter to match description text server-side.
@@ -238,6 +238,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
             /// <summary>Filter tasks by the CI check rollup on their most recent run&apos;s pull request, as last observed from GitHub. &apos;none&apos; means the PR has no checks.* `passing` - passing* `failing` - failing* `pending` - pending* `none` - none</summary>
             [QueryParameter("ci_status")]
             public global::Soenneker.PostHog.OpenApiClient.Models.TasksListCiStatusParameter? CiStatus { get; set; }
+            /// <summary>Filter by the client that created the task* `posthog_desktop` - PostHog Desktop</summary>
+            [QueryParameter("client_provenance")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.PosthogDesktopClientProvenance? ClientProvenance { get; set; }
             /// <summary>Filter to tasks carrying a thread comment written by this user ID.</summary>
             [QueryParameter("commented_by")]
             public int? CommentedBy { get; set; }

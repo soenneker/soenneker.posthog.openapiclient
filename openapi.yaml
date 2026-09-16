@@ -2743,11 +2743,34 @@ paths:
         hosted by PostHog.'
       summary: Read a wiki page
       parameters:
+      - in: query
+        name: head_sha
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+        description: Head from the first chunk. Required for continuation. A changed
+          head returns 409.
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 12000
+          minimum: 1
+        description: Maximum characters to read. Omit for the full page.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Character offset from next_offset.
       - $ref: '#/components/parameters/OrganizationIdPath'
       - in: query
         name: path
         schema:
           type: string
+          minLength: 1
         description: Repo-relative Markdown path of the page to read.
         required: true
       tags:
@@ -2763,8 +2786,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/WikiPage'
           description: ''
+        '400':
+          description: Invalid query, or the offset exceeds the page length.
         '404':
           description: No page at this path.
+        '409':
+          description: The wiki changed. Restart from offset zero.
       x-product:
       - context_layer
     put:
@@ -5514,6 +5541,33 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/PatchedProjectBackwardCompat'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectBackwardCompat'
+          description: ''
+      x-product:
+      - core
+  /api/organizations/{organization_id}/projects/{id}/rotate_heatmaps_screenshot_secret/:
+    patch:
+      operationId: organizations_projects_rotate_heatmaps_screenshot_secret_partial_update
+      description: Projects for the current organization.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        description: A unique value identifying this project.
+        required: true
+      - $ref: '#/components/parameters/OrganizationIdPath'
+      tags:
+      - organizations
+      - projects
       responses:
         '200':
           content:
@@ -9790,6 +9844,118 @@ paths:
           description: No response body
       x-product:
       - autoresearch
+  /api/projects/{project_id}/autoresearch/resolve-template/:
+    post:
+      operationId: autoresearch_resolve_template_create
+      description: Resolve a template key and optional overrides into a concrete pipeline
+        config. For activity-based templates ('likely_active_soon', 'at_risk_of_inactivity',
+        'return_after_first_use'), the target event is auto-resolved from your event
+        schema — check resolved_activity_event and activity_event_alternatives, then
+        override if needed. For 'feature_adoption' and 'repeat_key_behavior', supply
+        target_event. After resolving, call autoresearch-validate-create to check
+        volume and warnings, then autoresearch-create to create the pipeline.
+      summary: Resolve a template
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResolveTemplateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResolveTemplateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResolveTemplateRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResolvedTemplate'
+          description: Resolved pipeline config. Pass target_event, horizon_days,
+            training_lookback_days, training_population, inference_population, and
+            output_person_property directly to autoresearch-create. Always run autoresearch-validate-create
+            on the resolved config before creating.
+        '400':
+          description: Unknown template key or missing required target_event override.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/templates/:
+    get:
+      operationId: autoresearch_templates_list
+      description: Return all built-in autoresearch prediction templates. Each entry
+        describes what the template predicts, its default horizon and prediction mode,
+        and whether it requires you to supply a target_event. After choosing a template,
+        call autoresearch-resolve-template-create to get a fully resolved pipeline
+        config ready to pass to autoresearch-create.
+      summary: List available templates
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TemplateInfo'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/validate/:
+    post:
+      operationId: autoresearch_validate_create
+      description: 'Validate a proposed pipeline''s target event and population before
+        creating it. Returns volume estimates, base rate, and any warnings. Creation
+        does not enforce the result: ''population_too_large'' and ''horizon_exceeds_lookback''
+        mean a training run would fail, and the other ''error'' codes mean the data
+        is too thin for a reliable model. Call this before autoresearch-create.'
+      summary: Validate a pipeline definition
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidatePipelineRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ValidatePipelineRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ValidatePipelineRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidatePipelineResponse'
+          description: Validation result with volume estimates, base rate, and warnings.
+      x-product:
+      - autoresearch
   /api/projects/{project_id}/batch_exports/:
     get:
       operationId: batch_exports_list
@@ -12382,15 +12548,55 @@ paths:
           format: uuid
         description: A UUID string identifying this canvas.
         required: true
+      - in: query
+        name: key
+        schema:
+          type: string
+          maxLength: 200
+          minLength: 1
+        description: Only read this exact key.
+      - in: query
+        name: key_prefix
+        schema:
+          type: string
+          maxLength: 200
+        description: Only read entries whose key starts with this prefix.
+      - in: query
+        name: keys_only
+        schema:
+          type: boolean
+          default: false
+        description: True returns a key inventory without stored values.
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+        description: Maximum entries per page. Omit for the full state. Prefer an
+          inventory and state/value for large values.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Entry offset from next_offset. Keep filters unchanged between
+          pages.
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: scope
         schema:
-          type: string
           enum:
-          - shared
           - user
-        description: Only return entries in this scope.
+          - shared
+          type: string
+          minLength: 1
+        description: |-
+          Only read this scope.
+
+          * `user` - user
+          * `shared` - shared
       tags:
       - canvases
       security:
@@ -12452,6 +12658,88 @@ paths:
         '403':
           description: The scope is not declared in the canvas's capabilities, or
             the caller is a sandbox.
+      x-product:
+      - canvas
+  /api/projects/{project_id}/canvases/{id}/state/value/:
+    get:
+      operationId: canvases_state_value_retrieve
+      description: |-
+        Canvases: agent-built sandboxed browser apps, filed into channels.
+
+        Source is versioned per publish and built server-side; the canvas app
+        renders the published build's artifact from the isolated artifact origin.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this canvas.
+        required: true
+      - in: query
+        name: key
+        schema:
+          type: string
+          maxLength: 200
+          minLength: 1
+        description: Exact key to read.
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 12000
+          minimum: 1
+          default: 12000
+        description: Maximum JSON characters in this response.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Character offset from next_offset.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: revision
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+        description: Revision from the first chunk. Required when offset is greater
+          than zero.
+      - in: query
+        name: scope
+        schema:
+          enum:
+          - user
+          - shared
+          type: string
+          minLength: 1
+        description: |-
+          Scope of the value to read.
+
+          * `user` - user
+          * `shared` - shared
+        required: true
+      tags:
+      - canvases
+      security:
+      - PersonalAPIKeyAuth:
+        - canvas:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CanvasStateValueResponse'
+          description: ''
+        '400':
+          description: Invalid query, or the offset exceeds the value length.
+        '404':
+          description: No readable value for this scope and key.
+        '409':
+          description: The value changed. Restart from offset zero.
       x-product:
       - canvas
   /api/projects/{project_id}/canvases/{id}/validate/:
@@ -14054,8 +14342,9 @@ paths:
         schema:
           type: string
         description: 'Filter by AI triage outcome. Accepts a single value or a comma-separated
-          list. Valid values: `persisted`, `escalated_with_best`, `escalated_no_reply`,
-          `skipped_unactionable`, `blocked_unsafe`, `blocked_unsafe_reply`, `in_progress`.'
+          list. Valid values: `persisted`, `suggested`, `escalated_with_findings`,
+          `escalated_with_best`, `escalated_no_reply`, `skipped_unactionable`, `blocked_unsafe`,
+          `blocked_unsafe_reply`, `in_progress`.'
       - in: query
         name: assignee
         schema:
@@ -28567,6 +28856,12 @@ paths:
           Matches events used directly in metric queries as well as events behind
           any actions those metrics reference.
       - in: query
+        name: excluded_tags
+        schema:
+          type: string
+        description: JSON-encoded list of tag names. Excludes experiments carrying
+          any of the given tags, even when they also carry non-excluded tags.
+      - in: query
         name: feature_flag_id
         schema:
           type: integer
@@ -28621,6 +28916,12 @@ paths:
           deactivated, and "exposure_frozen" returns launched experiments whose exposure
           was frozen to the already-enrolled cohort while metrics keep flowing. "complete"
           is an alias for "stopped". "all" disables status filtering.'
+      - in: query
+        name: tags
+        schema:
+          type: string
+        description: JSON-encoded list of tag names. Returns experiments carrying
+          at least one of the given tags, e.g. `["growth", "checkout"]`.
       tags:
       - experiments
       security:
@@ -29747,6 +30048,55 @@ paths:
           description: ''
       x-product:
       - experiments
+  /api/projects/{project_id}/experiments/bulk_update_tags/:
+    post:
+      operationId: experiments_bulk_update_tags_create
+      description: |-
+        Bulk update tags on multiple objects.
+
+        PAT access: this action has no ``required_scopes=`` on the decorator —
+        inheriting viewsets must add ``"bulk_update_tags"`` to their
+        ``scope_object_write_actions`` list to accept personal API keys.
+        Without that opt-in, ``APIScopePermission`` rejects PAT requests with
+        "This action does not support personal API key access". Done per-viewset
+        so granting ``<scope>:write`` for one resource doesn't leak access to
+        sibling resources that share this mixin.
+
+        Accepts:
+        - {"ids": [...], "action": "add"|"remove"|"set", "tags": ["tag1", "tag2"]}
+
+        Actions:
+        - "add": Add tags to existing tags on each object
+        - "remove": Remove specific tags from each object
+        - "set": Replace all tags on each object with the provided list
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - experiments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkUpdateTagsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BulkUpdateTagsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BulkUpdateTagsRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - experiment:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUpdateTagsResponse'
+          description: ''
+      x-product:
+      - experiments
   /api/projects/{project_id}/experiments/calculate_running_time/:
     post:
       operationId: experiments_calculate_running_time_create
@@ -29821,6 +30171,103 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Experiment'
+          description: ''
+      x-product:
+      - experiments
+  /api/projects/{project_id}/experiments/matching_ids/:
+    get:
+      operationId: experiments_matching_ids_retrieve
+      description: |-
+        Get IDs of all experiments matching the current list filters.
+        Accepts the same query params as the list endpoint and returns only
+        IDs of experiments the user has permission to edit.
+      parameters:
+      - in: query
+        name: archived
+        schema:
+          type: boolean
+        description: Filter by archived state. Defaults to non-archived experiments
+          only.
+      - in: query
+        name: created_by_id
+        schema:
+          type: string
+        description: Filter to experiments created by the given user(s). Accepts a
+          single user ID, or a JSON-encoded / comma-separated list of user IDs to
+          match any of them.
+      - in: query
+        name: event
+        schema:
+          type: string
+        description: Filter to experiments whose metrics reference this event name.
+          Matches events used directly in metric queries as well as events behind
+          any actions those metrics reference.
+      - in: query
+        name: excluded_tags
+        schema:
+          type: string
+        description: JSON-encoded list of tag names. Excludes experiments carrying
+          any of the given tags, even when they also carry non-excluded tags.
+      - in: query
+        name: feature_flag_id
+        schema:
+          type: integer
+        description: Filter to experiments linked to the given feature flag ID.
+      - in: query
+        name: order
+        schema:
+          type: string
+        description: Field to order by. Prefix with '-' for descending. Allowlisted
+          fields include name, created_at, updated_at, start_date, end_date, duration,
+          and status.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: prompt_name
+        schema:
+          type: string
+        description: Filter to experiments created from an LLM prompt with this name.
+          Matches experiments whose parameters.prompt_metadata.name equals the given
+          value.
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Free-text search applied to the experiment name (case-insensitive).
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - all
+          - complete
+          - draft
+          - exposure_frozen
+          - paused
+          - running
+          - stopped
+        description: 'Filter by experiment status. "running", "paused", and "exposure_frozen"
+          are mutually exclusive: "running" returns launched experiments with an active
+          feature flag, "paused" returns launched experiments whose feature flag is
+          deactivated, and "exposure_frozen" returns launched experiments whose exposure
+          was frozen to the already-enrolled cohort while metrics keep flowing. "complete"
+          is an alias for "stopped". "all" disables status filtering.'
+      - in: query
+        name: tags
+        schema:
+          type: string
+        description: JSON-encoded list of tag names. Returns experiments carrying
+          at least one of the given tags, e.g. `["growth", "checkout"]`.
+      tags:
+      - experiments
+      security:
+      - PersonalAPIKeyAuth:
+        - experiment:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentMatchingIdsResponse'
           description: ''
       x-product:
       - experiments
@@ -30987,7 +31434,11 @@ paths:
         - external_data_source:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CdcStatus'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/external_data_sources/{id}/check_cdc_prerequisites_for_source/:
@@ -31067,7 +31518,11 @@ paths:
         - external_data_source:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateWebhookResponse'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/external_data_sources/{id}/delete_webhook/:
@@ -31102,7 +31557,11 @@ paths:
         - external_data_source:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteWebhookResponse'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/external_data_sources/{id}/destinations/:
@@ -31262,14 +31721,28 @@ paths:
         - external_data_source:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CdcEnableResponse'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/external_data_sources/{id}/jobs/:
     get:
-      operationId: external_data_sources_jobs_retrieve
+      operationId: external_data_sources_jobs_list
       description: Create, Read, Update and Delete External data Sources.
       parameters:
+      - in: query
+        name: after
+        schema:
+          type: string
+        description: ISO timestamp — only return jobs created after this date.
+      - in: query
+        name: before
+        schema:
+          type: string
+        description: ISO timestamp — only return jobs created before this date.
       - in: path
         name: id
         schema:
@@ -31278,6 +31751,19 @@ paths:
         description: A UUID string identifying this external data source.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: schemas
+        schema:
+          type: array
+          items:
+            type: string
+        description: Filter jobs by table schema names.
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - external_data_sources
       security:
@@ -31285,7 +31771,13 @@ paths:
         - external_data_source:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExternalDataJobSerializers'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/external_data_sources/{id}/refresh_schemas/:
@@ -31553,7 +32045,11 @@ paths:
         - external_data_source:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateWebhookInputsResponse'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/external_data_sources/{id}/webhook_info/:
@@ -31576,7 +32072,11 @@ paths:
         - external_data_source:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookInfoResponse'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/external_data_sources/check_cdc_prerequisites/:
@@ -31599,14 +32099,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  valid:
-                    type: boolean
-                  errors:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/CdcPrerequisitesResponse'
           description: Whether the Postgres database satisfies CDC prerequisites.
         '400':
           description: Invalid config, disallowed host, or connection failure.
@@ -31705,6 +32198,9 @@ paths:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - external_data_sources
+      security:
+      - PersonalAPIKeyAuth:
+        - external_data_source:read
       responses:
         '200':
           content:
@@ -32005,7 +32501,11 @@ paths:
         - external_data_source:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceConfigMapResponse'
+          description: ''
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/feature_flag_request_usage/:
@@ -35755,6 +36255,54 @@ paths:
           description: ''
       x-product:
       - health_issues
+  /api/projects/{project_id}/heatmap_screenshot/settings/:
+    get:
+      operationId: heatmap_screenshot_settings_retrieve
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - heatmap_screenshot
+      security:
+      - PersonalAPIKeyAuth:
+        - project:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeatmapScreenshotSettings'
+          description: ''
+      x-product:
+      - web_analytics
+    patch:
+      operationId: heatmap_screenshot_settings_update
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - heatmap_screenshot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedHeatmapScreenshotSettingsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedHeatmapScreenshotSettingsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedHeatmapScreenshotSettingsRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - project:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeatmapScreenshotSettings'
+          description: ''
+      x-product:
+      - web_analytics
   /api/projects/{project_id}/heatmap_screenshots/{id}/content/:
     get:
       operationId: heatmap_screenshots_content_retrieve
@@ -38985,13 +39533,6 @@ paths:
   /api/projects/{project_id}/insights/:
     get:
       operationId: insights_list
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: basic
@@ -39167,13 +39708,6 @@ paths:
       - product_analytics
     post:
       operationId: insights_create
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: format
@@ -39405,13 +39939,6 @@ paths:
   /api/projects/{project_id}/insights/{id}/:
     get:
       operationId: insights_retrieve
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: filters_override
@@ -39509,13 +40036,6 @@ paths:
       - product_analytics
     put:
       operationId: insights_update
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: format
@@ -39565,13 +40085,6 @@ paths:
       - product_analytics
     patch:
       operationId: insights_partial_update
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: format
@@ -39702,13 +40215,6 @@ paths:
   /api/projects/{project_id}/insights/{id}/analyze/:
     get:
       operationId: insights_analyze_retrieve
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: format
@@ -39734,13 +40240,6 @@ paths:
   /api/projects/{project_id}/insights/{id}/suggestions/:
     get:
       operationId: insights_suggestions_retrieve
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: format
@@ -39765,13 +40264,6 @@ paths:
       - product_analytics
     post:
       operationId: insights_suggestions_create
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: format
@@ -40017,13 +40509,6 @@ paths:
   /api/projects/{project_id}/insights/cancel/:
     post:
       operationId: insights_cancel_create
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - in: query
         name: format
@@ -43955,6 +44440,12 @@ paths:
       responses:
         '204':
           description: No response body
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LLMPromptReferencedConflict'
+          description: The prompt is referenced by other prompts and cannot be archived.
       x-product:
       - llm_analytics
   /api/projects/{project_id}/llm_prompts/name/{prompt_name}/duplicate/:
@@ -44035,6 +44526,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/LLMPromptLabel'
           description: ''
+        '400':
+          description: The label is referenced by other prompts and the target version
+            contains references or is not plain text.
       x-product:
       - llm_analytics
     delete:
@@ -44061,6 +44555,12 @@ paths:
       responses:
         '204':
           description: No response body
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LLMPromptReferencedConflict'
+          description: The label is referenced by other prompts and cannot be deleted.
       x-product:
       - llm_analytics
   /api/projects/{project_id}/llm_prompts/resolve/name/{prompt_name}/:
@@ -47025,6 +47525,27 @@ paths:
           default: 50
         description: Max results per page (default 50, max 100).
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: status
+        schema:
+          enum:
+          - not_started
+          - queued
+          - in_progress
+          - completed
+          - failed
+          - cancelled
+          type: string
+          minLength: 1
+        description: |-
+          Only return runs with this status. Use failed to read errors even when canvas state is unavailable.
+
+          * `not_started` - Not Started
+          * `queued` - Queued
+          * `in_progress` - In Progress
+          * `completed` - Completed
+          * `failed` - Failed
+          * `cancelled` - Cancelled
       tags:
       - loops
       - loops
@@ -52262,7 +52783,8 @@ paths:
       operationId: notebooks_sql_v2_run_create
       description: Dispatch an asynchronous run of a notebook SQL or Python cell.
         Returns a run_id immediately; poll the run result endpoint until the status
-        is terminal. One run at a time per notebook. Flag-gated (revamped-py-notebooks).
+        is terminal. One run at a time per notebook. Python notebooks enable all run
+        types. Generated widgets enable HogQL runs without a connection or kernel.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: path
@@ -52309,7 +52831,8 @@ paths:
       operationId: notebooks_sql_v2_runs_retrieve
       description: 'Read a run''s durable state: its status, and — once done or interrupted
         — the result envelope (columns, first rows, stdout/stderr, media, error).
-        Poll until terminal. Flag-gated (revamped-py-notebooks).'
+        Poll until terminal. Requires notebook and query read access, including after
+        a notebook feature flag is disabled.'
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: path
@@ -55696,13 +56219,6 @@ paths:
   /api/projects/{project_id}/query/:
     post:
       operationId: query_create
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -55799,13 +56315,6 @@ paths:
   /api/projects/{project_id}/query/{query_kind}/:
     post:
       operationId: query_create_with_kind
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: path
@@ -55823,13 +56332,6 @@ paths:
   /api/projects/{project_id}/query/check_auth_for_async/:
     post:
       operationId: query_check_auth_for_async_create
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -55846,13 +56348,6 @@ paths:
   /api/projects/{project_id}/query/draft_sql/:
     get:
       operationId: query_draft_sql_retrieve
-      description: |-
-        DRF ViewSet mixin that gates coalesced responses behind permission checks.
-
-        The QueryCoalescingMiddleware attaches cached response data to
-        request.META["_coalesced_response"] for followers. This mixin runs DRF's
-        initial() (auth + permissions + throttling) before returning the
-        cached response, ensuring the request is authorized.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -55865,6 +56360,35 @@ paths:
                 type: object
                 additionalProperties: true
           description: ''
+      x-product: []
+  /api/projects/{project_id}/query/scan/{cache_key}/:
+    get:
+      operationId: query_scan_retrieve
+      description: 'Get the query scan for a cache key: the analysis of the last slow
+        run of that query. The body is empty while the analysis runs. 404 when the
+        query has not been analyzed.'
+      parameters:
+      - in: path
+        name: cache_key
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - query
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryScanResponse'
+          description: ''
+        '404':
+          description: No query scan exists for this cache key.
       x-product: []
   /api/projects/{project_id}/query/upgrade/:
     post:
@@ -58904,6 +59428,13 @@ paths:
         '404':
           description: Report has no implementation PR, or no GitHub integration can
             access it.
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PullRequestChecksPermissionError'
+          description: GitHub is connected without permission to read pull request
+            checks.
         '502':
           description: GitHub could not return the checks.
         '503':
@@ -60052,12 +60583,16 @@ paths:
   /api/projects/{project_id}/signals/scout/:
     post:
       operationId: signals_scout_create
-      description: Create a scout skill and its runnable config atomically. Any valid
-        skill name works — the config row is what makes the skill a scout. The skill
-        always receives the report-channel tools. The optional config controls schedule,
+      description: Create a scout skill and its runnable config atomically. Give it
+        a `display_name` — the label people read, kept exactly as written — and the
+        scout's permanent skill name is generated from it, with a numeric suffix when
+        that name is taken, so two scouts may share a label without sharing an identity.
+        Pass `name` instead to pick that identifier yourself; any valid skill name
+        works, since the config row is what makes a skill a scout. The skill always
+        receives the report-channel tools. The optional config controls schedule,
         enablement, dry-run posture, network access, and typed destinations such as
         Slack. Repeating the same definition is safe and applies any supplied config
-        fields; reusing its name for a different definition returns 409.
+        fields; reusing an explicit `name` for a different definition returns 409.
       summary: Create a scout
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -60147,14 +60682,26 @@ paths:
     get:
       operationId: signals_scout_config_list
       description: List the per-(team, skill) scout configs for this project. Each
-        row includes its schedule (rolling `run_interval_minutes`, or a project-local
-        `run_cron_schedule` when set), `enabled`, `emit` posture, and `tags`. A freshly
-        authored scout skill appears here once its config is registered, either explicitly
-        via create or by the coordinator's next tick. Pass `tags` to narrow the fleet
-        to the scouts carrying at least one of the given labels.
+        row includes its `display_name` (the label people read), its `skill_name`
+        (the permanent identifier), its schedule (rolling `run_interval_minutes`,
+        or a project-local `run_cron_schedule` when set), `enabled`, `emit` posture,
+        and `tags`. A freshly authored scout skill appears here once its config is
+        registered, either explicitly via create or by the coordinator's next tick.
+        Pass `tags` to narrow the fleet to the scouts carrying at least one of the
+        given labels, and `search` to narrow it to the scouts matching a substring
+        of either name.
       summary: List scout configs
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: search
+        schema:
+          type: string
+          minLength: 1
+        description: Case-insensitive substring filter over a scout's display name
+          and its skill name. A scout matches on either, so a person who knows the
+          label and a caller who knows the identifier both find it. Omit for the whole
+          fleet.
       - in: query
         name: tags
         schema:
@@ -60178,7 +60725,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SignalScoutConfig'
-          description: Per-scout configs for this project, ordered by skill name.
+          description: Per-scout configs for this project, ordered by the name each
+            scout displays under.
       x-product:
       - signals
     post:
@@ -65218,6 +65766,17 @@ paths:
           * `pending` - pending
           * `none` - none
       - in: query
+        name: client_provenance
+        schema:
+          enum:
+          - posthog_desktop
+          type: string
+          minLength: 1
+        description: |-
+          Filter by the client that created the task
+
+          * `posthog_desktop` - PostHog Desktop
+      - in: query
         name: commented_by
         schema:
           type: integer
@@ -65465,7 +66024,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TaskDetailDTO'
+                $ref: '#/components/schemas/TaskCreateResponseDTO'
           description: ''
         '402':
           content:
@@ -65480,8 +66039,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TaskRunErrorResponse'
-          description: PostHog Desktop access is required for a create that can activate
-            a warm sandbox
+          description: Agent-started runs are limited to the internal project and
+            cannot start from a sandbox token. Immediate runs also require PostHog
+            Desktop access and an enabled Pi cloud runtime.
         '429':
           content:
             application/json:
@@ -65511,6 +66071,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65539,6 +66100,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65578,6 +66140,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65617,6 +66180,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65642,6 +66206,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65685,6 +66250,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - in: query
         name: include_resolved
@@ -65749,6 +66315,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - in: query
         name: limit
@@ -65797,6 +66364,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65844,6 +66412,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65891,6 +66460,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65936,6 +66506,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65970,6 +66541,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -65996,7 +66568,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TaskDetailDTO'
+                $ref: '#/components/schemas/TaskRunResponse'
           description: Task with updated latest run
         '400':
           content:
@@ -66049,6 +66621,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -66099,6 +66672,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -66149,6 +66723,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -66182,6 +66757,7 @@ paths:
         name: id
         schema:
           type: string
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -85596,6 +86172,8 @@ components:
     AiTriageResultEnum:
       enum:
       - persisted
+      - suggested
+      - escalated_with_findings
       - escalated_with_best
       - escalated_no_reply
       - skipped_unactionable
@@ -85605,6 +86183,8 @@ components:
       type: string
       description: |-
         * `persisted` - persisted
+        * `suggested` - suggested
+        * `escalated_with_findings` - escalated_with_findings
         * `escalated_with_best` - escalated_with_best
         * `escalated_no_reply` - escalated_no_reply
         * `skipped_unactionable` - skipped_unactionable
@@ -86402,6 +86982,14 @@ components:
       description: |-
         * `USR` - user
         * `GIT` - GitHub
+    AnnotationScope:
+      enum:
+      - dashboard_item
+      - dashboard
+      - project
+      - organization
+      title: AnnotationScope
+      type: string
     AnnotationScopeEnum:
       enum:
       - dashboard_item
@@ -92369,7 +92957,8 @@ components:
           items:
             type: string
             maxLength: 255
-          description: Tag names to add, remove, or set.
+          description: Tag names to add, remove, or set (up to 100 per request, 255
+            characters each).
           maxItems: 100
       required:
       - action
@@ -92398,7 +92987,7 @@ components:
           description: UUID of the object that was skipped.
         reason:
           type: string
-          description: Why the object was skipped, e.g. 'Not found'.
+          description: Why the object was skipped, e.g. 'Not found or no edit access'.
       required:
       - id
       - reason
@@ -92443,7 +93032,8 @@ components:
           items:
             type: string
             maxLength: 255
-          description: Tag names to add, remove, or set.
+          description: Tag names to add, remove, or set (up to 100 per request, 255
+            characters each).
           maxItems: 100
       required:
       - action
@@ -95178,7 +95768,7 @@ components:
           description: The entry's key, unique within its scope.
           maxLength: 200
         value:
-          description: The stored JSON value.
+          description: The stored JSON value. Omitted from a key inventory.
         updated_at:
           type: string
           format: date-time
@@ -95187,7 +95777,6 @@ components:
       - key
       - scope
       - updated_at
-      - value
     CanvasStateResponse:
       type: object
       description: The canvas state readable by the caller.
@@ -95198,8 +95787,18 @@ components:
             $ref: '#/components/schemas/CanvasStateEntry'
           description: The canvas's shared entries plus the caller's own user-scoped
             entries.
+        next_offset:
+          type:
+          - integer
+          - 'null'
+          description: Next entry offset, or null when complete.
+        complete:
+          type: boolean
+          description: True when no further entries remain for this selection.
       required:
+      - complete
       - entries
+      - next_offset
     CanvasStateScopeEnum:
       enum:
       - user
@@ -95232,6 +95831,52 @@ components:
       - key
       - scope
       - value
+    CanvasStateValueResponse:
+      type: object
+      properties:
+        scope:
+          allOf:
+          - $ref: '#/components/schemas/CanvasStateScopeEnum'
+          description: |-
+            Scope of this value.
+
+            * `user` - user
+            * `shared` - shared
+        key:
+          type: string
+          description: Key of this value.
+        value_json:
+          type: string
+          description: A chunk of JSON text. Join all chunks in order, then parse
+            the complete JSON.
+        revision:
+          type: string
+          description: Content revision. Pass it on subsequent reads; a changed value
+            returns 409.
+        offset:
+          type: integer
+          description: Character offset of this chunk.
+        total_length:
+          type: integer
+          description: Character length of the complete JSON text.
+        next_offset:
+          type:
+          - integer
+          - 'null'
+          description: Next character offset, or null when complete.
+        complete:
+          type: boolean
+          description: True when no further chunks remain. Earlier chunks are still
+            needed when offset is nonzero.
+      required:
+      - complete
+      - key
+      - next_offset
+      - offset
+      - revision
+      - scope
+      - total_length
+      - value_json
     CanvasSummary:
       type: object
       description: Identity and version pointers for one canvas.
@@ -95562,6 +96207,86 @@ components:
       required:
       - key
       - label
+    CdcEnableResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether CDC was enabled on the source.
+        schedules_ready:
+          type: boolean
+          description: Whether the extraction and cleanup schedules could be created.
+            False means CDC is enabled but scheduling failed; the schedule self-heals
+            on the first CDC schema toggle.
+      required:
+      - schedules_ready
+      - success
+    CdcPrerequisitesResponse:
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: Whether the source satisfies every CDC prerequisite.
+        errors:
+          type: array
+          items:
+            type: string
+          description: Unmet prerequisites, empty when valid is true.
+      required:
+      - errors
+      - valid
+    CdcStatus:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether CDC is enabled on this source.
+        management_mode:
+          allOf:
+          - $ref: '#/components/schemas/ManagementModeEnum'
+          description: |-
+            Who owns the slot and publication: PostHog or the customer.
+
+            * `posthog` - posthog
+            * `self_managed` - self_managed
+        slot_name:
+          type: string
+          description: Replication slot PostHog consumes from. Empty when unset.
+        publication_name:
+          type: string
+          description: Publication PostHog reads changes from. Empty when unset.
+        lag_warning_threshold_mb:
+          type: integer
+          description: Lag in MB above which the UI warns.
+        lag_critical_threshold_mb:
+          type: integer
+          description: Lag in MB above which the UI alerts.
+        schedule_paused:
+          type: boolean
+          description: True when a non-retryable failure paused the extraction schedule;
+            the UI then offers Resume instead of Repair. Degrades to false when the
+            schedule lookup fails.
+        slot_exists:
+          type: boolean
+          description: Whether the replication slot exists on the source, when the
+            source was reachable.
+        publication_exists:
+          type: boolean
+          description: Whether the publication exists on the source, when the source
+            was reachable.
+        lag_bytes:
+          type:
+          - integer
+          - 'null'
+          description: Current slot lag in bytes, when the source was reachable.
+        published_tables:
+          type: array
+          items:
+            type: string
+          description: Tables in the publication, when the source was reachable and
+            a publication exists.
+      required:
+      - enabled
     CdcTableModeEnum:
       enum:
       - consolidated
@@ -96415,6 +97140,13 @@ components:
           default: null
           description: 'Line interpolation: straight segments or a smoothed curve
             through the points.'
+        seriesColorMode:
+          anyOf:
+          - $ref: '#/components/schemas/SeriesColorMode'
+          - type: 'null'
+          default: null
+          description: 'How series are told apart: one color per series, or one color
+            at stepped opacities.'
       title: ChartStyle
       type: object
     ChatTypeEnum:
@@ -96607,6 +97339,29 @@ components:
             Desktop) relays into the cloud sandbox over the durable event/command
             channel. Names only — the server configuration (command, env, URL, headers)
             never crosses the wire.
+        rtk_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether rtk command-output compression is enabled for this
+            run. Omitted or null follows the server-side default (enabled); false
+            opts this run out.
+        benjamin_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the Benjamin-Plus token-efficiency instruction applies
+            to this run. Omitted or null lets the server decide from the feature flag;
+            true or false pins the choice for this run.
+        claude_model_access:
+          description: |-
+            How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+
+            * `posthog-gateway` - posthog-gateway
+            * `own-subscription` - own-subscription
+          oneOf:
+          - $ref: '#/components/schemas/ClaudeModelAccessEnum'
+          - $ref: '#/components/schemas/NullEnum'
         mode:
           allOf:
           - $ref: '#/components/schemas/TaskExecutionModeEnum'
@@ -96668,6 +97423,7 @@ components:
 
             * `manual` - manual
             * `signal_report` - signal_report
+            * `agent` - agent
         signal_report_id:
           type: string
           description: Optional signal report identifier when this run was started
@@ -96725,29 +97481,6 @@ components:
             * `plan` - plan
             * `bypassPermissions` - bypassPermissions
             * `auto` - auto
-        rtk_enabled:
-          type:
-          - boolean
-          - 'null'
-          description: Whether rtk command-output compression is enabled for this
-            run. Omitted or null follows the server-side default (enabled); false
-            opts this run out.
-        benjamin_enabled:
-          type:
-          - boolean
-          - 'null'
-          description: Whether the Benjamin-Plus token-efficiency instruction applies
-            to this run. Omitted or null lets the server decide from the feature flag;
-            true or false pins the choice for this run.
-        claude_model_access:
-          description: |-
-            How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
-
-            * `posthog-gateway` - posthog-gateway
-            * `own-subscription` - own-subscription
-          oneOf:
-          - $ref: '#/components/schemas/ClaudeModelAccessEnum'
-          - $ref: '#/components/schemas/NullEnum'
       required:
       - model
       - runtime_adapter
@@ -97075,6 +97808,29 @@ components:
             Desktop) relays into the cloud sandbox over the durable event/command
             channel. Names only — the server configuration (command, env, URL, headers)
             never crosses the wire.
+        rtk_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether rtk command-output compression is enabled for this
+            run. Omitted or null follows the server-side default (enabled); false
+            opts this run out.
+        benjamin_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the Benjamin-Plus token-efficiency instruction applies
+            to this run. Omitted or null lets the server decide from the feature flag;
+            true or false pins the choice for this run.
+        claude_model_access:
+          description: |-
+            How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+
+            * `posthog-gateway` - posthog-gateway
+            * `own-subscription` - own-subscription
+          oneOf:
+          - $ref: '#/components/schemas/ClaudeModelAccessEnum'
+          - $ref: '#/components/schemas/NullEnum'
         mode:
           allOf:
           - $ref: '#/components/schemas/TaskExecutionModeEnum'
@@ -97136,6 +97892,7 @@ components:
 
             * `manual` - manual
             * `signal_report` - signal_report
+            * `agent` - agent
         signal_report_id:
           type: string
           description: Optional signal report identifier when this run was started
@@ -97192,29 +97949,6 @@ components:
             * `auto` - auto
             * `read-only` - read-only
             * `full-access` - full-access
-        rtk_enabled:
-          type:
-          - boolean
-          - 'null'
-          description: Whether rtk command-output compression is enabled for this
-            run. Omitted or null follows the server-side default (enabled); false
-            opts this run out.
-        benjamin_enabled:
-          type:
-          - boolean
-          - 'null'
-          description: Whether the Benjamin-Plus token-efficiency instruction applies
-            to this run. Omitted or null lets the server decide from the feature flag;
-            true or false pins the choice for this run.
-        claude_model_access:
-          description: |-
-            How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
-
-            * `posthog-gateway` - posthog-gateway
-            * `own-subscription` - own-subscription
-          oneOf:
-          - $ref: '#/components/schemas/ClaudeModelAccessEnum'
-          - $ref: '#/components/schemas/NullEnum'
       required:
       - model
       - runtime_adapter
@@ -98216,11 +98950,13 @@ components:
     ConfigScopeEnum:
       enum:
       - saml
+      - oidc
       - scim
       - xaa
       type: string
       description: |-
         * `saml` - Saml
+        * `oidc` - Oidc
         * `scim` - Scim
         * `xaa` - Xaa
     ConnectFromEnum:
@@ -100802,6 +101538,33 @@ components:
             path (for example 'data/events.parquet'), each as standard base64 text.
       required:
       - source
+    CreateWebhookResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the webhook was created and registered with the source.
+        webhook_url:
+          type:
+          - string
+          - 'null'
+          description: The PostHog endpoint the external service delivers events to.
+        error:
+          type:
+          - string
+          - 'null'
+          description: Why creation failed, when success is false.
+        pending_inputs:
+          type: array
+          items:
+            type: string
+          description: Inputs the external service needs before delivery works. Submit
+            via update_webhook_inputs.
+      required:
+      - error
+      - pending_inputs
+      - success
+      - webhook_url
     CreatedSourceEnum:
       enum:
       - user
@@ -105818,9 +106581,14 @@ components:
             detection.
         latest_history_id:
           type:
-          - integer
+          - string
           - 'null'
+          format: uuid
           readOnly: true
+          description: Activity log ID of the most recent query edit to this view.
+            Send it back as edited_history_id on the next query write, so conflict
+            detection can tell whether someone else changed the query in the meantime.
+            Edits that leave the query alone do not advance it.
         soft_update:
           type:
           - boolean
@@ -106166,6 +106934,25 @@ components:
         * `Failed` - Failed
         * `Running` - Running
         * `Skipped` - Skipped
+    DataWarehouseSourceCategory:
+      enum:
+      - Databases
+      - File storage
+      - Advertising
+      - Marketing & email
+      - CRM
+      - Sales
+      - Customer support
+      - Payments & billing
+      - Finance & accounting
+      - Analytics
+      - Engineering & monitoring
+      - Productivity
+      - HR & recruiting
+      - Communication
+      - E-commerce
+      title: DataWarehouseSourceCategory
+      type: string
     DataWarehouseSourceUsage:
       additionalProperties: false
       properties:
@@ -108129,6 +108916,8 @@ components:
             * `Smartlead` - Smartlead
             * `Substack` - Substack
             * `ElectricityMaps` - ElectricityMaps
+            * `Amplemarket` - Amplemarket
+            * `Quo` - Quo
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -108944,8 +109733,10 @@ components:
           - type: string
           - type: 'null'
           default: null
-          description: End of the date range. Same format as date_from. Omit or null
-            for "now".
+          description: 'End of the date range. Same format as date_from. Omit or null
+            for "now". A calendar day without a time (2024-01-15) is inclusive: it
+            rounds to the last moment of that day in the project timezone, unless
+            explicitDate is set.'
           title: Date To
         daysOfWeek:
           anyOf:
@@ -109046,6 +109837,27 @@ components:
         org:
           type: string
           description: duckgres org identifier (the PostHog organization id)
+    DeleteWebhookResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the webhook delivery function was deleted.
+        external_deleted:
+          type: boolean
+          description: Whether the webhook was also removed from the external service.
+            False when the source config was already gone and only the local function
+            was cleaned up, or when the external call failed.
+        error:
+          type:
+          - string
+          - 'null'
+          description: Why the external deletion failed, when external_deleted is
+            false.
+      required:
+      - error
+      - external_deleted
+      - success
     DeliveryConfig:
       type: object
       description: Typed view over the Subscription.delivery_config JSON blob.
@@ -111189,6 +112001,8 @@ components:
             * `Smartlead` - Smartlead
             * `Substack` - Substack
             * `ElectricityMaps` - ElectricityMaps
+            * `Amplemarket` - Amplemarket
+            * `Quo` - Quo
         label:
           type: string
           readOnly: true
@@ -112027,6 +112841,12 @@ components:
           - type: 'null'
           description: The organization's active dreaming task, or null when no dream
             is running.
+        unpublished_run:
+          oneOf:
+          - $ref: '#/components/schemas/UnpublishedDreamRun'
+          - type: 'null'
+          description: The latest finished dream when no update was published after
+            it started, or null otherwise.
         dreams:
           type: array
           items:
@@ -112036,6 +112856,7 @@ components:
       - active_run
       - dreams
       - head_sha
+      - unpublished_run
     DurationDistribution:
       type: object
       properties:
@@ -113415,9 +114236,9 @@ components:
           type: boolean
           default: false
           description: When true, open a draft pull request that removes the experiment's
-            feature-flag code from the linked repository. Requires the requesting
-            user to have access to PostHog Desktop (403 otherwise). Only acts for
-            allowlisted teams; ignored otherwise.
+            feature-flag code from the linked repository. A personal API key needs
+            the task:write scope (403 otherwise). Skipped when the conclusion is empty,
+            or when no connected repository can be resolved.
         repository:
           type:
           - string
@@ -121963,6 +122784,14 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        tags:
+          type: array
+          items:
+            type: string
+            maxLength: 255
+          description: Organizational tags for this experiment (up to 100, 255 characters
+            each).
+          maxItems: 100
       required:
       - can_freeze_exposure
       - created_at
@@ -122540,6 +123369,14 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        tags:
+          type: array
+          items:
+            type: string
+            maxLength: 255
+          description: Organizational tags for this experiment (up to 100, 255 characters
+            each).
+          maxItems: 100
       required:
       - created_at
       - created_by
@@ -123598,6 +124435,21 @@ components:
       - available
       - unavailable_reason
       - uses_stamped_fallback
+    ExperimentMatchingIdsResponse:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+          description: IDs of all experiments matching the current list filters that
+            the user can edit.
+        total:
+          type: integer
+          description: Number of matching editable experiments.
+      required:
+      - ids
+      - total
     ExperimentMeanMetric:
       additionalProperties: false
       properties:
@@ -124616,14 +125468,39 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        linked_experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentSavedMetricLinkedExperiment'
+          readOnly: true
+          description: Experiments using this shared metric (soft-deleted experiments
+            excluded). Populated only on single-metric retrieve; always an empty list
+            in list responses.
       required:
       - created_at
       - created_by
       - id
+      - linked_experiments
       - name
       - query
       - updated_at
       - user_access_level
+    ExperimentSavedMetricLinkedExperiment:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Experiment ID.
+        name:
+          type: string
+          description: Experiment name.
+        is_running:
+          type: boolean
+          description: True when the experiment is launched and not yet stopped.
+      required:
+      - id
+      - is_running
+      - name
     ExperimentSessionBucketEnum:
       enum:
       - fired_any
@@ -126145,6 +127022,14 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        tags:
+          type: array
+          items:
+            type: string
+            maxLength: 255
+          description: Organizational tags for this experiment (up to 100, 255 characters
+            each).
+          maxItems: 100
       required:
       - can_freeze_exposure
       - created_at
@@ -126701,6 +127586,90 @@ components:
         * `Databricks` - Databricks
         * `AzureBlob` - Azure Blob
         * `S3` - S3
+    ExternalDataJobSerializers:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/SimpleExternalDataSchema'
+          readOnly: true
+        rows_synced:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        latest_error:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: The latest error that occurred during this run.
+        workflow_run_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        cdc_write_mode:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: 'For CDC syncs with `cdc_table_mode=''both''`, distinguishes
+            the two ExternalDataJob rows produced per sync: `incremental_merge` (consolidated
+            table) vs `scd2_append` (cdc-only history table). `null` for non-CDC syncs.
+            Read from `schema_snapshot`.'
+        billable:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Whether the rows synced by this job count toward billing. `false`
+            for system-initiated runs the customer isn't charged for (e.g. rebuilding
+            a table after an internal issue). `null` on legacy rows and means billable.
+        destination_ids:
+          type: array
+          items:
+            type: string
+          readOnly: true
+          description: Destinations this run delivered to, snapshotted when it started.
+            Empty on runs that predate destinations, which wrote to the PostHog warehouse
+            alone. `rows_synced` counts the rows read from the source once, not once
+            per destination.
+      required:
+      - billable
+      - cdc_write_mode
+      - created_at
+      - created_by
+      - destination_ids
+      - finished_at
+      - id
+      - latest_error
+      - rows_synced
+      - schema
+      - status
+      - workflow_run_id
     ExternalDataSchema:
       type: object
       description: 'A schema of an external data source: its sync configuration and
@@ -126833,6 +127802,16 @@ components:
           oneOf:
           - $ref: '#/components/schemas/CdcTableModeEnum'
           - $ref: '#/components/schemas/NullEnum'
+        incremental_sync_blocked:
+          readOnly: true
+          description: |-
+            Why the last sync run could not merge rows for this table, or `null` when no such failure is current, which includes a run that failed for another reason. A blocked table is disabled, and the resolution differs by reason. `missing_primary_key`: no key to merge on, so set `primary_key_columns` to a unique key, which is accepted because none was set before. `duplicate_primary_key`: the key in use does not identify one row, and that key cannot be swapped once data has synced, so either remove the duplicates at the source and set `should_sync` to true, or delete the synced data before setting a different key. Either reason also accepts a different `sync_type`: `append` is only safe for insert-only tables, because updated rows arrive again as duplicates, and `full_refresh` re-reads the whole table on every sync and bills every row. This reports the last run's failure, so it clears once a run succeeds or fails for another reason, not when an update lands.
+
+            * `missing_primary_key` - Missing primary key
+            * `duplicate_primary_key` - Duplicate primary key
+          oneOf:
+          - $ref: '#/components/schemas/IncrementalSyncBlockedReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
         enabled_columns:
           type:
           - array
@@ -126953,6 +127932,7 @@ components:
       - description
       - id
       - incremental
+      - incremental_sync_blocked
       - label
       - last_synced_at
       - latest_error
@@ -128512,6 +129492,8 @@ components:
             * `Smartlead` - Smartlead
             * `Substack` - Substack
             * `ElectricityMaps` - ElectricityMaps
+            * `Amplemarket` - Amplemarket
+            * `Quo` - Quo
         access_method:
           allOf:
           - $ref: '#/components/schemas/ExternalDataSourceAccessMethodEnum'
@@ -129895,6 +130877,8 @@ components:
             * `Smartlead` - Smartlead
             * `Substack` - Substack
             * `ElectricityMaps` - ElectricityMaps
+            * `Amplemarket` - Amplemarket
+            * `Quo` - Quo
         payload:
           type: object
           additionalProperties: true
@@ -131533,6 +132517,8 @@ components:
       - Smartlead
       - Substack
       - ElectricityMaps
+      - Amplemarket
+      - Quo
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -132874,6 +133860,8 @@ components:
         * `Smartlead` - Smartlead
         * `Substack` - Substack
         * `ElectricityMaps` - ElectricityMaps
+        * `Amplemarket` - Amplemarket
+        * `Quo` - Quo
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -133097,8 +134085,8 @@ components:
           title: ' create in folder'
         is_used_in_replay_settings:
           type: boolean
-          description: Check if this feature flag is used in any team's session recording
-            linked flag setting.
+          description: Check if any team gates session recording on this flag, by
+            linked flag or trigger group.
           readOnly: true
         is_eligible_for_experiment:
           type: boolean
@@ -136297,13 +137285,11 @@ components:
       enum:
       - tiered
       - managed_viewset
-      - legacy
       - no_node
       type: string
       description: |-
         * `tiered` - tiered
         * `managed_viewset` - managed_viewset
-        * `legacy` - legacy
         * `no_node` - no_node
     FreshdeskTicketSignalExtra:
       additionalProperties: false
@@ -137479,6 +138465,13 @@ components:
     FunnelsFilter:
       additionalProperties: false
       properties:
+        annotationsScope:
+          anyOf:
+          - $ref: '#/components/schemas/AnnotationScope'
+          - type: 'null'
+          default: null
+          description: Render only annotations with this scope. Only applies to historical-trends
+            funnels.
         binCount:
           anyOf:
           - type: integer
@@ -140398,6 +141391,30 @@ components:
       - updated_at
       - url
       - user_access_level
+    HeatmapScreenshotSettings:
+      type: object
+      properties:
+        allowed_hostnames:
+          type: array
+          items:
+            type: string
+            maxLength: 253
+          description: Exact DNS hostnames approved to receive the screenshot cookie.
+            No URLs, wildcards, or IP addresses.
+          maxItems: 100
+        cookie_delivery_enabled:
+          type: boolean
+          readOnly: true
+          description: Whether this installation permits screenshot cookie delivery
+            to its renderer.
+        has_secret:
+          type: boolean
+          readOnly: true
+          description: Whether a screenshot bypass secret has been generated.
+      required:
+      - allowed_hostnames
+      - cookie_delivery_enabled
+      - has_secret
     HeatmapSettings:
       additionalProperties: false
       properties:
@@ -143770,6 +144787,15 @@ components:
           - type: 'null'
           default: null
           title: Converttoprojecttimezone
+        cookielessTrafficIsRegular:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Do not treat a missing user agent as automation on cookieless
+            events. Positive bot signals and custom project rules still apply. Resolved
+            server-side; not intended to be set by clients.
+          title: Cookielesstrafficisregular
         customBotDefinitions:
           anyOf:
           - items:
@@ -144373,6 +145399,7 @@ components:
             Feature configured by this identity provider configuration.
 
             * `saml` - Saml
+            * `oidc` - Oidc
             * `scim` - Scim
             * `xaa` - Xaa
           oneOf:
@@ -144398,6 +145425,33 @@ components:
           type: boolean
           readOnly: true
           description: Whether SAML is fully configured on this config.
+        has_oidc:
+          type: boolean
+          readOnly: true
+          description: Whether OIDC has an issuer, client ID, and client secret.
+        has_oidc_client_secret:
+          type: boolean
+          readOnly: true
+          description: Whether an encrypted OIDC client secret is saved.
+        oidc_issuer_url:
+          description: HTTPS issuer URL. Must exactly match the issuer in the OIDC
+            discovery document.
+          oneOf:
+          - type: string
+            format: uri
+            maxLength: 512
+          - type: string
+            maxLength: 0
+        oidc_client_id:
+          type: string
+          description: Client ID of the organization's OIDC application.
+          maxLength: 512
+        oidc_client_secret:
+          type: string
+          writeOnly: true
+          description: OIDC client secret. Omit to keep the saved secret. Set to an
+            empty string to remove it. Never returned in responses.
+          maxLength: 4096
         saml_relay_state:
           type: string
           readOnly: true
@@ -144466,6 +145520,8 @@ components:
       required:
       - created_at
       - has_id_jag
+      - has_oidc
+      - has_oidc_client_secret
       - has_saml
       - has_scim
       - id
@@ -144697,6 +145753,14 @@ components:
           oneOf:
           - $ref: '#/components/schemas/LastRunModeEnum'
           - $ref: '#/components/schemas/NullEnum'
+    IncrementalSyncBlockedReasonEnum:
+      enum:
+      - missing_primary_key
+      - duplicate_primary_key
+      type: string
+      description: |-
+        * `missing_primary_key` - Missing primary key
+        * `duplicate_primary_key` - Duplicate primary key
     IngestionPipelineEnum:
       enum:
       - analytics
@@ -145210,6 +146274,10 @@ components:
               type: string
               format: date-time
           readOnly: true
+        query_scan:
+          readOnly: true
+          description: What ClickHouse read for this insight's last slow run, with
+            the findings of its query scan.
         _create_in_folder:
           type: string
           writeOnly: true
@@ -145260,6 +146328,7 @@ components:
       - last_refresh
       - last_viewed_at
       - next_allowed_client_refresh
+      - query_scan
       - query_status
       - resolved_date_range
       - result
@@ -147806,6 +148875,21 @@ components:
       - updated_at
       - version
       - version_count
+    LLMPromptReferencedConflict:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: What is still referenced and what to do next.
+        referencing_prompts:
+          type: array
+          items:
+            type: string
+          description: Names of the prompts whose latest or labeled version holds
+            the reference.
+      required:
+      - detail
+      - referencing_prompts
     LLMPromptResolveResponse:
       type: object
       properties:
@@ -159912,6 +160996,14 @@ components:
       - detail
       - readiness_state
       - sources
+    ManagementModeEnum:
+      enum:
+      - posthog
+      - self_managed
+      type: string
+      description: |-
+        * `posthog` - posthog
+        * `self_managed` - self_managed
     ManualMetricType:
       enum:
       - funnel
@@ -161430,6 +162522,14 @@ components:
           description: Breakdown values kept before the rest roll into 'Other'. Defaults
             to 20.
           title: Breakdownlimit
+        comparePreviousPeriod:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Include the previous acquisition period in summary mode. Defaults
+            to false.
+          title: Comparepreviousperiod
         dataColorTheme:
           anyOf:
           - type: number
@@ -161519,6 +162619,14 @@ components:
           default: null
           description: Period for both the cohort rows and the return columns. Defaults
             to week.
+        summary:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Return session-based 7/30-day metrics instead of the cohort
+            matrix. Defaults to false.
+          title: Summary
         tags:
           anyOf:
           - $ref: '#/components/schemas/QueryLogTags'
@@ -161615,6 +162723,16 @@ components:
             $ref: '#/components/schemas/MarketingAnalyticsRetentionRow'
           title: Results
           type: array
+        summary:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MarketingAnalyticsRetentionSummaryRow'
+            type: array
+          - type: 'null'
+          default: null
+          description: Only populated in summary mode. Rates use the corresponding
+            eligible population.
+          title: Summary
         timings:
           anyOf:
           - items:
@@ -161707,6 +162825,54 @@ components:
       - cohortSize
       - values
       title: MarketingAnalyticsRetentionRow
+      type: object
+    MarketingAnalyticsRetentionSummaryRow:
+      additionalProperties: false
+      properties:
+        acquired:
+          title: Acquired
+          type: integer
+        breakdownValue:
+          title: Breakdownvalue
+          type: string
+        eligible30d:
+          title: Eligible30D
+          type: integer
+        eligible7d:
+          title: Eligible7D
+          type: integer
+        medianReturnDays:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: Median elapsed days to a second session within 30 days, among
+            observed returners.
+          title: Medianreturndays
+        previous:
+          title: Previous
+          type: boolean
+        returned30d:
+          title: Returned30D
+          type: integer
+        returned7d:
+          title: Returned7D
+          type: integer
+        returners:
+          description: People with an observed second session within 30 days, including
+            incomplete windows.
+          title: Returners
+          type: integer
+      required:
+      - acquired
+      - breakdownValue
+      - eligible30d
+      - eligible7d
+      - medianReturnDays
+      - previous
+      - returned30d
+      - returned7d
+      - returners
+      title: MarketingAnalyticsRetentionSummaryRow
       type: object
     MarketingAnalyticsSourceMapping:
       additionalProperties:
@@ -163155,17 +164321,58 @@ components:
           - type: 'null'
           default: null
           title: Goallines
+        legendCalcs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MetricsReducer'
+            type: array
+          - type: 'null'
+          default: null
+          description: 'Time-series panels only: which reducers the legend table shows.
+            Empty means no legend calcs.'
+          title: Legendcalcs
+        nullMode:
+          anyOf:
+          - $ref: '#/components/schemas/MetricsNullMode'
+          - type: 'null'
+          default: gap
+          description: How a null bucket renders on a time-series chart.
+        reduce:
+          anyOf:
+          - $ref: '#/components/schemas/MetricsReducer'
+          - type: 'null'
+          default: last
+          description: How scalar panels and legend calcs collapse a series to one
+            number.
         statSummary:
           anyOf:
           - $ref: '#/components/schemas/MetricsStatSummary'
           - type: 'null'
           default: latest
           description: '`stat` display only: which summary the headline value shows.'
+        thresholds:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MetricsThreshold'
+            type: array
+          - type: 'null'
+          default: null
+          description: Color bands for the scalar panels. Sorted by `value` at read
+            time, so entry order does not matter.
+          title: Thresholds
         type:
           anyOf:
           - $ref: '#/components/schemas/MetricsDisplayType'
           - type: 'null'
           default: line
+        unit:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: UCUM unit string as OTel writes it, e.g. "By", "ms", "%". Defaults
+            from the response unit.
+          title: Unit
         yAxis:
           anyOf:
           - $ref: '#/components/schemas/MetricsYAxisSettings'
@@ -163179,6 +164386,10 @@ components:
       - area
       - bar
       - stat
+      - gauge
+      - bargauge
+      - table
+      - heatmap
       title: MetricsDisplayType
       type: string
     MetricsFilterOp:
@@ -163188,6 +164399,13 @@ components:
       - regex
       - not_regex
       title: MetricsFilterOp
+      type: string
+    MetricsNullMode:
+      enum:
+      - gap
+      - zero
+      - connect
+      title: MetricsNullMode
       type: string
     MetricsOtelType:
       enum:
@@ -163362,8 +164580,12 @@ components:
           title: Time
           type: string
         value:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: The bucket's aggregate; null when it isn't representable (a
+            gap).
           title: Value
-          type: number
       required:
       - time
       - value
@@ -163488,6 +164710,14 @@ components:
             $ref: '#/components/schemas/MetricsQueryPoint'
           title: Points
           type: array
+        unit:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: UCUM unit of the metric as ingested, e.g. "By", "ms", "1".
+            Empty when the SDK did not set one.
+          title: Unit
       required:
       - labels
       - points
@@ -163505,6 +164735,16 @@ components:
         * `in_progress` - In Progress
         * `completed` - Completed
         * `failed` - Failed
+    MetricsReducer:
+      enum:
+      - last
+      - mean
+      - min
+      - max
+      - sum
+      - delta
+      title: MetricsReducer
+      type: string
     MetricsStatSummary:
       enum:
       - latest
@@ -163512,6 +164752,24 @@ components:
       - total
       title: MetricsStatSummary
       type: string
+    MetricsThreshold:
+      additionalProperties: false
+      properties:
+        color:
+          description: A named color token (e.g. "green", "red"), never raw hex, so
+            light and dark themes both work.
+          title: Color
+          type: string
+        value:
+          description: Lower bound of this band. The lowest step is the base color
+            below every other step.
+          title: Value
+          type: number
+      required:
+      - color
+      - value
+      title: MetricsThreshold
+      type: object
     MetricsYAxisSettings:
       additionalProperties: false
       properties:
@@ -164027,9 +165285,9 @@ components:
           description: Durable cell identity, used by the cell run and edit endpoints.
         cell_type:
           type: string
-          description: 'Cell kind: ''sql'', ''python'', ''saved_insight'' (embedded
-            insight, never runs), or ''markdown'' (prose, a heading, or a fenced block;
-            never runs and joins no dependency graph).'
+          description: 'Cell kind: ''sql'', ''python'', ''saved_insight'' (an insight
+            with an optional prepared dataframe), or ''markdown'' (prose, a heading,
+            or a fenced block; never runs and joins no dependency graph).'
         dataframe_name:
           type: string
           description: Name other cells reference this cell's result by; blank means
@@ -164686,6 +165944,12 @@ components:
     NotebookSQLV2RunRequest:
       type: object
       properties:
+        reuse_results:
+          type: boolean
+          default: false
+          description: Reuse the requesting user's running or completed HogQL run
+            with the same cell and resolved query from the last hour. Does not apply
+            to token-only callers, kernel runs, or connection runs.
         node_id:
           type: string
           description: ProseMirror node id of the SQLV2 node being run.
@@ -175313,9 +176577,14 @@ components:
             detection.
         latest_history_id:
           type:
-          - integer
+          - string
           - 'null'
+          format: uuid
           readOnly: true
+          description: Activity log ID of the most recent query edit to this view.
+            Send it back as edited_history_id on the next query write, so conflict
+            detection can tell whether someone else changed the query in the meantime.
+            Edits that leave the query alone do not advance it.
         soft_update:
           type:
           - boolean
@@ -176777,6 +178046,14 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        linked_experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentSavedMetricLinkedExperiment'
+          readOnly: true
+          description: Experiments using this shared metric (soft-deleted experiments
+            excluded). Populated only on single-metric retrieve; always an empty list
+            in list responses.
     PatchedExperimentWrite:
       type: object
       description: Experiment write payload. Identical to Experiment, plus the writable
@@ -177056,6 +178333,14 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        tags:
+          type: array
+          items:
+            type: string
+            maxLength: 255
+          description: Organizational tags for this experiment (up to 100, 255 characters
+            each).
+          maxItems: 100
     PatchedExternalDataDestination:
       type: object
       properties:
@@ -177242,6 +178527,16 @@ components:
             * `both` - both
           oneOf:
           - $ref: '#/components/schemas/CdcTableModeEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        incremental_sync_blocked:
+          readOnly: true
+          description: |-
+            Why the last sync run could not merge rows for this table, or `null` when no such failure is current, which includes a run that failed for another reason. A blocked table is disabled, and the resolution differs by reason. `missing_primary_key`: no key to merge on, so set `primary_key_columns` to a unique key, which is accepted because none was set before. `duplicate_primary_key`: the key in use does not identify one row, and that key cannot be swapped once data has synced, so either remove the duplicates at the source and set `should_sync` to true, or delete the synced data before setting a different key. Either reason also accepts a different `sync_type`: `append` is only safe for insert-only tables, because updated rows arrive again as duplicates, and `full_refresh` re-reads the whole table on every sync and bills every row. This reports the last run's failure, so it clears once a run succeeds or fails for another reason, not when an update lands.
+
+            * `missing_primary_key` - Missing primary key
+            * `duplicate_primary_key` - Duplicate primary key
+          oneOf:
+          - $ref: '#/components/schemas/IncrementalSyncBlockedReasonEnum'
           - $ref: '#/components/schemas/NullEnum'
         enabled_columns:
           type:
@@ -178016,6 +179311,17 @@ components:
           format: date-time
           readOnly: true
           description: When the issue was resolved (ISO 8601), or null if still active.
+    PatchedHeatmapScreenshotSettingsRequest:
+      type: object
+      properties:
+        allowed_hostnames:
+          type: array
+          items:
+            type: string
+            maxLength: 253
+          description: Exact DNS hostnames approved to receive the screenshot cookie.
+            No URLs, wildcards, or IP addresses.
+          maxItems: 100
     PatchedHogFlowActionEmailUpdate:
       type: object
       properties:
@@ -178506,6 +179812,7 @@ components:
             Feature configured by this identity provider configuration.
 
             * `saml` - Saml
+            * `oidc` - Oidc
             * `scim` - Scim
             * `xaa` - Xaa
           oneOf:
@@ -178531,6 +179838,33 @@ components:
           type: boolean
           readOnly: true
           description: Whether SAML is fully configured on this config.
+        has_oidc:
+          type: boolean
+          readOnly: true
+          description: Whether OIDC has an issuer, client ID, and client secret.
+        has_oidc_client_secret:
+          type: boolean
+          readOnly: true
+          description: Whether an encrypted OIDC client secret is saved.
+        oidc_issuer_url:
+          description: HTTPS issuer URL. Must exactly match the issuer in the OIDC
+            discovery document.
+          oneOf:
+          - type: string
+            format: uri
+            maxLength: 512
+          - type: string
+            maxLength: 0
+        oidc_client_id:
+          type: string
+          description: Client ID of the organization's OIDC application.
+          maxLength: 512
+        oidc_client_secret:
+          type: string
+          writeOnly: true
+          description: OIDC client secret. Omit to keep the saved secret. Set to an
+            empty string to remove it. Never returned in responses.
+          maxLength: 4096
         saml_relay_state:
           type: string
           readOnly: true
@@ -178772,6 +180106,10 @@ components:
               type: string
               format: date-time
           readOnly: true
+        query_scan:
+          readOnly: true
+          description: What ClickHouse read for this insight's last slow run, with
+            the findings of its query scan.
         _create_in_folder:
           type: string
           writeOnly: true
@@ -181412,6 +182750,14 @@ components:
           - string
           - 'null'
           readOnly: true
+        heatmaps_screenshot_secret:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Value this project's heatmap screenshots send as a cookie scoped
+            to your domain, so bot protection can allow them. Only project admins
+            can read it; null for everyone else and when none has been generated.
         receive_org_level_activity_logs:
           type:
           - boolean
@@ -182554,8 +183900,12 @@ components:
       properties:
         display_name:
           type: string
-          description: Name shown in the UI. Does not change the skill name. Leave
-            blank to use the default name.
+          description: Name shown wherever people identify this scout, written however
+            you want it — spaces, capitalization, and acronyms are kept as typed,
+            and two scouts may share one. It does not change the scout's skill name,
+            which stays its identity, so renaming a scout keeps its schedule, run
+            history, notes, memory, and links. At most 200 characters; blank means
+            the scout has no name of its own and is labelled from its skill name instead.
           maxLength: 200
         enabled:
           type: boolean
@@ -183458,6 +184808,8 @@ components:
         output:
           description: Output from the run
         state:
+          type: object
+          additionalProperties: true
           description: State of the run
         state_remove_keys:
           type: array
@@ -183578,15 +184930,14 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: 'Branch the user has selected for this cloud task. Write-only
-            and not persisted on the task itself: used only to reuse a matching pre-warmed
-            sandbox Run on creation (the branch is otherwise carried on the run).
-            Omit to match a warm Run on the default branch.'
+          description: Base branch for the first run when start_run is true, or for
+            matching a pre-warmed run. Omit to use the repository's default branch.
+            Write-only and not persisted on the task.
           maxLength: 255
         runtime_adapter:
           writeOnly: true
           description: |-
-            Selected runtime adapter ('claude' or 'codex'). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run's runtime skips reuse so the task isn't silently run on the wrong runtime.
+            Runtime adapter ('claude' or 'codex') for the first run when start_run is true, or for matching a pre-warmed run. A different adapter prevents warm reuse. Write-only and not persisted on the task.
 
             * `claude` - claude
             * `codex` - codex
@@ -183598,12 +184949,12 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: Selected LLM model identifier. Write-only; used only to reuse
-            a warm Run started on the same model.
+          description: LLM model for the first run when start_run is true, or for
+            matching a pre-warmed run. Write-only.
         reasoning_effort:
           writeOnly: true
           description: |-
-            Selected reasoning effort. Write-only; used only to reuse a warm Run started on the same effort.
+            Reasoning effort for the first run when start_run is true, or for matching a pre-warmed run. Write-only.
 
             * `low` - low
             * `medium` - medium
@@ -183617,7 +184968,7 @@ components:
         initial_permission_mode:
           writeOnly: true
           description: |-
-            Selected agent permission mode. Write-only; used only to reuse a warm Run booted on the same mode. Omit to reuse a warm Run whatever mode it booted on.
+            Agent permission mode for the first run when start_run is true, or for matching a pre-warmed run. Omit to match any warm permission mode. Write-only.
 
             * `default` - default
             * `acceptEdits` - acceptEdits
@@ -183634,11 +184985,9 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: 'First user message to forward when creation reuses a pre-warmed
-            Run. Write-only and not persisted on the task: lets clients deliver a
-            message that differs from `description` (e.g. a resolved skill invocation
-            with channel context folded in). Ignored when no warm Run is reused —
-            cold creation takes the first message via the run start endpoint instead.'
+          description: First user message when start_run is true or creation reuses
+            a pre-warmed run. This message can differ from description. Ignored if
+            creation does not start a run. Write-only and not persisted on the task.
         pending_user_artifact_ids:
           type: array
           items:
@@ -183649,18 +184998,17 @@ components:
             attach to the forwarded first message when creation reuses that warm Run,
             e.g. skill bundles or file attachments. If any id is missing from the
             warm Run's manifest, warm reuse is skipped and the task is created cold.
-            Ignored when no warm Run is matched.
+            Ignored when no warm Run is matched. Not supported when start_run is true.
         auto_publish:
           type:
           - boolean
           - 'null'
           writeOnly: true
-          description: 'When true, the cloud run agent pushes its work and opens a
-            draft pull request on completion without waiting for an explicit ask.
-            Write-only and not persisted on the task: persisted into the reused warm
-            Run''s state when creation activates one, so resumes of that Run honor
-            it. Ignored when no warm Run is reused — cold creation takes it via the
-            run start endpoint instead.'
+          description: When true, the agent pushes its work and opens a draft pull
+            request on completion without an explicit request. Applies when start_run
+            is true or creation reuses a pre-warmed run. Resumed runs keep this setting.
+            Ignored if creation does not start a run. Write-only and not persisted
+            on the task.
         channel:
           type:
           - string
@@ -187096,6 +188444,20 @@ components:
       description: |-
         * `user` - user
         * `bot` - bot
+    PrStateEnum:
+      enum:
+      - open
+      - draft
+      - merged
+      - closed
+      - unknown
+      type: string
+      description: |-
+        * `open` - open
+        * `draft` - draft
+        * `merged` - merged
+        * `closed` - closed
+        * `unknown` - unknown
     PrecomputationMode:
       enum:
       - precomputed
@@ -188659,6 +190021,14 @@ components:
           - string
           - 'null'
           readOnly: true
+        heatmaps_screenshot_secret:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Value this project's heatmap screenshots send as a cookie scoped
+            to your domain, so bot protection can allow them. Only project admins
+            can read it; null for everyone else and when none has been generated.
         receive_org_level_activity_logs:
           type:
           - boolean
@@ -188777,6 +190147,7 @@ components:
       - effective_membership_level
       - group_types
       - has_group_types
+      - heatmaps_screenshot_secret
       - id
       - ingested_event
       - is_pending_deletion
@@ -190231,6 +191602,27 @@ components:
       - name
       - status
       - url
+    PullRequestChecksPermissionError:
+      type: object
+      description: Response when the GitHub App cannot read pull request checks.
+      properties:
+        code:
+          type: string
+          readOnly: true
+          description: Stable code for a missing GitHub Checks permission.
+        error:
+          type: string
+          readOnly: true
+          description: What the GitHub App permission prevents.
+        remediation_url:
+          type: string
+          readOnly: true
+          description: Project integrations settings where a project admin can reconnect
+            GitHub.
+      required:
+      - code
+      - error
+      - remediation_url
     PullRequestChecksResponse:
       type: object
       description: Response for the PR checks endpoint — the CI status of a report's
@@ -195861,6 +197253,16 @@ components:
             $ref: '#/components/schemas/MarketingAnalyticsRetentionRow'
           title: Results
           type: array
+        summary:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MarketingAnalyticsRetentionSummaryRow'
+            type: array
+          - type: 'null'
+          default: null
+          description: Only populated in summary mode. Rates use the corresponding
+            eligible population.
+          title: Summary
         timings:
           anyOf:
           - items:
@@ -202323,6 +203725,140 @@ components:
       - results
       title: QueryResponseAlternative99
       type: object
+    QueryScanAnalysis:
+      additionalProperties: false
+      properties:
+        assistant_prompt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The message the Fix with AI button sends to the assistant.
+            Absent when no finding can be fixed in the query.
+          title: Assistant Prompt
+        findings:
+          description: Empty when the analysis found nothing to fix.
+          items:
+            $ref: '#/components/schemas/QueryScanWarning'
+          title: Findings
+          type: array
+        project_share:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: How much of all the project's events the query read, 0 to 1.
+          title: Project Share
+        range_share:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: How much of the project's events in the query's date range
+            the query read, 0 to 1.
+          title: Range Share
+      required:
+      - findings
+      title: QueryScanAnalysis
+      type: object
+    QueryScanFindingKind:
+      enum:
+      - no_event_filter
+      - no_start_date
+      - persons_join
+      title: QueryScanFindingKind
+      type: string
+    QueryScanFindingReason:
+      enum:
+      - in_or
+      - wrapped
+      - negated
+      - dynamic
+      - not_pruned
+      - filters
+      title: QueryScanFindingReason
+      type: string
+    QueryScanResponse:
+      additionalProperties: false
+      properties:
+        analysis:
+          anyOf:
+          - $ref: '#/components/schemas/QueryScanAnalysis'
+          - type: 'null'
+          default: null
+      title: QueryScanResponse
+      type: object
+    QueryScanSummary:
+      additionalProperties: false
+      properties:
+        analysis:
+          anyOf:
+          - $ref: '#/components/schemas/QueryScanAnalysis'
+          - type: 'null'
+          default: null
+          description: The stored analysis, put on the response when it is served.
+            Absent while the analysis runs, and when none was requested.
+        analysis_requested:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: True when the run asked for an analysis, or found one stored.
+            While `analysis` is absent, poll `GET /query/scan/{cache_key}` for it.
+          title: Analysis Requested
+        duration_ms:
+          description: ClickHouse time for the last fresh run, summed over its ClickHouse
+            queries.
+          title: Duration Ms
+          type: integer
+        killed:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: True when ClickHouse stopped the run instead of finishing it.
+          title: Killed
+        rows_read:
+          description: Rows ClickHouse read for the last fresh run, all tables included.
+          title: Rows Read
+          type: integer
+      required:
+      - duration_ms
+      - rows_read
+      title: QueryScanSummary
+      type: object
+    QueryScanWarning:
+      additionalProperties: false
+      properties:
+        evidence:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The one fact the finding rests on.
+          title: Evidence
+        fix:
+          description: What "Fix with AI" and the assistant are told to do.
+          title: Fix
+          type: string
+        kind:
+          $ref: '#/components/schemas/QueryScanFindingKind'
+        message:
+          description: 'Shown to the person: what happened and what to do.'
+          title: Message
+          type: string
+        reason:
+          anyOf:
+          - $ref: '#/components/schemas/QueryScanFindingReason'
+          - type: 'null'
+          default: null
+          description: Only with `no_event_filter` and `no_start_date`.
+      required:
+      - fix
+      - kind
+      - message
+      title: QueryScanWarning
+      type: object
     QueryStatus:
       additionalProperties: false
       properties:
@@ -202338,6 +203874,14 @@ components:
           - type: 'null'
           default: null
           title: Bytes Read
+        cache_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Cache key of the run that failed, so clients can ask for its
+            query scan.
+          title: Cache Key
         complete:
           anyOf:
           - type: boolean
@@ -202424,6 +203968,11 @@ components:
         query_progress:
           anyOf:
           - $ref: '#/components/schemas/ClickhouseQueryProgress'
+          - type: 'null'
+          default: null
+        query_scan:
+          anyOf:
+          - $ref: '#/components/schemas/QueryScanSummary'
           - type: 'null'
           default: null
         results:
@@ -204426,6 +205975,13 @@ components:
           maxLength: 64
       required:
       - name
+    ReleaseStatus:
+      enum:
+      - alpha
+      - beta
+      - ga
+      title: ReleaseStatus
+      type: string
     RememberRequest:
       type: object
       description: Request body for `remember`.
@@ -206406,6 +207962,34 @@ components:
       description: |-
         * `resolving` - resolving
         * `stopped` - stopped
+    ResolveTemplateRequest:
+      type: object
+      properties:
+        template_key:
+          allOf:
+          - $ref: '#/components/schemas/TemplateKeyEnum'
+          description: |-
+            Template to resolve. Use autoresearch-templates-list to see all available templates with descriptions. Required.
+
+            * `likely_active_soon` - Likely Active Soon
+            * `at_risk_of_inactivity` - At Risk Of Inactivity
+            * `return_after_first_use` - Return After First Use
+            * `feature_adoption` - Feature Adoption
+            * `repeat_key_behavior` - Repeat Key Behavior
+        target_event:
+          type: string
+          description: Event name to use as the prediction target. Required for 'feature_adoption'
+            and 'repeat_key_behavior'. Optional override for activity-based templates
+            ('likely_active_soon', 'at_risk_of_inactivity', 'return_after_first_use');
+            omit to use the auto-resolved event. To predict an action, create the
+            pipeline with target_definition after resolving.
+        horizon_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          description: Override the template's default prediction horizon in days.
+      required:
+      - template_key
     ResolvedAccess:
       type: object
       description: A resolved access level with the rule that supplied it — the wire
@@ -206499,6 +208083,92 @@ components:
       - date_to
       title: ResolvedDateRangeResponse
       type: object
+    ResolvedTemplate:
+      type: object
+      properties:
+        template_key:
+          allOf:
+          - $ref: '#/components/schemas/TemplateKeyEnum'
+          description: |-
+            The template key that was resolved. Pass it back to re-resolve with a different target_event.
+
+            * `likely_active_soon` - Likely Active Soon
+            * `at_risk_of_inactivity` - At Risk Of Inactivity
+            * `return_after_first_use` - Return After First Use
+            * `feature_adoption` - Feature Adoption
+            * `repeat_key_behavior` - Repeat Key Behavior
+        display_name:
+          type: string
+          description: Human-readable template name.
+        description:
+          type: string
+          description: What this template predicts.
+        suggested_name:
+          type: string
+          description: Suggested pipeline name. Pass as 'name' to autoresearch-create.
+        target_event:
+          type: string
+          description: Resolved target event. Pass as 'target_event' to autoresearch-create.
+            For activity-based templates this is the auto-resolved activity event
+            (or your override).
+        resolved_activity_event:
+          type:
+          - string
+          - 'null'
+          description: Activity event found in your event schema, populated only for
+            templates that auto-resolve the target ('likely_active_soon', 'at_risk_of_inactivity',
+            'return_after_first_use'). Null for templates where you supply target_event
+            directly.
+        activity_event_alternatives:
+          type: array
+          items:
+            type: string
+          description: Other viable activity events found in your schema. If the resolved
+            event is not the right signal, re-resolve with one of these as target_event.
+        horizon_days:
+          type: integer
+          description: Resolved prediction horizon in days.
+        training_lookback_days:
+          type: integer
+          description: Training lookback in days, sized so the horizon leaves room
+            for training examples. Pass as 'training_lookback_days' to autoresearch-create.
+        training_population:
+          type: object
+          description: Resolved training population filter. Pass as 'training_population'
+            to autoresearch-create.
+          example:
+            kind: performed_event_within_days
+            event: $pageview
+            days: 30
+        inference_population:
+          type: object
+          description: Resolved inference (daily scoring) population filter. Pass
+            as 'inference_population' to autoresearch-create.
+          example:
+            kind: performed_event_within_days
+            event: $pageview
+            days: 30
+        output_person_property:
+          type: string
+          description: Suggested person property name for prediction scores. Pass
+            as 'output_person_property' to autoresearch-create.
+        notes:
+          type: string
+          description: Usage notes and guidance for interpreting this resolved config.
+      required:
+      - activity_event_alternatives
+      - description
+      - display_name
+      - horizon_days
+      - inference_population
+      - notes
+      - output_person_property
+      - resolved_activity_event
+      - suggested_name
+      - target_event
+      - template_key
+      - training_lookback_days
+      - training_population
     ResolvedToolPolicy:
       type: object
       description: One tool with its effective policy for the requested scope.
@@ -209516,6 +211186,13 @@ components:
           description: The selected interval to display across all cohorts (null =
             show all intervals for each cohort)
           title: Selectedinterval
+        showMeanLine:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Draw the mean across cohorts as one line on the retention graph.
+          title: Showmeanline
         showTrendLines:
           anyOf:
           - type: boolean
@@ -211957,10 +213634,12 @@ components:
       enum:
       - manual
       - signal_report
+      - agent
       type: string
       description: |-
         * `manual` - manual
         * `signal_report` - signal_report
+        * `agent` - agent
     RunStatusEnum:
       enum:
       - not_started
@@ -213507,10 +215186,23 @@ components:
         Inherits the Signals scout definition so a scout created here clears the same name and prompt-size
         bars as one created through the generic endpoint.
       properties:
+        display_name:
+          type: string
+          description: Name shown wherever people identify this scout, written however
+            you want it — spaces, capitalization, and acronyms are kept as typed,
+            and two scouts may share one. It does not change the scout's skill name,
+            which stays its identity, so renaming a scout keeps its schedule, run
+            history, notes, memory, and links. At most 200 characters; blank means
+            the scout has no name of its own and is labelled from its skill name instead.
+          maxLength: 200
         name:
           type: string
-          description: Unique scout name, containing only lowercase letters, numbers,
-            and hyphens. The `signals-scout-` prefix is optional.
+          description: Optional skill name for the scout — its permanent identifier,
+            containing only lowercase letters, numbers, and hyphens. Omit it and one
+            is generated from `display_name` (`My APM scout` becomes `my-apm-scout`),
+            with a numeric suffix when that name is taken. Pass it to pick the identifier
+            yourself, or to keep a client written before display names working unchanged.
+            The `signals-scout-` prefix is optional.
           maxLength: 64
         description:
           type: string
@@ -213530,7 +215222,6 @@ components:
       required:
       - body
       - description
-      - name
     ScannerScoutCreateResponse:
       type: object
       description: The scout that now watches this scanner.
@@ -215326,6 +217017,12 @@ components:
       - value
       title: Series
       type: object
+    SeriesColorMode:
+      enum:
+      - palette
+      - opacity
+      title: SeriesColorMode
+      type: string
     ServiceAccountAccessUpdate:
       type: object
       properties:
@@ -217294,9 +218991,9 @@ components:
           type: boolean
           default: false
           description: When true, open a draft pull request that removes the experiment's
-            feature-flag code from the linked repository. Requires the requesting
-            user to have access to PostHog Desktop (403 otherwise). Only acts for
-            allowlisted teams; ignored otherwise.
+            feature-flag code from the linked repository. A personal API key needs
+            the task:write scope (403 otherwise). Skipped when the conclusion is empty,
+            or when no connected repository can be resolved.
         repository:
           type:
           - string
@@ -219625,6 +221322,15 @@ components:
             Evaluated in the project timezone. Takes precedence over `run_interval_minutes`;
             occurrences must be at least 30 minutes apart.
           maxLength: 100
+        display_name:
+          type: string
+          description: Name shown wherever people identify this scout, written however
+            you want it — spaces, capitalization, and acronyms are kept as typed,
+            and two scouts may share one. It does not change the scout's skill name,
+            which stays its identity, so renaming a scout keeps its schedule, run
+            history, notes, memory, and links. At most 200 characters; blank means
+            the scout has no name of its own and is labelled from its skill name instead.
+          maxLength: 200
         skill_name:
           type: string
           description: The skill to register a config for. Any valid skill name works
@@ -219796,10 +221502,23 @@ components:
       type: object
       description: Create a runnable custom scout and its config in one atomic request.
       properties:
+        display_name:
+          type: string
+          description: Name shown wherever people identify this scout, written however
+            you want it — spaces, capitalization, and acronyms are kept as typed,
+            and two scouts may share one. It does not change the scout's skill name,
+            which stays its identity, so renaming a scout keeps its schedule, run
+            history, notes, memory, and links. At most 200 characters; blank means
+            the scout has no name of its own and is labelled from its skill name instead.
+          maxLength: 200
         name:
           type: string
-          description: Unique scout name, containing only lowercase letters, numbers,
-            and hyphens. The `signals-scout-` prefix is optional.
+          description: Optional skill name for the scout — its permanent identifier,
+            containing only lowercase letters, numbers, and hyphens. Omit it and one
+            is generated from `display_name` (`My APM scout` becomes `my-apm-scout`),
+            with a numeric suffix when that name is taken. Pass it to pick the identifier
+            yourself, or to keep a client written before display names working unchanged.
+            The `signals-scout-` prefix is optional.
           maxLength: 64
         description:
           type: string
@@ -219830,7 +221549,6 @@ components:
       required:
       - body
       - description
-      - name
     SignalScoutCreateResponse:
       type: object
       properties:
@@ -221188,6 +222906,36 @@ components:
       - status
       title: SimilarIssue
       type: object
+    SimpleExternalDataSchema:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 400
+        label:
+          type:
+          - string
+          - 'null'
+          maxLength: 400
+        should_sync:
+          type: boolean
+        last_synced_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        sync_type:
+          oneOf:
+          - $ref: '#/components/schemas/ExternalDataSchemaSyncTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+      required:
+      - id
+      - name
     SimpleExternalDataSourceSerializers:
       type: object
       properties:
@@ -221917,6 +223665,247 @@ components:
       - rule
       - creationDate
       title: SonarqubeScannerFindingSignalExtra
+      type: object
+    SourceConfigMapResponse:
+      additionalProperties:
+        $ref: '#/components/schemas/SourceConfigResponse'
+      description: Map of source type identifier to its config, as both catalog endpoints
+        return it.
+      title: SourceConfigMapResponse
+      type: object
+    SourceConfigResponse:
+      additionalProperties: false
+      description: A `SourceConfig` plus the runtime metadata the two catalog endpoints
+        add per source.
+      properties:
+        caption:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Caption
+        category:
+          anyOf:
+          - $ref: '#/components/schemas/DataWarehouseSourceCategory'
+          - type: 'null'
+          default: null
+          description: Catalog bucket this source is grouped under in the new-source
+            wizard. Optional at the type level so partial/in-progress sources don't
+            break, but every registered source must set one (enforced by a test).
+        disabledReason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Disabledreason
+        docsUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Docsurl
+        existingSource:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Existingsource
+        featureFlag:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Featureflag
+        featured:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: false
+          description: Whether this source should be prominently displayed in onboarding
+            flows
+          title: Featured
+        fields:
+          items:
+            discriminator:
+              mapping:
+                email: '#/components/schemas/SourceFieldInputConfig'
+                file-upload: '#/components/schemas/SourceFieldFileUploadConfig'
+                number: '#/components/schemas/SourceFieldInputConfig'
+                oauth: '#/components/schemas/SourceFieldOauthConfig'
+                oauth-account-select: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+                password: '#/components/schemas/SourceFieldInputConfig'
+                search: '#/components/schemas/SourceFieldInputConfig'
+                select: '#/components/schemas/SourceFieldSelectConfig'
+                ssh-tunnel: '#/components/schemas/SourceFieldSSHTunnelConfig'
+                switch-group: '#/components/schemas/SourceFieldSwitchGroupConfig'
+                text: '#/components/schemas/SourceFieldInputConfig'
+                textarea: '#/components/schemas/SourceFieldInputConfig'
+                time: '#/components/schemas/SourceFieldInputConfig'
+                url: '#/components/schemas/SourceFieldInputConfig'
+              propertyName: type
+            oneOf:
+            - $ref: '#/components/schemas/SourceFieldInputConfig'
+            - $ref: '#/components/schemas/SourceFieldSwitchGroupConfig'
+            - $ref: '#/components/schemas/SourceFieldSelectConfig'
+            - $ref: '#/components/schemas/SourceFieldOauthConfig'
+            - $ref: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+            - $ref: '#/components/schemas/SourceFieldFileUploadConfig'
+            - $ref: '#/components/schemas/SourceFieldSSHTunnelConfig'
+          title: Fields
+          type: array
+        iconClassName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Iconclassname
+        iconPath:
+          title: Iconpath
+          type: string
+        keywords:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          description: Extra search terms (alternate spellings, acronyms) for the
+            catalog search, e.g. GoogleAnalytics → ["ga4", "ga"]. Matched alongside
+            name/label/category.
+          title: Keywords
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Label
+        name:
+          $ref: '#/components/schemas/ExternalDataSourceTypeEnum'
+        permissionsCaption:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Permissionscaption
+        releaseStatus:
+          anyOf:
+          - $ref: '#/components/schemas/ReleaseStatus'
+          - type: 'null'
+          default: null
+        suggestedTables:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SuggestedTable'
+            type: array
+          - type: 'null'
+          default: []
+          description: Tables to suggest enabling, with optional tooltip explaining
+            why
+          title: Suggestedtables
+        supportsColumnSelection:
+          description: Whether the source-creation wizard should expose the per-column
+            projection picker. Mirrors `SQLSource.supports_column_selection` so the
+            wizard doesn't show a picker for drivers that ignore `enabled_columns`
+            at sync time.
+          title: Supportscolumnselection
+          type: boolean
+        unreleasedSource:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Unreleasedsource
+        webhookFields:
+          anyOf:
+          - items:
+              discriminator:
+                mapping:
+                  email: '#/components/schemas/SourceFieldInputConfig'
+                  file-upload: '#/components/schemas/SourceFieldFileUploadConfig'
+                  number: '#/components/schemas/SourceFieldInputConfig'
+                  oauth: '#/components/schemas/SourceFieldOauthConfig'
+                  oauth-account-select: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+                  password: '#/components/schemas/SourceFieldInputConfig'
+                  search: '#/components/schemas/SourceFieldInputConfig'
+                  select: '#/components/schemas/SourceFieldSelectConfig'
+                  ssh-tunnel: '#/components/schemas/SourceFieldSSHTunnelConfig'
+                  switch-group: '#/components/schemas/SourceFieldSwitchGroupConfig'
+                  text: '#/components/schemas/SourceFieldInputConfig'
+                  textarea: '#/components/schemas/SourceFieldInputConfig'
+                  time: '#/components/schemas/SourceFieldInputConfig'
+                  url: '#/components/schemas/SourceFieldInputConfig'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/SourceFieldInputConfig'
+              - $ref: '#/components/schemas/SourceFieldSwitchGroupConfig'
+              - $ref: '#/components/schemas/SourceFieldSelectConfig'
+              - $ref: '#/components/schemas/SourceFieldOauthConfig'
+              - $ref: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+              - $ref: '#/components/schemas/SourceFieldFileUploadConfig'
+              - $ref: '#/components/schemas/SourceFieldSSHTunnelConfig'
+            type: array
+          - type: 'null'
+          default: null
+          title: Webhookfields
+        webhookManualOnly:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: If true, the source does not support automatic webhook registration
+            via API (e.g. Slack, where the user must paste the URL into the source's
+            app settings). Adjusts the setup UI copy to avoid promising automatic
+            registration.
+          title: Webhookmanualonly
+        webhookSetupCaption:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Webhooksetupcaption
+        versions:
+          description: Vendor API version labels this source supports.
+          items:
+            type: string
+          title: Versions
+          type: array
+        defaultVersion:
+          description: Version used when a source instance pins none.
+          title: Defaultversion
+          type: string
+        apiDocsUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Vendor API docs or changelog URL, or null when the vendor publishes
+            none.
+          title: Apidocsurl
+        deprecatedVersions:
+          items:
+            $ref: '#/components/schemas/SourceVersionDeprecation'
+          title: Deprecatedversions
+          type: array
+        tables:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SourceDocumentedTable'
+            type: array
+          - type: 'null'
+          default: null
+          description: Credential-free documented table catalog, empty for SQL and
+            file sources with user-defined schemas. The public endpoint sets it; the
+            wizard omits it to keep its payload small.
+          title: Tables
+      required:
+      - fields
+      - iconPath
+      - name
+      - supportsColumnSelection
+      - versions
+      - defaultVersion
+      - deprecatedVersions
+      title: SourceConfigResponse
       type: object
     SourceConnectLink:
       type: object
@@ -223317,6 +225306,8 @@ components:
             * `Smartlead` - Smartlead
             * `Substack` - Substack
             * `ElectricityMaps` - ElectricityMaps
+            * `Amplemarket` - Amplemarket
+            * `Quo` - Quo
         payload:
           type: object
           additionalProperties: true
@@ -223338,6 +225329,432 @@ components:
           description: Destinations every table on this source syncs to.
       required:
       - destination_ids
+    SourceDocumentedTable:
+      additionalProperties: false
+      properties:
+        name:
+          title: Name
+          type: string
+        label:
+          title: Label
+          type: string
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Description
+        sync_methods:
+          items:
+            type: string
+          title: Sync Methods
+          type: array
+        incremental_fields:
+          items:
+            type: string
+          title: Incremental Fields
+          type: array
+        primary_keys:
+          items:
+            type: string
+          title: Primary Keys
+          type: array
+      required:
+      - name
+      - label
+      - sync_methods
+      - incremental_fields
+      - primary_keys
+      title: SourceDocumentedTable
+      type: object
+    SourceFieldFileUploadConfig:
+      additionalProperties: false
+      properties:
+        fileFormat:
+          $ref: '#/components/schemas/SourceFieldFileUploadJsonFormatConfig'
+        label:
+          title: Label
+          type: string
+        name:
+          title: Name
+          type: string
+        required:
+          title: Required
+          type: boolean
+        type:
+          const: file-upload
+          default: file-upload
+          title: Type
+          type: string
+      required:
+      - fileFormat
+      - label
+      - name
+      - required
+      - type
+      title: SourceFieldFileUploadConfig
+      type: object
+    SourceFieldFileUploadJsonFormatConfig:
+      additionalProperties: false
+      properties:
+        format:
+          const: .json
+          default: .json
+          title: Format
+          type: string
+        keys:
+          anyOf:
+          - const: '*'
+            type: string
+          - items:
+              type: string
+            type: array
+          title: Keys
+      required:
+      - keys
+      title: SourceFieldFileUploadJsonFormatConfig
+      type: object
+    SourceFieldInputConfig:
+      additionalProperties: false
+      properties:
+        caption:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Caption
+        label:
+          title: Label
+          type: string
+        name:
+          title: Name
+          type: string
+        placeholder:
+          title: Placeholder
+          type: string
+        required:
+          title: Required
+          type: boolean
+        secret:
+          description: 'Marks this field as containing sensitive data. The value is
+            stripped from API responses regardless of the rendering `type` (so a multi-line
+            PEM blob can use `textarea` and still be redacted). Required: source authors
+            must explicitly classify every field.'
+          title: Secret
+          type: boolean
+        type:
+          allOf:
+          - $ref: '#/components/schemas/SourceFieldInputConfigTypeEnum'
+          title: Type
+      required:
+      - label
+      - name
+      - placeholder
+      - required
+      - secret
+      - type
+      title: SourceFieldInputConfig
+      type: object
+    SourceFieldInputConfigTypeEnum:
+      enum:
+      - text
+      - email
+      - search
+      - url
+      - password
+      - time
+      - number
+      - textarea
+      type: string
+    SourceFieldOauthAccountSelectConfig:
+      additionalProperties: false
+      properties:
+        caption:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Caption
+        hidden:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Keep the field in the config tree (so its value parses and
+            survives job_inputs redaction) without rendering it in the source form.
+            Used for legacy fields that a newer field supersedes.
+          title: Hidden
+        integrationField:
+          description: Name of the OAuth integration id field this account selector
+            reads from.
+          title: Integrationfield
+          type: string
+        integrationKind:
+          description: Integration kind to validate and route the account fetch through.
+          title: Integrationkind
+          type: string
+        label:
+          title: Label
+          type: string
+        multiple:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Allow selecting multiple values; the field's payload value
+            becomes string[].
+          title: Multiple
+        name:
+          title: Name
+          type: string
+        placeholder:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Placeholder
+        required:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Required
+        type:
+          const: oauth-account-select
+          default: oauth-account-select
+          title: Type
+          type: string
+      required:
+      - integrationField
+      - integrationKind
+      - label
+      - name
+      - type
+      title: SourceFieldOauthAccountSelectConfig
+      type: object
+    SourceFieldOauthConfig:
+      additionalProperties: false
+      properties:
+        kind:
+          title: Kind
+          type: string
+        label:
+          title: Label
+          type: string
+        name:
+          title: Name
+          type: string
+        required:
+          title: Required
+          type: boolean
+        requiredScopes:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Requiredscopes
+        type:
+          const: oauth
+          default: oauth
+          title: Type
+          type: string
+      required:
+      - kind
+      - label
+      - name
+      - required
+      - type
+      title: SourceFieldOauthConfig
+      type: object
+    SourceFieldSSHTunnelConfig:
+      additionalProperties: false
+      properties:
+        label:
+          title: Label
+          type: string
+        name:
+          title: Name
+          type: string
+        type:
+          const: ssh-tunnel
+          default: ssh-tunnel
+          title: Type
+          type: string
+      required:
+      - label
+      - name
+      - type
+      title: SourceFieldSSHTunnelConfig
+      type: object
+    SourceFieldSelectConfig:
+      additionalProperties: false
+      properties:
+        caption:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Caption
+        converter:
+          anyOf:
+          - $ref: '#/components/schemas/SourceFieldSelectConfigConverter'
+          - type: 'null'
+          default: null
+        defaultValue:
+          title: Defaultvalue
+          type: string
+        label:
+          title: Label
+          type: string
+        multiple:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Allow selecting multiple values; the field's payload value
+            becomes string[].
+          title: Multiple
+        name:
+          title: Name
+          type: string
+        options:
+          items:
+            $ref: '#/components/schemas/SourceFieldSelectConfigOption'
+          title: Options
+          type: array
+        required:
+          title: Required
+          type: boolean
+        type:
+          const: select
+          default: select
+          title: Type
+          type: string
+      required:
+      - defaultValue
+      - label
+      - name
+      - options
+      - required
+      - type
+      title: SourceFieldSelectConfig
+      type: object
+    SourceFieldSelectConfigConverter:
+      enum:
+      - str_to_int
+      - str_to_bool
+      - str_to_optional_int
+      title: SourceFieldSelectConfigConverter
+      type: string
+    SourceFieldSelectConfigOption:
+      additionalProperties: false
+      properties:
+        fields:
+          anyOf:
+          - items:
+              discriminator:
+                mapping:
+                  email: '#/components/schemas/SourceFieldInputConfig'
+                  file-upload: '#/components/schemas/SourceFieldFileUploadConfig'
+                  number: '#/components/schemas/SourceFieldInputConfig'
+                  oauth: '#/components/schemas/SourceFieldOauthConfig'
+                  oauth-account-select: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+                  password: '#/components/schemas/SourceFieldInputConfig'
+                  search: '#/components/schemas/SourceFieldInputConfig'
+                  select: '#/components/schemas/SourceFieldSelectConfig'
+                  ssh-tunnel: '#/components/schemas/SourceFieldSSHTunnelConfig'
+                  switch-group: '#/components/schemas/SourceFieldSwitchGroupConfig'
+                  text: '#/components/schemas/SourceFieldInputConfig'
+                  textarea: '#/components/schemas/SourceFieldInputConfig'
+                  time: '#/components/schemas/SourceFieldInputConfig'
+                  url: '#/components/schemas/SourceFieldInputConfig'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/SourceFieldInputConfig'
+              - $ref: '#/components/schemas/SourceFieldSwitchGroupConfig'
+              - $ref: '#/components/schemas/SourceFieldSelectConfig'
+              - $ref: '#/components/schemas/SourceFieldOauthConfig'
+              - $ref: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+              - $ref: '#/components/schemas/SourceFieldFileUploadConfig'
+              - $ref: '#/components/schemas/SourceFieldSSHTunnelConfig'
+            type: array
+          - type: 'null'
+          default: null
+          title: Fields
+        label:
+          title: Label
+          type: string
+        value:
+          title: Value
+          type: string
+      required:
+      - label
+      - value
+      title: SourceFieldSelectConfigOption
+      type: object
+    SourceFieldSwitchGroupConfig:
+      additionalProperties: false
+      properties:
+        caption:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Caption
+        default:
+          anyOf:
+          - type: string
+          - type: number
+          - type: boolean
+          title: Default
+        fields:
+          items:
+            discriminator:
+              mapping:
+                email: '#/components/schemas/SourceFieldInputConfig'
+                file-upload: '#/components/schemas/SourceFieldFileUploadConfig'
+                number: '#/components/schemas/SourceFieldInputConfig'
+                oauth: '#/components/schemas/SourceFieldOauthConfig'
+                oauth-account-select: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+                password: '#/components/schemas/SourceFieldInputConfig'
+                search: '#/components/schemas/SourceFieldInputConfig'
+                select: '#/components/schemas/SourceFieldSelectConfig'
+                ssh-tunnel: '#/components/schemas/SourceFieldSSHTunnelConfig'
+                switch-group: '#/components/schemas/SourceFieldSwitchGroupConfig'
+                text: '#/components/schemas/SourceFieldInputConfig'
+                textarea: '#/components/schemas/SourceFieldInputConfig'
+                time: '#/components/schemas/SourceFieldInputConfig'
+                url: '#/components/schemas/SourceFieldInputConfig'
+              propertyName: type
+            oneOf:
+            - $ref: '#/components/schemas/SourceFieldInputConfig'
+            - $ref: '#/components/schemas/SourceFieldSwitchGroupConfig'
+            - $ref: '#/components/schemas/SourceFieldSelectConfig'
+            - $ref: '#/components/schemas/SourceFieldOauthConfig'
+            - $ref: '#/components/schemas/SourceFieldOauthAccountSelectConfig'
+            - $ref: '#/components/schemas/SourceFieldFileUploadConfig'
+            - $ref: '#/components/schemas/SourceFieldSSHTunnelConfig'
+          title: Fields
+          type: array
+        label:
+          title: Label
+          type: string
+        name:
+          title: Name
+          type: string
+        type:
+          const: switch-group
+          default: switch-group
+          title: Type
+          type: string
+      required:
+      - default
+      - fields
+      - label
+      - name
+      - type
+      title: SourceFieldSwitchGroupConfig
+      type: object
     SourceMap:
       additionalProperties: false
       properties:
@@ -224823,6 +227240,8 @@ components:
             * `Smartlead` - Smartlead
             * `Substack` - Substack
             * `ElectricityMaps` - ElectricityMaps
+            * `Amplemarket` - Amplemarket
+            * `Quo` - Quo
         payload:
           type: object
           additionalProperties: true
@@ -226239,6 +228658,8 @@ components:
             * `Smartlead` - Smartlead
             * `Substack` - Substack
             * `ElectricityMaps` - ElectricityMaps
+            * `Amplemarket` - Amplemarket
+            * `Quo` - Quo
         payload:
           type: object
           additionalProperties: true
@@ -226344,6 +228765,24 @@ components:
         * `text` - Text
         * `url` - URL
         * `file` - File
+    SourceVersionDeprecation:
+      additionalProperties: false
+      properties:
+        version:
+          title: Version
+          type: string
+        sunsetAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO date the vendor stops serving this version, or null when
+            no date is announced.
+          title: Sunsetat
+      required:
+      - version
+      title: SourceVersionDeprecation
+      type: object
     SpanPropertyFilter:
       additionalProperties: false
       properties:
@@ -228513,6 +230952,22 @@ components:
       - match_count
       - order
       - regex
+    SuggestedTable:
+      additionalProperties: false
+      properties:
+        table:
+          title: Table
+          type: string
+        tooltip:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Tooltip
+      required:
+      - table
+      title: SuggestedTable
+      type: object
     Suggestion:
       type: object
       properties:
@@ -230476,11 +232931,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/FrequencyModeEnum'
           description: |-
-            What governs this view's cadence. 'tiered' is the only mode where `options` is meaningful and `sync_frequency` is writable per view. 'managed_viewset' means PostHog owns the view, 'legacy' means the v1 backend, where any cadence is accepted and no bounds apply, and 'no_node' means the view has no data modeling node to store a cadence on.
+            What governs this view's cadence. 'tiered' is the only mode where `options` is meaningful and `sync_frequency` is writable per view. 'managed_viewset' means PostHog owns the view, and 'no_node' means the view has no data modeling node to store a cadence on.
 
             * `tiered` - tiered
             * `managed_viewset` - managed_viewset
-            * `legacy` - legacy
             * `no_node` - no_node
         options:
           type: array
@@ -231423,6 +233877,14 @@ components:
       - task_number
       - title
       - title_manually_set
+    TaskBootstrapRunSourceEnum:
+      enum:
+      - manual
+      - signal_report
+      type: string
+      description: |-
+        * `manual` - manual
+        * `signal_report` - signal_report
     TaskChannelWriteTypeEnum:
       enum:
       - public
@@ -231729,15 +234191,14 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: 'Branch the user has selected for this cloud task. Write-only
-            and not persisted on the task itself: used only to reuse a matching pre-warmed
-            sandbox Run on creation (the branch is otherwise carried on the run).
-            Omit to match a warm Run on the default branch.'
+          description: Base branch for the first run when start_run is true, or for
+            matching a pre-warmed run. Omit to use the repository's default branch.
+            Write-only and not persisted on the task.
           maxLength: 255
         runtime_adapter:
           writeOnly: true
           description: |-
-            Selected runtime adapter ('claude' or 'codex'). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run's runtime skips reuse so the task isn't silently run on the wrong runtime.
+            Runtime adapter ('claude' or 'codex') for the first run when start_run is true, or for matching a pre-warmed run. A different adapter prevents warm reuse. Write-only and not persisted on the task.
 
             * `claude` - claude
             * `codex` - codex
@@ -231749,12 +234210,12 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: Selected LLM model identifier. Write-only; used only to reuse
-            a warm Run started on the same model.
+          description: LLM model for the first run when start_run is true, or for
+            matching a pre-warmed run. Write-only.
         reasoning_effort:
           writeOnly: true
           description: |-
-            Selected reasoning effort. Write-only; used only to reuse a warm Run started on the same effort.
+            Reasoning effort for the first run when start_run is true, or for matching a pre-warmed run. Write-only.
 
             * `low` - low
             * `medium` - medium
@@ -231768,7 +234229,7 @@ components:
         initial_permission_mode:
           writeOnly: true
           description: |-
-            Selected agent permission mode. Write-only; used only to reuse a warm Run booted on the same mode. Omit to reuse a warm Run whatever mode it booted on.
+            Agent permission mode for the first run when start_run is true, or for matching a pre-warmed run. Omit to match any warm permission mode. Write-only.
 
             * `default` - default
             * `acceptEdits` - acceptEdits
@@ -231785,11 +234246,9 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: 'First user message to forward when creation reuses a pre-warmed
-            Run. Write-only and not persisted on the task: lets clients deliver a
-            message that differs from `description` (e.g. a resolved skill invocation
-            with channel context folded in). Ignored when no warm Run is reused —
-            cold creation takes the first message via the run start endpoint instead.'
+          description: First user message when start_run is true or creation reuses
+            a pre-warmed run. This message can differ from description. Ignored if
+            creation does not start a run. Write-only and not persisted on the task.
         pending_user_artifact_ids:
           type: array
           items:
@@ -231800,18 +234259,17 @@ components:
             attach to the forwarded first message when creation reuses that warm Run,
             e.g. skill bundles or file attachments. If any id is missing from the
             warm Run's manifest, warm reuse is skipped and the task is created cold.
-            Ignored when no warm Run is matched.
+            Ignored when no warm Run is matched. Not supported when start_run is true.
         auto_publish:
           type:
           - boolean
           - 'null'
           writeOnly: true
-          description: 'When true, the cloud run agent pushes its work and opens a
-            draft pull request on completion without waiting for an explicit ask.
-            Write-only and not persisted on the task: persisted into the reused warm
-            Run''s state when creation activates one, so resumes of that Run honor
-            it. Ignored when no warm Run is reused — cold creation takes it via the
-            run start endpoint instead.'
+          description: When true, the agent pushes its work and opens a draft pull
+            request on completion without an explicit request. Applies when start_run
+            is true or creation reuses a pre-warmed run. Resumed runs keep this setting.
+            Ignored if creation does not start a run. Write-only and not persisted
+            on the task.
         channel:
           type:
           - string
@@ -231819,6 +234277,11 @@ components:
           format: uuid
           description: Channel this task is owned by (the channel it was kicked off
             in).
+        start_run:
+          type: boolean
+          writeOnly: true
+          default: false
+          description: Start the task's first cloud run immediately after creation.
         signal_report_discussion_question:
           type: string
           writeOnly: true
@@ -231840,16 +234303,16 @@ components:
           - 'null'
           format: uuid
           writeOnly: true
-          description: Sandbox environment selected for matching a pre-warmed cloud
-            run. Not persisted on the task.
+          description: Sandbox environment for the first run when start_run is true,
+            or for matching a pre-warmed run. Not persisted on the task.
         custom_image_id:
           type:
           - string
           - 'null'
           format: uuid
           writeOnly: true
-          description: Custom image selected for matching a pre-warmed cloud run.
-            Not persisted on the task.
+          description: Custom image for the first run when start_run is true, or for
+            matching a pre-warmed run. Not persisted on the task.
         runtime:
           allOf:
           - $ref: '#/components/schemas/TaskRuntimeEnum'
@@ -231858,6 +234321,145 @@ components:
 
             * `acp` - ACP
             * `pi` - Pi
+    TaskCreateResponseDTO:
+      type: object
+      description: |-
+        Detail response for a task.
+
+        Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` /
+        ``github_user_integration`` are integration ids, ``signal_report`` is the report id, and
+        ``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``.
+      properties:
+        id:
+          type: string
+          format: uuid
+        task_number:
+          type:
+          - integer
+          - 'null'
+        slug:
+          type: string
+        title:
+          type: string
+        title_manually_set:
+          type: boolean
+        description:
+          type: string
+        origin_product:
+          type: string
+        runtime:
+          allOf:
+          - $ref: '#/components/schemas/TaskRuntimeEnum'
+          description: |-
+            Agent protocol and harness used for this task's runs.
+
+            * `acp` - ACP
+            * `pi` - Pi
+        repository:
+          type:
+          - string
+          - 'null'
+        repositories:
+          type: array
+          items:
+            type: string
+        github_integration:
+          type:
+          - integer
+          - 'null'
+        github_user_integration:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        signal_report:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        json_schema:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        internal:
+          type: boolean
+        archived:
+          type: boolean
+        archived_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        latest_run:
+          oneOf:
+          - $ref: '#/components/schemas/TaskRunDetailDTO'
+          - type: 'null'
+          description: Latest run details for this task
+        created_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        last_activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/TaskUserBasicInfo'
+          - type: 'null'
+        ci_prompt:
+          type:
+          - string
+          - 'null'
+        channel:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        slack_thread_references:
+          type: array
+          items:
+            $ref: '#/components/schemas/SlackThreadReferenceDTO'
+          readOnly: true
+        origin_key:
+          type:
+          - string
+          - 'null'
+          description: Stable key of the server-side flow that created this task,
+            e.g. `desktop_onboarding_session:<user_id>`. Null for tasks people create
+            themselves.
+        run_error:
+          type: string
+          description: Error returned when the task was created but its first run
+            could not start.
+      required:
+      - archived
+      - archived_at
+      - ci_prompt
+      - description
+      - github_integration
+      - github_user_integration
+      - id
+      - internal
+      - json_schema
+      - origin_product
+      - repositories
+      - repository
+      - runtime
+      - signal_report
+      - slack_thread_references
+      - slug
+      - task_number
+      - title
+      - title_manually_set
     TaskDetailDTO:
       type: object
       description: |-
@@ -232727,6 +235329,29 @@ components:
             Desktop) relays into the cloud sandbox over the durable event/command
             channel. Names only — the server configuration (command, env, URL, headers)
             never crosses the wire.
+        rtk_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether rtk command-output compression is enabled for this
+            run. Omitted or null follows the server-side default (enabled); false
+            opts this run out.
+        benjamin_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the Benjamin-Plus token-efficiency instruction applies
+            to this run. Omitted or null lets the server decide from the feature flag;
+            true or false pins the choice for this run.
+        claude_model_access:
+          description: |-
+            How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+
+            * `posthog-gateway` - posthog-gateway
+            * `own-subscription` - own-subscription
+          oneOf:
+          - $ref: '#/components/schemas/ClaudeModelAccessEnum'
+          - $ref: '#/components/schemas/NullEnum'
         environment:
           allOf:
           - $ref: '#/components/schemas/RunEnvironmentEnum'
@@ -232776,7 +235401,7 @@ components:
             draft pull request on completion without waiting for an explicit ask.
         run_source:
           allOf:
-          - $ref: '#/components/schemas/RunSourceEnum'
+          - $ref: '#/components/schemas/TaskBootstrapRunSourceEnum'
           description: |-
             High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.
 
@@ -232842,29 +235467,6 @@ components:
             * `auto` - auto
             * `read-only` - read-only
             * `full-access` - full-access
-        rtk_enabled:
-          type:
-          - boolean
-          - 'null'
-          description: Whether rtk command-output compression is enabled for this
-            run. Omitted or null follows the server-side default (enabled); false
-            opts this run out.
-        benjamin_enabled:
-          type:
-          - boolean
-          - 'null'
-          description: Whether the Benjamin-Plus token-efficiency instruction applies
-            to this run. Omitted or null lets the server decide from the feature flag;
-            true or false pins the choice for this run.
-        claude_model_access:
-          description: |-
-            How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
-
-            * `posthog-gateway` - posthog-gateway
-            * `own-subscription` - own-subscription
-          oneOf:
-          - $ref: '#/components/schemas/ClaudeModelAccessEnum'
-          - $ref: '#/components/schemas/NullEnum'
     TaskRunBootstrapCreateRequestInitialPermissionModeEnum:
       enum:
       - default
@@ -233793,6 +236395,144 @@ components:
           description: Relay workflow ID when accepted
       required:
       - status
+    TaskRunResponse:
+      type: object
+      description: |-
+        Detail response for a task.
+
+        Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` /
+        ``github_user_integration`` are integration ids, ``signal_report`` is the report id, and
+        ``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``.
+      properties:
+        id:
+          type: string
+          format: uuid
+        task_number:
+          type:
+          - integer
+          - 'null'
+        slug:
+          type: string
+        title:
+          type: string
+        title_manually_set:
+          type: boolean
+        description:
+          type: string
+        origin_product:
+          type: string
+        runtime:
+          allOf:
+          - $ref: '#/components/schemas/TaskRuntimeEnum'
+          description: |-
+            Agent protocol and harness used for this task's runs.
+
+            * `acp` - ACP
+            * `pi` - Pi
+        repository:
+          type:
+          - string
+          - 'null'
+        repositories:
+          type: array
+          items:
+            type: string
+        github_integration:
+          type:
+          - integer
+          - 'null'
+        github_user_integration:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        signal_report:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        json_schema:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        internal:
+          type: boolean
+        archived:
+          type: boolean
+        archived_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        latest_run:
+          oneOf:
+          - $ref: '#/components/schemas/TaskRunDetailDTO'
+          - type: 'null'
+          description: Latest run details for this task
+        created_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        last_activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/TaskUserBasicInfo'
+          - type: 'null'
+        ci_prompt:
+          type:
+          - string
+          - 'null'
+        channel:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        slack_thread_references:
+          type: array
+          items:
+            $ref: '#/components/schemas/SlackThreadReferenceDTO'
+          readOnly: true
+        origin_key:
+          type:
+          - string
+          - 'null'
+          description: Stable key of the server-side flow that created this task,
+            e.g. `desktop_onboarding_session:<user_id>`. Null for tasks people create
+            themselves.
+        run_error:
+          type: string
+          description: Error returned when the run could not start.
+      required:
+      - archived
+      - archived_at
+      - ci_prompt
+      - description
+      - github_integration
+      - github_user_integration
+      - id
+      - internal
+      - json_schema
+      - origin_product
+      - repositories
+      - repository
+      - runtime
+      - signal_report
+      - slack_thread_references
+      - slug
+      - task_number
+      - title
+      - title_manually_set
     TaskRunResumeRequestSchema:
       type: object
       properties:
@@ -233844,6 +236584,7 @@ components:
 
             * `manual` - manual
             * `signal_report` - signal_report
+            * `agent` - agent
         signal_report_id:
           type: string
           description: Optional signal report identifier when this run was started
@@ -233945,10 +236686,30 @@ components:
 
             * `interactive` - interactive
             * `background` - background
+        pr_url:
+          type:
+          - string
+          - 'null'
+          description: URL of the pull request the latest run opened, or null when
+            it opened none.
+        pr_state:
+          description: |-
+            State of that pull request: open, draft, merged, closed, or unknown. Null when the latest run opened no pull request.
+
+            * `open` - open
+            * `draft` - draft
+            * `merged` - merged
+            * `closed` - closed
+            * `unknown` - unknown
+          oneOf:
+          - $ref: '#/components/schemas/PrStateEnum'
+          - $ref: '#/components/schemas/NullEnum'
       required:
       - environment
       - id
       - mode
+      - pr_state
+      - pr_url
       - status
     TaskRuntimeEnum:
       enum:
@@ -234522,15 +237283,14 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: 'Branch the user has selected for this cloud task. Write-only
-            and not persisted on the task itself: used only to reuse a matching pre-warmed
-            sandbox Run on creation (the branch is otherwise carried on the run).
-            Omit to match a warm Run on the default branch.'
+          description: Base branch for the first run when start_run is true, or for
+            matching a pre-warmed run. Omit to use the repository's default branch.
+            Write-only and not persisted on the task.
           maxLength: 255
         runtime_adapter:
           writeOnly: true
           description: |-
-            Selected runtime adapter ('claude' or 'codex'). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run's runtime skips reuse so the task isn't silently run on the wrong runtime.
+            Runtime adapter ('claude' or 'codex') for the first run when start_run is true, or for matching a pre-warmed run. A different adapter prevents warm reuse. Write-only and not persisted on the task.
 
             * `claude` - claude
             * `codex` - codex
@@ -234542,12 +237302,12 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: Selected LLM model identifier. Write-only; used only to reuse
-            a warm Run started on the same model.
+          description: LLM model for the first run when start_run is true, or for
+            matching a pre-warmed run. Write-only.
         reasoning_effort:
           writeOnly: true
           description: |-
-            Selected reasoning effort. Write-only; used only to reuse a warm Run started on the same effort.
+            Reasoning effort for the first run when start_run is true, or for matching a pre-warmed run. Write-only.
 
             * `low` - low
             * `medium` - medium
@@ -234561,7 +237321,7 @@ components:
         initial_permission_mode:
           writeOnly: true
           description: |-
-            Selected agent permission mode. Write-only; used only to reuse a warm Run booted on the same mode. Omit to reuse a warm Run whatever mode it booted on.
+            Agent permission mode for the first run when start_run is true, or for matching a pre-warmed run. Omit to match any warm permission mode. Write-only.
 
             * `default` - default
             * `acceptEdits` - acceptEdits
@@ -234578,11 +237338,9 @@ components:
           - string
           - 'null'
           writeOnly: true
-          description: 'First user message to forward when creation reuses a pre-warmed
-            Run. Write-only and not persisted on the task: lets clients deliver a
-            message that differs from `description` (e.g. a resolved skill invocation
-            with channel context folded in). Ignored when no warm Run is reused —
-            cold creation takes the first message via the run start endpoint instead.'
+          description: First user message when start_run is true or creation reuses
+            a pre-warmed run. This message can differ from description. Ignored if
+            creation does not start a run. Write-only and not persisted on the task.
         pending_user_artifact_ids:
           type: array
           items:
@@ -234593,18 +237351,17 @@ components:
             attach to the forwarded first message when creation reuses that warm Run,
             e.g. skill bundles or file attachments. If any id is missing from the
             warm Run's manifest, warm reuse is skipped and the task is created cold.
-            Ignored when no warm Run is matched.
+            Ignored when no warm Run is matched. Not supported when start_run is true.
         auto_publish:
           type:
           - boolean
           - 'null'
           writeOnly: true
-          description: 'When true, the cloud run agent pushes its work and opens a
-            draft pull request on completion without waiting for an explicit ask.
-            Write-only and not persisted on the task: persisted into the reused warm
-            Run''s state when creation activates one, so resumes of that Run honor
-            it. Ignored when no warm Run is reused — cold creation takes it via the
-            run start endpoint instead.'
+          description: When true, the agent pushes its work and opens a draft pull
+            request on completion without an explicit request. Applies when start_run
+            is true or creation reuses a pre-warmed run. Resumed runs keep this setting.
+            Ignored if creation does not start a run. Write-only and not persisted
+            on the task.
         channel:
           type:
           - string
@@ -235597,6 +238354,65 @@ components:
           description: How many AI tasks all workflows in the project can create together
             in a rolling 24 hours. Null uses the default of 500; zero pauses task
             creation for the project. Support raises the limit above 2500.
+    TemplateInfo:
+      type: object
+      properties:
+        key:
+          allOf:
+          - $ref: '#/components/schemas/TemplateKeyEnum'
+          description: |-
+            Template identifier, e.g. 'likely_active_soon'. Pass to autoresearch-resolve-template-create.
+
+            * `likely_active_soon` - Likely Active Soon
+            * `at_risk_of_inactivity` - At Risk Of Inactivity
+            * `return_after_first_use` - Return After First Use
+            * `feature_adoption` - Feature Adoption
+            * `repeat_key_behavior` - Repeat Key Behavior
+        display_name:
+          type: string
+          description: Human-readable template name.
+        description:
+          type: string
+          description: What this template predicts and who it is for.
+        default_horizon_days:
+          type: integer
+          description: Default prediction horizon in days. Can be overridden when
+            resolving.
+        requires_user_event:
+          type: boolean
+          description: If true, you must supply a target_event when resolving — the
+            template does not auto-select one. Required for 'feature_adoption' and
+            'repeat_key_behavior'.
+        requires_activity_resolution:
+          type: boolean
+          description: If true, the target event is automatically resolved from your
+            event schema ($pageview, $screen, or the highest-volume non-noisy event).
+            You can override the resolved event when resolving the template.
+        notes:
+          type: string
+          description: Usage guidance and implementation notes.
+      required:
+      - default_horizon_days
+      - description
+      - display_name
+      - key
+      - notes
+      - requires_activity_resolution
+      - requires_user_event
+    TemplateKeyEnum:
+      enum:
+      - likely_active_soon
+      - at_risk_of_inactivity
+      - return_after_first_use
+      - feature_adoption
+      - repeat_key_behavior
+      type: string
+      description: |-
+        * `likely_active_soon` - Likely Active Soon
+        * `at_risk_of_inactivity` - At Risk Of Inactivity
+        * `return_after_first_use` - Return After First Use
+        * `feature_adoption` - Feature Adoption
+        * `repeat_key_behavior` - Repeat Key Behavior
     TemplatesEnum:
       enum:
       - cost
@@ -236702,8 +239518,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AiTriageResultEnum'
-          description: AI triage outcomes to include. 'in_progress' matches tickets
-            still being triaged.
+          description: 'AI triage outcomes to include. ''in_progress'' matches tickets
+            still being triaged. Valid values: persisted, suggested, escalated_with_findings,
+            escalated_with_best, escalated_no_reply, skipped_unactionable, blocked_unsafe,
+            blocked_unsafe_reply, in_progress.'
         assignee:
           type: array
           items:
@@ -240204,6 +243022,13 @@ components:
             — for example, when values are denominated in a fixed currency regardless
             of the project's base currency. Include any trailing space yourself.
           title: Aggregationaxisprefix
+        annotationsScope:
+          anyOf:
+          - $ref: '#/components/schemas/AnnotationScope'
+          - type: 'null'
+          default: null
+          description: Render only annotations with this scope. Unset renders every
+            scope.
         breakdown_histogram_bin_count:
           anyOf:
           - type: number
@@ -240973,6 +243798,26 @@ components:
       - event_count
       - raw_value
       - suggested_integration
+    UnpublishedDreamRun:
+      type: object
+      properties:
+        task_url:
+          type: string
+          format: uri
+          description: Task URL in its project for the unpublished dream outcome and
+            logs.
+        run_status:
+          type: string
+          description: The terminal task-run state, such as completed, failed, or
+            cancelled.
+        started_at:
+          type: string
+          format: date-time
+          description: When the unpublished dream task was created.
+      required:
+      - run_status
+      - started_at
+      - task_url
     UnquarantineQuery:
       type: object
       properties:
@@ -241056,6 +243901,14 @@ components:
           maxLength: 400
       required:
       - tile_id
+    UpdateWebhookInputsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the inputs were saved and pushed to the external service.
+      required:
+      - success
     UploadTarget:
       type: object
       properties:
@@ -242723,6 +245576,144 @@ components:
       - source_suggestions
       - total_events_with_utm_in_window
       - total_unmatched_events_in_window
+    ValidatePipelineRequest:
+      type: object
+      properties:
+        target_event:
+          type: string
+          default: ''
+          description: Event name to predict, e.g. '$pageview'. Must exist in the
+            team's event schema. Omit when predicting an action target (pass target_definition
+            instead).
+        target_definition:
+          oneOf:
+          - type: object
+            title: EventTarget
+            description: Predict target_event. The default when target_definition
+              is omitted.
+            properties:
+              type:
+                type: string
+                enum:
+                - event
+            required:
+            - type
+            additionalProperties: false
+          - type: object
+            title: ActionTarget
+            description: Predict a PostHog action in this project.
+            properties:
+              type:
+                type: string
+                enum:
+                - action
+              action_id:
+                type: integer
+                minimum: 1
+                description: ID of the action to predict.
+            required:
+            - type
+            - action_id
+            additionalProperties: false
+          description: 'Optional target definition. Pass {"type": "action", "action_id":
+            N} to predict a PostHog action (multi-step / property / autocapture matcher)
+            instead of a single event.'
+          example:
+            type: event
+        horizon_days:
+          type: integer
+          maximum: 365
+          minimum: 1
+          default: 7
+          description: Predict whether the target event occurs within this many days.
+        training_lookback_days:
+          type: integer
+          maximum: 730
+          minimum: 7
+          default: 180
+          description: 'How far back to look for training examples. Default: 180.'
+        training_population:
+          type: object
+          description: Population filter for training examples. Use {} for all identified
+            users.
+          example:
+            properties:
+            - key: email
+              type: person
+              operator: is_set
+        inference_population:
+          type: object
+          description: Population filter for daily scoring. When omitted or empty,
+            the training population is counted, as creation stores it.
+          example:
+            properties:
+            - key: email
+              type: person
+              operator: is_set
+    ValidatePipelineResponse:
+      type: object
+      properties:
+        can_proceed:
+          type: boolean
+          description: False when any warning has severity 'error'. Creation does
+            not enforce it, but a definition with 'population_too_large' or 'horizon_exceeds_lookback'
+            cannot train.
+        requires_acknowledgement:
+          type: boolean
+          description: True if there are non-blocking warnings the user should acknowledge
+            before proceeding.
+        estimated_training_rows:
+          type:
+          - integer
+          - 'null'
+          description: Estimated number of user-level training rows based on the population
+            and lookback window.
+        positive_count:
+          type:
+          - integer
+          - 'null'
+          description: Estimated number of positive examples (users who performed
+            the target event).
+        negative_count:
+          type:
+          - integer
+          - 'null'
+          description: Estimated number of negative examples.
+        base_rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Fraction of the training population that performed the target
+            event.
+        inference_population_size:
+          type:
+          - integer
+          - 'null'
+          description: Estimated number of users in the inference (daily scoring)
+            population.
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationWarning'
+          description: List of validation warnings. Check 'severity' and 'code'.
+        error:
+          type:
+          - string
+          - 'null'
+          description: Why validation did not run, or null when it did. A query error
+            in the definition itself is passed through; any other failure is a generic
+            message and the detail is logged.
+      required:
+      - base_rate
+      - can_proceed
+      - error
+      - estimated_training_rows
+      - inference_population_size
+      - negative_count
+      - positive_count
+      - requires_acknowledgement
+      - warnings
     ValidationStatusEnum:
       enum:
       - valid
@@ -242733,6 +245724,43 @@ components:
         * `valid` - Valid
         * `invalid` - Invalid
         * `stale` - Stale (resource changed)
+    ValidationWarning:
+      type: object
+      properties:
+        code:
+          type: string
+          description: 'Machine-readable warning code. ''population_too_large'' and
+            ''horizon_exceeds_lookback'' mean a training run would fail: fix the definition
+            before creating. ''low_volume'', ''low_positives'' and ''low_negatives''
+            mean the data is too thin for a reliable model (severity ''error'', advisory).
+            ''moderate_volume'', ''mostly_anonymous_population'', ''extreme_imbalance''
+            and ''near_universal'' are severity ''warning''.'
+        message:
+          type: string
+          description: Human-readable warning description.
+        severity:
+          allOf:
+          - $ref: '#/components/schemas/ValidationWarningSeverityEnum'
+          description: |-
+            Severity level. 'error' means training would fail or the data is too thin for a reliable model; see 'code' for which. 'warning' is worth acknowledging. Creation enforces none of them.
+
+            * `info` - info
+            * `warning` - warning
+            * `error` - error
+      required:
+      - code
+      - message
+      - severity
+    ValidationWarningSeverityEnum:
+      enum:
+      - info
+      - warning
+      - error
+      type: string
+      description: |-
+        * `info` - info
+        * `warning` - warning
+        * `error` - error
     ValidatorCategoryEnum:
       enum:
       - bug
@@ -244179,10 +247207,11 @@ components:
           allOf:
           - $ref: '#/components/schemas/WatchFeedReasonEnum'
           description: |-
-            Highest-priority rule the observation satisfied: `signal_emitted` (it pushed a signal), `unusual_verdict` (a monitor answer that is the minority for that scanner this window), `verdict_yes` (a monitor hit, when the window is too thin to know which answer is unusual), `outlier_score` (far from the scanner's window average), `rare_tag` (a tag uncommon for the scanner this window), `novel_summary` (a summary that reads unlike the scanner's other sessions this window), `friction` (the scan describes errors, retries, or dead ends), `unviewed_recent` (new to you), `recent` (nothing special, newest available).
+            Highest-priority rule the observation satisfied: `signal_emitted` (it pushed a signal), `unusual_verdict` (a monitor answer that is the minority for that scanner this window), `verdict_yes` (a monitor hit, when the window is too thin to know which answer is unusual), `outlier_score` (far from the scanner's window average), `rare_tag` (a tag uncommon for the scanner this window), `novel_summary` (a summary that reads unlike the scanner's other sessions this window), `notable` (the scan itself judged the session worth watching), `friction` (the scan describes errors, retries, or dead ends), `unviewed_recent` (new to you), `recent` (nothing special, newest available).
 
             * `signal_emitted` - Signal Emitted
             * `unusual_verdict` - Unusual Verdict
+            * `notable` - Notable
             * `verdict_yes` - Verdict Yes
             * `outlier_score` - Outlier Score
             * `rare_tag` - Rare Tag
@@ -244207,6 +247236,21 @@ components:
           format: double
           description: Share (0-1) of the scanner's window observations with this
             answer, for `unusual_verdict`.
+        notability:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The scan's own 0-1 judgment of how much a team would benefit
+            from watching, for `notable`.
+        notability_reason:
+          type:
+          - string
+          - 'null'
+          description: The scan's own sentence naming why the session is worth watching.
+            Present only on the `notable` reason kind, and preferred over copy derived
+            from the reason kind. Absent on observations scanned before notability
+            shipped.
         score:
           type:
           - number
@@ -244237,6 +247281,7 @@ components:
       enum:
       - signal_emitted
       - unusual_verdict
+      - notable
       - verdict_yes
       - outlier_score
       - rare_tag
@@ -244248,6 +247293,7 @@ components:
       description: |-
         * `signal_emitted` - Signal Emitted
         * `unusual_verdict` - Unusual Verdict
+        * `notable` - Notable
         * `verdict_yes` - Verdict Yes
         * `outlier_score` - Outlier Score
         * `rare_tag` - Rare Tag
@@ -244265,7 +247311,8 @@ components:
             $ref: '#/components/schemas/WatchFeedItem'
           description: 'Succeeded observations in the window worth watching, most
             interesting first: signal emitters, then type-specific hits, then unviewed
-            before viewed, then newest.'
+            before viewed, then the scan''s own notability judgment, then prose that
+            reads as friction, then newest.'
       required:
       - results
     WebAgentAnalyticsQuery:
@@ -247360,6 +250407,143 @@ components:
       - source
       title: WebVitalsQuery
       type: object
+    WebhookExternalStatus:
+      type: object
+      properties:
+        exists:
+          type: boolean
+          description: Whether the webhook exists on the external service.
+        url:
+          type:
+          - string
+          - 'null'
+          description: The webhook URL on the external service.
+        enabled_events:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Events the external webhook is subscribed to.
+        status:
+          type:
+          - string
+          - 'null'
+          description: Delivery health as the external service reports it (e.g. 'enabled').
+        description:
+          type:
+          - string
+          - 'null'
+          description: Description the external service holds for it.
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: When the external webhook was created.
+        api_version:
+          type:
+          - string
+          - 'null'
+          description: Vendor API version the endpoint delivers at, when pinned.
+        error:
+          type:
+          - string
+          - 'null'
+          description: Read error the external service returned, if any.
+      required:
+      - api_version
+      - created_at
+      - description
+      - enabled_events
+      - error
+      - exists
+      - status
+      - url
+    WebhookHogFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the webhook delivery hog function.
+        name:
+          type: string
+          description: Name of the webhook delivery hog function.
+        enabled:
+          type: boolean
+          description: Whether the webhook delivery function is enabled.
+        created_at:
+          type: string
+          description: When the webhook delivery function was created (ISO 8601).
+        status:
+          type: object
+          additionalProperties: true
+          description: 'Delivery health reported by the pipeline: `state` and `tokens`
+            counters.'
+      required:
+      - created_at
+      - enabled
+      - id
+      - name
+      - status
+    WebhookInfoResponse:
+      type: object
+      properties:
+        supports_webhooks:
+          type: boolean
+          description: Whether the source type supports webhooks at all. When false,
+            the other fields are absent.
+        exists:
+          type: boolean
+          description: Whether a PostHog webhook delivery function exists for this
+            source yet.
+        auto_creation_blocked_reason:
+          type:
+          - string
+          - 'null'
+          description: Set when the connection's credentials can never create the
+            webhook, so only manual setup is left. Null means 'not known to be blocked'.
+        hog_function:
+          oneOf:
+          - $ref: '#/components/schemas/WebhookHogFunction'
+          - type: 'null'
+          description: The webhook delivery function, present once the webhook exists.
+        webhook_url:
+          type:
+          - string
+          - 'null'
+          description: The PostHog endpoint the external service delivers events to.
+        schema_mapping:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource name to external schema id, as configured on the webhook
+            function.
+        inputs:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/InputsItem'
+          description: Current webhook function inputs keyed by the source's declared
+            webhook field names.
+        external_status:
+          oneOf:
+          - $ref: '#/components/schemas/WebhookExternalStatus'
+          - type: 'null'
+          description: Live webhook state as the external service reports it, when
+            it could be read.
+        missing_events:
+          type: array
+          items:
+            type: string
+          description: Desired provider events not yet on the webhook (manual setup,
+            or created before a new table).
+      required:
+      - auto_creation_blocked_reason
+      - exists
+      - external_status
+      - hog_function
+      - schema_mapping
+      - supports_webhooks
+      - webhook_url
     WebhookUrl:
       type: object
       properties:
@@ -247603,7 +250787,7 @@ components:
         model:
           allOf:
           - $ref: '#/components/schemas/WidgetGenerateRequestModelEnum'
-          default: claude-sonnet-4-6
+          default: claude-sonnet-5
           description: |-
             AI model used to generate the widget.
 
@@ -248136,10 +251320,29 @@ components:
           type: string
           format: date-time
           description: When this page was last changed in the wiki history.
+        offset:
+          type: integer
+          description: Character offset of this chunk.
+        total_length:
+          type: integer
+          description: Character length of the complete page.
+        next_offset:
+          type:
+          - integer
+          - 'null'
+          description: Next character offset, or null when complete.
+        complete:
+          type: boolean
+          description: True when no further chunks remain. Do not write a page until
+            all chunks are read.
       required:
+      - complete
       - content
       - head_sha
+      - next_offset
+      - offset
       - path
+      - total_length
       - updated_at
     WikiPageProposal:
       type: object
@@ -254589,6 +257792,7 @@ tags:
 - name: groups
 - name: groups_types
 - name: health_issues
+- name: heatmap_screenshot
 - name: heatmap_screenshots
 - name: heatmaps
 - name: hog_flows
@@ -254789,6 +257993,7 @@ x-tagGroups:
   - groups
   - groups_types
   - health_issues
+  - heatmap_screenshot
   - heatmap_screenshots
   - heatmaps
   - hog_flows

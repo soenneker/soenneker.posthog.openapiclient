@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>True when no further chunks remain. Do not write a page until all chunks are read.</summary>
+        public bool? Complete { get; set; }
         /// <summary>The page&apos;s Markdown content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,6 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string HeadSha { get; set; }
 #endif
+        /// <summary>Next character offset, or null when complete.</summary>
+        public int? NextOffset { get; set; }
+        /// <summary>Character offset of this chunk.</summary>
+        public int? Offset { get; set; }
         /// <summary>Repo-relative path of the page, for example `areas/analytics.md`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,6 +45,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
+        /// <summary>Character length of the complete page.</summary>
+        public int? TotalLength { get; set; }
         /// <summary>When this page was last changed in the wiki history.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -66,9 +74,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "complete", n => { Complete = n.GetBoolValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
+                { "next_offset", n => { NextOffset = n.GetIntValue(); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
+                { "total_length", n => { TotalLength = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -79,9 +91,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("complete", Complete);
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("head_sha", HeadSha);
+            writer.WriteIntValue("next_offset", NextOffset);
+            writer.WriteIntValue("offset", Offset);
             writer.WriteStringValue("path", Path);
+            writer.WriteIntValue("total_length", TotalLength);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

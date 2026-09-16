@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout
         {
         }
         /// <summary>
-        /// Create a scout skill and its runnable config atomically. Any valid skill name works — the config row is what makes the skill a scout. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing its name for a different definition returns 409.
+        /// Create a scout skill and its runnable config atomically. Give it a `display_name` — the label people read, kept exactly as written — and the scout&apos;s permanent skill name is generated from it, with a numeric suffix when that name is taken, so two scouts may share a label without sharing an identity. Pass `name` instead to pick that identifier yourself; any valid skill name works, since the config row is what makes a skill a scout. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing an explicit `name` for a different definition returns 409.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutCreateResponse"/></returns>
         /// <param name="body">Create a runnable custom scout and its config in one atomic request.</param>
@@ -108,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutCreateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutCreateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a scout skill and its runnable config atomically. Any valid skill name works — the config row is what makes the skill a scout. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing its name for a different definition returns 409.
+        /// Create a scout skill and its runnable config atomically. Give it a `display_name` — the label people read, kept exactly as written — and the scout&apos;s permanent skill name is generated from it, with a numeric suffix when that name is taken, so two scouts may share a label without sharing an identity. Pass `name` instead to pick that identifier yourself; any valid skill name works, since the config row is what makes a skill a scout. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing an explicit `name` for a different definition returns 409.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Create a runnable custom scout and its config in one atomic request.</param>

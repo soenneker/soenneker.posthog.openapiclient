@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.P
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PagesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/context_layer/pages", pathParameters)
+        public PagesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/context_layer/pages{?head_sha*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.P
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PagesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/context_layer/pages", rawUrl)
+        public PagesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/context_layer/pages{?head_sha*,limit*,offset*}", rawUrl)
         {
         }
         /// <summary>
@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.P
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Pages.PagesRequestBuilder.PagesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/api/organizations/{%2Did}/context_layer/pages?path={path}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/api/organizations/{%2Did}/context_layer/pages?path={path}{&head_sha*,limit*,offset*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -134,6 +134,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.P
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PagesRequestBuilderGetQueryParameters 
         {
+            /// <summary>Head from the first chunk. Required for continuation. A changed head returns 409.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("head_sha")]
+            public string? HeadSha { get; set; }
+#nullable restore
+#else
+            [QueryParameter("head_sha")]
+            public string HeadSha { get; set; }
+#endif
+            /// <summary>Maximum characters to read. Omit for the full page.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Character offset from next_offset.</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
             /// <summary>Repo-relative Markdown path of the page to read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

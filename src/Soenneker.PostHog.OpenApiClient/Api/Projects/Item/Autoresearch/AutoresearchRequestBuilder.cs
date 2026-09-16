@@ -4,6 +4,9 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.ResolveTemplate;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Templates;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Validate;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +21,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AutoresearchRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The resolveTemplate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.ResolveTemplate.ResolveTemplateRequestBuilder ResolveTemplate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.ResolveTemplate.ResolveTemplateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The templates property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Templates.TemplatesRequestBuilder Templates
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Templates.TemplatesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The validate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Validate.ValidateRequestBuilder Validate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Validate.ValidateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.autoresearch.item collection</summary>
         /// <param name="position">A UUID string identifying this autoresearch pipeline.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.AutoresearchItemRequestBuilder"/></returns>

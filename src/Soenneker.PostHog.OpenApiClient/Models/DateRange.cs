@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DateFrom { get; set; }
 #endif
-        /// <summary>End of the date range. Same format as date_from. Omit or null for &quot;now&quot;.</summary>
+        /// <summary>End of the date range. Same format as date_from. Omit or null for &quot;now&quot;. A calendar day without a time (2024-01-15) is inclusive: it rounds to the last moment of that day in the project timezone, unless explicitDate is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DateTo { get; set; }

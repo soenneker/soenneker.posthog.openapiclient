@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `saml` - Saml* `scim` - Scim* `xaa` - Xaa</summary>
+    /// <summary>* `saml` - Saml* `oidc` - Oidc* `scim` - Scim* `xaa` - Xaa</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ConfigScopeEnum
     {
         [EnumMember(Value = "saml")]
         #pragma warning disable CS1591
         Saml,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "oidc")]
+        #pragma warning disable CS1591
+        Oidc,
         #pragma warning restore CS1591
         [EnumMember(Value = "scim")]
         #pragma warning disable CS1591

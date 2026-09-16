@@ -81,9 +81,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Insight"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -99,9 +96,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Insight>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Insight.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Insight"/></returns>
         /// <param name="body">Simplified serializer to speed response times when loading large amounts of objects.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -119,9 +113,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Insight>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Insight.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Insight"/></returns>
         /// <param name="body">Simplified serializer to speed response times when loading large amounts of objects.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -157,9 +148,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             requestInfo.Configure(requestConfiguration);
             return requestInfo;
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -176,9 +164,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Simplified serializer to speed response times when loading large amounts of objects.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -198,9 +183,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Simplified serializer to speed response times when loading large amounts of objects.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -240,11 +222,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsDestroyFormatParameter? Format { get; set; }
             #pragma warning restore CS1591
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
         public partial class ItemRequestBuilderGetQueryParameters 
+        #pragma warning restore CS1591
         {
             /// <summary>Object (or pre-encoded JSON string) to override the insight&apos;s filters for this request only (not persisted). Top-level keys replace; nested values are not deep-merged — pass the complete value for any key you override. Accepts the same keys as the dashboard filters schema (e.g., `date_from`, `date_to`, `properties`). Ignored when accessed via a sharing token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -280,11 +261,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             public string VariablesOverride { get; set; }
 #endif
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
         public partial class ItemRequestBuilderPatchQueryParameters 
+        #pragma warning restore CS1591
         {
             #pragma warning disable CS1591
             [QueryParameter("format")]
@@ -294,11 +274,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             [QueryParameter("include_dashboards")]
             public bool? IncludeDashboards { get; set; }
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
         public partial class ItemRequestBuilderPutQueryParameters 
+        #pragma warning restore CS1591
         {
             #pragma warning disable CS1591
             [QueryParameter("format")]

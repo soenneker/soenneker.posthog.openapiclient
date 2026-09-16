@@ -97,8 +97,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LatestError { get; private set; }
 #endif
-        /// <summary>The latest_history_id property</summary>
-        public int? LatestHistoryId { get; private set; }
+        /// <summary>Activity log ID of the most recent query edit to this view. Send it back as edited_history_id on the next query write, so conflict detection can tell whether someone else changed the query in the meantime. Edits that leave the query alone do not advance it.</summary>
+        public Guid? LatestHistoryId { get; private set; }
         /// <summary>The managed_viewset_kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -217,7 +217,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_test", n => { IsTest = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },
-                { "latest_history_id", n => { LatestHistoryId = n.GetIntValue(); } },
+                { "latest_history_id", n => { LatestHistoryId = n.GetGuidValue(); } },
                 { "managed_viewset_kind", n => { ManagedViewsetKind = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOrigin.CreateFromDiscriminatorValue); } },

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `saml` - Saml* `scim` - Scim* `xaa` - Xaa</summary>
+        /// <summary>* `saml` - Saml* `oidc` - Oidc* `scim` - Scim* `xaa` - Xaa</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConfigScopeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConfigScopeEnumWrapper"/> and sets the default values.

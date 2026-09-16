@@ -39,7 +39,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Unique scout name, containing only lowercase letters, numbers, and hyphens. The `signals-scout-` prefix is optional.</summary>
+        /// <summary>Name shown wherever people identify this scout, written however you want it — spaces, capitalization, and acronyms are kept as typed, and two scouts may share one. It does not change the scout&apos;s skill name, which stays its identity, so renaming a scout keeps its schedule, run history, notes, memory, and links. At most 200 characters; blank means the scout has no name of its own and is labelled from its skill name instead.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayName { get; set; }
+#nullable restore
+#else
+        public string DisplayName { get; set; }
+#endif
+        /// <summary>Optional skill name for the scout — its permanent identifier, containing only lowercase letters, numbers, and hyphens. Omit it and one is generated from `display_name` (`My APM scout` becomes `my-apm-scout`), with a numeric suffix when that name is taken. Pass it to pick the identifier yourself, or to keep a client written before display names working unchanged. The `signals-scout-` prefix is optional.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -75,6 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateConfig.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
         }
@@ -88,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("body", Body);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateConfig>("config", Config);
             writer.WriteStringValue("description", Description);
+            writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

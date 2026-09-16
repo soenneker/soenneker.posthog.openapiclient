@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Loops.Item.Runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/loops/{id}/runs{?cursor*,limit*}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/loops/{id}/runs{?cursor*,limit*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Loops.Item.Runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/loops/{id}/runs{?cursor*,limit*}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/loops/{id}/runs{?cursor*,limit*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -98,6 +98,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Loops.Item.Runs
             /// <summary>Max results per page (default 50, max 100).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Only return runs with this status. Use failed to read errors even when canvas state is unavailable.* `not_started` - Not Started* `queued` - Queued* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed* `cancelled` - Cancelled</summary>
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.LoopsRunsRetrieveStatusParameter? Status { get; set; }
         }
     }
 }

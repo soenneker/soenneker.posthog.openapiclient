@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<int?> Ids { get; set; }
 #endif
-        /// <summary>Tag names to add, remove, or set.</summary>
+        /// <summary>Tag names to add, remove, or set (up to 100 per request, 255 characters each).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Tags { get; set; }

@@ -125,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsEligibleForExperiment { get; private set; }
         /// <summary>The is_remote_configuration property</summary>
         public bool? IsRemoteConfiguration { get; set; }
-        /// <summary>Check if this feature flag is used in any team&apos;s session recording linked flag setting.</summary>
+        /// <summary>Check if any team gates session recording on this flag, by linked flag or trigger group.</summary>
         public bool? IsUsedInReplaySettings { get; private set; }
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

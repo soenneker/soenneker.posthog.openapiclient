@@ -74,9 +74,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -129,9 +126,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Item
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

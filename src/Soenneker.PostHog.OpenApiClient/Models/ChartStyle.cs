@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper Curve { get; set; }
 #endif
+        /// <summary>How series are told apart: one color per series, or one color at stepped opacities.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper? SeriesColorMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper SeriesColorMode { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "curve", n => { Curve = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper.CreateFromDiscriminatorValue); } },
+                { "seriesColorMode", n => { SeriesColorMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -49,6 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper>("curve", Curve);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper>("seriesColorMode", SeriesColorMode);
         }
     }
 }

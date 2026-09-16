@@ -24,5 +24,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Stat,
         #pragma warning restore CS1591
+        [EnumMember(Value = "gauge")]
+        #pragma warning disable CS1591
+        Gauge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "bargauge")]
+        #pragma warning disable CS1591
+        Bargauge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "table")]
+        #pragma warning disable CS1591
+        Table,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "heatmap")]
+        #pragma warning disable CS1591
+        Heatmap,
+        #pragma warning restore CS1591
     }
 }

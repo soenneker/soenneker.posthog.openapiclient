@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the entry was last written.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>The stored JSON value.</summary>
+        /// <summary>The stored JSON value. Omitted from a key inventory.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryValue? Value { get; set; }

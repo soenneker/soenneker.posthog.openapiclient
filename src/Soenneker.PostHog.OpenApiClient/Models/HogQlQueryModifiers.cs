@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The convertToProjectTimezone property</summary>
         public bool? ConvertToProjectTimezone { get; set; }
+        /// <summary>Do not treat a missing user agent as automation on cookieless events. Positive bot signals and custom project rules still apply. Resolved server-side; not intended to be set by clients.</summary>
+        public bool? CookielessTrafficIsRegular { get; set; }
         /// <summary>The customBotDefinitions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -197,6 +199,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bounceRateDurationSeconds", n => { BounceRateDurationSeconds = n.GetDoubleValue(); } },
                 { "bounceRatePageViewMode", n => { BounceRatePageViewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper.CreateFromDiscriminatorValue); } },
                 { "convertToProjectTimezone", n => { ConvertToProjectTimezone = n.GetBoolValue(); } },
+                { "cookielessTrafficIsRegular", n => { CookielessTrafficIsRegular = n.GetBoolValue(); } },
                 { "customBotDefinitions", n => { CustomBotDefinitions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule>(global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "customChannelTypeRules", n => { CustomChannelTypeRules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelRule>(global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelRule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "dataWarehouseEventsModifiers", n => { DataWarehouseEventsModifiers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -240,6 +243,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("bounceRateDurationSeconds", BounceRateDurationSeconds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper>("bounceRatePageViewMode", BounceRatePageViewMode);
             writer.WriteBoolValue("convertToProjectTimezone", ConvertToProjectTimezone);
+            writer.WriteBoolValue("cookielessTrafficIsRegular", CookielessTrafficIsRegular);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule>("customBotDefinitions", CustomBotDefinitions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelRule>("customChannelTypeRules", CustomChannelTypeRules);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier>("dataWarehouseEventsModifiers", DataWarehouseEventsModifiers);

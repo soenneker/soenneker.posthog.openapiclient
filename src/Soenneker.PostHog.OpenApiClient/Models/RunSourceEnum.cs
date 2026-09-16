@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `manual` - manual* `signal_report` - signal_report</summary>
+    /// <summary>* `manual` - manual* `signal_report` - signal_report* `agent` - agent</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RunSourceEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "signal_report")]
         #pragma warning disable CS1591
         SignalReport,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent")]
+        #pragma warning disable CS1591
+        Agent,
         #pragma warning restore CS1591
     }
 }

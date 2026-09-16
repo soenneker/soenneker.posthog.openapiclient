@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Check_auth_for_async;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Draft_sql;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Scan;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Upgrade;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Draft_sql.Draft_sqlRequestBuilder Draft_sql
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Draft_sql.Draft_sqlRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The scan property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Scan.ScanRequestBuilder Scan
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Scan.ScanRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The upgrade property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.Upgrade.UpgradeRequestBuilder Upgrade
@@ -64,9 +70,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query
         public QueryRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/query", rawUrl)
         {
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -84,9 +87,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

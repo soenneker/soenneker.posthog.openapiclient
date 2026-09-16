@@ -195,6 +195,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? HasGroupTypes { get; private set; }
         /// <summary>Enables heatmap recording on pages that host posthog-js.</summary>
         public bool? HeatmapsOptIn { get; set; }
+        /// <summary>Value this project&apos;s heatmap screenshots send as a cookie scoped to your domain, so bot protection can allow them. Only project admins can read it; null for everyone else and when none has been generated.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? HeatmapsScreenshotSecret { get; private set; }
+#nullable restore
+#else
+        public string HeatmapsScreenshotSecret { get; private set; }
+#endif
         /// <summary>The human_friendly_comparison_periods property</summary>
         public bool? HumanFriendlyComparisonPeriods { get; set; }
         /// <summary>The id property</summary>
@@ -568,6 +576,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "has_completed_onboarding_for", n => { HasCompletedOnboardingFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatHasCompletedOnboardingFor>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatHasCompletedOnboardingFor.CreateFromDiscriminatorValue); } },
                 { "has_group_types", n => { HasGroupTypes = n.GetBoolValue(); } },
                 { "heatmaps_opt_in", n => { HeatmapsOptIn = n.GetBoolValue(); } },
+                { "heatmaps_screenshot_secret", n => { HeatmapsScreenshotSecret = n.GetStringValue(); } },
                 { "human_friendly_comparison_periods", n => { HumanFriendlyComparisonPeriods = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "ingested_event", n => { IngestedEvent = n.GetBoolValue(); } },

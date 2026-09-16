@@ -82,6 +82,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow> Results { get; set; }
 #endif
+        /// <summary>Only populated in summary mode. Rates use the corresponding eligible population.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow>? Summary { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow> Summary { get; set; }
+#endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -139,6 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "summary", n => { Summary = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "totalCohortSize", n => { TotalCohortSize = n.GetIntValue(); } },
                 { "truncatedCohorts", n => { TruncatedCohorts = n.GetIntValue(); } },
@@ -164,6 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_compare_date_range", ResolvedCompareDateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow>("summary", Summary);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
             writer.WriteIntValue("totalCohortSize", TotalCohortSize);
             writer.WriteIntValue("truncatedCohorts", TruncatedCohorts);

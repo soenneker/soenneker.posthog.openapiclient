@@ -16,9 +16,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, the task is hidden from default list responses.</summary>
         public bool? Archived { get; set; }
-        /// <summary>When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. Write-only and not persisted on the task: persisted into the reused warm Run&apos;s state when creation activates one, so resumes of that Run honor it. Ignored when no warm Run is reused — cold creation takes it via the run start endpoint instead.</summary>
+        /// <summary>When true, the agent pushes its work and opens a draft pull request on completion without an explicit request. Applies when start_run is true or creation reuses a pre-warmed run. Resumed runs keep this setting. Ignored if creation does not start a run. Write-only and not persisted on the task.</summary>
         public bool? AutoPublish { get; set; }
-        /// <summary>Branch the user has selected for this cloud task. Write-only and not persisted on the task itself: used only to reuse a matching pre-warmed sandbox Run on creation (the branch is otherwise carried on the run). Omit to match a warm Run on the default branch.</summary>
+        /// <summary>Base branch for the first run when start_run is true, or for matching a pre-warmed run. Omit to use the repository&apos;s default branch. Write-only and not persisted on the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Branch { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? GithubIntegration { get; set; }
         /// <summary>User-scoped GitHub integration to use for user-authored cloud runs.</summary>
         public Guid? GithubUserIntegration { get; set; }
-        /// <summary>Selected agent permission mode. Write-only; used only to reuse a warm Run booted on the same mode. Omit to reuse a warm Run whatever mode it booted on.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
+        /// <summary>Agent permission mode for the first run when start_run is true, or for matching a pre-warmed run. Omit to match any warm permission mode. Write-only.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteInitialPermissionMode? InitialPermissionMode { get; set; }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteJsonSchema JsonSchema { get; set; }
 #endif
-        /// <summary>Selected LLM model identifier. Write-only; used only to reuse a warm Run started on the same model.</summary>
+        /// <summary>LLM model for the first run when start_run is true, or for matching a pre-warmed run. Write-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct OriginProduct { get; set; }
 #endif
-        /// <summary>Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run&apos;s manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched.</summary>
+        /// <summary>Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run&apos;s manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? PendingUserArtifactIds { get; set; }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> PendingUserArtifactIds { get; set; }
 #endif
-        /// <summary>First user message to forward when creation reuses a pre-warmed Run. Write-only and not persisted on the task: lets clients deliver a message that differs from `description` (e.g. a resolved skill invocation with channel context folded in). Ignored when no warm Run is reused — cold creation takes the first message via the run start endpoint instead.</summary>
+        /// <summary>First user message when start_run is true or creation reuses a pre-warmed run. This message can differ from description. Ignored if creation does not start a run. Write-only and not persisted on the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PendingUserMessage { get; set; }
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PendingUserMessage { get; set; }
 #endif
-        /// <summary>Selected reasoning effort. Write-only; used only to reuse a warm Run started on the same effort.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
+        /// <summary>Reasoning effort for the first run when start_run is true, or for matching a pre-warmed run. Write-only.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteReasoningEffort? ReasoningEffort { get; set; }
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>Selected runtime adapter (&apos;claude&apos; or &apos;codex&apos;). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run&apos;s runtime skips reuse so the task isn&apos;t silently run on the wrong runtime.* `claude` - claude* `codex` - codex</summary>
+        /// <summary>Runtime adapter (&apos;claude&apos; or &apos;codex&apos;) for the first run when start_run is true, or for matching a pre-warmed run. A different adapter prevents warm reuse. Write-only and not persisted on the task.* `claude` - claude* `codex` - codex</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteRuntimeAdapter? RuntimeAdapter { get; set; }

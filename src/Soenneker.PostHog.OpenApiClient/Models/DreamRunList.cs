@@ -39,6 +39,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string HeadSha { get; set; }
 #endif
+        /// <summary>The latest finished dream when no update was published after it started, or null otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun? UnpublishedRun { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun UnpublishedRun { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DreamRunList"/> and sets the default values.
         /// </summary>
@@ -67,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "active_run", n => { ActiveRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun>(global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun.CreateFromDiscriminatorValue); } },
                 { "dreams", n => { Dreams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun>(global::Soenneker.PostHog.OpenApiClient.Models.DreamRun.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
+                { "unpublished_run", n => { UnpublishedRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun>(global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -79,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun>("active_run", ActiveRun);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun>("dreams", Dreams);
             writer.WriteStringValue("head_sha", HeadSha);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun>("unpublished_run", UnpublishedRun);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

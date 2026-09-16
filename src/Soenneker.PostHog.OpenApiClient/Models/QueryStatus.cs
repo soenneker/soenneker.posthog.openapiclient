@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? BudgetRemainingBytes { get; set; }
         /// <summary>The bytes_read property</summary>
         public int? BytesRead { get; set; }
+        /// <summary>Cache key of the run that failed, so clients can ask for its query scan.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CacheKey { get; set; }
+#nullable restore
+#else
+        public string CacheKey { get; set; }
+#endif
         /// <summary>Whether the query is still running. Will be true if the query is complete, even if it errored. Either result or error will be set.</summary>
         public bool? Complete { get; set; }
         /// <summary>The dashboard_id property</summary>
@@ -72,6 +80,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress QueryProgress { get; set; }
 #endif
+        /// <summary>The query_scan property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary? QueryScan { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary QueryScan { get; set; }
+#endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "budget_remaining_bytes", n => { BudgetRemainingBytes = n.GetIntValue(); } },
                 { "bytes_read", n => { BytesRead = n.GetIntValue(); } },
+                { "cache_key", n => { CacheKey = n.GetStringValue(); } },
                 { "complete", n => { Complete = n.GetBoolValue(); } },
                 { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
                 { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
@@ -134,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pickup_time", n => { PickupTime = n.GetDateTimeOffsetValue(); } },
                 { "query_async", n => { QueryAsync = n.GetBoolValue(); } },
                 { "query_progress", n => { QueryProgress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress.CreateFromDiscriminatorValue); } },
+                { "query_scan", n => { QueryScan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary>(global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults.CreateFromDiscriminatorValue); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
@@ -149,6 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("budget_remaining_bytes", BudgetRemainingBytes);
             writer.WriteIntValue("bytes_read", BytesRead);
+            writer.WriteStringValue("cache_key", CacheKey);
             writer.WriteBoolValue("complete", Complete);
             writer.WriteIntValue("dashboard_id", DashboardId);
             writer.WriteDateTimeOffsetValue("end_time", EndTime);
@@ -162,6 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("pickup_time", PickupTime);
             writer.WriteBoolValue("query_async", QueryAsync);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>("query_progress", QueryProgress);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary>("query_scan", QueryScan);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults>("results", Results);
             writer.WriteDateTimeOffsetValue("start_time", StartTime);
             writer.WriteStringValue("task_id", TaskId);

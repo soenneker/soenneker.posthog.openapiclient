@@ -36,6 +36,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AggregationAxisPrefix { get; set; }
 #endif
+        /// <summary>Render only annotations with this scope. Unset renders every scope.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2? AnnotationsScope { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2 AnnotationsScope { get; set; }
+#endif
         /// <summary>The breakdown_histogram_bin_count property</summary>
         public double? BreakdownHistogramBinCount { get; set; }
         /// <summary>Chart rendering style overrides (line shape).</summary>
@@ -276,6 +284,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "aggregationAxisFormat", n => { AggregationAxisFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper.CreateFromDiscriminatorValue); } },
                 { "aggregationAxisPostfix", n => { AggregationAxisPostfix = n.GetStringValue(); } },
                 { "aggregationAxisPrefix", n => { AggregationAxisPrefix = n.GetStringValue(); } },
+                { "annotationsScope", n => { AnnotationsScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2.CreateFromDiscriminatorValue); } },
                 { "breakdown_histogram_bin_count", n => { BreakdownHistogramBinCount = n.GetDoubleValue(); } },
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
                 { "confidenceLevel", n => { ConfidenceLevel = n.GetDoubleValue(); } },
@@ -331,6 +340,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper>("aggregationAxisFormat", AggregationAxisFormat);
             writer.WriteStringValue("aggregationAxisPostfix", AggregationAxisPostfix);
             writer.WriteStringValue("aggregationAxisPrefix", AggregationAxisPrefix);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2>("annotationsScope", AnnotationsScope);
             writer.WriteDoubleValue("breakdown_histogram_bin_count", BreakdownHistogramBinCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
             writer.WriteDoubleValue("confidenceLevel", ConfidenceLevel);

@@ -73,6 +73,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Flag_value;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshot;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshots;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows;
@@ -529,6 +530,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues.Health_issuesRequestBuilder Health_issues
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues.Health_issuesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The heatmap_screenshot property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshot.Heatmap_screenshotRequestBuilder Heatmap_screenshot
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshot.Heatmap_screenshotRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The heatmap_screenshots property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshots.Heatmap_screenshotsRequestBuilder Heatmap_screenshots

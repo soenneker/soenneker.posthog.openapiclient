@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Feature configured by this identity provider configuration.* `saml` - Saml* `scim` - Scim* `xaa` - Xaa</summary>
+        /// <summary>Feature configured by this identity provider configuration.* `saml` - Saml* `oidc` - Oidc* `scim` - Scim* `xaa` - Xaa</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigConfigScope? ConfigScope { get; set; }
@@ -34,6 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether ID-JAG (XAA) is configured on this config.</summary>
         public bool? HasIdJag { get; private set; }
+        /// <summary>Whether OIDC has an issuer, client ID, and client secret.</summary>
+        public bool? HasOidc { get; private set; }
+        /// <summary>Whether an encrypted OIDC client secret is saved.</summary>
+        public bool? HasOidcClientSecret { get; private set; }
         /// <summary>Whether SAML is fully configured on this config.</summary>
         public bool? HasSaml { get; private set; }
         /// <summary>Whether SCIM is enabled and a bearer token is set on this config.</summary>
@@ -71,6 +75,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Client ID of the organization&apos;s OIDC application.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OidcClientId { get; set; }
+#nullable restore
+#else
+        public string OidcClientId { get; set; }
+#endif
+        /// <summary>OIDC client secret. Omit to keep the saved secret. Set to an empty string to remove it. Never returned in responses.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OidcClientSecret { get; set; }
+#nullable restore
+#else
+        public string OidcClientSecret { get; set; }
+#endif
+        /// <summary>HTTPS issuer URL. Must exactly match the issuer in the OIDC discovery document.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigOidcIssuerUrl? OidcIssuerUrl { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigOidcIssuerUrl OidcIssuerUrl { get; set; }
 #endif
         /// <summary>Organization domain IDs that this identity provider configuration applies to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -161,6 +189,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "domain_scope", n => { DomainScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigDomainScope>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigDomainScope.CreateFromDiscriminatorValue); } },
                 { "has_id_jag", n => { HasIdJag = n.GetBoolValue(); } },
+                { "has_oidc", n => { HasOidc = n.GetBoolValue(); } },
+                { "has_oidc_client_secret", n => { HasOidcClientSecret = n.GetBoolValue(); } },
                 { "has_saml", n => { HasSaml = n.GetBoolValue(); } },
                 { "has_scim", n => { HasScim = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -168,6 +198,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id_jag_issuer_url", n => { IdJagIssuerUrl = n.GetStringValue(); } },
                 { "id_jag_jwks_url", n => { IdJagJwksUrl = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "oidc_client_id", n => { OidcClientId = n.GetStringValue(); } },
+                { "oidc_client_secret", n => { OidcClientSecret = n.GetStringValue(); } },
+                { "oidc_issuer_url", n => { OidcIssuerUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigOidcIssuerUrl>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigOidcIssuerUrl.CreateFromDiscriminatorValue); } },
                 { "organization_domain_ids", n => { OrganizationDomainIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "saml_acs_url", n => { SamlAcsUrl = n.GetStringValue(); } },
                 { "saml_entity_id", n => { SamlEntityId = n.GetStringValue(); } },
@@ -192,6 +225,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id_jag_issuer_url", IdJagIssuerUrl);
             writer.WriteStringValue("id_jag_jwks_url", IdJagJwksUrl);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("oidc_client_id", OidcClientId);
+            writer.WriteStringValue("oidc_client_secret", OidcClientSecret);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIdentityProviderConfigOidcIssuerUrl>("oidc_issuer_url", OidcIssuerUrl);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("organization_domain_ids", OrganizationDomainIds);
             writer.WriteStringValue("saml_acs_url", SamlAcsUrl);
             writer.WriteStringValue("saml_entity_id", SamlEntityId);

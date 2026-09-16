@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.Set;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.Value;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -23,12 +24,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.Set.SetRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The value property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.Value.ValueRequestBuilder Value
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.Value.ValueRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.StateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/state{?scope*}", pathParameters)
+        public StateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/state{?key*,key_prefix*,keys_only*,limit*,offset*,scope*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/state{?scope*}", rawUrl)
+        public StateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/state{?key*,key_prefix*,keys_only*,limit*,offset*,scope*}", rawUrl)
         {
         }
         /// <summary>
@@ -91,7 +97,36 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StateRequestBuilderGetQueryParameters 
         {
-            /// <summary>Only return entries in this scope.</summary>
+            /// <summary>Only read this exact key.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("key")]
+            public string? Key { get; set; }
+#nullable restore
+#else
+            [QueryParameter("key")]
+            public string Key { get; set; }
+#endif
+            /// <summary>Only read entries whose key starts with this prefix.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("key_prefix")]
+            public string? KeyPrefix { get; set; }
+#nullable restore
+#else
+            [QueryParameter("key_prefix")]
+            public string KeyPrefix { get; set; }
+#endif
+            /// <summary>True returns a key inventory without stored values.</summary>
+            [QueryParameter("keys_only")]
+            public bool? KeysOnly { get; set; }
+            /// <summary>Maximum entries per page. Omit for the full state. Prefer an inventory and state/value for large values.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Entry offset from next_offset. Keep filters unchanged between pages.</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
+            /// <summary>Only read this scope.* `user` - user* `shared` - shared</summary>
             [QueryParameter("scope")]
             public global::Soenneker.PostHog.OpenApiClient.Models.CanvasesStateRetrieveScopeParameter? Scope { get; set; }
         }

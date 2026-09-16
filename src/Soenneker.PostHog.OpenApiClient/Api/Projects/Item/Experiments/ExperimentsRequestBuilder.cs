@@ -3,9 +3,11 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Bulk_update_tags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Calculate_running_time;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Create_from_prompt;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Matching_ids;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Prompt_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Session_context;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Session_contexts;
@@ -24,6 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk_update_tags property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Bulk_update_tags.Bulk_update_tagsRequestBuilder Bulk_update_tags
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Bulk_update_tags.Bulk_update_tagsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The calculate_running_time property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Calculate_running_time.Calculate_running_timeRequestBuilder Calculate_running_time
         {
@@ -33,6 +40,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Create_from_prompt.Create_from_promptRequestBuilder Create_from_prompt
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Create_from_prompt.Create_from_promptRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The matching_ids property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Matching_ids.Matching_idsRequestBuilder Matching_ids
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Matching_ids.Matching_idsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The prompt_templates property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Prompt_templates.Prompt_templatesRequestBuilder Prompt_templates
@@ -71,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExperimentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments{?archived*,created_by_id*,event*,feature_flag_id*,limit*,offset*,order*,prompt_name*,search*,status*}", pathParameters)
+        public ExperimentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments{?archived*,created_by_id*,event*,excluded_tags*,feature_flag_id*,limit*,offset*,order*,prompt_name*,search*,status*,tags*}", pathParameters)
         {
         }
         /// <summary>
@@ -79,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExperimentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments{?archived*,created_by_id*,event*,feature_flag_id*,limit*,offset*,order*,prompt_name*,search*,status*}", rawUrl)
+        public ExperimentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments{?archived*,created_by_id*,event*,excluded_tags*,feature_flag_id*,limit*,offset*,order*,prompt_name*,search*,status*,tags*}", rawUrl)
         {
         }
         /// <summary>
@@ -199,6 +211,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
             [QueryParameter("event")]
             public string Event { get; set; }
 #endif
+            /// <summary>JSON-encoded list of tag names. Excludes experiments carrying any of the given tags, even when they also carry non-excluded tags.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("excluded_tags")]
+            public string? ExcludedTags { get; set; }
+#nullable restore
+#else
+            [QueryParameter("excluded_tags")]
+            public string ExcludedTags { get; set; }
+#endif
             /// <summary>Filter to experiments linked to the given feature flag ID.</summary>
             [QueryParameter("feature_flag_id")]
             public int? FeatureFlagId { get; set; }
@@ -241,6 +263,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
             /// <summary>Filter by experiment status. &quot;running&quot;, &quot;paused&quot;, and &quot;exposure_frozen&quot; are mutually exclusive: &quot;running&quot; returns launched experiments with an active feature flag, &quot;paused&quot; returns launched experiments whose feature flag is deactivated, and &quot;exposure_frozen&quot; returns launched experiments whose exposure was frozen to the already-enrolled cohort while metrics keep flowing. &quot;complete&quot; is an alias for &quot;stopped&quot;. &quot;all&quot; disables status filtering.</summary>
             [QueryParameter("status")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListStatusParameter? Status { get; set; }
+            /// <summary>JSON-encoded list of tag names. Returns experiments carrying at least one of the given tags, e.g. `[&quot;growth&quot;, &quot;checkout&quot;]`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tags")]
+            public string? Tags { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tags")]
+            public string Tags { get; set; }
+#endif
         }
     }
 }

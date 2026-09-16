@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound Floor { get; set; }
 #endif
-        /// <summary>What governs this view&apos;s cadence. &apos;tiered&apos; is the only mode where `options` is meaningful and `sync_frequency` is writable per view. &apos;managed_viewset&apos; means PostHog owns the view, &apos;legacy&apos; means the v1 backend, where any cadence is accepted and no bounds apply, and &apos;no_node&apos; means the view has no data modeling node to store a cadence on.* `tiered` - tiered* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node</summary>
+        /// <summary>What governs this view&apos;s cadence. &apos;tiered&apos; is the only mode where `options` is meaningful and `sync_frequency` is writable per view. &apos;managed_viewset&apos; means PostHog owns the view, and &apos;no_node&apos; means the view has no data modeling node to store a cadence on.* `tiered` - tiered* `managed_viewset` - managed_viewset* `no_node` - no_node</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode? FrequencyMode { get; set; }

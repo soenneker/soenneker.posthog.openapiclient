@@ -26,6 +26,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Gener
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Is_generating_demo_data;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Logs_config;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Reset_token;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_heatmaps_screenshot_secret;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_secret_token;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Settings_as_of;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Tracing_config;
@@ -157,6 +158,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Reset_token.Reset_tokenRequestBuilder Reset_token
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Reset_token.Reset_tokenRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The rotate_heatmaps_screenshot_secret property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_heatmaps_screenshot_secret.Rotate_heatmaps_screenshot_secretRequestBuilder Rotate_heatmaps_screenshot_secret
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_heatmaps_screenshot_secret.Rotate_heatmaps_screenshot_secretRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rotate_secret_token property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_secret_token.Rotate_secret_tokenRequestBuilder Rotate_secret_token

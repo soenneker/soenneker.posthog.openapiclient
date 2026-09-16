@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The stored JSON value.
+    /// The stored JSON value. Omitted from a key inventory.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasStateEntryValue : IAdditionalDataHolder, IParsable

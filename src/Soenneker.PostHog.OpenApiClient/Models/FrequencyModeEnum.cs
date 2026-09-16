@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `tiered` - tiered* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node</summary>
+    /// <summary>* `tiered` - tiered* `managed_viewset` - managed_viewset* `no_node` - no_node</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FrequencyModeEnum
     {
@@ -14,10 +14,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "managed_viewset")]
         #pragma warning disable CS1591
         ManagedViewset,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "legacy")]
-        #pragma warning disable CS1591
-        Legacy,
         #pragma warning restore CS1591
         [EnumMember(Value = "no_node")]
         #pragma warning disable CS1591

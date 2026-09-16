@@ -126,6 +126,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The selected interval to display across all cohorts (null = show all intervals for each cohort)</summary>
         public int? SelectedInterval { get; set; }
+        /// <summary>Draw the mean across cohorts as one line on the retention graph.</summary>
+        public bool? ShowMeanLine { get; set; }
         /// <summary>The showTrendLines property</summary>
         public bool? ShowTrendLines { get; set; }
         /// <summary>The targetEntity property</summary>
@@ -190,6 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "retentionType", n => { RetentionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper.CreateFromDiscriminatorValue); } },
                 { "returningEntity", n => { ReturningEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
                 { "selectedInterval", n => { SelectedInterval = n.GetIntValue(); } },
+                { "showMeanLine", n => { ShowMeanLine = n.GetBoolValue(); } },
                 { "showTrendLines", n => { ShowTrendLines = n.GetBoolValue(); } },
                 { "targetEntity", n => { TargetEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
                 { "timeWindowMode", n => { TimeWindowMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper.CreateFromDiscriminatorValue); } },
@@ -221,6 +224,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper>("retentionType", RetentionType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("returningEntity", ReturningEntity);
             writer.WriteIntValue("selectedInterval", SelectedInterval);
+            writer.WriteBoolValue("showMeanLine", ShowMeanLine);
             writer.WriteBoolValue("showTrendLines", ShowTrendLines);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("targetEntity", TargetEntity);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper>("timeWindowMode", TimeWindowMode);

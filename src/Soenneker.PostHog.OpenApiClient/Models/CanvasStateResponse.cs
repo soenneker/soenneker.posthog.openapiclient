@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>True when no further entries remain for this selection.</summary>
+        public bool? Complete { get; set; }
         /// <summary>The canvas&apos;s shared entries plus the caller&apos;s own user-scoped entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,6 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry> Entries { get; set; }
 #endif
+        /// <summary>Next entry offset, or null when complete.</summary>
+        public int? NextOffset { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateResponse"/> and sets the default values.
         /// </summary>
@@ -48,7 +52,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "complete", n => { Complete = n.GetBoolValue(); } },
                 { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "next_offset", n => { NextOffset = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +64,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("complete", Complete);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry>("entries", Entries);
+            writer.WriteIntValue("next_offset", NextOffset);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Highest-priority rule the observation satisfied: `signal_emitted` (it pushed a signal), `unusual_verdict` (a monitor answer that is the minority for that scanner this window), `verdict_yes` (a monitor hit, when the window is too thin to know which answer is unusual), `outlier_score` (far from the scanner&apos;s window average), `rare_tag` (a tag uncommon for the scanner this window), `novel_summary` (a summary that reads unlike the scanner&apos;s other sessions this window), `friction` (the scan describes errors, retries, or dead ends), `unviewed_recent` (new to you), `recent` (nothing special, newest available).* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `unviewed_recent` - Unviewed Recent* `recent` - Recent
+    /// Highest-priority rule the observation satisfied: `signal_emitted` (it pushed a signal), `unusual_verdict` (a monitor answer that is the minority for that scanner this window), `verdict_yes` (a monitor hit, when the window is too thin to know which answer is unusual), `outlier_score` (far from the scanner&apos;s window average), `rare_tag` (a tag uncommon for the scanner this window), `novel_summary` (a summary that reads unlike the scanner&apos;s other sessions this window), `notable` (the scan itself judged the session worth watching), `friction` (the scan describes errors, retries, or dead ends), `unviewed_recent` (new to you), `recent` (nothing special, newest available).* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `unviewed_recent` - Unviewed Recent* `recent` - Recent
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WatchFeedReasonKind : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
+        /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind"/> and sets the default values.

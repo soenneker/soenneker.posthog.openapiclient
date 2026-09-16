@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Time { get; set; }
 #endif
-        /// <summary>The value property</summary>
+        /// <summary>The bucket&apos;s aggregate; null when it isn&apos;t representable (a gap).</summary>
         public double? Value { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

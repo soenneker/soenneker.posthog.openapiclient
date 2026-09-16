@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConclusionComment { get; set; }
 #endif
-        /// <summary>When true, open a draft pull request that removes the experiment&apos;s feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Desktop (403 otherwise). Only acts for allowlisted teams; ignored otherwise.</summary>
+        /// <summary>When true, open a draft pull request that removes the experiment&apos;s feature-flag code from the linked repository. A personal API key needs the task:write scope (403 otherwise). Skipped when the conclusion is empty, or when no connected repository can be resolved.</summary>
         public bool? OpenCleanupPr { get; set; }
         /// <summary>If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution — existing release conditions are preserved and the variant is served only to users who already match them.</summary>
         public bool? ReleaseToEveryone { get; set; }

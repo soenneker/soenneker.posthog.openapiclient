@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UUID of the object that was skipped.</summary>
         public Guid? Id { get; set; }
-        /// <summary>Why the object was skipped, e.g. &apos;Not found&apos;.</summary>
+        /// <summary>Why the object was skipped, e.g. &apos;Not found or no edit access&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }

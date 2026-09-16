@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>State of the run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateProperty? State { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateState State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateProperty State { get; set; }
 #endif
         /// <summary>State keys whose value to append to the list stored at that key, atomically under the row lock. Use instead of sending the whole list back through `state`, which loses concurrent appends to a read-modify-write race.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateOutput>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateOutput.CreateFromDiscriminatorValue); } },
                 { "stage", n => { Stage = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateState>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateProperty.CreateFromDiscriminatorValue); } },
                 { "state_append", n => { StateAppend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateAppendProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateAppendProperty.CreateFromDiscriminatorValue); } },
                 { "state_remove_keys", n => { StateRemoveKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStatus.CreateFromDiscriminatorValue); } },
@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("error_message", ErrorMessage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateOutput>("output", Output);
             writer.WriteStringValue("stage", Stage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateState>("state", State);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateProperty>("state", State);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStateAppendProperty>("state_append", StateAppend);
             writer.WriteCollectionOfPrimitiveValues<string>("state_remove_keys", StateRemoveKeys);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdateStatus>("status", Status);

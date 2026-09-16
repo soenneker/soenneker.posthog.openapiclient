@@ -257,6 +257,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus Status { get; private set; }
 #endif
+        /// <summary>Organizational tags for this experiment (up to 100, 255 characters each).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>Experiment type: web for frontend UI changes, product for backend/API changes.* `web` - web* `product` - product</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -347,6 +355,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "stats_config", n => { StatsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteType>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteType.CreateFromDiscriminatorValue); } },
                 { "update_feature_flag_params", n => { UpdateFeatureFlagParams = n.GetBoolValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -390,6 +399,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSecondaryMetricsOrderedUuids>("secondary_metrics_ordered_uuids", SecondaryMetricsOrderedUuids);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig>("stats_config", StatsConfig);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteType>("type", Type);
             writer.WriteBoolValue("update_feature_flag_params", UpdateFeatureFlagParams);
             writer.WriteIntValue("version", Version);

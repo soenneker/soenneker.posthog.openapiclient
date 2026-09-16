@@ -131,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? ResumeFromRunId { get; set; }
         /// <summary>Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out.</summary>
         public bool? RtkEnabled { get; set; }
-        /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report</summary>
+        /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report* `agent` - agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRunSource? RunSource { get; set; }

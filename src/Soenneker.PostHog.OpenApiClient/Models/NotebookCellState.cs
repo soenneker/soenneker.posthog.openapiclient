@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Cell kind: &apos;sql&apos;, &apos;python&apos;, &apos;saved_insight&apos; (embedded insight, never runs), or &apos;markdown&apos; (prose, a heading, or a fenced block; never runs and joins no dependency graph).</summary>
+        /// <summary>Cell kind: &apos;sql&apos;, &apos;python&apos;, &apos;saved_insight&apos; (an insight with an optional prepared dataframe), or &apos;markdown&apos; (prose, a heading, or a fenced block; never runs and joins no dependency graph).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CellType { get; set; }

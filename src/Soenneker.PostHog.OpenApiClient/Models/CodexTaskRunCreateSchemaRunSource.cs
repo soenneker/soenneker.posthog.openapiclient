@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report
+    /// High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report* `agent` - agent
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CodexTaskRunCreateSchemaRunSource : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `manual` - manual* `signal_report` - signal_report</summary>
+        /// <summary>* `manual` - manual* `signal_report` - signal_report* `agent` - agent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RunSourceEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaRunSource"/> and sets the default values.

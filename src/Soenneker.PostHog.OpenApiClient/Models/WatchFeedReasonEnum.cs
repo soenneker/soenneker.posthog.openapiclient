@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
+    /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WatchFeedReasonEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "unusual_verdict")]
         #pragma warning disable CS1591
         UnusualVerdict,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "notable")]
+        #pragma warning disable CS1591
+        Notable,
         #pragma warning restore CS1591
         [EnumMember(Value = "verdict_yes")]
         #pragma warning disable CS1591

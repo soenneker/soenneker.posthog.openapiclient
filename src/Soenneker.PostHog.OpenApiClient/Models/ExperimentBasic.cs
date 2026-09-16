@@ -127,6 +127,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus Status { get; private set; }
 #endif
+        /// <summary>Organizational tags for this experiment (up to 100, 255 characters each).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>Experiment type: web for frontend UI changes, product for backend/API changes.* `web` - web* `product` - product</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -191,6 +199,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "running_time_calculation", n => { RunningTimeCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
@@ -215,6 +224,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>("parameters", Parameters);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>("running_time_calculation", RunningTimeCalculation);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

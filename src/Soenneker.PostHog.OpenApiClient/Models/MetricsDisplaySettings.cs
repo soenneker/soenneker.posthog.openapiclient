@@ -20,6 +20,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get; set; }
 #endif
+        /// <summary>Time-series panels only: which reducers the legend table shows. Empty means no legend calcs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?>? LegendCalcs { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?> LegendCalcs { get; set; }
+#endif
+        /// <summary>How a null bucket renders on a time-series chart.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullModeWrapper? NullMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullModeWrapper NullMode { get; set; }
+#endif
+        /// <summary>How scalar panels and legend calcs collapse a series to one number.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducerWrapper? Reduce { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducerWrapper Reduce { get; set; }
+#endif
         /// <summary>`stat` display only: which summary the headline value shows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +52,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricsStatSummaryWrapper StatSummary { get; set; }
 #endif
+        /// <summary>Color bands for the scalar panels. Sorted by `value` at read time, so entry order does not matter.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold>? Thresholds { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold> Thresholds { get; set; }
+#endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,6 +67,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayTypeWrapper Type { get; set; }
+#endif
+        /// <summary>UCUM unit string as OTel writes it, e.g. &quot;By&quot;, &quot;ms&quot;, &quot;%&quot;. Defaults from the response unit.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Unit { get; set; }
+#nullable restore
+#else
+        public string Unit { get; set; }
 #endif
         /// <summary>The yAxis property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,8 +103,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "legendCalcs", n => { LegendCalcs = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer>()?.AsList(); } },
+                { "nullMode", n => { NullMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullModeWrapper.CreateFromDiscriminatorValue); } },
+                { "reduce", n => { Reduce = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducerWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducerWrapper.CreateFromDiscriminatorValue); } },
                 { "statSummary", n => { StatSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsStatSummaryWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsStatSummaryWrapper.CreateFromDiscriminatorValue); } },
+                { "thresholds", n => { Thresholds = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "unit", n => { Unit = n.GetStringValue(); } },
                 { "yAxis", n => { YAxis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings.CreateFromDiscriminatorValue); } },
             };
         }
@@ -76,8 +121,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer>("legendCalcs", LegendCalcs);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullModeWrapper>("nullMode", NullMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducerWrapper>("reduce", Reduce);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsStatSummaryWrapper>("statSummary", StatSummary);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold>("thresholds", Thresholds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayTypeWrapper>("type", Type);
+            writer.WriteStringValue("unit", Unit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings>("yAxis", YAxis);
         }
     }

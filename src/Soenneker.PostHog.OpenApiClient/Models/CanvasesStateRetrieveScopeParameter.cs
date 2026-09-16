@@ -8,13 +8,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public enum CanvasesStateRetrieveScopeParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "shared")]
-        #pragma warning disable CS1591
-        Shared,
-        #pragma warning restore CS1591
         [EnumMember(Value = "user")]
         #pragma warning disable CS1591
         User,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "shared")]
+        #pragma warning disable CS1591
+        Shared,
         #pragma warning restore CS1591
     }
 }

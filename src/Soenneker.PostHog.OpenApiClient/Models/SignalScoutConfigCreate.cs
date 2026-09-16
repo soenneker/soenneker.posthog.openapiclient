@@ -17,6 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exempt this scout from the inactivity pause, which otherwise switches off a scout that goes a fortnight without surfacing anything anyone engages with. Set it on watchdog scouts whose value is staying quiet. Defaults to false.</summary>
         public bool? AutoPauseExempt { get; set; }
+        /// <summary>Name shown wherever people identify this scout, written however you want it — spaces, capitalization, and acronyms are kept as typed, and two scouts may share one. It does not change the scout&apos;s skill name, which stays its identity, so renaming a scout keeps its schedule, run history, notes, memory, and links. At most 200 characters; blank means the scout has no name of its own and is labelled from its skill name instead.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayName { get; set; }
+#nullable restore
+#else
+        public string DisplayName { get; set; }
+#endif
         /// <summary>Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing. Defaults to true.</summary>
         public bool? Emit { get; set; }
         /// <summary>Whether this scout runs on its schedule. Defaults to true.</summary>
@@ -129,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "auto_pause_exempt", n => { AutoPauseExempt = n.GetBoolValue(); } },
+                { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "emit", n => { Emit = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "mcp_gateway_server_ids", n => { McpGatewayServerIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
@@ -152,6 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("auto_pause_exempt", AutoPauseExempt);
+            writer.WriteStringValue("display_name", DisplayName);
             writer.WriteBoolValue("emit", Emit);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("mcp_gateway_server_ids", McpGatewayServerIds);

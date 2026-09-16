@@ -86,6 +86,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalFieldType IncrementalFieldType { get; set; }
 #endif
+        /// <summary>Why the last sync run could not merge rows for this table, or `null` when no such failure is current, which includes a run that failed for another reason. A blocked table is disabled, and the resolution differs by reason. `missing_primary_key`: no key to merge on, so set `primary_key_columns` to a unique key, which is accepted because none was set before. `duplicate_primary_key`: the key in use does not identify one row, and that key cannot be swapped once data has synced, so either remove the duplicates at the source and set `should_sync` to true, or delete the synced data before setting a different key. Either reason also accepts a different `sync_type`: `append` is only safe for insert-only tables, because updated rows arrive again as duplicates, and `full_refresh` re-reads the whole table on every sync and bills every row. This reports the last run&apos;s failure, so it clears once a run succeeds or fails for another reason, not when an update lands.* `missing_primary_key` - Missing primary key* `duplicate_primary_key` - Duplicate primary key</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalSyncBlocked? IncrementalSyncBlocked { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalSyncBlocked IncrementalSyncBlocked { get; private set; }
+#endif
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -218,6 +226,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_lookback_seconds", n => { IncrementalFieldLookbackSeconds = n.GetIntValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalFieldType>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalFieldType.CreateFromDiscriminatorValue); } },
+                { "incremental_sync_blocked", n => { IncrementalSyncBlocked = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalSyncBlocked>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalSyncBlocked.CreateFromDiscriminatorValue); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },

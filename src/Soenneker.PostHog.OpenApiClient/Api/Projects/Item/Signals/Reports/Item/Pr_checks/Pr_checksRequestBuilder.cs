@@ -39,6 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksPermissionError">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_checks.Pr_checksRequestBuilder.Pr_checksRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "403", global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksPermissionError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch the CI status (GitHub Actions check runs and legacy commit statuses) of the pull request attached to the report, via the team&apos;s GitHub integration.

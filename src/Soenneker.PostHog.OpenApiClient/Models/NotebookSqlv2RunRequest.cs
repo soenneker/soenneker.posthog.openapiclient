@@ -56,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty Refs { get; set; }
 #endif
+        /// <summary>Reuse the requesting user&apos;s running or completed HogQL run with the same cell and resolved query from the last hour. Does not apply to token-only callers, kernel runs, or connection runs.</summary>
+        public bool? ReuseResults { get; set; }
         /// <summary>Send the code to the selected connection verbatim instead of compiling it from HogQL first. Ignored without connection_id, and incompatible with references to other cells.</summary>
         public bool? SendRawQuery { get; set; }
         /// <summary>Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch.</summary>
@@ -72,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public NotebookSqlv2RunRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            ReuseResults = false;
             SendRawQuery = false;
         }
         /// <summary>
@@ -98,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "node_type", n => { NodeType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType.CreateFromDiscriminatorValue); } },
                 { "output_name", n => { OutputName = n.GetStringValue(); } },
                 { "refs", n => { Refs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty.CreateFromDiscriminatorValue); } },
+                { "reuse_results", n => { ReuseResults = n.GetBoolValue(); } },
                 { "send_raw_query", n => { SendRawQuery = n.GetBoolValue(); } },
                 { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -115,6 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType>("node_type", NodeType);
             writer.WriteStringValue("output_name", OutputName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty>("refs", Refs);
+            writer.WriteBoolValue("reuse_results", ReuseResults);
             writer.WriteBoolValue("send_raw_query", SendRawQuery);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);

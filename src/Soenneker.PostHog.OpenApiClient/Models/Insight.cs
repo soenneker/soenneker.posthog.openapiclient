@@ -162,6 +162,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema Query { get; set; }
 #endif
+        /// <summary>What ClickHouse read for this insight&apos;s last slow run, with the findings of its query scan.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryScan? QueryScan { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryScan QueryScan { get; private set; }
+#endif
         /// <summary>The query_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -289,6 +297,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "next_allowed_client_refresh", n => { NextAllowedClientRefresh = n.GetDateTimeOffsetValue(); } },
                 { "order", n => { Order = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema.CreateFromDiscriminatorValue); } },
+                { "query_scan", n => { QueryScan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryScan>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryScan.CreateFromDiscriminatorValue); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedDateRange.CreateFromDiscriminatorValue); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultProperty>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResultProperty.CreateFromDiscriminatorValue); } },

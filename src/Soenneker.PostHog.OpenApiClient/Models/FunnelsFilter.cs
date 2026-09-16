@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class FunnelsFilter : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Render only annotations with this scope. Only applies to historical-trends funnels.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper? AnnotationsScope { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper AnnotationsScope { get; set; }
+#endif
         /// <summary>The binCount property</summary>
         public int? BinCount { get; set; }
         /// <summary>The breakdownAttributionType property</summary>
@@ -177,6 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "annotationsScope", n => { AnnotationsScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper.CreateFromDiscriminatorValue); } },
                 { "binCount", n => { BinCount = n.GetIntValue(); } },
                 { "breakdownAttributionType", n => { BreakdownAttributionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2.CreateFromDiscriminatorValue); } },
                 { "breakdownAttributionValue", n => { BreakdownAttributionValue = n.GetIntValue(); } },
@@ -212,6 +221,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper>("annotationsScope", AnnotationsScope);
             writer.WriteIntValue("binCount", BinCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2>("breakdownAttributionType", BreakdownAttributionType);
             writer.WriteIntValue("breakdownAttributionValue", BreakdownAttributionValue);

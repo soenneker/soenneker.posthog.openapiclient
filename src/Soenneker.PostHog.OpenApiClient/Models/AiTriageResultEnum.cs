@@ -3,13 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `persisted` - persisted* `escalated_with_best` - escalated_with_best* `escalated_no_reply` - escalated_no_reply* `skipped_unactionable` - skipped_unactionable* `blocked_unsafe` - blocked_unsafe* `blocked_unsafe_reply` - blocked_unsafe_reply* `in_progress` - in_progress</summary>
+    /// <summary>* `persisted` - persisted* `suggested` - suggested* `escalated_with_findings` - escalated_with_findings* `escalated_with_best` - escalated_with_best* `escalated_no_reply` - escalated_no_reply* `skipped_unactionable` - skipped_unactionable* `blocked_unsafe` - blocked_unsafe* `blocked_unsafe_reply` - blocked_unsafe_reply* `in_progress` - in_progress</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AiTriageResultEnum
     {
         [EnumMember(Value = "persisted")]
         #pragma warning disable CS1591
         Persisted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "suggested")]
+        #pragma warning disable CS1591
+        Suggested,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "escalated_with_findings")]
+        #pragma warning disable CS1591
+        EscalatedWithFindings,
         #pragma warning restore CS1591
         [EnumMember(Value = "escalated_with_best")]
         #pragma warning disable CS1591

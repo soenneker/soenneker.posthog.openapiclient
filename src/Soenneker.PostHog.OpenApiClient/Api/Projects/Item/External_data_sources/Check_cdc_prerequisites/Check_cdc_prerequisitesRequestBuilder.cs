@@ -36,20 +36,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         /// <summary>
         /// Validate CDC prerequisites against a live Postgres connection.Used by the source wizard to surface ✅/❌ checks before source creation,and by the self-managed setup popup to verify user-created publications.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesCheckCdcPrerequisitesCreate200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CdcPrerequisitesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesCheckCdcPrerequisitesCreate200Response?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CdcPrerequisitesResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesCheckCdcPrerequisitesCreate200Response> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CdcPrerequisitesResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesCheckCdcPrerequisitesCreate200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesCheckCdcPrerequisitesCreate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CdcPrerequisitesResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CdcPrerequisitesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Validate CDC prerequisites against a live Postgres connection.Used by the source wizard to surface ✅/❌ checks before source creation,and by the self-managed setup popup to verify user-created publications.
