@@ -139,6 +139,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatDefaultModifiersProperty DefaultModifiers { get; set; }
 #endif
+        /// <summary>When the scheduled project deletion will run.</summary>
+        public DateTimeOffset? DeletionScheduledAt { get; private set; }
         /// <summary>The effective_membership_level property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -566,6 +568,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "default_data_theme", n => { DefaultDataTheme = n.GetIntValue(); } },
                 { "default_evaluation_contexts_enabled", n => { DefaultEvaluationContextsEnabled = n.GetBoolValue(); } },
                 { "default_modifiers", n => { DefaultModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatDefaultModifiersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatDefaultModifiersProperty.CreateFromDiscriminatorValue); } },
+                { "deletion_scheduled_at", n => { DeletionScheduledAt = n.GetDateTimeOffsetValue(); } },
                 { "effective_membership_level", n => { EffectiveMembershipLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatEffectiveMembershipLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatEffectiveMembershipLevel.CreateFromDiscriminatorValue); } },
                 { "extra_settings", n => { ExtraSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatExtraSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatExtraSettings.CreateFromDiscriminatorValue); } },
                 { "feature_flag_confirmation_enabled", n => { FeatureFlagConfirmationEnabled = n.GetBoolValue(); } },

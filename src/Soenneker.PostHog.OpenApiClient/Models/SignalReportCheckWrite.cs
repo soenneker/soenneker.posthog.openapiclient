@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Horizon after which the check retires unrun. Defaults to 30 days after the last scheduled run, or the 90-day horizon if that comes first.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
-        /// <summary>How the check is evaluated.* `metric_threshold` - Metric Threshold</summary>
+        /// <summary>How the check is evaluated.* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind? Kind { get; set; }

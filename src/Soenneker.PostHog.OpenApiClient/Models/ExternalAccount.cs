@@ -50,6 +50,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Authority state of each relationship the project controls.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountOwnershipComposed? Ownership { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountOwnershipComposed Ownership { get; set; }
+#endif
         /// <summary>Typed account properties: external-system ids. Role assignments live under `relationships`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "ignored_at", n => { IgnoredAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "ownership", n => { Ownership = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountOwnershipComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountOwnershipComposed.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "relationships", n => { Relationships = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountRelationshipsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountRelationshipsProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -123,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteDateTimeOffsetValue("ignored_at", IgnoredAt);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountOwnershipComposed>("ownership", Ownership);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountPropertiesProperty>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountRelationshipsProperty>("relationships", Relationships);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);

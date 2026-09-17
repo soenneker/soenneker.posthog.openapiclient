@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChange> Changes { get; private set; }
 #endif
-        /// <summary>System that recorded the request change.* `manual` - Manual</summary>
+        /// <summary>System that recorded the request change.* `manual` - Manual* `github` - GitHub</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeSource? ChangeSource { get; private set; }

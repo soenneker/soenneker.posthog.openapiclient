@@ -25,6 +25,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison Comparison { get; set; }
 #endif
+        /// <summary>What the run must establish, in the author&apos;s own words.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Instructions { get; set; }
+#nullable restore
+#else
+        public string Instructions { get; set; }
+#endif
         /// <summary>Identifier of a metric on the report whose query this check measures. The metric&apos;s query is copied into `query` when the check is created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,6 +41,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricId { get; set; }
 #endif
+        /// <summary>Concrete places to look, such as an issue id, a service name, or a query to repeat.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ProbeHints { get; set; }
+#nullable restore
+#else
+        public List<string> ProbeHints { get; set; }
+#endif
         /// <summary>Live InsightVizNode wrapping one TrendsQuery: supplied by the caller, or copied from the named metric when the check is created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,6 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty Query { get; set; }
+#endif
+        /// <summary>Scout skill that runs the check. Omit it to run on the fleet&apos;s follow-up scout, which is the right lane for a report no scout authored.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SkillName { get; set; }
+#nullable restore
+#else
+        public string SkillName { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteConfig"/> and sets the default values.
@@ -68,8 +92,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
                 { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>(global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison.CreateFromDiscriminatorValue); } },
+                { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "metric_id", n => { MetricId = n.GetStringValue(); } },
+                { "probe_hints", n => { ProbeHints = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty.CreateFromDiscriminatorValue); } },
+                { "skill_name", n => { SkillName = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -81,8 +108,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("baseline_value", BaselineValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>("comparison", Comparison);
+            writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("metric_id", MetricId);
+            writer.WriteCollectionOfPrimitiveValues<string>("probe_hints", ProbeHints);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>("query", Query);
+            writer.WriteStringValue("skill_name", SkillName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

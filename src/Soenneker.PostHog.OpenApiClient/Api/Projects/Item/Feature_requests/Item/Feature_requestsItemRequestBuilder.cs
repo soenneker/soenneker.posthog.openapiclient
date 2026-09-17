@@ -7,9 +7,13 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Ad
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Add_evidence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Archive;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.History;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Link_github;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Pause_github;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Remove_evidence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Restore;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Resume_github;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Unlink_github;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Update_evidence;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -45,6 +49,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.History.HistoryRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The link_github property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Link_github.Link_githubRequestBuilder Link_github
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Link_github.Link_githubRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pause_github property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Pause_github.Pause_githubRequestBuilder Pause_github
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Pause_github.Pause_githubRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The remove_evidence property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Remove_evidence.Remove_evidenceRequestBuilder Remove_evidence
         {
@@ -55,10 +69,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Restore.RestoreRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The resume_github property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Resume_github.Resume_githubRequestBuilder Resume_github
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Resume_github.Resume_githubRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The status_history property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history.Status_historyRequestBuilder Status_history
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history.Status_historyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The unlink_github property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Unlink_github.Unlink_githubRequestBuilder Unlink_github
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Unlink_github.Unlink_githubRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The update_evidence property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Update_evidence.Update_evidenceRequestBuilder Update_evidence

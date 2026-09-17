@@ -52,6 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart> Charts { get; private set; }
 #endif
+        /// <summary>How many scout notes this report received beyond the few its work log keeps as entries. 0 when nothing was dropped. These say the finding still holds, so the count is shown in place of the entries.</summary>
+        public int? CollapsedNoteCount { get; private set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Free-form note captured alongside the dismissal reason (when present).</summary>
@@ -261,6 +263,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "billing_exempt_reason", n => { BillingExemptReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListBillingExemptReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListBillingExemptReason.CreateFromDiscriminatorValue); } },
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "collapsed_note_count", n => { CollapsedNoteCount = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "dismissal_note", n => { DismissalNote = n.GetStringValue(); } },
                 { "dismissal_reason", n => { DismissalReason = n.GetStringValue(); } },

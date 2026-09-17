@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Dashboard tile ID to update.</summary>
         public int? Id { get; set; }
+        /// <summary>Grid position and size per breakpoint. Works for every tile type, including insight tiles. A write replaces the tile&apos;s whole layout, so send a complete sm box rather than the one value you want to change. Boxes are stored as sent and overlaps are not resolved, so send sm boxes that do not overlap, and include every tile you move in the same request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts? Layouts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts Layouts { get; set; }
+#endif
         /// <summary>Nested widget row updates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetIntValue(); } },
+                { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts.CreateFromDiscriminatorValue); } },
                 { "widget", n => { Widget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget.CreateFromDiscriminatorValue); } },
             };
         }
@@ -61,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts>("layouts", Layouts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget>("widget", Widget);
             writer.WriteAdditionalData(AdditionalData);
         }

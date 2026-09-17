@@ -34,8 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? MergedAt { get; set; }
         /// <summary>Pull request number.</summary>
         public int? Number { get; set; }
-        /// <summary>Distinct head commits that triggered CI, merge-queue gate runs excluded.</summary>
-        public int? Pushes { get; set; }
+        /// <summary>Distinct head commits that triggered CI, oldest first, merge-queue gate runs excluded. A PR listed for an author or a team misses pushes from more than 30 days before the window.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelinePush>? Pushes { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelinePush> Pushes { get; set; }
+#endif
         /// <summary>The repository the pull request belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_draft", n => { IsDraft = n.GetBoolValue(); } },
                 { "merged_at", n => { MergedAt = n.GetDateTimeOffsetValue(); } },
                 { "number", n => { Number = n.GetIntValue(); } },
-                { "pushes", n => { Pushes = n.GetIntValue(); } },
+                { "pushes", n => { Pushes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelinePush>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelinePush.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRepo>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRepo.CreateFromDiscriminatorValue); } },
                 { "segments", n => { Segments = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegment>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
@@ -124,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_draft", IsDraft);
             writer.WriteDateTimeOffsetValue("merged_at", MergedAt);
             writer.WriteIntValue("number", Number);
-            writer.WriteIntValue("pushes", Pushes);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelinePush>("pushes", Pushes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRepo>("repo", Repo);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegment>("segments", Segments);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);

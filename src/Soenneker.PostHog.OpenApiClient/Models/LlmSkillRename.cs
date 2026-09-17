@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>New name for the skill. Must be unique in the project, and must not start with &apos;signals-scout-&apos; or &apos;review-hog-&apos;.</summary>
+        /// <summary>New name for the skill. Must be unique in the project, cannot be the name of a skill PostHog ships, and must not start with &apos;signals-scout-&apos; or &apos;review-hog-&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NewName { get; set; }

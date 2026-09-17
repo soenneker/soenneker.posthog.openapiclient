@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts.Name.Ite
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithPromptNameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts/name/{promptName}{?content*,label*,version*}", pathParameters)
+        public WithPromptNameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts/name/{promptName}{?content*,label*,resolve*,version*}", pathParameters)
         {
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts.Name.Ite
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithPromptNameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts/name/{promptName}{?content*,label*,version*}", rawUrl)
+        public WithPromptNameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts/name/{promptName}{?content*,label*,resolve*,version*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublic"/></returns>
@@ -145,6 +145,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts.Name.Ite
             [QueryParameter("label")]
             public string Label { get; set; }
 #endif
+            /// <summary>Replace @@@prompt:...@@@ references with the referenced prompts&apos; content before returning. Set to false to get the raw text with the reference tags, e.g. for editing or export. Only applies when content is &apos;full&apos;.</summary>
+            [QueryParameter("resolve")]
+            public bool? Resolve { get; set; }
             /// <summary>Specific prompt version to fetch. If omitted, the latest version is returned.</summary>
             [QueryParameter("version")]
             public int? Version { get; set; }

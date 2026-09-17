@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `preserve` - preserve* `two_column` - two_column* `full_width` - full_width</summary>
+    /// <summary>* `preserve` - preserve* `two_column` - two_column* `three_column` - three_column* `full_width` - full_width</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LayoutEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "two_column")]
         #pragma warning disable CS1591
         TwoColumn,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "three_column")]
+        #pragma warning disable CS1591
+        ThreeColumn,
         #pragma warning restore CS1591
         [EnumMember(Value = "full_width")]
         #pragma warning disable CS1591

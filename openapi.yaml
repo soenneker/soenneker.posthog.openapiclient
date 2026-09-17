@@ -828,9 +828,10 @@ paths:
   /api/customer_analytics/external/account:
     get:
       operationId: customer_analytics_external_account_retrieve
-      description: Fetch one account by external ID with its properties, tags, active
-        relationship assignments and custom property values. Accepts the team secret
-        API token or a project secret API key with the `account:read` scope.
+      description: Fetch one account by external ID with its properties, controlled
+        relationship ownership, tags, active relationship assignments and custom property
+        values. Accepts the team secret API token or a project secret API key with
+        the `account:read` scope.
       summary: Get an external customer analytics account
       parameters:
       - in: query
@@ -881,9 +882,12 @@ paths:
     get:
       operationId: customer_analytics_external_accounts_retrieve
       description: List tracked accounts with external IDs, lifecycle timestamps,
-        and active relationship assignments. Set `include_ignored=true` to include
-        ignored accounts. Requires a project secret API key with the `account:read`
-        scope.
+        controlled relationship ownership, and active relationship assignments. Set
+        `include_ignored=true` to include ignored accounts and `managed_only=true`
+        to read only the accounts customer analytics holds ownership authority for.
+        Requires a project secret API key or personal API key with the `account:read`
+        scope. Personal API keys also require `project_id` and return only accounts
+        the key owner can access.
       summary: List external customer analytics accounts
       parameters:
       - in: query
@@ -912,6 +916,22 @@ paths:
           default: 100
         description: Maximum number of accounts to return. Values below 1 are clamped
           to 1; values above 100 are clamped to 100.
+      - in: query
+        name: managed_only
+        schema:
+          type: boolean
+          default: false
+        description: When true, return only accounts where customer analytics holds
+          authority over at least one controlled relationship, including accounts
+          whose managed relationships are cleared and accounts that are ignored. Authority
+          does not end when an account is ignored, so `include_ignored` is implied.
+      - in: query
+        name: project_id
+        schema:
+          type: integer
+          minimum: 1
+        description: Project ID. Required for personal API keys. Project secret API
+          keys use their bound project.
       tags:
       - customer_analytics
       - customer_analytics
@@ -934,14 +954,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ExternalAccountListAuthError'
           description: Authentication failed.
         '403':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: API key does not carry the account:read scope.
+                $ref: '#/components/schemas/ExternalAccountListAuthError'
+          description: API key lacks the required scope or access to the selected
+            project or accounts.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalAccountListPermissionError'
+          description: The project selected with a personal API key does not exist.
       x-product:
       - customer_analytics
   /api/llm_analytics/@me/spend/:
@@ -1357,8 +1384,8 @@ paths:
           items:
             type: string
           default: []
-        description: Filter by API clients that generated the activity (from x-posthog-client
-          header).
+        description: Filter by API clients that generated the activity (the x-posthog-client
+          header, or 'scout:<skill_name>' for a scout run).
       - in: query
         name: detail_filters
         schema:
@@ -4917,6 +4944,33 @@ paths:
           description: ''
       x-product:
       - core
+  /api/organizations/{organization_id}/projects/{id}/cancel-deletion/:
+    post:
+      operationId: organizations_projects_cancel_deletion_create
+      description: Cancel a scheduled project deletion and restore access to the project.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        description: A unique value identifying this project.
+        required: true
+      - $ref: '#/components/parameters/OrganizationIdPath'
+      tags:
+      - organizations
+      - projects
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+      x-product:
+      - core
   /api/organizations/{organization_id}/projects/{id}/change_organization/:
     post:
       operationId: organizations_projects_change_organization_create
@@ -7625,6 +7679,34 @@ paths:
           description: ''
       x-product:
       - customer_analytics
+  /api/projects/{project_id}/accounts/by_external_id/:
+    get:
+      operationId: accounts_by_external_id_retrieve
+      parameters:
+      - in: query
+        name: external_id
+        schema:
+          type: string
+          maxLength: 400
+          minLength: 1
+        description: Exact external account identifier. Leading and trailing whitespace
+          is significant.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - accounts
+      security:
+      - PersonalAPIKeyAuth:
+        - account:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+      x-product:
+      - customer_analytics
   /api/projects/{project_id}/accounts_table_query/:
     post:
       operationId: customer_analytics_accounts_table_query_create
@@ -8452,8 +8534,8 @@ paths:
           items:
             type: string
           default: []
-        description: Filter by API clients that generated the activity (from x-posthog-client
-          header).
+        description: Filter by API clients that generated the activity (the x-posthog-client
+          header, or 'scout:<skill_name>' for a scout run).
       - in: query
         name: detail_filters
         schema:
@@ -9693,6 +9775,243 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AutoresearchPipeline'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/models/:
+    get:
+      operationId: autoresearch_models_list
+      description: |-
+        List and retrieve champion/challenger models for a pipeline.
+
+        Models are the persisted artifacts produced by training runs. Each model
+        holds a portable recipe (feature SQL, transforms, model class, params) that
+        the daily inference workflow compiles to score users.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAutoresearchModelList'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/models/{id}/:
+    get:
+      operationId: autoresearch_models_retrieve
+      description: |-
+        List and retrieve champion/challenger models for a pipeline.
+
+        Models are the persisted artifacts produced by training runs. Each model
+        holds a portable recipe (feature SQL, transforms, model class, params) that
+        the daily inference workflow compiles to score users.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch model.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchModel'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/runs/:
+    get:
+      operationId: autoresearch_runs_list
+      description: List and retrieve inference and validation runs for a pipeline.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAutoresearchRunList'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/runs/{id}/:
+    get:
+      operationId: autoresearch_runs_retrieve
+      description: List and retrieve inference and validation runs for a pipeline.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchRun'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/:
+    get:
+      operationId: autoresearch_training_runs_list
+      description: |-
+        List and retrieve training runs for a pipeline.
+
+        A training run records the agent's search for a model: each iteration's recipe and holdout
+        score, and the summary of the run once it completes.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAutoresearchTrainingRunList'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/:
+    get:
+      operationId: autoresearch_training_runs_retrieve
+      description: |-
+        List and retrieve training runs for a pipeline.
+
+        A training run records the agent's search for a model: each iteration's recipe and holdout
+        score, and the summary of the run once it completes.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchTrainingRun'
           description: ''
       x-product:
       - autoresearch
@@ -14344,7 +14663,7 @@ paths:
         description: 'Filter by AI triage outcome. Accepts a single value or a comma-separated
           list. Valid values: `persisted`, `suggested`, `escalated_with_findings`,
           `escalated_with_best`, `escalated_no_reply`, `skipped_unactionable`, `blocked_unsafe`,
-          `blocked_unsafe_reply`, `in_progress`.'
+          `blocked_unsafe_reply`, `clarified`, `suggested_clarification`, `in_progress`.'
       - in: query
         name: assignee
         schema:
@@ -16629,6 +16948,11 @@ paths:
       operationId: dashboards_list
       parameters:
       - in: query
+        name: exclude_generated
+        schema:
+          type: boolean
+        description: Optional. Exclude dashboards that PostHog generated.
+      - in: query
         name: folder
         schema:
           type: string
@@ -16654,6 +16978,11 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: pinned
+        schema:
+          type: boolean
+        description: Optional. Return only pinned dashboards.
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -27205,6 +27534,189 @@ paths:
           description: ''
       x-product:
       - ai_observability
+  /api/projects/{project_id}/evaluations/{evaluation_id}/backfills/:
+    get:
+      operationId: evaluations_backfills_list
+      description: Historical runs of one evaluation over a closed time window (nested
+        under an evaluation).
+      parameters:
+      - in: path
+        name: evaluation_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - evaluations
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEvaluationBackfillList'
+          description: ''
+      x-product:
+      - ai_observability
+    post:
+      operationId: evaluations_backfills_create
+      description: 'Create a backfill: freeze the conditions, count the units, start
+        the walk.'
+      parameters:
+      - in: path
+        name: evaluation_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - evaluations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationBackfillRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EvaluationBackfillRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EvaluationBackfillRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationBackfill'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/evaluations/{evaluation_id}/backfills/{id}/:
+    get:
+      operationId: evaluations_backfills_retrieve
+      description: Historical runs of one evaluation over a closed time window (nested
+        under an evaluation).
+      parameters:
+      - in: path
+        name: evaluation_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this evaluation backfill.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - evaluations
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationBackfill'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/evaluations/{evaluation_id}/backfills/{id}/cancel/:
+    post:
+      operationId: evaluations_backfills_cancel_create
+      description: Stop a running backfill. Evaluations already dispatched still finish.
+      parameters:
+      - in: path
+        name: evaluation_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this evaluation backfill.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - evaluations
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationBackfill'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/evaluations/{evaluation_id}/backfills/estimate/:
+    post:
+      operationId: evaluations_backfills_estimate_create
+      description: Count what a backfill over the given window would evaluate, without
+        creating one.
+      parameters:
+      - in: path
+        name: evaluation_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - evaluations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationBackfillRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EvaluationBackfillRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EvaluationBackfillRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationBackfillEstimate'
+          description: ''
+      x-product:
+      - ai_observability
   /api/projects/{project_id}/evaluations/{id}/:
     get:
       operationId: evaluations_retrieve
@@ -34217,6 +34729,78 @@ paths:
           description: ''
       x-product:
       - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/link_github/:
+    post:
+      operationId: feature_requests_link_github_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestGitHubLinkSerializerInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestGitHubLinkSerializerInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestGitHubLinkSerializerInput'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - customer_analytics:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/pause_github/:
+    post:
+      operationId: feature_requests_pause_github_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - customer_analytics:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
   /api/projects/{project_id}/feature_requests/{id}/remove_evidence/:
     post:
       operationId: feature_requests_remove_evidence_create
@@ -34289,6 +34873,42 @@ paths:
           description: ''
       x-product:
       - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/resume_github/:
+    post:
+      operationId: feature_requests_resume_github_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - customer_analytics:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
   /api/projects/{project_id}/feature_requests/{id}/status_history/:
     get:
       operationId: feature_requests_status_history_list
@@ -34312,6 +34932,42 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/FeatureRequestStatusHistory'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/unlink_github/:
+    post:
+      operationId: feature_requests_unlink_github_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - customer_analytics:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
           description: ''
       x-product:
       - customer_analytics
@@ -44365,6 +45021,14 @@ paths:
           type: string
           pattern: ^[^/]+$
         required: true
+      - in: query
+        name: resolve
+        schema:
+          type: boolean
+          default: true
+        description: Replace @@@prompt:...@@@ references with the referenced prompts'
+          content before returning. Set to false to get the raw text with the reference
+          tags, e.g. for editing or export. Only applies when content is 'full'.
       - in: query
         name: version
         schema:
@@ -60157,10 +60821,14 @@ paths:
       - signals
     delete:
       operationId: signals_report_artefacts_destroy
-      description: Delete an artefact, addressed by id. Deleting the latest row of
-        a status type reverts the report's canonical status to the previous version
+      description: 'Delete an artefact, addressed by id. Deleting the latest row of
+        a status type reverts the report''s canonical status to the previous version
         (latest-wins over what remains). `task_run` artefacts are an append-only work
-        log and cannot be deleted.
+        log and cannot be deleted. Neither can the types this API cannot write, which
+        the pipeline owns: `check_result`, `code_review`, `implementation_decision`,
+        `implementation_dispatch`, `implementation_handover`, `implementation_replacement`,
+        `pull_request`, `summary_change`, `task_run`, `title_change`, `video_segment`,
+        `work_claim`, `work_release`.'
       summary: Delete an artefact
       parameters:
       - in: path
@@ -60296,7 +60964,9 @@ paths:
       operationId: signals_report_checks_create
       description: Schedule a re-measurement of the report's claim. A `metric_threshold`
         check runs one bounded Trends query and compares the result, so it needs no
-        agent run.
+        agent run. An `agent` check runs a scout instead, for a claim no single number
+        settles; it runs on the scout its config names, or on the fleet's follow-up
+        scout when it names none.
       summary: Create a check on a report
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -61397,6 +62067,61 @@ paths:
           description: Run not found or not visible to this project.
       x-product:
       - signals
+  /api/projects/{project_id}/signals/scout/runs/{run_id}/check-result/:
+    post:
+      operationId: signals_scout_record_check_result
+      description: Close the follow-up check this run was dispatched to answer. The
+        run note carries the check id and what to establish; this call is the only
+        thing that records the answer, so a run that investigates and says nothing
+        leaves the check unanswered. The verdict lands on the report as a `check_result`
+        entry people read in the inbox. `failed` retires the check, `passed` re-arms
+        a recurring one, and `errored` retries it, so send the outcome you actually
+        reached rather than the one that closes the loop. A run may only close a check
+        dispatched to its own scout.
+      summary: Record the verdict on a report check
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: run_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the `SignalScoutRun` bridge row.
+        required: true
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordCheckResultRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RecordCheckResultRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecordCheckResultRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordCheckResultResponse'
+          description: Verdict recorded on the report, and the check advanced or retired.
+        '400':
+          description: The check does not exist for this project, already finished,
+            is measured by the coordinator rather than a run, runs on another scout,
+            or is not waiting on a run.
+        '404':
+          description: Run not found for this project.
+      x-product:
+      - signals
   /api/projects/{project_id}/signals/scout/runs/{run_id}/edit-report/:
     post:
       operationId: signals_scout_edit_report
@@ -61409,7 +62134,9 @@ paths:
         missing a qualifying reviewer or a repository can open a draft PR. The response
         carries the repository the report holds after the edit, and the call fails
         when a repository it named did not land. Title/summary edits are best-effort:
-        the pipeline may later re-research them.'
+        the pipeline may later re-research them. Set `supersedes_implementation` alongside
+        a rewrite when the fix changed. Verified automated predecessor PRs close only
+        after the replacement completes with verified open PRs.'
       summary: Edit an existing report for a run
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -61640,6 +62367,71 @@ paths:
             cap).
         '404':
           description: Run not found for this project.
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/scout/runs/{run_id}/lighthouse-audit/:
+    post:
+      operationId: signals_scout_lighthouse_audit
+      description: 'Load one page in a real browser and return what makes it slow
+        — most usefully the element the browser chose as the Largest Contentful Paint,
+        and where the LCP time went. Field data says a route is slow; this says which
+        element and why, so a finding can name it instead of guessing from source.
+        Restricted to public PostHog pages: the browser signs in to nothing, so a
+        page behind a login would report the login screen''s numbers. One throttled
+        cold load is not a p75 over real users — corroborate a field finding with
+        it, never replace one. Capped at 5 audits per run.'
+      summary: Run a Lighthouse audit for a run
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: run_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the `SignalScoutRun` bridge row.
+        required: true
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LighthouseAuditRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LighthouseAuditRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LighthouseAuditRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LighthouseAuditResponse'
+          description: The audit ran and the reduced report is attached.
+        '400':
+          description: The url is not on an allowed host, is not https, redirected
+            off the allowed hosts (the login-wall case), the run is not in progress,
+            or the run has spent its audit budget. Also returned when the page could
+            not be loaded at all. Every message ends with how many audits the run
+            has left, so a rejection is distinguishable from an exhausted budget.
+        '404':
+          description: No such run in this project, or the run belongs to a different
+            scout.
+        '429':
+          description: Audit rate limit exceeded; retry later.
+        '501':
+          description: Lighthouse audits are not configured on this deployment.
+        '503':
+          description: The browser fleet is at capacity, so no audit ran and the run
+            keeps the slot. Retry later.
       x-product:
       - signals
   /api/projects/{project_id}/signals/scout/runs/{run_id}/record-output/:
@@ -68317,6 +69109,55 @@ paths:
       x-product:
       - task-runs
       - tasks
+  /api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_summary/:
+    patch:
+      operationId: tasks_runs_set_summary_partial_update
+      description: Replace the running summary for a task run.
+      summary: Set task run summary
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: task_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - task-runs
+      - tasks
+      - tasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTaskRunSetSummaryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTaskRunSetSummaryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTaskRunSetSummaryRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - task:write
+      - PersonalAPIKeyAuth:
+        - task:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskRunDetailDTO'
+          description: Run with updated task summary
+        '404':
+          description: Run not found
+      x-product:
+      - task-runs
+      - tasks
   /api/projects/{project_id}/tasks/{task_id}/runs/{id}/start/:
     post:
       operationId: tasks_runs_start_create
@@ -74455,6 +75296,23 @@ paths:
           * `classifier` - Classifier
           * `scorer` - Scorer
           * `summarizer` - Summarizer
+      - in: query
+        name: search
+        schema:
+          type: string
+          minLength: 1
+        description: Case-insensitive text to match against the scan's own words (title,
+          summary, reasoning, and the notability sentence) and the scanner's name.
+          Applied before ranking, so it searches the whole window rather than the
+          items that would have surfaced without it.
+      - in: query
+        name: tags
+        schema:
+          type: string
+          minLength: 1
+        description: Comma-separated scanner tags to restrict the feed to. A team
+          with many scanners uses these to follow one area without naming every scanner
+          in it.
       tags:
       - vision
       security:
@@ -75939,6 +76797,12 @@ paths:
       operationId: warehouse_saved_queries_list
       description: Create, Read, Update and Delete Warehouse Tables.
       parameters:
+      - in: query
+        name: include_columns
+        schema:
+          type: boolean
+          default: true
+        description: Include column definitions. Set to false for table-only lists.
       - name: page
         required: false
         in: query
@@ -83008,10 +83872,24 @@ components:
           format: date-time
           readOnly: true
           description: When this assignment ended; null while it is active.
+        source:
+          readOnly: true
+          description: |-
+            Which kind of writer made this assignment; null on rows older than provenance tracking.
+
+            * `human` - Human
+            * `workflow` - Workflow
+            * `ai` - AI
+            * `salesforce_claim` - Salesforce claim
+            * `migration` - Migration
+          oneOf:
+          - $ref: '#/components/schemas/AccountRelationshipSourceEnum'
+          - $ref: '#/components/schemas/NullEnum'
       required:
       - definition
       - ended_at
       - id
+      - source
       - started_at
       - user
     AccountRelationshipDefinition:
@@ -83040,9 +83918,32 @@ components:
           default: true
           description: Whether only one user can hold this relationship per account
             at a time, e.g. a single CSM per account.
+        is_controlled:
+          type: boolean
+          readOnly: true
+          description: Whether customer analytics can take control of this relationship
+            per account. Rows under a controlled relationship can't be deleted. On
+            an account where control has started, only a person can change the relationship
+            and an empty relationship is a deliberate decision. Set by project operators,
+            not through this API.
       required:
       - id
+      - is_controlled
       - name
+    AccountRelationshipSourceEnum:
+      enum:
+      - human
+      - workflow
+      - ai
+      - salesforce_claim
+      - migration
+      type: string
+      description: |-
+        * `human` - Human
+        * `workflow` - Workflow
+        * `ai` - AI
+        * `salesforce_claim` - Salesforce claim
+        * `migration` - Migration
     AccountRelationshipWrite:
       type: object
       description: Input for assigning a user to an account relationship.
@@ -85147,7 +86048,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -85284,7 +86185,7 @@ components:
           type:
           - string
           - 'null'
-          maxLength: 32
+          maxLength: 256
         ip_address:
           type:
           - string
@@ -85351,8 +86252,10 @@ components:
           - string
           - 'null'
           readOnly: true
-          description: API client that triggered the activity, from the x-posthog-client
-            request header (e.g. 'mcp'). Null for requests that did not send the header.
+          description: API client that triggered the activity. Self-reported through
+            the x-posthog-client request header (e.g. 'mcp'), or 'scout:<skill_name>'
+            when a scout run made the change, which the server derives from the run's
+            own token. Null for requests that did neither.
       required:
       - activity
       - client
@@ -85980,6 +86883,50 @@ components:
       - name
       - users_in_cohort
       - window_days
+    AgentCheckConfig:
+      additionalProperties: false
+      description: |-
+        A check a scout run answers: re-probe the report's claim and record one verdict.
+
+        The kind for a claim no single number settles. A resolved error-tracking report is the usual
+        case: "did the exception stop?" needs the issue looked up, its recent events read, and the
+        stack compared against what the fix changed, which is a run rather than a comparison.
+
+        Everything here is prompt material a scout reads, so it is untrusted by construction: it renders
+        in the run block the agent is told to weigh, never in the instructions it is told to follow. The
+        verdict still comes back through `scout-check-record-result`, so instructions cannot widen what
+        a check run may write.
+
+        ``skill_name`` names the lane. Most reports are pipeline-authored and have no scout behind them,
+        so it is optional: a check that names none runs on the fleet's follow-up scout
+        (see ``report_check_agent.FALLBACK_CHECK_SKILL_NAME``).
+      properties:
+        instructions:
+          description: What the run must establish, in the author's own words.
+          maxLength: 2000
+          title: Instructions
+          type: string
+        skill_name:
+          anyOf:
+          - maxLength: 200
+            type: string
+          - type: 'null'
+          default: null
+          description: Scout skill that runs the check. Omit it to run on the fleet's
+            follow-up scout, which is the right lane for a report no scout authored.
+          title: Skill Name
+        probe_hints:
+          description: Concrete places to look, such as an issue id, a service name,
+            or a query to repeat.
+          items:
+            type: string
+          maxItems: 5
+          title: Probe Hints
+          type: array
+      required:
+      - instructions
+      title: AgentCheckConfig
+      type: object
     AgentKeyEnum:
       enum:
       - support
@@ -86179,6 +87126,8 @@ components:
       - skipped_unactionable
       - blocked_unsafe
       - blocked_unsafe_reply
+      - clarified
+      - suggested_clarification
       - in_progress
       type: string
       description: |-
@@ -86190,6 +87139,8 @@ components:
         * `skipped_unactionable` - skipped_unactionable
         * `blocked_unsafe` - blocked_unsafe
         * `blocked_unsafe_reply` - blocked_unsafe_reply
+        * `clarified` - clarified
+        * `suggested_clarification` - suggested_clarification
         * `in_progress` - in_progress
     Alert:
       type: object
@@ -87948,6 +88899,27 @@ components:
       - all
       - approvals
       - blocked
+    AuditOpportunity:
+      type: object
+      description: A failing check or a savings estimate from the audit.
+      properties:
+        audit_id:
+          type: string
+          description: Lighthouse audit id, for example `prioritize-lcp-image`.
+        title:
+          type: string
+          description: Lighthouse's own title for the check.
+        savings_ms:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Estimated milliseconds this would save. Null for a pass/fail
+            check with no estimate.
+      required:
+      - audit_id
+      - savings_ms
+      - title
     AuthMethodEnum:
       enum:
       - oauth
@@ -88070,6 +89042,158 @@ components:
         * `P2` - P2
         * `P3` - P3
         * `P4` - P4
+    AutoresearchIterationStatusEnum:
+      enum:
+      - kept
+      - discarded
+      - crashed
+      type: string
+      description: |-
+        * `kept` - Kept
+        * `discarded` - Discarded
+        * `crashed` - Crashed
+    AutoresearchModel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique UUID of this model version.
+        pipeline:
+          type: string
+          format: uuid
+          description: Pipeline this model belongs to.
+        role:
+          allOf:
+          - $ref: '#/components/schemas/AutoresearchModelRoleEnum'
+          description: |-
+            Model role: 'champion' (active scoring model), 'challenger' (shadow model), or 'archived'.
+
+            * `champion` - Champion
+            * `challenger` - Challenger
+            * `archived` - Archived
+        recipe_hash:
+          type: string
+          readOnly: true
+          description: SHA-256 of the serialized recipe. Used to deduplicate identical
+            recipes across runs.
+        model_recipe:
+          type: object
+          description: Portable recipe artifact. Feature SQL, transforms, model class,
+            params, and metadata.
+          example:
+            feature_sql: SELECT a.person_id AS distinct_id, countIf(e.event='$pageview')
+              AS pageviews_30d FROM {anchors} a LEFT JOIN events e ON e.person_id
+              = a.person_id AND e.timestamp < fromUnixTimestamp(a.cutoff_ts) GROUP
+              BY a.person_id
+            feature_transforms: []
+            model_class: sklearn.linear_model.LogisticRegression
+            model_params:
+              C: 1.0
+              max_iter: 200
+            fit_signature: abc123
+            trained_on: 2026-04-01 to 2026-05-01
+            holdout_score: 0.72
+            agent_description: 'Stub recipe: universal engagement features'
+        model_explanation:
+          type: object
+          description: Global feature importance and directionality. Used to explain
+            top drivers on the model card.
+        holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: AUC on the held-out test split at training time. Preliminary
+            signal before online labels mature.
+        realized_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Online AUC computed from actual realized outcomes. Authoritative
+            once enough labels have matured.
+        calibration_error:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Expected calibration error (ECE). Lower is better; well-calibrated
+            models have ECE < 0.05.
+        metrics:
+          type: object
+          additionalProperties: true
+          description: 'Extended metrics bundle: Brier score, precision/recall at
+            thresholds, lift@k, base rate, row counts.'
+        source_training_run:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: Training run that produced this model. Read that run's artifact
+            bundle to reuse the champion's train.py and features.sql as a starting
+            point. Null for legacy models.
+        agent_description:
+          type: string
+          description: The agent's own plain-English description of what this recipe
+            does and why it was chosen.
+        trained_on_start:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Start of the training data window (inclusive).
+        trained_on_end:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: End of the training data window (exclusive).
+        is_preliminary:
+          type: boolean
+          description: True if this model has not yet been validated against realized
+            online outcomes.
+        promoted_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp when this model was promoted to champion.
+        archived_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp when this model was archived (superseded or retired).
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - model_explanation
+      - model_recipe
+      - pipeline
+      - recipe_hash
+      - source_training_run
+      - updated_at
+    AutoresearchModelRoleEnum:
+      enum:
+      - champion
+      - challenger
+      - archived
+      type: string
+      description: |-
+        * `champion` - Champion
+        * `challenger` - Challenger
+        * `archived` - Archived
     AutoresearchPipeline:
       type: object
       properties:
@@ -88379,6 +89503,195 @@ components:
         * `converged` - Converged
         * `paused` - Paused
         * `archived` - Archived
+    AutoresearchRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique UUID of this run.
+        pipeline:
+          type: string
+          format: uuid
+          description: Pipeline this run belongs to.
+        model:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Model used for scoring. Null for validation runs.
+        run_type:
+          allOf:
+          - $ref: '#/components/schemas/AutoresearchRunRunTypeEnum'
+          description: |-
+            Type of run: 'inference' (daily scoring) or 'validation' (outcome evaluation).
+
+            * `inference` - Inference
+            * `validation` - Validation
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ZendeskImportJobStatusEnum'
+          description: |-
+            Run status: pending, running, completed, or failed.
+
+            * `pending` - Pending
+            * `running` - Running
+            * `completed` - Completed
+            * `failed` - Failed
+        rows_scored:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Number of users scored in this inference run.
+        metrics:
+          type: object
+          additionalProperties: true
+          description: 'Run metrics: rows scored, score distribution summary, validation
+            AUC, etc.'
+        error:
+          type: string
+          description: Error message if the run failed.
+        started_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp when the run started.
+        completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp when the run completed or failed.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - metrics
+      - pipeline
+      - run_type
+    AutoresearchRunRunTypeEnum:
+      enum:
+      - inference
+      - validation
+      type: string
+      description: |-
+        * `inference` - Inference
+        * `validation` - Validation
+    AutoresearchTrainingRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique UUID of this training run.
+        pipeline:
+          type: string
+          format: uuid
+          description: Pipeline this training run belongs to.
+        task_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Parent Task ID in the tasks sandbox. Null for stub runs.
+        task_run_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Task sandbox run ID. Null for stub/synchronous training runs.
+        task_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Relative URL to the underlying sandbox Task detail page. Null
+            for stub/synchronous training runs.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ZendeskImportJobStatusEnum'
+          readOnly: true
+          description: |-
+            Run status: pending, running, completed, or failed.
+
+            * `pending` - Pending
+            * `running` - Running
+            * `completed` - Completed
+            * `failed` - Failed
+        iteration_budget:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Maximum iterations allowed for this run.
+        iteration_count:
+          type: integer
+          readOnly: true
+          description: Number of iterations completed.
+        best_holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          readOnly: true
+          description: Best holdout AUC achieved across all iterations in this run.
+        summary:
+          oneOf:
+          - $ref: '#/components/schemas/TrainingRunSummary'
+          - type: 'null'
+          readOnly: true
+          description: Distilled cross-run learning summary written on completion.
+            Null until the run completes.
+        iterations:
+          type: array
+          items:
+            $ref: '#/components/schemas/IterationTrail'
+          readOnly: true
+          description: Per-iteration breakdown — every recipe the agent tried this
+            run, kept or discarded, with its model spec, holdout/train AUC, and one-line
+            rationale. Ordered by iteration_number.
+        error:
+          type: string
+          readOnly: true
+          description: Error message if the run failed.
+        started_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Timestamp when the training run started.
+        completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Timestamp when the training run completed or failed.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - best_holdout_score
+      - completed_at
+      - created_at
+      - error
+      - id
+      - iteration_count
+      - iterations
+      - pipeline
+      - started_at
+      - status
+      - summary
+      - task_url
     AvailableFiltersResponse:
       type: object
       properties:
@@ -98070,6 +99383,16 @@ components:
           readOnly: true
           description: Flags describing which kinds of conditions the cohort's filters
             contain. Null when the cohort has no filters to classify.
+        realtime:
+          oneOf:
+          - $ref: '#/components/schemas/CohortRealtimeReadiness'
+          - type: 'null'
+          description: Whether feature flags can target this cohort, and the progress
+            of the build that gets it there. Null outside the realtime cohort flag
+            targeting rollout, on projects the realtime pipeline does not cover, and
+            for cohorts that match on neither events nor person properties, which
+            nothing in the flag API decides on.
+          readOnly: true
         experiment_set:
           type: array
           items:
@@ -98110,6 +99433,7 @@ components:
       - last_import_total_count
       - last_import_unmatched_count
       - pending_version
+      - realtime
       - search_match_type
       - version
     CohortConditionTypeFlags:
@@ -98232,6 +99556,45 @@ components:
       - properties
       title: CohortFilters
       type: object
+    CohortHistoryBuild:
+      type: object
+      properties:
+        phase:
+          allOf:
+          - $ref: '#/components/schemas/CohortHistoryBuildPhaseEnum'
+          description: |-
+            What the build is doing now: `waiting` to start, `scanning` past events, or `checking` the membership it produced. A build that is queued but has not started reports `waiting` too.
+
+            * `waiting` - Waiting
+            * `scanning` - Scanning
+            * `checking` - Checking
+        percent_complete:
+          type:
+          - integer
+          - 'null'
+          description: How much of the event history has been scanned, 0 to 100. Null
+            outside the `scanning` phase, and while the scan is still being planned.
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When this build last made progress. Null while it is still
+            queued.
+      required:
+      - percent_complete
+      - phase
+      - updated_at
+    CohortHistoryBuildPhaseEnum:
+      enum:
+      - waiting
+      - scanning
+      - checking
+      type: string
+      description: |-
+        * `waiting` - Waiting
+        * `scanning` - Scanning
+        * `checking` - Checking
     CohortPersonResult:
       type: object
       properties:
@@ -98350,6 +99713,57 @@ components:
       - value
       title: CohortPropertyFilter
       type: object
+    CohortRealtimeReadiness:
+      type: object
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/CohortRealtimeStateEnum'
+          description: |-
+            Whether feature flags can target this cohort now. `ready`: they can, and they see membership changes within about a minute. `building` / `rebuilding`: PostHog is preparing the cohort from past events, and flags cannot target it yet. `needs_attention`: the cohort qualifies but nothing is preparing it. `daily`: its criteria are not supported in realtime, so its membership only comes from the once-a-day calculation. `person_properties`: it matches on person properties, which flags read directly, so they can always target it. `static`: it is a fixed list of people.
+
+            * `static` - Static
+            * `person_properties` - Person properties
+            * `daily` - Daily
+            * `building` - Building
+            * `rebuilding` - Rebuilding
+            * `ready` - Ready
+            * `needs_attention` - Needs attention
+        ready_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the cohort became targetable by feature flags. Null unless
+            the state is `ready`.
+        build:
+          oneOf:
+          - $ref: '#/components/schemas/CohortHistoryBuild'
+          - type: 'null'
+          description: The build preparing the cohort. Null unless the state is `building`
+            or `rebuilding`.
+      required:
+      - build
+      - ready_at
+      - state
+    CohortRealtimeStateEnum:
+      enum:
+      - static
+      - person_properties
+      - daily
+      - building
+      - rebuilding
+      - ready
+      - needs_attention
+      type: string
+      description: |-
+        * `static` - Static
+        * `person_properties` - Person properties
+        * `daily` - Daily
+        * `building` - Building
+        * `rebuilding` - Rebuilding
+        * `ready` - Ready
+        * `needs_attention` - Needs attention
     CohortTypeEnum:
       enum:
       - static
@@ -100094,7 +101508,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -103718,6 +105132,14 @@ components:
         id:
           type: integer
           description: Dashboard tile ID to update.
+        layouts:
+          allOf:
+          - $ref: '#/components/schemas/_DashboardPatchTileLayoutsOpenApi'
+          description: Grid position and size per breakpoint. Works for every tile
+            type, including insight tiles. A write replaces the tile's whole layout,
+            so send a complete sm box rather than the one value you want to change.
+            Boxes are stored as sent and overlaps are not resolved, so send sm boxes
+            that do not overlap, and include every tile you move in the same request.
         widget:
           allOf:
           - $ref: '#/components/schemas/DashboardPatchWidgetOpenApi'
@@ -108918,6 +110340,8 @@ components:
             * `ElectricityMaps` - ElectricityMaps
             * `Amplemarket` - Amplemarket
             * `Quo` - Quo
+            * `HeyReach` - HeyReach
+            * `MoEngage` - MoEngage
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -112003,6 +113427,8 @@ components:
             * `ElectricityMaps` - ElectricityMaps
             * `Amplemarket` - Amplemarket
             * `Quo` - Quo
+            * `HeyReach` - HeyReach
+            * `MoEngage` - MoEngage
         label:
           type: string
           readOnly: true
@@ -113219,6 +114645,11 @@ components:
           description: Optional free-form note to append to the report's work log
             (attributed to this scout).
           maxLength: 10000
+        corroboration_only:
+          type: boolean
+          description: Set only when append_note confirms the finding with no new
+            information. After four confirmations, store only the count. Other notes
+            remain in the work log.
         append_evidence:
           type:
           - array
@@ -113294,6 +114725,18 @@ components:
             to take them down, which is what you want once a rewrite has left them
             pointing at the old report.
           maxItems: 3
+        supersedes_implementation:
+          type: boolean
+          description: 'Set this only when your rewrite changes what the fix should
+            be: a different root cause, a different file or layer, a materially wider
+            or narrower scope. More evidence for the same fix is not a reason, because
+            the report''s open pull request already implements it. Setting it true
+            records a replacement decision for a ready report. Policy and eligibility
+            checks gate the replacement. The existing pull request closes only after
+            a successful, verified replacement. Technical failures retry automatically;
+            policy blocks wait for a new edit or research trigger. Only honored alongside
+            a `title` or `summary` that actually changes, and only within the first
+            four content revisions, including revisions that did not request replacement.'
       required:
       - report_id
     EditReportResponse:
@@ -113310,7 +114753,9 @@ components:
             empty if only a note was appended.
         note_appended:
           type: boolean
-          description: Whether a note artefact was appended.
+          description: Whether the edit included a note. True for a collapsed corroboration
+            too, where the report's count moves and no work-log entry is written.
+            Read `corroboration_collapsed` to tell the two apart.
         evidence_appended:
           type: integer
           description: How many observations this edit added to the report's evidence
@@ -113350,9 +114795,31 @@ components:
           description: How many prompts the report now suggests, or null if the edit
             left them as they were (the field omitted, or a re-send of what was already
             stored). 0 means the edit took the report's suggested prompts down.
+        is_content_revision:
+          type: boolean
+          description: Whether this edit actually rewrote the report's title or summary.
+            False for a note, a reviewer change, or a re-send of the text the report
+            already had.
+        content_revision_count:
+          type: integer
+          description: How many times a scout has rewritten this report's title or
+            summary, counting this edit.
+        supersedes_implementation:
+          type: boolean
+          description: Whether the edit recorded that the report's pull request should
+            be replaced. False when you did not ask for it, when the edit changed
+            no content, or when the report has already been rewritten too many times.
+        corroboration_collapsed:
+          type: boolean
+          description: Whether your note raised the report's corroboration count instead
+            of landing as its own entry. Only notes marked corroboration_only can
+            collapse; free-form notes remain in the work log.
       required:
       - charts_set
+      - content_revision_count
+      - corroboration_collapsed
       - evidence_appended
+      - is_content_revision
       - metrics_set
       - note_appended
       - report_id
@@ -113360,6 +114827,7 @@ components:
       - repository_set
       - reviewers_set
       - suggested_prompts_set
+      - supersedes_implementation
       - updated_fields
     EffectEnum:
       enum:
@@ -118215,7 +119683,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -120166,6 +121634,182 @@ components:
       - status_reason_detail
       - updated_at
       - user_access_level
+    EvaluationBackfill:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Backfill identifier.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/EvaluationBackfillStatusEnum'
+          readOnly: true
+          description: |-
+            running while the walk is dispatching, then completed or cancelled.
+
+            * `running` - Running
+            * `completed` - Completed
+            * `cancelled` - Cancelled
+        target:
+          allOf:
+          - $ref: '#/components/schemas/EvaluationTargetEnum'
+          readOnly: true
+          description: |-
+            What one unit is, frozen at creation: a generation, a trace, or a session.
+
+            * `generation` - Generation
+            * `trace` - Trace
+            * `session` - Session
+        window_start:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Inclusive start of the window, by unit timestamp.
+        window_end:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Exclusive end of the window.
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluationBackfillCondition'
+          readOnly: true
+          description: Condition sets frozen at creation, so an edit to the evaluation
+            does not change this run.
+        rerun_existing:
+          type: boolean
+          readOnly: true
+          description: Whether units with an existing result are evaluated again.
+        total_count:
+          type: integer
+          readOnly: true
+          description: Units matched at creation; the ceiling on dispatched_count.
+        dispatched_count:
+          type: integer
+          readOnly: true
+          description: Units the backfill has started an evaluation for so far.
+        skipped_count:
+          type: integer
+          readOnly: true
+          description: Units the live path had already covered, so nothing was dispatched.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: User who started the backfill.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: When the backfill was created.
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the backfill reached a terminal status; null while it
+            runs.
+      required:
+      - conditions
+      - created_at
+      - created_by
+      - dispatched_count
+      - finished_at
+      - id
+      - rerun_existing
+      - skipped_count
+      - status
+      - target
+      - total_count
+      - window_end
+      - window_start
+    EvaluationBackfillCondition:
+      type: object
+      description: 'One condition set as it was frozen onto the backfill: no id, no
+        compiled bytecode.'
+      properties:
+        properties:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Property filters (event or person) that scope which units match
+            this condition set.
+        rollout_percentage:
+          type: number
+          format: double
+          default: 100.0
+          description: Percentage (0-100) of matching units sampled for this condition
+            set.
+    EvaluationBackfillEstimate:
+      type: object
+      properties:
+        total_units:
+          type: integer
+          description: Units that would be evaluated.
+        unit:
+          allOf:
+          - $ref: '#/components/schemas/EvaluationTargetEnum'
+          description: |-
+            What one unit is: a generation, a trace, or a session.
+
+            * `generation` - Generation
+            * `trace` - Trace
+            * `session` - Session
+        window_start:
+          type: string
+          format: date-time
+          description: Window start after clamping.
+        window_end:
+          type: string
+          format: date-time
+          description: Window end after clamping.
+      required:
+      - total_units
+      - unit
+      - window_end
+      - window_start
+    EvaluationBackfillRequest:
+      type: object
+      properties:
+        window_start:
+          type: string
+          format: date-time
+          description: Inclusive start of the window, by unit timestamp.
+        window_end:
+          type: string
+          format: date-time
+          description: Exclusive end of the window. Values in the future are clamped
+            to now.
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluationCondition'
+          description: Condition sets to match. Defaults to the evaluation's own condition
+            sets.
+        rerun_existing:
+          type: boolean
+          default: false
+          description: Evaluate units again even when this evaluation already has
+            a result for them.
+      required:
+      - window_end
+      - window_start
+    EvaluationBackfillStatusEnum:
+      enum:
+      - running
+      - completed
+      - cancelled
+      type: string
+      description: |-
+        * `running` - Running
+        * `completed` - Completed
+        * `cancelled` - Cancelled
     EvaluationCondition:
       type: object
       description: A trigger condition set controlling which generations an evaluation
@@ -125182,7 +126826,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -127061,7 +128705,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -127370,6 +129014,10 @@ components:
             description: 'Property value: a string or null.'
           description: 'Typed account properties: external-system ids. Role assignments
             live under `relationships`.'
+        ownership:
+          allOf:
+          - $ref: '#/components/schemas/ExternalAccountOwnership'
+          description: Authority state of each relationship the project controls.
         tags:
           type: array
           items:
@@ -127396,6 +129044,7 @@ components:
       - id
       - ignored_at
       - name
+      - ownership
       - properties
       - relationships
       - tags
@@ -127438,6 +129087,10 @@ components:
       - email
       - name
       - user_id
+    ExternalAccountListAuthError:
+      oneOf:
+      - $ref: '#/components/schemas/ErrorResponse'
+      - $ref: '#/components/schemas/ExternalAccountListPermissionError'
     ExternalAccountListItem:
       type: object
       properties:
@@ -127459,6 +129112,10 @@ components:
           - 'null'
           format: date-time
           description: When Track Rules ignored the account, or null if it is tracked.
+        ownership:
+          allOf:
+          - $ref: '#/components/schemas/ExternalAccountOwnership'
+          description: Authority state of each relationship the project controls.
         relationships:
           type: object
           additionalProperties:
@@ -127473,6 +129130,7 @@ components:
       - external_id
       - ignored_at
       - name
+      - ownership
       - relationships
     ExternalAccountListPage:
       type: object
@@ -127491,6 +129149,28 @@ components:
       required:
       - next_cursor
       - results
+    ExternalAccountListPermissionError:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error category.
+        code:
+          type: string
+          description: Machine-readable error code.
+        detail:
+          type: string
+          description: Error message.
+        attr:
+          type:
+          - string
+          - 'null'
+          description: Request field associated with the error, if any.
+      required:
+      - attr
+      - code
+      - detail
+      - type
     ExternalAccountListValidationError:
       type: object
       properties:
@@ -127503,6 +129183,119 @@ components:
           description: Validation errors keyed by query parameter.
       required:
       - error
+    ExternalAccountOwnership:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Account UUID, the canonical identity within this project.
+        external_id:
+          type:
+          - string
+          - 'null'
+          description: 'External account key: the group key the account is linked
+            to.'
+        region:
+          type:
+          - string
+          - 'null'
+          description: Region of this PostHog instance (`us`, `eu`), or null when
+            self-hosted.
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalAccountRoleOwnership'
+          description: One entry per controlled relationship definition of the project,
+            in name order, whether or not this account is managed under it. Empty
+            when the project controls no relationship.
+      required:
+      - account_id
+      - external_id
+      - region
+      - roles
+    ExternalAccountOwnershipHolder:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          description: PostHog user id of the holder.
+        email:
+          type:
+          - string
+          - 'null'
+          description: Current email address of the holder; null for a holder outside
+            the organization.
+        name:
+          type:
+          - string
+          - 'null'
+          description: Current display name of the holder; null when unset or outside
+            the organization.
+        is_organization_member:
+          type: boolean
+          description: Whether the holder is currently a member of the project's organization.
+        is_active:
+          type: boolean
+          description: Whether the holder's PostHog user account is active.
+      required:
+      - email
+      - is_active
+      - is_organization_member
+      - name
+      - user_id
+    ExternalAccountRoleOwnership:
+      type: object
+      properties:
+        definition_id:
+          type: string
+          format: uuid
+          description: The controlled relationship definition. Map it to the role
+            you project; it does not change.
+        definition_name:
+          type: string
+          description: Current name of the relationship definition.
+        state:
+          allOf:
+          - $ref: '#/components/schemas/OwnershipRoleStateEnum'
+          description: |-
+            `unmanaged`: customer analytics does not hold authority over this relationship on this account; the holder, if any, is a legacy assignment. `assigned`: the holder is authoritative. `cleared`: the relationship is authoritatively empty. `blocked`: the relationship is managed but its holder cannot be projected; see `diagnostics` and keep the last applied value.
+
+            * `unmanaged` - Unmanaged
+            * `assigned` - Assigned
+            * `cleared` - Cleared
+            * `blocked` - Blocked
+        controlled_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When customer analytics last decided this relationship on this
+            account; null while unmanaged.
+        relationship_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: The active relationship holding the role, or null when empty.
+        holder:
+          oneOf:
+          - $ref: '#/components/schemas/ExternalAccountOwnershipHolder'
+          - type: 'null'
+          description: The current holder, or null.
+        diagnostics:
+          type: array
+          items:
+            $ref: '#/components/schemas/OwnershipRoleDiagnosticEnum'
+          description: Why a managed relationship is blocked. Informational on an
+            unmanaged one.
+      required:
+      - controlled_at
+      - definition_id
+      - definition_name
+      - diagnostics
+      - holder
+      - relationship_id
+      - state
     ExternalDataDestination:
       type: object
       properties:
@@ -128125,6 +129918,12 @@ components:
           type: string
           format: uuid
           readOnly: true
+        schema_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Default database schema used to group tables in the SQL editor.
         prefix:
           type:
           - string
@@ -129494,6 +131293,8 @@ components:
             * `ElectricityMaps` - ElectricityMaps
             * `Amplemarket` - Amplemarket
             * `Quo` - Quo
+            * `HeyReach` - HeyReach
+            * `MoEngage` - MoEngage
         access_method:
           allOf:
           - $ref: '#/components/schemas/ExternalDataSourceAccessMethodEnum'
@@ -129527,6 +131328,7 @@ components:
       - id
       - is_builtin_managed_warehouse
       - prefix
+      - schema_name
       - source_type
       - supports_hogql
     ExternalDataSourceCreate:
@@ -130879,6 +132681,8 @@ components:
             * `ElectricityMaps` - ElectricityMaps
             * `Amplemarket` - Amplemarket
             * `Quo` - Quo
+            * `HeyReach` - HeyReach
+            * `MoEngage` - MoEngage
         payload:
           type: object
           additionalProperties: true
@@ -132519,6 +134323,8 @@ components:
       - ElectricityMaps
       - Amplemarket
       - Quo
+      - HeyReach
+      - MoEngage
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -133862,6 +135668,8 @@ components:
         * `ElectricityMaps` - ElectricityMaps
         * `Amplemarket` - Amplemarket
         * `Quo` - Quo
+        * `HeyReach` - HeyReach
+        * `MoEngage` - MoEngage
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -133959,6 +135767,7 @@ components:
         created_at:
           type: string
           format: date-time
+          readOnly: true
         updated_at:
           type:
           - string
@@ -134077,6 +135886,7 @@ components:
           - string
           - 'null'
           format: date-time
+          readOnly: true
           description: Last time this feature flag was called (from $feature_flag_called
             events)
         _create_in_folder:
@@ -134095,6 +135905,7 @@ components:
             2 to 20 variants.'
       required:
       - can_edit
+      - created_at
       - created_by
       - experiment_set
       - experiment_set_metadata
@@ -134103,6 +135914,7 @@ components:
       - is_eligible_for_experiment
       - is_used_in_replay_settings
       - key
+      - last_called_at
       - last_modified_by
       - status
       - surveys
@@ -135293,6 +137105,12 @@ components:
             $ref: '#/components/schemas/FeatureRequestProductArea'
           readOnly: true
           description: Product areas affected by this request.
+        github_link:
+          oneOf:
+          - $ref: '#/components/schemas/FeatureRequestGitHubLink'
+          - type: 'null'
+          readOnly: true
+          description: Linked GitHub issue, or null when no issue is linked.
         created_by:
           type:
           - integer
@@ -135325,6 +137143,7 @@ components:
       - created_by
       - description
       - evidence_count
+      - github_link
       - id
       - is_archived
       - product_areas
@@ -135676,6 +137495,81 @@ components:
       - evidence_id
       - evidence_source
       - expected_version
+    FeatureRequestGitHubLink:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Stable GitHub link ID.
+        issue_url:
+          type: string
+          format: uri
+          readOnly: true
+          description: Canonical GitHub issue URL.
+        repository:
+          type: string
+          readOnly: true
+          description: Canonical owner and repository name.
+        issue_number:
+          type: integer
+          minimum: 1
+          readOnly: true
+          description: GitHub issue number.
+        issue_title:
+          type: string
+          readOnly: true
+          description: Latest GitHub issue title.
+        issue_state:
+          allOf:
+          - $ref: '#/components/schemas/IssueStateEnum'
+          readOnly: true
+          description: |-
+            Latest GitHub issue state.
+
+            * `open` - open
+            * `closed` - closed
+        sync_enabled:
+          type: boolean
+          readOnly: true
+          description: Whether GitHub issue changes update this request.
+        last_synced_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When GitHub last updated this link.
+      required:
+      - id
+      - issue_number
+      - issue_state
+      - issue_title
+      - issue_url
+      - last_synced_at
+      - repository
+      - sync_enabled
+    FeatureRequestGitHubLinkSerializerInput:
+      type: object
+      properties:
+        integration_id:
+          type: integer
+          minimum: 1
+          description: GitHub integration ID connected to this project.
+        issue_url:
+          type: string
+          format: uri
+          description: GitHub issue URL. Pull request URLs are not supported.
+        expected_version:
+          type: integer
+          minimum: 1
+          description: Request version loaded by the editor. Stale versions return
+            409 Conflict.
+      required:
+      - expected_version
+      - integration_id
+      - issue_url
     FeatureRequestHistory:
       type: object
       properties:
@@ -135702,6 +137596,7 @@ components:
             System that recorded the request change.
 
             * `manual` - Manual
+            * `github` - GitHub
         actor_id:
           type:
           - integer
@@ -135743,9 +137638,41 @@ components:
             * `accounts` - Accounts
             * `evidence` - Evidence
             * `product_areas` - Product areas
+            * `github_link` - GitHub link
+            * `github_sync` - GitHub sync
         before:
           oneOf:
           - type: string
+          - type: boolean
+          - type: object
+            required:
+            - id
+            - issue_url
+            - repository
+            - issue_number
+            - issue_title
+            - issue_state
+            - sync_enabled
+            properties:
+              id:
+                type: string
+                format: uuid
+              issue_url:
+                type: string
+                format: uri
+              repository:
+                type: string
+              issue_number:
+                type: integer
+              issue_title:
+                type: string
+              issue_state:
+                type: string
+                enum:
+                - open
+                - closed
+              sync_enabled:
+                type: boolean
           - type: object
             required:
             - id
@@ -135818,6 +137745,36 @@ components:
         after:
           oneOf:
           - type: string
+          - type: boolean
+          - type: object
+            required:
+            - id
+            - issue_url
+            - repository
+            - issue_number
+            - issue_title
+            - issue_state
+            - sync_enabled
+            properties:
+              id:
+                type: string
+                format: uuid
+              issue_url:
+                type: string
+                format: uri
+              repository:
+                type: string
+              issue_number:
+                type: integer
+              issue_title:
+                type: string
+              issue_state:
+                type: string
+                enum:
+                - open
+                - closed
+              sync_enabled:
+                type: boolean
           - type: object
             required:
             - id
@@ -135899,6 +137856,8 @@ components:
       - accounts
       - evidence
       - product_areas
+      - github_link
+      - github_sync
       type: string
       description: |-
         * `status` - Status
@@ -135907,11 +137866,16 @@ components:
         * `accounts` - Accounts
         * `evidence` - Evidence
         * `product_areas` - Product areas
+        * `github_link` - GitHub link
+        * `github_sync` - GitHub sync
     FeatureRequestHistorySourceEnum:
       enum:
       - manual
+      - github
       type: string
-      description: '* `manual` - Manual'
+      description: |-
+        * `manual` - Manual
+        * `github` - GitHub
     FeatureRequestPriorityEnum:
       enum:
       - high
@@ -136013,6 +137977,7 @@ components:
             System that recorded the status change.
 
             * `manual` - Manual
+            * `github` - GitHub
         actor_id:
           type:
           - integer
@@ -137271,6 +139236,14 @@ components:
             exist).
       required:
       - deleted
+    FormFactorEnum:
+      enum:
+      - desktop
+      - mobile
+      type: string
+      description: |-
+        * `desktop` - desktop
+        * `mobile` - mobile
     FramingEnum:
       enum:
       - allowed
@@ -144045,6 +146018,7 @@ components:
                 MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
                 MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
                 MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
+                MetricsHistogramQuery: '#/components/schemas/MetricsHistogramQuery'
                 MetricsQuery: '#/components/schemas/MetricsQuery'
                 PersonsNode: '#/components/schemas/PersonsNode'
                 RecordingsQuery: '#/components/schemas/RecordingsQuery'
@@ -144115,6 +146089,7 @@ components:
             - $ref: '#/components/schemas/LogAttributesQuery'
             - $ref: '#/components/schemas/LogValuesQuery'
             - $ref: '#/components/schemas/MetricsQuery'
+            - $ref: '#/components/schemas/MetricsHistogramQuery'
             - $ref: '#/components/schemas/TraceSpansQuery'
             - $ref: '#/components/schemas/TraceSpansAggregationQuery'
             - $ref: '#/components/schemas/TraceSpansTreeQuery'
@@ -144407,6 +146382,7 @@ components:
                 MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
                 MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
                 MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
+                MetricsHistogramQuery: '#/components/schemas/MetricsHistogramQuery'
                 MetricsQuery: '#/components/schemas/MetricsQuery'
                 PersonsNode: '#/components/schemas/PersonsNode'
                 RecordingsQuery: '#/components/schemas/RecordingsQuery'
@@ -144477,6 +146453,7 @@ components:
             - $ref: '#/components/schemas/LogAttributesQuery'
             - $ref: '#/components/schemas/LogValuesQuery'
             - $ref: '#/components/schemas/MetricsQuery'
+            - $ref: '#/components/schemas/MetricsHistogramQuery'
             - $ref: '#/components/schemas/TraceSpansQuery'
             - $ref: '#/components/schemas/TraceSpansAggregationQuery'
             - $ref: '#/components/schemas/TraceSpansTreeQuery'
@@ -147972,6 +149949,54 @@ components:
       - isp
       - transient_bounce_rate
       - unavailable
+    IssueStateEnum:
+      enum:
+      - open
+      - closed
+      type: string
+      description: |-
+        * `open` - open
+        * `closed` - closed
+    IterationTrail:
+      type: object
+      description: Compact, read-only view of one iteration for the cross-run history
+        feed and the Training tab.
+      properties:
+        iteration_number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Order of this attempt within its run (0-based).
+        status:
+          allOf:
+          - $ref: '#/components/schemas/AutoresearchIterationStatusEnum'
+          description: |-
+            Whether this recipe was kept (improved the best score), discarded, or crashed.
+
+            * `kept` - Kept
+            * `discarded` - Discarded
+            * `crashed` - Crashed
+        holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Holdout AUC this iteration achieved. Null if it was skipped/degenerate.
+        train_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Train-fold AUC for this iteration, if recorded.
+        agent_description:
+          type: string
+          description: The agent's one-line rationale for what it tried and why.
+        model_spec:
+          description: Model class and hyperparameters tried in this iteration.
+      required:
+      - iteration_number
+      - model_spec
+      - status
     JiraIssueSignalExtra:
       additionalProperties: false
       properties:
@@ -148846,6 +150871,13 @@ components:
           type: string
           description: The label this prompt was fetched by. Only present when fetching
             with the label parameter.
+        resolved_references:
+          type: array
+          items:
+            $ref: '#/components/schemas/LLMPromptResolvedReference'
+          description: The exact prompt versions spliced into the returned content,
+            in order of first appearance. Empty when the prompt has no references.
+            Only present when references were resolved.
         created_at:
           type: string
           format: date-time
@@ -148912,6 +150944,25 @@ components:
       - labels
       - prompt
       - versions
+    LLMPromptResolvedReference:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the referenced prompt that was spliced in.
+        version:
+          type: integer
+          description: Exact version whose content was spliced in.
+        label:
+          type:
+          - string
+          - 'null'
+          description: Label the reference used, or null when it pinned a version
+            directly.
+      required:
+      - label
+      - name
+      - version
     LLMPromptSetLabel:
       type: object
       properties:
@@ -149318,7 +151369,7 @@ components:
         name:
           type: string
           description: Unique skill name. Lowercase letters, numbers, and hyphens
-            only. Max 64 characters.
+            only. Max 64 characters. Cannot be the name of a skill PostHog ships.
           maxLength: 64
         description:
           type: string
@@ -149464,7 +151515,8 @@ components:
       properties:
         new_name:
           type: string
-          description: Name for the duplicated skill. Must be unique.
+          description: Name for the duplicated skill. Must be unique, and cannot be
+            the name of a skill PostHog ships.
           maxLength: 64
       required:
       - new_name
@@ -149968,8 +152020,9 @@ components:
       properties:
         new_name:
           type: string
-          description: New name for the skill. Must be unique in the project, and
-            must not start with 'signals-scout-' or 'review-hog-'.
+          description: New name for the skill. Must be unique in the project, cannot
+            be the name of a skill PostHog ships, and must not start with 'signals-scout-'
+            or 'review-hog-'.
           maxLength: 64
       required:
       - new_name
@@ -150423,12 +152476,62 @@ components:
       enum:
       - preserve
       - two_column
+      - three_column
       - full_width
       type: string
       description: |-
         * `preserve` - preserve
         * `two_column` - two_column
+        * `three_column` - three_column
         * `full_width` - full_width
+    LcpElement:
+      type: object
+      description: The element the browser chose as the Largest Contentful Paint.
+      properties:
+        selector:
+          type:
+          - string
+          - 'null'
+          description: CSS selector for the element.
+        snippet:
+          type:
+          - string
+          - 'null'
+          description: The element's opening tag, truncated by Lighthouse.
+        node_label:
+          type:
+          - string
+          - 'null'
+          description: Human-readable label, usually the alt or text.
+      required:
+      - node_label
+      - selector
+      - snippet
+    LcpPhase:
+      type: object
+      description: One phase of the LCP timeline, which is where the time actually
+        went.
+      properties:
+        phase:
+          type: string
+          description: Lighthouse's own label for this subpart of the LCP, e.g. 'Time
+            to first byte' or 'Element render delay'. Passed through verbatim, so
+            the exact wording follows the Lighthouse version.
+        timing_ms:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Milliseconds spent in this phase.
+        percent:
+          type:
+          - string
+          - 'null'
+          description: This subpart's share of the total LCP, e.g. '62%'.
+      required:
+      - percent
+      - phase
+      - timing_ms
     LeadTimeBucket:
       type: object
       properties:
@@ -151156,6 +153259,108 @@ components:
       - dormant
       title: LifecycleToggle
       type: string
+    LighthouseAuditRequest:
+      type: object
+      description: 'Request body for `scout-lighthouse-audit`: one page, one device
+        profile.'
+      properties:
+        url:
+          type: string
+          format: uri
+          description: 'The page to audit. Must be an https url on an allowed host
+            — public PostHog pages only. Pages behind a login cannot be audited: the
+            browser signs in to nothing, so it would measure the login screen and
+            report its numbers as the page''s.'
+          maxLength: 2000
+        form_factor:
+          allOf:
+          - $ref: '#/components/schemas/FormFactorEnum'
+          default: desktop
+          description: |-
+            Which device profile to emulate. Desktop and mobile produce different numbers, so audit the one whose field data you are explaining.
+
+            * `desktop` - desktop
+            * `mobile` - mobile
+      required:
+      - url
+    LighthouseAuditResponse:
+      type: object
+      description: |-
+        The audit, reduced to what a web vitals finding cites.
+
+        The full Lighthouse report runs to a few hundred KB of detail no finding ever quotes, so the
+        response carries the metrics, the LCP element and its phase breakdown, and the ranked
+        opportunities, and drops the rest.
+      properties:
+        requested_url:
+          type: string
+          description: The url that was audited.
+        final_url:
+          type:
+          - string
+          - 'null'
+          description: Where the browser ended up after redirects.
+        form_factor:
+          type: string
+          description: The device profile the audit emulated.
+        lighthouse_version:
+          type:
+          - string
+          - 'null'
+          description: The Lighthouse version that produced this report. Audit ids
+            move between major versions, so cite it when an expected field came back
+            empty.
+        performance_score:
+          type:
+          - integer
+          - 'null'
+          description: Lighthouse performance score out of 100 for this run.
+        metrics:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: 'Lab metrics from this run: `lcp_ms`, `fcp_ms`, `cls`, `tbt_ms`,
+            `speed_index_ms`, `tti_ms`. One throttled cold load, not a p75 over real
+            users — use it to explain a field finding, never to replace one.'
+        lcp_element:
+          oneOf:
+          - $ref: '#/components/schemas/LcpElement'
+          - type: 'null'
+          description: The element the browser chose as the LCP, or null when Lighthouse
+            could not name one.
+        lcp_phases:
+          type: array
+          items:
+            $ref: '#/components/schemas/LcpPhase'
+          description: Where the LCP time went, phase by phase. Empty when the report
+            omits the breakdown.
+        lcp_checks_failed:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditOpportunity'
+          description: LCP-specific checks this page failed, such as an unprioritized
+            or lazy-loaded hero image.
+        opportunities:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditOpportunity'
+          description: Ranked savings estimates across the whole page, largest first.
+        audits_remaining:
+          type: integer
+          description: How many audits this run may still spend. Each run gets 5.
+      required:
+      - audits_remaining
+      - final_url
+      - form_factor
+      - lcp_checks_failed
+      - lcp_element
+      - lcp_phases
+      - lighthouse_version
+      - metrics
+      - opportunities
+      - performance_score
+      - requested_url
     LimitContext:
       enum:
       - posthog_ai
@@ -153109,7 +155314,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -164400,6 +166605,185 @@ components:
       - not_regex
       title: MetricsFilterOp
       type: string
+    MetricsHistogramQuery:
+      additionalProperties: false
+      properties:
+        dateRange:
+          anyOf:
+          - $ref: '#/components/schemas/DateRange'
+          - type: 'null'
+          default: null
+          description: Defaults to the last 24 hours when omitted; dashboard date
+            filters override it
+        filters:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MetricsQueryFilter'
+            type: array
+          - type: 'null'
+          default: null
+          title: Filters
+        interval:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Bucket size; auto-picked from the range when omitted
+          title: Interval
+        kind:
+          const: MetricsHistogramQuery
+          default: MetricsHistogramQuery
+          title: Kind
+          type: string
+        metricName:
+          title: Metricname
+          type: string
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        response:
+          anyOf:
+          - $ref: '#/components/schemas/MetricsHistogramQueryResponse'
+          - type: 'null'
+          default: null
+        tags:
+          anyOf:
+          - $ref: '#/components/schemas/QueryLogTags'
+          - type: 'null'
+          default: null
+        unit:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: UCUM unit for the y-axis bounds, e.g. "s", "ms". Presentation
+            only.
+          title: Unit
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      required:
+      - metricName
+      title: MetricsHistogramQuery
+      type: object
+    MetricsHistogramQueryResponse:
+      additionalProperties: false
+      properties:
+        bounds:
+          description: Upper bound per row (y axis), ascending.
+          items:
+            type: number
+          title: Bounds
+          type: array
+        counts:
+          description: 'Observation count per cell: counts[row][column], row = bound,
+            column = time.'
+          items:
+            items:
+              type: number
+            type: array
+          title: Counts
+          type: array
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          title: Results
+        times:
+          description: Bucket start per column (x axis), ISO 8601, ascending.
+          items:
+            type: string
+          title: Times
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - bounds
+      - counts
+      - results
+      - times
+      title: MetricsHistogramQueryResponse
+      type: object
     MetricsNullMode:
       enum:
       - gap
@@ -166333,6 +168717,7 @@ components:
       - experiment
       - survey
       - ticket
+      - report
       - trace
       - eval
       - event
@@ -166350,6 +168735,7 @@ components:
         * `experiment` - experiment
         * `survey` - survey
         * `ticket` - ticket
+        * `report` - report
         * `trace` - trace
         * `eval` - eval
         * `event` - event
@@ -167160,6 +169546,13 @@ components:
           readOnly: true
           description: Set to True when org deletion has been initiated. Blocks all
             UI access until the async task completes.
+        uses_most_specific_access_resolution:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: When True, access controls resolve with the most specific matching
+            rule. When False, the legacy resolution order applies.
       required:
       - available_product_features
       - created_at
@@ -167181,6 +169574,7 @@ components:
       - slug
       - teams
       - updated_at
+      - uses_most_specific_access_resolution
     OrganizationAIAccessRequestResponse:
       type: object
       properties:
@@ -167651,6 +170045,30 @@ components:
         * `skip` - skip
         * `allow` - allow
         * `cancel_previous` - cancel_previous
+    OwnershipRoleDiagnosticEnum:
+      enum:
+      - holder_missing
+      - holder_inactive
+      - holder_not_in_organization
+      - multiple_active_holders
+      type: string
+      description: |-
+        * `holder_missing` - The active relationship has no user
+        * `holder_inactive` - The holder's user account is deactivated
+        * `holder_not_in_organization` - The holder is not a member of the organization
+        * `multiple_active_holders` - More than one active relationship holds the role
+    OwnershipRoleStateEnum:
+      enum:
+      - unmanaged
+      - assigned
+      - cleared
+      - blocked
+      type: string
+      description: |-
+        * `unmanaged` - Unmanaged
+        * `assigned` - Assigned
+        * `cleared` - Cleared
+        * `blocked` - Blocked
     PCADetectorConfig:
       additionalProperties: false
       properties:
@@ -167848,6 +170266,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/RepoRef'
           description: The repository the pull request belongs to.
+        pushes:
+          type: array
+          items:
+            $ref: '#/components/schemas/PRTimelinePush'
+          description: Distinct head commits that triggered CI, oldest first, merge-queue
+            gate runs excluded. A PR listed for an author or a team misses pushes
+            from more than 30 days before the window.
         segments:
           type: array
           items:
@@ -167892,10 +170317,6 @@ components:
           - 'null'
           format: date-time
           description: Merge time; null when not merged.
-        pushes:
-          type: integer
-          description: Distinct head commits that triggered CI, merge-queue gate runs
-            excluded.
         estimated_cost_usd:
           type:
           - number
@@ -167924,6 +170345,20 @@ components:
       - started_at
       - state
       - title
+    PRTimelinePush:
+      type: object
+      properties:
+        head_sha:
+          type: string
+          description: The pushed head commit.
+        pushed_at:
+          type: string
+          format: date-time
+          description: When the commit's first workflow run was created, which is
+            when the commit arrived.
+      required:
+      - head_sha
+      - pushed_at
     PRTimelineSegment:
       type: object
       properties:
@@ -168417,6 +170852,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AsyncDeletionStatus'
+    PaginatedAutoresearchModelList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoresearchModel'
     PaginatedAutoresearchPipelineList:
       type: object
       required:
@@ -168442,6 +170902,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AutoresearchPipeline'
+    PaginatedAutoresearchRunList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoresearchRun'
+    PaginatedAutoresearchTrainingRunList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoresearchTrainingRun'
     PaginatedBatchExportBackfillList:
       type: object
       required:
@@ -169968,6 +172478,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorTrackingSymbolSet'
+    PaginatedEvaluationBackfillList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluationBackfill'
     PaginatedEvaluationList:
       type: object
       required:
@@ -174385,6 +176920,14 @@ components:
           default: true
           description: Whether only one user can hold this relationship per account
             at a time, e.g. a single CSM per account.
+        is_controlled:
+          type: boolean
+          readOnly: true
+          description: Whether customer analytics can take control of this relationship
+            per account. Rows under a controlled relationship can't be deleted. On
+            an account where control has started, only a person can change the relationship
+            and an empty relationship is a deliberate decision. Set by project operators,
+            not through this API.
     PatchedAction:
       type: object
       description: Serializer mixin that handles tags for objects.
@@ -175465,6 +178008,16 @@ components:
           readOnly: true
           description: Flags describing which kinds of conditions the cohort's filters
             contain. Null when the cohort has no filters to classify.
+        realtime:
+          oneOf:
+          - $ref: '#/components/schemas/CohortRealtimeReadiness'
+          - type: 'null'
+          description: Whether feature flags can target this cohort, and the progress
+            of the build that gets it there. Null outside the realtime cohort flag
+            targeting rollout, on projects the realtime pipeline does not cover, and
+            for cohorts that match on neither events nor person properties, which
+            nothing in the flag API decides on.
+          readOnly: true
         experiment_set:
           type: array
           items:
@@ -181492,6 +184045,13 @@ components:
           readOnly: true
           description: Set to True when org deletion has been initiated. Blocks all
             UI access until the async task completes.
+        uses_most_specific_access_resolution:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: When True, access controls resolve with the most specific matching
+            rule. When False, the legacy resolution order applies.
     PatchedOrganizationDomain:
       type: object
       properties:
@@ -181707,8 +184267,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DashboardPatchTileOpenApi'
-          description: Dashboard tiles to update. Widget tiles accept nested widget.config
-            patches.
+          description: Dashboard tiles to update, each identified by its tile id.
+            Any tile type accepts `layouts` to set its grid position and size. Widget
+            tiles also accept nested widget.config patches.
         use_template:
           type: string
           description: Template key to create the dashboard from a predefined template.
@@ -182797,6 +185358,13 @@ components:
           readOnly: true
           description: Set to True when project deletion has been initiated. Blocks
             UI access to this project until the async task completes.
+        deletion_scheduled_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the scheduled project deletion will run.
         project_id:
           type: integer
           readOnly: true
@@ -184780,6 +187348,13 @@ components:
         output:
           description: Output data from the run. Validated against the task's json_schema
             if one is set.
+    PatchedTaskRunSetSummaryRequest:
+      type: object
+      properties:
+        summary:
+          type: string
+          description: Complete running summary that replaces the prior summary.
+          maxLength: 1500
     PatchedTaskRunUpdate:
       type: object
       properties:
@@ -189126,6 +191701,61 @@ components:
         * `conversations` - conversations
         * `error_tracking` - error_tracking
         * `session_replay` - session_replay
+    Project:
+      type: object
+      description: |-
+        The project as the app context serves it, which is where the frontend reads it on page load.
+
+        projectLogic bootstraps `currentProject` from the app context and only calls the API when that
+        is missing, so a field left out here is invisible to the app until something refetches.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        organization_id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+        product_description:
+          type:
+          - string
+          - 'null'
+          maxLength: 1000
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        is_pending_deletion:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Set to True when project deletion has been initiated. Blocks
+            UI access to this project until the async task completes.
+        deletion_scheduled_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the scheduled project deletion will run.
+        tags:
+          type: array
+          items:
+            type: string
+            maxLength: 255
+          description: Labels applied to this project. Names are trimmed and lowercased,
+            and sending this field replaces the project's existing tags.
+      required:
+      - created_at
+      - deletion_scheduled_at
+      - id
+      - is_pending_deletion
+      - organization_id
     ProjectBackwardCompat:
       type: object
       description: |-
@@ -190068,6 +192698,13 @@ components:
           readOnly: true
           description: Set to True when project deletion has been initiated. Blocks
             UI access to this project until the async task completes.
+        deletion_scheduled_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the scheduled project deletion will run.
         project_id:
           type: integer
           readOnly: true
@@ -190144,6 +192781,7 @@ components:
       - available_setup_task_ids
       - created_at
       - default_modifiers
+      - deletion_scheduled_at
       - effective_membership_level
       - group_types
       - has_group_types
@@ -192479,6 +195117,14 @@ components:
           default: null
           description: Name of the query, preferably unique. For example web_analytics_vitals
           title: Name
+        presetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Short id of the saved Web analytics filter preset this query
+            was run under, if any.
+          title: Presetid
         productKey:
           anyOf:
           - type: string
@@ -192614,6 +195260,7 @@ components:
               MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
               MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
               MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
+              MetricsHistogramQuery: '#/components/schemas/MetricsHistogramQuery'
               MetricsQuery: '#/components/schemas/MetricsQuery'
               PathsQuery: '#/components/schemas/PathsQuery'
               PathsV2Query: '#/components/schemas/PathsV2Query'
@@ -192715,6 +195362,7 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/MetricsQuery'
+          - $ref: '#/components/schemas/MetricsHistogramQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
           - $ref: '#/components/schemas/TraceSpansAggregationQuery'
           - $ref: '#/components/schemas/TraceSpansTreeQuery'
@@ -192864,7 +195512,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative81'
       - $ref: '#/components/schemas/QueryResponseAlternative82'
       - $ref: '#/components/schemas/QueryResponseAlternative83'
-      - $ref: '#/components/schemas/QueryResponseAlternative86'
+      - $ref: '#/components/schemas/QueryResponseAlternative84'
       - $ref: '#/components/schemas/QueryResponseAlternative87'
       - $ref: '#/components/schemas/QueryResponseAlternative88'
       - $ref: '#/components/schemas/QueryResponseAlternative89'
@@ -192891,6 +195539,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative110'
       - $ref: '#/components/schemas/QueryResponseAlternative111'
       - $ref: '#/components/schemas/QueryResponseAlternative112'
+      - $ref: '#/components/schemas/QueryResponseAlternative113'
       title: QueryResponseAlternative
     QueryResponseAlternative1:
       additionalProperties: false
@@ -193090,7 +195739,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolFailureOccurrenceItem'
+            $ref: '#/components/schemas/MCPToolFailureItem'
           title: Results
           type: array
         timings:
@@ -193179,9 +195828,8 @@ components:
           default: null
           description: The date range used for the query
         results:
-          description: Zero or one row; empty when the tool had no calls in the window.
           items:
-            $ref: '#/components/schemas/MCPToolStatsItem'
+            $ref: '#/components/schemas/MCPToolFailureOccurrenceItem'
           title: Results
           type: array
         timings:
@@ -193270,8 +195918,9 @@ components:
           default: null
           description: The date range used for the query
         results:
+          description: Zero or one row; empty when the tool had no calls in the window.
           items:
-            $ref: '#/components/schemas/MCPToolDailyStatItem'
+            $ref: '#/components/schemas/MCPToolStatsItem'
           title: Results
           type: array
         timings:
@@ -193316,6 +195965,96 @@ components:
       title: QueryResponseAlternative102
       type: object
     QueryResponseAlternative103:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/MCPToolDailyStatItem'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative103
+      type: object
+    QueryResponseAlternative104:
       additionalProperties: false
       properties:
         error:
@@ -193408,96 +196147,6 @@ components:
       required:
       - results
       - totalCount
-      title: QueryResponseAlternative103
-      type: object
-    QueryResponseAlternative104:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/MCPToolQualityDailyStatItem'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative104
       type: object
     QueryResponseAlternative105:
@@ -193546,7 +196195,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCategoryCountItem'
+            $ref: '#/components/schemas/MCPToolQualityDailyStatItem'
           title: Results
           type: array
         timings:
@@ -193636,7 +196285,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCategoryItem'
+            $ref: '#/components/schemas/MCPToolCategoryCountItem'
           title: Results
           type: array
         timings:
@@ -193726,7 +196375,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCategoryMapItem'
+            $ref: '#/components/schemas/MCPToolCategoryItem'
           title: Results
           type: array
         timings:
@@ -193816,7 +196465,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolDescriptionItem'
+            $ref: '#/components/schemas/MCPToolCategoryMapItem'
           title: Results
           type: array
         timings:
@@ -193906,7 +196555,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolSampleIntentItem'
+            $ref: '#/components/schemas/MCPToolDescriptionItem'
           title: Results
           type: array
         timings:
@@ -194115,7 +196764,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolNeighborItem'
+            $ref: '#/components/schemas/MCPToolSampleIntentItem'
           title: Results
           type: array
         timings:
@@ -194160,6 +196809,96 @@ components:
       title: QueryResponseAlternative110
       type: object
     QueryResponseAlternative111:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/MCPToolNeighborItem'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative111
+      type: object
+    QueryResponseAlternative112:
       additionalProperties: false
       properties:
         error:
@@ -194252,9 +196991,9 @@ components:
       required:
       - has_next
       - results
-      title: QueryResponseAlternative111
+      title: QueryResponseAlternative112
       type: object
-    QueryResponseAlternative112:
+    QueryResponseAlternative113:
       additionalProperties: false
       properties:
         error:
@@ -194342,7 +197081,7 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative112
+      title: QueryResponseAlternative113
       type: object
     QueryResponseAlternative12:
       additionalProperties: false
@@ -201323,6 +204062,117 @@ components:
     QueryResponseAlternative75:
       additionalProperties: false
       properties:
+        bounds:
+          description: Upper bound per row (y axis), ascending.
+          items:
+            type: number
+          title: Bounds
+          type: array
+        counts:
+          description: 'Observation count per cell: counts[row][column], row = bound,
+            column = time.'
+          items:
+            items:
+              type: number
+            type: array
+          title: Counts
+          type: array
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          title: Results
+        times:
+          description: Bucket start per column (x axis), ISO 8601, ascending.
+          items:
+            type: string
+          title: Times
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - bounds
+      - counts
+      - results
+      - times
+      title: QueryResponseAlternative75
+      type: object
+    QueryResponseAlternative76:
+      additionalProperties: false
+      properties:
         error:
           anyOf:
           - type: string
@@ -201430,9 +204280,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative75
+      title: QueryResponseAlternative76
       type: object
-    QueryResponseAlternative76:
+    QueryResponseAlternative77:
       additionalProperties: false
       properties:
         compare:
@@ -201530,9 +204380,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative76
+      title: QueryResponseAlternative77
       type: object
-    QueryResponseAlternative77:
+    QueryResponseAlternative78:
       additionalProperties: false
       properties:
         compare:
@@ -201630,9 +204480,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative77
+      title: QueryResponseAlternative78
       type: object
-    QueryResponseAlternative78:
+    QueryResponseAlternative79:
       additionalProperties: false
       properties:
         compare:
@@ -201730,28 +204580,6 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative78
-      type: object
-    QueryResponseAlternative79:
-      additionalProperties: false
-      properties:
-        questions:
-          items:
-            type: string
-          title: Questions
-          type: array
-        warnings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSyncWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
-            for semantics.
-          title: Warnings
-      required:
-      - questions
       title: QueryResponseAlternative79
       type: object
     QueryResponseAlternative8:
@@ -201907,6 +204735,28 @@ components:
     QueryResponseAlternative80:
       additionalProperties: false
       properties:
+        questions:
+          items:
+            type: string
+          title: Questions
+          type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
+      required:
+      - questions
+      title: QueryResponseAlternative80
+      type: object
+    QueryResponseAlternative81:
+      additionalProperties: false
+      properties:
         error:
           anyOf:
           - type: string
@@ -202010,9 +204860,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative80
+      title: QueryResponseAlternative81
       type: object
-    QueryResponseAlternative81:
+    QueryResponseAlternative82:
       additionalProperties: false
       properties:
         error:
@@ -202118,9 +204968,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative81
+      title: QueryResponseAlternative82
       type: object
-    QueryResponseAlternative82:
+    QueryResponseAlternative83:
       additionalProperties: false
       properties:
         error:
@@ -202210,9 +205060,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative82
+      title: QueryResponseAlternative83
       type: object
-    QueryResponseAlternative83:
+    QueryResponseAlternative84:
       additionalProperties: false
       properties:
         columns:
@@ -202326,9 +205176,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative83
+      title: QueryResponseAlternative84
       type: object
-    QueryResponseAlternative86:
+    QueryResponseAlternative87:
       additionalProperties: false
       properties:
         newerTimestamp:
@@ -202379,9 +205229,9 @@ components:
           description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
             for semantics.
           title: Warnings
-      title: QueryResponseAlternative86
+      title: QueryResponseAlternative87
       type: object
-    QueryResponseAlternative87:
+    QueryResponseAlternative88:
       additionalProperties: false
       properties:
         error:
@@ -202469,9 +205319,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative87
+      title: QueryResponseAlternative88
       type: object
-    QueryResponseAlternative88:
+    QueryResponseAlternative89:
       additionalProperties: false
       properties:
         error:
@@ -202559,9 +205409,75 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative88
+      title: QueryResponseAlternative89
       type: object
-    QueryResponseAlternative89:
+    QueryResponseAlternative9:
+      additionalProperties: false
+      properties:
+        ch_table_names:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Ch Table Names
+        errors:
+          items:
+            $ref: '#/components/schemas/HogQLNotice'
+          title: Errors
+          type: array
+        index_usage:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/PredicateIndexUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: One entry per property filter, in query order.
+          title: Index Usage
+        isUsingIndices:
+          anyOf:
+          - $ref: '#/components/schemas/QueryIndexUsage'
+          - type: 'null'
+          default: null
+        isValid:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Isvalid
+        notices:
+          items:
+            $ref: '#/components/schemas/HogQLNotice'
+          title: Notices
+          type: array
+        query:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Query
+        table_names:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Table Names
+        warnings:
+          items:
+            $ref: '#/components/schemas/HogQLNotice'
+          title: Warnings
+          type: array
+      required:
+      - errors
+      - notices
+      - warnings
+      title: QueryResponseAlternative9
+      type: object
+    QueryResponseAlternative90:
       additionalProperties: false
       properties:
         columns:
@@ -202690,75 +205606,9 @@ components:
       - offset
       - results
       - types
-      title: QueryResponseAlternative89
+      title: QueryResponseAlternative90
       type: object
-    QueryResponseAlternative9:
-      additionalProperties: false
-      properties:
-        ch_table_names:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          default: null
-          title: Ch Table Names
-        errors:
-          items:
-            $ref: '#/components/schemas/HogQLNotice'
-          title: Errors
-          type: array
-        index_usage:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/PredicateIndexUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: One entry per property filter, in query order.
-          title: Index Usage
-        isUsingIndices:
-          anyOf:
-          - $ref: '#/components/schemas/QueryIndexUsage'
-          - type: 'null'
-          default: null
-        isValid:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          default: null
-          title: Isvalid
-        notices:
-          items:
-            $ref: '#/components/schemas/HogQLNotice'
-          title: Notices
-          type: array
-        query:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          title: Query
-        table_names:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          default: null
-          title: Table Names
-        warnings:
-          items:
-            $ref: '#/components/schemas/HogQLNotice'
-          title: Warnings
-          type: array
-      required:
-      - errors
-      - notices
-      - warnings
-      title: QueryResponseAlternative9
-      type: object
-    QueryResponseAlternative90:
+    QueryResponseAlternative91:
       additionalProperties: false
       properties:
         error:
@@ -202874,9 +205724,9 @@ components:
       - limit
       - offset
       - results
-      title: QueryResponseAlternative90
+      title: QueryResponseAlternative91
       type: object
-    QueryResponseAlternative91:
+    QueryResponseAlternative92:
       additionalProperties: false
       properties:
         error:
@@ -202964,9 +205814,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative91
+      title: QueryResponseAlternative92
       type: object
-    QueryResponseAlternative92:
+    QueryResponseAlternative93:
       additionalProperties: false
       properties:
         columns:
@@ -203085,97 +205935,6 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative92
-      type: object
-    QueryResponseAlternative93:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            additionalProperties: true
-            type: object
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative93
       type: object
     QueryResponseAlternative94:
@@ -203224,7 +205983,8 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCallBreakdownItem'
+            additionalProperties: true
+            type: object
           title: Results
           type: array
         timings:
@@ -203314,7 +206074,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCallsAndErrorsItem'
+            $ref: '#/components/schemas/MCPToolCallBreakdownItem'
           title: Results
           type: array
         timings:
@@ -203404,7 +206164,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPHarnessBreakdownItem'
+            $ref: '#/components/schemas/MCPToolCallsAndErrorsItem'
           title: Results
           type: array
         timings:
@@ -203449,6 +206209,96 @@ components:
       title: QueryResponseAlternative96
       type: object
     QueryResponseAlternative97:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/MCPHarnessBreakdownItem'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative97
+      type: object
+    QueryResponseAlternative98:
       additionalProperties: false
       properties:
         error:
@@ -203543,96 +206393,6 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative97
-      type: object
-    QueryResponseAlternative98:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/MCPToolTopUserItem'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative98
       type: object
     QueryResponseAlternative99:
@@ -203681,7 +206441,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolFailureItem'
+            $ref: '#/components/schemas/MCPToolTopUserItem'
           title: Results
           type: array
         timings:
@@ -204096,6 +206856,7 @@ components:
               MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
               MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
               MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
+              MetricsHistogramQuery: '#/components/schemas/MetricsHistogramQuery'
               MetricsQuery: '#/components/schemas/MetricsQuery'
               PathsQuery: '#/components/schemas/PathsQuery'
               PathsV2Query: '#/components/schemas/PathsV2Query'
@@ -204197,6 +206958,7 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/MetricsQuery'
+          - $ref: '#/components/schemas/MetricsHistogramQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
           - $ref: '#/components/schemas/TraceSpansAggregationQuery'
           - $ref: '#/components/schemas/TraceSpansTreeQuery'
@@ -204311,6 +207073,7 @@ components:
               MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
               MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
               MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
+              MetricsHistogramQuery: '#/components/schemas/MetricsHistogramQuery'
               MetricsQuery: '#/components/schemas/MetricsQuery'
               PathsQuery: '#/components/schemas/PathsQuery'
               PathsV2Query: '#/components/schemas/PathsV2Query'
@@ -204412,6 +207175,7 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/MetricsQuery'
+          - $ref: '#/components/schemas/MetricsHistogramQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
           - $ref: '#/components/schemas/TraceSpansAggregationQuery'
           - $ref: '#/components/schemas/TraceSpansTreeQuery'
@@ -205253,6 +208017,65 @@ components:
       - counts_changed
       - run
       - unresolved
+    RecordCheckResultRequest:
+      type: object
+      description: 'Request body for `scout-check-record-result`: the verdict on one
+        dispatched report check.'
+      properties:
+        check_id:
+          type: string
+          format: uuid
+          description: The check this run was dispatched to answer, as given in the
+            run note.
+        outcome:
+          allOf:
+          - $ref: '#/components/schemas/SignalReportCheckOutcomeEnum'
+          description: |-
+            `passed` when the expectation still holds, `failed` when it does not, and `errored` when you could not establish either. `failed` retires the check, so use it for a conclusion, not a suspicion.
+
+            * `passed` - Passed
+            * `failed` - Failed
+            * `errored` - Errored
+        explanation:
+          type: string
+          description: One or two sentences on what you looked at and what it showed.
+            This is what a person reads on the report, so write it for them, with
+            the numbers or entities you checked.
+          maxLength: 1000
+        observed_value:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The number you measured, when the check came down to one. Leave
+            it out otherwise.
+      required:
+      - check_id
+      - explanation
+      - outcome
+    RecordCheckResultResponse:
+      type: object
+      description: Outcome of an accepted `scout-check-record-result` call.
+      properties:
+        check_id:
+          type: string
+          format: uuid
+          description: The check that was closed.
+        outcome:
+          type: string
+          description: The verdict that was recorded.
+        check_status:
+          type: string
+          description: The check's status after the verdict. `active` means a recurring
+            check re-armed for its next run; anything else is terminal.
+        runs_remaining:
+          type: integer
+          description: Evaluations the check still owes after this one.
+      required:
+      - check_id
+      - check_status
+      - outcome
+      - runs_remaining
     RecordInteractionRequest:
       type: object
       properties:
@@ -206181,10 +209004,11 @@ components:
           - $ref: '#/components/schemas/LayoutEnum'
           default: preserve
           description: |-
-            How to size tiles when reordering. 'preserve' (default) keeps each tile's existing width and height and only repacks positions in the new order. 'two_column' forces a 6-wide × 5-tall grid (two tiles per row). 'full_width' forces each tile to span the full 12-column row at height 5.
+            How to size tiles when reordering. 'preserve' (default) keeps each tile's existing width and height and only repacks positions in the new order. Use the other modes only when every tile should use the same size: 'two_column' makes every tile 6-wide × 5-tall, 'three_column' makes every tile 4-wide × 5-tall, and 'full_width' makes every tile 12-wide × 5-tall.
 
             * `preserve` - preserve
             * `two_column` - two_column
+            * `three_column` - three_column
             * `full_width` - full_width
       required:
       - tile_order
@@ -218162,7 +220986,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -219293,6 +222117,12 @@ components:
         signals_at_run:
           type: integer
           readOnly: true
+        collapsed_note_count:
+          type: integer
+          readOnly: true
+          description: How many scout notes this report received beyond the few its
+            work log keeps as entries. 0 when nothing was dropped. These say the finding
+            still holds, so the count is shown in place of the entries.
         created_at:
           type: string
           format: date-time
@@ -219495,6 +222325,7 @@ components:
       - billing_exempt_reason
       - channel_id
       - charts
+      - collapsed_note_count
       - created_at
       - dismissal_note
       - dismissal_reason
@@ -219627,6 +222458,10 @@ components:
       - work_release
       - pull_request
       - check_result
+      - implementation_decision
+      - implementation_dispatch
+      - implementation_replacement
+      - implementation_handover
       type: string
       description: |-
         * `video_segment` - Video Segment
@@ -219650,6 +222485,10 @@ components:
         * `work_release` - Work Release
         * `pull_request` - Pull Request
         * `check_result` - Check Result
+        * `implementation_decision` - Implementation Decision
+        * `implementation_dispatch` - Implementation Dispatch
+        * `implementation_replacement` - Implementation Replacement
+        * `implementation_handover` - Implementation Handover
     SignalReportArtefactLogCreate:
       type: object
       description: |-
@@ -219936,6 +222775,7 @@ components:
             How the check is evaluated.
 
             * `metric_threshold` - Metric Threshold
+            * `agent` - Agent
         status:
           allOf:
           - $ref: '#/components/schemas/SignalReportCheckStatusEnum'
@@ -220024,11 +222864,15 @@ components:
     SignalReportCheckConfig:
       oneOf:
       - $ref: '#/components/schemas/MetricThresholdConfig'
+      - $ref: '#/components/schemas/AgentCheckConfig'
     SignalReportCheckKindEnum:
       enum:
       - metric_threshold
+      - agent
       type: string
-      description: '* `metric_threshold` - Metric Threshold'
+      description: |-
+        * `metric_threshold` - Metric Threshold
+        * `agent` - Agent
     SignalReportCheckOutcomeEnum:
       enum:
       - passed
@@ -220079,6 +222923,7 @@ components:
             How the check is evaluated.
 
             * `metric_threshold` - Metric Threshold
+            * `agent` - Agent
         config:
           allOf:
           - $ref: '#/components/schemas/SignalReportCheckConfig'
@@ -220205,6 +223050,12 @@ components:
         signals_at_run:
           type: integer
           readOnly: true
+        collapsed_note_count:
+          type: integer
+          readOnly: true
+          description: How many scout notes this report received beyond the few its
+            work log keeps as entries. 0 when nothing was dropped. These say the finding
+            still holds, so the count is shown in place of the entries.
         created_at:
           type: string
           format: date-time
@@ -220407,6 +223258,7 @@ components:
       - billing_exempt_reason
       - channel_id
       - charts
+      - collapsed_note_count
       - created_at
       - dismissal_note
       - dismissal_reason
@@ -223545,9 +226397,9 @@ components:
       description: |-
         Typed configuration for a Snowflake batch-export destination.
 
-        Account, user, authentication type and credentials may live in a linked Integration (when one is
-        provided) or inline in this config (legacy). Mirrors the non-credential fields of
-        `SnowflakeBatchExportInputs` in `products/batch_exports/backend/service.py`.
+        Account, user, authentication type and credentials live in the linked Integration, never here.
+        Mirrors the non-credential fields of `SnowflakeBatchExportInputs` in
+        `products/batch_exports/backend/service.py`.
       properties:
         database:
           type: string
@@ -223581,8 +226433,7 @@ components:
         integration_id:
           type: integer
           description: ID of a snowflake-kind Integration providing the account, user
-            and credentials. Required when creating a batch export. Use the integrations-list
-            MCP tool to find one.
+            and credentials. Use the integrations-list MCP tool to find one.
         config:
           $ref: '#/components/schemas/SnowflakeDestinationConfig'
       required:
@@ -225308,6 +228159,8 @@ components:
             * `ElectricityMaps` - ElectricityMaps
             * `Amplemarket` - Amplemarket
             * `Quo` - Quo
+            * `HeyReach` - HeyReach
+            * `MoEngage` - MoEngage
         payload:
           type: object
           additionalProperties: true
@@ -227242,6 +230095,8 @@ components:
             * `ElectricityMaps` - ElectricityMaps
             * `Amplemarket` - Amplemarket
             * `Quo` - Quo
+            * `HeyReach` - HeyReach
+            * `MoEngage` - MoEngage
         payload:
           type: object
           additionalProperties: true
@@ -228660,6 +231515,8 @@ components:
             * `ElectricityMaps` - ElectricityMaps
             * `Amplemarket` - Amplemarket
             * `Quo` - Quo
+            * `HeyReach` - HeyReach
+            * `MoEngage` - MoEngage
         payload:
           type: object
           additionalProperties: true
@@ -229296,8 +232153,8 @@ components:
           items:
             type: object
             additionalProperties: true
-          description: API clients that have generated activity (from x-posthog-client
-            header).
+          description: API clients that have generated activity (the x-posthog-client
+            header, or 'scout:<skill_name>' for a scout run).
       required:
       - activities
       - clients
@@ -232116,7 +234973,7 @@ components:
             enabled.
         layouts:
           allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutsOpenApi'
+          - $ref: '#/components/schemas/_TileLayoutsOpenApi'
           description: Optional react-grid-layout positions keyed by breakpoint (sm,
             xs).
         show_description:
@@ -235671,6 +238528,12 @@ components:
           - object
           - 'null'
           additionalProperties: true
+        task_summary:
+          type:
+          - string
+          - 'null'
+          description: Latest summary for this task, including a summary inherited
+            from an earlier run.
         state:
           type: object
           additionalProperties: true
@@ -235710,6 +238573,7 @@ components:
       - state
       - status
       - task
+      - task_summary
     TaskRunDetailDTOProviderEnum:
       enum:
       - anthropic
@@ -236236,6 +239100,7 @@ components:
             * `experiment` - experiment
             * `survey` - survey
             * `ticket` - ticket
+            * `report` - report
             * `trace` - trace
             * `eval` - eval
             * `event` - event
@@ -236282,6 +239147,7 @@ components:
             * `experiment` - experiment
             * `survey` - survey
             * `ticket` - ticket
+            * `report` - report
             * `trace` - trace
             * `eval` - eval
             * `event` - event
@@ -236704,6 +239570,12 @@ components:
           oneOf:
           - $ref: '#/components/schemas/PrStateEnum'
           - $ref: '#/components/schemas/NullEnum'
+        task_summary:
+          type:
+          - string
+          - 'null'
+          description: Latest summary for this task, including a summary inherited
+            from an earlier run.
       required:
       - environment
       - id
@@ -239521,7 +242393,7 @@ components:
           description: 'AI triage outcomes to include. ''in_progress'' matches tickets
             still being triaged. Valid values: persisted, suggested, escalated_with_findings,
             escalated_with_best, escalated_no_reply, skipped_unactionable, blocked_unsafe,
-            blocked_unsafe_reply, in_progress.'
+            blocked_unsafe_reply, clarified, suggested_clarification, in_progress.'
         assignee:
           type: array
           items:
@@ -242821,6 +245693,85 @@ components:
       - name
       - short_id
       - updated_at
+    TrainingRunSummary:
+      type: object
+      description: Tier-1 distilled summary of a completed run — the orientation memory
+        a new run reads first.
+      properties:
+        target_event:
+          type: string
+          description: Target event the run's pipeline predicts.
+        horizon_days:
+          type: integer
+          description: Prediction horizon, in days.
+        best_holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Best holdout AUC achieved in the run.
+        champion_promoted:
+          type: boolean
+          description: Whether this run's best model was promoted to champion (vs
+            kept as challenger).
+        champion_model_class:
+          type: string
+          description: Model class of the run's best model.
+        kept_ladder:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingRunSummaryLadderItem'
+          description: Kept iterations, highest holdout AUC first — the winning approaches
+            worth reusing.
+        dead_ends:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingRunSummaryLadderItem'
+          description: Discarded or crashed iterations — approaches already tried
+            that did not help; avoid repeating.
+        recommended_next:
+          type: string
+          description: Agent's suggested next experiments for a future run. Empty
+            if not provided.
+        distillation:
+          type: string
+          description: Agent's 1–2 sentence distillation of what this run learned.
+            Empty if not provided.
+      required:
+      - best_holdout_score
+      - champion_model_class
+      - champion_promoted
+      - dead_ends
+      - distillation
+      - horizon_days
+      - kept_ladder
+      - recommended_next
+      - target_event
+    TrainingRunSummaryLadderItem:
+      type: object
+      description: One iteration referenced from a run summary's ladder or dead-ends
+        list.
+      properties:
+        iteration_number:
+          type: integer
+          description: Iteration index this entry refers to.
+        holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Holdout AUC for this iteration.
+        model_class:
+          type: string
+          description: Model class tried in this iteration.
+        agent_description:
+          type: string
+          description: The agent's rationale for this attempt.
+      required:
+      - agent_description
+      - holdout_score
+      - iteration_number
+      - model_class
     TranslateRequest:
       type: object
       properties:
@@ -249598,6 +252549,7 @@ components:
       - FirstPageviewUTMContent
       - FirstPageviewUTMSourceMediumCampaign
       - Browser
+      - InAppBrowser
       - OS
       - Viewport
       - DeviceType
@@ -252838,6 +255790,18 @@ components:
           title: Window
       title: ZScoreDetectorConfig
       type: object
+    ZendeskImportJobStatusEnum:
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      type: string
+      description: |-
+        * `pending` - Pending
+        * `running` - Running
+        * `completed` - Completed
+        * `failed` - Failed
     ZendeskTicketSignalExtra:
       additionalProperties: false
       properties:
@@ -253032,6 +255996,49 @@ components:
           - 'null'
           description: Relative date offset for the comparison window (e.g. '-1h',
             '-1d', '-7d'). Defaults to the immediately previous period of equal length.
+    _DashboardPatchTileLayoutBoxOpenApi:
+      type: object
+      properties:
+        x:
+          type: integer
+          maximum: 11
+          minimum: 0
+          description: Column position in the dashboard grid (0-indexed).
+        y:
+          type: integer
+          minimum: 0
+          description: Row position in the dashboard grid (0-indexed).
+        w:
+          type: integer
+          maximum: 12
+          minimum: 1
+          description: Width in grid columns. The desktop grid is 12 columns wide.
+        h:
+          type: integer
+          minimum: 1
+          description: Height in grid rows.
+      required:
+      - h
+      - w
+      - x
+      - y
+    _DashboardPatchTileLayoutsOpenApi:
+      type: object
+      properties:
+        sm:
+          allOf:
+          - $ref: '#/components/schemas/_DashboardPatchTileLayoutBoxOpenApi'
+          description: Layout for the standard (desktop) breakpoint. The grid is 12
+            columns wide. A write replaces the tile's whole layout and the dashboard
+            reads desktop placement from this box, so send it whenever you send layouts.
+        xs:
+          allOf:
+          - $ref: '#/components/schemas/_DashboardPatchTileLayoutBoxOpenApi'
+          description: Layout for the small (mobile) breakpoint, on a 1-column grid.
+            The dashboard derives this layout from the sm order and heights, so a
+            stored xs box does not change what renders.
+      required:
+      - sm
     _DateRange:
       type: object
       properties:
@@ -256312,6 +259319,35 @@ components:
       required:
       - endLine
       - startLine
+    _TileLayoutBoxOpenApi:
+      type: object
+      properties:
+        x:
+          type: integer
+          description: Column position in the dashboard grid (0-indexed).
+        y:
+          type: integer
+          description: Row position in the dashboard grid (0-indexed).
+        w:
+          type: integer
+          description: Width in grid columns. The desktop grid is 12 columns wide.
+        h:
+          type: integer
+          description: Height in grid rows.
+    _TileLayoutsOpenApi:
+      type: object
+      properties:
+        sm:
+          allOf:
+          - $ref: '#/components/schemas/_TileLayoutBoxOpenApi'
+          description: Layout for the standard (desktop) breakpoint. The grid is 12
+            columns wide.
+        xs:
+          allOf:
+          - $ref: '#/components/schemas/_TileLayoutBoxOpenApi'
+          description: Layout for the small (mobile) breakpoint, on a 1-column grid.
+            The dashboard derives this layout from the sm order and heights, so a
+            stored xs box does not change what renders.
     _ToolBreakdown:
       type: object
       properties:
@@ -257109,34 +260145,6 @@ components:
       - last_active
       - name
       - role
-    _WidgetTileLayoutBoxOpenApi:
-      type: object
-      properties:
-        x:
-          type: integer
-          description: Column position in the dashboard grid (0-indexed).
-        y:
-          type: integer
-          description: Row position in the dashboard grid (0-indexed).
-        w:
-          type: integer
-          description: Width in grid columns. The desktop grid is 12 columns wide.
-        h:
-          type: integer
-          description: Height in grid rows.
-    _WidgetTileLayoutsOpenApi:
-      type: object
-      properties:
-        sm:
-          allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutBoxOpenApi'
-          description: Layout for the standard (desktop) breakpoint. The grid is 12
-            columns wide.
-        xs:
-          allOf:
-          - $ref: '#/components/schemas/_WidgetTileLayoutBoxOpenApi'
-          description: Layout for the small (mobile) breakpoint. The grid is 1 column
-            wide.
     WidgetFilterEntry:
       additionalProperties: false
       properties:

@@ -26,14 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Evaluations
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.evaluations.item collection</summary>
         /// <param name="position">A UUID string identifying this evaluation.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Evaluations.Item.EvaluationsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Evaluations.Item.EvaluationsItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Evaluations.Item.EvaluationItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Evaluations.Item.EvaluationItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Evaluations.Item.EvaluationsItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("evaluation%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Evaluations.Item.EvaluationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
+    /// <summary>* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `report` - report* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ObjectKindEnum
     {
@@ -42,6 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "ticket")]
         #pragma warning disable CS1591
         Ticket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "report")]
+        #pragma warning disable CS1591
+        Report,
         #pragma warning restore CS1591
         [EnumMember(Value = "trace")]
         #pragma warning disable CS1591

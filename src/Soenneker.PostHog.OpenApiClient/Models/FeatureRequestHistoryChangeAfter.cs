@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf5Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf6"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestHistoryChangeAfter : IComposedTypeWrapper, IParsable
@@ -21,6 +21,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch1 FeatureRequestHistoryChangeAfterBranch1 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch2? FeatureRequestHistoryChangeAfterBranch2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch2 FeatureRequestHistoryChangeAfterBranch2 { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -29,21 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterMember1 FeatureRequestHistoryChangeAfterMember1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf2? FeatureRequestHistoryChangeAfterOneOf2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3? FeatureRequestHistoryChangeAfterOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf2 FeatureRequestHistoryChangeAfterOneOf2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3Wrapper? FeatureRequestHistoryChangeAfterOneOf3Wrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3Wrapper FeatureRequestHistoryChangeAfterOneOf3Wrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3 FeatureRequestHistoryChangeAfterOneOf3 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,6 +52,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4 FeatureRequestHistoryChangeAfterOneOf4 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf5Wrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf5Wrapper? FeatureRequestHistoryChangeAfterOneOf5Wrapper { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf5Wrapper FeatureRequestHistoryChangeAfterOneOf5Wrapper { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf6"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf6? FeatureRequestHistoryChangeAfterOneOf6 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf6 FeatureRequestHistoryChangeAfterOneOf6 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -67,17 +83,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.FeatureRequestHistoryChangeAfterBranch1 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch1();
             }
-            else if("FeatureRequestHistoryChangeAfterOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("FeatureRequestHistoryChangeAfterBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FeatureRequestHistoryChangeAfterOneOf2 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf2();
+                result.FeatureRequestHistoryChangeAfterBranch2 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch2();
             }
-            else if("FeatureRequestHistoryChangeAfterOneOf3Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("FeatureRequestHistoryChangeAfterOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FeatureRequestHistoryChangeAfterOneOf3Wrapper = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3Wrapper();
+                result.FeatureRequestHistoryChangeAfterOneOf3 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3();
             }
             else if("FeatureRequestHistoryChangeAfterOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.FeatureRequestHistoryChangeAfterOneOf4 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4();
+            }
+            else if("FeatureRequestHistoryChangeAfterOneOf5Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FeatureRequestHistoryChangeAfterOneOf5Wrapper = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf5Wrapper();
+            }
+            else if("FeatureRequestHistoryChangeAfterOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FeatureRequestHistoryChangeAfterOneOf6 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf6();
             }
             return result;
         }
@@ -91,21 +115,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return FeatureRequestHistoryChangeAfterBranch1.GetFieldDeserializers();
             }
+            else if(FeatureRequestHistoryChangeAfterBranch2 != null)
+            {
+                return FeatureRequestHistoryChangeAfterBranch2.GetFieldDeserializers();
+            }
             else if(FeatureRequestHistoryChangeAfterMember1 != null)
             {
                 return FeatureRequestHistoryChangeAfterMember1.GetFieldDeserializers();
             }
-            else if(FeatureRequestHistoryChangeAfterOneOf2 != null)
+            else if(FeatureRequestHistoryChangeAfterOneOf3 != null)
             {
-                return FeatureRequestHistoryChangeAfterOneOf2.GetFieldDeserializers();
-            }
-            else if(FeatureRequestHistoryChangeAfterOneOf3Wrapper != null)
-            {
-                return FeatureRequestHistoryChangeAfterOneOf3Wrapper.GetFieldDeserializers();
+                return FeatureRequestHistoryChangeAfterOneOf3.GetFieldDeserializers();
             }
             else if(FeatureRequestHistoryChangeAfterOneOf4 != null)
             {
                 return FeatureRequestHistoryChangeAfterOneOf4.GetFieldDeserializers();
+            }
+            else if(FeatureRequestHistoryChangeAfterOneOf5Wrapper != null)
+            {
+                return FeatureRequestHistoryChangeAfterOneOf5Wrapper.GetFieldDeserializers();
+            }
+            else if(FeatureRequestHistoryChangeAfterOneOf6 != null)
+            {
+                return FeatureRequestHistoryChangeAfterOneOf6.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -120,21 +152,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch1>(null, FeatureRequestHistoryChangeAfterBranch1);
             }
+            else if(FeatureRequestHistoryChangeAfterBranch2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterBranch2>(null, FeatureRequestHistoryChangeAfterBranch2);
+            }
             else if(FeatureRequestHistoryChangeAfterMember1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterMember1>(null, FeatureRequestHistoryChangeAfterMember1);
             }
-            else if(FeatureRequestHistoryChangeAfterOneOf2 != null)
+            else if(FeatureRequestHistoryChangeAfterOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf2>(null, FeatureRequestHistoryChangeAfterOneOf2);
-            }
-            else if(FeatureRequestHistoryChangeAfterOneOf3Wrapper != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3Wrapper>(null, FeatureRequestHistoryChangeAfterOneOf3Wrapper);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf3>(null, FeatureRequestHistoryChangeAfterOneOf3);
             }
             else if(FeatureRequestHistoryChangeAfterOneOf4 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4>(null, FeatureRequestHistoryChangeAfterOneOf4);
+            }
+            else if(FeatureRequestHistoryChangeAfterOneOf5Wrapper != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf5Wrapper>(null, FeatureRequestHistoryChangeAfterOneOf5Wrapper);
+            }
+            else if(FeatureRequestHistoryChangeAfterOneOf6 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf6>(null, FeatureRequestHistoryChangeAfterOneOf6);
             }
         }
     }

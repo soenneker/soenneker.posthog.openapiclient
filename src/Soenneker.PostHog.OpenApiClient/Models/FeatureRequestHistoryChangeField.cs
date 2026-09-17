@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Request field represented by this change.* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas
+    /// Request field represented by this change.* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas* `github_link` - GitHub link* `github_sync` - GitHub sync
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestHistoryChangeField : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas</summary>
+        /// <summary>* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas* `github_link` - GitHub link* `github_sync` - GitHub sync</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeFieldEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField"/> and sets the default values.

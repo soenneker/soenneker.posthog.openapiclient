@@ -104,6 +104,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Browser,
         #pragma warning restore CS1591
+        [EnumMember(Value = "InAppBrowser")]
+        #pragma warning disable CS1591
+        InAppBrowser,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OS")]
         #pragma warning disable CS1591
         Os,

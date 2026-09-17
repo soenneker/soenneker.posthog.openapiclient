@@ -19,6 +19,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Rel
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Resume_in_cloud;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Session_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Set_output;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Set_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Start;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.StreamNamespace;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Stream_token;
@@ -117,6 +118,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Set_output.Set_outputRequestBuilder Set_output
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Set_output.Set_outputRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The set_summary property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Set_summary.Set_summaryRequestBuilder Set_summary
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Set_summary.Set_summaryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The start property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Start.StartRequestBuilder Start

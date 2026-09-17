@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Short id of the saved Web analytics filter preset this query was run under, if any.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PresetId { get; set; }
+#nullable restore
+#else
+        public string PresetId { get; set; }
+#endif
         /// <summary>Product responsible for this query. Use string, there&apos;s no need to churn the Schema when we add a new product *</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "presetId", n => { PresetId = n.GetStringValue(); } },
                 { "productKey", n => { ProductKey = n.GetStringValue(); } },
                 { "scene", n => { Scene = n.GetStringValue(); } },
             };
@@ -67,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("presetId", PresetId);
             writer.WriteStringValue("productKey", ProductKey);
             writer.WriteStringValue("scene", Scene);
         }

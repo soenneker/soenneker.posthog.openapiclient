@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
-        /// <summary>Dashboard tiles to update. Widget tiles accept nested widget.config patches.</summary>
+        /// <summary>Dashboard tiles to update, each identified by its tile id. Any tile type accepts `layouts` to set its grid position and size. Widget tiles also accept nested widget.config patches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>? Tiles { get; set; }

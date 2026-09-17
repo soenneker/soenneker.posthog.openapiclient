@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `persisted` - persisted* `suggested` - suggested* `escalated_with_findings` - escalated_with_findings* `escalated_with_best` - escalated_with_best* `escalated_no_reply` - escalated_no_reply* `skipped_unactionable` - skipped_unactionable* `blocked_unsafe` - blocked_unsafe* `blocked_unsafe_reply` - blocked_unsafe_reply* `in_progress` - in_progress</summary>
+    /// <summary>* `persisted` - persisted* `suggested` - suggested* `escalated_with_findings` - escalated_with_findings* `escalated_with_best` - escalated_with_best* `escalated_no_reply` - escalated_no_reply* `skipped_unactionable` - skipped_unactionable* `blocked_unsafe` - blocked_unsafe* `blocked_unsafe_reply` - blocked_unsafe_reply* `clarified` - clarified* `suggested_clarification` - suggested_clarification* `in_progress` - in_progress</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AiTriageResultEnum
     {
@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "blocked_unsafe_reply")]
         #pragma warning disable CS1591
         BlockedUnsafeReply,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "clarified")]
+        #pragma warning disable CS1591
+        Clarified,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "suggested_clarification")]
+        #pragma warning disable CS1591
+        SuggestedClarification,
         #pragma warning restore CS1591
         [EnumMember(Value = "in_progress")]
         #pragma warning disable CS1591

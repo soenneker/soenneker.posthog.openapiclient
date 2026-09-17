@@ -18,18 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Layout for the standard (desktop) breakpoint. The grid is 12 columns wide.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiSm? Sm { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm? Sm { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiSm Sm { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm Sm { get; set; }
 #endif
-        /// <summary>Layout for the small (mobile) breakpoint. The grid is 1 column wide.</summary>
+        /// <summary>Layout for the small (mobile) breakpoint, on a 1-column grid. The dashboard derives this layout from the sm order and heights, so a stored xs box does not change what renders.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiXs? Xs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs? Xs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiXs Xs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs Xs { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetAddRequestOpenApiLayouts"/> and sets the default values.
@@ -56,8 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "sm", n => { Sm = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiSm>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiSm.CreateFromDiscriminatorValue); } },
-                { "xs", n => { Xs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiXs>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiXs.CreateFromDiscriminatorValue); } },
+                { "sm", n => { Sm = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm>(global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm.CreateFromDiscriminatorValue); } },
+                { "xs", n => { Xs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs>(global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,8 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiSm>("sm", Sm);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetTileLayoutsOpenApiXs>("xs", Xs);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm>("sm", Sm);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs>("xs", Xs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

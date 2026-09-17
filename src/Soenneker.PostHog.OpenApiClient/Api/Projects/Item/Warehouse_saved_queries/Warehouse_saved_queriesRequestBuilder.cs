@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Warehouse_saved_queriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries{?page*,search*}", pathParameters)
+        public Warehouse_saved_queriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries{?include_columns*,page*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Warehouse_saved_queriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries{?page*,search*}", rawUrl)
+        public Warehouse_saved_queriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries{?include_columns*,page*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -152,6 +152,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Warehouse_saved_queriesRequestBuilderGetQueryParameters 
         {
+            /// <summary>Include column definitions. Set to false for table-only lists.</summary>
+            [QueryParameter("include_columns")]
+            public bool? IncludeColumns { get; set; }
             /// <summary>A page number within the paginated result set.</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }

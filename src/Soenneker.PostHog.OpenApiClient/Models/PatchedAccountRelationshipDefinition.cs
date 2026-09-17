@@ -25,6 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Relationship definition UUID.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether customer analytics can take control of this relationship per account. Rows under a controlled relationship can&apos;t be deleted. On an account where control has started, only a person can change the relationship and an empty relationship is a deliberate decision. Set by project operators, not through this API.</summary>
+        public bool? IsControlled { get; private set; }
         /// <summary>Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account.</summary>
         public bool? IsSingleHolder { get; set; }
         /// <summary>Human-readable name of the relationship. Unique within the team.</summary>
@@ -63,6 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_controlled", n => { IsControlled = n.GetBoolValue(); } },
                 { "is_single_holder", n => { IsSingleHolder = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };

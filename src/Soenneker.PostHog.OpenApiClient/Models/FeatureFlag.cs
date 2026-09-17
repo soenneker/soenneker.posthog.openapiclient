@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The can_edit property</summary>
         public bool? CanEdit { get; private set; }
         /// <summary>The created_at property</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -136,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Key { get; set; }
 #endif
         /// <summary>Last time this feature flag was called (from $feature_flag_called events)</summary>
-        public DateTimeOffset? LastCalledAt { get; set; }
+        public DateTimeOffset? LastCalledAt { get; private set; }
         /// <summary>The last_modified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -264,7 +264,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<int?>("analytics_dashboards", AnalyticsDashboards);
             writer.WriteBoolValue("archived", Archived);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagBucketingIdentifier>("bucketing_identifier", BucketingIdentifier);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContext>("creation_context", CreationContext);
             writer.WriteBoolValue("deleted", Deleted);
@@ -277,7 +276,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_enriched_analytics", HasEnrichedAnalytics);
             writer.WriteBoolValue("is_remote_configuration", IsRemoteConfiguration);
             writer.WriteStringValue("key", Key);
-            writer.WriteDateTimeOffsetValue("last_called_at", LastCalledAt);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagSurveysProperty>("surveys", Surveys);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTagsItem>("tags", Tags);

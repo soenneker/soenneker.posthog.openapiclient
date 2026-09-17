@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `manual` - Manual</summary>
+    /// <summary>* `manual` - Manual* `github` - GitHub</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FeatureRequestHistorySourceEnum
     {
         [EnumMember(Value = "manual")]
         #pragma warning disable CS1591
         Manual,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "github")]
+        #pragma warning disable CS1591
+        Github,
         #pragma warning restore CS1591
     }
 }

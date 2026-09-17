@@ -148,6 +148,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>When True, access controls resolve with the most specific matching rule. When False, the legacy resolution order applies.</summary>
+        public bool? UsesMostSpecificAccessResolution { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Organization"/> and sets the default values.
         /// </summary>
@@ -207,6 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "uses_most_specific_access_resolution", n => { UsesMostSpecificAccessResolution = n.GetBoolValue(); } },
             };
         }
         /// <summary>

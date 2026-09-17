@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -13,59 +12,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class FeatureRequestHistoryChangeAfterOneOf4 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The account property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4Account? Account { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4Account Account { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The customer_quote property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? CustomerQuote { get; set; }
-#nullable restore
-#else
-        public string CustomerQuote { get; set; }
-#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
-        /// <summary>The image_ids property</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ImageIds { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public List<Guid?> ImageIds { get; set; }
-#endif
-        /// <summary>The requested_on property</summary>
-        public Date? RequestedOn { get; set; }
-        /// <summary>The source property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Source { get; set; }
-#nullable restore
-#else
-        public string Source { get; set; }
-#endif
-        /// <summary>The source_url property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SourceUrl { get; set; }
-#nullable restore
-#else
-        public string SourceUrl { get; set; }
-#endif
-        /// <summary>The summary property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Summary { get; set; }
-#nullable restore
-#else
-        public string Summary { get; set; }
+        public string Name { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4"/> and sets the default values.
@@ -92,14 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4Account>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4Account.CreateFromDiscriminatorValue); } },
-                { "customer_quote", n => { CustomerQuote = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "image_ids", n => { ImageIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
-                { "requested_on", n => { RequestedOn = n.GetDateValue(); } },
-                { "source", n => { Source = n.GetStringValue(); } },
-                { "source_url", n => { SourceUrl = n.GetStringValue(); } },
-                { "summary", n => { Summary = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -109,14 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfterOneOf4Account>("account", Account);
-            writer.WriteStringValue("customer_quote", CustomerQuote);
             writer.WriteGuidValue("id", Id);
-            writer.WriteCollectionOfPrimitiveValues<Guid?>("image_ids", ImageIds);
-            writer.WriteDateValue("requested_on", RequestedOn);
-            writer.WriteStringValue("source", Source);
-            writer.WriteStringValue("source_url", SourceUrl);
-            writer.WriteStringValue("summary", Summary);
+            writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

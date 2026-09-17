@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         {
         }
         /// <summary>
-        /// Fetch one account by external ID with its properties, tags, active relationship assignments and custom property values. Accepts the team secret API token or a project secret API key with the `account:read` scope.
+        /// Fetch one account by external ID with its properties, controlled relationship ownership, tags, active relationship assignments and custom property values. Accepts the team secret API token or a project secret API key with the `account:read` scope.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch one account by external ID with its properties, tags, active relationship assignments and custom property values. Accepts the team secret API token or a project secret API key with the `account:read` scope.
+        /// Fetch one account by external ID with its properties, controlled relationship ownership, tags, active relationship assignments and custom property values. Accepts the team secret API token or a project secret API key with the `account:read` scope.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return new global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Account.AccountRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch one account by external ID with its properties, tags, active relationship assignments and custom property values. Accepts the team secret API token or a project secret API key with the `account:read` scope.
+        /// Fetch one account by external ID with its properties, controlled relationship ownership, tags, active relationship assignments and custom property values. Accepts the team secret API token or a project secret API key with the `account:read` scope.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountRequestBuilderGetQueryParameters 

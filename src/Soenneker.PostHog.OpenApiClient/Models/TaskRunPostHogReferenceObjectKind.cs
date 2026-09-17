@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// PostHog object kind used to resolve the reference.* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person
+    /// PostHog object kind used to resolve the reference.* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `report` - report* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunPostHogReferenceObjectKind : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
+        /// <summary>* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `report` - report* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ObjectKindEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind"/> and sets the default values.

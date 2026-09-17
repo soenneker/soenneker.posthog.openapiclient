@@ -38,14 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.autoresearch.item collection</summary>
         /// <param name="position">A UUID string identifying this autoresearch pipeline.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.AutoresearchItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.AutoresearchItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.AutoresearchItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

@@ -74,6 +74,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PromptPreview { get; set; }
 #endif
+        /// <summary>The exact prompt versions spliced into the returned content, in order of first appearance. Empty when the prompt has no references. Only present when references were resolved.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference>? ResolvedReferences { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference> ResolvedReferences { get; set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The version property</summary>
@@ -117,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "outline", n => { Outline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptOutlineEntry>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptOutlineEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt.CreateFromDiscriminatorValue); } },
                 { "prompt_preview", n => { PromptPreview = n.GetStringValue(); } },
+                { "resolved_references", n => { ResolvedReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
                 { "version_count", n => { VersionCount = n.GetIntValue(); } },
@@ -141,6 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptOutlineEntry>("outline", Outline);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt>("prompt", Prompt);
             writer.WriteStringValue("prompt_preview", PromptPreview);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference>("resolved_references", ResolvedReferences);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteIntValue("version", Version);
             writer.WriteIntValue("version_count", VersionCount);

@@ -129,6 +129,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Parent task id this run belongs to.</summary>
         public Guid? Task { get; set; }
+        /// <summary>Latest summary for this task, including a summary inherited from an earlier run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TaskSummary { get; set; }
+#nullable restore
+#else
+        public string TaskSummary { get; set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -174,6 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoStateProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoStateProperty.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "task", n => { Task = n.GetGuidValue(); } },
+                { "task_summary", n => { TaskSummary = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -201,6 +210,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoStateProperty>("state", State);
             writer.WriteStringValue("status", Status);
             writer.WriteGuidValue("task", Task);
+            writer.WriteStringValue("task_summary", TaskSummary);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>API client that triggered the activity, from the x-posthog-client request header (e.g. &apos;mcp&apos;). Null for requests that did not send the header.</summary>
+        /// <summary>API client that triggered the activity. Self-reported through the x-posthog-client request header (e.g. &apos;mcp&apos;), or &apos;scout:&lt;skill_name&gt;&apos; when a scout run made the change, which the server derives from the run&apos;s own token. Null for requests that did neither.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Client { get; private set; }

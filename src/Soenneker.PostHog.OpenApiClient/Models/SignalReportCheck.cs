@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? ExpiresAt { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>How the check is evaluated.* `metric_threshold` - Metric Threshold</summary>
+        /// <summary>How the check is evaluated.* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind? Kind { get; private set; }

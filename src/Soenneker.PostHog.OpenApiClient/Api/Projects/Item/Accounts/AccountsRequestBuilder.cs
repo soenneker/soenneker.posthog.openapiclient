@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.By_external_id;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The by_external_id property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.By_external_id.By_external_idRequestBuilder By_external_id
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.By_external_id.By_external_idRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.accounts.item collection</summary>
         /// <param name="position">A UUID string identifying this account.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.AccountItemRequestBuilder"/></returns>

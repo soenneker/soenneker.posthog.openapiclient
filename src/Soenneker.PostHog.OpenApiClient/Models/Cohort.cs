@@ -134,6 +134,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CohortQuery Query { get; set; }
 #endif
+        /// <summary>Whether feature flags can target this cohort, and the progress of the build that gets it there. Null outside the realtime cohort flag targeting rollout, on projects the realtime pipeline does not cover, and for cohorts that match on neither events nor person properties, which nothing in the flag API decides on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness? Realtime { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness Realtime { get; private set; }
+#endif
         /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -193,6 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pending_version", n => { PendingVersion = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortQuery>(global::Soenneker.PostHog.OpenApiClient.Models.CohortQuery.CreateFromDiscriminatorValue); } },
+                { "realtime", n => { Realtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness>(global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness.CreateFromDiscriminatorValue); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.CohortSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,include_ignored*,limit*}", pathParameters)
+        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,include_ignored*,limit*,managed_only*,project_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,18 +30,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,include_ignored*,limit*}", rawUrl)
+        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,include_ignored*,limit*,managed_only*,project_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// List tracked accounts with external IDs, lifecycle timestamps, and active relationship assignments. Set `include_ignored=true` to include ignored accounts. Requires a project secret API key with the `account:read` scope.
+        /// List tracked accounts with external IDs, lifecycle timestamps, controlled relationship ownership, and active relationship assignments. Set `include_ignored=true` to include ignored accounts and `managed_only=true` to read only the accounts customer analytics holds ownership authority for. Requires a project secret API key or personal API key with the `account:read` scope. Personal API keys also require `project_id` and return only accounts the key owner can access.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListValidationError">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPermissionError">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accounts.AccountsRequestBuilder.AccountsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,13 +54,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListValidationError.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPermissionError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List tracked accounts with external IDs, lifecycle timestamps, and active relationship assignments. Set `include_ignored=true` to include ignored accounts. Requires a project secret API key with the `account:read` scope.
+        /// List tracked accounts with external IDs, lifecycle timestamps, controlled relationship ownership, and active relationship assignments. Set `include_ignored=true` to include ignored accounts and `managed_only=true` to read only the accounts customer analytics holds ownership authority for. Requires a project secret API key or personal API key with the `account:read` scope. Personal API keys also require `project_id` and return only accounts the key owner can access.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return new global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accounts.AccountsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List tracked accounts with external IDs, lifecycle timestamps, and active relationship assignments. Set `include_ignored=true` to include ignored accounts. Requires a project secret API key with the `account:read` scope.
+        /// List tracked accounts with external IDs, lifecycle timestamps, controlled relationship ownership, and active relationship assignments. Set `include_ignored=true` to include ignored accounts and `managed_only=true` to read only the accounts customer analytics holds ownership authority for. Requires a project secret API key or personal API key with the `account:read` scope. Personal API keys also require `project_id` and return only accounts the key owner can access.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountsRequestBuilderGetQueryParameters 
@@ -113,6 +111,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             /// <summary>Maximum number of accounts to return. Values below 1 are clamped to 1; values above 100 are clamped to 100.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>When true, return only accounts where customer analytics holds authority over at least one controlled relationship, including accounts whose managed relationships are cleared and accounts that are ignored. Authority does not end when an account is ignored, so `include_ignored` is implied.</summary>
+            [QueryParameter("managed_only")]
+            public bool? ManagedOnly { get; set; }
+            /// <summary>Project ID. Required for personal API keys. Project secret API keys use their bound project.</summary>
+            [QueryParameter("project_id")]
+            public int? ProjectId { get; set; }
         }
     }
 }

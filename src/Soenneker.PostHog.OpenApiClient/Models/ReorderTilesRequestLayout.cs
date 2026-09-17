@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// How to size tiles when reordering. &apos;preserve&apos; (default) keeps each tile&apos;s existing width and height and only repacks positions in the new order. &apos;two_column&apos; forces a 6-wide × 5-tall grid (two tiles per row). &apos;full_width&apos; forces each tile to span the full 12-column row at height 5.* `preserve` - preserve* `two_column` - two_column* `full_width` - full_width
+    /// How to size tiles when reordering. &apos;preserve&apos; (default) keeps each tile&apos;s existing width and height and only repacks positions in the new order. Use the other modes only when every tile should use the same size: &apos;two_column&apos; makes every tile 6-wide × 5-tall, &apos;three_column&apos; makes every tile 4-wide × 5-tall, and &apos;full_width&apos; makes every tile 12-wide × 5-tall.* `preserve` - preserve* `two_column` - two_column* `three_column` - three_column* `full_width` - full_width
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReorderTilesRequestLayout : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `preserve` - preserve* `two_column` - two_column* `full_width` - full_width</summary>
+        /// <summary>* `preserve` - preserve* `two_column` - two_column* `three_column` - three_column* `full_width` - full_width</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LayoutEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReorderTilesRequestLayout"/> and sets the default values.

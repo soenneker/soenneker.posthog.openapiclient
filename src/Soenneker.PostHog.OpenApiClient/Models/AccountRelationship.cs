@@ -27,6 +27,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? EndedAt { get; private set; }
         /// <summary>Unique id of this assignment row.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Which kind of writer made this assignment; null on rows older than provenance tracking.* `human` - Human* `workflow` - Workflow* `ai` - AI* `salesforce_claim` - Salesforce claim* `migration` - Migration</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipSource? Source { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipSource Source { get; private set; }
+#endif
         /// <summary>When this assignment became effective.</summary>
         public DateTimeOffset? StartedAt { get; private set; }
         /// <summary>The assigned user; null when their account was deleted.</summary>
@@ -65,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "definition", n => { Definition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipDefinitionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipDefinitionComposed.CreateFromDiscriminatorValue); } },
                 { "ended_at", n => { EndedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipSource>(global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipSource.CreateFromDiscriminatorValue); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountAssignment>(global::Soenneker.PostHog.OpenApiClient.Models.AccountAssignment.CreateFromDiscriminatorValue); } },
             };

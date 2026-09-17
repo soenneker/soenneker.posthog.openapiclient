@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DashboardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?folder*,format*,include_dashboards*,limit*,offset*,search*}", pathParameters)
+        public DashboardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?exclude_generated*,folder*,format*,include_dashboards*,limit*,offset*,pinned*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DashboardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?folder*,format*,include_dashboards*,limit*,offset*,search*}", rawUrl)
+        public DashboardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?exclude_generated*,folder*,format*,include_dashboards*,limit*,offset*,pinned*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDashboardBasicList"/></returns>
@@ -151,6 +151,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         public partial class DashboardsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Optional. Exclude dashboards that PostHog generated.</summary>
+            [QueryParameter("exclude_generated")]
+            public bool? ExcludeGenerated { get; set; }
             /// <summary>Optional. Return only dashboards filed directly in this project-tree folder, e.g. &apos;Unfiled/Dashboards&apos;. An empty string matches dashboards at the project root. Nested sub-folders are not included.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -171,6 +174,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Optional. Return only pinned dashboards.</summary>
+            [QueryParameter("pinned")]
+            public bool? Pinned { get; set; }
             /// <summary>Optional. Match against dashboard `name`, `description`, and tag names. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, transpositions, prefix-as-you-type) matches instead. Results are then ordered by relevance, then pinned status, then name; each result&apos;s `search_match_type` is `exact` or `similar`. When omitted, dashboards are ordered by pinned status then alphabetical name. Capped at 200 characters; longer queries return a 400 error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// How the check is evaluated.* `metric_threshold` - Metric Threshold
+    /// How the check is evaluated.* `metric_threshold` - Metric Threshold* `agent` - Agent
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportCheckWriteKind : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `metric_threshold` - Metric Threshold</summary>
+        /// <summary>* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKindEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind"/> and sets the default values.

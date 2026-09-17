@@ -26,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the status changed.</summary>
         public DateTimeOffset? ChangedAt { get; private set; }
-        /// <summary>System that recorded the status change.* `manual` - Manual</summary>
+        /// <summary>System that recorded the status change.* `manual` - Manual* `github` - GitHub</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryChangeSource? ChangeSource { get; private set; }

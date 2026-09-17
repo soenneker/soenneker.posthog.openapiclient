@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Watch_feedRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed{?date_from*,date_to*,limit*,scanner_ids*,scanner_type*}", pathParameters)
+        public Watch_feedRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed{?date_from*,date_to*,limit*,scanner_ids*,scanner_type*,search*,tags*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Watch_feedRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed{?date_from*,date_to*,limit*,scanner_ids*,scanner_type*}", rawUrl)
+        public Watch_feedRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed{?date_from*,date_to*,limit*,scanner_ids*,scanner_type*,search*,tags*}", rawUrl)
         {
         }
         /// <summary>
@@ -121,6 +121,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
             /// <summary>Restrict the feed to observations from scanners of this type.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
             [QueryParameter("scanner_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.VisionScannersWatchFeedRetrieveScannerTypeParameter? ScannerType { get; set; }
+            /// <summary>Case-insensitive text to match against the scan&apos;s own words (title, summary, reasoning, and the notability sentence) and the scanner&apos;s name. Applied before ranking, so it searches the whole window rather than the items that would have surfaced without it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>Comma-separated scanner tags to restrict the feed to. A team with many scanners uses these to follow one area without naming every scanner in it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tags")]
+            public string? Tags { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tags")]
+            public string Tags { get; set; }
+#endif
         }
     }
 }

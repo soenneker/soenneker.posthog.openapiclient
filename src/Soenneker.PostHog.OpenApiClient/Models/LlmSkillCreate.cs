@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillCreateMetadataProperty Metadata { get; set; }
 #endif
-        /// <summary>Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters.</summary>
+        /// <summary>Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters. Cannot be the name of a skill PostHog ships.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

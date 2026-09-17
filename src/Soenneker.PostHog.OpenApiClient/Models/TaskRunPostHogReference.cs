@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ObjectId { get; set; }
 #endif
-        /// <summary>PostHog object kind used to resolve the reference.* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
+        /// <summary>PostHog object kind used to resolve the reference.* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `report` - report* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind? ObjectKind { get; set; }

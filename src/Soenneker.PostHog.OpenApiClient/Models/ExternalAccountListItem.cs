@@ -34,6 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Authority state of each relationship the project controls.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemOwnership? Ownership { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemOwnership Ownership { get; set; }
+#endif
         /// <summary>Active relationship assignments to current organization members, keyed by relationship definition name (e.g. &apos;CSM&apos;, &apos;Account executive&apos;). Definitions with no active assignment are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "ignored_at", n => { IgnoredAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "ownership", n => { Ownership = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemOwnership>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemOwnership.CreateFromDiscriminatorValue); } },
                 { "relationships", n => { Relationships = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty.CreateFromDiscriminatorValue); } },
             };
         }
@@ -85,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("external_id", ExternalId);
             writer.WriteDateTimeOffsetValue("ignored_at", IgnoredAt);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemOwnership>("ownership", Ownership);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty>("relationships", Relationships);
             writer.WriteAdditionalData(AdditionalData);
         }

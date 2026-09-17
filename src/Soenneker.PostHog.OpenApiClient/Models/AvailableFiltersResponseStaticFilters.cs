@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>API clients that have generated activity (from x-posthog-client header).</summary>
+        /// <summary>API clients that have generated activity (the x-posthog-client header, or &apos;scout:&lt;skill_name&gt;&apos; for a scout run).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.StaticFiltersClientsItemProperty>? Clients { get; set; }

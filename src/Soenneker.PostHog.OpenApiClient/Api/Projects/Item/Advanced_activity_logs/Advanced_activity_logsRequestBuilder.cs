@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("activities")]
             public string[] Activities { get; set; }
 #endif
-            /// <summary>Filter by API clients that generated the activity (from x-posthog-client header).</summary>
+            /// <summary>Filter by API clients that generated the activity (the x-posthog-client header, or &apos;scout:&lt;skill_name&gt;&apos; for a scout run).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("clients")]

@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `metric_threshold` - Metric Threshold</summary>
+    /// <summary>* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalReportCheckKindEnum
     {
         [EnumMember(Value = "metric_threshold")]
         #pragma warning disable CS1591
         MetricThreshold,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent")]
+        #pragma warning disable CS1591
+        Agent,
         #pragma warning restore CS1591
     }
 }

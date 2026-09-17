@@ -16,11 +16,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many charts the report now shows, or null if the edit left its charts as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report&apos;s charts down.</summary>
         public int? ChartsSet { get; set; }
+        /// <summary>How many times a scout has rewritten this report&apos;s title or summary, counting this edit.</summary>
+        public int? ContentRevisionCount { get; set; }
+        /// <summary>Whether your note raised the report&apos;s corroboration count instead of landing as its own entry. Only notes marked corroboration_only can collapse; free-form notes remain in the work log.</summary>
+        public bool? CorroborationCollapsed { get; set; }
         /// <summary>How many observations this edit added to the report&apos;s evidence rail; 0 if none.</summary>
         public int? EvidenceAppended { get; set; }
+        /// <summary>Whether this edit actually rewrote the report&apos;s title or summary. False for a note, a reviewer change, or a re-send of the text the report already had.</summary>
+        public bool? IsContentRevision { get; set; }
         /// <summary>How many impact metrics the report now shows, or null when untouched/unchanged. 0 means the edit removed every metric.</summary>
         public int? MetricsSet { get; set; }
-        /// <summary>Whether a note artefact was appended.</summary>
+        /// <summary>Whether the edit included a note. True for a collapsed corroboration too, where the report&apos;s count moves and no work-log entry is written. Read `corroboration_collapsed` to tell the two apart.</summary>
         public bool? NoteAppended { get; set; }
         /// <summary>Id of the edited report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,6 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? ReviewersSet { get; set; }
         /// <summary>How many prompts the report now suggests, or null if the edit left them as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report&apos;s suggested prompts down.</summary>
         public int? SuggestedPromptsSet { get; set; }
+        /// <summary>Whether the edit recorded that the report&apos;s pull request should be replaced. False when you did not ask for it, when the edit changed no content, or when the report has already been rewritten too many times.</summary>
+        public bool? SupersedesImplementation { get; set; }
         /// <summary>Which presentation fields changed (e.g. `title`, `summary`); empty if only a note was appended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,7 +86,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "charts_set", n => { ChartsSet = n.GetIntValue(); } },
+                { "content_revision_count", n => { ContentRevisionCount = n.GetIntValue(); } },
+                { "corroboration_collapsed", n => { CorroborationCollapsed = n.GetBoolValue(); } },
                 { "evidence_appended", n => { EvidenceAppended = n.GetIntValue(); } },
+                { "is_content_revision", n => { IsContentRevision = n.GetBoolValue(); } },
                 { "metrics_set", n => { MetricsSet = n.GetIntValue(); } },
                 { "note_appended", n => { NoteAppended = n.GetBoolValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
@@ -86,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "repository_set", n => { RepositorySet = n.GetBoolValue(); } },
                 { "reviewers_set", n => { ReviewersSet = n.GetBoolValue(); } },
                 { "suggested_prompts_set", n => { SuggestedPromptsSet = n.GetIntValue(); } },
+                { "supersedes_implementation", n => { SupersedesImplementation = n.GetBoolValue(); } },
                 { "updated_fields", n => { UpdatedFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -97,7 +109,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("charts_set", ChartsSet);
+            writer.WriteIntValue("content_revision_count", ContentRevisionCount);
+            writer.WriteBoolValue("corroboration_collapsed", CorroborationCollapsed);
             writer.WriteIntValue("evidence_appended", EvidenceAppended);
+            writer.WriteBoolValue("is_content_revision", IsContentRevision);
             writer.WriteIntValue("metrics_set", MetricsSet);
             writer.WriteBoolValue("note_appended", NoteAppended);
             writer.WriteStringValue("report_id", ReportId);
@@ -105,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("repository_set", RepositorySet);
             writer.WriteBoolValue("reviewers_set", ReviewersSet);
             writer.WriteIntValue("suggested_prompts_set", SuggestedPromptsSet);
+            writer.WriteBoolValue("supersedes_implementation", SupersedesImplementation);
             writer.WriteCollectionOfPrimitiveValues<string>("updated_fields", UpdatedFields);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas</summary>
+    /// <summary>* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas* `github_link` - GitHub link* `github_sync` - GitHub sync</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FeatureRequestHistoryChangeFieldEnum
     {
@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "product_areas")]
         #pragma warning disable CS1591
         ProductAreas,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "github_link")]
+        #pragma warning disable CS1591
+        GithubLink,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "github_sync")]
+        #pragma warning disable CS1591
+        GithubSync,
         #pragma warning restore CS1591
     }
 }

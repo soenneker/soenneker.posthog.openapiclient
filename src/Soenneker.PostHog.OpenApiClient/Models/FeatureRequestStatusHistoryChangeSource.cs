@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// System that recorded the status change.* `manual` - Manual
+    /// System that recorded the status change.* `manual` - Manual* `github` - GitHub
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestStatusHistoryChangeSource : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `manual` - Manual</summary>
+        /// <summary>* `manual` - Manual* `github` - GitHub</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistorySourceEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryChangeSource"/> and sets the default values.

@@ -14,6 +14,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Acces
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_roles;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Add_product_intent;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.CancelDeletion;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Change_organization;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Complete_product_onboarding;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Default_evaluation_contexts;
@@ -98,6 +99,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Add_product_intent.Add_product_intentRequestBuilder Add_product_intent
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Add_product_intent.Add_product_intentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cancelDeletion property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.CancelDeletion.CancelDeletionRequestBuilder CancelDeletion
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.CancelDeletion.CancelDeletionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The change_organization property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Change_organization.Change_organizationRequestBuilder Change_organization

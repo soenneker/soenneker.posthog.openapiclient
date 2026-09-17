@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSignalReportCheckList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSignalReportCheckList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Schedule a re-measurement of the report&apos;s claim. A `metric_threshold` check runs one bounded Trends query and compares the result, so it needs no agent run.
+        /// Schedule a re-measurement of the report&apos;s claim. A `metric_threshold` check runs one bounded Trends query and compares the result, so it needs no agent run. An `agent` check runs a scout instead, for a claim no single number settles; it runs on the scout its config names, or on the fleet&apos;s follow-up scout when it names none.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck"/></returns>
         /// <param name="body">Request body for creating a check on a report.The schedule is the check&apos;s own: `next_run_at` says when to look, rather than the systemderiving a soak window from a merged pull request that many fixes never have.</param>
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return requestInfo;
         }
         /// <summary>
-        /// Schedule a re-measurement of the report&apos;s claim. A `metric_threshold` check runs one bounded Trends query and compares the result, so it needs no agent run.
+        /// Schedule a re-measurement of the report&apos;s claim. A `metric_threshold` check runs one bounded Trends query and compares the result, so it needs no agent run. An `agent` check runs a scout instead, for a claim no single number settles; it runs on the scout its config names, or on the fleet&apos;s follow-up scout when it names none.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for creating a check on a report.The schedule is the check&apos;s own: `next_run_at` says when to look, rather than the systemderiving a soak window from a merged pull request that many fixes never have.</param>

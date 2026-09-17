@@ -3,10 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.CheckResult;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EditReport;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.Emissions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EmitReport;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EmitSignal;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.LighthouseAudit;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RecordOutput;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -22,6 +24,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.I
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithRunItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The checkResult property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.CheckResult.CheckResultRequestBuilder CheckResult
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.CheckResult.CheckResultRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The editReport property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EditReport.EditReportRequestBuilder EditReport
         {
@@ -41,6 +48,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.I
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EmitSignal.EmitSignalRequestBuilder EmitSignal
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EmitSignal.EmitSignalRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The lighthouseAudit property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.LighthouseAudit.LighthouseAuditRequestBuilder LighthouseAudit
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.LighthouseAudit.LighthouseAuditRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recordOutput property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RecordOutput.RecordOutputRequestBuilder RecordOutput
