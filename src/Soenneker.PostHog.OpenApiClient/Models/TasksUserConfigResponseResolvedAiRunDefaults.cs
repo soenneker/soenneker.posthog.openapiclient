@@ -31,7 +31,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReasoningEffort { get; set; }
 #endif
-        /// <summary>Effective default runtime adapter, or null when no preference is stored.</summary>
+        /// <summary>Harness the effective default runs on: &apos;acp&apos; or &apos;pi&apos;. &apos;acp&apos; when no preference is stored.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Runtime { get; set; }
+#nullable restore
+#else
+        public string Runtime { get; set; }
+#endif
+        /// <summary>Effective default runtime adapter, or null when no preference is stored or the harness is Pi.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RuntimeAdapter { get; set; }
@@ -74,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetStringValue(); } },
+                { "runtime", n => { Runtime = n.GetStringValue(); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource>(global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource.CreateFromDiscriminatorValue); } },
             };
@@ -87,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("reasoning_effort", ReasoningEffort);
+            writer.WriteStringValue("runtime", Runtime);
             writer.WriteStringValue("runtime_adapter", RuntimeAdapter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource>("source", Source);
             writer.WriteAdditionalData(AdditionalData);

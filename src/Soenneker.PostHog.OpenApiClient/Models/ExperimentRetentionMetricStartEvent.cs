@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureNode"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentRetentionMetricStartEvent : IComposedTypeWrapper, IParsable
@@ -37,6 +37,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode ExperimentDataWarehouseNode { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureNode"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureNode? ExperimentExposureNode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureNode ExperimentExposureNode { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -59,6 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.ExperimentDataWarehouseNode = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode();
             }
+            else if("ExperimentExposureNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.ExperimentExposureNode = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureNode();
+            }
             return result;
         }
         /// <summary>
@@ -78,6 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(ExperimentDataWarehouseNode != null)
             {
                 return ExperimentDataWarehouseNode.GetFieldDeserializers();
+            }
+            else if(ExperimentExposureNode != null)
+            {
+                return ExperimentExposureNode.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -99,6 +115,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(ExperimentDataWarehouseNode != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode>(null, ExperimentDataWarehouseNode);
+            }
+            else if(ExperimentExposureNode != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureNode>(null, ExperimentExposureNode);
             }
         }
     }

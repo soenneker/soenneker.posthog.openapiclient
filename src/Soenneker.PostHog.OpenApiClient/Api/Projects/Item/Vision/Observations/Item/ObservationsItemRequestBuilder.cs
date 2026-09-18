@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Create_task;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Label;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Retry;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Signal_reports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Viewed;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -35,6 +36,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Retry.RetryRequestBuilder Retry
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Retry.RetryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The signal_reports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Signal_reports.Signal_reportsRequestBuilder Signal_reports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Signal_reports.Signal_reportsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The viewed property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Viewed.ViewedRequestBuilder Viewed

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// What to run on the pull request. &apos;review&apos; (default) reviews it and, when the requesting user&apos;s resolve_comments setting is on, chains the resolution stage; &apos;review_only&apos; reviews without resolving regardless of that setting; &apos;resolve_only&apos; skips the review and only runs the resolution stage on the PR&apos;s existing unresolved review threads.* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only
+    /// What to run on the pull request. &apos;review&apos; (default) reviews it and, when the requesting user&apos;s resolve_comments setting is on, chains the resolution stage; &apos;review_only&apos; reviews without resolving regardless of that setting; &apos;resolve_only&apos; skips the review and only runs the resolution stage on the PR&apos;s existing unresolved review threads; &apos;flash&apos; uses a lower-cost model for the review passes and validation, and never resolves comments.* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only* `flash` - flash
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReviewTriggerRequestRunMode : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only</summary>
+        /// <summary>* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only* `flash` - flash</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunModeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode"/> and sets the default values.

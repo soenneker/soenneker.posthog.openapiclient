@@ -14,13 +14,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Lower edge of the expected band. Null while the series has too little history to band.</summary>
+        /// <summary>Lower edge of the expected band. Null while no validated band is available for this series.</summary>
         public double? Lower { get; set; }
         /// <summary>Log count observed in this bucket.</summary>
         public int? Observed { get; set; }
         /// <summary>Start of the display bucket (UTC).</summary>
         public DateTimeOffset? Time { get; set; }
-        /// <summary>Upper edge of the expected band. Null while the series has too little history to band.</summary>
+        /// <summary>Upper edge of the expected band. Null while no validated band is available for this series.</summary>
         public double? Upper { get; set; }
         /// <summary>Where the observed count sits against the band: above when it exceeds upper, below when it falls under lower. Null while it sits inside the band, or while the band is not ready.* `above` - Above the band* `below` - Below the band</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

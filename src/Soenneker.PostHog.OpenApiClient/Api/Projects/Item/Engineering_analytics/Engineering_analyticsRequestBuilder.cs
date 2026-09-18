@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_cards;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_failure_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_comparison;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests;
@@ -75,6 +76,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health.Current_branch_healthRequestBuilder Current_branch_health
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health.Current_branch_healthRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The delivery_comparison property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_comparison.Delivery_comparisonRequestBuilder Delivery_comparison
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_comparison.Delivery_comparisonRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The delivery_summary property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_summary.Delivery_summaryRequestBuilder Delivery_summary

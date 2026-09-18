@@ -177,7 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             /// <summary>Filter to workflows owned by a product surface, e.g. `loops` for Desktop loops.</summary>
             [QueryParameter("origin_product")]
             public global::Soenneker.PostHog.OpenApiClient.Models.LoopsOriginProduct? OriginProduct { get; set; }
-            /// <summary>Case-insensitive search across workflow name and description.</summary>
+            /// <summary>Case-insensitive search. Matches workflow name and description first; only when nothing matches those, it matches step names and the subject line, preheader and body text of email steps, in both the live workflow and its pending draft.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

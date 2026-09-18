@@ -43,6 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string HeadingPath { get; private set; }
 #endif
+        /// <summary>True when this chunk comes from a generated source learned from a past support ticket.</summary>
+        public bool? IsGenerated { get; private set; }
         /// <summary>Zero-based position of this chunk within its document. Use as `around_ordinal` in the document-window endpoint.</summary>
         public int? Ordinal { get; private set; }
         /// <summary>ID of the knowledge source this chunk belongs to.</summary>
@@ -93,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "document_id", n => { DocumentId = n.GetGuidValue(); } },
                 { "document_title", n => { DocumentTitle = n.GetStringValue(); } },
                 { "heading_path", n => { HeadingPath = n.GetStringValue(); } },
+                { "is_generated", n => { IsGenerated = n.GetBoolValue(); } },
                 { "ordinal", n => { Ordinal = n.GetIntValue(); } },
                 { "source_id", n => { SourceId = n.GetGuidValue(); } },
                 { "source_name", n => { SourceName = n.GetStringValue(); } },

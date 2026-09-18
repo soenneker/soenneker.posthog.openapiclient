@@ -8,22 +8,22 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-delivery rendering options. Each option documents which delivery targets it applies to.
+    /// Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option&apos;s own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SubscriptionWriteDeliveryConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>AI prompt subscriptions only: include report feedback links. Defaults to true when omitted.</summary>
+        /// <summary>Prompt subscriptions only: include report feedback links. Defaults to true when omitted. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
         public bool? IncludeFeedback { get; set; }
-        /// <summary>AI prompt subscriptions only: include generated chart images. Defaults to true when omitted.</summary>
+        /// <summary>Prompt subscriptions only: include generated chart images. Defaults to true when omitted. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
         public bool? IncludeImages { get; set; }
-        /// <summary>AI prompt subscriptions only: include a link to manage the subscription. Defaults to true when omitted.</summary>
+        /// <summary>Prompt subscriptions only: include a link to manage the subscription. Defaults to true when omitted. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
         public bool? IncludeManageLink { get; set; }
-        /// <summary>AI prompt subscriptions only: include PostHog product guidance. Slack only. Email and Microsoft Teams reports do not include it. Defaults to true when omitted.</summary>
+        /// <summary>Prompt subscriptions only: include PostHog product guidance. Defaults to true when omitted. Only a Slack report renders the guidance. Email and Microsoft Teams reports leave it out and accept the option without an error, unlike post_all_insights_in_main_message. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
         public bool? IncludePosthogHint { get; set; }
-        /// <summary>Slack only: when true, upload all insight images together in the main Slack message instead of posting the first image in the main message and the rest as threaded replies. Defaults to false.</summary>
+        /// <summary>Slack insight and dashboard subscriptions only: when true, upload all insight images together in the main Slack message instead of posting the first image in the main message and the rest as threaded replies. Defaults to false. The request is rejected when target_type is not &apos;slack&apos;, when the subscription sets prompt instead of insight or dashboard, or when the Slack integration does not hold the files:write permission. Omit it unless the user asks for one combined message.</summary>
         public bool? PostAllInsightsInMainMessage { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig"/> and sets the default values.

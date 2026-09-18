@@ -4,9 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activity;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Analyze;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Sharing;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Suggestions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Thresholds;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -27,20 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The analyze property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Analyze.AnalyzeRequestBuilder Analyze
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Analyze.AnalyzeRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The sharing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Sharing.SharingRequestBuilder Sharing
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Sharing.SharingRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The suggestions property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Suggestions.SuggestionsRequestBuilder Suggestions
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Suggestions.SuggestionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The thresholds property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Thresholds.ThresholdsRequestBuilder Thresholds

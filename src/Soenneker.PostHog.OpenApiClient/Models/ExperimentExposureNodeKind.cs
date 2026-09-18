@@ -5,16 +5,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum InsightsSuggestionsRetrieveFormatParameter
+    public enum ExperimentExposureNodeKind
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "csv")]
+        [EnumMember(Value = "ExperimentExposureNode")]
         #pragma warning disable CS1591
-        Csv,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "json")]
-        #pragma warning disable CS1591
-        Json,
+        ExperimentExposureNode,
         #pragma warning restore CS1591
     }
 }

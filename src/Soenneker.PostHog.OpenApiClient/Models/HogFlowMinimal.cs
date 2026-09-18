@@ -65,6 +65,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; private set; }
 #endif
+        /// <summary>Staged content changes awaiting publish — a full snapshot of the workflow&apos;s actions, edges and settings. Null when there&apos;s nothing staged. Test it with a use_draft test run, then promote it with the publish endpoint or throw it away with discard_draft.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalDraft? Draft { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalDraft Draft { get; private set; }
+#endif
         /// <summary>The edges property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -183,6 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "draft", n => { Draft = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalDraft>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalDraft.CreateFromDiscriminatorValue); } },
                 { "edges", n => { Edges = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEdges>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEdges.CreateFromDiscriminatorValue); } },
                 { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit.CreateFromDiscriminatorValue); } },
                 { "exit_condition", n => { ExitCondition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalExitCondition>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalExitCondition.CreateFromDiscriminatorValue); } },

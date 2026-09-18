@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Set to true to soft-delete. Subscriptions cannot be hard-deleted.</summary>
         public bool? Deleted { get; set; }
-        /// <summary>Per-delivery rendering options. Each option documents which delivery targets it applies to.</summary>
+        /// <summary>Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option&apos;s own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig? DeliveryConfig { get; set; }

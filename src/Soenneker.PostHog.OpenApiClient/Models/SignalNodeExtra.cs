@@ -107,6 +107,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BaselineP50Seconds { get; set; }
         /// <summary>The baseline_p95_seconds property</summary>
         public double? BaselineP95Seconds { get; set; }
+        /// <summary>The baseline_value property</summary>
+        public double? BaselineValue { get; set; }
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -156,6 +158,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string ChannelSource { get; set; }
+#endif
+        /// <summary>The check_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CheckId { get; set; }
+#nullable restore
+#else
+        public string CheckId { get; set; }
+#endif
+        /// <summary>The check_title property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CheckTitle { get; set; }
+#nullable restore
+#else
+        public string CheckTitle { get; set; }
 #endif
         /// <summary>The clicks property</summary>
         public int? Clicks { get; set; }
@@ -398,6 +416,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry> Evidence { get; set; }
+#endif
+        /// <summary>The explanation property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Explanation { get; set; }
+#nullable restore
+#else
+        public string Explanation { get; set; }
 #endif
         /// <summary>The exported_asset_id property</summary>
         public int? ExportedAssetId { get; set; }
@@ -685,6 +711,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ObservationId { get; set; }
 #endif
+        /// <summary>The observed_value property</summary>
+        public double? ObservedValue { get; set; }
         /// <summary>The page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1169,6 +1197,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TeamName { get; set; }
 #endif
+        /// <summary>The threshold property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Threshold { get; set; }
+#nullable restore
+#else
+        public string Threshold { get; set; }
+#endif
         /// <summary>The threshold_count property</summary>
         public int? ThresholdCount { get; set; }
         /// <summary>The threshold_operator property</summary>
@@ -1377,6 +1413,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "author_login", n => { AuthorLogin = n.GetStringValue(); } },
                 { "baseline_p50_seconds", n => { BaselineP50Seconds = n.GetDoubleValue(); } },
                 { "baseline_p95_seconds", n => { BaselineP95Seconds = n.GetDoubleValue(); } },
+                { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "breakdown_limit", n => { BreakdownLimit = n.GetIntValue(); } },
                 { "category", n => { Category = n.GetStringValue(); } },
@@ -1384,6 +1421,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "channel", n => { Channel = n.GetStringValue(); } },
                 { "channel_detail", n => { ChannelDetail = n.GetStringValue(); } },
                 { "channel_source", n => { ChannelSource = n.GetStringValue(); } },
+                { "check_id", n => { CheckId = n.GetStringValue(); } },
+                { "check_title", n => { CheckTitle = n.GetStringValue(); } },
                 { "clicks", n => { Clicks = n.GetIntValue(); } },
                 { "component", n => { Component = n.GetStringValue(); } },
                 { "conclusive_run_count", n => { ConclusiveRunCount = n.GetIntValue(); } },
@@ -1420,6 +1459,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evaluation_name", n => { EvaluationName = n.GetStringValue(); } },
                 { "event_history", n => { EventHistory = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry>(global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry>(global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "explanation", n => { Explanation = n.GetStringValue(); } },
                 { "exported_asset_id", n => { ExportedAssetId = n.GetIntValue(); } },
                 { "failed_attempt", n => { FailedAttempt = n.GetIntValue(); } },
                 { "feedbackTopics", n => { FeedbackTopics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem>(global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -1460,6 +1500,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "notebook_short_id", n => { NotebookShortId = n.GetStringValue(); } },
                 { "number", n => { Number = n.GetIntValue(); } },
                 { "observation_id", n => { ObservationId = n.GetStringValue(); } },
+                { "observed_value", n => { ObservedValue = n.GetDoubleValue(); } },
                 { "page", n => { Page = n.GetStringValue(); } },
                 { "passed_attempt", n => { PassedAttempt = n.GetIntValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthCheckSignalExtraPayloadProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HealthCheckSignalExtraPayloadProperty.CreateFromDiscriminatorValue); } },
@@ -1528,6 +1569,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
                 { "task_run_id", n => { TaskRunId = n.GetStringValue(); } },
                 { "team_name", n => { TeamName = n.GetStringValue(); } },
+                { "threshold", n => { Threshold = n.GetStringValue(); } },
                 { "threshold_count", n => { ThresholdCount = n.GetIntValue(); } },
                 { "threshold_operator", n => { ThresholdOperator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator.CreateFromDiscriminatorValue); } },
                 { "ticket_number", n => { TicketNumber = n.GetIntValue(); } },
@@ -1577,6 +1619,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("author_login", AuthorLogin);
             writer.WriteDoubleValue("baseline_p50_seconds", BaselineP50Seconds);
             writer.WriteDoubleValue("baseline_p95_seconds", BaselineP95Seconds);
+            writer.WriteDoubleValue("baseline_value", BaselineValue);
             writer.WriteStringValue("branch", Branch);
             writer.WriteIntValue("breakdown_limit", BreakdownLimit);
             writer.WriteStringValue("category", Category);
@@ -1584,6 +1627,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("channel", Channel);
             writer.WriteStringValue("channel_detail", ChannelDetail);
             writer.WriteStringValue("channel_source", ChannelSource);
+            writer.WriteStringValue("check_id", CheckId);
+            writer.WriteStringValue("check_title", CheckTitle);
             writer.WriteIntValue("clicks", Clicks);
             writer.WriteStringValue("component", Component);
             writer.WriteIntValue("conclusive_run_count", ConclusiveRunCount);
@@ -1621,6 +1666,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("evaluation_name", EvaluationName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry>("event_history", EventHistory);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry>("evidence", Evidence);
+            writer.WriteStringValue("explanation", Explanation);
             writer.WriteIntValue("exported_asset_id", ExportedAssetId);
             writer.WriteIntValue("failed_attempt", FailedAttempt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem>("feedbackTopics", FeedbackTopics);
@@ -1662,6 +1708,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("notebook_short_id", NotebookShortId);
             writer.WriteIntValue("number", Number);
             writer.WriteStringValue("observation_id", ObservationId);
+            writer.WriteDoubleValue("observed_value", ObservedValue);
             writer.WriteStringValue("page", Page);
             writer.WriteIntValue("passed_attempt", PassedAttempt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthCheckSignalExtraPayloadProperty>("payload", Payload);
@@ -1730,6 +1777,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("task_id", TaskId);
             writer.WriteStringValue("task_run_id", TaskRunId);
             writer.WriteStringValue("team_name", TeamName);
+            writer.WriteStringValue("threshold", Threshold);
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("ticket_number", TicketNumber);

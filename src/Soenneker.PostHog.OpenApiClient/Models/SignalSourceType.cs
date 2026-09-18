@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `session_analysis_cluster` - session_analysis_cluster* `session_problem` - session_problem* `evaluation` - evaluation* `evaluation_report` - evaluation_report* `issue` - issue* `ticket` - ticket* `issue_created` - issue_created* `issue_reopened` - issue_reopened* `issue_spiking` - issue_spiking* `endpoint_execution_failed` - endpoint_execution_failed* `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded* `cross_source_issue` - cross_source_issue* `alert_state_change` - alert_state_change* `health_issue` - health_issue* `scanner_finding` - scanner_finding* `anomaly_investigation` - anomaly_investigation* `feedback` - feedback* `review` - review* `ci_flaky_check` - ci_flaky_check* `ci_broken_default_branch` - ci_broken_default_branch* `ci_duration_regression` - ci_duration_regression* `search_opportunity` - search_opportunity</summary>
+    /// <summary>* `session_analysis_cluster` - session_analysis_cluster* `session_problem` - session_problem* `evaluation` - evaluation* `evaluation_report` - evaluation_report* `issue` - issue* `ticket` - ticket* `issue_created` - issue_created* `issue_reopened` - issue_reopened* `issue_spiking` - issue_spiking* `endpoint_execution_failed` - endpoint_execution_failed* `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded* `cross_source_issue` - cross_source_issue* `alert_state_change` - alert_state_change* `health_issue` - health_issue* `scanner_finding` - scanner_finding* `anomaly_investigation` - anomaly_investigation* `feedback` - feedback* `review` - review* `ci_flaky_check` - ci_flaky_check* `ci_broken_default_branch` - ci_broken_default_branch* `ci_duration_regression` - ci_duration_regression* `search_opportunity` - search_opportunity* `check_failed` - check_failed</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalSourceType
     {
@@ -94,6 +94,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "search_opportunity")]
         #pragma warning disable CS1591
         SearchOpportunity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "check_failed")]
+        #pragma warning disable CS1591
+        CheckFailed,
         #pragma warning restore CS1591
     }
 }

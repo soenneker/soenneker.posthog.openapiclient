@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Per-token cost against the catalogue baseline, ready to display, such as &apos;2.5x&apos; or &apos;~0.55x&apos;. Prefixed when the input and output rates diverge enough that one number flatters either. Null for a model the catalogue quotes no rate for.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CostMultiplier { get; set; }
+#nullable restore
+#else
+        public string CostMultiplier { get; set; }
+#endif
         /// <summary>Display name for the model, such as &apos;Claude Opus 4.8&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cost_multiplier", n => { CostMultiplier = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter.CreateFromDiscriminatorValue); } },
@@ -85,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("cost_multiplier", CostMultiplier);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter>("runtime_adapter", RuntimeAdapter);

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
         }
         /// <summary>
-        /// Stop an active check. Its recorded results stay on the report.
+        /// Stop a check that is still open — active, or pending its report resolving. Its recorded results stay on the report.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Checks attached to a signal report: read, create, and cancel.There is no update: a check is a claim about the future, and editing its threshold after aresult would make the recorded verdict unreadable. Cancel it and write a new one.Writes are attributed the same way artefact writes are — to the task named by the`X-PostHog-Task-Id` header when present, else to the requesting user.
+        /// Checks attached to a signal report: read and cancel.There is no create here. A check is authored by a scout run or by the research pipeline, boththrough `report_check_authoring.create_check`. An `agent` check puts its author&apos;s prose in frontof a privileged scout run, and `task:write` does not authorize that, so no caller-facingendpoint accepts one. Anyone who can read the report can read its checks, and a person canstill stop one.There is no update: a check is a claim about the future, and editing its threshold after aresult would make the recorded verdict unreadable. Cancel it and let its author write a new one.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Stop an active check. Its recorded results stay on the report.
+        /// Stop a check that is still open — active, or pending its report resolving. Its recorded results stay on the report.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return requestInfo;
         }
         /// <summary>
-        /// Checks attached to a signal report: read, create, and cancel.There is no update: a check is a claim about the future, and editing its threshold after aresult would make the recorded verdict unreadable. Cancel it and write a new one.Writes are attributed the same way artefact writes are — to the task named by the`X-PostHog-Task-Id` header when present, else to the requesting user.
+        /// Checks attached to a signal report: read and cancel.There is no create here. A check is authored by a scout run or by the research pipeline, boththrough `report_check_authoring.create_check`. An `agent` check puts its author&apos;s prose in frontof a privileged scout run, and `task:write` does not authorize that, so no caller-facingendpoint accepts one. Anyone who can read the report can read its checks, and a person canstill stop one.There is no update: a check is a claim about the future, and editing its threshold after aresult would make the recorded verdict unreadable. Cancel it and let its author write a new one.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

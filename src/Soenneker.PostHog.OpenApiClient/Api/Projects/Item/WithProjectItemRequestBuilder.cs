@@ -41,6 +41,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dataset_items;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop_beta_terms;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop_feedback;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Early_access_feature;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints;
@@ -370,6 +371,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop_beta_terms.Desktop_beta_termsRequestBuilder Desktop_beta_terms
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop_beta_terms.Desktop_beta_termsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The desktop_feedback property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop_feedback.Desktop_feedbackRequestBuilder Desktop_feedback
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop_feedback.Desktop_feedbackRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The early_access_feature property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Early_access_feature.Early_access_featureRequestBuilder Early_access_feature

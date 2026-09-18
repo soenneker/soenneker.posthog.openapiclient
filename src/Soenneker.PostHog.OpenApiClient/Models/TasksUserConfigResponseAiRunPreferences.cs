@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Default LLM model identifier for new task runs. Must be set together with `runtime_adapter`.</summary>
+        /// <summary>Default LLM model identifier for new task runs. Must be set together with `runtime_adapter` on the ACP harness, and is required on its own for a Pi default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Default reasoning effort for models that expose an effort control.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
+        /// <summary>Default reasoning effort for models that expose an effort control. A Pi default stores a Pi thinking level here, which also allows &apos;off&apos; and &apos;minimal&apos;.* `off` - off* `minimal` - minimal* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesReasoningEffort? ReasoningEffort { get; set; }
@@ -31,7 +31,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesReasoningEffort ReasoningEffort { get; set; }
 #endif
-        /// <summary>Default agent runtime adapter for new task runs. Use &apos;claude&apos; for the Claude runtime or &apos;codex&apos; for the Codex runtime. Must be set together with `model`.* `claude` - claude* `codex` - codex</summary>
+        /// <summary>Harness the default runs on: &apos;acp&apos; for the Claude and Codex adapters, &apos;pi&apos; for the Pi harness. Defaults to &apos;acp&apos; when omitted.* `acp` - ACP* `pi` - Pi</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntime? Runtime { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntime Runtime { get; set; }
+#endif
+        /// <summary>Default agent runtime adapter for new task runs. Use &apos;claude&apos; for the Claude runtime or &apos;codex&apos; for the Codex runtime. Must be set together with `model`, and must be null when `runtime` is &apos;pi&apos;.* `claude` - claude* `codex` - codex</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntimeAdapter? RuntimeAdapter { get; set; }
@@ -66,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesReasoningEffort.CreateFromDiscriminatorValue); } },
+                { "runtime", n => { Runtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntime.CreateFromDiscriminatorValue); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntimeAdapter.CreateFromDiscriminatorValue); } },
             };
         }
@@ -78,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesReasoningEffort>("reasoning_effort", ReasoningEffort);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntime>("runtime", Runtime);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksAiRunPreferencesRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Persons that could not be deleted. Each entry contains &apos;person_uuid&apos;. Contact support if this persists.</summary>
+        /// <summary>Persons whose deletion did not fully complete in this request. Each entry contains &apos;person_uuid&apos; and &apos;step&apos;, the deletion step that failed for that person. A failed database delete is reported here rather than as an error response, so a 202 with entries means some or all persons were not deleted. A &apos;log_activity&apos; step means the person was deleted but the activity log entry was not written. Always empty when the deletion was queued (see persons_queued_for_deletion). Contact support if this persists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty>? DeletionErrors { get; set; }
@@ -24,10 +24,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether event deletion was requested for the matched persons. If a deletion was already queued for a person, it will not be duplicated.</summary>
         public bool? EventsQueuedForDeletion { get; set; }
-        /// <summary>Number of person records deleted from the database. 0 if keep_person was true.</summary>
+        /// <summary>Number of person records deleted from the database during this request. 0 if keep_person was true or if the deletion was queued (see persons_queued_for_deletion).</summary>
         public int? PersonsDeleted { get; set; }
         /// <summary>Number of persons matched by the provided IDs or distinct IDs.</summary>
         public int? PersonsFound { get; set; }
+        /// <summary>Number of persons queued for deletion in the background. Their person records and distinct IDs are removed shortly after the request completes. 0 if keep_person was true.</summary>
+        public int? PersonsQueuedForDeletion { get; set; }
         /// <summary>Whether recording deletion was requested for the matched persons. If a deletion was already queued for a person, it will not be duplicated.</summary>
         public bool? RecordingsQueuedForDeletion { get; set; }
         /// <summary>
@@ -59,6 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "events_queued_for_deletion", n => { EventsQueuedForDeletion = n.GetBoolValue(); } },
                 { "persons_deleted", n => { PersonsDeleted = n.GetIntValue(); } },
                 { "persons_found", n => { PersonsFound = n.GetIntValue(); } },
+                { "persons_queued_for_deletion", n => { PersonsQueuedForDeletion = n.GetIntValue(); } },
                 { "recordings_queued_for_deletion", n => { RecordingsQueuedForDeletion = n.GetBoolValue(); } },
             };
         }
@@ -73,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("events_queued_for_deletion", EventsQueuedForDeletion);
             writer.WriteIntValue("persons_deleted", PersonsDeleted);
             writer.WriteIntValue("persons_found", PersonsFound);
+            writer.WriteIntValue("persons_queued_for_deletion", PersonsQueuedForDeletion);
             writer.WriteBoolValue("recordings_queued_for_deletion", RecordingsQueuedForDeletion);
             writer.WriteAdditionalData(AdditionalData);
         }

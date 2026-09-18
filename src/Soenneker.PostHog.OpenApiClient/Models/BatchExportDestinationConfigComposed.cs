@@ -113,6 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string KmsKeyId { get; set; }
 #endif
+        /// <summary>Whether Parquet files keep the compression codec in their extension, for example &apos;.parquet.zst&apos; rather than &apos;.parquet&apos;. Parquet records its codec inside the file, so new exports leave it out. An export that already wrote Parquet files before this setting existed keeps it, so that pipelines matching on the old names do not break. Has no effect on JSON Lines, which always carries the codec in its extension.</summary>
+        public bool? LegacyParquetExtension { get; set; }
         /// <summary>If set, rolls to a new file once the current file exceeds this size in MB.</summary>
         public int? MaxFileSizeMb { get; set; }
         /// <summary>How rows reach Redshift: batched INSERT statements, or COPY from files staged in S3.* `INSERT` - INSERT* `COPY` - COPY</summary>
@@ -250,6 +252,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "host", n => { Host = n.GetStringValue(); } },
                 { "http_path", n => { HttpPath = n.GetStringValue(); } },
                 { "kms_key_id", n => { KmsKeyId = n.GetStringValue(); } },
+                { "legacy_parquet_extension", n => { LegacyParquetExtension = n.GetBoolValue(); } },
                 { "max_file_size_mb", n => { MaxFileSizeMb = n.GetIntValue(); } },
                 { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode>(global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode.CreateFromDiscriminatorValue); } },
                 { "port", n => { Port = n.GetIntValue(); } },
@@ -288,6 +291,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("host", Host);
             writer.WriteStringValue("http_path", HttpPath);
             writer.WriteStringValue("kms_key_id", KmsKeyId);
+            writer.WriteBoolValue("legacy_parquet_extension", LegacyParquetExtension);
             writer.WriteIntValue("max_file_size_mb", MaxFileSizeMb);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode>("mode", Mode);
             writer.WriteIntValue("port", Port);

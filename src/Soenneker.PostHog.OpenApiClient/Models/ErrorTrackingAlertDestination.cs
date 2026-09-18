@@ -30,10 +30,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationConfig Config { get; set; }
 #endif
+        /// <summary>Delivery failures since the last successful delivery.</summary>
+        public int? ConsecutiveFailures { get; private set; }
         /// <summary>Unique identifier of the destination.</summary>
         public Guid? Id { get; private set; }
         /// <summary>ID of the workspace integration used to deliver notifications (required for Slack).</summary>
         public int? IntegrationId { get; set; }
+        /// <summary>When a notification last reached this destination.</summary>
+        public DateTimeOffset? LastDeliveredAt { get; private set; }
+        /// <summary>Message of the most recent delivery failure.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LastError { get; private set; }
+#nullable restore
+#else
+        public string LastError { get; private set; }
+#endif
+        /// <summary>When delivery to this destination last failed.</summary>
+        public DateTimeOffset? LastFailureAt { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestination"/> and sets the default values.
         /// </summary>
@@ -61,8 +75,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "channel_type", n => { ChannelType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType.CreateFromDiscriminatorValue); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationConfig.CreateFromDiscriminatorValue); } },
+                { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
+                { "last_delivered_at", n => { LastDeliveredAt = n.GetDateTimeOffsetValue(); } },
+                { "last_error", n => { LastError = n.GetStringValue(); } },
+                { "last_failure_at", n => { LastFailureAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>

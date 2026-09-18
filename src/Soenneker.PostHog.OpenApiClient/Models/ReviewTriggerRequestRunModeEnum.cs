@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only</summary>
+    /// <summary>* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only* `flash` - flash</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ReviewTriggerRequestRunModeEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "resolve_only")]
         #pragma warning disable CS1591
         ResolveOnly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "flash")]
+        #pragma warning disable CS1591
+        Flash,
         #pragma warning restore CS1591
     }
 }

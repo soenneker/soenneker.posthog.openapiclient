@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console</summary>
+    /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `signals_check` - Report check* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalSourceProductEnum
     {
@@ -46,6 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "signals_scout")]
         #pragma warning disable CS1591
         SignalsScout,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "signals_check")]
+        #pragma warning disable CS1591
+        SignalsCheck,
         #pragma warning restore CS1591
         [EnumMember(Value = "logs")]
         #pragma warning disable CS1591

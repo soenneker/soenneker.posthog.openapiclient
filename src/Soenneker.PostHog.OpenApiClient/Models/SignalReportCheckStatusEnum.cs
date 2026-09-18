@@ -3,10 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled</summary>
+    /// <summary>* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalReportCheckStatusEnum
     {
+        [EnumMember(Value = "pending")]
+        #pragma warning disable CS1591
+        Pending,
+        #pragma warning restore CS1591
         [EnumMember(Value = "active")]
         #pragma warning disable CS1591
         Active,

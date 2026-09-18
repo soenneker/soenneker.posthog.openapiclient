@@ -17,9 +17,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the organization has approved AI data processing (an org-level gate on all scout emits).</summary>
         public bool? AiProcessingApproved { get; set; }
-        /// <summary>True only when both team/org-level gates pass, so scout findings (signal and report channels alike) actually reach the inbox. When False, every emit is silently dropped — quick-close instead of doing throwaway investigation. Does not account for a scout&apos;s own dry-run `emit` toggle, which is per-config, not team-wide.</summary>
+        /// <summary>Which gate blocks the write: `scout_emit_disabled`, `scout_config_missing`, `ai_processing_not_approved`, or `source_disabled`. Null when `can_emit` is True. Matches the `skipped_reason` `emit-report` returns for the same block.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BlockingReason { get; set; }
+#nullable restore
+#else
+        public string BlockingReason { get; set; }
+#endif
+        /// <summary>True only when every gate passes, so this scout&apos;s findings and reports (both channels) actually reach the inbox. When False, every write is dropped or refused — quick-close instead of doing throwaway investigation. Read this one value: it accounts for the calling scout&apos;s own dry-run posture as well as the team-wide gates, and it is the same gate `emit-report` and `edit-report` apply at write time.</summary>
         public bool? CanEmit { get; set; }
-        /// <summary>One-line next step to unblock emits when `can_emit` is False; null when emits can flow.</summary>
+        /// <summary>One-line next step to unblock writes when `can_emit` is False; null when writes can flow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Remediation { get; set; }
@@ -27,6 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Remediation { get; set; }
 #endif
+        /// <summary>Whether the calling scout&apos;s own config can write, as opposed to running in dry-run (`emit=false`), where it investigates but everything it writes is discarded. Null when the read is not from a scout run, so no single scout&apos;s config applies.</summary>
+        public bool? ScoutEmitEnabled { get; set; }
         /// <summary>Whether the `signals_scout` signal source is enabled for this team.</summary>
         public bool? SourceEnabled { get; set; }
         /// <summary>
@@ -55,8 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ai_processing_approved", n => { AiProcessingApproved = n.GetBoolValue(); } },
+                { "blocking_reason", n => { BlockingReason = n.GetStringValue(); } },
                 { "can_emit", n => { CanEmit = n.GetBoolValue(); } },
                 { "remediation", n => { Remediation = n.GetStringValue(); } },
+                { "scout_emit_enabled", n => { ScoutEmitEnabled = n.GetBoolValue(); } },
                 { "source_enabled", n => { SourceEnabled = n.GetBoolValue(); } },
             };
         }
@@ -68,8 +80,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("ai_processing_approved", AiProcessingApproved);
+            writer.WriteStringValue("blocking_reason", BlockingReason);
             writer.WriteBoolValue("can_emit", CanEmit);
             writer.WriteStringValue("remediation", Remediation);
+            writer.WriteBoolValue("scout_emit_enabled", ScoutEmitEnabled);
             writer.WriteBoolValue("source_enabled", SourceEnabled);
             writer.WriteAdditionalData(AdditionalData);
         }

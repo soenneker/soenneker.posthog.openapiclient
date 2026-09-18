@@ -40,6 +40,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table&apos;s override, and — for the PostHog warehouse — sources that write there by default because nothing else was configured.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource>? SyncedSources { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource> SyncedSources { get; private set; }
+#endif
         /// <summary>Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here.* `PostHogWarehouse` - PostHog warehouse* `Redshift` - Redshift* `Snowflake` - Snowflake* `BigQuery` - BigQuery* `Postgres` - Postgres* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `S3` - S3</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "integration", n => { Integration = n.GetIntValue(); } },
                 { "is_posthog_warehouse", n => { IsPosthogWarehouse = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "synced_sources", n => { SyncedSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource>(global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataDestinationType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataDestinationType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

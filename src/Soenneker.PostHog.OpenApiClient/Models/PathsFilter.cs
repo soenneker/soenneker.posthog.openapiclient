@@ -104,6 +104,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The stepLimit property</summary>
         public int? StepLimit { get; set; }
+        /// <summary>Remove the query string from page view URLs, so pages that differ only in query parameters become one path item</summary>
+        public bool? StripQueryString { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter"/> and sets the default values.
         /// </summary>
@@ -146,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "showFullUrls", n => { ShowFullUrls = n.GetBoolValue(); } },
                 { "startPoint", n => { StartPoint = n.GetStringValue(); } },
                 { "stepLimit", n => { StepLimit = n.GetIntValue(); } },
+                { "stripQueryString", n => { StripQueryString = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -171,6 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showFullUrls", ShowFullUrls);
             writer.WriteStringValue("startPoint", StartPoint);
             writer.WriteIntValue("stepLimit", StepLimit);
+            writer.WriteBoolValue("stripQueryString", StripQueryString);
         }
     }
 }

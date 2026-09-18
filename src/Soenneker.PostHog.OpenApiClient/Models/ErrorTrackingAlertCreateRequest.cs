@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Minimum seconds between thread-opening notifications per issue. 0 disables the throttle.</summary>
+        /// <summary>Minimum seconds between thread-opening notifications per issue, at most 30 days. 0 disables the throttle.</summary>
         public int? ThrottleSeconds { get; set; }
         /// <summary>Issue lifecycle events that open a notification thread for an issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

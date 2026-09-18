@@ -34,13 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         {
         }
         /// <summary>
-        /// Create a new outbound ticket and send the first message to the customer.
+        /// Create a new outbound ticket and send the first message to the customer.Idempotent within a short window: an identical compose retried while the first is stillin flight returns 409, and one retried after it committed returns the same ticket with a200. Only a genuinely new request creates a ticket and emails the customer.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TicketError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TicketError">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,11 +56,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.TicketError.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.PostHog.OpenApiClient.Models.TicketError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new outbound ticket and send the first message to the customer.
+        /// Create a new outbound ticket and send the first message to the customer.Idempotent within a short window: an identical compose retried while the first is stillin flight returns 409, and one retried after it committed returns the same ticket with a200. Only a genuinely new request creates a ticket and emails the customer.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

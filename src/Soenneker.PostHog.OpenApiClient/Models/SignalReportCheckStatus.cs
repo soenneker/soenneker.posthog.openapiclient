@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// `active` while the check still runs; every other value is terminal.* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled
+    /// `pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportCheckStatus : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled</summary>
+        /// <summary>* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatusEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus"/> and sets the default values.

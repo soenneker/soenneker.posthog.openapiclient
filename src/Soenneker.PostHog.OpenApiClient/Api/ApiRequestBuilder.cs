@@ -11,6 +11,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects;
 using Soenneker.PostHog.OpenApiClient.Api.Public_hog_function_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Reminders;
 using Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key;
+using Soenneker.PostHog.OpenApiClient.Api.User;
 using Soenneker.PostHog.OpenApiClient.Api.User_facet_settings;
 using Soenneker.PostHog.OpenApiClient.Api.User_home_settings;
 using Soenneker.PostHog.OpenApiClient.Api.Users;
@@ -70,6 +71,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api
         public global::Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key.Revoke_leaked_keyRequestBuilder Revoke_leaked_key
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key.Revoke_leaked_keyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The user property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.User.UserRequestBuilder User
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user_facet_settings property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.User_facet_settings.User_facet_settingsRequestBuilder User_facet_settings

@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Activity log ID from the last known edit. Used for conflict detection.</summary>
+        /// <summary>The latest_history_id you last read for this view. Required when changing the query. The write is refused if someone else changed the query in the meantime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EditedHistoryId { get; set; }
@@ -65,6 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FolderName { get; private set; }
 #endif
+        /// <summary>Whether incremental settings participated in any materialization run.</summary>
+        public bool? HasIncrementalHistory { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Update the materialized table in place instead of rebuilding it. Null or absent means every run rebuilds the whole table.</summary>
@@ -97,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LatestError { get; private set; }
 #endif
-        /// <summary>Activity log ID of the most recent query edit to this view. Send it back as edited_history_id on the next query write, so conflict detection can tell whether someone else changed the query in the meantime. Edits that leave the query alone do not advance it.</summary>
+        /// <summary>Revision of this view&apos;s query. Send it back as edited_history_id on the next query write, so conflict detection can tell whether someone else changed the query in the meantime. Edits that leave the query alone do not advance it.</summary>
         public Guid? LatestHistoryId { get; private set; }
         /// <summary>The managed_viewset_kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -210,6 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "folder_id", n => { FolderId = n.GetGuidValue(); } },
                 { "folder_name", n => { FolderName = n.GetStringValue(); } },
+                { "has_incremental_history", n => { HasIncrementalHistory = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental", n => { Incremental = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig>(global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig.CreateFromDiscriminatorValue); } },
                 { "incremental_state", n => { IncrementalState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState>(global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState.CreateFromDiscriminatorValue); } },

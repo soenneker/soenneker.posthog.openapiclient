@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the check last ran; null before its first run.</summary>
         public DateTimeOffset? LastRunAt { get; private set; }
-        /// <summary>When the coordinator next evaluates the check.</summary>
+        /// <summary>When the coordinator next evaluates the check. Provisional while the check is `pending`: the report resolving is what sets it.</summary>
         public DateTimeOffset? NextRunAt { get; private set; }
         /// <summary>Why the author set the check.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,7 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RunIntervalMinutes { get; private set; }
         /// <summary>Evaluations still owed before the check retires as passed.</summary>
         public int? RunsRemaining { get; private set; }
-        /// <summary>`active` while the check still runs; every other value is terminal.* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled</summary>
+        /// <summary>How long after the report resolves a `pending` check waits before its first run. Null on a check that named its own `next_run_at`.</summary>
+        public int? SoakMinutes { get; private set; }
+        /// <summary>`pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus? Status { get; private set; }
@@ -117,6 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "runs_remaining", n => { RunsRemaining = n.GetIntValue(); } },
+                { "soak_minutes", n => { SoakMinutes = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

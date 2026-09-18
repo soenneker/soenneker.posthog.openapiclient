@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Config
         /// Set the project-wide default AI run preferences applied to task runs created without an explicit runtime selection. Send all fields as null to clear.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TasksTeamConfigResponse"/></returns>
-        /// <param name="body">The default AI run triple stored at team or user level.Write payload for the tasks config endpoints and the `ai_run_preferences` block oftheir responses. `runtime_adapter` and `model` must be set together; send all threeas null to clear a stored preference.</param>
+        /// <param name="body">The default AI run selection stored at team or user level.Write payload for the tasks config endpoints and the `ai_run_preferences` block oftheir responses. What a complete selection is depends on the harness: an ACP defaultsets `runtime_adapter` and `model` together, a Pi default sets `model` alone. Sendevery field as null to clear a stored preference.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Config
         /// Set the project-wide default AI run preferences applied to task runs created without an explicit runtime selection. Send all fields as null to clear.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The default AI run triple stored at team or user level.Write payload for the tasks config endpoints and the `ai_run_preferences` block oftheir responses. `runtime_adapter` and `model` must be set together; send all threeas null to clear a stored preference.</param>
+        /// <param name="body">The default AI run selection stored at team or user level.Write payload for the tasks config endpoints and the `ai_run_preferences` block oftheir responses. What a complete selection is depends on the harness: an ACP defaultsets `runtime_adapter` and `model` together, a Pi default sets `model` alone. Sendevery field as null to clear a stored preference.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

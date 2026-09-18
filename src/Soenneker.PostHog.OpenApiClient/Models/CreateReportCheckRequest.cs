@@ -8,30 +8,30 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Request body for creating a check on a report.The schedule is the check&apos;s own: `next_run_at` says when to look, rather than the systemderiving a soak window from a merged pull request that many fixes never have.
+    /// Request body for `scout-report-check-create`: one forward-looking check on a report.The REST body plus the report it attaches to. Subclassed rather than restated so the schedulebounds a scout writes under are the ones the endpoint enforces, with no second copy to drift.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SignalReportCheckWrite : IAdditionalDataHolder, IParsable
+    public partial class CreateReportCheckRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>What the check measures and what the result must satisfy; the shape depends on `kind`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig Config { get; set; }
 #endif
         /// <summary>Horizon after which the check retires unrun. Defaults to 30 days after the last scheduled run, or the 90-day horizon if that comes first.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
         /// <summary>How the check is evaluated.* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind Kind { get; set; }
 #endif
         /// <summary>When to first evaluate the check. Must be in the future and within 90 days. Defaults to 7 days from now.</summary>
         public DateTimeOffset? NextRunAt { get; set; }
@@ -43,6 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rationale { get; set; }
 #endif
+        /// <summary>The report the check attaches to.</summary>
+        public Guid? ReportId { get; set; }
         /// <summary>Gap between runs for a recurring check, between 360 and 129600 minutes. Omit for a one-shot check.</summary>
         public int? RunIntervalMinutes { get; set; }
         /// <summary>How many times to evaluate the check, at most 10. Defaults to 1.</summary>
@@ -56,21 +58,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Title { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWrite"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequest"/> and sets the default values.
         /// </summary>
-        public SignalReportCheckWrite()
+        public CreateReportCheckRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWrite"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWrite CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWrite();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,11 +82,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteConfig>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig>(global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig.CreateFromDiscriminatorValue); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind>(global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind.CreateFromDiscriminatorValue); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
+                { "report_id", n => { ReportId = n.GetGuidValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "runs_remaining", n => { RunsRemaining = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -97,11 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteConfig>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig>("config", Config);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind>("kind", Kind);
             writer.WriteDateTimeOffsetValue("next_run_at", NextRunAt);
             writer.WriteStringValue("rationale", Rationale);
+            writer.WriteGuidValue("report_id", ReportId);
             writer.WriteIntValue("run_interval_minutes", RunIntervalMinutes);
             writer.WriteIntValue("runs_remaining", RunsRemaining);
             writer.WriteStringValue("title", Title);

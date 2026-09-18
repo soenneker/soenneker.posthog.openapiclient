@@ -10,6 +10,9 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EmitSignal;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.LighthouseAudit;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RecordOutput;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCancel;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCreate;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportChecks;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -58,6 +61,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.I
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RecordOutput.RecordOutputRequestBuilder RecordOutput
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RecordOutput.RecordOutputRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reportCheckCancel property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCancel.ReportCheckCancelRequestBuilder ReportCheckCancel
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCancel.ReportCheckCancelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reportCheckCreate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCreate.ReportCheckCreateRequestBuilder ReportCheckCreate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCreate.ReportCheckCreateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reportChecks property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportChecks.ReportChecksRequestBuilder ReportChecks
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportChecks.ReportChecksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.WithRunItemRequestBuilder"/> and sets the default values.

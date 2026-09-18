@@ -32,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmPrompt Prompt { get; set; }
 #endif
+        /// <summary>Prompts whose latest or labeled version references this prompt, with the label or version each reference uses. Empty when nothing references this prompt. At most 100 entries, ordered by prompt name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptReferencedBy>? ReferencedBy { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptReferencedBy> ReferencedBy { get; set; }
+#endif
         /// <summary>The versions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptLabel>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptLabel.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPrompt>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPrompt.CreateFromDiscriminatorValue); } },
+                { "referenced_by", n => { ReferencedBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptReferencedBy>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptReferencedBy.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "versions", n => { Versions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptVersionSummary>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptVersionSummary.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_more", HasMore);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptLabel>("labels", Labels);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPrompt>("prompt", Prompt);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptReferencedBy>("referenced_by", ReferencedBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptVersionSummary>("versions", Versions);
             writer.WriteAdditionalData(AdditionalData);
         }

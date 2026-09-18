@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AuthMethod { get; set; }
 #endif
+        /// <summary>The value candidates are ordered by: relevance and score combined, weighted toward relevance. Null in two cases. When the intent held no words worth matching on, ordering falls back to `score`. When the ranking version has no completed run, `score` is 0 for every candidate and ordering falls back to `relevance`.</summary>
+        public double? CombinedScore { get; set; }
         /// <summary>Connection instructions, most-automated method first, steps typed by actor so the agent runs its own steps and narrates the human ones.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +77,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RegistryName { get; set; }
 #endif
-        /// <summary>Rank score in [0, 1] under the ranking version used.</summary>
+        /// <summary>How well the server&apos;s own text answered `intent`, in [0, 1]. Null when the intent held no words worth matching on.</summary>
+        public double? Relevance { get; set; }
+        /// <summary>The server&apos;s own standing in [0, 1] under the ranking version used: liveness x trust, independent of the query.</summary>
         public double? Score { get; set; }
         /// <summary>Human-readable server name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -119,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "auth_method", n => { AuthMethod = n.GetStringValue(); } },
+                { "combined_score", n => { CombinedScore = n.GetDoubleValue(); } },
                 { "connect", n => { Connect = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty>(global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -127,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "measured", n => { Measured = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty>(global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty.CreateFromDiscriminatorValue); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
                 { "registry_name", n => { RegistryName = n.GetStringValue(); } },
+                { "relevance", n => { Relevance = n.GetDoubleValue(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "why", n => { Why = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty>(global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty.CreateFromDiscriminatorValue); } },
@@ -140,6 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("auth_method", AuthMethod);
+            writer.WriteDoubleValue("combined_score", CombinedScore);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty>("connect", Connect);
             writer.WriteStringValue("description", Description);
             writer.WriteGuidValue("id", Id);
@@ -148,6 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty>("measured", Measured);
             writer.WriteIntValue("rank", Rank);
             writer.WriteStringValue("registry_name", RegistryName);
+            writer.WriteDoubleValue("relevance", Relevance);
             writer.WriteDoubleValue("score", Score);
             writer.WriteStringValue("title", Title);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty>("why", Why);

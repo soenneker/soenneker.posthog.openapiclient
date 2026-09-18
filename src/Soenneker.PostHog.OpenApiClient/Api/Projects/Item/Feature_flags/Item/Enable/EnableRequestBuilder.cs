@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.E
         {
         }
         /// <summary>
-        /// Enable a feature flag.Sets `active` to true and changes nothing else. Targeting, variants, payloads, tags andarchived state are left as they are. An archived flag is refused: unarchive it first. Aflag whose own flag dependencies are disabled is also refused. An already-enabled flagis returned unchanged.
+        /// Enable a feature flag.Sets `active` to true and changes nothing else. Targeting, variants, payloads, tags andarchived state are left as they are. An archived flag is refused: unarchive it first. Aflag whose own flag dependencies are disabled or use an unsupported configurationformat is also refused. An already-enabled flag is returned unchanged.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.E
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Enable a feature flag.Sets `active` to true and changes nothing else. Targeting, variants, payloads, tags andarchived state are left as they are. An archived flag is refused: unarchive it first. Aflag whose own flag dependencies are disabled is also refused. An already-enabled flagis returned unchanged.
+        /// Enable a feature flag.Sets `active` to true and changes nothing else. Targeting, variants, payloads, tags andarchived state are left as they are. An archived flag is refused: unarchive it first. Aflag whose own flag dependencies are disabled or use an unsupported configurationformat is also refused. An already-enabled flag is returned unchanged.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

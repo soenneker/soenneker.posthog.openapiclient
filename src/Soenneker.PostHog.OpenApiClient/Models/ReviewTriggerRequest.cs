@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrUrl { get; set; }
 #endif
-        /// <summary>What to run on the pull request. &apos;review&apos; (default) reviews it and, when the requesting user&apos;s resolve_comments setting is on, chains the resolution stage; &apos;review_only&apos; reviews without resolving regardless of that setting; &apos;resolve_only&apos; skips the review and only runs the resolution stage on the PR&apos;s existing unresolved review threads.* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only</summary>
+        /// <summary>What to run on the pull request. &apos;review&apos; (default) reviews it and, when the requesting user&apos;s resolve_comments setting is on, chains the resolution stage; &apos;review_only&apos; reviews without resolving regardless of that setting; &apos;resolve_only&apos; skips the review and only runs the resolution stage on the PR&apos;s existing unresolved review threads; &apos;flash&apos; uses a lower-cost model for the review passes and validation, and never resolves comments.* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only* `flash` - flash</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode? RunMode { get; set; }

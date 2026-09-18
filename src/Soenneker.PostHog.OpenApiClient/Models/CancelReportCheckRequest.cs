@@ -8,31 +8,31 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// How the check is evaluated.* `metric_threshold` - Metric Threshold* `agent` - Agent
+    /// Request body for `scout-report-check-cancel`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SignalReportCheckWriteKind : IAdditionalDataHolder, IParsable
+    public partial class CancelReportCheckRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKindEnum? Value { get; set; }
+        /// <summary>The check to stop. Its recorded results stay on the report.</summary>
+        public Guid? CheckId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CancelReportCheckRequest"/> and sets the default values.
         /// </summary>
-        public SignalReportCheckWriteKind()
+        public CancelReportCheckRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CancelReportCheckRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.CancelReportCheckRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckWriteKind();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.CancelReportCheckRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKindEnum>(); } },
+                { "check_id", n => { CheckId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKindEnum>("value", Value);
+            writer.WriteGuidValue("check_id", CheckId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
