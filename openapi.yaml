@@ -55287,9 +55287,10 @@ paths:
   /api/projects/{project_id}/persons/bulk_delete/:
     post:
       operationId: persons_bulk_delete_create
-      description: This endpoint allows you to bulk delete persons, either by the
-        PostHog person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs
-        per call. Only events captured before the request will be deleted.
+      description: |-
+        This endpoint allows you to bulk delete persons, either by the PostHog person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call. Only events captured before the request will be deleted.
+
+        Person records are removed in the background shortly after the request returns, so a successful response reports them in `persons_queued_for_deletion` and `persons_deleted` is 0.
       parameters:
       - in: query
         name: format
@@ -71596,8 +71597,8 @@ paths:
   /api/projects/{project_id}/user_customer_analytics_config/{id}/:
     get:
       operationId: user_customer_analytics_config_retrieve
-      description: Get the requesting user's account sidebar configuration for this
-        project. The first read creates an empty configuration row.
+      description: Get the requesting user's account sidebar and task digest configuration
+        for this project. The first read creates an empty configuration row.
       summary: Get account sidebar configuration
       parameters:
       - in: path
@@ -71618,15 +71619,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserCustomerAnalyticsConfig'
-          description: The requesting user's account sidebar configuration.
+          description: The requesting user's account sidebar and notification configuration.
       x-product:
       - customer_analytics
     patch:
       operationId: user_customer_analytics_config_partial_update
       description: Replace the requesting user's ordered account sidebar properties
-        when pinned_properties is provided. Omitting pinned_properties leaves the
-        configuration unchanged. At most 50 account custom properties and relationships
-        can be pinned.
+        when pinned_properties is provided, and change the task digest email preferences
+        when task_digest is provided. Anything omitted keeps its current value. At
+        most 50 account custom properties and relationships can be pinned.
       summary: Update account sidebar configuration
       parameters:
       - in: path
@@ -101679,7 +101680,7 @@ components:
           - $ref: '#/components/schemas/ConversationAgentRuntimeEnum'
           readOnly: true
           description: |-
-            Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`.
+            Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field. 'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint; a conversation copied into a task carries its legacy thread in that task's import run. Only a conversion that predates the copy still returns its legacy thread in `messages`.
 
             * `langgraph` - LangGraph
             * `sandbox` - Sandbox
@@ -125546,8 +125547,18 @@ components:
           - type: integer
           - type: 'null'
           default: null
-          description: Conversion window duration.
+          description: 'Only count metric events within this many units after the
+            user''s first exposure. Requires conversion_window_unit: a window without
+            a unit is ignored and the metric counts events until the experiment ends.
+            Omit both to count until the experiment ends.'
           title: Conversion Window
+        conversion_window_unit:
+          anyOf:
+          - $ref: '#/components/schemas/FunnelConversionWindowTimeUnit'
+          - type: 'null'
+          default: null
+          description: 'Unit for conversion_window: ''second'', ''minute'', ''hour'',
+            ''day'', ''week'' or ''month''. Required when conversion_window is set.'
         denominator:
           anyOf:
           - $ref: '#/components/schemas/ExperimentApiEventSource'
@@ -125562,6 +125573,14 @@ components:
           description: 'For ratio metrics: winsorization applied to the denominator
             aggregate. Leave unset for a binomial-style denominator, which is never
             clamped.'
+        funnel_order_type:
+          anyOf:
+          - $ref: '#/components/schemas/StepOrderValue'
+          - type: 'null'
+          default: null
+          description: 'For funnel metrics: how the steps must occur. ''ordered''
+            (default) or ''unordered''. Do not use ''strict'': experiment funnels
+            give wrong counts with it.'
         goal:
           anyOf:
           - $ref: '#/components/schemas/ExperimentMetricGoal'
@@ -179245,7 +179264,7 @@ components:
           - $ref: '#/components/schemas/ConversationAgentRuntimeEnum'
           readOnly: true
           description: |-
-            Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`.
+            Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field. 'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint; a conversation copied into a task carries its legacy thread in that task's import run. Only a conversion that predates the copy still returns its legacy thread in `messages`.
 
             * `langgraph` - LangGraph
             * `sandbox` - Sandbox
@@ -189172,6 +189191,11 @@ components:
             $ref: '#/components/schemas/PinnedAccountProperty'
           description: Complete ordered list of account properties to pin. Omit to
             keep the current pins; pass an empty list to clear them.
+        task_digest:
+          allOf:
+          - $ref: '#/components/schemas/TaskDigestPreferencesUpdate'
+          description: Task digest email preferences to change. Omit the object to
+            keep them all; omit a field inside it to keep that one.
     PatchedUserFacetSettings:
       type: object
       properties:
@@ -190914,14 +190938,14 @@ components:
           items:
             type: object
             additionalProperties: true
-          description: Persons whose deletion did not fully complete in this request.
-            Each entry contains 'person_uuid' and 'step', the deletion step that failed
-            for that person. A failed database delete is reported here rather than
-            as an error response, so a 202 with entries means some or all persons
-            were not deleted. A 'log_activity' step means the person was deleted but
-            the activity log entry was not written. Always empty when the deletion
-            was queued (see persons_queued_for_deletion). Contact support if this
-            persists.
+          description: 'Persons whose deletion did not fully complete in this request.
+            Each entry contains ''person_uuid'' and ''step'', the deletion step that
+            failed for that person. Failures are reported here rather than as an error
+            status, so a 202 with entries means those persons were not deleted and
+            the request should be retried for them, except entries whose step is ''log_activity'':
+            that person was deleted, but the activity log entry was not written. Always
+            empty when the deletion was queued (see persons_queued_for_deletion).
+            Contact support if this persists.'
       required:
       - events_queued_for_deletion
       - persons_deleted
@@ -207557,7 +207581,8 @@ components:
             Absent when no finding can be fixed in the query.
           title: Assistant Prompt
         findings:
-          description: Empty when the analysis found nothing to fix.
+          description: Every finding, fixable or not. Empty when the analysis found
+            none.
           items:
             $ref: '#/components/schemas/QueryScanWarning'
           title: Findings
@@ -207588,15 +207613,14 @@ components:
       - persons_join
       title: QueryScanFindingKind
       type: string
-    QueryScanFindingReason:
+    QueryScanFixLocation:
       enum:
-      - in_or
-      - wrapped
-      - negated
-      - dynamic
-      - not_pruned
-      - filters
-      title: QueryScanFindingReason
+      - query
+      - subquery
+      - view
+      - insight_date_range
+      - dashboard_date_filter
+      title: QueryScanFixLocation
       type: string
     QueryScanResponse:
       additionalProperties: false
@@ -207650,6 +207674,29 @@ components:
     QueryScanWarning:
       additionalProperties: false
       properties:
+        actionable:
+          description: Whether the person can change the query so it reads less and
+            still answers the same question. Surfaces show the full advice and "Fix
+            with AI" only when a finding is actionable.
+          title: Actionable
+          type: boolean
+        by_design:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: True when the query reads this much on purpose, so reading
+            less would change the answer. Absent means no.
+          title: By Design
+        cause:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: A label for what in the query text kept the read wide, such
+            as `in_or`. Only analytics and the assistant read it, and the labels can
+            change.
+          title: Cause
         evidence:
           anyOf:
           - type: string
@@ -207661,19 +207708,20 @@ components:
           description: What "Fix with AI" and the assistant are told to do.
           title: Fix
           type: string
+        fix_location:
+          anyOf:
+          - $ref: '#/components/schemas/QueryScanFixLocation'
+          - type: 'null'
+          default: null
+          description: Where the change goes. Absent means the query itself.
         kind:
           $ref: '#/components/schemas/QueryScanFindingKind'
         message:
           description: 'Shown to the person: what happened and what to do.'
           title: Message
           type: string
-        reason:
-          anyOf:
-          - $ref: '#/components/schemas/QueryScanFindingReason'
-          - type: 'null'
-          default: null
-          description: Only with `no_event_filter` and `no_start_date`.
       required:
+      - actionable
       - fix
       - kind
       - message
@@ -225131,6 +225179,15 @@ components:
           type: string
           format: date-time
           readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: 'When this config last changed: an edit through this API, or
+            a status change the system made such as an automatic pause. A scheduled
+            run does not bump it — the coordinator stamps `last_run_at` with a direct
+            write — so this reads as when the scout was last tuned rather than when
+            it last ran.'
       required:
       - auto_pause_exempt
       - consecutive_failure_count
@@ -225156,6 +225213,7 @@ components:
       - status
       - status_changed_at
       - structured_output_schema
+      - updated_at
       - write_scopes
     SignalScoutConfigCreate:
       type: object
@@ -238605,6 +238663,54 @@ components:
       - task_number
       - title
       - title_manually_set
+    TaskDigestCadenceEnum:
+      enum:
+      - weekdays
+      - every_day
+      type: string
+      description: |-
+        * `weekdays` - Weekdays
+        * `every_day` - Every day
+    TaskDigestPreferences:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether the task digest email is sent to this user.
+        send_time:
+          type: string
+          format: time
+          description: Time of day to send the digest, as HH:MM in the project timezone.
+        cadence:
+          allOf:
+          - $ref: '#/components/schemas/TaskDigestCadenceEnum'
+          description: |-
+            How often the digest is sent.
+
+            * `weekdays` - Weekdays
+            * `every_day` - Every day
+      required:
+      - cadence
+      - enabled
+      - send_time
+    TaskDigestPreferencesUpdate:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether the task digest email is sent to this user.
+        send_time:
+          type: string
+          format: time
+          description: Time of day to send the digest, as HH:MM in the project timezone.
+        cadence:
+          allOf:
+          - $ref: '#/components/schemas/TaskDigestCadenceEnum'
+          description: |-
+            How often the digest is sent.
+
+            * `weekdays` - Weekdays
+            * `every_day` - Every day
     TaskExecutionModeEnum:
       enum:
       - interactive
@@ -248970,8 +249076,15 @@ components:
             $ref: '#/components/schemas/PinnedAccountProperty'
           readOnly: true
           description: Account properties pinned in sidebar display order.
+        task_digest:
+          allOf:
+          - $ref: '#/components/schemas/TaskDigestPreferences'
+          readOnly: true
+          description: Task digest email preferences. Disabled until the user turns
+            the digest on.
       required:
       - pinned_properties
+      - task_digest
     UserFacetSettings:
       type: object
       properties:
@@ -251398,6 +251511,13 @@ components:
           - integer
           - 'null'
           description: Signals this observation emitted, for `signal_emitted`.
+        problem_types:
+          type: array
+          items:
+            type: string
+          description: Issue type of each emitted signal (`bug`, `crash`, `design_flaw`,
+            `ux_friction`), one entry per signal in the order raised, for `signal_emitted`.
+            Absent on signals scanned before this shipped.
         verdict:
           type:
           - string

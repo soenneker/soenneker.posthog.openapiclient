@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty> PinnedProperties { get; private set; }
 #endif
+        /// <summary>Task digest email preferences. Disabled until the user turns the digest on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigTaskDigest? TaskDigest { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigTaskDigest TaskDigest { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig"/> and sets the default values.
         /// </summary>
@@ -48,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "pinned_properties", n => { PinnedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "task_digest", n => { TaskDigest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigTaskDigest>(global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigTaskDigest.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

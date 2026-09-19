@@ -177,6 +177,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
+        /// <summary>When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it — the coordinator stamps `last_run_at` with a direct write — so this reads as when the scout was last tuned rather than when it last ran.</summary>
+        public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -237,6 +239,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "status_changed_at", n => { StatusChangedAt = n.GetDateTimeOffsetValue(); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "write_scopes", n => { WriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

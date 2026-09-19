@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conversion_window_unit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper4? ConversionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5? ConversionWindowUnit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper4 ConversionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5 ConversionWindowUnit { get; set; }
 #endif
         /// <summary>The denominator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -132,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter.CreateFromDiscriminatorValue); } },
                 { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
-                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper4>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper4.CreateFromDiscriminatorValue); } },
+                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5.CreateFromDiscriminatorValue); } },
                 { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricDenominator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricDenominator.CreateFromDiscriminatorValue); } },
                 { "denominator_outlier_handling", n => { DenominatorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling.CreateFromDiscriminatorValue); } },
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
@@ -158,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>("breakdownFilter", BreakdownFilter);
             writer.WriteIntValue("conversion_window", ConversionWindow);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper4>("conversion_window_unit", ConversionWindowUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5>("conversion_window_unit", ConversionWindowUnit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricDenominator>("denominator", Denominator);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>("denominator_outlier_handling", DenominatorOutlierHandling);
             writer.WriteStringValue("fingerprint", Fingerprint);

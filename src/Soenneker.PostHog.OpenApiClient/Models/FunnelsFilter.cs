@@ -71,10 +71,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnelOrderType property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2? FunnelOrderType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3? FunnelOrderType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2 FunnelOrderType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3 FunnelOrderType { get; set; }
 #endif
         /// <summary>The funnelStepReference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -99,10 +99,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnelWindowIntervalUnit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6? FunnelWindowIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7? FunnelWindowIntervalUnit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6 FunnelWindowIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7 FunnelWindowIntervalUnit { get; set; }
 #endif
         /// <summary>Goal Lines</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -195,12 +195,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "exclusions", n => { Exclusions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "funnelAggregateByHogQL", n => { FunnelAggregateByHogQL = n.GetStringValue(); } },
                 { "funnelFromStep", n => { FunnelFromStep = n.GetIntValue(); } },
-                { "funnelOrderType", n => { FunnelOrderType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2.CreateFromDiscriminatorValue); } },
+                { "funnelOrderType", n => { FunnelOrderType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3.CreateFromDiscriminatorValue); } },
                 { "funnelStepReference", n => { FunnelStepReference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper.CreateFromDiscriminatorValue); } },
                 { "funnelToStep", n => { FunnelToStep = n.GetIntValue(); } },
                 { "funnelVizType", n => { FunnelVizType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper.CreateFromDiscriminatorValue); } },
                 { "funnelWindowInterval", n => { FunnelWindowInterval = n.GetIntValue(); } },
-                { "funnelWindowIntervalUnit", n => { FunnelWindowIntervalUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6.CreateFromDiscriminatorValue); } },
+                { "funnelWindowIntervalUnit", n => { FunnelWindowIntervalUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7.CreateFromDiscriminatorValue); } },
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hiddenLegendBreakdowns", n => { HiddenLegendBreakdowns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "hideIncompleteConversionWindowPeriods", n => { HideIncompleteConversionWindowPeriods = n.GetBoolValue(); } },
@@ -231,12 +231,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem>("exclusions", Exclusions);
             writer.WriteStringValue("funnelAggregateByHogQL", FunnelAggregateByHogQL);
             writer.WriteIntValue("funnelFromStep", FunnelFromStep);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2>("funnelOrderType", FunnelOrderType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3>("funnelOrderType", FunnelOrderType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper>("funnelStepReference", FunnelStepReference);
             writer.WriteIntValue("funnelToStep", FunnelToStep);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper>("funnelVizType", FunnelVizType);
             writer.WriteIntValue("funnelWindowInterval", FunnelWindowInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6>("funnelWindowIntervalUnit", FunnelWindowIntervalUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7>("funnelWindowIntervalUnit", FunnelWindowIntervalUnit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
             writer.WriteCollectionOfPrimitiveValues<string>("hiddenLegendBreakdowns", HiddenLegendBreakdowns);
             writer.WriteBoolValue("hideIncompleteConversionWindowPeriods", HideIncompleteConversionWindowPeriods);

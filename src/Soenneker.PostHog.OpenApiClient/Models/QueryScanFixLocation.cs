@@ -5,32 +5,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum QueryScanFindingReason
+    public enum QueryScanFixLocation
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "in_or")]
+        [EnumMember(Value = "query")]
         #pragma warning disable CS1591
-        InOr,
+        Query,
         #pragma warning restore CS1591
-        [EnumMember(Value = "wrapped")]
+        [EnumMember(Value = "subquery")]
         #pragma warning disable CS1591
-        Wrapped,
+        Subquery,
         #pragma warning restore CS1591
-        [EnumMember(Value = "negated")]
+        [EnumMember(Value = "view")]
         #pragma warning disable CS1591
-        Negated,
+        View,
         #pragma warning restore CS1591
-        [EnumMember(Value = "dynamic")]
+        [EnumMember(Value = "insight_date_range")]
         #pragma warning disable CS1591
-        Dynamic,
+        InsightDateRange,
         #pragma warning restore CS1591
-        [EnumMember(Value = "not_pruned")]
+        [EnumMember(Value = "dashboard_date_filter")]
         #pragma warning disable CS1591
-        NotPruned,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "filters")]
-        #pragma warning disable CS1591
-        Filters,
+        DashboardDateFilter,
         #pragma warning restore CS1591
     }
 }

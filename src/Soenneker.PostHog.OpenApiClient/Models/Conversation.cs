@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AgentMode { get; private set; }
 #endif
-        /// <summary>Runtime that owns this conversation. &apos;langgraph&apos; conversations return their messages in the `messages` field; born-&apos;sandbox&apos; conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is &apos;sandbox&apos; but still returns its legacy thread in `messages`.* `langgraph` - LangGraph* `sandbox` - Sandbox</summary>
+        /// <summary>Runtime that owns this conversation. &apos;langgraph&apos; conversations return their messages in the `messages` field. &apos;sandbox&apos; conversations return an empty `messages` array and load history from the products/tasks logs endpoint; a conversation copied into a task carries its legacy thread in that task&apos;s import run. Only a conversion that predates the copy still returns its legacy thread in `messages`.* `langgraph` - LangGraph* `sandbox` - Sandbox</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime? AgentRuntime { get; private set; }

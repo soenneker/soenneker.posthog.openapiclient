@@ -33,6 +33,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string NotabilityReason { get; set; }
 #endif
+        /// <summary>Issue type of each emitted signal (`bug`, `crash`, `design_flaw`, `ux_friction`), one entry per signal in the order raised, for `signal_emitted`. Absent on signals scanned before this shipped.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ProblemTypes { get; set; }
+#nullable restore
+#else
+        public List<string> ProblemTypes { get; set; }
+#endif
         /// <summary>The observation&apos;s score, for `outlier_score`.</summary>
         public double? Score { get; set; }
         /// <summary>Signals this observation emitted, for `signal_emitted`.</summary>
@@ -87,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>(global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind.CreateFromDiscriminatorValue); } },
                 { "notability", n => { Notability = n.GetDoubleValue(); } },
                 { "notability_reason", n => { NotabilityReason = n.GetStringValue(); } },
+                { "problem_types", n => { ProblemTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
                 { "signals_count", n => { SignalsCount = n.GetIntValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
@@ -106,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>("kind", Kind);
             writer.WriteDoubleValue("notability", Notability);
             writer.WriteStringValue("notability_reason", NotabilityReason);
+            writer.WriteCollectionOfPrimitiveValues<string>("problem_types", ProblemTypes);
             writer.WriteDoubleValue("score", Score);
             writer.WriteIntValue("signals_count", SignalsCount);
             writer.WriteStringValue("tag", Tag);

@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conversionWindowIntervalUnit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7? ConversionWindowIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8? ConversionWindowIntervalUnit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7 ConversionWindowIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8 ConversionWindowIntervalUnit { get; set; }
 #endif
         /// <summary>Path items dropped from the item universe: events deriving to one of these items are ignored as if their event were not a step source, on both the paths side and the &quot;view as funnel&quot; side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The gapIntervalUnit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8? GapIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper9? GapIntervalUnit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8 GapIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper9 GapIntervalUnit { get; set; }
 #endif
         /// <summary>Path cleaning rules for this insight only, applied after the team&apos;s rules.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -106,10 +106,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "applyTeamPathCleaning", n => { ApplyTeamPathCleaning = n.GetBoolValue(); } },
                 { "collapseRepeats", n => { CollapseRepeats = n.GetBoolValue(); } },
                 { "conversionWindowInterval", n => { ConversionWindowInterval = n.GetIntValue(); } },
-                { "conversionWindowIntervalUnit", n => { ConversionWindowIntervalUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7.CreateFromDiscriminatorValue); } },
+                { "conversionWindowIntervalUnit", n => { ConversionWindowIntervalUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8.CreateFromDiscriminatorValue); } },
                 { "excludedItems", n => { ExcludedItems = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "gapInterval", n => { GapInterval = n.GetIntValue(); } },
-                { "gapIntervalUnit", n => { GapIntervalUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8.CreateFromDiscriminatorValue); } },
+                { "gapIntervalUnit", n => { GapIntervalUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper9>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper9.CreateFromDiscriminatorValue); } },
                 { "localPathCleaningFilters", n => { LocalPathCleaningFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "maxRowsPerStep", n => { MaxRowsPerStep = n.GetIntValue(); } },
                 { "maxSteps", n => { MaxSteps = n.GetIntValue(); } },
@@ -127,10 +127,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("applyTeamPathCleaning", ApplyTeamPathCleaning);
             writer.WriteBoolValue("collapseRepeats", CollapseRepeats);
             writer.WriteIntValue("conversionWindowInterval", ConversionWindowInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7>("conversionWindowIntervalUnit", ConversionWindowIntervalUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8>("conversionWindowIntervalUnit", ConversionWindowIntervalUnit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>("excludedItems", ExcludedItems);
             writer.WriteIntValue("gapInterval", GapInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper8>("gapIntervalUnit", GapIntervalUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper9>("gapIntervalUnit", GapIntervalUnit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>("localPathCleaningFilters", LocalPathCleaningFilters);
             writer.WriteIntValue("maxRowsPerStep", MaxRowsPerStep);
             writer.WriteIntValue("maxSteps", MaxSteps);

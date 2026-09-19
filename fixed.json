@@ -87709,7 +87709,7 @@
         "tags": [
           "persons"
         ],
-        "description": "This endpoint allows you to bulk delete persons, either by the PostHog person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call. Only events captured before the request will be deleted.",
+        "description": "This endpoint allows you to bulk delete persons, either by the PostHog person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call. Only events captured before the request will be deleted.\n\nPerson records are removed in the background shortly after the request returns, so a successful response reports them in \u0060persons_queued_for_deletion\u0060 and \u0060persons_deleted\u0060 is 0.",
         "operationId": "PersonsBulkDeleteCreate",
         "parameters": [
           {
@@ -113592,7 +113592,7 @@
           "user_customer_analytics_config"
         ],
         "summary": "Get account sidebar configuration",
-        "description": "Get the requesting user\u0027s account sidebar configuration for this project. The first read creates an empty configuration row.",
+        "description": "Get the requesting user\u0027s account sidebar and task digest configuration for this project. The first read creates an empty configuration row.",
         "operationId": "UserCustomerAnalyticsConfigRetrieve",
         "parameters": [
           {
@@ -113615,7 +113615,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The requesting user\u0027s account sidebar configuration.",
+            "description": "The requesting user\u0027s account sidebar and notification configuration.",
             "content": {
               "application/json": {
                 "schema": {
@@ -113638,7 +113638,7 @@
           "user_customer_analytics_config"
         ],
         "summary": "Update account sidebar configuration",
-        "description": "Replace the requesting user\u0027s ordered account sidebar properties when pinned_properties is provided. Omitting pinned_properties leaves the configuration unchanged. At most 50 account custom properties and relationships can be pinned.",
+        "description": "Replace the requesting user\u0027s ordered account sidebar properties when pinned_properties is provided, and change the task digest email preferences when task_digest is provided. Anything omitted keeps its current value. At most 50 account custom properties and relationships can be pinned.",
         "operationId": "UserCustomerAnalyticsConfigPartialUpdate",
         "parameters": [
           {
@@ -180499,14 +180499,20 @@
               "null",
               "integer"
             ],
-            "description": "Conversion window duration.",
+            "description": "Only count metric events within this many units after the user\u0027s first exposure. Requires conversion_window_unit: a window without a unit is ignored and the metric counts events until the experiment ends. Omit both to count until the experiment ends.",
             "default": null
+          },
+          "conversion_window_unit": {
+            "$ref": "#/components/schemas/ExperimentApiMetricConversionWindowUnit"
           },
           "denominator": {
             "$ref": "#/components/schemas/ExperimentApiMetricDenominator"
           },
           "denominator_outlier_handling": {
             "$ref": "#/components/schemas/ExperimentApiMetricDenominatorOutlierHandling"
+          },
+          "funnel_order_type": {
+            "$ref": "#/components/schemas/ExperimentApiMetricFunnelOrderType"
           },
           "goal": {
             "$ref": "#/components/schemas/ExperimentApiMetricGoal"
@@ -248067,6 +248073,9 @@
               "$ref": "#/components/schemas/PinnedAccountProperty"
             },
             "description": "Complete ordered list of account properties to pin. Omit to keep the current pins; pass an empty list to clear them."
+          },
+          "task_digest": {
+            "$ref": "#/components/schemas/PatchedUserCustomerAnalyticsConfigUpdateTaskDigest"
           }
         }
       },
@@ -249950,7 +249959,7 @@
             "items": {
               "$ref": "#/components/schemas/PersonBulkDeleteResponseDeletionErrorsItemProperty"
             },
-            "description": "Persons whose deletion did not fully complete in this request. Each entry contains \u0027person_uuid\u0027 and \u0027step\u0027, the deletion step that failed for that person. A failed database delete is reported here rather than as an error response, so a 202 with entries means some or all persons were not deleted. A \u0027log_activity\u0027 step means the person was deleted but the activity log entry was not written. Always empty when the deletion was queued (see persons_queued_for_deletion). Contact support if this persists."
+            "description": "Persons whose deletion did not fully complete in this request. Each entry contains \u0027person_uuid\u0027 and \u0027step\u0027, the deletion step that failed for that person. Failures are reported here rather than as an error status, so a 202 with entries means those persons were not deleted and the request should be retried for them, except entries whose step is \u0027log_activity\u0027: that person was deleted, but the activity log entry was not written. Always empty when the deletion was queued (see persons_queued_for_deletion). Contact support if this persists."
           }
         }
       },
@@ -267807,7 +267816,7 @@
             "items": {
               "$ref": "#/components/schemas/QueryScanWarning"
             },
-            "description": "Empty when the analysis found nothing to fix."
+            "description": "Every finding, fixable or not. Empty when the analysis found none."
           },
           "project_share": {
             "title": "Project Share",
@@ -267858,45 +267867,40 @@
           ]
         }
       },
-      "QueryScanFindingReason": {
-        "title": "QueryScanFindingReason",
+      "QueryScanFixLocation": {
+        "title": "QueryScanFixLocation",
         "enum": [
-          "in_or",
-          "wrapped",
-          "negated",
-          "dynamic",
-          "not_pruned",
-          "filters"
+          "query",
+          "subquery",
+          "view",
+          "insight_date_range",
+          "dashboard_date_filter"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "QueryScanFindingReason",
+          "name": "QueryScanFixLocation",
           "modelAsString": false,
           "values": [
             {
-              "value": "in_or",
-              "name": "InOr"
+              "value": "query",
+              "name": "Query"
             },
             {
-              "value": "wrapped",
-              "name": "Wrapped"
+              "value": "subquery",
+              "name": "Subquery"
             },
             {
-              "value": "negated",
-              "name": "Negated"
+              "value": "view",
+              "name": "View"
             },
             {
-              "value": "dynamic",
-              "name": "Dynamic"
+              "value": "insight_date_range",
+              "name": "InsightDateRange"
             },
             {
-              "value": "not_pruned",
-              "name": "NotPruned"
-            },
-            {
-              "value": "filters",
-              "name": "Filters"
+              "value": "dashboard_date_filter",
+              "name": "DashboardDateFilter"
             }
           ]
         }
@@ -267956,12 +267960,36 @@
       "QueryScanWarning": {
         "title": "QueryScanWarning",
         "required": [
+          "actionable",
           "fix",
           "kind",
           "message"
         ],
         "type": "object",
         "properties": {
+          "actionable": {
+            "title": "Actionable",
+            "type": "boolean",
+            "description": "Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and \u0022Fix with AI\u0022 only when a finding is actionable."
+          },
+          "by_design": {
+            "title": "By Design",
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "True when the query reads this much on purpose, so reading less would change the answer. Absent means no.",
+            "default": null
+          },
+          "cause": {
+            "title": "Cause",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A label for what in the query text kept the read wide, such as \u0060in_or\u0060. Only analytics and the assistant read it, and the labels can change.",
+            "default": null
+          },
           "evidence": {
             "title": "Evidence",
             "type": [
@@ -267976,6 +268004,9 @@
             "type": "string",
             "description": "What \u0022Fix with AI\u0022 and the assistant are told to do."
           },
+          "fix_location": {
+            "$ref": "#/components/schemas/QueryScanWarningFixLocation"
+          },
           "kind": {
             "$ref": "#/components/schemas/QueryScanFindingKind"
           },
@@ -267983,9 +268014,6 @@
             "title": "Message",
             "type": "string",
             "description": "Shown to the person: what happened and what to do."
-          },
-          "reason": {
-            "$ref": "#/components/schemas/QueryScanWarningReason"
           }
         },
         "additionalProperties": false
@@ -288902,6 +288930,7 @@
           "status",
           "status_changed_at",
           "structured_output_schema",
+          "updated_at",
           "write_scopes"
         ],
         "type": "object",
@@ -289069,6 +289098,12 @@
           },
           "created_at": {
             "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it \u2014 the coordinator stamps \u0060last_run_at\u0060 with a direct write \u2014 so this reads as when the scout was last tuned rather than when it last ran.",
             "format": "date-time",
             "readOnly": true
           }
@@ -300335,6 +300370,68 @@
           }
         },
         "description": "Detail response for a task.\n\nReads from a frozen \u0060\u0060TaskDetailDTO\u0060\u0060 produced by the facade. \u0060\u0060github_integration\u0060\u0060 /\n\u0060\u0060github_user_integration\u0060\u0060 are integration ids, \u0060\u0060signal_report\u0060\u0060 is the report id, and\n\u0060\u0060latest_run\u0060\u0060 nests the run-detail shape. \u0060\u0060created_by\u0060\u0060 mirrors core \u0060\u0060UserBasicSerializer\u0060\u0060."
+      },
+      "TaskDigestCadenceEnum": {
+        "enum": [
+          "weekdays",
+          "every_day"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* \u0060weekdays\u0060 - Weekdays\n* \u0060every_day\u0060 - Every day",
+        "x-ms-enum": {
+          "name": "TaskDigestCadenceEnum",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "weekdays",
+              "name": "Weekdays"
+            },
+            {
+              "value": "every_day",
+              "name": "EveryDay"
+            }
+          ]
+        }
+      },
+      "TaskDigestPreferences": {
+        "required": [
+          "cadence",
+          "enabled",
+          "send_time"
+        ],
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the task digest email is sent to this user."
+          },
+          "send_time": {
+            "type": "string",
+            "description": "Time of day to send the digest, as HH:MM in the project timezone.",
+            "format": "time"
+          },
+          "cadence": {
+            "$ref": "#/components/schemas/TaskDigestPreferencesCadence"
+          }
+        }
+      },
+      "TaskDigestPreferencesUpdate": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the task digest email is sent to this user."
+          },
+          "send_time": {
+            "type": "string",
+            "description": "Time of day to send the digest, as HH:MM in the project timezone.",
+            "format": "time"
+          },
+          "cadence": {
+            "$ref": "#/components/schemas/TaskDigestPreferencesUpdateCadence"
+          }
+        }
       },
       "TaskExecutionModeEnum": {
         "enum": [
@@ -314086,7 +314183,8 @@
       },
       "UserCustomerAnalyticsConfig": {
         "required": [
-          "pinned_properties"
+          "pinned_properties",
+          "task_digest"
         ],
         "type": "object",
         "properties": {
@@ -314097,6 +314195,9 @@
             },
             "description": "Account properties pinned in sidebar display order.",
             "readOnly": true
+          },
+          "task_digest": {
+            "$ref": "#/components/schemas/UserCustomerAnalyticsConfigTaskDigest"
           }
         }
       },
@@ -317001,6 +317102,13 @@
               "integer"
             ],
             "description": "Signals this observation emitted, for \u0060signal_emitted\u0060."
+          },
+          "problem_types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Issue type of each emitted signal (\u0060bug\u0060, \u0060crash\u0060, \u0060design_flaw\u0060, \u0060ux_friction\u0060), one entry per signal in the order raised, for \u0060signal_emitted\u0060. Absent on signals scanned before this shipped."
           },
           "verdict": {
             "type": [
@@ -343666,7 +343774,7 @@
             "$ref": "#/components/schemas/ConversationAgentRuntimeEnum"
           }
         },
-        "description": "Runtime that owns this conversation. \u0027langgraph\u0027 conversations return their messages in the \u0060messages\u0060 field; born-\u0027sandbox\u0027 conversations return an empty \u0060messages\u0060 array and load history from the products/tasks logs endpoint. A converted conversation is \u0027sandbox\u0027 but still returns its legacy thread in \u0060messages\u0060.\n\n* \u0060langgraph\u0060 - LangGraph\n* \u0060sandbox\u0060 - Sandbox",
+        "description": "Runtime that owns this conversation. \u0027langgraph\u0027 conversations return their messages in the \u0060messages\u0060 field. \u0027sandbox\u0027 conversations return an empty \u0060messages\u0060 array and load history from the products/tasks logs endpoint; a conversation copied into a task carries its legacy thread in that task\u0027s import run. Only a conversion that predates the copy still returns its legacy thread in \u0060messages\u0060.\n\n* \u0060langgraph\u0060 - LangGraph\n* \u0060sandbox\u0060 - Sandbox",
         "readOnly": true
       },
       "ConversationTaskComposed": {
@@ -371323,6 +371431,23 @@
         },
         "description": "For retention metrics: completion event."
       },
+      "ExperimentApiMetricConversionWindowUnit": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnit"
+          }
+        },
+        "description": "Unit for conversion_window: \u0027second\u0027, \u0027minute\u0027, \u0027hour\u0027, \u0027day\u0027, \u0027week\u0027 or \u0027month\u0027. Required when conversion_window is set."
+      },
       "ExperimentApiMetricDenominator": {
         "type": "object",
         "anyOf": [
@@ -371437,6 +371562,23 @@
           }
         },
         "description": "For ratio metrics: winsorization applied to the denominator aggregate. Leave unset for a binomial-style denominator, which is never clamped."
+      },
+      "ExperimentApiMetricFunnelOrderType": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/StepOrderValueWrapper"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/StepOrderValue"
+          }
+        },
+        "description": "For funnel metrics: how the steps must occur. \u0027ordered\u0027 (default) or \u0027unordered\u0027. Do not use \u0027strict\u0027: experiment funnels give wrong counts with it."
       },
       "ExperimentApiMetricGoal": {
         "type": "object",
@@ -371574,7 +371716,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper2"
           },
           {
             "type": "null"
@@ -373552,7 +373694,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper2"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper3"
           },
           {
             "type": "null"
@@ -373568,7 +373710,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/StepOrderValueWrapper"
+            "$ref": "#/components/schemas/StepOrderValueWrapper2"
           },
           {
             "type": "null"
@@ -374449,7 +374591,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper3"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper4"
           },
           {
             "type": "null"
@@ -375781,7 +375923,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper4"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper5"
           },
           {
             "type": "null"
@@ -376549,7 +376691,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper5"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper6"
           },
           {
             "type": "null"
@@ -383459,7 +383601,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/StepOrderValueWrapper2"
+            "$ref": "#/components/schemas/StepOrderValueWrapper3"
           },
           {
             "type": "null"
@@ -383507,7 +383649,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper6"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper7"
           },
           {
             "type": "null"
@@ -438761,7 +438903,7 @@
             "$ref": "#/components/schemas/ConversationAgentRuntimeEnum"
           }
         },
-        "description": "Runtime that owns this conversation. \u0027langgraph\u0027 conversations return their messages in the \u0060messages\u0060 field; born-\u0027sandbox\u0027 conversations return an empty \u0060messages\u0060 array and load history from the products/tasks logs endpoint. A converted conversation is \u0027sandbox\u0027 but still returns its legacy thread in \u0060messages\u0060.\n\n* \u0060langgraph\u0060 - LangGraph\n* \u0060sandbox\u0060 - Sandbox",
+        "description": "Runtime that owns this conversation. \u0027langgraph\u0027 conversations return their messages in the \u0060messages\u0060 field. \u0027sandbox\u0027 conversations return an empty \u0060messages\u0060 array and load history from the products/tasks logs endpoint; a conversation copied into a task carries its legacy thread in that task\u0027s import run. Only a conversion that predates the copy still returns its legacy thread in \u0060messages\u0060.\n\n* \u0060langgraph\u0060 - LangGraph\n* \u0060sandbox\u0060 - Sandbox",
         "readOnly": true
       },
       "PatchedConversationTask": {
@@ -446654,6 +446796,24 @@
         },
         "readOnly": true
       },
+      "PatchedUserCustomerAnalyticsConfigUpdateTaskDigest": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the task digest email is sent to this user."
+          },
+          "send_time": {
+            "type": "string",
+            "description": "Time of day to send the digest, as HH:MM in the project timezone.",
+            "format": "time"
+          },
+          "cadence": {
+            "$ref": "#/components/schemas/TaskDigestPreferencesUpdateCadence"
+          }
+        },
+        "description": "Task digest email preferences to change. Omit the object to keep them all; omit a field inside it to keep that one."
+      },
       "PatchedUserInterviewCreatedBy": {
         "required": [
           "email",
@@ -448649,7 +448809,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper7"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper8"
           },
           {
             "type": "null"
@@ -448665,7 +448825,7 @@
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper8"
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnitWrapper9"
           },
           {
             "type": "null"
@@ -508087,7 +508247,7 @@
             "items": {
               "$ref": "#/components/schemas/QueryScanWarning"
             },
-            "description": "Empty when the analysis found nothing to fix."
+            "description": "Every finding, fixable or not. Empty when the analysis found none."
           },
           "project_share": {
             "title": "Project Share",
@@ -508135,7 +508295,7 @@
             "items": {
               "$ref": "#/components/schemas/QueryScanWarning"
             },
-            "description": "Empty when the analysis found nothing to fix."
+            "description": "Every finding, fixable or not. Empty when the analysis found none."
           },
           "project_share": {
             "title": "Project Share",
@@ -508158,11 +508318,11 @@
         },
         "description": "The stored analysis, put on the response when it is served. Absent while the analysis runs, and when none was requested."
       },
-      "QueryScanWarningReason": {
+      "QueryScanWarningFixLocation": {
         "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/QueryScanFindingReasonWrapper"
+            "$ref": "#/components/schemas/QueryScanFixLocationWrapper"
           },
           {
             "type": "null"
@@ -508170,10 +508330,10 @@
         ],
         "properties": {
           "value": {
-            "$ref": "#/components/schemas/QueryScanFindingReason"
+            "$ref": "#/components/schemas/QueryScanFixLocation"
           }
         },
-        "description": "Only with \u0060no_event_filter\u0060 and \u0060no_start_date\u0060."
+        "description": "Where the change goes. Absent means the query itself."
       },
       "QueryStatusQueryProgress": {
         "type": "object",
@@ -530598,6 +530758,7 @@
           "status",
           "status_changed_at",
           "structured_output_schema",
+          "updated_at",
           "write_scopes"
         ],
         "type": "object",
@@ -530765,6 +530926,12 @@
           },
           "created_at": {
             "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it \u2014 the coordinator stamps \u0060last_run_at\u0060 with a direct write \u2014 so this reads as when the scout was last tuned rather than when it last ran.",
             "format": "date-time",
             "readOnly": true
           }
@@ -544468,6 +544635,30 @@
             ]
           }
         }
+      },
+      "TaskDigestPreferencesCadence": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/TaskDigestCadenceEnum"
+          }
+        },
+        "description": "How often the digest is sent.\n\n* \u0060weekdays\u0060 - Weekdays\n* \u0060every_day\u0060 - Every day"
+      },
+      "TaskDigestPreferencesUpdateCadence": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/TaskDigestCadenceEnum"
+          }
+        },
+        "description": "How often the digest is sent.\n\n* \u0060weekdays\u0060 - Weekdays\n* \u0060every_day\u0060 - Every day"
       },
       "TaskMentionDtoAuthor": {
         "type": "object",
@@ -559165,6 +559356,30 @@
           }
         }
       },
+      "UserCustomerAnalyticsConfigTaskDigest": {
+        "required": [
+          "cadence",
+          "enabled",
+          "send_time"
+        ],
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the task digest email is sent to this user."
+          },
+          "send_time": {
+            "type": "string",
+            "description": "Time of day to send the digest, as HH:MM in the project timezone.",
+            "format": "time"
+          },
+          "cadence": {
+            "$ref": "#/components/schemas/TaskDigestPreferencesCadence"
+          }
+        },
+        "description": "Task digest email preferences. Disabled until the user turns the digest on.",
+        "readOnly": true
+      },
       "UserFacetSettingsEntrySourceType": {
         "required": [
           "value"
@@ -560979,6 +561194,13 @@
               "integer"
             ],
             "description": "Signals this observation emitted, for \u0060signal_emitted\u0060."
+          },
+          "problem_types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Issue type of each emitted signal (\u0060bug\u0060, \u0060crash\u0060, \u0060design_flaw\u0060, \u0060ux_friction\u0060), one entry per signal in the order raised, for \u0060signal_emitted\u0060. Absent on signals scanned before this shipped."
           },
           "verdict": {
             "type": [
@@ -588304,6 +588526,28 @@
           }
         }
       },
+      "FunnelConversionWindowTimeUnitWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/FunnelConversionWindowTimeUnit"
+          }
+        }
+      },
+      "StepOrderValueWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/StepOrderValue"
+          }
+        }
+      },
       "ExperimentMetricGoalWrapper": {
         "required": [
           "value"
@@ -588315,7 +588559,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper": {
+      "FunnelConversionWindowTimeUnitWrapper2": {
         "required": [
           "value"
         ],
@@ -588513,7 +588757,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper2": {
+      "FunnelConversionWindowTimeUnitWrapper3": {
         "required": [
           "value"
         ],
@@ -588524,7 +588768,7 @@
           }
         }
       },
-      "StepOrderValueWrapper": {
+      "StepOrderValueWrapper2": {
         "required": [
           "value"
         ],
@@ -588557,7 +588801,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper3": {
+      "FunnelConversionWindowTimeUnitWrapper4": {
         "required": [
           "value"
         ],
@@ -588634,7 +588878,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper4": {
+      "FunnelConversionWindowTimeUnitWrapper5": {
         "required": [
           "value"
         ],
@@ -588656,7 +588900,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper5": {
+      "FunnelConversionWindowTimeUnitWrapper6": {
         "required": [
           "value"
         ],
@@ -589789,7 +590033,7 @@
           }
         }
       },
-      "StepOrderValueWrapper2": {
+      "StepOrderValueWrapper3": {
         "required": [
           "value"
         ],
@@ -589822,7 +590066,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper6": {
+      "FunnelConversionWindowTimeUnitWrapper7": {
         "required": [
           "value"
         ],
@@ -594805,7 +595049,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper7": {
+      "FunnelConversionWindowTimeUnitWrapper8": {
         "required": [
           "value"
         ],
@@ -594816,7 +595060,7 @@
           }
         }
       },
-      "FunnelConversionWindowTimeUnitWrapper8": {
+      "FunnelConversionWindowTimeUnitWrapper9": {
         "required": [
           "value"
         ],
@@ -595432,14 +595676,14 @@
           }
         }
       },
-      "QueryScanFindingReasonWrapper": {
+      "QueryScanFixLocationWrapper": {
         "required": [
           "value"
         ],
         "type": "object",
         "properties": {
           "value": {
-            "$ref": "#/components/schemas/QueryScanFindingReason"
+            "$ref": "#/components/schemas/QueryScanFixLocation"
           }
         }
       },
@@ -597893,6 +598137,28 @@
         "properties": {
           "value": {
             "$ref": "#/components/schemas/TaskRuntimeEnum"
+          }
+        }
+      },
+      "TaskDigestCadenceEnumWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/TaskDigestCadenceEnum"
+          }
+        }
+      },
+      "TaskDigestCadenceEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/TaskDigestCadenceEnum"
           }
         }
       },

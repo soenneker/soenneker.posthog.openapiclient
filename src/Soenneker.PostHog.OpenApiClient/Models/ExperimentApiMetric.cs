@@ -20,8 +20,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource CompletionEvent { get; set; }
 #endif
-        /// <summary>Conversion window duration.</summary>
+        /// <summary>Only count metric events within this many units after the user&apos;s first exposure. Requires conversion_window_unit: a window without a unit is ignored and the metric counts events until the experiment ends. Omit both to count until the experiment ends.</summary>
         public int? ConversionWindow { get; set; }
+        /// <summary>Unit for conversion_window: &apos;second&apos;, &apos;minute&apos;, &apos;hour&apos;, &apos;day&apos;, &apos;week&apos; or &apos;month&apos;. Required when conversion_window is set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper? ConversionWindowUnit { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper ConversionWindowUnit { get; set; }
+#endif
         /// <summary>For ratio metrics: denominator source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,6 +45,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling DenominatorOutlierHandling { get; set; }
+#endif
+        /// <summary>For funnel metrics: how the steps must occur. &apos;ordered&apos; (default) or &apos;unordered&apos;. Do not use &apos;strict&apos;: experiment funnels give wrong counts with it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper? FunnelOrderType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper FunnelOrderType { get; set; }
 #endif
         /// <summary>Whether higher or lower values indicate success.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,10 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The retention_window_unit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper? RetentionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2? RetentionWindowUnit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper RetentionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2 RetentionWindowUnit { get; set; }
 #endif
         /// <summary>For funnel metrics: array of EventsNode/ActionsNode steps.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -154,8 +170,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "completion_event", n => { CompletionEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
                 { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
+                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper.CreateFromDiscriminatorValue); } },
                 { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
                 { "denominator_outlier_handling", n => { DenominatorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling.CreateFromDiscriminatorValue); } },
+                { "funnel_order_type", n => { FunnelOrderType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper.CreateFromDiscriminatorValue); } },
                 { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper.CreateFromDiscriminatorValue); } },
                 { "ignore_zeros", n => { IgnoreZeros = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>(); } },
@@ -166,7 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "numerator_outlier_handling", n => { NumeratorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling.CreateFromDiscriminatorValue); } },
                 { "retention_window_end", n => { RetentionWindowEnd = n.GetIntValue(); } },
                 { "retention_window_start", n => { RetentionWindowStart = n.GetIntValue(); } },
-                { "retention_window_unit", n => { RetentionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper.CreateFromDiscriminatorValue); } },
+                { "retention_window_unit", n => { RetentionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
                 { "start_event", n => { StartEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
@@ -185,8 +203,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("completion_event", CompletionEvent);
             writer.WriteIntValue("conversion_window", ConversionWindow);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper>("conversion_window_unit", ConversionWindowUnit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("denominator", Denominator);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>("denominator_outlier_handling", DenominatorOutlierHandling);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper>("funnel_order_type", FunnelOrderType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper>("goal", Goal);
             writer.WriteBoolValue("ignore_zeros", IgnoreZeros);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>("kind", Kind);
@@ -197,7 +217,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>("numerator_outlier_handling", NumeratorOutlierHandling);
             writer.WriteIntValue("retention_window_end", RetentionWindowEnd);
             writer.WriteIntValue("retention_window_start", RetentionWindowStart);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper>("retention_window_unit", RetentionWindowUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>("retention_window_unit", RetentionWindowUnit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("series", Series);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("source", Source);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("start_event", StartEvent);

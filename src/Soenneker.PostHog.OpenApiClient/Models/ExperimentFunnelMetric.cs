@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conversion_window_unit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2? ConversionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper3? ConversionWindowUnit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2 ConversionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper3 ConversionWindowUnit { get; set; }
 #endif
         /// <summary>The fingerprint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnel_order_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper? FunnelOrderType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2? FunnelOrderType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper FunnelOrderType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2 FunnelOrderType { get; set; }
 #endif
         /// <summary>The goal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -128,9 +128,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "breakdownAttributionValue", n => { BreakdownAttributionValue = n.GetIntValue(); } },
                 { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter.CreateFromDiscriminatorValue); } },
                 { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
-                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2.CreateFromDiscriminatorValue); } },
+                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper3.CreateFromDiscriminatorValue); } },
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
-                { "funnel_order_type", n => { FunnelOrderType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper.CreateFromDiscriminatorValue); } },
+                { "funnel_order_type", n => { FunnelOrderType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2.CreateFromDiscriminatorValue); } },
                 { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper2.CreateFromDiscriminatorValue); } },
                 { "isSharedMetric", n => { IsSharedMetric = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>(); } },
@@ -154,9 +154,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("breakdownAttributionValue", BreakdownAttributionValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>("breakdownFilter", BreakdownFilter);
             writer.WriteIntValue("conversion_window", ConversionWindow);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>("conversion_window_unit", ConversionWindowUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper3>("conversion_window_unit", ConversionWindowUnit);
             writer.WriteStringValue("fingerprint", Fingerprint);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper>("funnel_order_type", FunnelOrderType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper2>("funnel_order_type", FunnelOrderType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper2>("goal", Goal);
             writer.WriteBoolValue("isSharedMetric", IsSharedMetric);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>("kind", Kind);

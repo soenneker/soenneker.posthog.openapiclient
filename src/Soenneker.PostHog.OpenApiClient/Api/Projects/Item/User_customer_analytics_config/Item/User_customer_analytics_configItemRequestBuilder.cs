@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analyt
         {
         }
         /// <summary>
-        /// Get the requesting user&apos;s account sidebar configuration for this project. The first read creates an empty configuration row.
+        /// Get the requesting user&apos;s account sidebar and task digest configuration for this project. The first read creates an empty configuration row.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analyt
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Replace the requesting user&apos;s ordered account sidebar properties when pinned_properties is provided. Omitting pinned_properties leaves the configuration unchanged. At most 50 account custom properties and relationships can be pinned.
+        /// Replace the requesting user&apos;s ordered account sidebar properties when pinned_properties is provided, and change the task digest email preferences when task_digest is provided. Anything omitted keeps its current value. At most 50 account custom properties and relationships can be pinned.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig"/></returns>
         /// <param name="body">The request body</param>
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analyt
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get the requesting user&apos;s account sidebar configuration for this project. The first read creates an empty configuration row.
+        /// Get the requesting user&apos;s account sidebar and task digest configuration for this project. The first read creates an empty configuration row.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analyt
             return requestInfo;
         }
         /// <summary>
-        /// Replace the requesting user&apos;s ordered account sidebar properties when pinned_properties is provided. Omitting pinned_properties leaves the configuration unchanged. At most 50 account custom properties and relationships can be pinned.
+        /// Replace the requesting user&apos;s ordered account sidebar properties when pinned_properties is provided, and change the task digest email preferences when task_digest is provided. Anything omitted keeps its current value. At most 50 account custom properties and relationships can be pinned.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conversion_window_unit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5? ConversionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6? ConversionWindowUnit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5 ConversionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6 ConversionWindowUnit { get; set; }
 #endif
         /// <summary>The fingerprint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -125,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter.CreateFromDiscriminatorValue); } },
                 { "completion_event", n => { CompletionEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent.CreateFromDiscriminatorValue); } },
                 { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
-                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5.CreateFromDiscriminatorValue); } },
+                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6.CreateFromDiscriminatorValue); } },
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
                 { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper5.CreateFromDiscriminatorValue); } },
                 { "isSharedMetric", n => { IsSharedMetric = n.GetBoolValue(); } },
@@ -153,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>("breakdownFilter", BreakdownFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent>("completion_event", CompletionEvent);
             writer.WriteIntValue("conversion_window", ConversionWindow);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper5>("conversion_window_unit", ConversionWindowUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper6>("conversion_window_unit", ConversionWindowUnit);
             writer.WriteStringValue("fingerprint", Fingerprint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper5>("goal", Goal);
             writer.WriteBoolValue("isSharedMetric", IsSharedMetric);

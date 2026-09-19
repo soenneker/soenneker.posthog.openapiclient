@@ -12,6 +12,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class QueryScanWarning : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and &quot;Fix with AI&quot; only when a finding is actionable.</summary>
+        public bool? Actionable { get; set; }
+        /// <summary>True when the query reads this much on purpose, so reading less would change the answer. Absent means no.</summary>
+        public bool? ByDesign { get; set; }
+        /// <summary>A label for what in the query text kept the read wide, such as `in_or`. Only analytics and the assistant read it, and the labels can change.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Cause { get; set; }
+#nullable restore
+#else
+        public string Cause { get; set; }
+#endif
         /// <summary>The one fact the finding rests on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +40,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Fix { get; set; }
 #endif
+        /// <summary>Where the change goes. Absent means the query itself.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper? FixLocation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper FixLocation { get; set; }
+#endif
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind? Kind { get; set; }
         /// <summary>Shown to the person: what happened and what to do.</summary>
@@ -37,14 +57,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Message { get; set; }
-#endif
-        /// <summary>Only with `no_event_filter` and `no_start_date`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingReasonWrapper? Reason { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingReasonWrapper Reason { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -64,11 +76,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "actionable", n => { Actionable = n.GetBoolValue(); } },
+                { "by_design", n => { ByDesign = n.GetBoolValue(); } },
+                { "cause", n => { Cause = n.GetStringValue(); } },
                 { "evidence", n => { Evidence = n.GetStringValue(); } },
                 { "fix", n => { Fix = n.GetStringValue(); } },
+                { "fix_location", n => { FixLocation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind>(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingReasonWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingReasonWrapper.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,11 +93,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("actionable", Actionable);
+            writer.WriteBoolValue("by_design", ByDesign);
+            writer.WriteStringValue("cause", Cause);
             writer.WriteStringValue("evidence", Evidence);
             writer.WriteStringValue("fix", Fix);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper>("fix_location", FixLocation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind>("kind", Kind);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingReasonWrapper>("reason", Reason);
         }
     }
 }

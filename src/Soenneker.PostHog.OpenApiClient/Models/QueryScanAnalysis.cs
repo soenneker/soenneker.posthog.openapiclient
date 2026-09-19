@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AssistantPrompt { get; set; }
 #endif
-        /// <summary>Empty when the analysis found nothing to fix.</summary>
+        /// <summary>Every finding, fixable or not. Empty when the analysis found none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning>? Findings { get; set; }

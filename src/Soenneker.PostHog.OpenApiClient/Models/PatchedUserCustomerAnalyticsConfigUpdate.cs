@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty> PinnedProperties { get; set; }
 #endif
+        /// <summary>Task digest email preferences to change. Omit the object to keep them all; omit a field inside it to keep that one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest? TaskDigest { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest TaskDigest { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdate"/> and sets the default values.
         /// </summary>
@@ -48,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "pinned_properties", n => { PinnedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "task_digest", n => { TaskDigest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>("pinned_properties", PinnedProperties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest>("task_digest", TaskDigest);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
