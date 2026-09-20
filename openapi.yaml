@@ -119584,6 +119584,7 @@ components:
           - type: integer
           - type: string
           - type: 'null'
+          - type: 'null'
           readOnly: true
         type:
           type: string
@@ -210302,6 +210303,14 @@ components:
           type: boolean
           readOnly: true
           description: Whether the calling user has opened this observation.
+        summary_line:
+          type: string
+          readOnly: true
+          description: 'One line of plain text saying what the scanner found: its
+            verdict, score, tags or title, then its own words, with markdown flattened
+            and the text truncated. An observation that produced no result carries
+            the reason instead, and one still in flight carries an empty string. Read
+            this in place of `scanner_result` when you scan a list of observations.'
         started_at:
           type:
           - string
@@ -210332,6 +210341,7 @@ components:
       - scanner_snapshot
       - session_id
       - status
+      - summary_line
       - triggered_by
       - triggered_by_user
       - viewed

@@ -102,6 +102,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus Status { get; private set; }
 #endif
+        /// <summary>One line of plain text saying what the scanner found: its verdict, score, tags or title, then its own words, with markdown flattened and the text truncated. An observation that produced no result carries the reason instead, and one still in flight carries an empty string. Read this in place of `scanner_result` when you scan a list of observations.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SummaryLine { get; private set; }
+#nullable restore
+#else
+        public string SummaryLine { get; private set; }
+#endif
         /// <summary>Whether this observation came from the schedule, an on-demand request, a retry of a failed or ineligible observation, or a historical backfill.* `schedule` - Schedule* `on_demand` - On demand* `retry` - Retry* `backfill` - Backfill</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -170,6 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus.CreateFromDiscriminatorValue); } },
+                { "summary_line", n => { SummaryLine = n.GetStringValue(); } },
                 { "triggered_by", n => { TriggeredBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy.CreateFromDiscriminatorValue); } },
                 { "triggered_by_user", n => { TriggeredByUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },

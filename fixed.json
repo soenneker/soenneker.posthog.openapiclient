@@ -270560,6 +270560,7 @@
           "scanner_snapshot",
           "session_id",
           "status",
+          "summary_line",
           "triggered_by",
           "triggered_by_user",
           "viewed",
@@ -270660,6 +270661,11 @@
           "viewed": {
             "type": "boolean",
             "description": "Whether the calling user has opened this observation.",
+            "readOnly": true
+          },
+          "summary_line": {
+            "type": "string",
+            "description": "One line of plain text saying what the scanner found: its verdict, score, tags or title, then its own words, with markdown flattened and the text truncated. An observation that produced no result carries the reason instead, and one still in flight carries an empty string. Read this in place of \u0060scanner_result\u0060 when you scan a list of observations.",
             "readOnly": true
           },
           "started_at": {
@@ -361104,6 +361110,9 @@
           },
           {
             "type": "null"
+          },
+          {
+            "type": "null"
           }
         ],
         "readOnly": true
@@ -435523,6 +435532,7 @@
           "scanner_snapshot",
           "session_id",
           "status",
+          "summary_line",
           "triggered_by",
           "triggered_by_user",
           "viewed",
@@ -435623,6 +435633,11 @@
           "viewed": {
             "type": "boolean",
             "description": "Whether the calling user has opened this observation.",
+            "readOnly": true
+          },
+          "summary_line": {
+            "type": "string",
+            "description": "One line of plain text saying what the scanner found: its verdict, score, tags or title, then its own words, with markdown flattened and the text truncated. An observation that produced no result carries the reason instead, and one still in flight carries an empty string. Read this in place of \u0060scanner_result\u0060 when you scan a list of observations.",
             "readOnly": true
           },
           "started_at": {
@@ -561055,6 +561070,7 @@
           "scanner_snapshot",
           "session_id",
           "status",
+          "summary_line",
           "triggered_by",
           "triggered_by_user",
           "viewed",
@@ -561155,6 +561171,11 @@
           "viewed": {
             "type": "boolean",
             "description": "Whether the calling user has opened this observation.",
+            "readOnly": true
+          },
+          "summary_line": {
+            "type": "string",
+            "description": "One line of plain text saying what the scanner found: its verdict, score, tags or title, then its own words, with markdown flattened and the text truncated. An observation that produced no result carries the reason instead, and one still in flight carries an empty string. Read this in place of \u0060scanner_result\u0060 when you scan a list of observations.",
             "readOnly": true
           },
           "started_at": {
