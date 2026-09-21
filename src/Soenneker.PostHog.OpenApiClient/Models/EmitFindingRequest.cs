@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Agent&apos;s confidence the finding is real in [0, 1]. Persisted in `extra`.</summary>
+        /// <summary>Deprecated and ignored. Nothing reads it; omit it. Still range-checked when supplied.</summary>
         public double? Confidence { get; set; }
         /// <summary>Optional keys for downstream dedupe (e.g. `error_tracking_issue:&lt;id&gt;`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

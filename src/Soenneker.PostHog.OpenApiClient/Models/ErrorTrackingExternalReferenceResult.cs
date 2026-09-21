@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Provider-native identifier of the linked issue.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExternalId { get; private set; }
+#nullable restore
+#else
+        public string ExternalId { get; private set; }
+#endif
         /// <summary>URL of the linked external issue in the provider&apos;s system.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,6 +40,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultIntegration Integration { get; private set; }
+#endif
+        /// <summary>Title of the linked issue.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; private set; }
+#nullable restore
+#else
+        public string Title { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult"/> and sets the default values.
@@ -58,9 +74,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "external_url", n => { ExternalUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultIntegration>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultIntegration.CreateFromDiscriminatorValue); } },
+                { "title", n => { Title = n.GetStringValue(); } },
             };
         }
         /// <summary>

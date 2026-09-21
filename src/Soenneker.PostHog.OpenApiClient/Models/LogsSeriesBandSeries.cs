@@ -14,9 +14,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>When this series gains its band under a validated readiness policy. Null when the band is ready or no validated readiness date is available. Check the buckets&apos; lower and upper values to determine whether a band is present.</summary>
+        /// <summary>Earliest end of a rolling window of this length with four complete preceding weeks. Null when the band is ready. A fixed historical window does not gain history by waiting. Check the buckets&apos; lower and upper values to determine whether a band is present.</summary>
         public DateTimeOffset? BandReadyAt { get; set; }
-        /// <summary>Full weeks of history behind the band, 0 to 5. History depth alone does not enable a band; a validated readiness policy is also required.</summary>
+        /// <summary>Full weeks of history behind the band, 0 to 5. Four complete weeks are required: at least two for fitting and two separate weeks for calibration.</summary>
         public int? BaselineWeeks { get; set; }
         /// <summary>One entry per display bucket across the window at this series&apos; interval_minutes, oldest first, zero-filled. A coarsened series&apos; window is snapped to its grain, so it can end short of window_end.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

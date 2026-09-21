@@ -149,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubjectName { get; private set; }
 #endif
-        /// <summary>Data modeling node of the view this check audits, or null when it is on no DAG or the subject is a table.</summary>
+        /// <summary>Data modeling node of the view or PostHog table this check audits, or null when it is on no DAG or the subject is a warehouse table.</summary>
         public Guid? SubjectNodeId { get; private set; }
         /// <summary>Warehouse source schema of the table this check audits, or null when the subject is a view.</summary>
         public Guid? SubjectSchemaId { get; private set; }
@@ -163,7 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubjectStatus { get; private set; }
 #endif
-        /// <summary>Kind of catalog object being checked: &apos;table&apos;, &apos;view&apos;, or &apos;metric&apos;.* `table` - table* `view` - view* `metric` - metric</summary>
+        /// <summary>Kind of object being checked: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSubjectType? SubjectType { get; private set; }
@@ -171,7 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSubjectType SubjectType { get; private set; }
 #endif
-        /// <summary>Id of the table, view, or metric being checked, from the parent resource in the URL.</summary>
+        /// <summary>Id of the table, view, metric, or PostHog table being checked. Null once the subject is deleted.</summary>
         public Guid? SubjectUuid { get; private set; }
         /// <summary>Free-form string labels for grouping and filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

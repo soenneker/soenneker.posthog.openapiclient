@@ -41,6 +41,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Set only when append_note confirms the finding with no new information. After four confirmations, store only the count. Other notes remain in the work log.</summary>
         public bool? CorroborationOnly { get; set; }
+        /// <summary>Typed, directed links from this report to others, recording how the work relates. Use `depends_on` when you split one finding into a stack and the second report&apos;s fix cannot land until the first one&apos;s does, so the order is recorded rather than left to a reader of the diffs. Additive: links join what the report already has rather than replacing them, and only this report gets a row, so link from the side the sentence starts at. Links of the same kind must stay acyclic and every report must be in this project.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>? Links { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite> Links { get; set; }
+#endif
         /// <summary>The report&apos;s full impact-metric set. Omit or send null to preserve it; send an empty list to clear it. Every metric requires a bounded live InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber and ActionsBar shapes; a snapshot is only an optional cached fallback. Snapshot-only/queryless payloads are invalid, and legacy rows of that shape are always redacted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -128,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "append_note", n => { AppendNote = n.GetStringValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "corroboration_only", n => { CorroborationOnly = n.GetBoolValue(); } },
+                { "links", n => { Links = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>(global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -149,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("append_note", AppendNote);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>("charts", Charts);
             writer.WriteBoolValue("corroboration_only", CorroborationOnly);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>("links", Links);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>("metrics", Metrics);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteStringValue("repository", Repository);

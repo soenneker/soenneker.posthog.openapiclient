@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Agent&apos;s confidence the finding is real in [0, 1].</summary>
+        /// <summary>Deprecated and no longer set on new findings. Null unless the run supplied one.</summary>
         public double? Confidence { get; set; }
         /// <summary>The emitted finding prose — the signal&apos;s `description` as surfaced to the inbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,8 +69,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
-        /// <summary>Agent&apos;s weight for the signal in [0, 1]. Drives ranking in the inbox.</summary>
-        public double? Weight { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutEmission"/> and sets the default values.
         /// </summary>
@@ -105,7 +103,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutEmissionSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutEmissionSeverity.CreateFromDiscriminatorValue); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "weight", n => { Weight = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -123,7 +120,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutEmissionSeverity>("severity", Severity);
             writer.WriteStringValue("source_id", SourceId);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
-            writer.WriteDoubleValue("weight", Weight);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

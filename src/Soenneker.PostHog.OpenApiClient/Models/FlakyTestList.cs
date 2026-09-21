@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs.</summary>
+        /// <summary>Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs. A CI setup break (a run attempt whose tests errored in 3 or more jobs or for 3 or more owning teams, or a job attempt with 100 or more distinct failed or errored tests) excludes every trial of that attempt, not only its failures.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItem>? Items { get; set; }

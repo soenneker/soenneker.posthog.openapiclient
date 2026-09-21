@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_quality_runsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_runs{?limit*,offset*}", pathParameters)
+        public Data_quality_runsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_runs{?limit*,offset*,subject_type*,subject_uuid*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,11 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_quality_runsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_runs{?limit*,offset*}", rawUrl)
+        public Data_quality_runsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_runs{?limit*,offset*,subject_type*,subject_uuid*}", rawUrl)
         {
         }
         /// <summary>
-        /// Project-wide check runs: start one over a selection, and read every run the project has had.The per-subject surfaces only serve runs scoped to their own subject, so this is where a sweepacross several subjects -- a manual project-wide run, a materialization, a source sync -- isreadable. Scoped to `warehouse_objects` because it spans tables and views at once.
+        /// Every check-suite run in the project, newest first. Narrow it to one subject with subject_type and subject_uuid.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualitySuiteRunList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualitySuiteRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualitySuiteRunList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Run the named checks now, or every enabled check in the project when none are named. Returns the suite run to poll for the report.
+        /// Run checks now: the ones named by check_ids, every enabled check on the subject named by subject_type and subject_uuid, or every enabled check in the project when neither is given. Returns the suite run to poll for the report.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun"/></returns>
         /// <param name="body">What to run in a project-wide suite run.</param>
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Project-wide check runs: start one over a selection, and read every run the project has had.The per-subject surfaces only serve runs scoped to their own subject, so this is where a sweepacross several subjects -- a manual project-wide run, a materialization, a source sync -- isreadable. Scoped to `warehouse_objects` because it spans tables and views at once.
+        /// Every check-suite run in the project, newest first. Narrow it to one subject with subject_type and subject_uuid.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
             return requestInfo;
         }
         /// <summary>
-        /// Run the named checks now, or every enabled check in the project when none are named. Returns the suite run to poll for the report.
+        /// Run checks now: the ones named by check_ids, every enabled check on the subject named by subject_type and subject_uuid, or every enabled check in the project when neither is given. Returns the suite run to poll for the report.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">What to run in a project-wide suite run.</param>
@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.Data_quality_runsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Project-wide check runs: start one over a selection, and read every run the project has had.The per-subject surfaces only serve runs scoped to their own subject, so this is where a sweepacross several subjects -- a manual project-wide run, a materialization, a source sync -- isreadable. Scoped to `warehouse_objects` because it spans tables and views at once.
+        /// Every check-suite run in the project, newest first. Narrow it to one subject with subject_type and subject_uuid.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Data_quality_runsRequestBuilderGetQueryParameters 
@@ -146,6 +146,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Kind of object being checked: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.</summary>
+            [QueryParameter("subject_type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunsListSubjectTypeParameter? SubjectType { get; set; }
+            /// <summary>Id of the table, view, metric, or PostHog table.</summary>
+            [QueryParameter("subject_uuid")]
+            public Guid? SubjectUuid { get; set; }
         }
     }
 }

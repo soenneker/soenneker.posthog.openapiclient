@@ -28,6 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
+        /// <summary>The filterTestAccounts property</summary>
+        public bool? FilterTestAccounts { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryKind? Kind { get; set; }
         /// <summary>Page size. The server defaults to 50 and caps this at 100.</summary>
@@ -42,6 +44,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Number of matching tools to skip.</summary>
         public int? Offset { get; set; }
+        /// <summary>The properties property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem>? Properties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem> Properties { get; set; }
+#endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,10 +114,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "categories", n => { Categories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "search", n => { Search = n.GetStringValue(); } },
                 { "sortColumn", n => { SortColumn = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper.CreateFromDiscriminatorValue); } },
@@ -125,10 +137,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
+            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse>("response", Response);
             writer.WriteStringValue("search", Search);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper>("sortColumn", SortColumn);

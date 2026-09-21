@@ -11,6 +11,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Matching_ids
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Prompt_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Session_context;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Session_contexts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Setup_context;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Stats;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -60,6 +61,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Session_contexts.Session_contextsRequestBuilder Session_contexts
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Session_contexts.Session_contextsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The setup_context property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Setup_context.Setup_contextRequestBuilder Setup_context
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Setup_context.Setup_contextRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The stats property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Stats.StatsRequestBuilder Stats

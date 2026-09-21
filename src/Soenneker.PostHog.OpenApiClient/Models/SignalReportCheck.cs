@@ -26,6 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? ConsecutiveErrors { get; private set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>When the `agent` check&apos;s scout run started, cleared as soon as a verdict is recorded. A non-null value is what tells a reader the check is running rather than waiting, because dispatch also pushes `next_run_at` out to the result window. Always null on a `metric_threshold` check, which is measured in the tick that collects it.</summary>
+        public DateTimeOffset? DispatchedAt { get; private set; }
         /// <summary>Horizon after which the check retires without running again.</summary>
         public DateTimeOffset? ExpiresAt { get; private set; }
         /// <summary>The id property</summary>
@@ -110,6 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckConfigComposed>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckConfigComposed.CreateFromDiscriminatorValue); } },
                 { "consecutive_errors", n => { ConsecutiveErrors = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "dispatched_at", n => { DispatchedAt = n.GetDateTimeOffsetValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind.CreateFromDiscriminatorValue); } },

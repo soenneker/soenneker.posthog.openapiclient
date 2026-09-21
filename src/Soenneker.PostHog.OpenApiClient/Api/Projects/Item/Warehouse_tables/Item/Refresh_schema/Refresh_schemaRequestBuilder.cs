@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Item.Refresh_schema
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{projectId}\warehouse_tables\{-id}\refresh_schema
+    /// Builds and executes requests for operations under \api\projects\{projectId}\warehouse_tables\{id}\refresh_schema
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Refresh_schemaRequestBuilder : BaseRequestBuilder
@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Ite
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Refresh_schemaRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_tables/{%2Did}/refresh_schema", pathParameters)
+        public Refresh_schemaRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_tables/{id}/refresh_schema", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Ite
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Refresh_schemaRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_tables/{%2Did}/refresh_schema", rawUrl)
+        public Refresh_schemaRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_tables/{id}/refresh_schema", rawUrl)
         {
         }
         /// <summary>

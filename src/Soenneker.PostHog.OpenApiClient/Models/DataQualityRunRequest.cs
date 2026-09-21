@@ -23,6 +23,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> CheckIds { get; set; }
 #endif
+        /// <summary>Narrow the run to one subject. Pass subject_uuid with it. Ignored when check_ids is given.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType? SubjectType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType SubjectType { get; set; }
+#endif
+        /// <summary>Id of the subject to run every enabled check on. Pass subject_type with it.</summary>
+        public Guid? SubjectUuid { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequest"/> and sets the default values.
         /// </summary>
@@ -49,6 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "check_ids", n => { CheckIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
+                { "subject_type", n => { SubjectType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType.CreateFromDiscriminatorValue); } },
+                { "subject_uuid", n => { SubjectUuid = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -59,6 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<Guid?>("check_ids", CheckIds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType>("subject_type", SubjectType);
+            writer.WriteGuidValue("subject_uuid", SubjectUuid);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

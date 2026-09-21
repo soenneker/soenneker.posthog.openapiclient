@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
         {
         }
         /// <summary>
-        /// Every check in the project, and the health of every subject that has one.The per-subject surfaces answer &quot;what is wrong with this table&quot;. This answers &quot;what is wrongacross the project&quot;, which they cannot: each is nested under one parent. Read-only -- authoringstill happens against the subject that owns the check.
+        /// Every check in the project: authoring, running, results, health, and schedules.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.DataQualityMetricSubject&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Every check in the project, and the health of every subject that has one.The per-subject surfaces answer &quot;what is wrong with this table&quot;. This answers &quot;what is wrongacross the project&quot;, which they cannot: each is nested under one parent. Read-only -- authoringstill happens against the subject that owns the check.
+        /// Every check in the project: authoring, running, results, health, and schedules.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

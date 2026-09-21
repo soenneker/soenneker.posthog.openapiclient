@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember2"/>, <see cref="int"/>, <see cref="string"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember1"/>, <see cref="int"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingIssueAssigneeReadId : IComposedTypeWrapper, IParsable
@@ -20,14 +20,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember1 ErrorTrackingIssueAssigneeReadIdMember1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember2? ErrorTrackingIssueAssigneeReadIdMember2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember2 ErrorTrackingIssueAssigneeReadIdMember2 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="int"/></summary>
         public int? Integer { get; set; }
@@ -69,10 +61,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return ErrorTrackingIssueAssigneeReadIdMember1.GetFieldDeserializers();
             }
-            else if(ErrorTrackingIssueAssigneeReadIdMember2 != null)
-            {
-                return ErrorTrackingIssueAssigneeReadIdMember2.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -85,10 +73,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ErrorTrackingIssueAssigneeReadIdMember1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember1>(null, ErrorTrackingIssueAssigneeReadIdMember1);
-            }
-            else if(ErrorTrackingIssueAssigneeReadIdMember2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeReadIdMember2>(null, ErrorTrackingIssueAssigneeReadIdMember2);
             }
             else if(Integer != null)
             {

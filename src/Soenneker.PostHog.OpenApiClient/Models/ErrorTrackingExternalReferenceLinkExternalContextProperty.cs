@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Identifier of the existing external issue to link, as returned by the search-issues endpoint. Required keys depend on the integration kind: github -&gt; {repository, number}; gitlab -&gt; {issue_id}; linear -&gt; {id}; jira -&gt; {key}.
+    /// Identifier and optional title of the existing external issue to link, as returned by the search-issues endpoint. Required keys depend on the integration kind: github -&gt; {repository, number}; gitlab -&gt; {issue_id}; linear -&gt; {id}; jira -&gt; {key}.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingExternalReferenceLinkExternalContextProperty : IAdditionalDataHolder, IParsable

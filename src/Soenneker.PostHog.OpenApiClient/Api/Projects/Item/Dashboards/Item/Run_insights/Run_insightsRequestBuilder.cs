@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Run_insightsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/run_insights{?filters_override*,format*,output_format*,refresh*,variables_override*}", pathParameters)
+        public Run_insightsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/run_insights{?filters_override*,format*,max_result_chars*,output_format*,refresh*,tile_ids*,variables_override*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Run_insightsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/run_insights{?filters_override*,format*,output_format*,refresh*,variables_override*}", rawUrl)
+        public Run_insightsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/run_insights{?filters_override*,format*,max_result_chars*,output_format*,refresh*,tile_ids*,variables_override*}", rawUrl)
         {
         }
         /// <summary>
@@ -99,12 +99,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunInsightsRetrieveFormatParameter? Format { get; set; }
             #pragma warning restore CS1591
-            /// <summary>&apos;optimized&apos; (default) returns LLM-friendly formatted text per insight. &apos;json&apos; returns the raw query result objects.</summary>
+            /// <summary>Per-tile character budget for &apos;optimized&apos; output, truncation marker included. A longer table keeps its header and both ends, and names how many rows were dropped from the middle. Defaults to 2000; pass 0 for the whole table, or 200 or more, since a smaller budget cannot carry the marker. Ignored when output_format is &apos;json&apos;. Any value above zero is also held down to what the response has left of its 30000 character budget, and tiles past that budget are not run.</summary>
+            [QueryParameter("max_result_chars")]
+            public int? MaxResultChars { get; set; }
+            /// <summary>&apos;optimized&apos; (default) returns LLM-friendly formatted text per insight, bounded by max_result_chars. &apos;json&apos; returns the raw query result objects, unbounded.</summary>
             [QueryParameter("output_format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunInsightsRetrieveOutputFormatParameter? OutputFormat { get; set; }
             /// <summary>Cache behavior. &apos;force_cache&apos; (default) serves from cache even if stale. &apos;blocking&apos; uses cache if fresh, otherwise recalculates. &apos;force_blocking&apos; always recalculates.</summary>
             [QueryParameter("refresh")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunInsightsRetrieveRefreshParameter? Refresh { get; set; }
+            /// <summary>Comma-separated dashboard tile IDs to run. Defaults to every insight tile on the dashboard. Use it to read one tile without receiving the others. An ID that is not on this dashboard is rejected.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tile_ids")]
+            public string? TileIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tile_ids")]
+            public string TileIds { get; set; }
+#endif
             /// <summary>Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {&quot;&lt;variable_id&gt;&quot;: {&quot;code_name&quot;: &quot;&lt;code_name&gt;&quot;, &quot;variableId&quot;: &quot;&lt;variable_id&gt;&quot;, &quot;value&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Exter
             [QueryParameter("repository")]
             public string Repository { get; set; }
 #endif
-            /// <summary>Text to match against existing issue titles / keys in the provider. GitHub matches it as an exact phrase. Leave blank for recent issues.</summary>
+            /// <summary>Text to match against existing issue titles or identifiers in the provider. GitHub matches titles as an exact phrase. Leave blank for recent issues.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreateConfigProperty Config { get; set; }
 #endif
+        /// <summary>Provider-native identifier of the linked issue.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExternalId { get; private set; }
+#nullable restore
+#else
+        public string ExternalId { get; private set; }
+#endif
         /// <summary>URL of the linked external issue in the provider&apos;s system.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,6 +53,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? IntegrationId { get; set; }
         /// <summary>ID of the error tracking issue to link the reference to.</summary>
         public Guid? Issue { get; set; }
+        /// <summary>Title of the linked issue.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; private set; }
+#nullable restore
+#else
+        public string Title { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreate"/> and sets the default values.
         /// </summary>
@@ -71,11 +87,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreateConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreateConfigProperty.CreateFromDiscriminatorValue); } },
+                { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "external_url", n => { ExternalUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreateIntegration>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreateIntegration.CreateFromDiscriminatorValue); } },
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
                 { "issue", n => { Issue = n.GetGuidValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
             };
         }
         /// <summary>

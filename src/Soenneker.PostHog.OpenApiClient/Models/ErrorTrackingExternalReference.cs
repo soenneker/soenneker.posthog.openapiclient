@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ErrorTrackingExternalReference : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The external_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExternalId { get; set; }
+#nullable restore
+#else
+        public string ExternalId { get; set; }
+#endif
         /// <summary>The external_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +44,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegration Integration { get; set; }
 #endif
+        /// <summary>The title property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; set; }
+#nullable restore
+#else
+        public string Title { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -54,9 +70,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "external_url", n => { ExternalUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegration>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegration.CreateFromDiscriminatorValue); } },
+                { "title", n => { Title = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,9 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("external_id", ExternalId);
             writer.WriteStringValue("external_url", ExternalUrl);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegration>("integration", Integration);
+            writer.WriteStringValue("title", Title);
         }
     }
 }

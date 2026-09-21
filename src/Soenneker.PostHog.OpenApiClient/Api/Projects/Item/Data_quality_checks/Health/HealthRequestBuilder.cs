@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HealthRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/health", pathParameters)
+        public HealthRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/health{?subject_type*,subject_uuid*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,22 +30,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HealthRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/health", rawUrl)
+        public HealthRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/health{?subject_type*,subject_uuid*}", rawUrl)
         {
         }
         /// <summary>
-        /// Health rollup for every table and view in the project that has checks.
+        /// Health rollup per subject, for every subject in the project that has checks. Narrow it to one subject with subject_type and subject_uuid.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder.HealthRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth>> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder.HealthRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -53,17 +53,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Health rollup for every table and view in the project that has checks.
+        /// Health rollup per subject, for every subject in the project that has checks. Narrow it to one subject with subject_type and subject_uuid.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder.HealthRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder.HealthRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -79,6 +79,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Health rollup per subject, for every subject in the project that has checks. Narrow it to one subject with subject_type and subject_uuid.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class HealthRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Kind of object being checked: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.</summary>
+            [QueryParameter("subject_type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityChecksHealthListSubjectTypeParameter? SubjectType { get; set; }
+            /// <summary>Id of the table, view, metric, or PostHog table.</summary>
+            [QueryParameter("subject_uuid")]
+            public Guid? SubjectUuid { get; set; }
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; private set; }
 #endif
-        /// <summary>&apos;table&apos;, &apos;view&apos;, or &apos;metric&apos; when the run targets exactly one subject, including a run of a single check on that subject; null for a run spanning several subjects.</summary>
+        /// <summary>&apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos; when the run targets exactly one subject, including a run of a single check on that subject; null for a run spanning several subjects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SubjectType { get; private set; }

@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.Item.Check_runs;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.It
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Data_quality_runsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The check_runs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.Item.Check_runs.Check_runsRequestBuilder Check_runs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.Item.Check_runs.Check_runsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.Item.Data_quality_runsItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -34,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.It
         {
         }
         /// <summary>
-        /// Project-wide check runs: start one over a selection, and read every run the project has had.The per-subject surfaces only serve runs scoped to their own subject, so this is where a sweepacross several subjects -- a manual project-wide run, a materialization, a source sync -- isreadable. Scoped to `warehouse_objects` because it spans tables and views at once.
+        /// Check-suite executions: start one over a selection, and read every run the project has had.A suite run may sweep several subjects at once -- a manual project-wide run, a materialization,a source sync -- so it is reported here rather than under any one of them.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs.It
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Project-wide check runs: start one over a selection, and read every run the project has had.The per-subject surfaces only serve runs scoped to their own subject, so this is where a sweepacross several subjects -- a manual project-wide run, a materialization, a source sync -- isreadable. Scoped to `warehouse_objects` because it spans tables and views at once.
+        /// Check-suite executions: start one over a selection, and read every run the project has had.A suite run may sweep several subjects at once -- a manual project-wide run, a materialization,a source sync -- so it is reported here rather than under any one of them.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

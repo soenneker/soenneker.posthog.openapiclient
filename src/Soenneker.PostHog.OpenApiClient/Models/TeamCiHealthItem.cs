@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>CI runs (not spans) where an owned test&apos;s recorded outcome was failed or error. An absolute count, not a rate: fast passing runs are not emitted.</summary>
+        /// <summary>Distinct CI runs where at least one owned test failed or errored. A run with many failing owned tests counts once. An absolute count, not a rate: fast passing runs are not emitted.</summary>
         public int? FailedRunCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? FailedRunCountPrior { get; set; }
@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OwnerTeam { get; set; }
 #endif
-        /// <summary>Runs where an owned test recorded a tolerated failure while quarantined: masked in CI, still failing.</summary>
+        /// <summary>Distinct CI runs where at least one owned test recorded a tolerated failure while quarantined.</summary>
         public int? QuarantinedFailedRunCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? QuarantinedFailedRunCountPrior { get; set; }
@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RegressionTestCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? RegressionTestCountPrior { get; set; }
-        /// <summary>Runs where one commit both failed and passed an owned test: a re-run attempt went green, or an in-job retry recovered it.</summary>
+        /// <summary>Distinct CI runs where one commit both failed and passed at least one owned test: a re-run attempt went green, or an in-job retry recovered it.</summary>
         public int? SameCommitRecoveryRunCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? SameCommitRecoveryRunCountPrior { get; set; }

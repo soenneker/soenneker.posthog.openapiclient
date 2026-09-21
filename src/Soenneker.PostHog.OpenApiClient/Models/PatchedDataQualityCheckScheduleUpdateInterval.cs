@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// How often all enabled checks on the metric run.* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day
+    /// How often all enabled checks on the subject run.* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedDataQualityCheckScheduleUpdateInterval : IAdditionalDataHolder, IParsable

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The subject is implied by the URL (the parent saved query or table), never part of the body.
+    /// A check as it reads back, and everything an edit may change about it.The subject is not one of those: it is writable only on ``DataQualityCheckCreate``.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedDataQualityCheck : IAdditionalDataHolder, IParsable
@@ -149,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubjectStatus { get; private set; }
 #endif
-        /// <summary>Kind of catalog object being checked: &apos;table&apos;, &apos;view&apos;, or &apos;metric&apos;.* `table` - table* `view` - view* `metric` - metric</summary>
+        /// <summary>Kind of object being checked: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckSubjectType? SubjectType { get; private set; }
@@ -157,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckSubjectType SubjectType { get; private set; }
 #endif
-        /// <summary>Id of the table, view, or metric being checked, from the parent resource in the URL.</summary>
+        /// <summary>Id of the table, view, metric, or PostHog table being checked. Null once the subject is deleted.</summary>
         public Guid? SubjectUuid { get; private set; }
         /// <summary>Free-form string labels for grouping and filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of keys returned.</summary>
         public int? Count { get; set; }
-        /// <summary>Distinct attribute keys (datapoint and resource attributes merged), ordered by series count descending.</summary>
+        /// <summary>Distinct attribute keys (datapoint and resource attributes merged), ordered by distinct value count descending.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricAttributeKey>? Results { get; set; }

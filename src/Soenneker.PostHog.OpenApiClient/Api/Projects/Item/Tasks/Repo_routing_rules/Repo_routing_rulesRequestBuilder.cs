@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
         {
         }
         /// <summary>
-        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `@PostHog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
+        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `@PostHog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
+        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule"/></returns>
         /// <param name="body">The request body</param>
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `@PostHog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
+        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
             return requestInfo;
         }
         /// <summary>
-        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `@PostHog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
+        /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

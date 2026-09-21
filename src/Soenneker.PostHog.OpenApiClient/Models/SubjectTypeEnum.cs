@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `table` - table* `view` - view* `metric` - metric</summary>
+    /// <summary>* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SubjectTypeEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "metric")]
         #pragma warning disable CS1591
         Metric,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog_table")]
+        #pragma warning disable CS1591
+        PosthogTable,
         #pragma warning restore CS1591
     }
 }

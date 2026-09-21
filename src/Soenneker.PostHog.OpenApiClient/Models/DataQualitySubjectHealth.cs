@@ -27,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Health { get; set; }
 #endif
-        /// <summary>&apos;table&apos;, &apos;view&apos;, or &apos;metric&apos;.</summary>
+        /// <summary>&apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SubjectType { get; set; }
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubjectType { get; set; }
 #endif
-        /// <summary>Id of the table, view, or metric.</summary>
+        /// <summary>Id of the table, view, metric, or PostHog table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SubjectUuid { get; set; }

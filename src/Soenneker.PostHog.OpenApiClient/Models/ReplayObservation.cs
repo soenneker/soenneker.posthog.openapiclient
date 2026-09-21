@@ -46,6 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel Label { get; private set; }
 #endif
+        /// <summary>Thumbnails and clips illustrating this observation, in order. Empty until the media render finishes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia>? Media { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia> Media { get; private set; }
+#endif
         /// <summary>Id of the following sibling observation for the same scanner (prev/next nav), honoring any list filters and ordering passed to retrieve; only set on retrieve, null at the end of the set.</summary>
         public Guid? NextObservationId { get; private set; }
         /// <summary>Id of the preceding sibling observation for the same scanner (prev/next nav), honoring any list filters and ordering passed to retrieve; only set on retrieve, null at the start of the set.</summary>
@@ -168,6 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error_reason", n => { ErrorReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "label", n => { Label = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel.CreateFromDiscriminatorValue); } },
+                { "media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "next_observation_id", n => { NextObservationId = n.GetGuidValue(); } },
                 { "previous_observation_id", n => { PreviousObservationId = n.GetGuidValue(); } },
                 { "recording_subject_email", n => { RecordingSubjectEmail = n.GetStringValue(); } },

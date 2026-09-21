@@ -12,6 +12,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Disab
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enable;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enrich_usage_dashboard;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Remote_config;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Roll_out_to_everyone;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Set_release_condition_rollout;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Status;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Test_evaluation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Unarchive;
@@ -74,6 +76,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Remote_config.Remote_configRequestBuilder Remote_config
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Remote_config.Remote_configRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The roll_out_to_everyone property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Roll_out_to_everyone.Roll_out_to_everyoneRequestBuilder Roll_out_to_everyone
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Roll_out_to_everyone.Roll_out_to_everyoneRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The set_release_condition_rollout property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Set_release_condition_rollout.Set_release_condition_rolloutRequestBuilder Set_release_condition_rollout
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Set_release_condition_rollout.Set_release_condition_rolloutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The status property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Status.StatusRequestBuilder Status

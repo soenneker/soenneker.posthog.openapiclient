@@ -28,6 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
+        /// <summary>The filterTestAccounts property</summary>
+        public bool? FilterTestAccounts { get; set; }
         /// <summary>Bucket granularity; the frontend passes getDefaultInterval. Defaults to day.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
+#endif
+        /// <summary>The properties property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryPropertiesItem>? Properties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryPropertiesItem> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,9 +102,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "categories", n => { Categories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper10>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper10.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "toolName", n => { ToolName = n.GetStringValue(); } },
@@ -110,9 +122,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
+            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper10>("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQueryResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteStringValue("toolName", ToolName);

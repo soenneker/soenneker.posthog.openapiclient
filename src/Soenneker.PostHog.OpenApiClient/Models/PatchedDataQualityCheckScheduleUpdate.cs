@@ -7,16 +7,17 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Which subject&apos;s schedule to change, and what to change about it.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class PatchedDataQualityCheckScheduleUpdate : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether checks run automatically on this schedule.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>How often all enabled checks on the metric run.* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day</summary>
+        /// <summary>How often all enabled checks on the subject run.* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval? Interval { get; set; }
@@ -24,6 +25,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval Interval { get; set; }
 #endif
+        /// <summary>Kind of object: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType? SubjectType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType SubjectType { get; set; }
+#endif
+        /// <summary>Id of the table, view, metric, or PostHog table.</summary>
+        public Guid? SubjectUuid { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdate"/> and sets the default values.
         /// </summary>
@@ -51,6 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval.CreateFromDiscriminatorValue); } },
+                { "subject_type", n => { SubjectType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType.CreateFromDiscriminatorValue); } },
+                { "subject_uuid", n => { SubjectUuid = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -62,6 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval>("interval", Interval);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType>("subject_type", SubjectType);
+            writer.WriteGuidValue("subject_uuid", SubjectUuid);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

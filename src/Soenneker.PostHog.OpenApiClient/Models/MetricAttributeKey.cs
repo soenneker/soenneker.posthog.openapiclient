@@ -22,8 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Number of distinct recent series with this attribute, based on series metadata.</summary>
-        public int? SeriesCount { get; set; }
+        /// <summary>Number of distinct values for this attribute in recent series metadata.</summary>
+        public int? ValueCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricAttributeKey"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "series_count", n => { SeriesCount = n.GetIntValue(); } },
+                { "value_count", n => { ValueCount = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
-            writer.WriteIntValue("series_count", SeriesCount);
+            writer.WriteIntValue("value_count", ValueCount);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

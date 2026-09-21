@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Identifier of the existing external issue to link, as returned by the search-issues endpoint. Required keys depend on the integration kind: github -&gt; {repository, number}; gitlab -&gt; {issue_id}; linear -&gt; {id}; jira -&gt; {key}.</summary>
+        /// <summary>Identifier and optional title of the existing external issue to link, as returned by the search-issues endpoint. Required keys depend on the integration kind: github -&gt; {repository, number}; gitlab -&gt; {issue_id}; linear -&gt; {id}; jira -&gt; {key}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceLinkExternalContextProperty? ExternalContext { get; set; }

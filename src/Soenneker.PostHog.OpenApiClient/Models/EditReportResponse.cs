@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? EvidenceAppended { get; set; }
         /// <summary>Whether this edit actually rewrote the report&apos;s title or summary. False for a note, a reviewer change, or a re-send of the text the report already had.</summary>
         public bool? IsContentRevision { get; set; }
+        /// <summary>How many typed report-to-report links this edit wrote; 0 if none.</summary>
+        public int? LinksAppended { get; set; }
         /// <summary>How many impact metrics the report now shows, or null when untouched/unchanged. 0 means the edit removed every metric.</summary>
         public int? MetricsSet { get; set; }
         /// <summary>Whether the edit included a note. True for a collapsed corroboration too, where the report&apos;s count moves and no work-log entry is written. Read `corroboration_collapsed` to tell the two apart.</summary>
@@ -90,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "corroboration_collapsed", n => { CorroborationCollapsed = n.GetBoolValue(); } },
                 { "evidence_appended", n => { EvidenceAppended = n.GetIntValue(); } },
                 { "is_content_revision", n => { IsContentRevision = n.GetBoolValue(); } },
+                { "links_appended", n => { LinksAppended = n.GetIntValue(); } },
                 { "metrics_set", n => { MetricsSet = n.GetIntValue(); } },
                 { "note_appended", n => { NoteAppended = n.GetBoolValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
@@ -113,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("corroboration_collapsed", CorroborationCollapsed);
             writer.WriteIntValue("evidence_appended", EvidenceAppended);
             writer.WriteBoolValue("is_content_revision", IsContentRevision);
+            writer.WriteIntValue("links_appended", LinksAppended);
             writer.WriteIntValue("metrics_set", MetricsSet);
             writer.WriteBoolValue("note_appended", NoteAppended);
             writer.WriteStringValue("report_id", ReportId);

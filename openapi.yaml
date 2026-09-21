@@ -14651,6 +14651,29 @@ paths:
           description: ''
       x-product:
       - posthog_ai
+  /api/projects/{project_id}/conversations/ai_context_account_properties/:
+    get:
+      operationId: conversations_ai_context_account_properties_list
+      description: Account-target Customer analytics properties that can be included
+        in AI reply context. Capped at the first 500 properties by name.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      security:
+      - PersonalAPIKeyAuth:
+        - account:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIContextAccountProperty'
+          description: ''
+      x-product:
+      - conversations
   /api/projects/{project_id}/conversations/ai_reply_playbook/:
     get:
       operationId: conversations_ai_reply_playbook_retrieve
@@ -17819,6 +17842,17 @@ paths:
         description: A unique integer value identifying this dashboard.
         required: true
       - in: query
+        name: max_result_chars
+        schema:
+          type: integer
+        description: Per-tile character budget for 'optimized' output, truncation
+          marker included. A longer table keeps its header and both ends, and names
+          how many rows were dropped from the middle. Defaults to 2000; pass 0 for
+          the whole table, or 200 or more, since a smaller budget cannot carry the
+          marker. Ignored when output_format is 'json'. Any value above zero is also
+          held down to what the response has left of its 30000 character budget, and
+          tiles past that budget are not run.
+      - in: query
         name: output_format
         schema:
           type: string
@@ -17826,7 +17860,8 @@ paths:
           - json
           - optimized
         description: '''optimized'' (default) returns LLM-friendly formatted text
-          per insight. ''json'' returns the raw query result objects.'
+          per insight, bounded by max_result_chars. ''json'' returns the raw query
+          result objects, unbounded.'
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: refresh
@@ -17839,6 +17874,13 @@ paths:
         description: Cache behavior. 'force_cache' (default) serves from cache even
           if stale. 'blocking' uses cache if fresh, otherwise recalculates. 'force_blocking'
           always recalculates.
+      - in: query
+        name: tile_ids
+        schema:
+          type: string
+        description: Comma-separated dashboard tile IDs to run. Defaults to every
+          insight tile on the dashboard. Use it to read one tile without receiving
+          the others. An ID that is not on this dashboard is rejected.
       - in: query
         name: variables_override
         schema:
@@ -18547,634 +18589,6 @@ paths:
           description: ''
       x-product:
       - data_catalog
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/check_suite_runs/:
-    get:
-      operationId: data_catalog_metrics_check_suite_runs_list
-      description: Read-only reports for this subject's check-suite executions.
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the metric whose suite runs these are.
-        required: true
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedDataQualitySuiteRunList'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/check_suite_runs/{id}/:
-    get:
-      operationId: data_catalog_metrics_check_suite_runs_retrieve
-      description: Read-only reports for this subject's check-suite executions.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality suite run.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the metric whose suite runs these are.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/check_suite_runs/{id}/check_runs/:
-    get:
-      operationId: data_catalog_metrics_check_suite_runs_check_runs_list
-      description: Every check execution in this suite run.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality suite run.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the metric whose suite runs these are.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/:
-    get:
-      operationId: data_catalog_metrics_checks_list
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedDataQualityCheckList'
-          description: ''
-      x-product:
-      - data_quality
-    post:
-      operationId: data_catalog_metrics_checks_create
-      description: Create a check on this table or view, or refine the one already
-        carrying the same fingerprint. Re-creating a semantically identical check
-        returns 200 and the existing row, never a duplicate.
-      parameters:
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-        required: true
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:write
-        - query:read
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/{id}/:
-    get:
-      operationId: data_catalog_metrics_checks_retrieve
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    put:
-      operationId: data_catalog_metrics_checks_update
-      description: Edit this check in place, including what it asserts (check_type,
-        column_name, config). The table or view it audits is fixed, and the check
-        keeps its id, run history, latest status, and latest run time. A definition
-        or name already held by another active check comes back as a field error,
-        with nothing written.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-        required: true
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    patch:
-      operationId: data_catalog_metrics_checks_partial_update
-      description: Edit this check in place, including what it asserts (check_type,
-        column_name, config). The table or view it audits is fixed, and the check
-        keeps its id, run history, latest status, and latest run time. A definition
-        or name already held by another active check comes back as a field error,
-        with nothing written.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    delete:
-      operationId: data_catalog_metrics_checks_destroy
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:write
-        - query:read
-      responses:
-        '204':
-          description: No response body
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/{id}/run/:
-    post:
-      operationId: data_catalog_metrics_checks_run_create
-      description: Run this check now. Returns the suite run to poll for the report.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/{id}/runs/:
-    get:
-      operationId: data_catalog_metrics_checks_runs_list
-      description: Recent run history for this check, newest first.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/check_types/:
-    get:
-      operationId: data_catalog_metrics_checks_check_types_list
-      description: The check types this project can author, with the JSON schema of
-        each type's config.
-      parameters:
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckType'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/health/:
-    get:
-      operationId: data_catalog_metrics_checks_health_retrieve
-      description: Health rollup for this table or view, from the denormalized status
-        of its checks.
-      parameters:
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySubjectHealth'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/output_schema/:
-    get:
-      operationId: data_catalog_metrics_checks_output_schema_retrieve
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityOutputSchema'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/run_all/:
-    post:
-      operationId: data_catalog_metrics_checks_run_all_create
-      description: Run every enabled check on this table or view. Returns the suite
-        run to poll.
-      parameters:
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/schedule/:
-    get:
-      operationId: data_catalog_metrics_checks_schedule_retrieve
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheckSchedule'
-          description: ''
-      x-product:
-      - data_quality
-    patch:
-      operationId: data_catalog_metrics_checks_schedule_partial_update
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: metric_id
-        schema:
-          type: string
-          format: uuid
-          description: The data catalog metric this check evaluates. Exclusive with
-            table and saved_query.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - data_catalog
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
-      security:
-      - PersonalAPIKeyAuth:
-        - data_catalog:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheckSchedule'
-          description: ''
-      x-product:
-      - data_quality
   /api/projects/{project_id}/data_catalog/metrics/{name}/:
     get:
       operationId: data_catalog_metrics_retrieve
@@ -19961,13 +19375,22 @@ paths:
   /api/projects/{project_id}/data_quality_checks/:
     get:
       operationId: data_quality_checks_list
-      description: |-
-        Every check in the project, and the health of every subject that has one.
-
-        The per-subject surfaces answer "what is wrong with this table". This answers "what is wrong
-        across the project", which they cannot: each is nested under one parent. Read-only -- authoring
-        still happens against the subject that owns the check.
+      description: Every check in the project. Narrow it to one subject with subject_type
+        and subject_uuid, or to one assertion with check_type.
       parameters:
+      - in: query
+        name: check_type
+        schema:
+          type: string
+          enum:
+          - accepted_values
+          - custom_sql
+          - freshness
+          - not_null
+          - relationships
+          - row_count
+          - unique
+        description: Only the checks that make this assertion. See /check_types/.
       - name: limit
         required: false
         in: query
@@ -19981,6 +19404,23 @@ paths:
         schema:
           type: integer
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: subject_type
+        schema:
+          type: string
+          enum:
+          - metric
+          - posthog_table
+          - table
+          - view
+        description: 'Kind of object being checked: ''table'', ''view'', ''metric'',
+          or ''posthog_table''.'
+      - in: query
+        name: subject_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Id of the table, view, metric, or PostHog table.
       tags:
       - data_quality_checks
       security:
@@ -19995,13 +19435,289 @@ paths:
           description: ''
       x-product:
       - data_quality
+    post:
+      operationId: data_quality_checks_create
+      description: Create a check on the table, view or metric named by subject_type
+        and subject_uuid, or refine the one already carrying the same fingerprint.
+        Re-creating a semantically identical check returns 200 and the existing row,
+        never a duplicate.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheckCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheckCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheckCreate'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheckCreate'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_checks/{id}/:
+    get:
+      operationId: data_quality_checks_retrieve
+      description: 'Every check in the project: authoring, running, results, health,
+        and schedules.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheck'
+          description: ''
+      x-product:
+      - data_quality
+    put:
+      operationId: data_quality_checks_update
+      description: Edit this check in place, including what it asserts (check_type,
+        column_name, config). The subject it audits is fixed, and the check keeps
+        its id, run history, latest status, and latest run time. A definition or name
+        already held by another active check comes back as a field error, with nothing
+        written.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheck'
+          description: ''
+      x-product:
+      - data_quality
+    patch:
+      operationId: data_quality_checks_partial_update
+      description: Edit this check in place, including what it asserts (check_type,
+        column_name, config). The subject it audits is fixed, and the check keeps
+        its id, run history, latest status, and latest run time. A definition or name
+        already held by another active check comes back as a field error, with nothing
+        written.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheck'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheck'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheck'
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheck'
+          description: ''
+      x-product:
+      - data_quality
+    delete:
+      operationId: data_quality_checks_destroy
+      description: 'Every check in the project: authoring, running, results, health,
+        and schedules.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '204':
+          description: No response body
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_checks/{id}/run/:
+    post:
+      operationId: data_quality_checks_run_create
+      description: Run this check now. Returns the suite run to poll for the report.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualitySuiteRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_checks/{id}/runs/:
+    get:
+      operationId: data_quality_checks_runs_list
+      description: Recent run history for this check, newest first.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualityCheckRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_checks/check_types/:
+    get:
+      operationId: data_quality_checks_check_types_list
+      description: The check types this project can author, with the JSON schema of
+        each type's config. Pass subject_type to narrow it to the types that kind
+        of subject supports.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: subject_type
+        schema:
+          type: string
+          enum:
+          - metric
+          - posthog_table
+          - table
+          - view
+        description: 'Kind of object being checked: ''table'', ''view'', ''metric'',
+          or ''posthog_table''.'
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualityCheckType'
+          description: ''
+      x-product:
+      - data_quality
   /api/projects/{project_id}/data_quality_checks/health/:
     get:
       operationId: data_quality_checks_health_list
-      description: Health rollup for every table and view in the project that has
-        checks.
+      description: Health rollup per subject, for every subject in the project that
+        has checks. Narrow it to one subject with subject_type and subject_uuid.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: subject_type
+        schema:
+          type: string
+          enum:
+          - metric
+          - posthog_table
+          - table
+          - view
+        description: 'Kind of object being checked: ''table'', ''view'', ''metric'',
+          or ''posthog_table''.'
+      - in: query
+        name: subject_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Id of the table, view, metric, or PostHog table.
       tags:
       - data_quality_checks
       security:
@@ -20021,12 +19737,8 @@ paths:
   /api/projects/{project_id}/data_quality_checks/metric_subjects/:
     get:
       operationId: data_quality_checks_metric_subjects_list
-      description: |-
-        Every check in the project, and the health of every subject that has one.
-
-        The per-subject surfaces answer "what is wrong with this table". This answers "what is wrong
-        across the project", which they cannot: each is nested under one parent. Read-only -- authoring
-        still happens against the subject that owns the check.
+      description: 'Every check in the project: authoring, running, results, health,
+        and schedules.'
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -20046,15 +19758,165 @@ paths:
           description: ''
       x-product:
       - data_quality
+  /api/projects/{project_id}/data_quality_checks/output_schema/:
+    get:
+      operationId: data_quality_checks_output_schema_retrieve
+      description: Columns the subject's query returns, for authoring a check against
+        them. Metrics only.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: subject_type
+        schema:
+          type: string
+          enum:
+          - metric
+          - posthog_table
+          - table
+          - view
+        description: 'Kind of object being checked: ''table'', ''view'', ''metric'',
+          or ''posthog_table''.'
+      - in: query
+        name: subject_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Id of the table, view, metric, or PostHog table.
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityOutputSchema'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_checks/schedule/:
+    get:
+      operationId: data_quality_checks_schedule_retrieve
+      description: The schedule every enabled check on this subject runs on.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: subject_type
+        schema:
+          type: string
+          enum:
+          - metric
+          - posthog_table
+          - table
+          - view
+        description: 'Kind of object being checked: ''table'', ''view'', ''metric'',
+          or ''posthog_table''.'
+      - in: query
+        name: subject_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Id of the table, view, metric, or PostHog table.
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheckSchedule'
+          description: ''
+      x-product:
+      - data_quality
+    patch:
+      operationId: data_quality_checks_schedule_partial_update
+      description: Change how often this subject's checks run, or stop running them
+        automatically. Name the subject with subject_type and subject_uuid in the
+        body.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheckSchedule'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_checks/schedules/:
+    get:
+      operationId: data_quality_checks_schedules_list
+      description: The schedule of every subject in the project whose checks run on
+        one, for the checks the caller may read. One request for the overview instead
+        of one per subject.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualitySubjectSchedule'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_checks/subjects/:
+    get:
+      operationId: data_quality_checks_subjects_list
+      description: Everything in this project you can author a check on, with each
+        subject's columns.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_checks
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualitySubject'
+          description: ''
+      x-product:
+      - data_quality
   /api/projects/{project_id}/data_quality_runs/:
     get:
       operationId: data_quality_runs_list
-      description: |-
-        Project-wide check runs: start one over a selection, and read every run the project has had.
-
-        The per-subject surfaces only serve runs scoped to their own subject, so this is where a sweep
-        across several subjects -- a manual project-wide run, a materialization, a source sync -- is
-        readable. Scoped to `warehouse_objects` because it spans tables and views at once.
+      description: Every check-suite run in the project, newest first. Narrow it to
+        one subject with subject_type and subject_uuid.
       parameters:
       - name: limit
         required: false
@@ -20069,6 +19931,23 @@ paths:
         schema:
           type: integer
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: subject_type
+        schema:
+          type: string
+          enum:
+          - metric
+          - posthog_table
+          - table
+          - view
+        description: 'Kind of object being checked: ''table'', ''view'', ''metric'',
+          or ''posthog_table''.'
+      - in: query
+        name: subject_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Id of the table, view, metric, or PostHog table.
       tags:
       - data_quality_runs
       security:
@@ -20085,8 +19964,10 @@ paths:
       - data_quality
     post:
       operationId: data_quality_runs_create
-      description: Run the named checks now, or every enabled check in the project
-        when none are named. Returns the suite run to poll for the report.
+      description: 'Run checks now: the ones named by check_ids, every enabled check
+        on the subject named by subject_type and subject_uuid, or every enabled check
+        in the project when neither is given. Returns the suite run to poll for the
+        report.'
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -20118,11 +19999,10 @@ paths:
     get:
       operationId: data_quality_runs_retrieve
       description: |-
-        Project-wide check runs: start one over a selection, and read every run the project has had.
+        Check-suite executions: start one over a selection, and read every run the project has had.
 
-        The per-subject surfaces only serve runs scoped to their own subject, so this is where a sweep
-        across several subjects -- a manual project-wide run, a materialization, a source sync -- is
-        readable. Scoped to `warehouse_objects` because it spans tables and views at once.
+        A suite run may sweep several subjects at once -- a manual project-wide run, a materialization,
+        a source sync -- so it is reported here rather than under any one of them.
       parameters:
       - in: path
         name: id
@@ -20143,6 +20023,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DataQualitySuiteRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_quality_runs/{id}/check_runs/:
+    get:
+      operationId: data_quality_runs_check_runs_list
+      description: Every check execution in this suite run.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality suite run.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_quality_runs
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualityCheckRun'
           description: ''
       x-product:
       - data_quality
@@ -25391,8 +25300,9 @@ paths:
         schema:
           type: string
           default: ''
-        description: Text to match against existing issue titles / keys in the provider.
-          GitHub matches it as an exact phrase. Leave blank for recent issues.
+        description: Text to match against existing issue titles or identifiers in
+          the provider. GitHub matches titles as an exact phrase. Leave blank for
+          recent issues.
       tags:
       - error_tracking
       security:
@@ -31076,6 +30986,46 @@ paths:
           description: ''
       x-product:
       - experiments
+  /api/projects/{project_id}/experiments/setup_context/:
+    post:
+      operationId: experiments_setup_context_create
+      description: |-
+        Facts about this project that decide how to configure a new experiment.
+
+        Returns the team's experiment defaults, which SDKs call feature flags, traffic on a target
+        surface, the baseline of a candidate metric, how recent experiments were set up, and the
+        most reused shared metrics. Each section has its own status, so a slow or failed read
+        leaves the others valid. POST because the inputs describe a plan rather than a resource;
+        the endpoint only reads.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - experiments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExperimentSetupContextInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExperimentSetupContextInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ExperimentSetupContextInput'
+      security:
+      - PersonalAPIKeyAuth:
+        - experiment:read
+        - experiment_saved_metric:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentSetupContextResponse'
+          description: ''
+      x-product:
+      - experiments
   /api/projects/{project_id}/experiments/stats/:
     get:
       operationId: experiments_stats_retrieve
@@ -33616,15 +33566,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/FlagApprovalConflict'
           description: An approval policy gates this change. A change request was
-            opened; the flag is unchanged.
+            opened, or an open one was returned if the same action was already pending;
+            the flag is unchanged.
         '400':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: The flag is enabled and another active flag depends on it.
+                $ref: '#/components/schemas/FeatureFlagActionBadRequest'
+          description: The flag is deleted. The change matches more than one approval
+            policy. The flag is enabled and another active flag depends on it.
       x-product:
       - feature_flags
   /api/projects/{project_id}/feature_flags/{id}/create_static_cohort_for_flag/:
@@ -33757,15 +33709,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/FlagApprovalConflict'
           description: An approval policy gates this change. A change request was
-            opened; the flag is unchanged.
+            opened, or an open one was returned if the same action was already pending;
+            the flag is unchanged.
         '400':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Another active flag depends on this one.
+                $ref: '#/components/schemas/FeatureFlagActionBadRequest'
+          description: The flag is deleted. The change matches more than one approval
+            policy. Another active flag depends on this one.
       x-product:
       - feature_flags
   /api/projects/{project_id}/feature_flags/{id}/enable/:
@@ -33802,15 +33756,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/FlagApprovalConflict'
           description: An approval policy gates this change. A change request was
-            opened; the flag is unchanged.
+            opened, or an open one was returned if the same action was already pending;
+            the flag is unchanged.
         '400':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: The flag is archived, one of the flags it depends on is disabled,
+                $ref: '#/components/schemas/FeatureFlagActionBadRequest'
+          description: The flag is deleted. The change matches more than one approval
+            policy. The flag is archived, one of the flags it depends on is disabled,
             or a flag it depends on uses an unsupported configuration format.
       x-product:
       - feature_flags
@@ -33869,6 +33825,152 @@ paths:
       responses:
         '200':
           description: No response body
+      x-product:
+      - feature_flags
+  /api/projects/{project_id}/feature_flags/{id}/roll_out_to_everyone/:
+    post:
+      operationId: feature_flags_roll_out_to_everyone_create
+      description: |-
+        Serve a feature flag to every user.
+
+        Adds a release condition with no property filters at 100% and keeps the existing
+        conditions below it. Payloads, holdout and every other field are left as they are. On a
+        boolean flag, removing the new condition restores the previous targeting. On a
+        multivariate flag the variant distribution is rewritten as well, so removing the
+        condition restores the audience but not the old split. A flag that already leads with
+        such a condition gains no second one.
+
+        This changes targeting only. A disabled flag still serves nobody, and a holdout is
+        evaluated before release conditions, so users in one keep getting the holdout variant
+        instead of the rollout. A flag gated on early access enrollment is refused, because that
+        gate is evaluated before release conditions too and no targeting change gets past it.
+
+        A multivariate flag needs `variant_key`, and every other flag rejects it. A release
+        condition decides who the flag serves, not which variant they get, so rolling a
+        multivariate flag out to everyone also gives the named variant 100% of the variant
+        distribution and every other variant 0%. To serve everyone and keep the current split
+        between variants, update the flag instead.
+
+        Send the `version` your last read returned. A change to the flag after that version is
+        refused with 409. Read the flag again and decide the rollout against its current
+        definition.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this feature flag.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_flags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureFlagRollOutToEveryoneRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureFlagRollOutToEveryoneRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureFlagRollOutToEveryoneRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - feature_flag:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlag'
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlagActionConflict'
+          description: The flag changed after the version you sent. Nothing was written.
+            Read the flag again and decide the change against its current definition.
+            An approval policy gates this change. A change request was opened, or
+            an open one was returned if the same action was already pending; the flag
+            is unchanged.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlagActionBadRequest'
+          description: The flag is deleted. The change matches more than one approval
+            policy. The flag is gated on early access enrollment, a multivariate flag
+            was sent no variant, or the variant is not one this flag defines.
+      x-product:
+      - feature_flags
+  /api/projects/{project_id}/feature_flags/{id}/set_release_condition_rollout/:
+    post:
+      operationId: feature_flags_set_release_condition_rollout_create
+      description: |-
+        Set what percentage of one release condition's audience a feature flag is served to.
+
+        Changes `rollout_percentage` on the release condition at `condition_index` and nothing
+        else. The condition's property filters, every other condition, the variants, payloads,
+        holdout and every remaining field are left as they are.
+
+        Send the `version` your last read returned. A change to the flag after that version is
+        refused with 409, because a condition index only names the condition you read. Read the
+        flag again and decide the percentage against its current definition.
+
+        On a multivariate flag this sets how many of the matching users get a variant at all. It
+        does not change how the variants are split between them.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this feature flag.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_flags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureFlagSetReleaseConditionRolloutRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureFlagSetReleaseConditionRolloutRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureFlagSetReleaseConditionRolloutRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - feature_flag:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlag'
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlagActionConflict'
+          description: The flag changed after the version you sent. Nothing was written.
+            Read the flag again and decide the change against its current definition.
+            An approval policy gates this change. A change request was opened, or
+            an open one was returned if the same action was already pending; the flag
+            is unchanged.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlagActionBadRequest'
+          description: The flag is deleted. The change matches more than one approval
+            policy. It has no release condition at that index.
       x-product:
       - feature_flags
   /api/projects/{project_id}/feature_flags/{id}/status/:
@@ -34000,6 +34102,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/FeatureFlag'
           description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlagActionBadRequest'
+          description: The flag is deleted.
       x-product:
       - feature_flags
   /api/projects/{project_id}/feature_flags/{id}/versions/{version_number}/:
@@ -60939,8 +61047,8 @@ paths:
         log and cannot be deleted. Neither can the types this API cannot write, which
         the pipeline owns: `check_result`, `code_review`, `implementation_decision`,
         `implementation_dispatch`, `implementation_handover`, `implementation_replacement`,
-        `pull_request`, `summary_change`, `task_run`, `title_change`, `video_segment`,
-        `work_claim`, `work_release`.'
+        `pull_request`, `report_link`, `summary_change`, `task_run`, `title_change`,
+        `video_segment`, `work_claim`, `work_release`.'
       summary: Delete an artefact
       parameters:
       - in: path
@@ -62265,11 +62373,10 @@ paths:
       operationId: signals_scout_runs_emissions
       description: Return the findings a `SignalScoutRun` emitted to the inbox, newest
         first — one row per emit with its `description` (the finding text as surfaced),
-        `weight`, `confidence`, `severity`, and the deterministic `source_id` that
-        joins back to the underlying signal. Lets a team and its agents see *what*
-        a run surfaced without parsing `emitted_finding_ids` or scanning the signal
-        store. Strictly team-scoped — a run UUID belonging to another team returns
-        404.
+        `severity`, and the deterministic `source_id` that joins back to the underlying
+        signal. Lets a team and its agents see *what* a run surfaced without parsing
+        `emitted_finding_ids` or scanning the signal store. Strictly team-scoped —
+        a run UUID belonging to another team returns 404.
       summary: List a run's emitted findings
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -62444,8 +62551,7 @@ paths:
                 $ref: '#/components/schemas/EmitFindingResponse'
           description: Finding emitted, or skipped by a preflight gate.
         '400':
-          description: Invalid emit shape (description, weight, confidence, evidence
-            cap).
+          description: Invalid emit shape (description, evidence cap).
         '404':
           description: Run not found for this project.
       x-product:
@@ -70324,7 +70430,7 @@ paths:
       description: |-
         Team routing rules that steer agent repo selection (`RepoRoutingRule`).
 
-        The same rows the Slack `@PostHog rules` commands manage; the repo selection agent
+        The same rows the Slack `/posthog rules` commands manage; the repo selection agent
         reads them ordered by priority when picking a repository for a task. Rules whose
         repository is not connected to the project are ignored at selection time, so a
         stale rule is inert rather than harmful — which is why writes here don't check the
@@ -70354,7 +70460,7 @@ paths:
       description: |-
         Team routing rules that steer agent repo selection (`RepoRoutingRule`).
 
-        The same rows the Slack `@PostHog rules` commands manage; the repo selection agent
+        The same rows the Slack `/posthog rules` commands manage; the repo selection agent
         reads them ordered by priority when picking a repository for a task. Rules whose
         repository is not connected to the project are ignored at selection time, so a
         stale rule is inert rather than harmful — which is why writes here don't check the
@@ -70395,7 +70501,7 @@ paths:
       description: |-
         Team routing rules that steer agent repo selection (`RepoRoutingRule`).
 
-        The same rows the Slack `@PostHog rules` commands manage; the repo selection agent
+        The same rows the Slack `/posthog rules` commands manage; the repo selection agent
         reads them ordered by priority when picking a repository for a task. Rules whose
         repository is not connected to the project are ignored at selection time, so a
         stale rule is inert rather than harmful — which is why writes here don't check the
@@ -70430,7 +70536,7 @@ paths:
       description: |-
         Team routing rules that steer agent repo selection (`RepoRoutingRule`).
 
-        The same rows the Slack `@PostHog rules` commands manage; the repo selection agent
+        The same rows the Slack `/posthog rules` commands manage; the repo selection agent
         reads them ordered by priority when picking a repository for a task. Rules whose
         repository is not connected to the project are ignored at selection time, so a
         stale rule is inert rather than harmful — which is why writes here don't check the
@@ -70477,7 +70583,7 @@ paths:
       description: |-
         Team routing rules that steer agent repo selection (`RepoRoutingRule`).
 
-        The same rows the Slack `@PostHog rules` commands manage; the repo selection agent
+        The same rows the Slack `/posthog rules` commands manage; the repo selection agent
         reads them ordered by priority when picking a repository for a task. Rules whose
         repository is not connected to the project are ignored at selection time, so a
         stale rule is inert rather than harmful — which is why writes here don't check the
@@ -70523,7 +70629,7 @@ paths:
       description: |-
         Team routing rules that steer agent repo selection (`RepoRoutingRule`).
 
-        The same rows the Slack `@PostHog rules` commands manage; the repo selection agent
+        The same rows the Slack `/posthog rules` commands manage; the repo selection agent
         reads them ordered by priority when picking a repository for a task. Rules whose
         repository is not connected to the project are ignored at selection time, so a
         stale rule is inert rather than harmful — which is why writes here don't check the
@@ -73410,6 +73516,38 @@ paths:
           description: ''
       x-product:
       - replay_vision
+  /api/projects/{project_id}/vision/observations/{id}/thumbnail/:
+    get:
+      operationId: vision_observations_thumbnail_retrieve
+      description: Redirect to the frame that illustrates this observation, so a caller
+        with only the observation id can show it.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay observation.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '302':
+          description: Redirect to the image.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayVisionError'
+          description: The observation has no thumbnail, or its render has not landed
+            yet.
+      x-product:
+      - replay_vision
   /api/projects/{project_id}/vision/observations/{id}/viewed/:
     post:
       operationId: vision_observations_viewed_create
@@ -74942,6 +75080,44 @@ paths:
           description: ''
       x-product:
       - replay_vision
+  /api/projects/{project_id}/vision/scanners/{scanner_id}/observations/{id}/thumbnail/:
+    get:
+      operationId: vision_scanners_observations_thumbnail_retrieve
+      description: Redirect to the frame that illustrates this observation, so a caller
+        with only the observation id can show it.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay observation.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: scanner_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '302':
+          description: Redirect to the image.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayVisionError'
+          description: The observation has no thumbnail, or its render has not landed
+            yet.
+      x-product:
+      - replay_vision
   /api/projects/{project_id}/vision/scanners/{scanner_id}/observations/{id}/viewed/:
     post:
       operationId: vision_scanners_observations_viewed_create
@@ -76357,8 +76533,8 @@ paths:
 
         Records the per-snapshot "Accept change" decision. Does not commit the baseline
         or change the GitHub gate — call finalize to ship the run. Works on a quarantined
-        snapshot too: a quarantined NEW snapshot approved here is committed by finalize,
-        which gives a quarantined story a baseline entry without lifting the quarantine.
+        snapshot too: a quarantined snapshot approved here is committed by finalize, which
+        updates a quarantined story's baseline entry without lifting the quarantine.
       parameters:
       - in: path
         name: id
@@ -76427,7 +76603,7 @@ paths:
         Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline)
         and only succeeds once every changed/new snapshot is resolved. With approve_all=true,
         any still-pending changed/new snapshot is approved first; quarantined snapshots are
-        skipped, but a quarantined NEW snapshot approved by identifier is still committed.
+        skipped, but a quarantined snapshot approved by identifier is still committed.
         With commit_to_github=false the server returns the signed baseline YAML instead of
         committing it.
       parameters:
@@ -77717,523 +77893,6 @@ paths:
           description: ''
       x-product:
       - data_warehouse
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/check_suite_runs/:
-    get:
-      operationId: warehouse_saved_queries_check_suite_runs_list
-      description: Read-only reports for this subject's check-suite executions.
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the saved query whose suite runs these are.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedDataQualitySuiteRunList'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/check_suite_runs/{id}/:
-    get:
-      operationId: warehouse_saved_queries_check_suite_runs_retrieve
-      description: Read-only reports for this subject's check-suite executions.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality suite run.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the saved query whose suite runs these are.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/check_suite_runs/{id}/check_runs/:
-    get:
-      operationId: warehouse_saved_queries_check_suite_runs_check_runs_list
-      description: Every check execution in this suite run.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality suite run.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the saved query whose suite runs these are.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/checks/:
-    get:
-      operationId: warehouse_saved_queries_checks_list
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedDataQualityCheckList'
-          description: ''
-      x-product:
-      - data_quality
-    post:
-      operationId: warehouse_saved_queries_checks_create
-      description: Create a check on this table or view, or refine the one already
-        carrying the same fingerprint. Re-creating a semantically identical check
-        returns 200 and the existing row, never a duplicate.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-        required: true
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:write
-        - query:read
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/checks/{id}/:
-    get:
-      operationId: warehouse_saved_queries_checks_retrieve
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    put:
-      operationId: warehouse_saved_queries_checks_update
-      description: Edit this check in place, including what it asserts (check_type,
-        column_name, config). The table or view it audits is fixed, and the check
-        keeps its id, run history, latest status, and latest run time. A definition
-        or name already held by another active check comes back as a field error,
-        with nothing written.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-        required: true
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    patch:
-      operationId: warehouse_saved_queries_checks_partial_update
-      description: Edit this check in place, including what it asserts (check_type,
-        column_name, config). The table or view it audits is fixed, and the check
-        keeps its id, run history, latest status, and latest run time. A definition
-        or name already held by another active check comes back as a field error,
-        with nothing written.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    delete:
-      operationId: warehouse_saved_queries_checks_destroy
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:write
-        - query:read
-      responses:
-        '204':
-          description: No response body
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/checks/{id}/run/:
-    post:
-      operationId: warehouse_saved_queries_checks_run_create
-      description: Run this check now. Returns the suite run to poll for the report.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/checks/{id}/runs/:
-    get:
-      operationId: warehouse_saved_queries_checks_runs_list
-      description: Recent run history for this check, newest first.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/checks/check_types/:
-    get:
-      operationId: warehouse_saved_queries_checks_check_types_list
-      description: The check types this project can author, with the JSON schema of
-        each type's config.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckType'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/checks/health/:
-    get:
-      operationId: warehouse_saved_queries_checks_health_retrieve
-      description: Health rollup for this table or view, from the denormalized status
-        of its checks.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySubjectHealth'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_saved_queries/{saved_query_id}/checks/run_all/:
-    post:
-      operationId: warehouse_saved_queries_checks_run_all_create
-      description: Run every enabled check on this table or view. Returns the suite
-        run to poll.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: saved_query_id
-        schema:
-          type: string
-          format: uuid
-          description: The view or matview this check audits. Exclusive with table.
-        required: true
-      tags:
-      - warehouse_saved_queries
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_view:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
   /api/projects/{project_id}/warehouse_saved_queries/check_incremental/:
     post:
       operationId: warehouse_saved_queries_check_incremental_create
@@ -78691,534 +78350,6 @@ paths:
           description: No response body
       x-product:
       - data_warehouse
-  /api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/:
-    get:
-      operationId: warehouse_tables_check_suite_runs_list
-      description: Read-only reports for this subject's check-suite executions.
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the warehouse table whose suite runs these are.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedDataQualitySuiteRunList'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/{id}/:
-    get:
-      operationId: warehouse_tables_check_suite_runs_retrieve
-      description: Read-only reports for this subject's check-suite executions.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality suite run.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the warehouse table whose suite runs these are.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/{id}/check_runs/:
-    get:
-      operationId: warehouse_tables_check_suite_runs_check_runs_list
-      description: Every check execution in this suite run.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality suite run.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-        description: Id of the warehouse table whose suite runs these are.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/checks/:
-    get:
-      operationId: warehouse_tables_checks_list
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedDataQualityCheckList'
-          description: ''
-      x-product:
-      - data_quality
-    post:
-      operationId: warehouse_tables_checks_create
-      description: Create a check on this table or view, or refine the one already
-        carrying the same fingerprint. Re-creating a semantically identical check
-        returns 200 and the existing row, never a duplicate.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-        required: true
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:write
-        - query:read
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/:
-    get:
-      operationId: warehouse_tables_checks_retrieve
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    put:
-      operationId: warehouse_tables_checks_update
-      description: Edit this check in place, including what it asserts (check_type,
-        column_name, config). The table or view it audits is fixed, and the check
-        keeps its id, run history, latest status, and latest run time. A definition
-        or name already held by another active check comes back as a field error,
-        with nothing written.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/DataQualityCheck'
-        required: true
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    patch:
-      operationId: warehouse_tables_checks_partial_update
-      description: Edit this check in place, including what it asserts (check_type,
-        column_name, config). The table or view it audits is fixed, and the check
-        keeps its id, run history, latest status, and latest run time. A definition
-        or name already held by another active check comes back as a field error,
-        with nothing written.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedDataQualityCheck'
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualityCheck'
-          description: ''
-      x-product:
-      - data_quality
-    delete:
-      operationId: warehouse_tables_checks_destroy
-      description: CRUD for one subject's checks, plus the actions that run them and
-        report on them.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:write
-        - query:read
-      responses:
-        '204':
-          description: No response body
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/run/:
-    post:
-      operationId: warehouse_tables_checks_run_create
-      description: Run this check now. Returns the suite run to poll for the report.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/runs/:
-    get:
-      operationId: warehouse_tables_checks_runs_list
-      description: Recent run history for this check, newest first.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this data quality check.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckRun'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/checks/check_types/:
-    get:
-      operationId: warehouse_tables_checks_check_types_list
-      description: The check types this project can author, with the JSON schema of
-        each type's config.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataQualityCheckType'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/checks/health/:
-    get:
-      operationId: warehouse_tables_checks_health_retrieve
-      description: Health rollup for this table or view, from the denormalized status
-        of its checks.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:read
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySubjectHealth'
-          description: ''
-      x-product:
-      - data_quality
-  /api/projects/{project_id}/warehouse_tables/{table_id}/checks/run_all/:
-    post:
-      operationId: warehouse_tables_checks_run_all_create
-      description: Run every enabled check on this table or view. Returns the suite
-        run to poll.
-      parameters:
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: table_id
-        schema:
-          type: string
-          format: uuid
-          description: The warehouse source table this check audits. Exclusive with
-            saved_query.
-        required: true
-      tags:
-      - warehouse_tables
-      security:
-      - PersonalAPIKeyAuth:
-        - warehouse_table:write
-        - query:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataQualitySuiteRun'
-          description: ''
-      x-product:
-      - data_quality
   /api/projects/{project_id}/warehouse_tables/create_from_upload/:
     post:
       operationId: warehouse_tables_create_from_upload_create
@@ -83251,6 +82382,19 @@ paths:
       - core
 components:
   schemas:
+    AIContextAccountProperty:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Customer analytics account property definition id.
+        name:
+          type: string
+          description: Display name of the account property.
+      required:
+      - id
+      - name
     AIEventType:
       enum:
       - $ai_generation
@@ -106773,8 +105917,10 @@ components:
         * `Skipped` - Skipped
     DataQualityCheck:
       type: object
-      description: The subject is implied by the URL (the parent saved query or table),
-        never part of the body.
+      description: |-
+        A check as it reads back, and everything an edit may change about it.
+
+        The subject is not one of those: it is writable only on ``DataQualityCheckCreate``.
       properties:
         id:
           type: string
@@ -106797,19 +105943,198 @@ components:
           - $ref: '#/components/schemas/SubjectTypeEnum'
           readOnly: true
           description: |-
-            Kind of catalog object being checked: 'table', 'view', or 'metric'.
+            Kind of object being checked: 'table', 'view', 'metric', or 'posthog_table'.
 
             * `table` - table
             * `view` - view
             * `metric` - metric
+            * `posthog_table` - posthog_table
         subject_uuid:
           type:
           - string
           - 'null'
           format: uuid
           readOnly: true
-          description: Id of the table, view, or metric being checked, from the parent
-            resource in the URL.
+          description: Id of the table, view, metric, or PostHog table being checked.
+            Null once the subject is deleted.
+        subject_name:
+          type: string
+          readOnly: true
+          description: Queryable name of the subject, refreshed on every run.
+        subject_status:
+          type: string
+          readOnly: true
+          description: '''orphaned'' once the subject stops resolving. Orphaned checks
+            are skipped, not deleted.'
+        column_name:
+          type: string
+          description: Column the check applies to. Omit for table-scoped types like
+            row_count.
+          maxLength: 400
+        check_type:
+          allOf:
+          - $ref: '#/components/schemas/CheckTypeEnum'
+          description: |-
+            Which assertion to make. Determines the shape of config; see /check_types/.
+
+            * `not_null` - not_null
+            * `unique` - unique
+            * `accepted_values` - accepted_values
+            * `relationships` - relationships
+            * `row_count` - row_count
+            * `freshness` - freshness
+            * `custom_sql` - custom_sql
+        config:
+          type: object
+          additionalProperties: true
+          description: Type-specific configuration, validated against the check type's
+            JSON schema.
+        severity:
+          allOf:
+          - $ref: '#/components/schemas/DataQualityCheckSeverityEnum'
+          description: |-
+            'error' failures mark the subject failing and notify; 'warn' failures only surface.
+
+            * `error` - error
+            * `warn` - warn
+        enabled:
+          type: boolean
+          description: Disabled checks are never run by any trigger.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Free-form string labels for grouping and filtering.
+        owner:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Email of the human accountable for this check, or null.
+        last_run_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the check last executed.
+        last_status:
+          type: string
+          readOnly: true
+          description: 'Outcome of the newest run: passed, failed, errored, skipped,
+            or empty if never run.'
+        last_succeeded_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the check last passed. Read failing_since for how long
+            a failing check has been failing. Null means it has not passed within
+            the run retention window.
+        failing_since:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the current streak of failing runs started, so a failing
+            check can say how long it has been failing. Null when the check is not
+            failing.
+        fingerprint:
+          type: string
+          readOnly: true
+          description: sha256 of the subject, type, column, and config. Re-creating
+            the same check upserts.
+        created_source:
+          allOf:
+          - $ref: '#/components/schemas/CreatedSourceEnum'
+          description: |-
+            Whether a human ('user') or an agent ('ai_generated') authored this check.
+
+            * `user` - user
+            * `ai_generated` - ai_generated
+        ai_model:
+          type: string
+          description: Model that generated the check, if AI-authored.
+          maxLength: 128
+        confidence:
+          type:
+          - number
+          - 'null'
+          format: double
+          maximum: 1.0
+          minimum: 0.0
+          description: AI author's confidence in the check, 0-1.
+        reasoning:
+          type: string
+          description: AI author's reasoning, surfaced as review context.
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+          description: User who first created this check.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - check_type
+      - created_at
+      - created_by
+      - failing_since
+      - fingerprint
+      - id
+      - last_run_at
+      - last_status
+      - last_succeeded_at
+      - owner
+      - subject_name
+      - subject_status
+      - subject_type
+      - subject_uuid
+      - updated_at
+    DataQualityCheckCreate:
+      type: object
+      description: The create body, where the subject is named for the only time in
+        a check's life.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          description: Optional identifier-safe handle, unique per project. Omit to
+            address the check by id.
+          oneOf:
+          - type: string
+            pattern: ^[A-Za-z][A-Za-z0-9_]*$
+            maxLength: 128
+          - type: string
+            maxLength: 0
+        description:
+          type: string
+          description: Why this check exists and what a failure means.
+        subject_type:
+          allOf:
+          - $ref: '#/components/schemas/SubjectTypeEnum'
+          description: |-
+            Kind of object to check: 'table', 'view', 'metric', or 'posthog_table'.
+
+            * `table` - table
+            * `view` - view
+            * `metric` - metric
+            * `posthog_table` - posthog_table
+        subject_uuid:
+          type: string
+          format: uuid
+          description: Id of the table, view, metric, or PostHog table to check.
         subject_name:
           type: string
           readOnly: true
@@ -107261,19 +106586,20 @@ components:
           - $ref: '#/components/schemas/SubjectTypeEnum'
           readOnly: true
           description: |-
-            Kind of catalog object being checked: 'table', 'view', or 'metric'.
+            Kind of object being checked: 'table', 'view', 'metric', or 'posthog_table'.
 
             * `table` - table
             * `view` - view
             * `metric` - metric
+            * `posthog_table` - posthog_table
         subject_uuid:
           type:
           - string
           - 'null'
           format: uuid
           readOnly: true
-          description: Id of the table, view, or metric being checked, from the parent
-            resource in the URL.
+          description: Id of the table, view, metric, or PostHog table being checked.
+            Null once the subject is deleted.
         subject_name:
           type: string
           readOnly: true
@@ -107407,8 +106733,8 @@ components:
           - 'null'
           format: uuid
           readOnly: true
-          description: Data modeling node of the view this check audits, or null when
-            it is on no DAG or the subject is a table.
+          description: Data modeling node of the view or PostHog table this check
+            audits, or null when it is on no DAG or the subject is a warehouse table.
         subject_source_id:
           type:
           - string
@@ -107463,6 +106789,21 @@ components:
             format: uuid
           description: Ids of the checks to run. Omit to run every enabled check in
             the project.
+        subject_type:
+          allOf:
+          - $ref: '#/components/schemas/SubjectTypeEnum'
+          description: |-
+            Narrow the run to one subject. Pass subject_uuid with it. Ignored when check_ids is given.
+
+            * `table` - table
+            * `view` - view
+            * `metric` - metric
+            * `posthog_table` - posthog_table
+        subject_uuid:
+          type: string
+          format: uuid
+          description: Id of the subject to run every enabled check on. Pass subject_type
+            with it.
     DataQualityScheduleIntervalEnum:
       enum:
       - 1hour
@@ -107477,6 +106818,52 @@ components:
         * `12hour` - 12hour
         * `24hour` - 24hour
         * `7day` - 7day
+    DataQualitySubject:
+      type: object
+      description: One thing a check can be authored on, whatever kind it is.
+      properties:
+        subject_type:
+          allOf:
+          - $ref: '#/components/schemas/SubjectTypeEnum'
+          description: |-
+            Kind of object: 'table', 'view', 'metric', or 'posthog_table'. Pass it back as subject_type when creating a check.
+
+            * `table` - table
+            * `view` - view
+            * `metric` - metric
+            * `posthog_table` - posthog_table
+        id:
+          type: string
+          description: Id of the subject. Pass it back as subject_uuid when creating
+            a check.
+        name:
+          type: string
+          description: Queryable name of the subject.
+        display_name:
+          type: string
+          description: Label shown in the data catalog. Blank for tables and views.
+        time_column:
+          type: string
+          description: Column a lookback window bounds, or blank for a subject that
+            has none.
+        columns:
+          type: object
+          additionalProperties:
+            type: string
+          description: Column name to ClickHouse type. Empty for a metric, and for
+            a view that has not run yet.
+        editable:
+          type: boolean
+          description: Whether the caller may author a check on this subject. A subject
+            that is only readable can still be the target of a relationships check.
+      required:
+      - columns
+      - display_name
+      - editable
+      - id
+      - name
+      - subject_type
+      - time_column
     DataQualitySubjectHealth:
       type: object
       description: Per-subject rollup, the same rule the information_schema.data_quality_health
@@ -107484,10 +106871,10 @@ components:
       properties:
         subject_type:
           type: string
-          description: '''table'', ''view'', or ''metric''.'
+          description: '''table'', ''view'', ''metric'', or ''posthog_table''.'
         subject_uuid:
           type: string
-          description: Id of the table, view, or metric.
+          description: Id of the table, view, metric, or PostHog table.
         health:
           type: string
           description: failing (an error-severity check failed), erroring (a check
@@ -107503,6 +106890,77 @@ components:
       - checks_failing
       - checks_total
       - health
+      - subject_type
+      - subject_uuid
+    DataQualitySubjectSchedule:
+      type: object
+      description: One subject's schedule, in the project-wide listing.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Schedule identifier.
+        interval:
+          allOf:
+          - $ref: '#/components/schemas/DataQualityScheduleIntervalEnum'
+          readOnly: true
+          description: |-
+            How often the checks run.
+
+            * `1hour` - 1hour
+            * `6hour` - 6hour
+            * `12hour` - 12hour
+            * `24hour` - 24hour
+            * `7day` - 7day
+        enabled:
+          type: boolean
+          readOnly: true
+          description: Whether the schedule runs automatically.
+        next_run_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Next scheduled execution time, if enabled.
+        last_run_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Most recent visible scheduled suite execution time.
+        last_suite_run:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: Most recent visible scheduled suite.
+        subject_type:
+          allOf:
+          - $ref: '#/components/schemas/SubjectTypeEnum'
+          readOnly: true
+          description: |-
+            'metric' or 'posthog_table'.
+
+            * `table` - table
+            * `view` - view
+            * `metric` - metric
+            * `posthog_table` - posthog_table
+        subject_uuid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Id of the metric or PostHog table.
+      required:
+      - enabled
+      - id
+      - interval
+      - last_run_at
+      - last_suite_run
+      - next_run_at
       - subject_type
       - subject_uuid
     DataQualitySuiteRun:
@@ -107525,9 +106983,9 @@ components:
           - string
           - 'null'
           readOnly: true
-          description: '''table'', ''view'', or ''metric'' when the run targets exactly
-            one subject, including a run of a single check on that subject; null for
-            a run spanning several subjects.'
+          description: '''table'', ''view'', ''metric'', or ''posthog_table'' when
+            the run targets exactly one subject, including a run of a single check
+            on that subject; null for a run spanning several subjects.'
         subject_uuid:
           type:
           - string
@@ -110954,6 +110412,10 @@ components:
             * `HeyReach` - HeyReach
             * `MoEngage` - MoEngage
             * `Monaco` - Monaco
+            * `Oneleet` - Oneleet
+            * `Expo` - Expo
+            * `PostNord` - PostNord
+            * `Commslayer` - Commslayer
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -114218,6 +113680,10 @@ components:
             * `HeyReach` - HeyReach
             * `MoEngage` - MoEngage
             * `Monaco` - Monaco
+            * `Oneleet` - Oneleet
+            * `Expo` - Expo
+            * `PostNord` - PostNord
+            * `Commslayer` - Commslayer
         label:
           type: string
           readOnly: true
@@ -115514,6 +114980,19 @@ components:
             to take them down, which is what you want once a rewrite has left them
             pointing at the old report.
           maxItems: 3
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportLinkWrite'
+          description: 'Typed, directed links from this report to others, recording
+            how the work relates. Use `depends_on` when you split one finding into
+            a stack and the second report''s fix cannot land until the first one''s
+            does, so the order is recorded rather than left to a reader of the diffs.
+            Additive: links join what the report already has rather than replacing
+            them, and only this report gets a row, so link from the side the sentence
+            starts at. Links of the same kind must stay acyclic and every report must
+            be in this project.'
+          maxItems: 10
         supersedes_implementation:
           type: boolean
           description: 'Set this only when your rewrite changes what the fix should
@@ -115549,6 +115028,10 @@ components:
           type: integer
           description: How many observations this edit added to the report's evidence
             rail; 0 if none.
+        links_appended:
+          type: integer
+          description: How many typed report-to-report links this edit wrote; 0 if
+            none.
         reviewers_set:
           type: boolean
           description: Whether the report's suggested reviewers were replaced.
@@ -115609,6 +115092,7 @@ components:
       - corroboration_collapsed
       - evidence_appended
       - is_content_revision
+      - links_appended
       - metrics_set
       - note_appended
       - report_id
@@ -116187,12 +115671,14 @@ components:
           description: Canonical evidence-bundle prose. Becomes the signal's `description`.
           maxLength: 50000
         confidence:
-          type: number
+          type:
+          - number
+          - 'null'
           format: double
           maximum: 1.0
           minimum: 0.0
-          description: Agent's confidence the finding is real in [0, 1]. Persisted
-            in `extra`.
+          description: Deprecated and ignored. Nothing reads it; omit it. Still range-checked
+            when supplied.
         evidence:
           type: array
           items:
@@ -116251,7 +115737,6 @@ components:
             signal.
           maxLength: 100
       required:
-      - confidence
       - description
       - evidence
     EmitFindingResponse:
@@ -118956,6 +118441,9 @@ components:
     ErrorTrackingExternalReference:
       additionalProperties: false
       properties:
+        external_id:
+          title: External Id
+          type: string
         external_url:
           title: External Url
           type: string
@@ -118964,10 +118452,15 @@ components:
           type: string
         integration:
           $ref: '#/components/schemas/ErrorTrackingExternalReferenceIntegration'
+        title:
+          title: Title
+          type: string
       required:
+      - external_id
       - external_url
       - id
       - integration
+      - title
       title: ErrorTrackingExternalReference
       type: object
     ErrorTrackingExternalReferenceCreate:
@@ -118989,6 +118482,14 @@ components:
           type: string
           readOnly: true
           description: URL of the linked external issue in the provider's system.
+        external_id:
+          type: string
+          readOnly: true
+          description: Provider-native identifier of the linked issue.
+        title:
+          type: string
+          readOnly: true
+          description: Title of the linked issue.
         integration_id:
           type: integer
           writeOnly: true
@@ -119014,11 +118515,13 @@ components:
           description: ID of the error tracking issue to link the reference to.
       required:
       - config
+      - external_id
       - external_url
       - id
       - integration
       - integration_id
       - issue
+      - title
     ErrorTrackingExternalReferenceIntegration:
       additionalProperties: false
       properties:
@@ -119073,10 +118576,10 @@ components:
           type: object
           additionalProperties: true
           writeOnly: true
-          description: 'Identifier of the existing external issue to link, as returned
-            by the search-issues endpoint. Required keys depend on the integration
-            kind: github -> {repository, number}; gitlab -> {issue_id}; linear ->
-            {id}; jira -> {key}.'
+          description: 'Identifier and optional title of the existing external issue
+            to link, as returned by the search-issues endpoint. Required keys depend
+            on the integration kind: github -> {repository, number}; gitlab -> {issue_id};
+            linear -> {id}; jira -> {key}.'
       required:
       - external_context
       - integration_id
@@ -119099,10 +118602,20 @@ components:
           type: string
           readOnly: true
           description: URL of the linked external issue in the provider's system.
+        external_id:
+          type: string
+          readOnly: true
+          description: Provider-native identifier of the linked issue.
+        title:
+          type: string
+          readOnly: true
+          description: Title of the linked issue.
       required:
+      - external_id
       - external_url
       - id
       - integration
+      - title
     ErrorTrackingFingerprint:
       type: object
       properties:
@@ -119583,7 +119096,6 @@ components:
           oneOf:
           - type: integer
           - type: string
-          - type: 'null'
           - type: 'null'
           readOnly: true
         type:
@@ -128546,6 +128058,918 @@ components:
       - source_role
       - source_total
       - timestamps
+    ExperimentSetupCandidateMetric:
+      type: object
+      properties:
+        window_days:
+          type: integer
+          description: Days of events read, ending now.
+        source_event:
+          type: string
+          description: The metric event that was counted.
+        target_event:
+          type:
+          - string
+          - 'null'
+          description: The target event the baseline starts from, or null when none
+            was passed.
+        computed_at:
+          type: string
+          format: date-time
+          description: When the numbers were computed. They are cached for an hour.
+        test_accounts_filtered:
+          type: boolean
+          description: Whether test accounts were left out. It follows the default
+            a new experiment gets, so the baseline matches the population that experiment
+            analyzes. False when the project defines no test-account filters.
+        persons_reached:
+          type:
+          - integer
+          - 'null'
+          description: Persons who sent the target event. Null without target_event.
+        persons_converted:
+          type:
+          - integer
+          - 'null'
+          description: Persons who sent the metric event at or after their first target
+            event. Null without target_event.
+        conversion_rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: persons_converted divided by persons_reached. Null without
+            target_event.
+        funnel_baseline_stats:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupFunnelBaseline'
+          - type: 'null'
+          description: Pass as baseline_stats to experiment-calculate-running-time
+            with metric_type 'funnel'. Null without target_event.
+        mean_count_baseline_stats:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupMeanCountBaseline'
+          - type: 'null'
+          description: Pass as baseline_stats to experiment-calculate-running-time
+            with metric_type 'mean_count'. It counts metric events in the whole window,
+            not only after the first target event, so it can overstate the baseline.
+            Null without target_event.
+        note:
+          type:
+          - string
+          - 'null'
+          description: What the mean count baseline counts.
+        event_volume:
+          type:
+          - integer
+          - 'null'
+          description: Metric events in the window. Set only when no target_event
+            was passed.
+        unique_persons:
+          type:
+          - integer
+          - 'null'
+          description: Persons who sent the metric event. Set only when no target_event
+            was passed.
+      required:
+      - computed_at
+      - conversion_rate
+      - event_volume
+      - funnel_baseline_stats
+      - mean_count_baseline_stats
+      - note
+      - persons_converted
+      - persons_reached
+      - source_event
+      - target_event
+      - test_accounts_filtered
+      - unique_persons
+      - window_days
+    ExperimentSetupCandidateMetricSection:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SetupContextSectionStatusEnum'
+          description: |-
+            'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid.
+
+            * `ok` - Ok
+            * `skipped` - Skipped
+            * `timed_out` - Timed Out
+            * `error` - Error
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupCandidateMetric'
+          - type: 'null'
+          description: Baseline of the candidate metric. Skipped without metric_event.
+      required:
+      - data
+      - status
+    ExperimentSetupContextInput:
+      type: object
+      description: |-
+        What the caller plans to test. Every field is optional; a section that needs a missing input
+        comes back with status 'skipped'.
+      properties:
+        target_event:
+          type:
+          - string
+          - 'null'
+          description: Event that marks a visit to the surface under test, for example
+            '$pageview' or '$screen'. Needed for target_surface and for the baseline
+            in candidate_metric.
+          maxLength: 400
+        target_url_contains:
+          type:
+          - string
+          - 'null'
+          description: Only counts target events whose $current_url contains this
+            text, ignoring case. Needs target_event to be '$pageview'.
+          maxLength: 1000
+        metric_event:
+          type:
+          - string
+          - 'null'
+          description: Event of the candidate primary metric. With target_event, candidate_metric
+            returns a baseline. Without it, candidate_metric returns only the event's
+            volume. Also marks the shared metrics that count this event.
+          maxLength: 400
+        previous_experiments_limit:
+          type: integer
+          maximum: 25
+          minimum: 1
+          default: 10
+          description: How many of the most recently created experiments to return,
+            1 to 25.
+        shared_metrics_limit:
+          type: integer
+          maximum: 25
+          minimum: 1
+          default: 10
+          description: How many shared metrics to return, most reused first, 1 to
+            25.
+    ExperimentSetupContextResponse:
+      type: object
+      description: |-
+        Facts about the project that decide how to configure a new experiment. Facts only, no
+        recommendations.
+      properties:
+        team_defaults:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentSetupTeamDefaultsSection'
+          description: The project's experiment defaults.
+        sdk_profile:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentSetupSdkProfileSection'
+          description: Which SDKs call feature flags and where flags are evaluated.
+        target_surface:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentSetupTargetSurfaceSection'
+          description: Traffic on the surface under test.
+        candidate_metric:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentSetupCandidateMetricSection'
+          description: Traffic and baseline of the candidate primary metric.
+        previous_experiments:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentSetupPreviousExperimentsSection'
+          description: Recent experiments in the project.
+        shared_metrics:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentSetupSharedMetricsSection'
+          description: Most reused shared metrics.
+      required:
+      - candidate_metric
+      - previous_experiments
+      - sdk_profile
+      - shared_metrics
+      - target_surface
+      - team_defaults
+    ExperimentSetupFunnelBaseline:
+      type: object
+      properties:
+        number_of_samples:
+          type: integer
+          description: Persons who reached the target.
+        sum:
+          type: number
+          format: double
+          description: Persons who converted.
+        step_counts:
+          type: array
+          items:
+            type: number
+            format: double
+          description: 'One entry: the persons who converted.'
+      required:
+      - number_of_samples
+      - step_counts
+      - sum
+    ExperimentSetupLibReach:
+      type: object
+      properties:
+        lib:
+          type:
+          - string
+          - 'null'
+          description: The $lib value that sent the target events.
+        category:
+          allOf:
+          - $ref: '#/components/schemas/SdkLibCategoryEnum'
+          description: |-
+            'web', 'mobile', 'server', or 'other'.
+
+            * `web` - Web
+            * `mobile` - Mobile
+            * `server` - Server
+            * `other` - Other
+        unique_persons:
+          type: integer
+          description: Persons who sent the target event from this SDK.
+      required:
+      - category
+      - lib
+      - unique_persons
+    ExperimentSetupMeanCountBaseline:
+      type: object
+      properties:
+        number_of_samples:
+          type: integer
+          description: Persons who reached the target.
+        sum:
+          type: number
+          format: double
+          description: Metric events those persons sent in the whole window.
+        sum_squares:
+          type: number
+          format: double
+          description: Sum over persons of their metric event count squared.
+      required:
+      - number_of_samples
+      - sum
+      - sum_squares
+    ExperimentSetupOutcome:
+      type: object
+      properties:
+        analyzed_exposures:
+          type:
+          - integer
+          - 'null'
+          description: Units analyzed across all variants in the latest completed
+            result of the first primary metric. Users seen in several variants are
+            left out under the default handling, so this can be lower than exposures.
+            Null when that result stores no sample counts, which is not the same as
+            analyzing nobody.
+        any_variant_significant:
+          type: boolean
+          description: Whether any variant was significant on that metric in that
+            result.
+        result_completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When that result was computed.
+      required:
+      - analyzed_exposures
+      - any_variant_significant
+      - result_completed_at
+    ExperimentSetupPreviousExperiment:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Experiment id.
+        name:
+          type: string
+          description: Experiment name.
+        state:
+          allOf:
+          - $ref: '#/components/schemas/PreviousExperimentStateEnum'
+          description: |-
+            'draft', 'running', 'paused' (running with its flag turned off), 'exposure_frozen' (running with enrollment closed to the already-exposed users) or 'stopped'.
+
+            * `draft` - Draft
+            * `running` - Running
+            * `paused` - Paused
+            * `exposure_frozen` - Exposure Frozen
+            * `stopped` - Stopped
+        created_at:
+          type: string
+          format: date-time
+          description: When the experiment was created.
+        start_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When it launched. Null for drafts.
+        end_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When it ended. Null unless stopped.
+        conclusion:
+          type:
+          - string
+          - 'null'
+          description: The recorded conclusion, for example 'won' or 'inconclusive',
+            or null.
+        variant_count:
+          type: integer
+          description: Variants on the flag, control included.
+        split_even:
+          type:
+          - boolean
+          - 'null'
+          description: Whether variants split traffic evenly. 34/33/33 counts as even.
+            Null on a boolean flag, which has no variants.
+        rollout_percentage:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Rollout percentage of the flag's first release condition.
+        multiple_variant_handling:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentWatchMultipleVariantHandlingEnum'
+          description: |-
+            How users seen in several variants are analyzed, with the default resolved.
+
+            * `exclude` - exclude
+            * `first_seen` - first_seen
+        multiple_variant_handling_set:
+          type: boolean
+          description: Whether the experiment sets multiple_variant_handling itself
+            instead of using the default.
+        ensure_experience_continuity:
+          type: boolean
+          description: Whether the flag keeps a user's variant across authentication
+            steps.
+        bucketing_identifier:
+          type: string
+          description: 'What the flag buckets users on: ''distinct_id'' (default)
+            or ''device_id''.'
+        evaluation_runtime:
+          type: string
+          description: 'Where the flag may be evaluated: ''server'', ''client'' or
+            ''all''.'
+        group_aggregation:
+          type: boolean
+          description: Whether the flag buckets groups instead of persons.
+        custom_exposure_event:
+          type:
+          - string
+          - 'null'
+          description: Custom exposure event, or null when the default exposure event
+            is used.
+        custom_exposure_action_id:
+          type:
+          - integer
+          - 'null'
+          description: Action used as the custom exposure, or null.
+        filter_test_accounts:
+          type: boolean
+          description: Whether exposures leave out test accounts.
+        primary_metric_count:
+          type: integer
+          description: Primary metrics, shared ones included.
+        secondary_metric_count:
+          type: integer
+          description: Secondary metrics, shared ones included.
+        shared_metric_count:
+          type: integer
+          description: Shared metrics attached to the experiment.
+        primary_metric_types:
+          type: array
+          items:
+            type: string
+          description: metric_type of each primary metric, for example 'mean', 'funnel',
+            'ratio' or 'retention'.
+        minimum_detectable_effect:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Minimum detectable effect saved from the running time calculator,
+            or null.
+        stats_method:
+          type: string
+          description: '''bayesian'' or ''frequentist''.'
+        has_holdout:
+          type: boolean
+          description: Whether the experiment uses a holdout group.
+        outcome:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupOutcome'
+          - type: 'null'
+          description: From the latest completed result of the first primary metric.
+            Null when no result exists, which is also the case for older metric definitions
+            that results are never stored for.
+      required:
+      - bucketing_identifier
+      - conclusion
+      - created_at
+      - custom_exposure_action_id
+      - custom_exposure_event
+      - end_date
+      - ensure_experience_continuity
+      - evaluation_runtime
+      - filter_test_accounts
+      - group_aggregation
+      - has_holdout
+      - id
+      - minimum_detectable_effect
+      - multiple_variant_handling
+      - multiple_variant_handling_set
+      - name
+      - outcome
+      - primary_metric_count
+      - primary_metric_types
+      - rollout_percentage
+      - secondary_metric_count
+      - shared_metric_count
+      - split_even
+      - start_date
+      - state
+      - stats_method
+      - variant_count
+    ExperimentSetupPreviousExperiments:
+      type: object
+      properties:
+        experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentSetupPreviousExperiment'
+          description: Most recently created first. Archived experiments are included,
+            deleted ones are not.
+        summary:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentSetupPreviousExperimentsSummary'
+          description: Counts over the listed experiments.
+      required:
+      - experiments
+      - summary
+    ExperimentSetupPreviousExperimentsSection:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SetupContextSectionStatusEnum'
+          description: |-
+            'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid.
+
+            * `ok` - Ok
+            * `skipped` - Skipped
+            * `timed_out` - Timed Out
+            * `error` - Error
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupPreviousExperiments'
+          - type: 'null'
+          description: How the project's recent experiments were set up and how they
+            went.
+      required:
+      - data
+      - status
+    ExperimentSetupPreviousExperimentsSummary:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Experiments listed.
+        launched:
+          type: integer
+          description: Listed experiments that launched.
+        launched_without_results:
+          type: integer
+          description: Launched experiments with no completed result.
+        launched_with_unknown_analyzed_exposures:
+          type: integer
+          description: Launched experiments whose latest result stores no sample counts,
+            so it says nothing either way.
+        launched_with_zero_analyzed_exposures:
+          type: integer
+          description: Launched experiments whose latest result analyzed no one.
+        launched_with_under_100_analyzed_exposures:
+          type: integer
+          description: Launched experiments whose latest result analyzed fewer than
+            100 units, zero included.
+        using_device_id_bucketing:
+          type: integer
+          description: Experiments that bucket on device id.
+        using_persistence:
+          type: integer
+          description: Experiments that keep variants across authentication steps.
+        using_custom_exposure:
+          type: integer
+          description: Experiments with a custom exposure event or action.
+        using_uneven_split:
+          type: integer
+          description: Experiments whose variants split traffic unevenly.
+      required:
+      - launched
+      - launched_with_under_100_analyzed_exposures
+      - launched_with_unknown_analyzed_exposures
+      - launched_with_zero_analyzed_exposures
+      - launched_without_results
+      - total
+      - using_custom_exposure
+      - using_device_id_bucketing
+      - using_persistence
+      - using_uneven_split
+    ExperimentSetupSdkLib:
+      type: object
+      properties:
+        lib:
+          type:
+          - string
+          - 'null'
+          description: The $lib value of the SDK, for example 'web'.
+        category:
+          allOf:
+          - $ref: '#/components/schemas/SdkLibCategoryEnum'
+          description: |-
+            'web' for the JavaScript web SDK, 'mobile', 'server', or 'other' for libraries not classified.
+
+            * `web` - Web
+            * `mobile` - Mobile
+            * `server` - Server
+            * `other` - Other
+        calls:
+          type: integer
+          description: Multivariate flag calls this SDK sent in the window.
+        distinct_ids:
+          type: integer
+          description: Distinct ids that sent those calls.
+        device_id_share:
+          type: number
+          format: double
+          description: Share of calls that carry a $device_id. 0 when this SDK never
+            sends one, as server SDKs don't.
+        locally_evaluated_share:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Share of calls evaluated locally in the SDK instead of by the
+            flags service. Null when no call from this SDK reported it, as the web
+            SDK doesn't.
+        anonymous_share:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Share of distinct ids that were anonymous, among those that
+            report whether they are identified. Null when no call from this SDK reported
+            it.
+      required:
+      - anonymous_share
+      - calls
+      - category
+      - device_id_share
+      - distinct_ids
+      - lib
+      - locally_evaluated_share
+    ExperimentSetupSdkProfile:
+      type: object
+      properties:
+        window_days:
+          type: integer
+          description: Days of flag calls read, ending now.
+        source_event:
+          type: string
+          description: 'The event read: ''$experiment_exposure'' when the project
+            receives it, otherwise ''$feature_flag_called''. Only one is read, because
+            one copies the other, and only multivariate responses count either way.
+            This says what the project''s events carry today, so it can differ from
+            team_defaults.default_exposure_event, which says what a new experiment
+            would count.'
+        computed_at:
+          type: string
+          format: date-time
+          description: When the numbers were computed. They are cached for hours.
+        libs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentSetupSdkLib'
+          description: One row per SDK, most calls first.
+        libs_truncated:
+          type: boolean
+          description: True when more SDKs sent flag calls than libs lists.
+        flags_seen:
+          type: integer
+          description: Distinct multivariate flag keys called in the window.
+        flags_evaluated_on_server_and_web:
+          type: integer
+          description: How many of those flag keys were called by both a server SDK
+            and the web SDK.
+        evaluated_on_server_and_web:
+          type: boolean
+          description: True when at least one flag key was called by both a server
+            SDK and the web SDK. The same flag decided on the server and read in the
+            browser can bucket one user into two variants.
+      required:
+      - computed_at
+      - evaluated_on_server_and_web
+      - flags_evaluated_on_server_and_web
+      - flags_seen
+      - libs
+      - libs_truncated
+      - source_event
+      - window_days
+    ExperimentSetupSdkProfileSection:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SetupContextSectionStatusEnum'
+          description: |-
+            'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid.
+
+            * `ok` - Ok
+            * `skipped` - Skipped
+            * `timed_out` - Timed Out
+            * `error` - Error
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupSdkProfile'
+          - type: 'null'
+          description: Which SDKs send multivariate flag calls, across the whole project.
+      required:
+      - data
+      - status
+    ExperimentSetupSharedMetric:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Shared metric id, to attach it instead of creating an inline
+            metric.
+        name:
+          type: string
+          description: Shared metric name.
+        metric_type:
+          type:
+          - string
+          - 'null'
+          description: '''mean'', ''funnel'', ''ratio'' or ''retention'', or null
+            for older metrics.'
+        events:
+          type: array
+          items:
+            type: string
+          description: Event names the metric counts.
+        action_ids:
+          type: array
+          items:
+            type: integer
+          description: Actions the metric counts.
+        used_as_primary:
+          type: integer
+          description: Experiments that use it as a primary metric.
+        used_as_secondary:
+          type: integer
+          description: Experiments that use it as a secondary metric.
+        last_used_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When it was last attached to an experiment, or null.
+        matches_metric_event:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the metric counts metric_event, directly or through
+            an action. Null when no metric_event was passed.
+      required:
+      - action_ids
+      - events
+      - id
+      - last_used_at
+      - matches_metric_event
+      - metric_type
+      - name
+      - used_as_primary
+      - used_as_secondary
+    ExperimentSetupSharedMetrics:
+      type: object
+      properties:
+        metric_event:
+          type:
+          - string
+          - 'null'
+          description: The metric_event that was matched, or null.
+        metric_event_match_truncated:
+          type: boolean
+          description: True when the project has more shared metrics than the event
+            match could read, so a match further down the list may be missing. Matching
+            is capped for cost.
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentSetupSharedMetric'
+          description: Metrics that match metric_event first, then most reused. A
+            use counts when it is on an experiment you can open and that is not deleted,
+            so the counts follow your access.
+      required:
+      - metric_event
+      - metric_event_match_truncated
+      - metrics
+    ExperimentSetupSharedMetricsSection:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SetupContextSectionStatusEnum'
+          description: |-
+            'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid.
+
+            * `ok` - Ok
+            * `skipped` - Skipped
+            * `timed_out` - Timed Out
+            * `error` - Error
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupSharedMetrics'
+          - type: 'null'
+          description: Shared metrics the project reuses.
+      required:
+      - data
+      - status
+    ExperimentSetupTargetSurface:
+      type: object
+      properties:
+        window_days:
+          type: integer
+          description: Days of target events read, ending now.
+        source_event:
+          type: string
+          description: The target event that was counted.
+        target_url_contains:
+          type:
+          - string
+          - 'null'
+          description: The URL filter that was applied, or null.
+        computed_at:
+          type: string
+          format: date-time
+          description: When the numbers were computed. They are cached for an hour.
+        test_accounts_filtered:
+          type: boolean
+          description: Whether test accounts were left out. It follows the default
+            a new experiment gets, so the counts match the population that experiment
+            analyzes. False when the project defines no test-account filters.
+        unique_persons:
+          type: integer
+          description: Persons who sent the target event in the window.
+        exposures_per_day_estimate:
+          type: number
+          format: double
+          description: unique_persons divided by window_days. Pass it as exposure_rate_per_day
+            to experiment-calculate-running-time, scaled by the share of traffic the
+            experiment will include.
+        libs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentSetupLibReach'
+          description: Up to 5 SDKs by persons reached.
+        anonymous_share:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Among web distinct ids that report whether they are identified,
+            the share that was anonymous. Null when no web SDK sent the target event.
+        device_id_share:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Share of web target events that carry a $device_id. Null when
+            no web SDK sent the target event.
+      required:
+      - anonymous_share
+      - computed_at
+      - device_id_share
+      - exposures_per_day_estimate
+      - libs
+      - source_event
+      - target_url_contains
+      - test_accounts_filtered
+      - unique_persons
+      - window_days
+    ExperimentSetupTargetSurfaceSection:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SetupContextSectionStatusEnum'
+          description: |-
+            'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid.
+
+            * `ok` - Ok
+            * `skipped` - Skipped
+            * `timed_out` - Timed Out
+            * `error` - Error
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupTargetSurface'
+          - type: 'null'
+          description: Traffic on the target surface. Skipped without target_event.
+      required:
+      - data
+      - status
+    ExperimentSetupTeamDefaults:
+      type: object
+      properties:
+        stats_method:
+          type:
+          - string
+          - 'null'
+          description: 'Default statistical method for new experiments: ''bayesian''
+            or ''frequentist''.'
+        confidence_level:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Default confidence level for new experiments, for example 0.95.
+            Null when unset.
+        minimum_detectable_effect:
+          type:
+          - integer
+          - 'null'
+          description: The team's default minimum detectable effect, as a percentage.
+            Null when the team has not set one; product_default_minimum_detectable_effect
+            applies then.
+        product_default_minimum_detectable_effect:
+          type: integer
+          description: The minimum detectable effect, as a percentage, that applies
+            when the team has no default.
+        only_count_matured_users:
+          type: boolean
+          description: Default for counting only users whose metric window has fully
+            passed.
+        cuped_enabled:
+          type: boolean
+          description: Default for CUPED variance reduction on new experiments.
+        sequential_testing_enabled:
+          type: boolean
+          description: Default for sequential testing. Applies only to the frequentist
+            method.
+        flags_persistence_default:
+          type: boolean
+          description: Default for persisting flag values across authentication steps
+            on new flags. It becomes the flag's ensure_experience_continuity.
+        test_account_filter_count:
+          type: integer
+          description: How many filters the team uses to identify internal and test
+            users.
+        test_account_filters_default_checked:
+          type: boolean
+          description: Whether new insights and experiments filter out test accounts
+            by default.
+        default_exposure_event:
+          type: string
+          description: 'The exposure event a new experiment launched now counts by
+            default: ''$experiment_exposure'' or ''$feature_flag_called''.'
+      required:
+      - confidence_level
+      - cuped_enabled
+      - default_exposure_event
+      - flags_persistence_default
+      - minimum_detectable_effect
+      - only_count_matured_users
+      - product_default_minimum_detectable_effect
+      - sequential_testing_enabled
+      - stats_method
+      - test_account_filter_count
+      - test_account_filters_default_checked
+    ExperimentSetupTeamDefaultsSection:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SetupContextSectionStatusEnum'
+          description: |-
+            'ok' when data holds the section. 'skipped' when an input the section needs was not passed. 'timed_out' when the query was too expensive to finish. 'error' when the read failed. Every status other than 'ok' leaves data null, and the other sections are still valid.
+
+            * `ok` - Ok
+            * `skipped` - Skipped
+            * `timed_out` - Timed Out
+            * `error` - Error
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentSetupTeamDefaults'
+          - type: 'null'
+          description: The team's experiment defaults.
+      required:
+      - data
+      - status
     ExperimentSignificanceCode:
       enum:
       - significant
@@ -132185,6 +132609,10 @@ components:
             * `HeyReach` - HeyReach
             * `MoEngage` - MoEngage
             * `Monaco` - Monaco
+            * `Oneleet` - Oneleet
+            * `Expo` - Expo
+            * `PostNord` - PostNord
+            * `Commslayer` - Commslayer
         access_method:
           allOf:
           - $ref: '#/components/schemas/ExternalDataSourceAccessMethodEnum'
@@ -133574,6 +134002,10 @@ components:
             * `HeyReach` - HeyReach
             * `MoEngage` - MoEngage
             * `Monaco` - Monaco
+            * `Oneleet` - Oneleet
+            * `Expo` - Expo
+            * `PostNord` - PostNord
+            * `Commslayer` - Commslayer
         payload:
           type: object
           additionalProperties: true
@@ -135217,6 +135649,10 @@ components:
       - HeyReach
       - MoEngage
       - Monaco
+      - Oneleet
+      - Expo
+      - PostNord
+      - Commslayer
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -136563,6 +136999,10 @@ components:
         * `HeyReach` - HeyReach
         * `MoEngage` - MoEngage
         * `Monaco` - Monaco
+        * `Oneleet` - Oneleet
+        * `Expo` - Expo
+        * `PostNord` - PostNord
+        * `Commslayer` - Commslayer
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -136814,6 +137254,15 @@ components:
       - updated_at
       - usage_dashboard
       - user_access_level
+    FeatureFlagActionBadRequest:
+      oneOf:
+      - $ref: '#/components/schemas/FlagActionError'
+      - $ref: '#/components/schemas/FlagDeletedRejection'
+      - $ref: '#/components/schemas/FlagPolicyConflict'
+    FeatureFlagActionConflict:
+      oneOf:
+      - $ref: '#/components/schemas/FlagActionError'
+      - $ref: '#/components/schemas/FlagApprovalConflict'
     FeatureFlagConditionAnalysis:
       type: object
       properties:
@@ -137605,6 +138054,28 @@ components:
           description: Feature flag request usage by SDK.
       required:
       - results
+    FeatureFlagRollOutToEveryoneRequest:
+      type: object
+      properties:
+        version:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          description: The `version` from your most recent read of this flag. The
+            change is refused with 409 if anyone else changed the flag after that
+            version. A flag written before versioning reads as `null`; send that back
+            unchanged and it is read as 0, so the value a read returns is always one
+            this accepts.
+        variant_key:
+          type:
+          - string
+          - 'null'
+          description: The variant every user gets. Required for a multivariate flag
+            and rejected for any other flag, because a release condition decides who
+            the flag serves and not which variant they get.
+      required:
+      - version
     FeatureFlagRolloutSummary:
       type: object
       properties:
@@ -137642,6 +138113,38 @@ components:
       - has_targeting_conditions
       - is_multivariate
       - max_rollout_percentage
+    FeatureFlagSetReleaseConditionRolloutRequest:
+      type: object
+      properties:
+        condition_index:
+          type: integer
+          minimum: 0
+          description: Zero-based position of the release condition in `filters.groups`,
+            counted from the read that produced `version`.
+        rollout_percentage:
+          type: number
+          format: double
+          maximum: 100
+          minimum: 0
+          description: Percentage of the users matching that condition who are served
+            the flag, 0 through 100. On a multivariate flag this is how many matching
+            users get a variant at all, not how the variants are split between them.
+            Fractional percentages such as 0.5 are accepted, the same as a write that
+            sends `filters`.
+        version:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          description: The `version` from your most recent read of this flag. The
+            change is refused with 409 if anyone else changed the flag after that
+            version. A flag written before versioning reads as `null`; send that back
+            unchanged and it is read as 0, so the value a read returns is always one
+            this accepts.
+      required:
+      - condition_index
+      - rollout_percentage
+      - version
     FeatureFlagStatusResponse:
       type: object
       properties:
@@ -139652,6 +140155,122 @@ components:
       - uuid
       title: FirstEvent
       type: object
+    FlagActionError:
+      type: object
+      description: |-
+        The body every DRF exception on these actions renders as.
+
+        `ErrorResponseSerializer` declares a single `error` key, which no response on this viewset
+        produces: the project exception handler renders this envelope instead. Declaring the wrong
+        shape reaches the generated clients and the MCP tools, where an agent reads a key that is
+        never there.
+      properties:
+        type:
+          type: string
+          description: Error class, for example `validation_error`.
+        code:
+          type: string
+          description: Machine-readable reason, for example `invalid_input`.
+        detail:
+          type: string
+          description: Human-readable description of what was refused.
+        attr:
+          type:
+          - string
+          - 'null'
+          description: Request field the error belongs to, or null when it belongs
+            to no single field.
+      required:
+      - attr
+      - code
+      - detail
+      - type
+    FlagApprovalConflict:
+      type: object
+      description: |-
+        The 409 body an approval policy produces, which differs from every other error here.
+
+        Raised through the approvals mixin rather than the exception handler, so it carries the
+        change request it opened instead of the `type`/`attr` envelope.
+      properties:
+        code:
+          type: string
+          description: '`approval_required` when this call opened the change request,
+            `change_request_pending` when one was already open for the same action.'
+        status:
+          type: string
+          description: Always `approval_required`.
+        detail:
+          type: string
+          description: Human-readable description of the policy that gated the change.
+        message:
+          type: string
+          description: Same text as `detail`.
+        resource_type:
+          type: string
+          description: Resource the change request targets, `feature_flag` here.
+        resource_id:
+          type: string
+          description: Id of the flag the change request targets.
+        change_request_id:
+          type: string
+          description: Id of the change request that was opened.
+        change_request:
+          description: The change request that was opened, serialized in full.
+        required_approvers:
+          description: Who can approve the change request.
+      required:
+      - change_request
+      - change_request_id
+      - code
+      - detail
+      - message
+      - required_approvers
+      - resource_id
+      - resource_type
+      - status
+    FlagDeletedRejection:
+      type: object
+      description: |-
+        The 400 body a soft-deleted flag produces, which differs from every other error here.
+
+        Built as a plain response rather than raised, so it carries neither the `type` nor the
+        `attr` the exception handler's envelope has.
+      properties:
+        success:
+          type: boolean
+          description: Always `false`.
+        error:
+          type: string
+          description: Human-readable reason, naming the restore the caller has to
+            do before retrying.
+      required:
+      - error
+      - success
+    FlagPolicyConflict:
+      type: object
+      description: |-
+        The 400 body a change matching several approval policies produces.
+
+        Raised through the approvals mixin rather than the exception handler, so it carries the
+        policies that matched instead of the `type`/`attr` envelope.
+      properties:
+        code:
+          type: string
+          description: Always `policy_conflict`.
+        error:
+          type: string
+          description: Human-readable reason the change could not be gated.
+        conflicting_policies:
+          description: The approval policies that matched this change.
+        guidance:
+          type: string
+          description: How to split the change so each policy applies on its own.
+      required:
+      - code
+      - conflicting_policies
+      - error
+      - guidance
     FlagPropertyFilter:
       additionalProperties: false
       properties:
@@ -140045,7 +140664,10 @@ components:
           items:
             $ref: '#/components/schemas/FlakyTestItem'
           description: 'Tests worth acting on now, ranked by blast radius: master
-            failures, then PRs hit, then runs.'
+            failures, then PRs hit, then runs. A CI setup break (a run attempt whose
+            tests errored in 3 or more jobs or for 3 or more owning teams, or a job
+            attempt with 100 or more distinct failed or errored tests) excludes every
+            trial of that attempt, not only its failures.'
         truncated:
           type: boolean
           description: True when more tests qualified than the cap; `items` is the
@@ -156930,18 +157552,20 @@ components:
           - number
           - 'null'
           format: double
-          description: Lower edge of the expected band. Null while no validated band
-            is available for this series.
+          description: Lower edge of the calibrated count range targeting 99% marginal
+            bucket coverage under stable traffic. Null without four complete preceding
+            weeks.
         upper:
           type:
           - number
           - 'null'
           format: double
-          description: Upper edge of the expected band. Null while no validated band
-            is available for this series.
+          description: Upper edge of the calibrated count range targeting 99% marginal
+            bucket coverage under stable traffic. Null without four complete preceding
+            weeks.
         verdict:
           description: |-
-            Where the observed count sits against the band: above when it exceeds upper, below when it falls under lower. Null while it sits inside the band, or while the band is not ready.
+            Where the observed count sits against the band: above when it exceeds upper, below when it falls under lower. Null while it sits inside the band, or while the band is not ready. An out-of-range bucket is not a confirmed incident or an alert.
 
             * `above` - Above the band
             * `below` - Below the band
@@ -156974,8 +157598,9 @@ components:
             by this, descending.
         baseline_weeks:
           type: integer
-          description: Full weeks of history behind the band, 0 to 5. History depth
-            alone does not enable a band; a validated readiness policy is also required.
+          description: 'Full weeks of history behind the band, 0 to 5. Four complete
+            weeks are required: at least two for fitting and two separate weeks for
+            calibration.'
         history_start:
           type: string
           format: date-time
@@ -156988,10 +157613,10 @@ components:
           - string
           - 'null'
           format: date-time
-          description: When this series gains its band under a validated readiness
-            policy. Null when the band is ready or no validated readiness date is
-            available. Check the buckets' lower and upper values to determine whether
-            a band is present.
+          description: Earliest end of a rolling window of this length with four complete
+            preceding weeks. Null when the band is ready. A fixed historical window
+            does not gain history by waiting. Check the buckets' lower and upper values
+            to determine whether a band is present.
         interval_minutes:
           type: integer
           description: Grain of this series' buckets, in minutes. Equals the response
@@ -158841,31 +159466,10 @@ components:
         properties:
           anyOf:
           - items:
-              oneOf:
+              anyOf:
               - $ref: '#/components/schemas/EventPropertyFilter'
               - $ref: '#/components/schemas/PersonPropertyFilter'
-              - $ref: '#/components/schemas/PersonMetadataPropertyFilter'
-              - $ref: '#/components/schemas/ElementPropertyFilter'
-              - $ref: '#/components/schemas/EventMetadataPropertyFilter'
               - $ref: '#/components/schemas/SessionPropertyFilter'
-              - $ref: '#/components/schemas/CohortPropertyFilter'
-              - $ref: '#/components/schemas/RecordingPropertyFilter'
-              - $ref: '#/components/schemas/LogEntryPropertyFilter'
-              - $ref: '#/components/schemas/GroupPropertyFilter'
-              - $ref: '#/components/schemas/FeaturePropertyFilter'
-              - $ref: '#/components/schemas/FlagPropertyFilter'
-              - $ref: '#/components/schemas/HogQLPropertyFilter'
-              - $ref: '#/components/schemas/EmptyPropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
-              - $ref: '#/components/schemas/ErrorTrackingIssueFilter'
-              - $ref: '#/components/schemas/LogPropertyFilter'
-              - $ref: '#/components/schemas/MetricPropertyFilter'
-              - $ref: '#/components/schemas/SpanPropertyFilter'
-              - $ref: '#/components/schemas/RevenueAnalyticsPropertyFilter'
-              - $ref: '#/components/schemas/AccountCustomPropertyFilter'
-              - $ref: '#/components/schemas/WorkflowVariablePropertyFilter'
-              - $ref: '#/components/schemas/BehavioralPropertyFilter'
             type: array
           - type: 'null'
           default: null
@@ -159784,31 +160388,10 @@ components:
         properties:
           anyOf:
           - items:
-              oneOf:
+              anyOf:
               - $ref: '#/components/schemas/EventPropertyFilter'
               - $ref: '#/components/schemas/PersonPropertyFilter'
-              - $ref: '#/components/schemas/PersonMetadataPropertyFilter'
-              - $ref: '#/components/schemas/ElementPropertyFilter'
-              - $ref: '#/components/schemas/EventMetadataPropertyFilter'
               - $ref: '#/components/schemas/SessionPropertyFilter'
-              - $ref: '#/components/schemas/CohortPropertyFilter'
-              - $ref: '#/components/schemas/RecordingPropertyFilter'
-              - $ref: '#/components/schemas/LogEntryPropertyFilter'
-              - $ref: '#/components/schemas/GroupPropertyFilter'
-              - $ref: '#/components/schemas/FeaturePropertyFilter'
-              - $ref: '#/components/schemas/FlagPropertyFilter'
-              - $ref: '#/components/schemas/HogQLPropertyFilter'
-              - $ref: '#/components/schemas/EmptyPropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
-              - $ref: '#/components/schemas/ErrorTrackingIssueFilter'
-              - $ref: '#/components/schemas/LogPropertyFilter'
-              - $ref: '#/components/schemas/MetricPropertyFilter'
-              - $ref: '#/components/schemas/SpanPropertyFilter'
-              - $ref: '#/components/schemas/RevenueAnalyticsPropertyFilter'
-              - $ref: '#/components/schemas/AccountCustomPropertyFilter'
-              - $ref: '#/components/schemas/WorkflowVariablePropertyFilter'
-              - $ref: '#/components/schemas/BehavioralPropertyFilter'
             type: array
           - type: 'null'
           default: null
@@ -160786,31 +161369,10 @@ components:
         properties:
           anyOf:
           - items:
-              oneOf:
+              anyOf:
               - $ref: '#/components/schemas/EventPropertyFilter'
               - $ref: '#/components/schemas/PersonPropertyFilter'
-              - $ref: '#/components/schemas/PersonMetadataPropertyFilter'
-              - $ref: '#/components/schemas/ElementPropertyFilter'
-              - $ref: '#/components/schemas/EventMetadataPropertyFilter'
               - $ref: '#/components/schemas/SessionPropertyFilter'
-              - $ref: '#/components/schemas/CohortPropertyFilter'
-              - $ref: '#/components/schemas/RecordingPropertyFilter'
-              - $ref: '#/components/schemas/LogEntryPropertyFilter'
-              - $ref: '#/components/schemas/GroupPropertyFilter'
-              - $ref: '#/components/schemas/FeaturePropertyFilter'
-              - $ref: '#/components/schemas/FlagPropertyFilter'
-              - $ref: '#/components/schemas/HogQLPropertyFilter'
-              - $ref: '#/components/schemas/EmptyPropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
-              - $ref: '#/components/schemas/ErrorTrackingIssueFilter'
-              - $ref: '#/components/schemas/LogPropertyFilter'
-              - $ref: '#/components/schemas/MetricPropertyFilter'
-              - $ref: '#/components/schemas/SpanPropertyFilter'
-              - $ref: '#/components/schemas/RevenueAnalyticsPropertyFilter'
-              - $ref: '#/components/schemas/AccountCustomPropertyFilter'
-              - $ref: '#/components/schemas/WorkflowVariablePropertyFilter'
-              - $ref: '#/components/schemas/BehavioralPropertyFilter'
             type: array
           - type: 'null'
           default: null
@@ -160980,31 +161542,10 @@ components:
         properties:
           anyOf:
           - items:
-              oneOf:
+              anyOf:
               - $ref: '#/components/schemas/EventPropertyFilter'
               - $ref: '#/components/schemas/PersonPropertyFilter'
-              - $ref: '#/components/schemas/PersonMetadataPropertyFilter'
-              - $ref: '#/components/schemas/ElementPropertyFilter'
-              - $ref: '#/components/schemas/EventMetadataPropertyFilter'
               - $ref: '#/components/schemas/SessionPropertyFilter'
-              - $ref: '#/components/schemas/CohortPropertyFilter'
-              - $ref: '#/components/schemas/RecordingPropertyFilter'
-              - $ref: '#/components/schemas/LogEntryPropertyFilter'
-              - $ref: '#/components/schemas/GroupPropertyFilter'
-              - $ref: '#/components/schemas/FeaturePropertyFilter'
-              - $ref: '#/components/schemas/FlagPropertyFilter'
-              - $ref: '#/components/schemas/HogQLPropertyFilter'
-              - $ref: '#/components/schemas/EmptyPropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePropertyFilter'
-              - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
-              - $ref: '#/components/schemas/ErrorTrackingIssueFilter'
-              - $ref: '#/components/schemas/LogPropertyFilter'
-              - $ref: '#/components/schemas/MetricPropertyFilter'
-              - $ref: '#/components/schemas/SpanPropertyFilter'
-              - $ref: '#/components/schemas/RevenueAnalyticsPropertyFilter'
-              - $ref: '#/components/schemas/AccountCustomPropertyFilter'
-              - $ref: '#/components/schemas/WorkflowVariablePropertyFilter'
-              - $ref: '#/components/schemas/BehavioralPropertyFilter'
             type: array
           - type: 'null'
           default: null
@@ -161126,6 +161667,12 @@ components:
           - $ref: '#/components/schemas/DateRange'
           - type: 'null'
           default: null
+        filterTestAccounts:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Filtertestaccounts
         kind:
           const: MCPToolCategoriesQuery
           default: MCPToolCategoriesQuery
@@ -161137,6 +161684,17 @@ components:
           - type: 'null'
           default: null
           description: Modifiers used when performing the query
+        properties:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/EventPropertyFilter'
+              - $ref: '#/components/schemas/PersonPropertyFilter'
+              - $ref: '#/components/schemas/SessionPropertyFilter'
+            type: array
+          - type: 'null'
+          default: null
+          title: Properties
         response:
           anyOf:
           - $ref: '#/components/schemas/MCPToolCategoriesQueryResponse'
@@ -161268,6 +161826,12 @@ components:
           - $ref: '#/components/schemas/DateRange'
           - type: 'null'
           default: null
+        filterTestAccounts:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Filtertestaccounts
         kind:
           const: MCPToolCategoryCountsQuery
           default: MCPToolCategoryCountsQuery
@@ -161279,6 +161843,17 @@ components:
           - type: 'null'
           default: null
           description: Modifiers used when performing the query
+        properties:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/EventPropertyFilter'
+              - $ref: '#/components/schemas/PersonPropertyFilter'
+              - $ref: '#/components/schemas/SessionPropertyFilter'
+            type: array
+          - type: 'null'
+          default: null
+          title: Properties
         response:
           anyOf:
           - $ref: '#/components/schemas/MCPToolCategoryCountsQueryResponse'
@@ -162616,6 +163191,12 @@ components:
           - $ref: '#/components/schemas/DateRange'
           - type: 'null'
           default: null
+        filterTestAccounts:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Filtertestaccounts
         interval:
           anyOf:
           - $ref: '#/components/schemas/IntervalType'
@@ -162634,6 +163215,17 @@ components:
           - type: 'null'
           default: null
           description: Modifiers used when performing the query
+        properties:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/EventPropertyFilter'
+              - $ref: '#/components/schemas/PersonPropertyFilter'
+              - $ref: '#/components/schemas/SessionPropertyFilter'
+            type: array
+          - type: 'null'
+          default: null
+          title: Properties
         response:
           anyOf:
           - $ref: '#/components/schemas/MCPToolQualityDailyStatsQueryResponse'
@@ -162819,6 +163411,12 @@ components:
           - $ref: '#/components/schemas/DateRange'
           - type: 'null'
           default: null
+        filterTestAccounts:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Filtertestaccounts
         kind:
           const: MCPToolQualityRowsQuery
           default: MCPToolQualityRowsQuery
@@ -162844,6 +163442,17 @@ components:
           default: null
           description: Number of matching tools to skip.
           title: Offset
+        properties:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/EventPropertyFilter'
+              - $ref: '#/components/schemas/PersonPropertyFilter'
+              - $ref: '#/components/schemas/SessionPropertyFilter'
+            type: array
+          - type: 'null'
+          default: null
+          title: Properties
         response:
           anyOf:
           - $ref: '#/components/schemas/MCPToolQualityRowsQueryResponse'
@@ -172780,31 +173389,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataModelingJob'
-    PaginatedDataQualityCheckList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataQualityCheck'
     PaginatedDataQualityOverviewCheckList:
       type: object
       required:
@@ -179746,8 +180330,10 @@ components:
           readOnly: true
     PatchedDataQualityCheck:
       type: object
-      description: The subject is implied by the URL (the parent saved query or table),
-        never part of the body.
+      description: |-
+        A check as it reads back, and everything an edit may change about it.
+
+        The subject is not one of those: it is writable only on ``DataQualityCheckCreate``.
       properties:
         id:
           type: string
@@ -179770,19 +180356,20 @@ components:
           - $ref: '#/components/schemas/SubjectTypeEnum'
           readOnly: true
           description: |-
-            Kind of catalog object being checked: 'table', 'view', or 'metric'.
+            Kind of object being checked: 'table', 'view', 'metric', or 'posthog_table'.
 
             * `table` - table
             * `view` - view
             * `metric` - metric
+            * `posthog_table` - posthog_table
         subject_uuid:
           type:
           - string
           - 'null'
           format: uuid
           readOnly: true
-          description: Id of the table, view, or metric being checked, from the parent
-            resource in the URL.
+          description: Id of the table, view, metric, or PostHog table being checked.
+            Null once the subject is deleted.
         subject_name:
           type: string
           readOnly: true
@@ -179912,12 +180499,27 @@ components:
           readOnly: true
     PatchedDataQualityCheckScheduleUpdate:
       type: object
+      description: Which subject's schedule to change, and what to change about it.
       properties:
+        subject_type:
+          allOf:
+          - $ref: '#/components/schemas/SubjectTypeEnum'
+          description: |-
+            Kind of object: 'table', 'view', 'metric', or 'posthog_table'.
+
+            * `table` - table
+            * `view` - view
+            * `metric` - metric
+            * `posthog_table` - posthog_table
+        subject_uuid:
+          type: string
+          format: uuid
+          description: Id of the table, view, metric, or PostHog table.
         interval:
           allOf:
           - $ref: '#/components/schemas/DataQualityScheduleIntervalEnum'
           description: |-
-            How often all enabled checks on the metric run.
+            How often all enabled checks on the subject run.
 
             * `1hour` - 1hour
             * `6hour` - 6hour
@@ -192289,6 +192891,20 @@ components:
       - changed_path_count
       - examples
       - sampled_path_count
+    PreviousExperimentStateEnum:
+      enum:
+      - draft
+      - running
+      - paused
+      - exposure_frozen
+      - stopped
+      type: string
+      description: |-
+        * `draft` - Draft
+        * `running` - Running
+        * `paused` - Paused
+        * `exposure_frozen` - Exposure Frozen
+        * `stopped` - Stopped
     PrimaryPropertiesResponse:
       type: object
       properties:
@@ -210303,6 +210919,13 @@ components:
           type: boolean
           readOnly: true
           description: Whether the calling user has opened this observation.
+        media:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReplayObservationMedia'
+          readOnly: true
+          description: Thumbnails and clips illustrating this observation, in order.
+            Empty until the media render finishes.
         summary_line:
           type: string
           readOnly: true
@@ -210332,6 +210955,7 @@ components:
       - error_reason
       - id
       - label
+      - media
       - next_observation_id
       - previous_observation_id
       - recording_subject_email
@@ -210364,6 +210988,61 @@ components:
           maxLength: 5000
       required:
       - is_correct
+    ReplayObservationMedia:
+      type: object
+      description: One thumbnail or clip illustrating an observation.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Id of this media entry.
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ReplayObservationMediaKindEnum'
+          readOnly: true
+          description: |-
+            `thumbnail` for the single frame that illustrates the observation, `clip` for a short video.
+
+            * `thumbnail` - Thumbnail
+            * `clip` - Clip
+        asset_id:
+          type: integer
+          readOnly: true
+          description: Export asset holding the bytes; fetch it from the export content
+            endpoint.
+        description:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: One sentence saying what the clip shows. Null for thumbnails.
+        video_start_ms:
+          type: integer
+          readOnly: true
+          description: Where this media starts in the analysis video, in milliseconds.
+        video_end_ms:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: Where a clip ends in the analysis video, in milliseconds. Null
+            for thumbnails.
+      required:
+      - asset_id
+      - description
+      - id
+      - kind
+      - video_end_ms
+      - video_start_ms
+    ReplayObservationMediaKindEnum:
+      enum:
+      - thumbnail
+      - clip
+      type: string
+      description: |-
+        * `thumbnail` - Thumbnail
+        * `clip` - Clip
     ReplayScanner:
       type: object
       description: 'A Replay Vision scanner: its type, targeting query, and AI configuration.'
@@ -211436,6 +212115,46 @@ components:
       required:
       - description
       - source_id
+    ReportLinkKindEnum:
+      enum:
+      - depends_on
+      - part_of
+      - follow_up_of
+      - duplicate_of
+      - recurrence_of
+      type: string
+      description: |-
+        * `depends_on` - Depends on
+        * `part_of` - Part of
+        * `follow_up_of` - Follow-up of
+        * `duplicate_of` - Duplicate of
+        * `recurrence_of` - Recurrence of
+    ReportLinkWrite:
+      type: object
+      description: One typed, directed link to write on the report being edited.
+      properties:
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ReportLinkKindEnum'
+          description: |-
+            How the edited report relates to `report_id`. `depends_on` for work that cannot land until the other report's fix does, `part_of` for one piece of a larger report, `follow_up_of` for work the other report left behind, `duplicate_of` for the same problem filed twice, and `recurrence_of` for a problem a resolved report already covered.
+
+            * `depends_on` - Depends on
+            * `part_of` - Part of
+            * `follow_up_of` - Follow-up of
+            * `duplicate_of` - Duplicate of
+            * `recurrence_of` - Recurrence of
+        report_id:
+          type: string
+          description: Id of the report to link to. Must be another report in this
+            project.
+        reason:
+          type: string
+          description: Optional one-line note on why the reports are linked this way.
+          maxLength: 500
+      required:
+      - kind
+      - report_id
     ReportMetric:
       type: object
       description: One impact measurement shown on a report.
@@ -220798,6 +221517,18 @@ components:
         * `success` - success
         * `warning` - warning
         * `danger` - danger
+    SdkLibCategoryEnum:
+      enum:
+      - web
+      - mobile
+      - server
+      - other
+      type: string
+      description: |-
+        * `web` - Web
+        * `mobile` - Mobile
+        * `server` - Server
+        * `other` - Other
     SdkReleaseAssessment:
       type: object
       properties:
@@ -222854,6 +223585,18 @@ components:
           default: null
       title: Settings
       type: object
+    SetupContextSectionStatusEnum:
+      enum:
+      - ok
+      - skipped
+      - timed_out
+      - error
+      type: string
+      description: |-
+        * `ok` - Ok
+        * `skipped` - Skipped
+        * `timed_out` - Timed Out
+        * `error` - Error
     SetupPlanResponse:
       type: object
       properties:
@@ -223674,6 +224417,7 @@ components:
       - summary_change
       - code_review
       - related_to
+      - report_link
       - work_claim
       - work_release
       - pull_request
@@ -223701,6 +224445,7 @@ components:
         * `summary_change` - Summary Change
         * `code_review` - Code Review
         * `related_to` - Related To
+        * `report_link` - Report Link
         * `work_claim` - Work Claim
         * `work_release` - Work Release
         * `pull_request` - Pull Request
@@ -224062,6 +224807,17 @@ components:
           oneOf:
           - $ref: '#/components/schemas/SignalReportCheckOutcomeEnum'
           - $ref: '#/components/schemas/NullEnum'
+        dispatched_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the `agent` check's scout run started, cleared as soon
+            as a verdict is recorded. A non-null value is what tells a reader the
+            check is running rather than waiting, because dispatch also pushes `next_run_at`
+            out to the result window. Always null on a `metric_threshold` check, which
+            is measured in the tick that collects it.
         consecutive_errors:
           type: integer
           readOnly: true
@@ -224078,6 +224834,7 @@ components:
       - config
       - consecutive_errors
       - created_at
+      - dispatched_at
       - expires_at
       - id
       - kind
@@ -225622,19 +226379,15 @@ components:
           type: string
           description: The emitted finding prose — the signal's `description` as surfaced
             to the inbox.
-        weight:
-          type: number
-          format: double
-          maximum: 1.0
-          minimum: 0.0
-          description: Agent's weight for the signal in [0, 1]. Drives ranking in
-            the inbox.
         confidence:
-          type: number
+          type:
+          - number
+          - 'null'
           format: double
           maximum: 1.0
           minimum: 0.0
-          description: Agent's confidence the finding is real in [0, 1].
+          description: Deprecated and no longer set on new findings. Null unless the
+            run supplied one.
         severity:
           description: |-
             Optional severity tag — one of P0, P1, P2, P3, P4 — or null if the run didn't set one.
@@ -225671,7 +226424,6 @@ components:
       - severity
       - source_id
       - tags
-      - weight
     SignalScoutManualRun:
       type: object
       description: |-
@@ -226842,8 +227594,11 @@ components:
           title: Skill Version
           type: integer
         confidence:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
           title: Confidence
-          type: number
         severity:
           anyOf:
           - $ref: '#/components/schemas/ReportPriority'
@@ -226893,7 +227648,6 @@ components:
       - finding_id
       - skill_name
       - skill_version
-      - confidence
       - evidence
       title: SignalsScoutSignalExtra
       type: object
@@ -229351,6 +230105,10 @@ components:
             * `HeyReach` - HeyReach
             * `MoEngage` - MoEngage
             * `Monaco` - Monaco
+            * `Oneleet` - Oneleet
+            * `Expo` - Expo
+            * `PostNord` - PostNord
+            * `Commslayer` - Commslayer
         payload:
           type: object
           additionalProperties: true
@@ -231288,6 +232046,10 @@ components:
             * `HeyReach` - HeyReach
             * `MoEngage` - MoEngage
             * `Monaco` - Monaco
+            * `Oneleet` - Oneleet
+            * `Expo` - Expo
+            * `PostNord` - PostNord
+            * `Commslayer` - Commslayer
         payload:
           type: object
           additionalProperties: true
@@ -232709,6 +233471,10 @@ components:
             * `HeyReach` - HeyReach
             * `MoEngage` - MoEngage
             * `Monaco` - Monaco
+            * `Oneleet` - Oneleet
+            * `Expo` - Expo
+            * `PostNord` - PostNord
+            * `Commslayer` - Commslayer
         payload:
           type: object
           additionalProperties: true
@@ -234090,11 +234856,13 @@ components:
       - table
       - view
       - metric
+      - posthog_table
       type: string
       description: |-
         * `table` - table
         * `view` - view
         * `metric` - metric
+        * `posthog_table` - posthog_table
     Subscription:
       type: object
       description: Standard Subscription serializer.
@@ -241840,23 +242608,24 @@ components:
           description: Same count over the prior window.
         failed_run_count:
           type: integer
-          description: 'CI runs (not spans) where an owned test''s recorded outcome
-            was failed or error. An absolute count, not a rate: fast passing runs
-            are not emitted.'
+          description: 'Distinct CI runs where at least one owned test failed or errored.
+            A run with many failing owned tests counts once. An absolute count, not
+            a rate: fast passing runs are not emitted.'
         failed_run_count_prior:
           type: integer
           description: Same count over the prior window.
         same_commit_recovery_run_count:
           type: integer
-          description: 'Runs where one commit both failed and passed an owned test:
-            a re-run attempt went green, or an in-job retry recovered it.'
+          description: 'Distinct CI runs where one commit both failed and passed at
+            least one owned test: a re-run attempt went green, or an in-job retry
+            recovered it.'
         same_commit_recovery_run_count_prior:
           type: integer
           description: Same count over the prior window.
         quarantined_failed_run_count:
           type: integer
-          description: 'Runs where an owned test recorded a tolerated failure while
-            quarantined: masked in CI, still failing.'
+          description: Distinct CI runs where at least one owned test recorded a tolerated
+            failure while quarantined.
         quarantined_failed_run_count_prior:
           type: integer
           description: Same count over the prior window.
@@ -241913,7 +242682,10 @@ components:
             $ref: '#/components/schemas/TeamCIHealthItem'
           description: Owning teams ranked by current flaky + failure signal, heaviest
             first, capped at `limit`. Teams are organizational owners of code surfaces;
-            this never aggregates by author.
+            this never aggregates by author. A CI setup break (a run attempt whose
+            tests errored in 3 or more jobs or for 3 or more owning teams, or a job
+            attempt with 100 or more distinct failed or errored tests) excludes every
+            trial of that attempt, not only its failures.
         truncated:
           type: boolean
           description: True when more teams had signal than the cap.
@@ -259304,13 +260076,13 @@ components:
           type: string
           description: Attribute key as it appears on the team's metrics (e.g. 'env',
             'k8s.pod.name').
-        series_count:
+        value_count:
           type: integer
-          description: Number of distinct recent series with this attribute, based
-            on series metadata.
+          description: Number of distinct values for this attribute in recent series
+            metadata.
       required:
       - name
-      - series_count
+      - value_count
     _MetricAttributeKeysResponse:
       type: object
       properties:
@@ -259319,7 +260091,7 @@ components:
           items:
             $ref: '#/components/schemas/_MetricAttributeKey'
           description: Distinct attribute keys (datapoint and resource attributes
-            merged), ordered by series count descending.
+            merged), ordered by distinct value count descending.
         count:
           type: integer
           description: Number of keys returned.

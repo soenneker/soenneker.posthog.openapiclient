@@ -3,8 +3,14 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Check_types;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Metric_subjects;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Output_schema;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Schedule;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Schedules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +25,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Data_quality_checksRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The check_types property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Check_types.Check_typesRequestBuilder Check_types
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Check_types.Check_typesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The health property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Health.HealthRequestBuilder Health
         {
@@ -29,12 +40,44 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Metric_subjects.Metric_subjectsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The output_schema property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Output_schema.Output_schemaRequestBuilder Output_schema
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Output_schema.Output_schemaRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The schedule property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Schedule.ScheduleRequestBuilder Schedule
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Schedule.ScheduleRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The schedules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Schedules.SchedulesRequestBuilder Schedules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Schedules.SchedulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The subjects property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.SubjectsRequestBuilder Subjects
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.SubjectsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.data_quality_checks.item collection</summary>
+        /// <param name="position">A UUID string identifying this data quality check.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Item.Data_quality_checksItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Item.Data_quality_checksItemRequestBuilder this[Guid position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Item.Data_quality_checksItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Data_quality_checksRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_quality_checksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks{?limit*,offset*}", pathParameters)
+        public Data_quality_checksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks{?check_type*,limit*,offset*,subject_type*,subject_uuid*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,11 +85,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_quality_checksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks{?limit*,offset*}", rawUrl)
+        public Data_quality_checksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks{?check_type*,limit*,offset*,subject_type*,subject_uuid*}", rawUrl)
         {
         }
         /// <summary>
-        /// Every check in the project, and the health of every subject that has one.The per-subject surfaces answer &quot;what is wrong with this table&quot;. This answers &quot;what is wrongacross the project&quot;, which they cannot: each is nested under one parent. Read-only -- authoringstill happens against the subject that owns the check.
+        /// Every check in the project. Narrow it to one subject with subject_type and subject_uuid, or to one assertion with check_type.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualityOverviewCheckList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -64,7 +107,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualityOverviewCheckList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualityOverviewCheckList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Every check in the project, and the health of every subject that has one.The per-subject surfaces answer &quot;what is wrong with this table&quot;. This answers &quot;what is wrongacross the project&quot;, which they cannot: each is nested under one parent. Read-only -- authoringstill happens against the subject that owns the check.
+        /// Create a check on the table, view or metric named by subject_type and subject_uuid, or refine the one already carrying the same fingerprint. Re-creating a semantically identical check returns 200 and the existing row, never a duplicate.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate"/></returns>
+        /// <param name="body">The create body, where the subject is named for the only time in a check&apos;s life.</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Every check in the project. Narrow it to one subject with subject_type and subject_uuid, or to one assertion with check_type.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -83,6 +146,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks
             return requestInfo;
         }
         /// <summary>
+        /// Create a check on the table, view or metric named by subject_type and subject_uuid, or refine the one already carrying the same fingerprint. Re-creating a semantically identical check returns 200 and the existing row, never a duplicate.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The create body, where the subject is named for the only time in a check&apos;s life.</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Data_quality_checksRequestBuilder"/></returns>
@@ -92,17 +177,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Data_quality_checksRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Every check in the project, and the health of every subject that has one.The per-subject surfaces answer &quot;what is wrong with this table&quot;. This answers &quot;what is wrongacross the project&quot;, which they cannot: each is nested under one parent. Read-only -- authoringstill happens against the subject that owns the check.
+        /// Every check in the project. Narrow it to one subject with subject_type and subject_uuid, or to one assertion with check_type.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Data_quality_checksRequestBuilderGetQueryParameters 
         {
+            /// <summary>Only the checks that make this assertion. See /check_types/.</summary>
+            [QueryParameter("check_type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityChecksListCheckTypeParameter? CheckType { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Kind of object being checked: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.</summary>
+            [QueryParameter("subject_type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityChecksListSubjectTypeParameter? SubjectType { get; set; }
+            /// <summary>Id of the table, view, metric, or PostHog table.</summary>
+            [QueryParameter("subject_uuid")]
+            public Guid? SubjectUuid { get; set; }
         }
     }
 }

@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ai_context_account_properties;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ai_reply_playbook;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets;
@@ -21,6 +22,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ConversationsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The ai_context_account_properties property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ai_context_account_properties.Ai_context_account_propertiesRequestBuilder Ai_context_account_properties
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ai_context_account_properties.Ai_context_account_propertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The ai_reply_playbook property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ai_reply_playbook.Ai_reply_playbookRequestBuilder Ai_reply_playbook
         {
