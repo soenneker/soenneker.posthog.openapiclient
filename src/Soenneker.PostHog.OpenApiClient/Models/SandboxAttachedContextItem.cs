@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Attachment kind. Entity types carry `id` (+ optional `name`); `text` carries `value`.* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `notebook` - notebook* `text` - text</summary>
+        /// <summary>Attachment kind. Entity types carry `id` (+ optional `name`); `text` and `instructions` carry `value`. `instructions` is the caller&apos;s own guidance and renders into the trusted context block; every other kind renders into the untrusted block, which tells the agent to read it as data.* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `instructions` - instructions* `notebook` - notebook* `text` - text</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxAttachedContextItemType? Type { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxAttachedContextItemType Type { get; set; }
 #endif
-        /// <summary>Free-text content. Only for `text` attachments.</summary>
+        /// <summary>Free-text content. Only for `text` and `instructions` attachments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Value { get; set; }

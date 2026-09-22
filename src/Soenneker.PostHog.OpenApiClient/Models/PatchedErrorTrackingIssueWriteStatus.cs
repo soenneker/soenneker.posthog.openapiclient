@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `active` - active* `resolved` - resolved* `suppressed` - suppressed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueWriteStatusEnum? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueWritableStatusEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteStatus"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueWriteStatusEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueWritableStatusEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueWriteStatusEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueWritableStatusEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

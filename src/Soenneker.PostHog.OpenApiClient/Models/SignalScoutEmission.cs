@@ -15,8 +15,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Deprecated and no longer set on new findings. Null unless the run supplied one.</summary>
-        public double? Confidence { get; set; }
         /// <summary>The emitted finding prose — the signal&apos;s `description` as surfaced to the inbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,7 +92,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "emitted_at", n => { EmittedAt = n.GetDateTimeOffsetValue(); } },
                 { "finding_id", n => { FindingId = n.GetStringValue(); } },
@@ -112,7 +109,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("confidence", Confidence);
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("emitted_at", EmittedAt);
             writer.WriteStringValue("finding_id", FindingId);

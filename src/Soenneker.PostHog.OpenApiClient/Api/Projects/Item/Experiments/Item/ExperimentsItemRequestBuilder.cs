@@ -15,6 +15,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Freeze_
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.In_session_exposure;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Launch;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Metrics_recalculation;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Migrate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Pause;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Recalculate_timeseries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Reset;
@@ -98,6 +99,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Metrics_recalculation.Metrics_recalculationRequestBuilder Metrics_recalculation
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Metrics_recalculation.Metrics_recalculationRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The migrate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Migrate.MigrateRequestBuilder Migrate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Migrate.MigrateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pause property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Pause.PauseRequestBuilder Pause

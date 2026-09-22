@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Art
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Claim;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Feedback;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Merge;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_checks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_comments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_review_comments;
@@ -47,6 +48,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Feedback.FeedbackRequestBuilder Feedback
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Feedback.FeedbackRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The merge property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Merge.MergeRequestBuilder Merge
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Merge.MergeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pr_checks property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_checks.Pr_checksRequestBuilder Pr_checks

@@ -14,11 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Among web distinct ids that report whether they are identified, the share that was anonymous. Null when no web SDK sent the target event.</summary>
+        /// <summary>Among all distinct ids that report whether they are identified, whichever SDK they came from, the share that was anonymous. Null when no target event reported it.</summary>
         public double? AnonymousShare { get; set; }
         /// <summary>When the numbers were computed. They are cached for an hour.</summary>
         public DateTimeOffset? ComputedAt { get; set; }
-        /// <summary>Share of web target events that carry a $device_id. Null when no web SDK sent the target event.</summary>
+        /// <summary>Share of all target events that carry a $device_id. Null when there were no target events.</summary>
         public double? DeviceIdShare { get; set; }
         /// <summary>unique_persons divided by window_days. Pass it as exposure_rate_per_day to experiment-calculate-running-time, scaled by the share of traffic the experiment will include.</summary>
         public double? ExposuresPerDayEstimate { get; set; }
@@ -37,6 +37,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string SourceEvent { get; set; }
+#endif
+        /// <summary>Event or person property filters that narrow which events are counted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? TargetProperties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> TargetProperties { get; set; }
 #endif
         /// <summary>The URL filter that was applied, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "exposures_per_day_estimate", n => { ExposuresPerDayEstimate = n.GetDoubleValue(); } },
                 { "libs", n => { Libs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source_event", n => { SourceEvent = n.GetStringValue(); } },
+                { "target_properties", n => { TargetProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "target_url_contains", n => { TargetUrlContains = n.GetStringValue(); } },
                 { "test_accounts_filtered", n => { TestAccountsFiltered = n.GetBoolValue(); } },
                 { "unique_persons", n => { UniquePersons = n.GetIntValue(); } },
@@ -102,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("exposures_per_day_estimate", ExposuresPerDayEstimate);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>("libs", Libs);
             writer.WriteStringValue("source_event", SourceEvent);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>("target_properties", TargetProperties);
             writer.WriteStringValue("target_url_contains", TargetUrlContains);
             writer.WriteBoolValue("test_accounts_filtered", TestAccountsFiltered);
             writer.WriteIntValue("unique_persons", UniquePersons);

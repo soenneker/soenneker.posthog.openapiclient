@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Product the warm Run is for. Fixed when the sandbox boots — it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship — so a submit only reuses a warm born under the same origin. Defaults to the Code app.* `user_created` - user_created* `posthog_ai` - posthog_ai</summary>
+        /// <summary>Product the warm Run is for. Fixed when the sandbox boots — it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship — so a submit only reuses a warm born under the same origin. Defaults to the Code app.* `user_created` - user_created* `posthog_ai` - posthog_ai* `signal_report` - signal_report</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct? OriginProduct { get; set; }
@@ -85,6 +85,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Optional sandbox environment to provision before the task is submitted.</summary>
         public Guid? SandboxEnvironmentId { get; set; }
+        /// <summary>Inbox report the warm discussion is about. Required with origin_product `signal_report`, where the warm Run boots repo-less and the submit that creates the report&apos;s discussion task activates it.</summary>
+        public Guid? SignalReport { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequest"/> and sets the default values.
         /// </summary>
@@ -121,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter.CreateFromDiscriminatorValue); } },
                 { "sandbox_environment_id", n => { SandboxEnvironmentId = n.GetGuidValue(); } },
+                { "signal_report", n => { SignalReport = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -141,6 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("repository", Repository);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteGuidValue("sandbox_environment_id", SandboxEnvironmentId);
+            writer.WriteGuidValue("signal_report", SignalReport);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

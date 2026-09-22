@@ -74,6 +74,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Flag_value;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_capture;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshot;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshots;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps;
@@ -85,6 +86,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insight_variables;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.JsSnippet;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Links;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakpoints;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts;
@@ -537,6 +539,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues.Health_issuesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The heatmap_capture property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_capture.Heatmap_captureRequestBuilder Heatmap_capture
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_capture.Heatmap_captureRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The heatmap_screenshot property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmap_screenshot.Heatmap_screenshotRequestBuilder Heatmap_screenshot
         {
@@ -591,6 +598,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.JsSnippet.JsSnippetRequestBuilder JsSnippet
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.JsSnippet.JsSnippetRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The links property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Links.LinksRequestBuilder Links
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Links.LinksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The live_debugger_breakpoints property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakpoints.Live_debugger_breakpointsRequestBuilder Live_debugger_breakpoints

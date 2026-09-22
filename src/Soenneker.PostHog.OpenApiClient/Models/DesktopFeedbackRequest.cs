@@ -46,6 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FeedbackTaskId { get; set; }
 #endif
+        /// <summary>Feedback type selected by the user: bug, feature, or general.* `bug` - Bug* `feature` - Feature* `general` - General</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType? FeedbackType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType FeedbackType { get; set; }
+#endif
         /// <summary>Desktop view that was active when the feedback form opened.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -125,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "feedback_app_logs", n => { FeedbackAppLogs = n.GetStringValue(); } },
                 { "feedback_folder_id", n => { FeedbackFolderId = n.GetStringValue(); } },
                 { "feedback_task_id", n => { FeedbackTaskId = n.GetStringValue(); } },
+                { "feedback_type", n => { FeedbackType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType>(global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType.CreateFromDiscriminatorValue); } },
                 { "feedback_view", n => { FeedbackView = n.GetStringValue(); } },
                 { "image_1", n => { Image1 = n.GetByteArrayValue(); } },
                 { "image_2", n => { Image2 = n.GetByteArrayValue(); } },
@@ -145,6 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("feedback_app_logs", FeedbackAppLogs);
             writer.WriteStringValue("feedback_folder_id", FeedbackFolderId);
             writer.WriteStringValue("feedback_task_id", FeedbackTaskId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType>("feedback_type", FeedbackType);
             writer.WriteStringValue("feedback_view", FeedbackView);
             writer.WriteByteArrayValue("image_1", Image1);
             writer.WriteByteArrayValue("image_2", Image2);

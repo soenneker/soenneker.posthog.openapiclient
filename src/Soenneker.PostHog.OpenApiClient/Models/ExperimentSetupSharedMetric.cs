@@ -36,6 +36,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastUsedAt { get; set; }
         /// <summary>Whether the metric counts metric_event, directly or through an action. Null when no metric_event was passed.</summary>
         public bool? MatchesMetricEvent { get; set; }
+        /// <summary>Where metric_event sits in the metric: &apos;funnel_step&apos; and &apos;funnel_final_step&apos; for a funnel, &apos;mean_source&apos;, &apos;ratio_numerator&apos;, &apos;ratio_denominator&apos;, &apos;retention_start&apos; or &apos;retention_completion&apos;. A metric that only starts from the event is a different precedent from one that converts on it. Empty when the metric does not count it, and null when no metric_event was passed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? MetricEventRoles { get; set; }
+#nullable restore
+#else
+        public List<string> MetricEventRoles { get; set; }
+#endif
         /// <summary>&apos;mean&apos;, &apos;funnel&apos;, &apos;ratio&apos; or &apos;retention&apos;, or null for older metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
                 { "matches_metric_event", n => { MatchesMetricEvent = n.GetBoolValue(); } },
+                { "metric_event_roles", n => { MetricEventRoles = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "metric_type", n => { MetricType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "used_as_primary", n => { UsedAsPrimary = n.GetIntValue(); } },
@@ -104,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
             writer.WriteBoolValue("matches_metric_event", MatchesMetricEvent);
+            writer.WriteCollectionOfPrimitiveValues<string>("metric_event_roles", MetricEventRoles);
             writer.WriteStringValue("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("used_as_primary", UsedAsPrimary);

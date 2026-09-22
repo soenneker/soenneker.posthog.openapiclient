@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerConfig ScannerConfig { get; set; }
 #endif
-        /// <summary>What the scan produces. Defaults to monitor, an open-ended observation against the prompt.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
+        /// <summary>What the scan produces. Defaults to monitor, an open-ended observation against the prompt. Use `summarizer` to get PostHog&apos;s own AI summary of a recording. An inline scan is keyed by its whole config, so the Summarize button in the replay player shares this scan only when the prompt and `scanner_config` match the ones it sends.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType? ScannerType { get; set; }

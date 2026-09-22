@@ -125,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Id { get; private set; }
         /// <summary>Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don&apos;t support them, such as duplicate and copy-to-project.</summary>
         public bool? IsLegacy { get; private set; }
-        /// <summary>Primary experiment metrics. Each metric must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event). Use the read-data-schema tool with query kind &apos;events&apos; to find available events in the project.</summary>
+        /// <summary>Primary experiment metrics. Each metric must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event; pass start_event {&quot;kind&quot;: &quot;ExperimentExposureNode&quot;} to start retention from the experiment&apos;s exposure event). Use the read-data-schema tool with query kind &apos;events&apos; to find available events in the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>? Metrics { get; set; }

@@ -30,10 +30,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? FlagsPersistenceDefault { get; set; }
         /// <summary>The team&apos;s default minimum detectable effect, as a percentage. Null when the team has not set one; product_default_minimum_detectable_effect applies then.</summary>
         public int? MinimumDetectableEffect { get; set; }
+        /// <summary>A new experiment filters test accounts this way unless its own exposure criteria say otherwise. It does not follow the project&apos;s insight default.</summary>
+        public bool? NewExperimentsFilterTestAccounts { get; set; }
         /// <summary>Default for counting only users whose metric window has fully passed.</summary>
         public bool? OnlyCountMaturedUsers { get; set; }
+        /// <summary>The confidence level that applies when the team has no default. Both methods use the same one.</summary>
+        public double? ProductDefaultConfidenceLevel { get; set; }
         /// <summary>The minimum detectable effect, as a percentage, that applies when the team has no default.</summary>
         public int? ProductDefaultMinimumDetectableEffect { get; set; }
+        /// <summary>The statistical method that applies when the team has no default.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProductDefaultStatsMethod { get; set; }
+#nullable restore
+#else
+        public string ProductDefaultStatsMethod { get; set; }
+#endif
         /// <summary>Default for sequential testing. Applies only to the frequentist method.</summary>
         public bool? SequentialTestingEnabled { get; set; }
         /// <summary>Default statistical method for new experiments: &apos;bayesian&apos; or &apos;frequentist&apos;.</summary>
@@ -46,8 +58,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>How many filters the team uses to identify internal and test users.</summary>
         public int? TestAccountFilterCount { get; set; }
-        /// <summary>Whether new insights and experiments filter out test accounts by default.</summary>
-        public bool? TestAccountFiltersDefaultChecked { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults"/> and sets the default values.
         /// </summary>
@@ -78,12 +88,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "default_exposure_event", n => { DefaultExposureEvent = n.GetStringValue(); } },
                 { "flags_persistence_default", n => { FlagsPersistenceDefault = n.GetBoolValue(); } },
                 { "minimum_detectable_effect", n => { MinimumDetectableEffect = n.GetIntValue(); } },
+                { "new_experiments_filter_test_accounts", n => { NewExperimentsFilterTestAccounts = n.GetBoolValue(); } },
                 { "only_count_matured_users", n => { OnlyCountMaturedUsers = n.GetBoolValue(); } },
+                { "product_default_confidence_level", n => { ProductDefaultConfidenceLevel = n.GetDoubleValue(); } },
                 { "product_default_minimum_detectable_effect", n => { ProductDefaultMinimumDetectableEffect = n.GetIntValue(); } },
+                { "product_default_stats_method", n => { ProductDefaultStatsMethod = n.GetStringValue(); } },
                 { "sequential_testing_enabled", n => { SequentialTestingEnabled = n.GetBoolValue(); } },
                 { "stats_method", n => { StatsMethod = n.GetStringValue(); } },
                 { "test_account_filter_count", n => { TestAccountFilterCount = n.GetIntValue(); } },
-                { "test_account_filters_default_checked", n => { TestAccountFiltersDefaultChecked = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -98,12 +110,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("default_exposure_event", DefaultExposureEvent);
             writer.WriteBoolValue("flags_persistence_default", FlagsPersistenceDefault);
             writer.WriteIntValue("minimum_detectable_effect", MinimumDetectableEffect);
+            writer.WriteBoolValue("new_experiments_filter_test_accounts", NewExperimentsFilterTestAccounts);
             writer.WriteBoolValue("only_count_matured_users", OnlyCountMaturedUsers);
+            writer.WriteDoubleValue("product_default_confidence_level", ProductDefaultConfidenceLevel);
             writer.WriteIntValue("product_default_minimum_detectable_effect", ProductDefaultMinimumDetectableEffect);
+            writer.WriteStringValue("product_default_stats_method", ProductDefaultStatsMethod);
             writer.WriteBoolValue("sequential_testing_enabled", SequentialTestingEnabled);
             writer.WriteStringValue("stats_method", StatsMethod);
             writer.WriteIntValue("test_account_filter_count", TestAccountFilterCount);
-            writer.WriteBoolValue("test_account_filters_default_checked", TestAccountFiltersDefaultChecked);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

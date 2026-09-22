@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty> Filters { get; set; }
 #endif
-        /// <summary>How long after entering the workflow a conversion still counts, as a duration string: &apos;7d&apos;, &apos;12h&apos;, &apos;30m&apos;, &apos;45s&apos;. Same form the delay steps use. Maximum &apos;365d&apos;. Omit it to use the default window. Set this or &apos;window_minutes&apos;, not both.</summary>
+        /// <summary>How long after entering the workflow a conversion still counts, as a duration string: &apos;7d&apos;, &apos;12h&apos;, &apos;30m&apos;, &apos;45s&apos;. Same form the delay steps use. Must be longer than zero, and at most &apos;365d&apos;. Omit it to use the default of 90 days. Set this or &apos;window_minutes&apos;, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Window { get; set; }
@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Window { get; set; }
 #endif
-        /// <summary>DEPRECATED, use &apos;window&apos; instead. Conversion window in MINUTES (not seconds) after a person enters the workflow. Maximum 129600 (90 days). null = use the default window. Set this or &apos;window&apos;, not both.</summary>
+        /// <summary>DEPRECATED, use &apos;window&apos; instead. Conversion window in MINUTES (not seconds) after a person enters the workflow. Maximum 129600 (90 days). null = use the default of 90 days. Set this or &apos;window&apos;, not both.</summary>
         public int? WindowMinutes { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion"/> and sets the default values.

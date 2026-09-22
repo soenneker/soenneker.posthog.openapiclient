@@ -15,8 +15,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Deprecated and ignored. Nothing reads it; omit it. Still range-checked when supplied.</summary>
-        public double? Confidence { get; set; }
         /// <summary>Optional keys for downstream dedupe (e.g. `error_tracking_issue:&lt;id&gt;`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -114,7 +112,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "dedupe_keys", n => { DedupeKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvidenceEntry>(global::Soenneker.PostHog.OpenApiClient.Models.EvidenceEntry.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -133,7 +130,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("confidence", Confidence);
             writer.WriteCollectionOfPrimitiveValues<string>("dedupe_keys", DedupeKeys);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvidenceEntry>("evidence", Evidence);

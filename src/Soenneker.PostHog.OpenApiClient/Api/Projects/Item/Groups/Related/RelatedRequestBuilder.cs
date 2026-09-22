@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RelatedRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups/related?group_type_index={group_type_index}&id={id}", pathParameters)
+        public RelatedRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups/related?id={id}{&group_type_index*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,23 +30,24 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RelatedRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups/related?group_type_index={group_type_index}&id={id}", rawUrl)
+        public RelatedRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups/related?id={id}{&group_type_index*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.RelatedActor&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related.RelatedRequestBuilder.RelatedRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.RelatedActor>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related.RelatedRequestBuilder.RelatedRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related.RelatedRequestBuilder.RelatedRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.RelatedActor>> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related.RelatedRequestBuilder.RelatedRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.RelatedActor>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RelatedActor.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -60,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -76,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related
         public partial class RelatedRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>Specify the group type to find</summary>
+            /// <summary>Group type of the actor to find related actors for. Omit when the actor is a person.</summary>
             [QueryParameter("group_type_index")]
             public int? GroupTypeIndex { get; set; }
             /// <summary>Specify the id of the user to find groups for</summary>

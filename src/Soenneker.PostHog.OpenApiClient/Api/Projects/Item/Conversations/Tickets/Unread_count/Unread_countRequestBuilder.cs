@@ -36,20 +36,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// <summary>
         /// Get total unread ticket count for the team.Returns the sum of unread_team_count for all non-resolved tickets visible to thecaller. The team-wide Redis cache (30s TTL, invalidated on changes) is only used forcallers without object-level ticket restrictions, since it holds one unscoped totalper team - serving it to a restricted member would leak counts for tickets they can&apos;tsee.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Ticket"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Ticket?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Ticket> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Ticket>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Ticket.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get total unread ticket count for the team.Returns the sum of unread_team_count for all non-resolved tickets visible to thecaller. The team-wide Redis cache (30s TTL, invalidated on changes) is only used forcallers without object-level ticket restrictions, since it holds one unscoped totalper team - serving it to a restricted member would leak counts for tickets they can&apos;tsee.

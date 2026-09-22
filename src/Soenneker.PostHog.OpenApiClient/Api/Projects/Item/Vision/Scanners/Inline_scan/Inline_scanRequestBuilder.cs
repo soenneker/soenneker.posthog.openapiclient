@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Inli
         {
         }
         /// <summary>
-        /// Scan named sessions against a prompt without saving a scanner first, for one-off questions.The config resolves to a scanner minted on first use, so asking the same question twice reusesthe observations it already has, while a different question about the same session gets its own.
+        /// Scan named sessions against a prompt without saving a scanner first, for one-off questions.The config resolves to a scanner minted on first use, so asking the same question twice reusesthe observations it already has, while a different question about the same session gets its own.With `scanner_type` set to `summarizer`, this is how you get PostHog&apos;s own AI summary for arecording ID. It resolves to the Summarize button&apos;s own scanner only when the prompt and`scanner_config` match what the button sends, since the config is what the key fingerprints.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InlineScanResponse"/></returns>
         /// <param name="body">Body of POST /vision/scanners/inline_scan/ - a prompt plus the sessions to point it at.</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Inli
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.InlineScanResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Scan named sessions against a prompt without saving a scanner first, for one-off questions.The config resolves to a scanner minted on first use, so asking the same question twice reusesthe observations it already has, while a different question about the same session gets its own.
+        /// Scan named sessions against a prompt without saving a scanner first, for one-off questions.The config resolves to a scanner minted on first use, so asking the same question twice reusesthe observations it already has, while a different question about the same session gets its own.With `scanner_type` set to `summarizer`, this is how you get PostHog&apos;s own AI summary for arecording ID. It resolves to the Summarize button&apos;s own scanner only when the prompt and`scanner_config` match what the button sends, since the config is what the key fingerprints.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Body of POST /vision/scanners/inline_scan/ - a prompt plus the sessions to point it at.</param>

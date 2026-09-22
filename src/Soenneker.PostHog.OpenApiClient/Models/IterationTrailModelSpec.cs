@@ -15,6 +15,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Dotted path of the estimator class.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelClass { get; set; }
+#nullable restore
+#else
+        public string ModelClass { get; set; }
+#endif
+        /// <summary>Keyword arguments for the estimator&apos;s constructor; null or absent means the defaults.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty? ModelParams { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty ModelParams { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpec"/> and sets the default values.
         /// </summary>
@@ -40,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "model_class", n => { ModelClass = n.GetStringValue(); } },
+                { "model_params", n => { ModelParams = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -49,6 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("model_class", ModelClass);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty>("model_params", ModelParams);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

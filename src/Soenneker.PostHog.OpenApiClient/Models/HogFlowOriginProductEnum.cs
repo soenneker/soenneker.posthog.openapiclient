@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `loops` - Loops</summary>
+    /// <summary>* `loops` - Loops* `broadcasts` - Broadcasts</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HogFlowOriginProductEnum
     {
         [EnumMember(Value = "loops")]
         #pragma warning disable CS1591
         Loops,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "broadcasts")]
+        #pragma warning disable CS1591
+        Broadcasts,
         #pragma warning restore CS1591
     }
 }

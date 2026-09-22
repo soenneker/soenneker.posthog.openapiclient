@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Most recently created first. Archived experiments are included, deleted ones are not.</summary>
+        /// <summary>Most recently launched first, then drafts. Archived experiments are included, deleted ones are not.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperiment>? Experiments { get; set; }

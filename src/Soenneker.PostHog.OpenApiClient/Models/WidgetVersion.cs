@@ -56,6 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> FrameNames { get; set; }
 #endif
+        /// <summary>Estimated generation charge in USD, including retries, security review, and the AI credit markup. Null when unavailable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GenerationCostUsd { get; set; }
+#nullable restore
+#else
+        public string GenerationCostUsd { get; set; }
+#endif
         /// <summary>Immutable widget version identifier.</summary>
         public Guid? Id { get; set; }
         /// <summary>Whether this notebook instance currently displays this version.</summary>
@@ -127,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "effective_prompt", n => { EffectivePrompt = n.GetStringValue(); } },
                 { "frame_names", n => { FrameNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "generation_cost_usd", n => { GenerationCostUsd = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_current", n => { IsCurrent = n.GetBoolValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
@@ -150,6 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("effective_prompt", EffectivePrompt);
             writer.WriteCollectionOfPrimitiveValues<string>("frame_names", FrameNames);
+            writer.WriteStringValue("generation_cost_usd", GenerationCostUsd);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("is_current", IsCurrent);
             writer.WriteStringValue("model", Model);

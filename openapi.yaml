@@ -9934,6 +9934,188 @@ paths:
           description: ''
       x-product:
       - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/suggestions/:
+    get:
+      operationId: autoresearch_suggestions_list
+      description: List steering suggestions for a pipeline, ordered most recent first.
+        Check 'status' to see which have been picked up or acted on by the agent.
+      summary: List suggestions
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAutoresearchSuggestionList'
+          description: ''
+      x-product:
+      - autoresearch
+    post:
+      operationId: autoresearch_suggestions_create
+      description: 'Inject a free-text hypothesis or direction into a running pipeline.
+        The sandbox agent reads queued suggestions at the start of each iteration
+        batch and decides: translate into a concrete iteration (''acted_on''), apply
+        as a search constraint (''picked_up''), or reject with rationale (''dismissed'').
+        Use priority=''try_next'' to instruct the agent to act on this before autonomous
+        iterations; ''consider'' is advisory. Check ''agent_response'' after the next
+        training run to see how the suggestion was interpreted.'
+      summary: Submit a suggestion
+      parameters:
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSuggestion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateSuggestion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateSuggestion'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchSuggestion'
+          description: The created suggestion. The agent will pick it up at the start
+            of the next training batch.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/suggestions/{id}/:
+    get:
+      operationId: autoresearch_suggestions_retrieve
+      description: Get details for a specific suggestion including its status and
+        agent_response.
+      summary: Get suggestion
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch suggestion.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchSuggestion'
+          description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/suggestions/{id}/respond/:
+    post:
+      operationId: autoresearch_suggestions_respond_create
+      description: 'Record how the agent handled a steering suggestion: set status
+        to ''picked_up'' (applied as a search constraint), ''acted_on'' (spawned iterations),
+        or ''dismissed'' (rejected — explain in agent_response), and write the agent_response
+        note the human will read. Call this from the training loop after deciding
+        what to do with a pending suggestion. Recording an iteration with parent_suggestion
+        set already advances a suggestion to ''acted_on''; use this to add the narrative
+        or to mark a suggestion picked_up/dismissed without spawning an iteration.
+        A suggestion only moves forward (queued, picked_up, then acted_on or dismissed);
+        the same status again updates the note.'
+      summary: Respond to a suggestion
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch suggestion.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RespondToSuggestion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RespondToSuggestion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RespondToSuggestion'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchSuggestion'
+          description: The updated suggestion with its new status and agent_response.
+        '400':
+          description: The status would move the suggestion backwards, acted_on has
+            no linked iteration, a dismissal has no explanation, or the pipeline is
+            archived.
+      x-product:
+      - autoresearch
   /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/:
     get:
       operationId: autoresearch_training_runs_list
@@ -9977,6 +10159,50 @@ paths:
           description: ''
       x-product:
       - autoresearch
+    post:
+      operationId: autoresearch_training_runs_create
+      description: Open a new training run for a pipeline and return its id. An agent
+        — the in-house sandbox, an external bring-your-own agent, or a scheduled job
+        — then records iterations against this run and finalizes it with the complete
+        endpoint. The run starts in 'running'.
+      summary: Open a training run
+      parameters:
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenTrainingRun'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenTrainingRun'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OpenTrainingRun'
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchTrainingRun'
+          description: The opened training run. Record iterations against its id,
+            then call complete.
+        '400':
+          description: Pipeline is archived.
+      x-product:
+      - autoresearch
   /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/:
     get:
       operationId: autoresearch_training_runs_retrieve
@@ -10013,6 +10239,407 @@ paths:
               schema:
                 $ref: '#/components/schemas/AutoresearchTrainingRun'
           description: ''
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/:
+    get:
+      operationId: autoresearch_training_runs_artifacts_retrieve
+      description: List the files an agent has uploaded for this training run's artifact
+        bundle (train.py, predict.py, features.sql, and any eda/ notebooks).
+      summary: List artifact bundle files
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtifactList'
+          description: The relative paths of every file in this run's artifact bundle.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/delete/:
+    post:
+      operationId: autoresearch_training_runs_artifacts_delete_create
+      description: Remove one file from this training run's artifact bundle. Idempotent
+        — deleting a missing file is a no-op. The bundle is frozen once the run completes
+        or fails.
+      summary: Delete an artifact bundle file
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtifactPath'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ArtifactPath'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ArtifactPath'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtifactDeleteResult'
+          description: Whether a file existed at that path and was removed.
+        '400':
+          description: Invalid path, or the run is no longer running.
+        '503':
+          description: Object storage is unavailable; nothing was deleted.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/get/:
+    post:
+      operationId: autoresearch_training_runs_artifacts_get_create
+      description: Fetch one file from this training run's artifact bundle, base64-encoded.
+      summary: Get an artifact bundle file
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtifactPath'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ArtifactPath'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ArtifactPath'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtifactContent'
+          description: The file's content, base64-encoded, with its size and hash.
+        '404':
+          description: No file at that path in this run's bundle.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/artifacts/upload/:
+    post:
+      operationId: autoresearch_training_runs_artifacts_upload_create
+      description: Upload one file of this training run's artifact bundle. Send the
+        file contents base64-encoded in content_base64. Re-uploading the same path
+        overwrites it. Use this — not curl/set_output — to author train.py, predict.py,
+        and features.sql. The bundle is frozen once the run completes or fails.
+      summary: Upload an artifact bundle file
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtifactUpload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ArtifactUpload'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ArtifactUpload'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoredArtifact'
+          description: The stored file's path, size, and content hash.
+        '400':
+          description: Invalid or reserved path, content is not base64, file exceeds
+            the size limit, the bundle holds its maximum number of files, or the run
+            is no longer running.
+        '503':
+          description: Object storage is unavailable; nothing was stored.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/complete/:
+    post:
+      operationId: autoresearch_training_runs_complete_create
+      description: 'Finalize a training run. The backend selects the kept iteration
+        with the highest holdout score, decides champion vs challenger via the promotion
+        ladder, and persists the model. best_iteration_id is advisory: it breaks a
+        tie at the top score and is otherwise logged and ignored. Agents cannot set
+        the champion directly, because promotion is server-side.'
+      summary: Complete a training run
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteTrainingRun'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CompleteTrainingRun'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CompleteTrainingRun'
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchTrainingRun'
+          description: The completed training run. Call autoresearch-models-list to
+            see the resulting champion/challenger.
+        '400':
+          description: Run is already completed or failed, has no recorded iterations,
+            or has no usable model artifact (no bundle and no feature SQL).
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/iterations/:
+    post:
+      operationId: autoresearch_training_runs_iterations_create
+      description: 'Record one iteration of an open training run. Idempotent on iteration_number:
+        re-sending the same number updates that iteration. A new iteration_number
+        is refused once the run''s iteration_budget is used. The recipe is validated
+        server-side: feature_sql must be a read-only SELECT from {anchors} keyed on
+        person_id, and model_class must be set. The class allowlist applies only at
+        completion, to a run that uploaded no bundle.'
+      summary: Record a training iteration
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordIteration'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RecordIteration'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecordIteration'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoresearchIteration'
+          description: The recorded iteration.
+        '400':
+          description: Recipe failed validation (feature_sql does not read from {anchors},
+            model_class missing, a non-object model_params), the run is not running,
+            or its iteration budget is used.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/{id}/materialize-features/:
+    post:
+      operationId: autoresearch_training_runs_materialize_features_create
+      description: Run features_sql server-side against the labeled training population
+        and write the resulting train/holdout feature and label parquet files directly
+        into this run's sandbox. Returns the local sandbox paths, row counts, and
+        feature columns. The rows never pass through the agent's context and there
+        is no 500-row cap. Read the returned paths with pd.read_parquet and iterate
+        in Python.
+      summary: Materialize training features to the sandbox
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this autoresearch training run.
+        required: true
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaterializeFeaturesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MaterializeFeaturesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MaterializeFeaturesRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaterializeFeaturesResponse'
+          description: Sandbox paths to the train/holdout feature and label parquet
+            files, plus row counts and feature columns.
+        '400':
+          description: Run not running, features_sql invalid, sandbox unavailable,
+            the query produced no usable rows, or the holdout split cannot be scored.
+      x-product:
+      - autoresearch
+  /api/projects/{project_id}/autoresearch/{pipeline_id}/training_runs/history/:
+    get:
+      operationId: autoresearch_training_runs_history_retrieve
+      description: Return recent completed training runs and their iteration trails
+        so a new run can learn from what was already tried. Scoped to this pipeline
+        first, then same-target sibling pipelines on the team. Read this before iterating
+        to reuse winning features and avoid repeating discarded approaches.
+      summary: Read prior training-run history
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 20
+          minimum: 1
+          default: 5
+        description: Maximum number of prior runs to return (default 5, at most 20).
+      - in: path
+        name: pipeline_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - autoresearch
+      - autoresearch
+      security:
+      - PersonalAPIKeyAuth:
+        - autoresearch:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingRunHistory'
+          description: Prior completed training runs with their iteration trails,
+            for orienting a new run.
       x-product:
       - autoresearch
   /api/projects/{project_id}/autoresearch/{id}/:
@@ -15020,6 +15647,50 @@ paths:
           description: No response body
       x-product:
       - conversations
+  /api/projects/{project_id}/conversations/tickets/{id}/ai_human_outcome/:
+    post:
+      operationId: conversations_tickets_ai_human_outcome_create
+      description: Record that a human used or edited the latest AI draft.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The ticket's UUID or its numeric ticket number.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AiHumanOutcomeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AiHumanOutcomeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AiHumanOutcomeRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:write
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiHumanOutcomeRequest'
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketError'
+          description: ''
+      x-product:
+      - conversations
   /api/projects/{project_id}/conversations/tickets/{id}/messages/:
     get:
       operationId: conversations_tickets_messages_list
@@ -15429,6 +16100,7 @@ paths:
         callers without object-level ticket restrictions, since it holds one unscoped total
         per team - serving it to a restricted member would leak counts for tickets they can't
         see.
+      summary: Count unread tickets
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -15441,7 +16113,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ticket'
+                $ref: '#/components/schemas/TicketUnreadCountResponse'
           description: ''
       x-product:
       - conversations
@@ -24935,18 +25607,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingAssignmentRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingAssignmentRuleReorderRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingAssignmentRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingAssignmentRuleReorderRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingAssignmentRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingAssignmentRuleReorderRequest'
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
       responses:
-        '200':
+        '204':
           description: No response body
       x-product:
       - error_tracking
@@ -25125,18 +25797,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingBypassRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingBypassRuleReorderRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingBypassRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingBypassRuleReorderRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingBypassRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingBypassRuleReorderRequest'
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
       responses:
-        '200':
+        '204':
           description: No response body
       x-product:
       - error_tracking
@@ -25322,6 +25994,12 @@ paths:
     get:
       operationId: error_tracking_fingerprints_list
       parameters:
+      - in: query
+        name: issue_id
+        schema:
+          type: string
+          format: uuid
+        description: Return only the fingerprints of this issue.
       - name: limit
         required: false
         in: query
@@ -25676,18 +26354,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingGroupingRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingGroupingRuleReorderRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingGroupingRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingGroupingRuleReorderRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingGroupingRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingGroupingRuleReorderRequest'
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
       responses:
-        '200':
+        '204':
           description: No response body
       x-product:
       - error_tracking
@@ -25726,6 +26404,11 @@ paths:
     get:
       operationId: error_tracking_issues_retrieve
       parameters:
+      - in: query
+        name: fingerprint
+        schema:
+          type: string
+        description: Resolve the issue that currently owns this fingerprint first.
       - in: path
         name: id
         schema:
@@ -25744,6 +26427,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorTrackingIssueRead'
           description: ''
+        '308':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingIssueRedirectResponse'
+          description: The fingerprint belongs to a different issue now.
       x-product:
       - error_tracking
     put:
@@ -25906,20 +26595,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingIssueRead'
+              $ref: '#/components/schemas/ErrorTrackingIssueCohortRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingIssueRead'
+              $ref: '#/components/schemas/ErrorTrackingIssueCohortRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingIssueRead'
+              $ref: '#/components/schemas/ErrorTrackingIssueCohortRequest'
         required: true
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingIssueSuccessResponse'
+          description: ''
       x-product:
       - error_tracking
   /api/projects/{project_id}/error_tracking/issues/{id}/merge/:
@@ -26019,20 +26712,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingIssueRead'
+              $ref: '#/components/schemas/ErrorTrackingIssueBulkRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingIssueRead'
+              $ref: '#/components/schemas/ErrorTrackingIssueBulkRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingIssueRead'
+              $ref: '#/components/schemas/ErrorTrackingIssueBulkRequest'
         required: true
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingIssueSuccessResponse'
+          description: ''
       x-product:
       - error_tracking
   /api/projects/{project_id}/error_tracking/issues/exists/:
@@ -26047,14 +26744,29 @@ paths:
         - error_tracking:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingIssueExistsResponse'
+          description: ''
       x-product:
       - error_tracking
   /api/projects/{project_id}/error_tracking/issues/values/:
     get:
       operationId: error_tracking_issues_values_retrieve
       parameters:
+      - in: query
+        name: key
+        schema:
+          type: string
+        description: Issue property to list values for.
+        required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: value
+        schema:
+          type: string
+        description: Substring the returned values must contain.
       tags:
       - error_tracking
       security:
@@ -26062,7 +26774,11 @@ paths:
         - error_tracking:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingIssueValuesResponse'
+          description: ''
       x-product:
       - error_tracking
   /api/projects/{project_id}/error_tracking/query/issue/:
@@ -26186,6 +26902,11 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: poll
+        schema:
+          type: boolean
+        description: True reads the current state without scheduling a refresh.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - error_tracking
@@ -26229,6 +26950,12 @@ paths:
     post:
       operationId: error_tracking_recommendations_refresh_create
       parameters:
+      - in: query
+        name: force
+        schema:
+          type: boolean
+        description: False skips the recompute when the current result is still fresh.
+          Defaults to true.
       - in: path
         name: id
         schema:
@@ -26699,9 +27426,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ErrorTrackingSpikeDetectionConfig'
+                $ref: '#/components/schemas/ErrorTrackingSpikeDetectionConfig'
           description: ''
       x-product:
       - error_tracking
@@ -26739,6 +27464,23 @@ paths:
     get:
       operationId: error_tracking_spike_events_list
       parameters:
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          format: date-time
+        description: Include spikes detected at or after this time.
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          format: date-time
+        description: Include spikes detected at or before this time.
+      - in: query
+        name: issue_ids
+        schema:
+          type: string
+        description: Comma-separated issue UUIDs to include.
       - name: limit
         required: false
         in: query
@@ -26751,6 +27493,11 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: order_by
+        schema:
+          type: string
+        description: Field to order by. Prefix with a hyphen for descending.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - error_tracking
@@ -27044,18 +27791,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingSuppressionRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingSuppressionRuleReorderRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingSuppressionRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingSuppressionRuleReorderRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedErrorTrackingSuppressionRule'
+              $ref: '#/components/schemas/PatchedErrorTrackingSuppressionRuleReorderRequest'
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
       responses:
-        '200':
+        '204':
           description: No response body
       x-product:
       - error_tracking
@@ -27491,12 +28238,11 @@ paths:
       - PersonalAPIKeyAuth:
         - evaluation:write
       responses:
-        '200':
+        '202':
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                $ref: '#/components/schemas/EvaluationRunResponse'
           description: ''
       x-product:
       - ai_observability
@@ -29071,6 +29817,7 @@ paths:
   /api/projects/{project_id}/experiment_holdouts/:
     get:
       operationId: experiment_holdouts_list
+      description: Create, read, update and delete experiment holdouts.
       parameters:
       - name: limit
         required: false
@@ -29101,6 +29848,7 @@ paths:
       - experiments
     post:
       operationId: experiment_holdouts_create
+      description: Create, read, update and delete experiment holdouts.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -29132,6 +29880,7 @@ paths:
   /api/projects/{project_id}/experiment_holdouts/{id}/:
     get:
       operationId: experiment_holdouts_retrieve
+      description: Create, read, update and delete experiment holdouts.
       parameters:
       - in: path
         name: id
@@ -29156,6 +29905,7 @@ paths:
       - experiments
     put:
       operationId: experiment_holdouts_update
+      description: Create, read, update and delete experiment holdouts.
       parameters:
       - in: path
         name: id
@@ -29192,6 +29942,7 @@ paths:
       - experiments
     patch:
       operationId: experiment_holdouts_partial_update
+      description: Create, read, update and delete experiment holdouts.
       parameters:
       - in: path
         name: id
@@ -29227,6 +29978,7 @@ paths:
       - experiments
     delete:
       operationId: experiment_holdouts_destroy
+      description: Create, read, update and delete experiment holdouts.
       parameters:
       - in: path
         name: id
@@ -30259,6 +31011,47 @@ paths:
           description: ''
         '404':
           description: No response body
+      x-product:
+      - experiments
+  /api/projects/{project_id}/experiments/{id}/migrate/:
+    post:
+      operationId: experiments_migrate_create
+      description: |-
+        Move a legacy experiment onto the new experiments engine.
+
+        Creates a new experiment with the same configuration and its metrics converted
+        to the new format, and returns it. The legacy experiment is left untouched and
+        keeps its results, so the project ends up with two experiments. Both point at
+        the same feature flag, so no new rollout is needed and users keep the variant
+        they already have.
+
+        Legacy shared metrics used by the experiment are converted as part of the same
+        call. Each one gets a new shared metric, and the new experiment links to that.
+
+        Calling this again returns the experiment created the first time instead of
+        making another copy.
+
+        Returns 400 if the experiment already uses the new engine.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this experiment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - experiments
+      security:
+      - PersonalAPIKeyAuth:
+        - experiment:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Experiment'
+          description: ''
       x-product:
       - experiments
   /api/projects/{project_id}/experiments/{id}/pause/:
@@ -35957,6 +36750,13 @@ paths:
         description: A UUID string identifying this file system.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: recursive
+        schema:
+          type: boolean
+          default: true
+        description: 'Delete folder contents too (default: true). Set false to delete
+          only empty folders. Nonempty folders return HTTP 409 with code directory_not_empty.'
       tags:
       - file_system
       security:
@@ -36412,6 +37212,9 @@ paths:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - flag_value
+      security:
+      - PersonalAPIKeyAuth:
+        - feature_flag:read
       responses:
         '200':
           content:
@@ -36550,20 +37353,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Group'
+              $ref: '#/components/schemas/GroupDeleteProperty'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Group'
+              $ref: '#/components/schemas/GroupDeleteProperty'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Group'
+              $ref: '#/components/schemas/GroupDeleteProperty'
         required: true
       security:
       - PersonalAPIKeyAuth:
         - group:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: ''
       x-product: []
   /api/projects/{project_id}/groups/find/:
     get:
@@ -36596,7 +37403,11 @@ paths:
         - group:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindGroup'
+          description: ''
       x-product: []
   /api/projects/{project_id}/groups/property_values/:
     get:
@@ -36614,14 +37425,14 @@ paths:
       x-product: []
   /api/projects/{project_id}/groups/related/:
     get:
-      operationId: groups_related_retrieve
+      operationId: groups_related_list
       parameters:
       - in: query
         name: group_type_index
         schema:
           type: integer
-        description: Specify the group type to find
-        required: true
+        description: Group type of the actor to find related actors for. Omit when
+          the actor is a person.
       - in: query
         name: id
         schema:
@@ -36636,7 +37447,13 @@ paths:
         - group:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RelatedActor'
+          description: ''
       x-product: []
   /api/projects/{project_id}/groups/update_property/:
     post:
@@ -36661,20 +37478,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Group'
+              $ref: '#/components/schemas/GroupUpdatePropertyRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Group'
+              $ref: '#/components/schemas/GroupUpdatePropertyRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Group'
+              $ref: '#/components/schemas/GroupUpdatePropertyRequest'
         required: true
       security:
       - PersonalAPIKeyAuth:
         - group:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: ''
       x-product: []
   /api/projects/{project_id}/groups_types/:
     get:
@@ -37205,6 +38026,73 @@ paths:
           description: ''
       x-product:
       - health_issues
+  /api/projects/{project_id}/heatmap_capture/pages/:
+    get:
+      operationId: heatmap_capture_pages_retrieve
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - heatmap_capture
+      security:
+      - PersonalAPIKeyAuth:
+        - project:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeatmapCapturePages'
+          description: ''
+      x-product:
+      - web_analytics
+  /api/projects/{project_id}/heatmap_capture/settings/:
+    get:
+      operationId: heatmap_capture_settings_retrieve
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - heatmap_capture
+      security:
+      - PersonalAPIKeyAuth:
+        - project:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeatmapCaptureSettings'
+          description: ''
+      x-product:
+      - web_analytics
+    patch:
+      operationId: heatmap_capture_settings_update
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - heatmap_capture
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedHeatmapCaptureSettingsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedHeatmapCaptureSettingsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedHeatmapCaptureSettingsRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - project:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeatmapCaptureSettings'
+          description: ''
+      x-product:
+      - web_analytics
   /api/projects/{project_id}/heatmap_screenshot/settings/:
     get:
       operationId: heatmap_screenshot_settings_retrieve
@@ -37638,6 +38526,7 @@ paths:
         schema:
           type: string
           enum:
+          - broadcasts
           - loops
         description: Filter to workflows owned by a product surface, e.g. `loops`
           for Desktop loops.
@@ -37672,13 +38561,9 @@ paths:
         name: type
         schema:
           type: string
-          enum:
-          - automation
-          - loop
-          - messaging
-        description: Filter by workflow type. `loop` returns workflows owned by a
-          Desktop loop; `messaging` returns the remaining workflows with an email,
-          SMS, or push action; `automation` returns the rest.
+        description: Comma-separated workflow types. `loop` and `broadcast` return
+          the workflows those surfaces own; `messaging` returns the remaining workflows
+          with an email, SMS, or push action, and `automation` the rest.
       - in: query
         name: updated_at
         schema:
@@ -42621,6 +43506,193 @@ paths:
                 additionalProperties: true
           description: ''
       x-product: []
+  /api/projects/{project_id}/links/:
+    get:
+      operationId: links_list
+      description: Create, read, update, and delete links.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - links
+      security:
+      - PersonalAPIKeyAuth:
+        - link:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLinkList'
+          description: ''
+      x-product:
+      - links
+    post:
+      operationId: links_create
+      description: Create, read, update, and delete links.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - links
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Link'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Link'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Link'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - link:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+          description: ''
+      x-product:
+      - links
+  /api/projects/{project_id}/links/{id}/:
+    get:
+      operationId: links_retrieve
+      description: Create, read, update, and delete links.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this link.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - links
+      security:
+      - PersonalAPIKeyAuth:
+        - link:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+          description: ''
+      x-product:
+      - links
+    put:
+      operationId: links_update
+      description: Create, read, update, and delete links.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this link.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - links
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Link'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Link'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Link'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - link:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+          description: ''
+      x-product:
+      - links
+    patch:
+      operationId: links_partial_update
+      description: Create, read, update, and delete links.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this link.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - links
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLink'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLink'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLink'
+      security:
+      - PersonalAPIKeyAuth:
+        - link:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+          description: ''
+      x-product:
+      - links
+    delete:
+      operationId: links_destroy
+      description: Create, read, update, and delete links.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this link.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - links
+      security:
+      - PersonalAPIKeyAuth:
+        - link:write
+      responses:
+        '204':
+          description: No response body
+      x-product:
+      - links
   /api/projects/{project_id}/live_debugger_breakpoints/:
     get:
       operationId: live_debugger_breakpoints_list
@@ -48578,7 +49650,13 @@ paths:
         - warehouse_view:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataWarehouseManagedViewSetResponse'
+          description: ''
+        '400':
+          description: Unknown managed viewset kind.
       x-product:
       - data_warehouse
     put:
@@ -48601,12 +49679,30 @@ paths:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - managed_viewsets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataWarehouseManagedViewSet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataWarehouseManagedViewSet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataWarehouseManagedViewSet'
+        required: true
       security:
       - PersonalAPIKeyAuth:
         - warehouse_view:write
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataWarehouseManagedViewSetUpdateResponse'
+          description: ''
+        '400':
+          description: Unknown managed viewset kind.
       x-product:
       - data_warehouse
   /api/projects/{project_id}/marketing_analytics/apply_setup_ops/:
@@ -55460,7 +56556,14 @@ paths:
         - cohort:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonCohortsResponse'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/PersonCohortsResponse'
+          description: ''
       x-product:
       - persons
   /api/projects/{project_id}/persons/deletion_status/:
@@ -60080,9 +61183,10 @@ paths:
         name: view
         schema:
           type: string
-        description: 'Apply an inbox view: actionable, needs_input, monitoring, resolved,
-          dismissed, not_actionable, or all. Each view applies the corresponding status,
-          actionability, and implementation-PR filters.'
+        description: 'Apply an inbox view: actionable, needs_input, needs_decision,
+          monitoring, resolved, dismissed, not_actionable, or all. Each view applies
+          the corresponding status, actionability, and implementation-PR filters.
+          needs_decision also includes failed reports without a judgment.'
       tags:
       - signals
       security:
@@ -60270,6 +61374,67 @@ paths:
               schema:
                 $ref: '#/components/schemas/SignalReportFeedbackResponse'
           description: ''
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/reports/{id}/merge/:
+    post:
+      operationId: signals_reports_merge_create
+      description: 'Fold one or more duplicate reports into this report, which survives.
+        The sources'' signals, work-log artefacts, pull requests, task runs and checks
+        move onto the survivor, the survivor''s signal counters take on theirs, and
+        each source is archived with a ''duplicate of'' link back to the survivor.
+        A source''s open pull request stays open, because the survivor holds it after
+        the move. Pick the survivor deliberately: prefer the older report, and prefer
+        the one with an open implementation PR or an active claim. Any active claim
+        on a source is released, so re-claim the survivor if you were working on one.
+        Titles and summaries are not combined, so edit it afterwards if it needs a
+        rewrite. A merged report keeps its URL but cannot be restored, because its
+        signals now belong to the survivor.'
+      summary: Merge duplicate reports into this one
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this signal report.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignalReportMergeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignalReportMergeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignalReportMergeRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - task:write
+      - PersonalAPIKeyAuth:
+        - task:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalReportMergeResponse'
+          description: The surviving report after the merge, plus one result per merged
+            source.
+        '404':
+          description: The surviving report was not found in this project.
+        '409':
+          description: Both ends of a merge must be a live report of this project.
+            Returned when the survivor is resolved, or when a source is the survivor
+            itself, is resolved or archived, is still being researched, carries more
+            signals than one merge can move, or belongs to another project. Nothing
+            is applied.
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/{id}/pr_checks/:
@@ -61045,10 +62210,10 @@ paths:
         a status type reverts the report''s canonical status to the previous version
         (latest-wins over what remains). `task_run` artefacts are an append-only work
         log and cannot be deleted. Neither can the types this API cannot write, which
-        the pipeline owns: `check_result`, `code_review`, `implementation_decision`,
-        `implementation_dispatch`, `implementation_handover`, `implementation_replacement`,
-        `pull_request`, `report_link`, `summary_change`, `task_run`, `title_change`,
-        `video_segment`, `work_claim`, `work_release`.'
+        the pipeline owns: `check_cancelled`, `check_expired`, `check_result`, `check_scheduled`,
+        `code_review`, `implementation_decision`, `implementation_dispatch`, `implementation_handover`,
+        `implementation_replacement`, `pull_request`, `report_link`, `summary_change`,
+        `task_run`, `title_change`, `video_segment`, `work_claim`, `work_release`.'
       summary: Delete an artefact
       parameters:
       - in: path
@@ -75723,6 +76888,10 @@ paths:
 
         The config resolves to a scanner minted on first use, so asking the same question twice reuses
         the observations it already has, while a different question about the same session gets its own.
+
+        With `scanner_type` set to `summarizer`, this is how you get PostHog's own AI summary for a
+        recording ID. It resolves to the Summarize button's own scanner only when the prompt and
+        `scanner_config` match what the button sends, since the config is what the key fingerprints.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -86711,6 +87880,14 @@ components:
       - created_at
       title: AhaFeedbackSignalExtra
       type: object
+    AiDraftHumanOutcomeEnum:
+      enum:
+      - used
+      - edited
+      type: string
+      description: |-
+        * `used` - used
+        * `edited` - edited
     AiFeedbackRequest:
       type: object
       description: Payload for recording reviewer feedback on an AI reply.
@@ -86734,6 +87911,25 @@ components:
       required:
       - message_id
       - rating
+    AiHumanOutcomeRequest:
+      type: object
+      description: Payload for recording whether a human adopted an AI draft.
+      properties:
+        message_id:
+          type: string
+          description: ID of the private AI draft being adopted.
+          maxLength: 200
+        outcome:
+          allOf:
+          - $ref: '#/components/schemas/AiDraftHumanOutcomeEnum'
+          description: |-
+            used when the human inserts the draft as-is; edited after they change it in the composer.
+
+            * `used` - used
+            * `edited` - edited
+      required:
+      - message_id
+      - outcome
     AiTriageResultEnum:
       enum:
       - persisted
@@ -88282,6 +89478,67 @@ components:
       - height
       - id
       - width
+    ArtifactContent:
+      type: object
+      description: A single bundle file's content, base64-encoded.
+      properties:
+        path:
+          type: string
+          description: Relative path of the file within the bundle.
+        size_bytes:
+          type: integer
+          description: File size in bytes.
+        sha256:
+          type: string
+          description: SHA-256 hex digest of the file content.
+        content_base64:
+          type: string
+          description: File contents, base64-encoded.
+      required:
+      - content_base64
+      - path
+      - sha256
+      - size_bytes
+    ArtifactDeleteResult:
+      type: object
+      description: Whether a delete removed an existing file.
+      properties:
+        path:
+          type: string
+          description: Relative path targeted for deletion.
+        deleted:
+          type: boolean
+          description: True if a file existed and was removed; False if nothing was
+            there.
+      required:
+      - deleted
+      - path
+    ArtifactList:
+      type: object
+      description: The relative paths present in a training run's bundle.
+      properties:
+        paths:
+          type: array
+          items:
+            type: string
+          description: Relative paths of every file stored under this training run's
+            bundle prefix.
+        count:
+          type: integer
+          description: Number of files in the bundle.
+      required:
+      - count
+      - paths
+    ArtifactPath:
+      type: object
+      description: Input for fetching or deleting one bundle file by path.
+      properties:
+        path:
+          type: string
+          description: Relative path of the file within the bundle, e.g. 'train.py'.
+          maxLength: 500
+      required:
+      - path
     ArtifactType2f0Enum:
       enum:
       - slack_message
@@ -88300,6 +89557,23 @@ components:
         * `dashboard` - dashboard
         * `file` - file
         * `github_pr` - github_pr
+    ArtifactUpload:
+      type: object
+      description: Input for uploading one file of a training run's artifact bundle.
+      properties:
+        path:
+          type: string
+          description: Relative path within the bundle, e.g. 'train.py', 'predict.py',
+            'features.sql', or 'eda/iter-3-gbm.ipynb'. Segments are limited to [A-Za-z0-9_.-];
+            absolute paths and '..' traversal are rejected.
+          maxLength: 500
+        content_base64:
+          type: string
+          description: File contents, base64-encoded. Decoded server-side and written
+            to object storage. Max 10 MB decoded.
+      required:
+      - content_base64
+      - path
     AsknicelyFeedbackSignalExtra:
       additionalProperties: false
       properties:
@@ -88660,6 +89934,111 @@ components:
         * `P2` - P2
         * `P3` - P3
         * `P4` - P4
+    AutoresearchIteration:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        pipeline:
+          type: string
+          format: uuid
+        training_run:
+          type: string
+          format: uuid
+        iteration_number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        recipe_hash:
+          type: string
+          maxLength: 64
+        recipe_snapshot:
+          type: object
+          description: Compact recipe snapshot at time of iteration. Full artifact
+            lives in the model row.
+          properties:
+            feature_sql:
+              type: string
+              description: A read-only HogQL SELECT from {anchors}, one row per person,
+                keyed on person_id.
+            feature_transforms:
+              type:
+              - array
+              - 'null'
+              items:
+                type: object
+              description: Transforms the bundle applies to the feature columns; null
+                or absent means none, and the in-process path accepts none.
+          required:
+          - feature_sql
+          example:
+            feature_sql: SELECT a.person_id AS distinct_id, countIf(e.event = '$pageview')
+              AS pageviews FROM {anchors} a LEFT JOIN events e ON e.person_id = a.person_id
+              AND e.timestamp < a.cutoff_ts GROUP BY a.person_id, a.cutoff_ts
+            feature_transforms: []
+        model_spec:
+          type: object
+          description: Model class and hyperparameters tried in this iteration.
+          properties:
+            model_class:
+              type: string
+              description: Dotted path of the estimator class.
+            model_params:
+              type:
+              - object
+              - 'null'
+              additionalProperties: true
+              description: Keyword arguments for the estimator's constructor; null
+                or absent means the defaults.
+          required:
+          - model_class
+          example:
+            model_class: sklearn.linear_model.LogisticRegression
+            model_params:
+              C: 1.0
+        train_score:
+          type:
+          - number
+          - 'null'
+          format: double
+        holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+        status:
+          $ref: '#/components/schemas/AutoresearchIterationStatusEnum'
+        agent_description:
+          type: string
+        agent_confidence:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Agent's self-assessed confidence 0–1
+        parent_suggestion:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: UUID of the steering suggestion this iteration was spawned
+            from, if any.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - iteration_number
+      - model_spec
+      - pipeline
+      - recipe_hash
+      - recipe_snapshot
+      - status
+      - training_run
     AutoresearchIterationStatusEnum:
       enum:
       - kept
@@ -89202,6 +90581,114 @@ components:
       description: |-
         * `inference` - Inference
         * `validation` - Validation
+    AutoresearchSuggestion:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique UUID of this suggestion.
+        pipeline:
+          type: string
+          format: uuid
+          description: Pipeline this suggestion targets.
+        prompt:
+          type: string
+          description: Free-text hypothesis or direction for the agent to explore.
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/AutoresearchSuggestionPriorityEnum'
+          description: |-
+            'try_next' instructs the agent to act on this before other iterations; 'consider' is advisory.
+
+            * `try_next` - Try next
+            * `consider` - Consider
+        status:
+          allOf:
+          - $ref: '#/components/schemas/AutoresearchSuggestionStatusEnum'
+          readOnly: true
+          description: |-
+            Lifecycle status: 'queued' (awaiting pickup), 'picked_up' (agent is applying as a constraint), 'acted_on' (agent spawned iterations), 'dismissed' (agent rejected with rationale).
+
+            * `queued` - Queued
+            * `picked_up` - Picked up
+            * `acted_on` - Acted on
+            * `dismissed` - Dismissed
+        source:
+          allOf:
+          - $ref: '#/components/schemas/AutoresearchSuggestionSourceEnum'
+          readOnly: true
+          description: |-
+            'user' for human-submitted suggestions; 'agent' for agent-generated hypotheses.
+
+            * `user` - User
+            * `agent` - Agent
+        agent_response:
+          type: string
+          readOnly: true
+          description: Agent's note on how the suggestion was interpreted and acted
+            upon. Populated after pickup.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: The user who submitted it; null for an agent-authored suggestion.
+        linked_iteration_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          readOnly: true
+          description: UUIDs of iterations spawned from this suggestion.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - agent_response
+      - created_at
+      - created_by
+      - id
+      - linked_iteration_ids
+      - pipeline
+      - prompt
+      - source
+      - status
+      - updated_at
+    AutoresearchSuggestionPriorityEnum:
+      enum:
+      - try_next
+      - consider
+      type: string
+      description: |-
+        * `try_next` - Try next
+        * `consider` - Consider
+    AutoresearchSuggestionSourceEnum:
+      enum:
+      - user
+      - agent
+      type: string
+      description: |-
+        * `user` - User
+        * `agent` - Agent
+    AutoresearchSuggestionStatusEnum:
+      enum:
+      - queued
+      - picked_up
+      - acted_on
+      - dismissed
+      type: string
+      description: |-
+        * `queued` - Queued
+        * `picked_up` - Picked up
+        * `acted_on` - Acted on
+        * `dismissed` - Dismissed
     AutoresearchTrainingRun:
       type: object
       properties:
@@ -99279,73 +100766,34 @@ components:
         * `waiting` - Waiting
         * `scanning` - Scanning
         * `checking` - Checking
-    CohortPersonResult:
+    CohortMinimal:
       type: object
+      description: Minimal serializer for cohort references, read by the person cohorts
+        endpoint.
       properties:
         id:
-          type: string
-        uuid:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/CohortPersonResultTypeEnum'
+          type: integer
+          readOnly: true
         name:
-          type: string
-        distinct_ids:
-          type: array
-          items:
-            type: string
-        properties:
-          type: object
-          additionalProperties: true
-        created_at:
           type:
           - string
           - 'null'
-          format: date-time
-        last_seen_at:
+          maxLength: 400
+        count:
           type:
-          - string
+          - integer
           - 'null'
-          format: date-time
-        is_identified:
-          type:
-          - boolean
-          - 'null'
-        matched_recordings:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        value_at_data_point:
-          type:
-          - number
-          - 'null'
-          format: double
+          maximum: 2147483647
+          minimum: -2147483648
       required:
-      - created_at
-      - distinct_ids
       - id
-      - is_identified
-      - last_seen_at
-      - matched_recordings
-      - name
-      - properties
-      - type
-      - uuid
-      - value_at_data_point
-    CohortPersonResultTypeEnum:
-      enum:
-      - person
-      type: string
-      description: '* `person` - person'
     CohortPersonsResponse:
       type: object
       properties:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/CohortPersonResult'
+            $ref: '#/components/schemas/SerializedPersonActor'
         next:
           type:
           - string
@@ -99891,6 +101339,37 @@ components:
       - value
       title: CompareItem
       type: object
+    CompleteTrainingRun:
+      type: object
+      description: Input for finalizing a training run. The backend selects/promotes
+        the champion.
+      properties:
+        best_iteration_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Advisory nomination. The server promotes the kept iteration
+            with the highest holdout_score; this id only breaks a tie at that score,
+            and a lower-scoring nomination is logged and ignored.
+        model_explanation:
+          type: object
+          description: Global feature importance / directionality bundle for the champion
+            model card.
+        recommended_next:
+          type: string
+          default: ''
+          description: What a future run should try next, given what this run learned.
+            Stored in the run summary so the next run reads it during orientation.
+            Keep it short and concrete; max 2000 characters.
+          maxLength: 2000
+        distillation:
+          type: string
+          default: ''
+          description: A 1–2 sentence distillation of what this run learned — the
+            winning signal, the key transform, the dead-ends. Stored in the run summary
+            as the cheapest thing the next run reads. Max 2000 characters.
+          maxLength: 2000
     ComposeTicket:
       type: object
       properties:
@@ -102564,6 +104043,33 @@ components:
       required:
       - run_id
       - uploads
+    CreateSuggestion:
+      type: object
+      properties:
+        prompt:
+          type: string
+          description: Free-text hypothesis or direction for the agent to explore,
+            e.g. 'try a tree-based model' or 'remove recency features, I suspect leakage'.
+          maxLength: 2000
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/CreateSuggestionPriorityEnum'
+          default: consider
+          description: |-
+            'try_next' asks the agent to act on this before other autonomous iterations; 'consider' is advisory context.
+
+            * `try_next` - try_next
+            * `consider` - consider
+      required:
+      - prompt
+    CreateSuggestionPriorityEnum:
+      enum:
+      - try_next
+      - consider
+      type: string
+      description: |-
+        * `try_next` - try_next
+        * `consider` - consider
     CreateTableFromUpload:
       type: object
       properties:
@@ -107654,6 +109160,77 @@ components:
       - field_name
       - id
       - table_name
+    DataWarehouseManagedView:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Saved query the managed viewset owns.
+        name:
+          type: string
+          description: Name of the saved query.
+        created_at:
+          type: string
+          format: date-time
+          description: When the saved query was created.
+        created_by_id:
+          type:
+          - integer
+          - 'null'
+          description: User who created the saved query, or null when the sync did.
+      required:
+      - created_at
+      - created_by_id
+      - id
+      - name
+    DataWarehouseManagedViewSet:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether the managed viewset should exist.
+      required:
+      - enabled
+    DataWarehouseManagedViewSetKindEnum:
+      enum:
+      - revenue_analytics
+      - engineering_analytics
+      type: string
+      description: |-
+        * `revenue_analytics` - Revenue Analytics
+        * `engineering_analytics` - Engineering Analytics
+    DataWarehouseManagedViewSetResponse:
+      type: object
+      properties:
+        views:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataWarehouseManagedView'
+          description: Saved queries in the managed viewset.
+        count:
+          type: integer
+          description: Number of saved queries returned.
+      required:
+      - count
+      - views
+    DataWarehouseManagedViewSetUpdateResponse:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: State the managed viewset is now in.
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/DataWarehouseManagedViewSetKindEnum'
+          description: |-
+            Managed viewset that was toggled.
+
+            * `revenue_analytics` - Revenue Analytics
+            * `engineering_analytics` - Engineering Analytics
+      required:
+      - enabled
+      - kind
     DataWarehouseNode:
       additionalProperties: false
       properties:
@@ -111491,8 +113068,9 @@ components:
           description: PRs in scope merged in the window (bots and drafts excluded).
         deployed_merged_pr_count:
           type: integer
-          description: Of merged_pr_count, the PRs a successful in-scope deploy contains.
-            The rest are still waiting for a deploy or fall outside the scan.
+          description: Of merged_pr_count, the PRs whose first successful in-scope
+            deployment was observed by the window end. The rest are still waiting
+            for a deploy or fall outside the scan.
       required:
       - deploy_data_available
       - deployed_merged_pr_count
@@ -111892,6 +113470,15 @@ components:
           type: string
           description: Desktop view that was active when the feedback form opened.
           maxLength: 100
+        feedback_type:
+          allOf:
+          - $ref: '#/components/schemas/DesktopFeedbackTypeEnum'
+          description: |-
+            Feedback type selected by the user: bug, feature, or general.
+
+            * `bug` - Bug
+            * `feature` - Feature
+            * `general` - General
         feedback_task_id:
           type: string
           description: Task that was active when the feedback form opened.
@@ -111949,6 +113536,16 @@ components:
       description: |-
         * `Generic (Leave feedback button)` - Leave Feedback
         * `Visiting PostHog web` - Posthog Web
+    DesktopFeedbackTypeEnum:
+      enum:
+      - bug
+      - feature
+      - general
+      type: string
+      description: |-
+        * `bug` - Bug
+        * `feature` - Feature
+        * `general` - General
     Detail:
       type: object
       properties:
@@ -115670,15 +117267,6 @@ components:
           type: string
           description: Canonical evidence-bundle prose. Becomes the signal's `description`.
           maxLength: 50000
-        confidence:
-          type:
-          - number
-          - 'null'
-          format: double
-          maximum: 1.0
-          minimum: 0.0
-          description: Deprecated and ignored. Nothing reads it; omit it. Still range-checked
-            when supplied.
         evidence:
           type: array
           items:
@@ -119127,6 +120715,48 @@ components:
       required:
       - id
       - type
+    ErrorTrackingIssueBulkRequest:
+      type: object
+      properties:
+        action:
+          allOf:
+          - $ref: '#/components/schemas/ErrorTrackingIssueBulkRequestActionEnum'
+          description: |-
+            Which mutation to apply to every listed issue.
+
+            * `set_status` - set_status
+            * `assign` - assign
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: IDs of the issues to update.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ErrorTrackingIssueWritableStatusEnum'
+          description: |-
+            Status to set. Required when action is set_status.
+
+            * `active` - active
+            * `resolved` - resolved
+            * `suppressed` - suppressed
+        assignee:
+          oneOf:
+          - $ref: '#/components/schemas/ErrorTrackingIssueAssigneeWrite'
+          - type: 'null'
+          description: Assignment target. Required when action is assign; null unassigns.
+      required:
+      - action
+      - ids
+    ErrorTrackingIssueBulkRequestActionEnum:
+      enum:
+      - set_status
+      - assign
+      type: string
+      description: |-
+        * `set_status` - set_status
+        * `assign` - assign
     ErrorTrackingIssueCohort:
       additionalProperties: false
       properties:
@@ -119151,6 +120781,14 @@ components:
       required:
       - id
       - name
+    ErrorTrackingIssueCohortRequest:
+      type: object
+      properties:
+        cohortId:
+          type: integer
+          description: ID of the cohort to attach to the issue.
+      required:
+      - cohortId
     ErrorTrackingIssueCorrelationQuery:
       additionalProperties: false
       properties:
@@ -119477,6 +121115,14 @@ components:
       - limit
       - offset
       - results
+    ErrorTrackingIssueExistsResponse:
+      type: object
+      properties:
+        exists:
+          type: boolean
+          description: Whether the project has recorded any issue at all.
+      required:
+      - exists
     ErrorTrackingIssueFilter:
       additionalProperties: false
       properties:
@@ -119686,6 +121332,15 @@ components:
       - name
       - severity
       - status
+    ErrorTrackingIssueRedirectResponse:
+      type: object
+      properties:
+        issue_id:
+          type: string
+          format: uuid
+          description: Issue the requested fingerprint now belongs to.
+      required:
+      - issue_id
     ErrorTrackingIssueRelease:
       additionalProperties: false
       properties:
@@ -119815,12 +121470,52 @@ components:
         * `pending_release` - pending_release
         * `suppressed` - suppressed
         * `all` - all
+    ErrorTrackingIssueSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the update completed successfully.
+      required:
+      - success
+    ErrorTrackingIssueValue:
+      type: object
+      properties:
+        name:
+          type: string
+          description: One distinct value of the requested property.
+      required:
+      - name
+    ErrorTrackingIssueValuesResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorTrackingIssueValue'
+          description: Distinct values, for the taxonomic filter.
+        refreshing:
+          type: boolean
+          description: Always false. Kept for the taxonomic filter's shared shape.
+      required:
+      - refreshing
+      - results
+    ErrorTrackingIssueWritableStatusEnum:
+      enum:
+      - active
+      - resolved
+      - suppressed
+      type: string
+      description: |-
+        * `active` - active
+        * `resolved` - resolved
+        * `suppressed` - suppressed
     ErrorTrackingIssueWrite:
       type: object
       properties:
         status:
           allOf:
-          - $ref: '#/components/schemas/ErrorTrackingIssueWriteStatusEnum'
+          - $ref: '#/components/schemas/ErrorTrackingIssueWritableStatusEnum'
           description: |-
             Issue status to set. Deprecated archived and pending_release values are rejected.
 
@@ -119842,16 +121537,6 @@ components:
           - string
           - 'null'
           description: Optional issue description.
-    ErrorTrackingIssueWriteStatusEnum:
-      enum:
-      - active
-      - resolved
-      - suppressed
-      type: string
-      description: |-
-        * `active` - active
-        * `resolved` - resolved
-        * `suppressed` - suppressed
     ErrorTrackingIssuesListQueryRequest:
       type: object
       properties:
@@ -122760,6 +124445,19 @@ components:
       - next_delivery_date
       - starts_at
       - timezone_name
+    EvaluationRunEvaluation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: UUID of the evaluation being run.
+        name:
+          type: string
+          description: Display name of the evaluation being run.
+      required:
+      - id
+      - name
     EvaluationRunRequest:
       type: object
       properties:
@@ -122789,6 +124487,28 @@ components:
       - evaluation_id
       - target_event_id
       - timestamp
+    EvaluationRunResponse:
+      type: object
+      properties:
+        workflow_id:
+          type: string
+          description: Temporal workflow ID of the enqueued run.
+        status:
+          type: string
+          description: Workflow status at the time of the response.
+        evaluation:
+          allOf:
+          - $ref: '#/components/schemas/EvaluationRunEvaluation'
+          description: Evaluation selected for this run.
+        target_event_id:
+          type: string
+          format: uuid
+          description: UUID of the event being evaluated.
+      required:
+      - evaluation
+      - status
+      - target_event_id
+      - workflow_id
     EvaluationRuntimeEnum:
       enum:
       - server
@@ -124639,8 +126359,9 @@ components:
             and a metric_type: ''mean'' (set source to an EventsNode with an event
             name), ''funnel'' (set series to an array of EventsNode steps), ''ratio''
             (set numerator and denominator EventsNode entries), or ''retention'' (set
-            start_event and completion_event). Use the read-data-schema tool with
-            query kind ''events'' to find available events in the project.'
+            start_event and completion_event; pass start_event {"kind": "ExperimentExposureNode"}
+            to start retention from the experiment''s exposure event). Use the read-data-schema
+            tool with query kind ''events'' to find available events in the project.'
         metrics_secondary:
           oneOf:
           - $ref: '#/components/schemas/_ExperimentApiMetricsList'
@@ -125181,10 +126902,12 @@ components:
           description: 'For mean metrics: event source.'
         start_event:
           anyOf:
-          - $ref: '#/components/schemas/ExperimentApiEventSource'
+          - $ref: '#/components/schemas/ExperimentApiRetentionStart'
           - type: 'null'
           default: null
-          description: 'For retention metrics: start event.'
+          description: 'For retention metrics: start event. Pass {"kind": "ExperimentExposureNode"}
+            to start retention from the experiment''s exposure event; start_handling
+            and conversion window are ignored then.'
         start_handling:
           anyOf:
           - $ref: '#/components/schemas/StartHandling'
@@ -125220,6 +126943,72 @@ components:
       required:
       - metric_type
       title: ExperimentApiMetric
+      type: object
+    ExperimentApiRetentionStart:
+      additionalProperties: false
+      properties:
+        event:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Event name, e.g. '$pageview'. Required for EventsNode.
+          title: Event
+        id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          description: Action ID. Required for ActionsNode.
+          title: Id
+        kind:
+          $ref: '#/components/schemas/Kind2'
+          description: Pass 'ExperimentExposureNode' to start retention from the experiment's
+            own exposure event; the other fields then stay unset.
+        math:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentMetricMathType'
+          - type: 'null'
+          default: null
+          description: 'How to aggregate this source. Defaults to ''total'' (event
+            count). Use ''sum'' together with math_property to aggregate a numeric
+            property — e.g. a ratio numerator of revenue per order. Other options:
+            ''avg'', ''min'', ''max'', ''unique_session'', ''dau'', ''unique_group'',
+            ''hogql''.'
+        math_group_type_index:
+          anyOf:
+          - $ref: '#/components/schemas/MathGroupTypeIndex'
+          - type: 'null'
+          default: null
+          description: Group type index to aggregate over. Required when math is 'unique_group'.
+        math_hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: HogQL aggregation expression. Required when math is 'hogql'
+            — without it the metric silently falls back to a plain count/sum.
+          title: Math Hogql
+        math_property:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Numeric event property to aggregate when math is 'sum', 'avg',
+            'min', or 'max' (e.g. 'revenue').
+          title: Math Property
+        properties:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/EventPropertyFilter'
+            type: array
+          - type: 'null'
+          default: null
+          description: Event property filters to narrow which events are counted.
+          title: Properties
+      required:
+      - kind
+      title: ExperimentApiRetentionStart
       type: object
     ExperimentBasic:
       type: object
@@ -126736,6 +128525,7 @@ components:
             * `experiment_launch` - Experiment Launch
             * `experiment_stop` - Experiment Stop
             * `experiment_update` - Experiment Update
+            * `timeseries_sync` - Timeseries Sync
         created_at:
           type: string
           format: date-time
@@ -126838,6 +128628,7 @@ components:
       - experiment_launch
       - experiment_stop
       - experiment_update
+      - timeseries_sync
       type: string
       description: |-
         * `manual` - Manual
@@ -126851,6 +128642,7 @@ components:
         * `experiment_launch` - Experiment Launch
         * `experiment_stop` - Experiment Stop
         * `experiment_update` - Experiment Update
+        * `timeseries_sync` - Timeseries Sync
     ExperimentParameters:
       additionalProperties: false
       properties:
@@ -128067,6 +129859,11 @@ components:
         source_event:
           type: string
           description: The metric event that was counted.
+        metric_properties:
+          allOf:
+          - $ref: '#/components/schemas/_ExperimentSetupPropertyFilterList'
+          description: The property filters that were applied to the metric event.
+            Empty when none were passed.
         target_event:
           type:
           - string
@@ -128123,20 +129920,21 @@ components:
           type:
           - integer
           - 'null'
-          description: Metric events in the window. Set only when no target_event
-            was passed.
+          description: Metric events in the window, with metric_properties applied.
+            0 means the event did not occur under those filters, so check the event
+            name before you trust a conversion_rate of 0.
         unique_persons:
           type:
           - integer
           - 'null'
-          description: Persons who sent the metric event. Set only when no target_event
-            was passed.
+          description: Persons who sent the metric event, with metric_properties applied.
       required:
       - computed_at
       - conversion_rate
       - event_volume
       - funnel_baseline_stats
       - mean_count_baseline_stats
+      - metric_properties
       - note
       - persons_converted
       - persons_reached
@@ -128187,6 +129985,14 @@ components:
           description: Only counts target events whose $current_url contains this
             text, ignoring case. Needs target_event to be '$pageview'.
           maxLength: 1000
+        target_properties:
+          oneOf:
+          - $ref: '#/components/schemas/_ExperimentSetupPropertyFilterList'
+          - type: 'null'
+          description: Event or person property filters that narrow the target event,
+            for example an exact $host and $pathname for one page. At most 10 filters,
+            and each needs type 'event' or 'person'. Needs target_event. Combines
+            with target_url_contains.
         metric_event:
           type:
           - string
@@ -128195,13 +130001,20 @@ components:
             returns a baseline. Without it, candidate_metric returns only the event's
             volume. Also marks the shared metrics that count this event.
           maxLength: 400
+        metric_properties:
+          oneOf:
+          - $ref: '#/components/schemas/_ExperimentSetupPropertyFilterList'
+          - type: 'null'
+          description: Event or person property filters that narrow the metric event,
+            for the metric that counts only some of its occurrences. At most 10 filters,
+            and each needs type 'event' or 'person'. Needs metric_event.
         previous_experiments_limit:
           type: integer
           maximum: 25
           minimum: 1
           default: 10
-          description: How many of the most recently created experiments to return,
-            1 to 25.
+          description: How many experiments to return, most recently launched first,
+            then drafts, 1 to 25.
         shared_metrics_limit:
           type: integer
           maximum: 25
@@ -128266,6 +130079,35 @@ components:
       - number_of_samples
       - step_counts
       - sum
+    ExperimentSetupLibActivity:
+      type: object
+      properties:
+        lib:
+          type:
+          - string
+          - 'null'
+          description: The $lib value of the SDK, for example 'web'.
+        category:
+          allOf:
+          - $ref: '#/components/schemas/SdkLibCategoryEnum'
+          description: |-
+            'web', 'mobile', 'server', or 'other'.
+
+            * `web` - Web
+            * `mobile` - Mobile
+            * `server` - Server
+            * `other` - Other
+        events:
+          type: integer
+          description: Events this SDK sent in the window, of any kind.
+        distinct_ids:
+          type: integer
+          description: Distinct ids that sent those events.
+      required:
+      - category
+      - distinct_ids
+      - events
+      - lib
     ExperimentSetupLibReach:
       type: object
       properties:
@@ -128287,8 +130129,23 @@ components:
         unique_persons:
           type: integer
           description: Persons who sent the target event from this SDK.
+        anonymous_share:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Among this SDK's distinct ids that report whether they are
+            identified, the share that was anonymous. Null when no target event from
+            this SDK reported it.
+        device_id_share:
+          type: number
+          format: double
+          description: Share of this SDK's target events that carry a $device_id.
+            0 when it never sends one.
       required:
+      - anonymous_share
       - category
+      - device_id_share
       - lib
       - unique_persons
     ExperimentSetupMeanCountBaseline:
@@ -128312,15 +130169,38 @@ components:
     ExperimentSetupOutcome:
       type: object
       properties:
+        metric_type:
+          type: string
+          description: 'metric_type of the metric this outcome describes: ''funnel'',
+            ''mean'', ''ratio'' or ''retention''.'
+        metric_samples:
+          type:
+          - integer
+          - 'null'
+          description: Units the result counted across all variants. What a unit is
+            depends on metric_type, so read analyzed_exposures where you need exposures.
+            Null when the result stores no sample counts.
         analyzed_exposures:
           type:
           - integer
           - 'null'
-          description: Units analyzed across all variants in the latest completed
-            result of the first primary metric. Users seen in several variants are
-            left out under the default handling, so this can be lower than exposures.
-            Null when that result stores no sample counts, which is not the same as
-            analyzing nobody.
+          description: 'metric_samples, but only where the metric type makes it the
+            analyzed population: ''funnel'' and ''mean''. Users seen in several variants
+            are left out under the default handling, so it can be lower than exposures.
+            Null for ''retention'', whose samples are the units that did the start
+            event, and for ''ratio'', whose samples are not exposures either. Also
+            null when the result stores no sample counts, which is not the same as
+            analyzing nobody.'
+        control_baseline_value:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: 'What control measured: a conversion rate for ''funnel'', an
+            average per unit for ''mean''. Compare it with the rate on the surface
+            itself to see whether the exposure was diluted by users who never reached
+            the surface. Null for other metric types and when control analyzed no
+            units.'
         any_variant_significant:
           type: boolean
           description: Whether any variant was significant on that metric in that
@@ -128331,10 +130211,21 @@ components:
           - 'null'
           format: date-time
           description: When that result was computed.
+        result_data_through:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The last moment the result covers. A backfill writes an older
+            day with a recent completed_at, so this says how current the numbers are.
       required:
       - analyzed_exposures
       - any_variant_significant
+      - control_baseline_value
+      - metric_samples
+      - metric_type
       - result_completed_at
+      - result_data_through
     ExperimentSetupPreviousExperiment:
       type: object
       properties:
@@ -128377,6 +130268,9 @@ components:
           - 'null'
           description: The recorded conclusion, for example 'won' or 'inconclusive',
             or null.
+        feature_flag_key:
+          type: string
+          description: Key of the feature flag the experiment runs on.
         variant_count:
           type: integer
           description: Variants on the flag, control included.
@@ -128384,14 +130278,25 @@ components:
           type:
           - boolean
           - 'null'
-          description: Whether variants split traffic evenly. 34/33/33 counts as even.
-            Null on a boolean flag, which has no variants.
+          description: Whether variants split traffic evenly, read from the flag as
+            it stands now. 34/33/33 counts as even. Null on a boolean flag, which
+            has no variants, and null when serving_single_variant is set.
+        serving_single_variant:
+          type:
+          - string
+          - 'null'
+          description: The one variant the flag now serves to everyone it matches,
+            or null. Shipping a variant rewrites the flag this way, so the split the
+            experiment ran with cannot be read from the flag any more. Only a launched
+            experiment can be shipped, so a draft at 100/0 reports its split as it
+            stands.
         rollout_percentage:
           type:
           - number
           - 'null'
           format: double
-          description: Rollout percentage of the flag's first release condition.
+          description: Rollout percentage of the flag's first release condition, read
+            from the flag as it stands now.
         multiple_variant_handling:
           allOf:
           - $ref: '#/components/schemas/ExperimentWatchMultipleVariantHandlingEnum'
@@ -128407,15 +130312,15 @@ components:
         ensure_experience_continuity:
           type: boolean
           description: Whether the flag keeps a user's variant across authentication
-            steps.
+            steps, read from the flag as it stands now.
         bucketing_identifier:
           type: string
           description: 'What the flag buckets users on: ''distinct_id'' (default)
-            or ''device_id''.'
+            or ''device_id''. Read from the flag as it stands now.'
         evaluation_runtime:
           type: string
           description: 'Where the flag may be evaluated: ''server'', ''client'' or
-            ''all''.'
+            ''all''. Read from the flag as it stands now.'
         group_aggregation:
           type: boolean
           description: Whether the flag buckets groups instead of persons.
@@ -128423,13 +130328,33 @@ components:
           type:
           - string
           - 'null'
-          description: Custom exposure event, or null when the default exposure event
-            is used.
+          description: An exposure event other than the default one, or null. A default
+            event narrowed by exposure_property_filters is still the default event,
+            so it stays null here.
         custom_exposure_action_id:
           type:
           - integer
           - 'null'
           description: Action used as the custom exposure, or null.
+        exposure_property_filters:
+          allOf:
+          - $ref: '#/components/schemas/_ExperimentSetupStoredPropertyFilterList'
+          description: Property filters the exposure is narrowed by, whichever event
+            it counts. An experiment that counts exposure only where $pathname is
+            '/' is the precedent for a new test on that page. Any filter type can
+            appear, cohorts included. Empty when the exposure is not narrowed.
+        activation_event:
+          type:
+          - string
+          - 'null'
+          description: Event a user must send after their first exposure event before
+            they count as exposed, or null. This is activation mode, which sits on
+            top of the default exposure event.
+        activation_action_id:
+          type:
+          - integer
+          - 'null'
+          description: Action used for activation instead of an event, or null.
         filter_test_accounts:
           type: boolean
           description: Whether exposures leave out test accounts.
@@ -128448,6 +130373,16 @@ components:
             type: string
           description: metric_type of each primary metric, for example 'mean', 'funnel',
             'ratio' or 'retention'.
+        primary_metric_events:
+          type: array
+          items:
+            type: string
+          description: Event names the primary metrics count.
+        primary_metric_action_ids:
+          type: array
+          items:
+            type: integer
+          description: Actions the primary metrics count.
         minimum_detectable_effect:
           type:
           - number
@@ -128465,10 +130400,14 @@ components:
           oneOf:
           - $ref: '#/components/schemas/ExperimentSetupOutcome'
           - type: 'null'
-          description: From the latest completed result of the first primary metric.
-            Null when no result exists, which is also the case for older metric definitions
-            that results are never stored for.
+          description: From the completed result that covers the latest data in the
+            experiment's current run. A funnel or a mean primary metric is chosen
+            over a retention or a ratio one, because only its samples are the analyzed
+            population. Null when no result exists for that run, which is also the
+            case for older metric definitions that results are never stored for.
       required:
+      - activation_action_id
+      - activation_event
       - bucketing_identifier
       - conclusion
       - created_at
@@ -128477,6 +130416,8 @@ components:
       - end_date
       - ensure_experience_continuity
       - evaluation_runtime
+      - exposure_property_filters
+      - feature_flag_key
       - filter_test_accounts
       - group_aggregation
       - has_holdout
@@ -128486,10 +130427,13 @@ components:
       - multiple_variant_handling_set
       - name
       - outcome
+      - primary_metric_action_ids
       - primary_metric_count
+      - primary_metric_events
       - primary_metric_types
       - rollout_percentage
       - secondary_metric_count
+      - serving_single_variant
       - shared_metric_count
       - split_even
       - start_date
@@ -128503,8 +130447,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ExperimentSetupPreviousExperiment'
-          description: Most recently created first. Archived experiments are included,
-            deleted ones are not.
+          description: Most recently launched first, then drafts. Archived experiments
+            are included, deleted ones are not.
         summary:
           allOf:
           - $ref: '#/components/schemas/ExperimentSetupPreviousExperimentsSummary'
@@ -128548,8 +130492,9 @@ components:
           description: Launched experiments with no completed result.
         launched_with_unknown_analyzed_exposures:
           type: integer
-          description: Launched experiments whose latest result stores no sample counts,
-            so it says nothing either way.
+          description: 'Launched experiments whose result says nothing about exposures:
+            it stores no sample counts, or its metric is a retention or a ratio one,
+            whose samples are not exposures.'
         launched_with_zero_analyzed_exposures:
           type: integer
           description: Launched experiments whose latest result analyzed no one.
@@ -128566,18 +130511,33 @@ components:
         using_custom_exposure:
           type: integer
           description: Experiments with a custom exposure event or action.
+        using_exposure_property_filters:
+          type: integer
+          description: Experiments whose exposure is narrowed by property filters.
+        using_activation:
+          type: integer
+          description: Experiments that use an activation event or action.
         using_uneven_split:
           type: integer
-          description: Experiments whose variants split traffic unevenly.
+          description: Experiments whose variants split traffic unevenly. A flag that
+            now serves one variant is left out, because its split no longer says what
+            the experiment ran with.
+        serving_single_variant:
+          type: integer
+          description: Launched experiments whose flag now serves one variant to everyone
+            it matches, usually after shipping.
       required:
       - launched
       - launched_with_under_100_analyzed_exposures
       - launched_with_unknown_analyzed_exposures
       - launched_with_zero_analyzed_exposures
       - launched_without_results
+      - serving_single_variant
       - total
+      - using_activation
       - using_custom_exposure
       - using_device_id_bucketing
+      - using_exposure_property_filters
       - using_persistence
       - using_uneven_split
     ExperimentSetupSdkLib:
@@ -128671,12 +130631,28 @@ components:
           description: True when at least one flag key was called by both a server
             SDK and the web SDK. The same flag decided on the server and read in the
             browser can bucket one user into two variants.
+        libs_on_any_event:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ExperimentSetupLibActivity'
+          description: Up to 10 SDKs seen on any event over the last day, most events
+            first. Set only when libs is empty, so a project creating its first experiment
+            still says which platforms it sends from. Null when flag calls exist,
+            and null when this extra read timed out.
+        libs_on_any_event_truncated:
+          type: boolean
+          description: True when more SDKs sent events than libs_on_any_event lists.
+            False when it is null.
       required:
       - computed_at
       - evaluated_on_server_and_web
       - flags_evaluated_on_server_and_web
       - flags_seen
       - libs
+      - libs_on_any_event
+      - libs_on_any_event_truncated
       - libs_truncated
       - source_event
       - window_days
@@ -128745,12 +130721,25 @@ components:
           - 'null'
           description: Whether the metric counts metric_event, directly or through
             an action. Null when no metric_event was passed.
+        metric_event_roles:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'Where metric_event sits in the metric: ''funnel_step'' and
+            ''funnel_final_step'' for a funnel, ''mean_source'', ''ratio_numerator'',
+            ''ratio_denominator'', ''retention_start'' or ''retention_completion''.
+            A metric that only starts from the event is a different precedent from
+            one that converts on it. Empty when the metric does not count it, and
+            null when no metric_event was passed.'
       required:
       - action_ids
       - events
       - id
       - last_used_at
       - matches_metric_event
+      - metric_event_roles
       - metric_type
       - name
       - used_as_primary
@@ -128814,6 +130803,11 @@ components:
           - string
           - 'null'
           description: The URL filter that was applied, or null.
+        target_properties:
+          allOf:
+          - $ref: '#/components/schemas/_ExperimentSetupPropertyFilterList'
+          description: The property filters that were applied to the target event.
+            Empty when none were passed.
         computed_at:
           type: string
           format: date-time
@@ -128842,15 +130836,16 @@ components:
           - number
           - 'null'
           format: double
-          description: Among web distinct ids that report whether they are identified,
-            the share that was anonymous. Null when no web SDK sent the target event.
+          description: Among all distinct ids that report whether they are identified,
+            whichever SDK they came from, the share that was anonymous. Null when
+            no target event reported it.
         device_id_share:
           type:
           - number
           - 'null'
           format: double
-          description: Share of web target events that carry a $device_id. Null when
-            no web SDK sent the target event.
+          description: Share of all target events that carry a $device_id. Null when
+            there were no target events.
       required:
       - anonymous_share
       - computed_at
@@ -128858,6 +130853,7 @@ components:
       - exposures_per_day_estimate
       - libs
       - source_event
+      - target_properties
       - target_url_contains
       - test_accounts_filtered
       - unique_persons
@@ -128910,6 +130906,14 @@ components:
           type: integer
           description: The minimum detectable effect, as a percentage, that applies
             when the team has no default.
+        product_default_stats_method:
+          type: string
+          description: The statistical method that applies when the team has no default.
+        product_default_confidence_level:
+          type: number
+          format: double
+          description: The confidence level that applies when the team has no default.
+            Both methods use the same one.
         only_count_matured_users:
           type: boolean
           description: Default for counting only users whose metric window has fully
@@ -128929,10 +130933,11 @@ components:
           type: integer
           description: How many filters the team uses to identify internal and test
             users.
-        test_account_filters_default_checked:
+        new_experiments_filter_test_accounts:
           type: boolean
-          description: Whether new insights and experiments filter out test accounts
-            by default.
+          description: A new experiment filters test accounts this way unless its
+            own exposure criteria say otherwise. It does not follow the project's
+            insight default.
         default_exposure_event:
           type: string
           description: 'The exposure event a new experiment launched now counts by
@@ -128943,12 +130948,14 @@ components:
       - default_exposure_event
       - flags_persistence_default
       - minimum_detectable_effect
+      - new_experiments_filter_test_accounts
       - only_count_matured_users
+      - product_default_confidence_level
       - product_default_minimum_detectable_effect
+      - product_default_stats_method
       - sequential_testing_enabled
       - stats_method
       - test_account_filter_count
-      - test_account_filters_default_checked
     ExperimentSetupTeamDefaultsSection:
       type: object
       properties:
@@ -129833,8 +131840,9 @@ components:
             and a metric_type: ''mean'' (set source to an EventsNode with an event
             name), ''funnel'' (set series to an array of EventsNode steps), ''ratio''
             (set numerator and denominator EventsNode entries), or ''retention'' (set
-            start_event and completion_event). Use the read-data-schema tool with
-            query kind ''events'' to find available events in the project.'
+            start_event and completion_event; pass start_event {"kind": "ExperimentExposureNode"}
+            to start retention from the experiment''s exposure event). Use the read-data-schema
+            tool with query kind ''events'' to find available events in the project.'
         metrics_secondary:
           oneOf:
           - $ref: '#/components/schemas/_ExperimentApiMetricsList'
@@ -140113,6 +142121,35 @@ components:
             when the run has one, and posts a new comment when it does not. This flag
             only controls the images. Defaults false — the comment stays a text summary
             unless the reviewer opts in to attach the snapshots.'
+    FindGroup:
+      type: object
+      properties:
+        group_type_index:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        group_key:
+          type: string
+          maxLength: 400
+        group_properties:
+          type: object
+          additionalProperties: true
+          description: The group's properties.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        notebook:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - created_at
+      - group_key
+      - group_properties
+      - group_type_index
+      - notebook
     FindingTypeEnum:
       enum:
       - DKIM
@@ -143626,7 +145663,10 @@ components:
         group_key:
           type: string
           maxLength: 400
-        group_properties: {}
+        group_properties:
+          type: object
+          additionalProperties: true
+          description: The group's properties.
         created_at:
           type: string
           format: date-time
@@ -143634,7 +145674,16 @@ components:
       required:
       - created_at
       - group_key
+      - group_properties
       - group_type_index
+    GroupDeleteProperty:
+      type: object
+      properties:
+        $unset:
+          type: string
+          description: Name of the property to delete.
+      required:
+      - $unset
     GroupMathType:
       enum:
       - unique_group
@@ -143918,6 +145967,24 @@ components:
       required:
       - group_type
       - group_type_index
+    GroupUpdatePropertyRequest:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Name of the property to set.
+        value:
+          oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+          - type: object
+          - type: array
+            items: {}
+          description: Value to set. Any JSON value other than null.
+      required:
+      - key
+      - value
     GroupUsageMetric:
       type: object
       properties:
@@ -144586,6 +146653,69 @@ components:
       required:
       - snoozed
       - unsnoozed
+    HeatmapCapturePage:
+      type: object
+      properties:
+        url:
+          type: string
+          description: A page URL that currently sends heatmap data.
+        count:
+          type: integer
+          description: Heatmap events captured on this page in the last 30 days.
+      required:
+      - count
+      - url
+    HeatmapCapturePages:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/HeatmapCapturePage'
+          description: Top pages by recent heatmap volume, most active first.
+      required:
+      - pages
+    HeatmapCaptureSettings:
+      type: object
+      properties:
+        capture_mode:
+          allOf:
+          - $ref: '#/components/schemas/TeamHeatmapConfigCaptureModeEnum'
+          description: |-
+            Whether to capture heatmap data from every page ('all') or only listed URLs ('url_allowlist').
+
+            * `all` - All URLs
+            * `url_allowlist` - Only listed URLs
+        url_allowlist:
+          type: array
+          items:
+            type: string
+            maxLength: 2000
+          description: Full http(s) URLs that may send heatmap data. Use * to match
+            any characters.
+        enforcement_enabled:
+          type: boolean
+          readOnly: true
+          description: Whether this installation enforces the URL allow-list for heatmap
+            capture.
+        can_capture_all_urls:
+          type: boolean
+          readOnly: true
+          description: Whether this organization's plan may capture heatmaps on every
+            page.
+        capture_url_limit:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: How many URLs this plan may capture, or null when the plan
+            captures all pages.
+      required:
+      - can_capture_all_urls
+      - capture_mode
+      - capture_url_limit
+      - enforcement_enabled
+      - url_allowlist
     HeatmapEventItem:
       type: object
       properties:
@@ -145104,6 +147234,7 @@ components:
             Product surface that owns this workflow (e.g. `loops` for Desktop loops). Set only when creating a workflow. Filter the list with `?origin_product=`.
 
             * `loops` - Loops
+            * `broadcasts` - Broadcasts
           oneOf:
           - $ref: '#/components/schemas/HogFlowOriginProductEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -145610,8 +147741,9 @@ components:
           - 'null'
           description: 'How long after entering the workflow a conversion still counts,
             as a duration string: ''7d'', ''12h'', ''30m'', ''45s''. Same form the
-            delay steps use. Maximum ''365d''. Omit it to use the default window.
-            Set this or ''window_minutes'', not both.'
+            delay steps use. Must be longer than zero, and at most ''365d''. Omit
+            it to use the default of 90 days. Set this or ''window_minutes'', not
+            both.'
           maxLength: 32
           pattern: ^(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+)[dhms]$
         window_minutes:
@@ -145620,7 +147752,7 @@ components:
           - 'null'
           description: DEPRECATED, use 'window' instead. Conversion window in MINUTES
             (not seconds) after a person enters the workflow. Maximum 129600 (90 days).
-            null = use the default window. Set this or 'window', not both.
+            null = use the default of 90 days. Set this or 'window', not both.
         bytecode:
           description: Compiled server-side from 'filters'. Do not set; ignored if
             sent.
@@ -145907,8 +148039,11 @@ components:
     HogFlowOriginProductEnum:
       enum:
       - loops
+      - broadcasts
       type: string
-      description: '* `loops` - Loops'
+      description: |-
+        * `loops` - Loops
+        * `broadcasts` - Broadcasts
     HogFlowPublishImpact:
       type: object
       properties:
@@ -146268,6 +148403,7 @@ components:
             Product surface that owns this workflow. This value cannot change after creation.
 
             * `loops` - Loops
+            * `broadcasts` - Broadcasts
           oneOf:
           - $ref: '#/components/schemas/HogFlowOriginProductEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -149432,7 +151568,7 @@ components:
           - $ref: '#/components/schemas/ScannerTypeEnum'
           default: monitor
           description: |-
-            What the scan produces. Defaults to monitor, an open-ended observation against the prompt.
+            What the scan produces. Defaults to monitor, an open-ended observation against the prompt. Use `summarizer` to get PostHog's own AI summary of a recording. An inline scan is keyed by its whole config, so the Summarize button in the replay player shares this scan only when the prompt and `scanner_config` match the ones it sends.
 
             * `monitor` - Monitor
             * `classifier` - Classifier
@@ -151514,10 +153650,111 @@ components:
           type: string
           description: The agent's one-line rationale for what it tried and why.
         model_spec:
+          type: object
           description: Model class and hyperparameters tried in this iteration.
+          properties:
+            model_class:
+              type: string
+              description: Dotted path of the estimator class.
+            model_params:
+              type:
+              - object
+              - 'null'
+              additionalProperties: true
+              description: Keyword arguments for the estimator's constructor; null
+                or absent means the defaults.
+          required:
+          - model_class
+          example:
+            model_class: sklearn.linear_model.LogisticRegression
+            model_params:
+              C: 1.0
       required:
       - iteration_number
       - model_spec
+      - status
+    IterationTrailWithRecipe:
+      type: object
+      description: 'The trail with each iteration''s recipe, for history only: a run
+        list page would otherwise carry every recipe of every run.'
+      properties:
+        iteration_number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Order of this attempt within its run (0-based).
+        status:
+          allOf:
+          - $ref: '#/components/schemas/AutoresearchIterationStatusEnum'
+          description: |-
+            Whether this recipe was kept (improved the best score), discarded, or crashed.
+
+            * `kept` - Kept
+            * `discarded` - Discarded
+            * `crashed` - Crashed
+        holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Holdout AUC this iteration achieved. Null if it was skipped/degenerate.
+        train_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Train-fold AUC for this iteration, if recorded.
+        agent_description:
+          type: string
+          description: The agent's one-line rationale for what it tried and why.
+        model_spec:
+          type: object
+          description: Model class and hyperparameters tried in this iteration.
+          properties:
+            model_class:
+              type: string
+              description: Dotted path of the estimator class.
+            model_params:
+              type:
+              - object
+              - 'null'
+              additionalProperties: true
+              description: Keyword arguments for the estimator's constructor; null
+                or absent means the defaults.
+          required:
+          - model_class
+          example:
+            model_class: sklearn.linear_model.LogisticRegression
+            model_params:
+              C: 1.0
+        recipe_snapshot:
+          type: object
+          description: 'The recipe this iteration tried: its feature_sql and transforms,
+            so a later run can reuse them.'
+          properties:
+            feature_sql:
+              type: string
+              description: A read-only HogQL SELECT from {anchors}, one row per person,
+                keyed on person_id.
+            feature_transforms:
+              type:
+              - array
+              - 'null'
+              items:
+                type: object
+              description: Transforms the bundle applies to the feature columns; null
+                or absent means none, and the in-process path accepts none.
+          required:
+          - feature_sql
+          example:
+            feature_sql: SELECT a.person_id AS distinct_id, countIf(e.event = '$pageview')
+              AS pageviews FROM {anchors} a LEFT JOIN events e ON e.person_id = a.person_id
+              AND e.timestamp < a.cutoff_ts GROUP BY a.person_id, a.cutoff_ts
+            feature_transforms: []
+      required:
+      - iteration_number
+      - model_spec
+      - recipe_snapshot
       - status
     JiraIssueSignalExtra:
       additionalProperties: false
@@ -151697,6 +153934,13 @@ components:
       - ExperimentEventExposureConfig
       - ActionsNode
       title: Kind1
+      type: string
+    Kind2:
+      enum:
+      - EventsNode
+      - ActionsNode
+      - ExperimentExposureNode
+      title: Kind2
       type: string
     KnowledgeDocumentWindow:
       type: object
@@ -153659,6 +155903,11 @@ components:
         description:
           type: string
           description: What this skill does and when to use it.
+        score:
+          type: integer
+          minimum: 1
+          description: Relevance score used to rank this result. Higher scores are
+            more relevant.
         matches:
           type: array
           items:
@@ -153669,6 +155918,7 @@ components:
       - description
       - matches
       - name
+      - score
     LLMSkillSpecProblem:
       type: object
       properties:
@@ -155022,6 +157272,60 @@ components:
           description: Linear teams available to this integration.
       required:
       - teams
+    Link:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        redirect_url:
+          type: string
+          format: uri
+          description: Destination the short link redirects to.
+          maxLength: 2048
+        short_link_domain:
+          type: string
+          description: Domain the short link is hosted on. Only phog.gg is accepted.
+          maxLength: 255
+        short_code:
+          type: string
+          description: The unique code/path that identifies the short link, e.g. 'abc123'
+          maxLength: 255
+        description:
+          type:
+          - string
+          - 'null'
+          description: Free-form note about what the link is for.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: User who created the link. Null when that user was deleted.
+        _create_in_folder:
+          type: string
+          writeOnly: true
+          title: ' create in folder'
+          description: Folder path to file the link under in the project tree.
+      required:
+      - created_at
+      - created_by
+      - id
+      - redirect_url
+      - short_code
+      - short_link_domain
+      - updated_at
     LinkedSignalReport:
       type: object
       description: |-
@@ -159290,6 +161594,7 @@ components:
         is_team_enabled:
           type: boolean
           readOnly: true
+          description: True when this server is enabled and available to the project.
         icon_key:
           type: string
           readOnly: true
@@ -166617,8 +168922,9 @@ components:
           anyOf:
           - type: number
           - type: 'null'
-          description: Median elapsed days to a second session within 30 days, among
-            observed returners.
+          description: Estimated median calendar days from the first session to the
+            first return on a later day, using the project's timezone. Includes observed
+            returns within 30 days. Same-day visits do not count.
           title: Medianreturndays
         previous:
           title: Previous
@@ -166630,8 +168936,8 @@ components:
           title: Returned7D
           type: integer
         returners:
-          description: People with an observed second session within 30 days, including
-            incomplete windows.
+          description: People who returned on a later calendar day in the project's
+            timezone within 30 days of their first session, including incomplete windows.
           title: Returners
           type: integer
       required:
@@ -167314,6 +169620,64 @@ components:
       - inline
       - null
       title: MaterializationType
+    MaterializeFeaturesRequest:
+      type: object
+      description: Input for materializing the labeled training feature matrix into
+        the run's sandbox.
+      properties:
+        features_sql:
+          type: string
+          description: Your HogQL feature query, using the {anchors}/{lookback_days}
+            contract. Must be a read-only SELECT keyed on person_id (aliased to distinct_id),
+            one row per user. The backend runs it server-side against the labeled
+            training population — no 500-row cap — and writes the resulting train/holdout
+            feature and label parquet files into your sandbox.
+      required:
+      - features_sql
+    MaterializeFeaturesResponse:
+      type: object
+      description: The local sandbox paths and shape of the materialized training
+        matrix.
+      properties:
+        train_features_path:
+          type: string
+          description: Sandbox path to the training feature matrix parquet (distinct_id
+            + numeric feature columns).
+        train_labels_path:
+          type: string
+          description: Sandbox path to the training labels parquet (distinct_id +
+            __label).
+        holdout_features_path:
+          type: string
+          description: Sandbox path to the holdout feature matrix parquet (same columns
+            as train_features).
+        holdout_labels_path:
+          type: string
+          description: Sandbox path to the holdout labels parquet (distinct_id + __label).
+        n_train:
+          type: integer
+          description: Number of rows in the training split.
+        n_holdout:
+          type: integer
+          description: Number of rows in the holdout split.
+        n_features:
+          type: integer
+          description: Number of numeric feature columns produced by features_sql.
+        feature_cols:
+          type: array
+          items:
+            type: string
+          description: The numeric feature column names (excludes distinct_id, __label,
+            __fold).
+      required:
+      - feature_cols
+      - holdout_features_path
+      - holdout_labels_path
+      - n_features
+      - n_holdout
+      - n_train
+      - train_features_path
+      - train_labels_path
     MaterializeSyncFrequencyEnum:
       enum:
       - 15min
@@ -170921,6 +173285,16 @@ components:
       required:
       - bucket_start
       - p50_seconds
+    OpenTrainingRun:
+      type: object
+      description: Input for opening an agent-driven training run.
+      properties:
+        iteration_budget:
+          type: integer
+          maximum: 500
+          minimum: 1
+          description: Iteration budget for this run. Defaults to the pipeline's iteration_budget
+            if omitted.
     OpportunityKindEnum:
       enum:
       - poor_ctr
@@ -172538,6 +174912,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AutoresearchRun'
+    PaginatedAutoresearchSuggestionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoresearchSuggestion'
     PaginatedAutoresearchTrainingRunList:
       type: object
       required:
@@ -175014,6 +177413,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LegalDocumentDTO'
+    PaginatedLinkList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
     PaginatedListOutputList:
       type: object
       required:
@@ -181333,41 +183757,14 @@ components:
             $ref: '#/components/schemas/ErrorTrackingAlertDestinationRequest'
           description: Delivery targets notifications fan out to. When provided, replaces
             all current destinations.
-    PatchedErrorTrackingAssignmentRule:
+    PatchedErrorTrackingAssignmentRuleReorderRequest:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        filters: {}
-        assignee:
-          type:
-          - object
-          - 'null'
-          properties:
-            type:
-              type: string
-              enum:
-              - user
-              - role
-            id:
-              oneOf:
-              - type: integer
-              - type: string
-                format: uuid
-          readOnly: true
-        order_key:
-          type: integer
-        disabled_data: {}
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
+        orders:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Mapping from assignment rule UUID to its new evaluation order.
     PatchedErrorTrackingAssignmentRuleUpdateRequest:
       type: object
       properties:
@@ -181382,35 +183779,14 @@ components:
           - $ref: '#/components/schemas/ErrorTrackingAssignmentRuleAssigneeRequest'
           - type: 'null'
           description: User or role to assign matching issues to.
-    PatchedErrorTrackingBypassRule:
+    PatchedErrorTrackingBypassRuleReorderRequest:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Unique identifier of the bypass rule.
-        filters:
-          description: Property-group filters that define which incoming error events
-            bypass rate limiting.
-        order_key:
-          type: integer
-          description: Position of the rule in the team's ordered list. Rules are
-            evaluated greedily in ascending order.
-        disabled_data:
-          description: Populated when the rule has been automatically disabled (for
-            example, after its filters failed to evaluate during ingestion). Null
-            while the rule is active.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: When the rule was created.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: When the rule was last updated.
+        orders:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Mapping from bypass rule UUID to its new evaluation order.
     PatchedErrorTrackingBypassRuleUpdateRequest:
       type: object
       properties:
@@ -181420,53 +183796,14 @@ components:
           description: Property-group filters that define which incoming error events
             bypass rate limiting. Must contain at least one filter. Omit to preserve
             the existing filters.
-    PatchedErrorTrackingGroupingRule:
+    PatchedErrorTrackingGroupingRuleReorderRequest:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        filters: {}
-        assignee:
-          type:
-          - object
-          - 'null'
-          properties:
-            type:
-              type: string
-              enum:
-              - user
-              - role
-            id:
-              oneOf:
-              - type: integer
-              - type: string
-                format: uuid
-          readOnly: true
-        description:
-          type:
-          - string
-          - 'null'
-        issue:
-          type:
-          - object
-          - 'null'
+        orders:
+          type: object
           additionalProperties:
-            type: string
-          description: Issue linked to this rule
-          readOnly: true
-        order_key:
-          type: integer
-        disabled_data: {}
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
+            type: integer
+          description: Mapping from grouping rule UUID to its new evaluation order.
     PatchedErrorTrackingGroupingRuleUpdateRequest:
       type: object
       properties:
@@ -181490,7 +183827,7 @@ components:
       properties:
         status:
           allOf:
-          - $ref: '#/components/schemas/ErrorTrackingIssueWriteStatusEnum'
+          - $ref: '#/components/schemas/ErrorTrackingIssueWritableStatusEnum'
           description: |-
             Issue status to set. Deprecated archived and pending_release values are rejected.
 
@@ -181614,28 +183951,14 @@ components:
           minimum: 1
           description: The minimum number of exceptions required in a 5-minute window
             before a spike can be detected.
-    PatchedErrorTrackingSuppressionRule:
+    PatchedErrorTrackingSuppressionRuleReorderRequest:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        filters: {}
-        order_key:
-          type: integer
-        disabled_data: {}
-        sampling_rate:
-          type: number
-          format: double
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
+        orders:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Mapping from suppression rule UUID to its new evaluation order.
     PatchedErrorTrackingSuppressionRuleUpdateRequest:
       type: object
       properties:
@@ -182360,8 +184683,9 @@ components:
             and a metric_type: ''mean'' (set source to an EventsNode with an event
             name), ''funnel'' (set series to an array of EventsNode steps), ''ratio''
             (set numerator and denominator EventsNode entries), or ''retention'' (set
-            start_event and completion_event). Use the read-data-schema tool with
-            query kind ''events'' to find available events in the project.'
+            start_event and completion_event; pass start_event {"kind": "ExperimentExposureNode"}
+            to start retention from the experiment''s exposure event). Use the read-data-schema
+            tool with query kind ''events'' to find available events in the project.'
         metrics_secondary:
           oneOf:
           - $ref: '#/components/schemas/_ExperimentApiMetricsList'
@@ -183483,6 +185807,25 @@ components:
           format: date-time
           readOnly: true
           description: When the issue was resolved (ISO 8601), or null if still active.
+    PatchedHeatmapCaptureSettingsRequest:
+      type: object
+      properties:
+        capture_mode:
+          allOf:
+          - $ref: '#/components/schemas/TeamHeatmapConfigCaptureModeEnum'
+          description: |-
+            Whether to capture heatmap data from every page ('all') or only listed URLs ('url_allowlist').
+
+            * `all` - All URLs
+            * `url_allowlist` - Only listed URLs
+        url_allowlist:
+          type: array
+          items:
+            type: string
+            maxLength: 2000
+          description: Full http(s) URLs that may send heatmap data. Use * to match
+            any characters.
+          maxItems: 100
     PatchedHeatmapScreenshotSettingsRequest:
       type: object
       properties:
@@ -183620,6 +185963,7 @@ components:
             Product surface that owns this workflow. This value cannot change after creation.
 
             * `loops` - Loops
+            * `broadcasts` - Broadcasts
           oneOf:
           - $ref: '#/components/schemas/HogFlowOriginProductEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -184630,6 +186974,52 @@ components:
           description: Optional note describing what changed in this version. Shown
             in the version history.
           maxLength: 400
+    PatchedLink:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        redirect_url:
+          type: string
+          format: uri
+          description: Destination the short link redirects to.
+          maxLength: 2048
+        short_link_domain:
+          type: string
+          description: Domain the short link is hosted on. Only phog.gg is accepted.
+          maxLength: 255
+        short_code:
+          type: string
+          description: The unique code/path that identifies the short link, e.g. 'abc123'
+          maxLength: 255
+        description:
+          type:
+          - string
+          - 'null'
+          description: Free-form note about what the link is for.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: User who created the link. Null when that user was deleted.
+        _create_in_folder:
+          type: string
+          writeOnly: true
+          title: ' create in folder'
+          description: Folder path to file the link under in the project tree.
     PatchedLiveDebuggerBreakpoint:
       type: object
       properties:
@@ -191555,6 +193945,16 @@ components:
       - persons_found
       - persons_queued_for_deletion
       - recordings_queued_for_deletion
+    PersonCohortsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CohortMinimal'
+          description: Cohorts the person currently belongs to.
+      required:
+      - results
     PersonDeletePropertyRequest:
       type: object
       properties:
@@ -209212,6 +211612,7 @@ components:
             * `experiment_launch` - Experiment Launch
             * `experiment_stop` - Experiment Stop
             * `experiment_update` - Experiment Update
+            * `timeseries_sync` - Timeseries Sync
     RecapHighlight:
       type: object
       properties:
@@ -209870,6 +212271,128 @@ components:
           description: True once the interaction has been counted for the user.
       required:
       - recorded
+    RecordIteration:
+      type: object
+      description: Input for recording one training iteration. Validated against the
+        recipe allowlist.
+      properties:
+        iteration_number:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Zero-based index of this iteration within the run. Re-sending
+            the same number updates that iteration (idempotent).
+        recipe_snapshot:
+          type: object
+          description: 'Compact recipe for this iteration: feature_sql (HogQL SELECT
+            keyed on person_id) and transforms.'
+          properties:
+            feature_sql:
+              type: string
+              description: A read-only HogQL SELECT from {anchors}, one row per person,
+                keyed on person_id.
+            feature_transforms:
+              type:
+              - array
+              - 'null'
+              items:
+                type: object
+              description: Transforms the bundle applies to the feature columns; null
+                or absent means none, and the in-process path accepts none.
+          required:
+          - feature_sql
+          example:
+            feature_sql: SELECT a.person_id AS distinct_id, countIf(e.event = '$pageview')
+              AS pageviews FROM {anchors} a LEFT JOIN events e ON e.person_id = a.person_id
+              AND e.timestamp < a.cutoff_ts GROUP BY a.person_id, a.cutoff_ts
+            feature_transforms: []
+        model_spec:
+          type: object
+          description: model_class and model_params tried this iteration. Any class
+            is accepted here; the sklearn/xgboost allowlist applies at completion,
+            to a run that uploaded no bundle.
+          properties:
+            model_class:
+              type: string
+              description: Dotted path of the estimator class.
+            model_params:
+              type:
+              - object
+              - 'null'
+              additionalProperties: true
+              description: Keyword arguments for the estimator's constructor; null
+                or absent means the defaults.
+          required:
+          - model_class
+          example:
+            model_class: sklearn.linear_model.LogisticRegression
+            model_params:
+              C: 1.0
+        status:
+          allOf:
+          - $ref: '#/components/schemas/RecordIterationStatusEnum'
+          description: |-
+            'kept' if this iteration improved on the best score, 'discarded' otherwise, 'crashed' on failure.
+
+            * `kept` - kept
+            * `discarded` - discarded
+            * `crashed` - crashed
+        train_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          maximum: 1
+          minimum: 0
+          description: Training-set AUC for this iteration (0-1).
+        holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          maximum: 1
+          minimum: 0
+          description: Held-out AUC for this iteration (0-1). Used to pick the champion
+            at completion.
+        agent_description:
+          type: string
+          default: ''
+          description: Agent's plain-English rationale for this iteration. Max 2000
+            characters.
+          maxLength: 2000
+        agent_confidence:
+          type:
+          - number
+          - 'null'
+          format: double
+          maximum: 1
+          minimum: 0
+          description: Agent's self-assessed confidence (0-1) that this iteration
+            helps.
+        parent_suggestion:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: UUID of the steering suggestion this iteration was spawned
+            from, if any. Set it whenever the iteration acts on a pending suggestion
+            — it links the iteration back to the suggestion for attribution and advances
+            the suggestion to 'acted_on'.
+      required:
+      - iteration_number
+      - model_spec
+      - recipe_snapshot
+      - status
+    RecordIterationStatusEnum:
+      enum:
+      - kept
+      - discarded
+      - crashed
+      type: string
+      description: |-
+        * `kept` - kept
+        * `discarded` - discarded
+        * `crashed` - crashed
     RecordStructuredOutputRequest:
       type: object
       description: 'Request body for `scout-record-output`: a batch of schema-validated
@@ -210555,6 +213078,15 @@ components:
       - no_billable_pr
       - out_of_period
       type: string
+    RelatedActor:
+      oneOf:
+      - $ref: '#/components/schemas/SerializedPersonActor'
+      - $ref: '#/components/schemas/SerializedGroupActor'
+      discriminator:
+        propertyName: type
+        mapping:
+          person: '#/components/schemas/SerializedPersonActor'
+          group: '#/components/schemas/SerializedGroupActor'
     RelationshipReject:
       type: object
       properties:
@@ -212958,6 +215490,37 @@ components:
         * `datasets` - datasets
         * `dataset_items` - dataset_items
         * `dataset_item_versions` - dataset_item_versions
+    RespondToSuggestion:
+      type: object
+      description: Input for the agent to record how it interpreted a steering suggestion.
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/RespondToSuggestionStatusEnum'
+          description: |-
+            How the agent handled the suggestion: 'picked_up' (applied as a search constraint), 'acted_on' (spawned one or more iterations), or 'dismissed' (rejected — explain why in agent_response).
+
+            * `picked_up` - picked_up
+            * `acted_on` - acted_on
+            * `dismissed` - dismissed
+        agent_response:
+          type: string
+          description: Plain-English note on how the suggestion was interpreted and
+            acted upon. A dismissal needs a note, sent now or recorded earlier. Omit
+            it to keep the note already recorded; send an empty string to clear it.
+          maxLength: 2000
+      required:
+      - status
+    RespondToSuggestionStatusEnum:
+      enum:
+      - picked_up
+      - acted_on
+      - dismissed
+      type: string
+      description: |-
+        * `picked_up` - picked_up
+        * `acted_on` - acted_on
+        * `dismissed` - dismissed
     Response:
       additionalProperties: false
       properties:
@@ -216596,6 +219159,14 @@ components:
     ReusableWidgetVersionDetail:
       type: object
       properties:
+        generation_cost_usd:
+          type:
+          - string
+          - 'null'
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,6})?$
+          description: Estimated generation charge in USD, including retries, security
+            review, and the AI credit markup. Null when unavailable.
         id:
           type: string
           format: uuid
@@ -217855,10 +220426,9 @@ components:
           type: string
           description: 'Run lifecycle marker: ''started'' when the review was queued,
             ''already_reviewed'' when the pull request''s current commit already has
-            a published review (no new run starts), ''joined_running_review'' when
-            a review was already in flight (no new run starts and its mode stays unchanged;
-            requests for Full mode lift a cheaper stored tier for later Full reviews,
-            while Flash requests leave the tier unchanged).'
+            a published review in the requested mode, ''joined_running_review'' when
+            a review was already in flight and the request joined its queue. A requested
+            Full review waits for an active Flash review.'
       required:
       - status
       - workflow_id
@@ -218770,7 +221340,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/SandboxAttachedContextItemTypeEnum'
           description: |-
-            Attachment kind. Entity types carry `id` (+ optional `name`); `text` carries `value`.
+            Attachment kind. Entity types carry `id` (+ optional `name`); `text` and `instructions` carry `value`. `instructions` is the caller's own guidance and renders into the trusted context block; every other kind renders into the untrusted block, which tells the agent to read it as data.
 
             * `action` - action
             * `dashboard` - dashboard
@@ -218778,6 +221348,7 @@ components:
             * `evaluation` - evaluation
             * `event` - event
             * `insight` - insight
+            * `instructions` - instructions
             * `notebook` - notebook
             * `text` - text
         id:
@@ -218788,7 +221359,7 @@ components:
           description: Optional human-readable label rendered in the context block.
         value:
           type: string
-          description: Free-text content. Only for `text` attachments.
+          description: Free-text content. Only for `text` and `instructions` attachments.
       required:
       - type
     SandboxAttachedContextItemTypeEnum:
@@ -218799,6 +221370,7 @@ components:
       - evaluation
       - event
       - insight
+      - instructions
       - notebook
       - text
       type: string
@@ -218809,6 +221381,7 @@ components:
         * `evaluation` - evaluation
         * `event` - event
         * `insight` - insight
+        * `instructions` - instructions
         * `notebook` - notebook
         * `text` - text
     SandboxComputePricing:
@@ -221775,6 +224348,125 @@ components:
       - firstSeen
       title: SentryIssueSignalExtra
       type: object
+    SerializedGroupActor:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The person's UUID, or the group's key.
+        properties:
+          type: object
+          additionalProperties: true
+          description: The actor's properties.
+        created_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the actor was first seen.
+        matched_recordings:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Recordings that matched the query. Empty unless the endpoint
+            asks for them.
+        value_at_data_point:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The actor's value at the data point it was queried for. Null
+            unless the query computes one.
+        type:
+          type: string
+          const: group
+          description: Marks this actor as a group.
+        group_key:
+          type: string
+          description: Key identifying the group within its group type.
+        group_type_index:
+          type: integer
+          description: Index of the group type this group belongs to.
+      required:
+      - created_at
+      - group_key
+      - group_type_index
+      - id
+      - matched_recordings
+      - properties
+      - type
+      - value_at_data_point
+    SerializedPersonActor:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The person's UUID, or the group's key.
+        properties:
+          type: object
+          additionalProperties: true
+          description: The actor's properties.
+        created_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the actor was first seen.
+        matched_recordings:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Recordings that matched the query. Empty unless the endpoint
+            asks for them.
+        value_at_data_point:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The actor's value at the data point it was queried for. Null
+            unless the query computes one.
+        type:
+          type: string
+          const: person
+          description: Marks this actor as a person.
+        uuid:
+          type: string
+          format: uuid
+          description: The person's UUID. Same value as `id`.
+        name:
+          type: string
+          description: Display name, resolved from the person's properties or distinct
+            IDs.
+        distinct_ids:
+          type: array
+          items:
+            type: string
+          description: The person's distinct IDs, newest first.
+        last_seen_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the person was last seen.
+        is_identified:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the person has been identified.
+      required:
+      - created_at
+      - distinct_ids
+      - id
+      - is_identified
+      - last_seen_at
+      - matched_recordings
+      - name
+      - properties
+      - type
+      - uuid
+      - value_at_data_point
     Series:
       additionalProperties: false
       properties:
@@ -224422,6 +227114,9 @@ components:
       - work_release
       - pull_request
       - check_result
+      - check_scheduled
+      - check_expired
+      - check_cancelled
       - implementation_decision
       - implementation_dispatch
       - implementation_replacement
@@ -224450,6 +227145,9 @@ components:
         * `work_release` - Work Release
         * `pull_request` - Pull Request
         * `check_result` - Check Result
+        * `check_scheduled` - Check Scheduled
+        * `check_expired` - Check Expired
+        * `check_cancelled` - Check Cancelled
         * `implementation_decision` - Implementation Decision
         * `implementation_dispatch` - Implementation Dispatch
         * `implementation_replacement` - Implementation Replacement
@@ -224603,7 +227301,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/SignalReportStateEnum'
           description: |-
-            Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). Dismissing or resolving closes the report's open implementation PR, if it has one.
+            Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is allowed from ready, pending_input, or failed, or from a suppressed report that previously held one of those statuses or resolved. Resolving an already resolved report succeeds. Other statuses return 409 (skipped in bulk). Dismissing or resolving closes the report's open implementation PR, if it has one.
 
             * `suppressed` - suppressed
             * `potential` - potential
@@ -224612,7 +227310,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DismissalReasonEnum'
           description: |-
-            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). The dismissal codes (report_unclear, analysis_wrong, wrong_repo, wontfix_*) go with state='suppressed'. Use 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
+            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). A report that failed in processing resolves too, so a fix that landed is recorded as a fix rather than as a dismissal. These three codes claim the issue is gone, so a later signal about the same issue starts a fresh report linked to this one. Fixed reason codes require state='suppressed' or state='resolved', not 'potential'. The dismissal codes (report_unclear, analysis_wrong, wrong_repo, wontfix_*) go with state='suppressed' and absorb later signals silently. Use 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
 
             * `already_fixed` - Already fixed
             * `report_unclear` - Report is unclear to me
@@ -225217,6 +227915,68 @@ components:
       - tracker_issue_url
       - updated_at
       - work_state
+    SignalReportMergeRequest:
+      type: object
+      properties:
+        source_report_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: 'Ids of the duplicate reports to fold into this one (1–10).
+            Each must be a live report in this project: a resolved, archived or deleted
+            report is rejected with 409, as is the survivor''s own id. Duplicates
+            in the list are de-duplicated. The whole merge applies or none of it does.'
+          maxItems: 10
+          minItems: 1
+        reason:
+          type: string
+          description: Optional one-line explanation of why these reports are the
+            same issue. Recorded on each source's 'duplicate of' link and on the note
+            left on the survivor. Capped at 500 characters.
+          maxLength: 500
+      required:
+      - source_report_ids
+    SignalReportMergeResponse:
+      type: object
+      properties:
+        report:
+          allOf:
+          - $ref: '#/components/schemas/SignalReport'
+          description: The surviving report, as it stands after the merge.
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignalReportMergeSourceResult'
+          description: One result per merged source, in request order (after de-duplication).
+      required:
+      - report
+      - sources
+    SignalReportMergeSourceResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The source report that was folded into the survivor.
+        artefacts_moved:
+          type: integer
+          description: How many work-log artefacts moved to the survivor (notes, findings,
+            pull requests, task runs, code references, commits, checks).
+        signals_moved:
+          type: integer
+          description: How many signals the survivor took on from this source. The
+            signals themselves are re-pointed asynchronously; the survivor's counters
+            already include them.
+        released_claim:
+          type: boolean
+          description: Whether an active work claim held by another actor was released
+            before the move.
+      required:
+      - artefacts_moved
+      - id
+      - released_claim
+      - signals_moved
     SignalReportMetricRefreshRequest:
       type: object
       properties:
@@ -225611,7 +228371,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/SignalReportStateEnum'
           description: |-
-            Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). Dismissing or resolving closes the report's open implementation PR, if it has one.
+            Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is allowed from ready, pending_input, or failed, or from a suppressed report that previously held one of those statuses or resolved. Resolving an already resolved report succeeds. Other statuses return 409 (skipped in bulk). Dismissing or resolving closes the report's open implementation PR, if it has one.
 
             * `suppressed` - suppressed
             * `potential` - potential
@@ -225620,7 +228380,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DismissalReasonEnum'
           description: |-
-            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). The dismissal codes (report_unclear, analysis_wrong, wrong_repo, wontfix_*) go with state='suppressed'. Use 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
+            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). A report that failed in processing resolves too, so a fix that landed is recorded as a fix rather than as a dismissal. These three codes claim the issue is gone, so a later signal about the same issue starts a fresh report linked to this one. Fixed reason codes require state='suppressed' or state='resolved', not 'potential'. The dismissal codes (report_unclear, analysis_wrong, wrong_repo, wontfix_*) go with state='suppressed' and absorb later signals silently. Use 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
 
             * `already_fixed` - Already fixed
             * `report_unclear` - Report is unclear to me
@@ -225910,6 +228670,16 @@ components:
             unless someone engages with the scout's reports — opening one counts;
             a `no_output` warning only flags the scout); for the paused statuses it
             is when the scout was paused. Null if the status never changed.
+        status_changed_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: Who last moved `status`, when a person did it through this
+            API. Null for a system transition such as an automatic pause, for a row
+            whose status never changed, and for a caller that may not read member
+            identities. Pair it with `status` to say who turned a scout off, instead
+            of only when it went off.
         auto_pause_exempt:
           type: boolean
           readOnly: true
@@ -225979,6 +228749,7 @@ components:
       - source_product
       - status
       - status_changed_at
+      - status_changed_by
       - structured_output_schema
       - updated_at
       - write_scopes
@@ -226379,15 +229150,6 @@ components:
           type: string
           description: The emitted finding prose — the signal's `description` as surfaced
             to the inbox.
-        confidence:
-          type:
-          - number
-          - 'null'
-          format: double
-          maximum: 1.0
-          minimum: 0.0
-          description: Deprecated and no longer set on new findings. Null unless the
-            run supplied one.
         severity:
           description: |-
             Optional severity tag — one of P0, P1, P2, P3, P4 — or null if the run didn't set one.
@@ -226415,7 +229177,6 @@ components:
           format: date-time
           description: ISO-8601 timestamp the finding was emitted.
       required:
-      - confidence
       - description
       - emitted_at
       - finding_id
@@ -227593,12 +230354,6 @@ components:
         skill_version:
           title: Skill Version
           type: integer
-        confidence:
-          anyOf:
-          - type: number
-          - type: 'null'
-          default: null
-          title: Confidence
         severity:
           anyOf:
           - $ref: '#/components/schemas/ReportPriority'
@@ -234543,6 +237298,23 @@ components:
       - results
       title: StickinessQueryResponse
       type: object
+    StoredArtifact:
+      type: object
+      description: 'Result of an upload: where the file landed and its content hash.'
+      properties:
+        path:
+          type: string
+          description: Relative path the file was stored at.
+        size_bytes:
+          type: integer
+          description: Decoded file size in bytes.
+        sha256:
+          type: string
+          description: SHA-256 hex digest of the decoded file content.
+      required:
+      - path
+      - sha256
+      - size_bytes
     StreamReadTokenResponse:
       type: object
       description: Response containing a JWT token (and resolved base URL) for reading
@@ -242810,6 +245582,14 @@ components:
             from a survey, experiment, early access feature, product tour, or web
             experiment is exempt, because those forms have no tag input. The caller
             sets that declaration, so a flag can still be created without a tag.
+    TeamHeatmapConfigCaptureModeEnum:
+      enum:
+      - all
+      - url_allowlist
+      type: string
+      description: |-
+        * `all` - All URLs
+        * `url_allowlist` - Only listed URLs
     TeamLogsConfig:
       type: object
       properties:
@@ -243938,7 +246718,8 @@ components:
         ai_triage:
           readOnly: true
           description: AI support pipeline triage and outcome (status, result, ticket_type,
-            confidence, attempts, etc.).
+            confidence, attempts, verdict, blocker, sources). Retrieve hydrates sources
+            from citations.
         created_at:
           type: string
           format: date-time
@@ -244156,8 +246937,10 @@ components:
       properties:
         detail:
           type: string
+          description: Human-readable error message.
         error_type:
           type: string
+          description: Machine-readable error code.
       required:
       - detail
     TicketFullEmail:
@@ -244334,6 +247117,16 @@ components:
       description: |-
         * `any` - any
         * `all` - all
+    TicketUnreadCountResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: Unread messages across the non-resolved tickets the caller
+            can see.
+      required:
+      - count
     TicketUpdateRequest:
       type: object
       description: Fields accepted when updating a ticket.
@@ -247803,6 +250596,80 @@ components:
       - name
       - short_id
       - updated_at
+    TrainingRunHistory:
+      type: object
+      description: 'Cross-run learning memory: prior runs the agent should read before
+        iterating.'
+      properties:
+        runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingRunHistoryEntry'
+          description: Recent completed training runs — the current pipeline first,
+            then same-target sibling pipelines on the team — newest first. Mine these
+            to reuse winning features and avoid repeating discarded approaches.
+      required:
+      - runs
+    TrainingRunHistoryEntry:
+      type: object
+      description: One prior completed training run plus its full iteration trail.
+      properties:
+        run_id:
+          type: string
+          format: uuid
+          description: UUID of the completed training run.
+        pipeline_id:
+          type: string
+          format: uuid
+          description: UUID of the pipeline this run belongs to.
+        is_current_pipeline:
+          type: boolean
+          description: True if this run is from the pipeline you are training; False
+            if it is a same-target sibling pipeline on the team.
+        target_event:
+          type: string
+          description: Target event this run's pipeline predicts.
+        horizon_days:
+          type: integer
+          description: Prediction horizon (days) of this run's pipeline.
+        best_holdout_score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Best holdout AUC achieved across this run's iterations.
+        iteration_count:
+          type: integer
+          description: Number of iterations recorded in this run.
+        completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When this run completed.
+        summary:
+          oneOf:
+          - $ref: '#/components/schemas/TrainingRunSummary'
+          - type: 'null'
+          description: Distilled tier-1 summary of this run — read this first to orient.
+            Null for older runs without one.
+        iterations:
+          type: array
+          items:
+            $ref: '#/components/schemas/IterationTrailWithRecipe'
+          description: 'The iteration trail: every recipe tried, kept or discarded,
+            with rationale and score.'
+      required:
+      - best_holdout_score
+      - completed_at
+      - horizon_days
+      - is_current_pipeline
+      - iteration_count
+      - iterations
+      - pipeline_id
+      - run_id
+      - summary
+      - target_event
     TrainingRunSummary:
       type: object
       description: Tier-1 distilled summary of a completed run — the orientation memory
@@ -252149,6 +255016,7 @@ components:
 
             * `user_created` - user_created
             * `posthog_ai` - posthog_ai
+            * `signal_report` - signal_report
         initial_permission_mode:
           description: |-
             Permission mode to boot the agent session on. Read at session construction, so it cannot be changed once the sandbox is warm — a submit selecting a different mode falls through to a cold Run. Omit to take the runtime's default.
@@ -252163,14 +255031,24 @@ components:
           oneOf:
           - $ref: '#/components/schemas/TaskRunBootstrapCreateRequestInitialPermissionModeEnum'
           - $ref: '#/components/schemas/NullEnum'
+        signal_report:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Inbox report the warm discussion is about. Required with origin_product
+            `signal_report`, where the warm Run boots repo-less and the submit that
+            creates the report's discussion task activates it.
     WarmTaskRequestOriginProductEnum:
       enum:
       - user_created
       - posthog_ai
+      - signal_report
       type: string
       description: |-
         * `user_created` - user_created
         * `posthog_ai` - posthog_ai
+        * `signal_report` - signal_report
     WarmTaskResponse:
       type: object
       description: Response for a successful warm request — the draft Task + idling
@@ -256223,6 +259101,14 @@ components:
     WidgetVersion:
       type: object
       properties:
+        generation_cost_usd:
+          type:
+          - string
+          - 'null'
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,6})?$
+          description: Estimated generation charge in USD, including retries, security
+            review, and the AI credit markup. Null when unavailable.
         id:
           type: string
           format: uuid
@@ -258275,6 +261161,46 @@ components:
       items:
         $ref: '#/components/schemas/ExperimentApiMetric'
       title: _ExperimentApiMetricsList
+      type: array
+    _ExperimentSetupPropertyFilterList:
+      description: Event or person property filters that narrow which events are counted.
+      items:
+        anyOf:
+        - $ref: '#/components/schemas/EventPropertyFilter'
+        - $ref: '#/components/schemas/PersonPropertyFilter'
+      maxItems: 10
+      title: _ExperimentSetupPropertyFilterList
+      type: array
+    _ExperimentSetupStoredPropertyFilterList:
+      description: Property filters as an experiment stored them. Any filter type
+        can appear, cohorts included.
+      items:
+        oneOf:
+        - $ref: '#/components/schemas/EventPropertyFilter'
+        - $ref: '#/components/schemas/PersonPropertyFilter'
+        - $ref: '#/components/schemas/PersonMetadataPropertyFilter'
+        - $ref: '#/components/schemas/ElementPropertyFilter'
+        - $ref: '#/components/schemas/EventMetadataPropertyFilter'
+        - $ref: '#/components/schemas/SessionPropertyFilter'
+        - $ref: '#/components/schemas/CohortPropertyFilter'
+        - $ref: '#/components/schemas/RecordingPropertyFilter'
+        - $ref: '#/components/schemas/LogEntryPropertyFilter'
+        - $ref: '#/components/schemas/GroupPropertyFilter'
+        - $ref: '#/components/schemas/FeaturePropertyFilter'
+        - $ref: '#/components/schemas/FlagPropertyFilter'
+        - $ref: '#/components/schemas/HogQLPropertyFilter'
+        - $ref: '#/components/schemas/EmptyPropertyFilter'
+        - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+        - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
+        - $ref: '#/components/schemas/ErrorTrackingIssueFilter'
+        - $ref: '#/components/schemas/LogPropertyFilter'
+        - $ref: '#/components/schemas/MetricPropertyFilter'
+        - $ref: '#/components/schemas/SpanPropertyFilter'
+        - $ref: '#/components/schemas/RevenueAnalyticsPropertyFilter'
+        - $ref: '#/components/schemas/AccountCustomPropertyFilter'
+        - $ref: '#/components/schemas/WorkflowVariablePropertyFilter'
+        - $ref: '#/components/schemas/BehavioralPropertyFilter'
+      title: _ExperimentSetupStoredPropertyFilterList
       type: array
     _GateResultSummary:
       type: object
@@ -262926,6 +265852,7 @@ tags:
 - name: groups
 - name: groups_types
 - name: health_issues
+- name: heatmap_capture
 - name: heatmap_screenshot
 - name: heatmap_screenshots
 - name: heatmaps
@@ -262940,6 +265867,7 @@ tags:
 - name: invites
 - name: js-snippet
 - name: legal_documents
+- name: links
 - name: live_debugger_breakpoints
 - name: llm_analytics
 - name: llm_prompts
@@ -263129,6 +266057,7 @@ x-tagGroups:
   - groups
   - groups_types
   - health_issues
+  - heatmap_capture
   - heatmap_screenshot
   - heatmap_screenshots
   - heatmaps
@@ -263143,6 +266072,7 @@ x-tagGroups:
   - invites
   - js-snippet
   - legal_documents
+  - links
   - live_debugger_breakpoints
   - llm_analytics
   - llm_prompts

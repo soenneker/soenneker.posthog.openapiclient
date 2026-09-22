@@ -21,19 +21,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? LaunchedWithoutResults { get; set; }
         /// <summary>Launched experiments whose latest result analyzed fewer than 100 units, zero included.</summary>
         public int? LaunchedWithUnder100AnalyzedExposures { get; set; }
-        /// <summary>Launched experiments whose latest result stores no sample counts, so it says nothing either way.</summary>
+        /// <summary>Launched experiments whose result says nothing about exposures: it stores no sample counts, or its metric is a retention or a ratio one, whose samples are not exposures.</summary>
         public int? LaunchedWithUnknownAnalyzedExposures { get; set; }
         /// <summary>Launched experiments whose latest result analyzed no one.</summary>
         public int? LaunchedWithZeroAnalyzedExposures { get; set; }
+        /// <summary>Launched experiments whose flag now serves one variant to everyone it matches, usually after shipping.</summary>
+        public int? ServingSingleVariant { get; set; }
         /// <summary>Experiments listed.</summary>
         public int? Total { get; set; }
+        /// <summary>Experiments that use an activation event or action.</summary>
+        public int? UsingActivation { get; set; }
         /// <summary>Experiments with a custom exposure event or action.</summary>
         public int? UsingCustomExposure { get; set; }
         /// <summary>Experiments that bucket on device id.</summary>
         public int? UsingDeviceIdBucketing { get; set; }
+        /// <summary>Experiments whose exposure is narrowed by property filters.</summary>
+        public int? UsingExposurePropertyFilters { get; set; }
         /// <summary>Experiments that keep variants across authentication steps.</summary>
         public int? UsingPersistence { get; set; }
-        /// <summary>Experiments whose variants split traffic unevenly.</summary>
+        /// <summary>Experiments whose variants split traffic unevenly. A flag that now serves one variant is left out, because its split no longer says what the experiment ran with.</summary>
         public int? UsingUnevenSplit { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentsSummaryComposed"/> and sets the default values.
@@ -65,9 +71,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "launched_with_unknown_analyzed_exposures", n => { LaunchedWithUnknownAnalyzedExposures = n.GetIntValue(); } },
                 { "launched_with_zero_analyzed_exposures", n => { LaunchedWithZeroAnalyzedExposures = n.GetIntValue(); } },
                 { "launched_without_results", n => { LaunchedWithoutResults = n.GetIntValue(); } },
+                { "serving_single_variant", n => { ServingSingleVariant = n.GetIntValue(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
+                { "using_activation", n => { UsingActivation = n.GetIntValue(); } },
                 { "using_custom_exposure", n => { UsingCustomExposure = n.GetIntValue(); } },
                 { "using_device_id_bucketing", n => { UsingDeviceIdBucketing = n.GetIntValue(); } },
+                { "using_exposure_property_filters", n => { UsingExposurePropertyFilters = n.GetIntValue(); } },
                 { "using_persistence", n => { UsingPersistence = n.GetIntValue(); } },
                 { "using_uneven_split", n => { UsingUnevenSplit = n.GetIntValue(); } },
             };
@@ -84,9 +93,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("launched_with_under_100_analyzed_exposures", LaunchedWithUnder100AnalyzedExposures);
             writer.WriteIntValue("launched_with_unknown_analyzed_exposures", LaunchedWithUnknownAnalyzedExposures);
             writer.WriteIntValue("launched_with_zero_analyzed_exposures", LaunchedWithZeroAnalyzedExposures);
+            writer.WriteIntValue("serving_single_variant", ServingSingleVariant);
             writer.WriteIntValue("total", Total);
+            writer.WriteIntValue("using_activation", UsingActivation);
             writer.WriteIntValue("using_custom_exposure", UsingCustomExposure);
             writer.WriteIntValue("using_device_id_bucketing", UsingDeviceIdBucketing);
+            writer.WriteIntValue("using_exposure_property_filters", UsingExposurePropertyFilters);
             writer.WriteIntValue("using_persistence", UsingPersistence);
             writer.WriteIntValue("using_uneven_split", UsingUnevenSplit);
             writer.WriteAdditionalData(AdditionalData);

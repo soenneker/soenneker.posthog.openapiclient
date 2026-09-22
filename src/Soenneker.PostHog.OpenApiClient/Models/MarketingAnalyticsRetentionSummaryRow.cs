@@ -26,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Eligible30d { get; set; }
         /// <summary>The eligible7d property</summary>
         public int? Eligible7d { get; set; }
-        /// <summary>Median elapsed days to a second session within 30 days, among observed returners.</summary>
+        /// <summary>Estimated median calendar days from the first session to the first return on a later day, using the project&apos;s timezone. Includes observed returns within 30 days. Same-day visits do not count.</summary>
         public double? MedianReturnDays { get; set; }
         /// <summary>The previous property</summary>
         public bool? Previous { get; set; }
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Returned30d { get; set; }
         /// <summary>The returned7d property</summary>
         public int? Returned7d { get; set; }
-        /// <summary>People with an observed second session within 30 days, including incomplete windows.</summary>
+        /// <summary>People who returned on a later calendar day in the project&apos;s timezone within 30 days of their first session, including incomplete windows.</summary>
         public int? Returners { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

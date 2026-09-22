@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RefreshRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations/{id}/refresh", pathParameters)
+        public RefreshRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations/{id}/refresh{?force*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RefreshRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations/{id}/refresh", rawUrl)
+        public RefreshRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations/{id}/refresh{?force*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation"/></returns>
@@ -38,11 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation?> PostAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.Item.Refresh.RefreshRequestBuilder.RefreshRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation> PostAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.Item.Refresh.RefreshRequestBuilder.RefreshRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
@@ -52,11 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.Item.Refresh.RefreshRequestBuilder.RefreshRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.Item.Refresh.RefreshRequestBuilder.RefreshRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -72,6 +72,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.Item.Refresh.RefreshRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.Item.Refresh.RefreshRequestBuilder(rawUrl, RequestAdapter);
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
+        public partial class RefreshRequestBuilderPostQueryParameters 
+        #pragma warning restore CS1591
+        {
+            /// <summary>False skips the recompute when the current result is still fresh. Defaults to true.</summary>
+            [QueryParameter("force")]
+            public bool? Force { get; set; }
         }
     }
 }

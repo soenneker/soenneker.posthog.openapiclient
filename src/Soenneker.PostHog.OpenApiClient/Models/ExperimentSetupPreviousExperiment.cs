@@ -12,9 +12,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentSetupPreviousExperiment : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Action used for activation instead of an event, or null.</summary>
+        public int? ActivationActionId { get; set; }
+        /// <summary>Event a user must send after their first exposure event before they count as exposed, or null. This is activation mode, which sits on top of the default exposure event.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ActivationEvent { get; set; }
+#nullable restore
+#else
+        public string ActivationEvent { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>What the flag buckets users on: &apos;distinct_id&apos; (default) or &apos;device_id&apos;.</summary>
+        /// <summary>What the flag buckets users on: &apos;distinct_id&apos; (default) or &apos;device_id&apos;. Read from the flag as it stands now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BucketingIdentifier { get; set; }
@@ -34,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>Action used as the custom exposure, or null.</summary>
         public int? CustomExposureActionId { get; set; }
-        /// <summary>Custom exposure event, or null when the default exposure event is used.</summary>
+        /// <summary>An exposure event other than the default one, or null. A default event narrowed by exposure_property_filters is still the default event, so it stays null here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CustomExposureEvent { get; set; }
@@ -44,15 +54,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When it ended. Null unless stopped.</summary>
         public DateTimeOffset? EndDate { get; set; }
-        /// <summary>Whether the flag keeps a user&apos;s variant across authentication steps.</summary>
+        /// <summary>Whether the flag keeps a user&apos;s variant across authentication steps, read from the flag as it stands now.</summary>
         public bool? EnsureExperienceContinuity { get; set; }
-        /// <summary>Where the flag may be evaluated: &apos;server&apos;, &apos;client&apos; or &apos;all&apos;.</summary>
+        /// <summary>Where the flag may be evaluated: &apos;server&apos;, &apos;client&apos; or &apos;all&apos;. Read from the flag as it stands now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EvaluationRuntime { get; set; }
 #nullable restore
 #else
         public string EvaluationRuntime { get; set; }
+#endif
+        /// <summary>Property filters as an experiment stored them. Any filter type can appear, cohorts included.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupStoredPropertyFilterListItem>? ExposurePropertyFilters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupStoredPropertyFilterListItem> ExposurePropertyFilters { get; set; }
+#endif
+        /// <summary>Key of the feature flag the experiment runs on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FeatureFlagKey { get; set; }
+#nullable restore
+#else
+        public string FeatureFlagKey { get; set; }
 #endif
         /// <summary>Whether exposures leave out test accounts.</summary>
         public bool? FilterTestAccounts { get; set; }
@@ -82,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>From the latest completed result of the first primary metric. Null when no result exists, which is also the case for older metric definitions that results are never stored for.</summary>
+        /// <summary>From the completed result that covers the latest data in the experiment&apos;s current run. A funnel or a mean primary metric is chosen over a retention or a ratio one, because only its samples are the analyzed population. Null when no result exists for that run, which is also the case for older metric definitions that results are never stored for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome? Outcome { get; set; }
@@ -90,8 +116,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome Outcome { get; set; }
 #endif
+        /// <summary>Actions the primary metrics count.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<int?>? PrimaryMetricActionIds { get; set; }
+#nullable restore
+#else
+        public List<int?> PrimaryMetricActionIds { get; set; }
+#endif
         /// <summary>Primary metrics, shared ones included.</summary>
         public int? PrimaryMetricCount { get; set; }
+        /// <summary>Event names the primary metrics count.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? PrimaryMetricEvents { get; set; }
+#nullable restore
+#else
+        public List<string> PrimaryMetricEvents { get; set; }
+#endif
         /// <summary>metric_type of each primary metric, for example &apos;mean&apos;, &apos;funnel&apos;, &apos;ratio&apos; or &apos;retention&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,13 +142,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> PrimaryMetricTypes { get; set; }
 #endif
-        /// <summary>Rollout percentage of the flag&apos;s first release condition.</summary>
+        /// <summary>Rollout percentage of the flag&apos;s first release condition, read from the flag as it stands now.</summary>
         public double? RolloutPercentage { get; set; }
         /// <summary>Secondary metrics, shared ones included.</summary>
         public int? SecondaryMetricCount { get; set; }
+        /// <summary>The one variant the flag now serves to everyone it matches, or null. Shipping a variant rewrites the flag this way, so the split the experiment ran with cannot be read from the flag any more. Only a launched experiment can be shipped, so a draft at 100/0 reports its split as it stands.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServingSingleVariant { get; set; }
+#nullable restore
+#else
+        public string ServingSingleVariant { get; set; }
+#endif
         /// <summary>Shared metrics attached to the experiment.</summary>
         public int? SharedMetricCount { get; set; }
-        /// <summary>Whether variants split traffic evenly. 34/33/33 counts as even. Null on a boolean flag, which has no variants.</summary>
+        /// <summary>Whether variants split traffic evenly, read from the flag as it stands now. 34/33/33 counts as even. Null on a boolean flag, which has no variants, and null when serving_single_variant is set.</summary>
         public bool? SplitEven { get; set; }
         /// <summary>When it launched. Null for drafts.</summary>
         public DateTimeOffset? StartDate { get; set; }
@@ -153,6 +203,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "activation_action_id", n => { ActivationActionId = n.GetIntValue(); } },
+                { "activation_event", n => { ActivationEvent = n.GetStringValue(); } },
                 { "bucketing_identifier", n => { BucketingIdentifier = n.GetStringValue(); } },
                 { "conclusion", n => { Conclusion = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -161,6 +213,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
                 { "ensure_experience_continuity", n => { EnsureExperienceContinuity = n.GetBoolValue(); } },
                 { "evaluation_runtime", n => { EvaluationRuntime = n.GetStringValue(); } },
+                { "exposure_property_filters", n => { ExposurePropertyFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupStoredPropertyFilterListItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupStoredPropertyFilterListItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "feature_flag_key", n => { FeatureFlagKey = n.GetStringValue(); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "group_aggregation", n => { GroupAggregation = n.GetBoolValue(); } },
                 { "has_holdout", n => { HasHoldout = n.GetBoolValue(); } },
@@ -170,10 +224,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "multiple_variant_handling_set", n => { MultipleVariantHandlingSet = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome.CreateFromDiscriminatorValue); } },
+                { "primary_metric_action_ids", n => { PrimaryMetricActionIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "primary_metric_count", n => { PrimaryMetricCount = n.GetIntValue(); } },
+                { "primary_metric_events", n => { PrimaryMetricEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "primary_metric_types", n => { PrimaryMetricTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "rollout_percentage", n => { RolloutPercentage = n.GetDoubleValue(); } },
                 { "secondary_metric_count", n => { SecondaryMetricCount = n.GetIntValue(); } },
+                { "serving_single_variant", n => { ServingSingleVariant = n.GetStringValue(); } },
                 { "shared_metric_count", n => { SharedMetricCount = n.GetIntValue(); } },
                 { "split_even", n => { SplitEven = n.GetBoolValue(); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
@@ -189,6 +246,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("activation_action_id", ActivationActionId);
+            writer.WriteStringValue("activation_event", ActivationEvent);
             writer.WriteStringValue("bucketing_identifier", BucketingIdentifier);
             writer.WriteStringValue("conclusion", Conclusion);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
@@ -197,6 +256,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
             writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
             writer.WriteStringValue("evaluation_runtime", EvaluationRuntime);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupStoredPropertyFilterListItem>("exposure_property_filters", ExposurePropertyFilters);
+            writer.WriteStringValue("feature_flag_key", FeatureFlagKey);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteBoolValue("group_aggregation", GroupAggregation);
             writer.WriteBoolValue("has_holdout", HasHoldout);
@@ -206,10 +267,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("multiple_variant_handling_set", MultipleVariantHandlingSet);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome>("outcome", Outcome);
+            writer.WriteCollectionOfPrimitiveValues<int?>("primary_metric_action_ids", PrimaryMetricActionIds);
             writer.WriteIntValue("primary_metric_count", PrimaryMetricCount);
+            writer.WriteCollectionOfPrimitiveValues<string>("primary_metric_events", PrimaryMetricEvents);
             writer.WriteCollectionOfPrimitiveValues<string>("primary_metric_types", PrimaryMetricTypes);
             writer.WriteDoubleValue("rollout_percentage", RolloutPercentage);
             writer.WriteIntValue("secondary_metric_count", SecondaryMetricCount);
+            writer.WriteStringValue("serving_single_variant", ServingSingleVariant);
             writer.WriteIntValue("shared_metric_count", SharedMetricCount);
             writer.WriteBoolValue("split_even", SplitEven);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);

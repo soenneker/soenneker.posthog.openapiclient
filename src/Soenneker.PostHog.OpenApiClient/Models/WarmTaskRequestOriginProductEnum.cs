@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `user_created` - user_created* `posthog_ai` - posthog_ai</summary>
+    /// <summary>* `user_created` - user_created* `posthog_ai` - posthog_ai* `signal_report` - signal_report</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WarmTaskRequestOriginProductEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "posthog_ai")]
         #pragma warning disable CS1591
         PosthogAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "signal_report")]
+        #pragma warning disable CS1591
+        SignalReport,
         #pragma warning restore CS1591
     }
 }

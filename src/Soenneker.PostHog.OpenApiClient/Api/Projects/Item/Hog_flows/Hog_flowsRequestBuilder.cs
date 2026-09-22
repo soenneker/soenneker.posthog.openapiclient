@@ -176,7 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             public int? Offset { get; set; }
             /// <summary>Filter to workflows owned by a product surface, e.g. `loops` for Desktop loops.</summary>
             [QueryParameter("origin_product")]
-            public global::Soenneker.PostHog.OpenApiClient.Models.LoopsOriginProduct? OriginProduct { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsListOriginProductParameter? OriginProduct { get; set; }
             /// <summary>Case-insensitive search. Matches workflow name and description first; only when nothing matches those, it matches step names and the subject line, preheader and body text of email steps, in both the live workflow and its pending draft.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -200,9 +200,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             [QueryParameter("trigger")]
             public string Trigger { get; set; }
 #endif
-            /// <summary>Filter by workflow type. `loop` returns workflows owned by a Desktop loop; `messaging` returns the remaining workflows with an email, SMS, or push action; `automation` returns the rest.</summary>
+            /// <summary>Comma-separated workflow types. `loop` and `broadcast` return the workflows those surfaces own; `messaging` returns the remaining workflows with an email, SMS, or push action, and `automation` the rest.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type")]
-            public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsListTypeParameter? Type { get; set; }
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
             #pragma warning disable CS1591
             [QueryParameter("updated_at")]
             public DateTimeOffset? UpdatedAt { get; set; }

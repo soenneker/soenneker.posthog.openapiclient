@@ -14,12 +14,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Units analyzed across all variants in the latest completed result of the first primary metric. Users seen in several variants are left out under the default handling, so this can be lower than exposures. Null when that result stores no sample counts, which is not the same as analyzing nobody.</summary>
+        /// <summary>metric_samples, but only where the metric type makes it the analyzed population: &apos;funnel&apos; and &apos;mean&apos;. Users seen in several variants are left out under the default handling, so it can be lower than exposures. Null for &apos;retention&apos;, whose samples are the units that did the start event, and for &apos;ratio&apos;, whose samples are not exposures either. Also null when the result stores no sample counts, which is not the same as analyzing nobody.</summary>
         public int? AnalyzedExposures { get; set; }
         /// <summary>Whether any variant was significant on that metric in that result.</summary>
         public bool? AnyVariantSignificant { get; set; }
+        /// <summary>What control measured: a conversion rate for &apos;funnel&apos;, an average per unit for &apos;mean&apos;. Compare it with the rate on the surface itself to see whether the exposure was diluted by users who never reached the surface. Null for other metric types and when control analyzed no units.</summary>
+        public double? ControlBaselineValue { get; set; }
+        /// <summary>Units the result counted across all variants. What a unit is depends on metric_type, so read analyzed_exposures where you need exposures. Null when the result stores no sample counts.</summary>
+        public int? MetricSamples { get; set; }
+        /// <summary>metric_type of the metric this outcome describes: &apos;funnel&apos;, &apos;mean&apos;, &apos;ratio&apos; or &apos;retention&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MetricType { get; set; }
+#nullable restore
+#else
+        public string MetricType { get; set; }
+#endif
         /// <summary>When that result was computed.</summary>
         public DateTimeOffset? ResultCompletedAt { get; set; }
+        /// <summary>The last moment the result covers. A backfill writes an older day with a recent completed_at, so this says how current the numbers are.</summary>
+        public DateTimeOffset? ResultDataThrough { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome"/> and sets the default values.
         /// </summary>
@@ -47,7 +61,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "analyzed_exposures", n => { AnalyzedExposures = n.GetIntValue(); } },
                 { "any_variant_significant", n => { AnyVariantSignificant = n.GetBoolValue(); } },
+                { "control_baseline_value", n => { ControlBaselineValue = n.GetDoubleValue(); } },
+                { "metric_samples", n => { MetricSamples = n.GetIntValue(); } },
+                { "metric_type", n => { MetricType = n.GetStringValue(); } },
                 { "result_completed_at", n => { ResultCompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "result_data_through", n => { ResultDataThrough = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -59,7 +77,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("analyzed_exposures", AnalyzedExposures);
             writer.WriteBoolValue("any_variant_significant", AnyVariantSignificant);
+            writer.WriteDoubleValue("control_baseline_value", ControlBaselineValue);
+            writer.WriteIntValue("metric_samples", MetricSamples);
+            writer.WriteStringValue("metric_type", MetricType);
             writer.WriteDateTimeOffsetValue("result_completed_at", ResultCompletedAt);
+            writer.WriteDateTimeOffsetValue("result_data_through", ResultDataThrough);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

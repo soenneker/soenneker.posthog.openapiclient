@@ -46,6 +46,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts
         public Experiment_holdoutsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiment_holdouts{?limit*,offset*}", rawUrl)
         {
         }
+        /// <summary>
+        /// Create, read, update and delete experiment holdouts.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedExperimentHoldoutList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -61,6 +64,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedExperimentHoldoutList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedExperimentHoldoutList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update and delete experiment holdouts.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout"/></returns>
         /// <param name="body">A holdout group — a stable slice of users excluded from experiment exposure.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,6 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update and delete experiment holdouts.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,6 +103,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Create, read, update and delete experiment holdouts.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">A holdout group — a stable slice of users excluded from experiment exposure.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -122,10 +134,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts.Experiment_holdoutsRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// Create, read, update and delete experiment holdouts.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class Experiment_holdoutsRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]

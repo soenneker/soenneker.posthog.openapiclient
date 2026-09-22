@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
+    /// <summary>* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update* `timeseries_sync` - Timeseries Sync</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ExperimentMetricsRecalculationTriggerEnum
     {
@@ -50,6 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "experiment_update")]
         #pragma warning disable CS1591
         ExperimentUpdate,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "timeseries_sync")]
+        #pragma warning disable CS1591
+        TimeseriesSync,
         #pragma warning restore CS1591
     }
 }

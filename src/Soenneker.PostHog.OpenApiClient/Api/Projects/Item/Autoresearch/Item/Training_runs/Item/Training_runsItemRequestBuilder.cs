@@ -3,6 +3,10 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Artifacts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Complete;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Iterations;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.MaterializeFeatures;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +21,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Tr
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Training_runsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The artifacts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Artifacts.ArtifactsRequestBuilder Artifacts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Artifacts.ArtifactsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The complete property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Complete.CompleteRequestBuilder Complete
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Complete.CompleteRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The iterations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Iterations.IterationsRequestBuilder Iterations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Iterations.IterationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The materializeFeatures property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.MaterializeFeatures.MaterializeFeaturesRequestBuilder MaterializeFeatures
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.MaterializeFeatures.MaterializeFeaturesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Training_runsItemRequestBuilder"/> and sets the default values.
         /// </summary>

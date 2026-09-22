@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// What the scan produces. Defaults to monitor, an open-ended observation against the prompt.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer
+    /// What the scan produces. Defaults to monitor, an open-ended observation against the prompt. Use `summarizer` to get PostHog&apos;s own AI summary of a recording. An inline scan is keyed by its whole config, so the Summarize button in the replay player shares this scan only when the prompt and `scanner_config` match the ones it sends.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InlineScanRequestScannerType : IAdditionalDataHolder, IParsable

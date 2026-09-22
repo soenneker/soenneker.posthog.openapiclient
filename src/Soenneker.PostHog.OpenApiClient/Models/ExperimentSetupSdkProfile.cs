@@ -30,6 +30,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib> Libs { get; set; }
 #endif
+        /// <summary>Up to 10 SDKs seen on any event over the last day, most events first. Set only when libs is empty, so a project creating its first experiment still says which platforms it sends from. Null when flag calls exist, and null when this extra read timed out.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity>? LibsOnAnyEvent { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity> LibsOnAnyEvent { get; set; }
+#endif
+        /// <summary>True when more SDKs sent events than libs_on_any_event lists. False when it is null.</summary>
+        public bool? LibsOnAnyEventTruncated { get; set; }
         /// <summary>True when more SDKs sent flag calls than libs lists.</summary>
         public bool? LibsTruncated { get; set; }
         /// <summary>The event read: &apos;$experiment_exposure&apos; when the project receives it, otherwise &apos;$feature_flag_called&apos;. Only one is read, because one copies the other, and only multivariate responses count either way. This says what the project&apos;s events carry today, so it can differ from team_defaults.default_exposure_event, which says what a new experiment would count.</summary>
@@ -72,6 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "flags_evaluated_on_server_and_web", n => { FlagsEvaluatedOnServerAndWeb = n.GetIntValue(); } },
                 { "flags_seen", n => { FlagsSeen = n.GetIntValue(); } },
                 { "libs", n => { Libs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "libs_on_any_event", n => { LibsOnAnyEvent = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "libs_on_any_event_truncated", n => { LibsOnAnyEventTruncated = n.GetBoolValue(); } },
                 { "libs_truncated", n => { LibsTruncated = n.GetBoolValue(); } },
                 { "source_event", n => { SourceEvent = n.GetStringValue(); } },
                 { "window_days", n => { WindowDays = n.GetIntValue(); } },
@@ -89,6 +101,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("flags_evaluated_on_server_and_web", FlagsEvaluatedOnServerAndWeb);
             writer.WriteIntValue("flags_seen", FlagsSeen);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib>("libs", Libs);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity>("libs_on_any_event", LibsOnAnyEvent);
+            writer.WriteBoolValue("libs_on_any_event_truncated", LibsOnAnyEventTruncated);
             writer.WriteBoolValue("libs_truncated", LibsTruncated);
             writer.WriteStringValue("source_event", SourceEvent);
             writer.WriteIntValue("window_days", WindowDays);

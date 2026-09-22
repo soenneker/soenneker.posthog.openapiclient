@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.History;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Tr
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Training_runsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The history property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.History.HistoryRequestBuilder History
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.History.HistoryRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.autoresearch.item.training_runs.item collection</summary>
         /// <param name="position">A UUID string identifying this autoresearch training run.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Item.Training_runsItemRequestBuilder"/></returns>
@@ -65,6 +71,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Tr
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAutoresearchTrainingRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAutoresearchTrainingRunList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Open a new training run for a pipeline and return its id. An agent — the in-house sandbox, an external bring-your-own agent, or a scheduled job — then records iterations against this run and finalizes it with the complete endpoint. The run starts in &apos;running&apos;.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun"/></returns>
+        /// <param name="body">Input for opening an agent-driven training run.</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.OpenTrainingRun body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.OpenTrainingRun body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// List and retrieve training runs for a pipeline.A training run records the agent&apos;s search for a model: each iteration&apos;s recipe and holdoutscore, and the summary of the run once it completes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -81,6 +107,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Tr
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Open a new training run for a pipeline and return its id. An agent — the in-house sandbox, an external bring-your-own agent, or a scheduled job — then records iterations against this run and finalizes it with the complete endpoint. The run starts in &apos;running&apos;.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">Input for opening an agent-driven training run.</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.OpenTrainingRun body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.OpenTrainingRun body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

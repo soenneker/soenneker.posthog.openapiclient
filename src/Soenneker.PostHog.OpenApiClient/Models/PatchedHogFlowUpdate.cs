@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Product surface that owns this workflow. This value cannot change after creation.* `loops` - Loops</summary>
+        /// <summary>Product surface that owns this workflow. This value cannot change after creation.* `loops` - Loops* `broadcasts` - Broadcasts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowUpdateOriginProduct? OriginProduct { get; private set; }

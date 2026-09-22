@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecommendationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations{?limit*,offset*}", pathParameters)
+        public RecommendationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations{?limit*,offset*,poll*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecommendationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations{?limit*,offset*}", rawUrl)
+        public RecommendationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/recommendations{?limit*,offset*,poll*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedErrorTrackingRecommendationList"/></returns>
@@ -97,6 +97,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recom
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>True reads the current state without scheduling a refresh.</summary>
+            [QueryParameter("poll")]
+            public bool? Poll { get; set; }
         }
     }
 }

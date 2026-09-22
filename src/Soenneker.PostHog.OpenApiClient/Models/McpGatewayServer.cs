@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>True when an admin has turned this server off for the requesting user.</summary>
         public bool? IsRevokedForYou { get; private set; }
-        /// <summary>The is_team_enabled property</summary>
+        /// <summary>True when this server is enabled and available to the project.</summary>
         public bool? IsTeamEnabled { get; private set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// What triggered this recalculation (manual is the default for user-initiated runs)* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update
+    /// What triggered this recalculation (manual is the default for user-initiated runs)* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update* `timeseries_sync` - Timeseries Sync
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RecalculateMetricsRequestTrigger : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
+        /// <summary>* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update* `timeseries_sync` - Timeseries Sync</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationTriggerEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger"/> and sets the default values.

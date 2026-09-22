@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? ComputedAt { get; set; }
         /// <summary>persons_converted divided by persons_reached. Null without target_event.</summary>
         public double? ConversionRate { get; set; }
-        /// <summary>Metric events in the window. Set only when no target_event was passed.</summary>
+        /// <summary>Metric events in the window, with metric_properties applied. 0 means the event did not occur under those filters, so check the event name before you trust a conversion_rate of 0.</summary>
         public int? EventVolume { get; set; }
         /// <summary>Pass as baseline_stats to experiment-calculate-running-time with metric_type &apos;funnel&apos;. Null without target_event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -35,6 +35,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline MeanCountBaselineStats { get; set; }
+#endif
+        /// <summary>Event or person property filters that narrow which events are counted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? MetricProperties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> MetricProperties { get; set; }
 #endif
         /// <summary>What the mean count baseline counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether test accounts were left out. It follows the default a new experiment gets, so the baseline matches the population that experiment analyzes. False when the project defines no test-account filters.</summary>
         public bool? TestAccountsFiltered { get; set; }
-        /// <summary>Persons who sent the metric event. Set only when no target_event was passed.</summary>
+        /// <summary>Persons who sent the metric event, with metric_properties applied.</summary>
         public int? UniquePersons { get; set; }
         /// <summary>Days of events read, ending now.</summary>
         public int? WindowDays { get; set; }
@@ -100,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event_volume", n => { EventVolume = n.GetIntValue(); } },
                 { "funnel_baseline_stats", n => { FunnelBaselineStats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline.CreateFromDiscriminatorValue); } },
                 { "mean_count_baseline_stats", n => { MeanCountBaselineStats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline.CreateFromDiscriminatorValue); } },
+                { "metric_properties", n => { MetricProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "note", n => { Note = n.GetStringValue(); } },
                 { "persons_converted", n => { PersonsConverted = n.GetIntValue(); } },
                 { "persons_reached", n => { PersonsReached = n.GetIntValue(); } },
@@ -122,6 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("event_volume", EventVolume);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline>("funnel_baseline_stats", FunnelBaselineStats);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline>("mean_count_baseline_stats", MeanCountBaselineStats);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>("metric_properties", MetricProperties);
             writer.WriteStringValue("note", Note);
             writer.WriteIntValue("persons_converted", PersonsConverted);
             writer.WriteIntValue("persons_reached", PersonsReached);

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `notebook` - notebook* `text` - text</summary>
+    /// <summary>* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `instructions` - instructions* `notebook` - notebook* `text` - text</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SandboxAttachedContextItemTypeEnum
     {
@@ -30,6 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "insight")]
         #pragma warning disable CS1591
         Insight,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "instructions")]
+        #pragma warning disable CS1591
+        Instructions,
         #pragma warning restore CS1591
         [EnumMember(Value = "notebook")]
         #pragma warning disable CS1591

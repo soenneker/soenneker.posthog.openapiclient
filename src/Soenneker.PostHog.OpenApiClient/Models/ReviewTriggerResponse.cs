@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Run lifecycle marker: &apos;started&apos; when the review was queued, &apos;already_reviewed&apos; when the pull request&apos;s current commit already has a published review (no new run starts), &apos;joined_running_review&apos; when a review was already in flight (no new run starts and its mode stays unchanged; requests for Full mode lift a cheaper stored tier for later Full reviews, while Flash requests leave the tier unchanged).</summary>
+        /// <summary>Run lifecycle marker: &apos;started&apos; when the review was queued, &apos;already_reviewed&apos; when the pull request&apos;s current commit already has a published review in the requested mode, &apos;joined_running_review&apos; when a review was already in flight and the request joined its queue. A requested Full review waits for an active Flash review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

@@ -271,7 +271,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>When true and priority is omitted, include priorities at or above the requesting user&apos;s personal PR-generation threshold, falling back to the project threshold.</summary>
             [QueryParameter("use_priority_preference")]
             public bool? UsePriorityPreference { get; set; }
-            /// <summary>Apply an inbox view: actionable, needs_input, monitoring, resolved, dismissed, not_actionable, or all. Each view applies the corresponding status, actionability, and implementation-PR filters.</summary>
+            /// <summary>Apply an inbox view: actionable, needs_input, needs_decision, monitoring, resolved, dismissed, not_actionable, or all. Each view applies the corresponding status, actionability, and implementation-PR filters. needs_decision also includes failed reports without a judgment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("view")]

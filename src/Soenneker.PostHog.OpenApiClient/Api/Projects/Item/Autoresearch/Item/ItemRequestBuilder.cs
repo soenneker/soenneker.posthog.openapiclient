@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ModelsRequests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Suggestions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -29,6 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Runs.RunsRequestBuilder Runs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The suggestions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Suggestions.SuggestionsRequestBuilder Suggestions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Suggestions.SuggestionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The training_runs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Training_runsRequestBuilder Training_runs

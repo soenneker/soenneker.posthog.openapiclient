@@ -65,10 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The math_group_type_index property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper13? MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper14? MathGroupTypeIndex { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper13 MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper14 MathGroupTypeIndex { get; set; }
 #endif
         /// <summary>The math_hogql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -173,7 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeKind>(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMath>(global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMath.CreateFromDiscriminatorValue); } },
-                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper13>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper13.CreateFromDiscriminatorValue); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper14>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper14.CreateFromDiscriminatorValue); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
                 { "math_multiplier", n => { MathMultiplier = n.GetDoubleValue(); } },
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
@@ -202,7 +202,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMath>("math", Math);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper13>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper14>("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
             writer.WriteDoubleValue("math_multiplier", MathMultiplier);
             writer.WriteStringValue("math_property", MathProperty);

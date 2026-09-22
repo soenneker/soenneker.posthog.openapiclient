@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ai_resolved property</summary>
         public bool? AiResolved { get; set; }
-        /// <summary>AI support pipeline triage and outcome (status, result, ticket_type, confidence, attempts, etc.).</summary>
+        /// <summary>AI support pipeline triage and outcome (status, result, ticket_type, confidence, attempts, verdict, blocker, sources). Retrieve hydrates sources from citations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TicketAiTriage? AiTriage { get; private set; }

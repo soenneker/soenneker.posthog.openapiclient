@@ -24,13 +24,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GroupKey { get; set; }
 #endif
-        /// <summary>The group_properties property</summary>
+        /// <summary>The group&apos;s properties.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupProperties? GroupProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupPropertiesProperty? GroupProperties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupProperties GroupProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupPropertiesProperty GroupProperties { get; set; }
 #endif
         /// <summary>The group_type_index property</summary>
         public int? GroupTypeIndex { get; set; }
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "group_key", n => { GroupKey = n.GetStringValue(); } },
-                { "group_properties", n => { GroupProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupProperties>(global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupProperties.CreateFromDiscriminatorValue); } },
+                { "group_properties", n => { GroupProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
             };
         }
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("group_key", GroupKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupProperties>("group_properties", GroupProperties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupGroupPropertiesProperty>("group_properties", GroupProperties);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteAdditionalData(AdditionalData);
         }

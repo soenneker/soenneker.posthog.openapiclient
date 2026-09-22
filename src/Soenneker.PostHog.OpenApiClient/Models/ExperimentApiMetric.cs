@@ -122,13 +122,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource Source { get; set; }
 #endif
-        /// <summary>For retention metrics: start event.</summary>
+        /// <summary>For retention metrics: start event. Pass {&quot;kind&quot;: &quot;ExperimentExposureNode&quot;} to start retention from the experiment&apos;s exposure event; start_handling and conversion window are ignored then.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? StartEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart? StartEvent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource StartEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart StartEvent { get; set; }
 #endif
         /// <summary>The start_handling property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -187,7 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "retention_window_unit", n => { RetentionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
-                { "start_event", n => { StartEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
+                { "start_event", n => { StartEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart.CreateFromDiscriminatorValue); } },
                 { "start_handling", n => { StartHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StartHandlingWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.StartHandlingWrapper.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
                 { "upper_bound_percentile", n => { UpperBoundPercentile = n.GetDoubleValue(); } },
@@ -220,7 +220,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>("retention_window_unit", RetentionWindowUnit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("series", Series);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("start_event", StartEvent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart>("start_event", StartEvent);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StartHandlingWrapper>("start_handling", StartHandling);
             writer.WriteDoubleValue("threshold", Threshold);
             writer.WriteDoubleValue("upper_bound_percentile", UpperBoundPercentile);

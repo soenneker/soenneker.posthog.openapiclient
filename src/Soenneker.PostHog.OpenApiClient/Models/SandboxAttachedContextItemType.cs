@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Attachment kind. Entity types carry `id` (+ optional `name`); `text` carries `value`.* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `notebook` - notebook* `text` - text
+    /// Attachment kind. Entity types carry `id` (+ optional `name`); `text` and `instructions` carry `value`. `instructions` is the caller&apos;s own guidance and renders into the trusted context block; every other kind renders into the untrusted block, which tells the agent to read it as data.* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `instructions` - instructions* `notebook` - notebook* `text` - text
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SandboxAttachedContextItemType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `notebook` - notebook* `text` - text</summary>
+        /// <summary>* `action` - action* `dashboard` - dashboard* `error_tracking_issue` - error_tracking_issue* `evaluation` - evaluation* `event` - event* `insight` - insight* `instructions` - instructions* `notebook` - notebook* `text` - text</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxAttachedContextItemTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SandboxAttachedContextItemType"/> and sets the default values.

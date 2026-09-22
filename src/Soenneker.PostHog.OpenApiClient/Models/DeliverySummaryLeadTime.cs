@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the deployments and deployment statuses tables aren&apos;t synced. The distributions are then empty.</summary>
         public bool? DeployDataAvailable { get; set; }
-        /// <summary>Of merged_pr_count, the PRs a successful in-scope deploy contains. The rest are still waiting for a deploy or fall outside the scan.</summary>
+        /// <summary>Of merged_pr_count, the PRs whose first successful in-scope deployment was observed by the window end. The rest are still waiting for a deploy or fall outside the scan.</summary>
         public int? DeployedMergedPrCount { get; set; }
         /// <summary>The deploy environments lead time was scoped to: production by default. Empty when deploy data is not available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

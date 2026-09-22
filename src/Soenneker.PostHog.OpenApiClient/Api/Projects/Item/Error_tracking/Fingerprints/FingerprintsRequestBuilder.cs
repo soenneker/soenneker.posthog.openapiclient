@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Finge
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FingerprintsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/fingerprints{?limit*,offset*}", pathParameters)
+        public FingerprintsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/fingerprints{?issue_id*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Finge
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FingerprintsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/fingerprints{?limit*,offset*}", rawUrl)
+        public FingerprintsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/fingerprints{?issue_id*,limit*,offset*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedErrorTrackingFingerprintList"/></returns>
@@ -97,6 +97,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Finge
         public partial class FingerprintsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Return only the fingerprints of this issue.</summary>
+            [QueryParameter("issue_id")]
+            public Guid? IssueId { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_feedback;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_human_outcome;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Notes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Reply;
@@ -25,6 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_feedback.Ai_feedbackRequestBuilder Ai_feedback
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_feedback.Ai_feedbackRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The ai_human_outcome property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_human_outcome.Ai_human_outcomeRequestBuilder Ai_human_outcome
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_human_outcome.Ai_human_outcomeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messages property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.MessagesRequestBuilder Messages

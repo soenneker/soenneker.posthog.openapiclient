@@ -38,6 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Relevance score used to rank this result. Higher scores are more relevant.</summary>
+        public int? Score { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchResult"/> and sets the default values.
         /// </summary>
@@ -66,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "matches", n => { Matches = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatch>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatch.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "score", n => { Score = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -78,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatch>("matches", Matches);
             writer.WriteStringValue("name", Name);
+            writer.WriteIntValue("score", Score);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

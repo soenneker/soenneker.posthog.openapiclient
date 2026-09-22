@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Product the warm Run is for. Fixed when the sandbox boots — it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship — so a submit only reuses a warm born under the same origin. Defaults to the Code app.* `user_created` - user_created* `posthog_ai` - posthog_ai
+    /// Product the warm Run is for. Fixed when the sandbox boots — it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship — so a submit only reuses a warm born under the same origin. Defaults to the Code app.* `user_created` - user_created* `posthog_ai` - posthog_ai* `signal_report` - signal_report
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarmTaskRequestOriginProduct : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `user_created` - user_created* `posthog_ai` - posthog_ai</summary>
+        /// <summary>* `user_created` - user_created* `posthog_ai` - posthog_ai* `signal_report` - signal_report</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProductEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct"/> and sets the default values.

@@ -23,7 +23,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricEvent { get; set; }
 #endif
-        /// <summary>How many of the most recently created experiments to return, 1 to 25.</summary>
+        /// <summary>Event or person property filters that narrow the metric event, for the metric that counts only some of its occurrences. At most 10 filters, and each needs type &apos;event&apos; or &apos;person&apos;. Needs metric_event.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? MetricProperties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> MetricProperties { get; set; }
+#endif
+        /// <summary>How many experiments to return, most recently launched first, then drafts, 1 to 25.</summary>
         public int? PreviousExperimentsLimit { get; set; }
         /// <summary>How many shared metrics to return, most reused first, 1 to 25.</summary>
         public int? SharedMetricsLimit { get; set; }
@@ -34,6 +42,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string TargetEvent { get; set; }
+#endif
+        /// <summary>Event or person property filters that narrow the target event, for example an exact $host and $pathname for one page. At most 10 filters, and each needs type &apos;event&apos; or &apos;person&apos;. Needs target_event. Combines with target_url_contains.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? TargetProperties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> TargetProperties { get; set; }
 #endif
         /// <summary>Only counts target events whose $current_url contains this text, ignoring case. Needs target_event to be &apos;$pageview&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,9 +87,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "metric_event", n => { MetricEvent = n.GetStringValue(); } },
+                { "metric_properties", n => { MetricProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "previous_experiments_limit", n => { PreviousExperimentsLimit = n.GetIntValue(); } },
                 { "shared_metrics_limit", n => { SharedMetricsLimit = n.GetIntValue(); } },
                 { "target_event", n => { TargetEvent = n.GetStringValue(); } },
+                { "target_properties", n => { TargetProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "target_url_contains", n => { TargetUrlContains = n.GetStringValue(); } },
             };
         }
@@ -85,9 +103,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("metric_event", MetricEvent);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>("metric_properties", MetricProperties);
             writer.WriteIntValue("previous_experiments_limit", PreviousExperimentsLimit);
             writer.WriteIntValue("shared_metrics_limit", SharedMetricsLimit);
             writer.WriteStringValue("target_event", TargetEvent);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>("target_properties", TargetProperties);
             writer.WriteStringValue("target_url_contains", TargetUrlContains);
             writer.WriteAdditionalData(AdditionalData);
         }

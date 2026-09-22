@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Spike_eventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/spike_events{?limit*,offset*}", pathParameters)
+        public Spike_eventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/spike_events{?date_from*,date_to*,issue_ids*,limit*,offset*,order_by*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Spike_eventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/spike_events{?limit*,offset*}", rawUrl)
+        public Spike_eventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/spike_events{?date_from*,date_to*,issue_ids*,limit*,offset*,order_by*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedErrorTrackingSpikeEventList"/></returns>
@@ -78,12 +78,38 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike
         public partial class Spike_eventsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Include spikes detected at or after this time.</summary>
+            [QueryParameter("date_from")]
+            public DateTimeOffset? DateFrom { get; set; }
+            /// <summary>Include spikes detected at or before this time.</summary>
+            [QueryParameter("date_to")]
+            public DateTimeOffset? DateTo { get; set; }
+            /// <summary>Comma-separated issue UUIDs to include.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("issue_ids")]
+            public string? IssueIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("issue_ids")]
+            public string IssueIds { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Field to order by. Prefix with a hyphen for descending.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("order_by")]
+            public string? OrderBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("order_by")]
+            public string OrderBy { get; set; }
+#endif
         }
     }
 }

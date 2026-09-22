@@ -48,6 +48,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> FrameNames { get; set; }
 #endif
+        /// <summary>Estimated generation charge in USD, including retries, security review, and the AI credit markup. Null when unavailable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GenerationCostUsd { get; set; }
+#nullable restore
+#else
+        public string GenerationCostUsd { get; set; }
+#endif
         /// <summary>Whether this version has saved demo data.</summary>
         public bool? HasDemoData { get; set; }
         /// <summary>Immutable widget version identifier.</summary>
@@ -124,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "build_status", n => { BuildStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailBuildStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailBuildStatus.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "frame_names", n => { FrameNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "generation_cost_usd", n => { GenerationCostUsd = n.GetStringValue(); } },
                 { "has_demo_data", n => { HasDemoData = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "input_contract", n => { InputContract = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -146,6 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailBuildStatus>("build_status", BuildStatus);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("frame_names", FrameNames);
+            writer.WriteStringValue("generation_cost_usd", GenerationCostUsd);
             writer.WriteBoolValue("has_demo_data", HasDemoData);
             writer.WriteGuidValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>("input_contract", InputContract);
