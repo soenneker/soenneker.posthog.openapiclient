@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// `fresh`: current batch. `stale`: the fleet changed since it was generated, or the batch aged past the refresh window. `failed`: the last refresh failed (items are the prior batch, if any). `empty`: nothing to suggest yet.* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty
+    /// `fresh`: current batch. `stale`: the fleet changed since it was generated, or the batch aged past the refresh window. `failed`: the last refresh failed (items are the prior batch, if any). `empty`: nothing to suggest yet. `low_activity`: the project was too quiet to scan, so nothing was generated.* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty* `low_activity` - Low activity
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutSuggestionSetStatus : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty</summary>
+        /// <summary>* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty* `low_activity` - Low activity</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSuggestionSetStatusEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus"/> and sets the default values.

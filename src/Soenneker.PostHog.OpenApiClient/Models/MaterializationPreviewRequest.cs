@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty BucketOverrides { get; set; }
 #endif
-        /// <summary>The version property</summary>
+        /// <summary>Endpoint version to preview. Defaults to the current version.</summary>
         public int? Version { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequest"/> and sets the default values.

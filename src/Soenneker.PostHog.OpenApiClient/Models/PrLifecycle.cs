@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEvent> Events { get; set; }
 #endif
-        /// <summary>Always &apos;partial&apos; — CI events only; reviews and comments are not yet available.* `precise` - PRECISE* `coarse` - COARSE* `partial` - PARTIAL</summary>
+        /// <summary>Always &apos;partial&apos;: CI events only; reviews and comments are not yet available.* `precise` - PRECISE* `coarse` - COARSE* `partial` - PARTIAL</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality? MetricQuality { get; set; }

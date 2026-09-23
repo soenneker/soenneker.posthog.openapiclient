@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Available_reviewers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses;
@@ -22,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReportsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The available_reviewers property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Available_reviewers.Available_reviewersRequestBuilder Available_reviewers
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Available_reviewers.Available_reviewersRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The bulkState property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder BulkState
         {

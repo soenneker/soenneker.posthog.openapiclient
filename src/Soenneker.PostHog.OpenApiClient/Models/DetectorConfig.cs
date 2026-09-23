@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem> Detectors { get; set; }
 #endif
+        /// <summary>What counts as unusual or interesting for this metric, in your own words. Optional.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Instructions { get; set; }
+#nullable restore
+#else
+        public string Instructions { get; set; }
+#endif
         /// <summary>SVM kernel type (default: &quot;rbf&quot;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,6 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "detectors", n => { Detectors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "kernel", n => { Kernel = n.GetStringValue(); } },
                 { "lower_bound", n => { LowerBound = n.GetDoubleValue(); } },
                 { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper.CreateFromDiscriminatorValue); } },
@@ -125,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>("detectors", Detectors);
+            writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("kernel", Kernel);
             writer.WriteDoubleValue("lower_bound", LowerBound);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>("method", Method);

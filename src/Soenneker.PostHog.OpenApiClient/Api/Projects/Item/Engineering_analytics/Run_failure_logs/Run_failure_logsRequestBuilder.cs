@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// The thinned CI failure logs of one workflow run, grouped by failed job — the run-scoped twin of ci_failure_logs for surfaces that aren&apos;t PR-scoped (default-branch failures, the run page). logs_available is false when the run didn&apos;t fail or its logs aged out of the short Logs retention.
+        /// The thinned CI failure logs of one workflow run, grouped by failed job: the run-scoped twin of ci_failure_logs for surfaces that aren&apos;t PR-scoped (default-branch failures, the run page). logs_available is false when the run didn&apos;t fail or its logs aged out of the short Logs retention.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogs"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogs>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogs.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The thinned CI failure logs of one workflow run, grouped by failed job — the run-scoped twin of ci_failure_logs for surfaces that aren&apos;t PR-scoped (default-branch failures, the run page). logs_available is false when the run didn&apos;t fail or its logs aged out of the short Logs retention.
+        /// The thinned CI failure logs of one workflow run, grouped by failed job: the run-scoped twin of ci_failure_logs for surfaces that aren&apos;t PR-scoped (default-branch failures, the run page). logs_available is false when the run didn&apos;t fail or its logs aged out of the short Logs retention.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Run_failure_logs.Run_failure_logsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// The thinned CI failure logs of one workflow run, grouped by failed job — the run-scoped twin of ci_failure_logs for surfaces that aren&apos;t PR-scoped (default-branch failures, the run page). logs_available is false when the run didn&apos;t fail or its logs aged out of the short Logs retention.
+        /// The thinned CI failure logs of one workflow run, grouped by failed job: the run-scoped twin of ci_failure_logs for surfaces that aren&apos;t PR-scoped (default-branch failures, the run page). logs_available is false when the run didn&apos;t fail or its logs aged out of the short Logs retention.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Run_failure_logsRequestBuilderGetQueryParameters 

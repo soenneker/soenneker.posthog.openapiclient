@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `self_driving` - SELF_DRIVING* `label` - LABEL* `all` - ALL</summary>
+    /// <summary>* `self_driving` - SELF_DRIVING* `manual` - MANUAL* `label` - LABEL* `all` - ALL</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ReviewRunTriggerEnum
     {
         [EnumMember(Value = "self_driving")]
         #pragma warning disable CS1591
         SelfDriving,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "manual")]
+        #pragma warning disable CS1591
+        Manual,
         #pragma warning restore CS1591
         [EnumMember(Value = "label")]
         #pragma warning disable CS1591

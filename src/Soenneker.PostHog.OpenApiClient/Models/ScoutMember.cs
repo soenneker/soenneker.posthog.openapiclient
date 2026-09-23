@@ -47,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastName { get; set; }
 #endif
+        /// <summary>The teams this member is on, from the project&apos;s synced team roster. Empty when no roster is synced, or when the member has no linked GitHub account, since the roster is keyed on that login. The roster is a periodic snapshot, so it can lag the live team.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutMemberTeam>? Teams { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutMemberTeam> Teams { get; set; }
+#endif
         /// <summary>The member&apos;s stable PostHog user UUID — the same id that appears as `created_by.uuid` on entities they own. A durable handle for this person across runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "github_login", n => { GithubLogin = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutMemberTeam>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutMemberTeam.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "user_uuid", n => { UserUuid = n.GetStringValue(); } },
             };
         }
@@ -98,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteStringValue("github_login", GithubLogin);
             writer.WriteStringValue("last_name", LastName);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutMemberTeam>("teams", Teams);
             writer.WriteStringValue("user_uuid", UserUuid);
             writer.WriteAdditionalData(AdditionalData);
         }

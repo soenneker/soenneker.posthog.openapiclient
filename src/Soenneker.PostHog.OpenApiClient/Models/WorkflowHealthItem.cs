@@ -54,11 +54,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? LatestRunId { get; set; }
         /// <summary>Runs on merge-queue gate branches (trunk-merge/**) in the window, counted regardless of branch or run_scope. Non-zero marks a workflow the queue runs before a merge lands, the closest available proxy for a required check.</summary>
         public int? MergeQueueRunCount { get; set; }
-        /// <summary>Median duration in seconds over successful runs only — cancelled (superseded) and failed runs end early and would bias the percentile. Null if no run succeeded in the window.</summary>
+        /// <summary>Median duration in seconds over successful runs only: cancelled (superseded) and failed runs end early and would bias the percentile. Runs under 10 seconds that did no work are excluded when longer successful runs exist. An all-fast workflow uses every successful run. Null if no run succeeded in the window.</summary>
         public double? P50Seconds { get; set; }
-        /// <summary>95th-percentile duration in seconds over successful runs only — cancelled (superseded) and failed runs end early and would bias the percentile. Null if no run succeeded in the window.</summary>
+        /// <summary>95th-percentile duration in seconds over successful runs only: cancelled (superseded) and failed runs end early and would bias the percentile. Runs under 10 seconds that did no work are excluded when longer successful runs exist. An all-fast workflow uses every successful run. Null if no run succeeded in the window.</summary>
         public double? P95Seconds { get; set; }
-        /// <summary>Successful runs that did real CI work. This is the p50/p95 sample count.</summary>
+        /// <summary>Successful runs lasting at least 10 seconds. Zero when p50/p95 fall back to shorter successful runs.</summary>
         public int? PercentileRunCount { get; set; }
         /// <summary>Repository the workflow runs in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

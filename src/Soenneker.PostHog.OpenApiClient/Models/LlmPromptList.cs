@@ -106,6 +106,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The prompt_size_bytes property</summary>
         public int? PromptSizeBytes { get; private set; }
+        /// <summary>The resolved_references property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference>? ResolvedReferences { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference> ResolvedReferences { get; private set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The version property</summary>
@@ -161,6 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListPrompt>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListPrompt.CreateFromDiscriminatorValue); } },
                 { "prompt_preview", n => { PromptPreview = n.GetStringValue(); } },
                 { "prompt_size_bytes", n => { PromptSizeBytes = n.GetIntValue(); } },
+                { "resolved_references", n => { ResolvedReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
                 { "version_count", n => { VersionCount = n.GetIntValue(); } },

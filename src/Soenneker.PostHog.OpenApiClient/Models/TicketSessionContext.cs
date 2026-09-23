@@ -7,13 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Context captured with the ticket. Values are strings, numbers or booleans. Keys are whatever the widget sent, commonly current_url, replay_url, browser, os and sdk_version.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class TicketSessionContext : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Page the reporter was on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CurrentUrl { get; set; }
+#nullable restore
+#else
+        public string CurrentUrl { get; set; }
+#endif
+        /// <summary>Replay of the session the ticket came from.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReplayUrl { get; set; }
+#nullable restore
+#else
+        public string ReplayUrl { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TicketSessionContext"/> and sets the default values.
         /// </summary>
@@ -39,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "current_url", n => { CurrentUrl = n.GetStringValue(); } },
+                { "replay_url", n => { ReplayUrl = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,6 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("current_url", CurrentUrl);
+            writer.WriteStringValue("replay_url", ReplayUrl);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

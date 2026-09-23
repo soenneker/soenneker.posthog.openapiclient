@@ -122,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource Source { get; set; }
 #endif
-        /// <summary>For retention metrics: start event. Pass {&quot;kind&quot;: &quot;ExperimentExposureNode&quot;} to start retention from the experiment&apos;s exposure event; start_handling and conversion window are ignored then.</summary>
+        /// <summary>For retention metrics: start event. Pass {&quot;kind&quot;: &quot;ExperimentExposureNode&quot;} to start retention from the experiment&apos;s exposure event; a conversion window or &apos;last_seen&apos; start_handling is rejected then, because the start is always the user&apos;s first exposure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart? StartEvent { get; set; }

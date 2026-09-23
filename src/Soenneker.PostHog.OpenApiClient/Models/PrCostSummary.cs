@@ -36,11 +36,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CostedJobs { get; set; }
         /// <summary>Estimated dollar cost (sum of per-job estimates: elapsed x tier multiplier x reference rate). Null when no job was costable.</summary>
         public double? EstimatedCostUsd { get; set; }
-        /// <summary>Jobs on provider-hosted (GitHub-hosted, free) or non-Linux runners — outside the estimate.</summary>
+        /// <summary>Jobs on provider-hosted (GitHub-hosted, free) or non-Linux runners: outside the estimate.</summary>
         public int? ExcludedJobs { get; set; }
-        /// <summary>False when the job-level source (github_workflow_jobs) isn&apos;t synced — every figure is then zero/null and the cost cards should be hidden.</summary>
+        /// <summary>False when the job-level source (github_workflow_jobs) isn&apos;t synced: every figure is then zero/null and the cost cards should be hidden.</summary>
         public bool? JobsAvailable { get; set; }
-        /// <summary>Agent LLM token spend attributed to this PR by git branch ($ai_git_branch), or null when no generation matched — independent of the CI cost figures, so it can be present even when jobs_available is false. The UI hides the row when null.</summary>
+        /// <summary>Agent LLM token spend attributed to this PR by git branch ($ai_git_branch), or null when no generation matched: independent of the CI cost figures, so it can be present even when jobs_available is false. The UI hides the row when null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? LlmSpend { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend LlmSpend { get; set; }
 #endif
-        /// <summary>Billable Linux jobs still queued/running (no elapsed) — excluded from the estimate.</summary>
+        /// <summary>Billable Linux jobs still queued/running (no elapsed): excluded from the estimate.</summary>
         public int? UnsettledJobs { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummary"/> and sets the default values.

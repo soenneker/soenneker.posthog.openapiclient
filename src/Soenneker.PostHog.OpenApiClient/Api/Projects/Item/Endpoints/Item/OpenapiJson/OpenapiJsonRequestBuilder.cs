@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Opena
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class OpenapiJsonRequestBuilderGetQueryParameters 
         {
-            /// <summary>Specific endpoint version to generate the spec for. Defaults to latest.</summary>
+            /// <summary>Endpoint version to act on. Defaults to the current version.</summary>
             [QueryParameter("version")]
             public int? Version { get; set; }
         }

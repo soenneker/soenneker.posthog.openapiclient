@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item.Documents;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item.Refresh;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item.Text;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SourcesItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The documents property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item.Documents.DocumentsRequestBuilder Documents
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item.Documents.DocumentsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The refresh property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item.Refresh.RefreshRequestBuilder Refresh
         {

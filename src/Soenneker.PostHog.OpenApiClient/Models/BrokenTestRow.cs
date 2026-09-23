@@ -52,11 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LatestBranch { get; set; }
 #endif
-        /// <summary>The most recent failing workflow run for this fingerprint — pass it to run_failure_logs to fetch the actual failing log lines.</summary>
+        /// <summary>The most recent failing workflow run for this fingerprint: pass it to run_failure_logs to fetch the actual failing log lines.</summary>
         public int? LatestRunId { get; set; }
         /// <summary>Failure lines on the default branch (master/main). 0 means it never reached trunk.</summary>
         public int? MasterHits { get; set; }
-        /// <summary>Total failure lines for this fingerprint in the window. An absolute count, never a rate — passing runs aren&apos;t in this data.</summary>
+        /// <summary>Total failure lines for this fingerprint in the window. An absolute count, never a rate: passing runs aren&apos;t in this data.</summary>
         public int? Occurrences { get; set; }
         /// <summary>&apos;owner/name&apos; repository the failure belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repo { get; set; }
 #endif
-        /// <summary>The classifier&apos;s verdict on how this failure is behaving right now: &apos;breaking_master&apos; (failing on trunk, latest trunk run still red), &apos;blocking_merge_queue&apos; (stopped a merge on a commit that already passed the PR&apos;s own CI, trunk still green), &apos;novel_burst&apos; (new within a day and spreading across branches, not on trunk yet), &apos;potentially_resolved&apos; (hit trunk but trunk is green again), &apos;flaky&apos; (sporadic across branches over more than a day), or &apos;pr_only&apos; (confined to one branch — one PR&apos;s own problem).* `breaking_master` - BREAKING_MASTER* `blocking_merge_queue` - BLOCKING_MERGE_QUEUE* `novel_burst` - NOVEL_BURST* `potentially_resolved` - POTENTIALLY_RESOLVED* `flaky` - FLAKY* `pr_only` - PR_ONLY</summary>
+        /// <summary>The classifier&apos;s verdict on how this failure is behaving right now: &apos;breaking_master&apos; (failing on trunk, latest trunk run still red), &apos;blocking_merge_queue&apos; (stopped a merge on a commit that already passed the PR&apos;s own CI, trunk still green), &apos;novel_burst&apos; (new within a day and spreading across branches, not on trunk yet), &apos;potentially_resolved&apos; (hit trunk but trunk is green again), &apos;flaky&apos; (sporadic across branches over more than a day), or &apos;pr_only&apos; (confined to one branch: one PR&apos;s own problem).* `breaking_master` - BREAKING_MASTER* `blocking_merge_queue` - BLOCKING_MERGE_QUEUE* `novel_burst` - NOVEL_BURST* `potentially_resolved` - POTENTIALLY_RESOLVED* `flaky` - FLAKY* `pr_only` - PR_ONLY</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState? State { get; set; }
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState State { get; set; }
 #endif
-        /// <summary>The pytest node id from the CI &apos;FAILED &lt;id&gt;&apos; line — the failing test.</summary>
+        /// <summary>The pytest node id from the CI &apos;FAILED &lt;id&gt;&apos; line: the failing test.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TestId { get; set; }

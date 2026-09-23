@@ -15,6 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>End of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_end}. A supplied end must not be in the future or precede a supplied start. Bounds replace HogQL placeholders; they do not add filters to the query.</summary>
+        public DateTimeOffset? DataIntervalEnd { get; set; }
+        /// <summary>Start of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_start}. A supplied start must not be in the future. When both bounds are supplied, the interval must span at most seven days.</summary>
+        public DateTimeOffset? DataIntervalStart { get; set; }
         /// <summary>Typed configuration for a FileDownload batch-export destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig File { get; set; }
 #endif
-        /// <summary>HogQL SELECT query whose results are exported. This model is in closed beta and is enabled per team; when it is not enabled, the request fails with a permission error that names HogQL batch exports. Contact PostHog support to request access. Placeholders are not currently supported, and every column in the SELECT clause must be a field or have an alias. It is recommended to limit the query with a WHERE clause, for example bounding timestamp on the events table, both to avoid exporting more rows than expected and because user queries run under stricter resource limits than the other models.</summary>
+        /// <summary>HogQL SELECT query whose results are exported. This model is in closed beta and is enabled per team; when it is not enabled, the request fails with a permission error that names HogQL batch exports. Contact PostHog support to request access. The query may reference the {data_interval_start} and {data_interval_end} placeholders. Provide a value for each placeholder the query references; missing referenced bounds are rejected, not inferred. When both bounds are supplied, they must span at most seven days. Neither supplied bound may be in the future. Without placeholders, the query runs unchanged, even if bounds are supplied. Every column in the SELECT clause must be a field or have an alias. It is recommended to limit the query with a WHERE clause, for example bounding timestamp on the events table, both to avoid exporting more rows than expected and because user queries run under stricter resource limits than the other models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HogqlQuery { get; set; }
@@ -58,6 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "data_interval_end", n => { DataIntervalEnd = n.GetDateTimeOffsetValue(); } },
+                { "data_interval_start", n => { DataIntervalStart = n.GetDateTimeOffsetValue(); } },
                 { "file", n => { File = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig.CreateFromDiscriminatorValue); } },
                 { "hogql_query", n => { HogqlQuery = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlModelEnum>(); } },
@@ -70,6 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("data_interval_end", DataIntervalEnd);
+            writer.WriteDateTimeOffsetValue("data_interval_start", DataIntervalStart);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig>("file", File);
             writer.WriteStringValue("hogql_query", HogqlQuery);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlModelEnum>("model", Model);

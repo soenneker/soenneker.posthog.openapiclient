@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
         {
         }
         /// <summary>
-        /// Read-only history of stamphog review runs, filterable by repository, PR number, and status.
+        /// History of stamphog review runs, filterable by repository, PR number, and status, plus manual review requests.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReviewRunList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReviewRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReviewRunList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Read-only history of stamphog review runs, filterable by repository, PR number, and status.
+        /// History of stamphog review runs, filterable by repository, PR number, and status, plus manual review requests.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequestResponse"/></returns>
+        /// <param name="body">Request body for asking stamphog to review one pull request.</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequestResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequestResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequestResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequestResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// History of stamphog review runs, filterable by repository, PR number, and status, plus manual review requests.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -84,6 +104,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
             return requestInfo;
         }
         /// <summary>
+        /// History of stamphog review runs, filterable by repository, PR number, and status, plus manual review requests.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">Request body for asking stamphog to review one pull request.</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Review_runsRequestBuilder"/></returns>
@@ -93,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Review_runsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Read-only history of stamphog review runs, filterable by repository, PR number, and status.
+        /// History of stamphog review runs, filterable by repository, PR number, and status, plus manual review requests.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Review_runsRequestBuilderGetQueryParameters 
@@ -127,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
             [QueryParameter("status")]
             public string Status { get; set; }
 #endif
-            /// <summary>Filter by what caused the run: self_driving, label, or all.</summary>
+            /// <summary>Filter by what caused the run: self_driving, manual, label, or all.</summary>
             [QueryParameter("trigger")]
             public global::Soenneker.PostHog.OpenApiClient.Models.StamphogReviewRunsListTriggerParameter? Trigger { get; set; }
         }

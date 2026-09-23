@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog> Jobs { get; set; }
 #endif
-        /// <summary>False when no failure logs were found — the run didn&apos;t fail, or its logs aged out of the short Logs retention.</summary>
+        /// <summary>False when no failure logs were found: the run didn&apos;t fail, or its logs aged out of the short Logs retention.</summary>
         public bool? LogsAvailable { get; set; }
         /// <summary>Workflow run id the failure logs are for.</summary>
         public int? RunId { get; set; }

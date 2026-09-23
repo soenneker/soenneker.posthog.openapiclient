@@ -44,8 +44,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ServiceName { get; set; }
 #endif
+        /// <summary>Estimated unique session IDs across this group&apos;s spans (HyperLogLog, about 1-2% error). Null unless the query set `includeImpact`.</summary>
+        public int? Sessions { get; set; }
+        /// <summary>How many of this group&apos;s spans carry a person distinct ID under the team&apos;s configured or conventional attribute keys. Null unless the query set `includeImpact`.</summary>
+        public int? SpansWithDistinctId { get; set; }
+        /// <summary>How many of this group&apos;s spans carry a session ID under the team&apos;s configured or conventional attribute keys. Null unless the query set `includeImpact`.</summary>
+        public int? SpansWithSessionId { get; set; }
         /// <summary>Sum of span durations in nanoseconds.</summary>
         public double? TotalDurationNano { get; set; }
+        /// <summary>Estimated unique person distinct IDs across this group&apos;s spans (HyperLogLog, about 1-2% error). Null unless the query set `includeImpact`.</summary>
+        public int? Users { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2"/> and sets the default values.
         /// </summary>
@@ -80,7 +88,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "p999_duration_nano", n => { P999DurationNano = n.GetDoubleValue(); } },
                 { "p99_duration_nano", n => { P99DurationNano = n.GetDoubleValue(); } },
                 { "service_name", n => { ServiceName = n.GetStringValue(); } },
+                { "sessions", n => { Sessions = n.GetIntValue(); } },
+                { "spans_with_distinct_id", n => { SpansWithDistinctId = n.GetIntValue(); } },
+                { "spans_with_session_id", n => { SpansWithSessionId = n.GetIntValue(); } },
                 { "total_duration_nano", n => { TotalDurationNano = n.GetDoubleValue(); } },
+                { "users", n => { Users = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -99,7 +111,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("p999_duration_nano", P999DurationNano);
             writer.WriteDoubleValue("p99_duration_nano", P99DurationNano);
             writer.WriteStringValue("service_name", ServiceName);
+            writer.WriteIntValue("sessions", Sessions);
+            writer.WriteIntValue("spans_with_distinct_id", SpansWithDistinctId);
+            writer.WriteIntValue("spans_with_session_id", SpansWithSessionId);
             writer.WriteDoubleValue("total_duration_nano", TotalDurationNano);
+            writer.WriteIntValue("users", Users);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

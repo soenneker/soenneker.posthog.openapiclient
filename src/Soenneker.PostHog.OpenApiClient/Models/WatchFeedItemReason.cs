@@ -43,6 +43,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The observation&apos;s score, for `outlier_score`.</summary>
         public double? Score { get; set; }
+        /// <summary>Each emitted signal in the order raised, for `signal_emitted`. Carries what the card needs to name the findings instead of counting them. Absent on sessions scanned before this shipped, which carry `problem_types` alone.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal>? Signals { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal> Signals { get; set; }
+#endif
         /// <summary>Signals this observation emitted, for `signal_emitted`.</summary>
         public int? SignalsCount { get; set; }
         /// <summary>The rare tag that ranked the observation, for `rare_tag`.</summary>
@@ -97,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "notability_reason", n => { NotabilityReason = n.GetStringValue(); } },
                 { "problem_types", n => { ProblemTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
+                { "signals", n => { Signals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal>(global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "signals_count", n => { SignalsCount = n.GetIntValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
                 { "tag_share", n => { TagShare = n.GetDoubleValue(); } },
@@ -117,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("notability_reason", NotabilityReason);
             writer.WriteCollectionOfPrimitiveValues<string>("problem_types", ProblemTypes);
             writer.WriteDoubleValue("score", Score);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal>("signals", Signals);
             writer.WriteIntValue("signals_count", SignalsCount);
             writer.WriteStringValue("tag", Tag);
             writer.WriteDoubleValue("tag_share", TagShare);

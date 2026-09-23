@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? MeanSeconds { get; set; }
         /// <summary>Fastest duration for this stage in this bucket, in seconds. Null when nothing deployed.</summary>
         public double? MinSeconds { get; set; }
-        /// <summary>5th percentile of the stage&apos;s duration, in seconds — the lower whisker when outliers are excluded. Null when nothing deployed.</summary>
+        /// <summary>5th percentile of the stage&apos;s duration, in seconds: the lower whisker when outliers are excluded. Null when nothing deployed.</summary>
         public double? P05Seconds { get; set; }
         /// <summary>25th percentile of the stage&apos;s duration, in seconds. Null when nothing deployed.</summary>
         public double? P25Seconds { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? P50Seconds { get; set; }
         /// <summary>75th percentile of the stage&apos;s duration, in seconds. Null when nothing deployed.</summary>
         public double? P75Seconds { get; set; }
-        /// <summary>95th percentile of the stage&apos;s duration, in seconds — the upper whisker when outliers are excluded. Null when nothing deployed.</summary>
+        /// <summary>95th percentile of the stage&apos;s duration, in seconds: the upper whisker when outliers are excluded. Null when nothing deployed.</summary>
         public double? P95Seconds { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket"/> and sets the default values.

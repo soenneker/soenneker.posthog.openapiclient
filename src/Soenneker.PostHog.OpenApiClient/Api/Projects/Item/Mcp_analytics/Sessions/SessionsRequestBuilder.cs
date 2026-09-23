@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,limit*,offset*,order_by*,search*}", pathParameters)
+        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,filter_test_accounts*,limit*,offset*,order_by*,properties*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,limit*,offset*,order_by*,search*}", rawUrl)
+        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,filter_test_accounts*,limit*,offset*,order_by*,properties*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -130,6 +130,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
             [QueryParameter("date_to")]
             public string DateTo { get; set; }
 #endif
+            /// <summary>Whether to also apply the project&apos;s internal and test user filters (its test_account_filters setting) on top of `properties`.</summary>
+            [QueryParameter("filter_test_accounts")]
+            public bool? FilterTestAccounts { get; set; }
             /// <summary>Maximum number of sessions to return per page. Defaults to 100; values above 500 are rejected.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -145,6 +148,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
 #else
             [QueryParameter("order_by")]
             public string OrderBy { get; set; }
+#endif
+            /// <summary>Property filters that narrow the underlying $mcp_tool_call events, JSON-encoded. A list of event, person, or session property filters, each with key, value, operator, and type. Example: [{&quot;key&quot;: &quot;$mcp_tool_name&quot;, &quot;value&quot;: [&quot;query_run&quot;], &quot;operator&quot;: &quot;exact&quot;, &quot;type&quot;: &quot;event&quot;}]</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("properties")]
+            public string? Properties { get; set; }
+#nullable restore
+#else
+            [QueryParameter("properties")]
+            public string Properties { get; set; }
 #endif
             /// <summary>Case-insensitive substring filter matched against session_id, distinct_id, mcp_client_name, and tools_used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

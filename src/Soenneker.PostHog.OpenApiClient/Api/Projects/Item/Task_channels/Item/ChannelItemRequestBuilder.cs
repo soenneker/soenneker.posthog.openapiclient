@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Conte
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Feed;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Instructions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Members;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Setup;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Star;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -41,6 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Members.MembersRequestBuilder Members
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Members.MembersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The setup property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Setup.SetupRequestBuilder Setup
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Setup.SetupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The star property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Star.StarRequestBuilder Star

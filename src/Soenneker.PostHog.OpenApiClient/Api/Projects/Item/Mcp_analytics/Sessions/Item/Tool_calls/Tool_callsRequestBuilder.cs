@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Tool_callsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions/{id}/tool_calls{?date_from*,limit*,offset*}", pathParameters)
+        public Tool_callsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions/{id}/tool_calls{?date_from*,filter_test_accounts*,limit*,offset*,properties*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Tool_callsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions/{id}/tool_calls{?date_from*,limit*,offset*}", rawUrl)
+        public Tool_callsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions/{id}/tool_calls{?date_from*,filter_test_accounts*,limit*,offset*,properties*}", rawUrl)
         {
         }
         /// <summary>
@@ -88,12 +88,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
             /// <summary>Absolute ISO timestamp lower bound for the event scan — pass the session&apos;s start so older sessions resolve. Defaults to a 7-day lookback when omitted or unparseable.</summary>
             [QueryParameter("date_from")]
             public DateTimeOffset? DateFrom { get; set; }
+            /// <summary>Whether to also apply the project&apos;s internal and test user filters (its test_account_filters setting) on top of `properties`.</summary>
+            [QueryParameter("filter_test_accounts")]
+            public bool? FilterTestAccounts { get; set; }
             /// <summary>Maximum tool calls to return per page (1–500). Defaults to 500 — the whole page — so a session&apos;s calls come back in one request; pass a smaller value for a lighter response. Values above the cap are rejected.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>Number of tool calls to skip before returning results. Combine with limit to page through a session&apos;s calls; the response&apos;s has_next flag indicates whether more remain.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Property filters that narrow the underlying $mcp_tool_call events, JSON-encoded. A list of event, person, or session property filters, each with key, value, operator, and type. Example: [{&quot;key&quot;: &quot;$mcp_tool_name&quot;, &quot;value&quot;: [&quot;query_run&quot;], &quot;operator&quot;: &quot;exact&quot;, &quot;type&quot;: &quot;event&quot;}]</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("properties")]
+            public string? Properties { get; set; }
+#nullable restore
+#else
+            [QueryParameter("properties")]
+            public string Properties { get; set; }
+#endif
         }
     }
 }

@@ -48,6 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         SignalReport,
         #pragma warning restore CS1591
+        [EnumMember(Value = "autoresearch")]
+        #pragma warning disable CS1591
+        Autoresearch,
+        #pragma warning restore CS1591
         [EnumMember(Value = "signals_scout")]
         #pragma warning disable CS1591
         SignalsScout,
@@ -91,6 +95,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "workflow")]
         #pragma warning disable CS1591
         Workflow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "space_setup")]
+        #pragma warning disable CS1591
+        SpaceSetup,
         #pragma warning restore CS1591
     }
 }

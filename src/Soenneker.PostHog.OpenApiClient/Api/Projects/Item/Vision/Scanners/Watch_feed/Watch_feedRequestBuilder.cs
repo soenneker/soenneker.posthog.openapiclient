@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
             [QueryParameter("date_to")]
             public string DateTo { get; set; }
 #endif
-            /// <summary>Feed items to return, at most 50. The feed is bounded, not paginated.</summary>
+            /// <summary>Ceiling on feed items to return, at most 50. The feed is bounded, not paginated, and routinely returns far fewer: a window is not padded to this number with clips that carry no finding.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>Comma-separated scanner UUIDs to restrict the feed to. Defaults to every scanner you can read.</summary>

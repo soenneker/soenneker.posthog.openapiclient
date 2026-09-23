@@ -42,8 +42,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ServiceName { get; set; }
 #endif
+        /// <summary>Set only when the query asked for `includeImpact`. `sessions` and `users` are uniq() estimates; the two span counts are exact.</summary>
+        public int? Sessions { get; set; }
+        /// <summary>The spans_with_distinct_id property</summary>
+        public int? SpansWithDistinctId { get; set; }
+        /// <summary>The spans_with_session_id property</summary>
+        public int? SpansWithSessionId { get; set; }
         /// <summary>The total_duration_nano property</summary>
         public double? TotalDurationNano { get; set; }
+        /// <summary>The users property</summary>
+        public int? Users { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -71,7 +79,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "p999_duration_nano", n => { P999DurationNano = n.GetDoubleValue(); } },
                 { "p99_duration_nano", n => { P99DurationNano = n.GetDoubleValue(); } },
                 { "service_name", n => { ServiceName = n.GetStringValue(); } },
+                { "sessions", n => { Sessions = n.GetIntValue(); } },
+                { "spans_with_distinct_id", n => { SpansWithDistinctId = n.GetIntValue(); } },
+                { "spans_with_session_id", n => { SpansWithSessionId = n.GetIntValue(); } },
                 { "total_duration_nano", n => { TotalDurationNano = n.GetDoubleValue(); } },
+                { "users", n => { Users = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -90,7 +102,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("p999_duration_nano", P999DurationNano);
             writer.WriteDoubleValue("p99_duration_nano", P99DurationNano);
             writer.WriteStringValue("service_name", ServiceName);
+            writer.WriteIntValue("sessions", Sessions);
+            writer.WriteIntValue("spans_with_distinct_id", SpansWithDistinctId);
+            writer.WriteIntValue("spans_with_session_id", SpansWithSessionId);
             writer.WriteDoubleValue("total_duration_nano", TotalDurationNano);
+            writer.WriteIntValue("users", Users);
         }
     }
 }

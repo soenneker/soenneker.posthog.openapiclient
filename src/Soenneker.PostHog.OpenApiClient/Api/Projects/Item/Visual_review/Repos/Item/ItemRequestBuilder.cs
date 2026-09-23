@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Snapshots;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Thumbnails;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.TolerationPileups;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -52,6 +53,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Thumbnails.ThumbnailsRequestBuilder Thumbnails
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Thumbnails.ThumbnailsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tolerationPileups property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.TolerationPileups.TolerationPileupsRequestBuilder TolerationPileups
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.TolerationPileups.TolerationPileupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.ItemRequestBuilder"/> and sets the default values.

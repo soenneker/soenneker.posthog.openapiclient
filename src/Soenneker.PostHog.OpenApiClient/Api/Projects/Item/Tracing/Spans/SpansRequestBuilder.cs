@@ -7,7 +7,9 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.AttributeB
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Attributes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Count;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.DurationHistogram;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.ErrorCounts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Has_spans;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Impact;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.LatencyHeatmap;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.ServiceNames;
@@ -53,10 +55,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.DurationHistogram.DurationHistogramRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The errorCounts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.ErrorCounts.ErrorCountsRequestBuilder ErrorCounts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.ErrorCounts.ErrorCountsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The has_spans property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Has_spans.Has_spansRequestBuilder Has_spans
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Has_spans.Has_spansRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The impact property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Impact.ImpactRequestBuilder Impact
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Impact.ImpactRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The latencyHeatmap property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.LatencyHeatmap.LatencyHeatmapRequestBuilder LatencyHeatmap

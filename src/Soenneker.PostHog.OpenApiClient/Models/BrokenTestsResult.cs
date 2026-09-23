@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Default-branch job names whose latest completed run is failing — the &apos;what&apos;s on fire right now&apos; summary. Empty when the job-level source isn&apos;t synced or trunk is green.</summary>
+        /// <summary>Default-branch job names whose latest completed run is failing: the &apos;what&apos;s on fire right now&apos; summary. Empty when the job-level source isn&apos;t synced or trunk is green.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? BreakingMasterJobs { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Maximum number of rows returned.</summary>
         public int? Limit { get; set; }
-        /// <summary>Classified failures ranked by triage urgency — breaking trunk first, single-PR failures last.</summary>
+        /// <summary>Classified failures ranked by triage urgency: breaking trunk first, single-PR failures last.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRow>? Rows { get; set; }

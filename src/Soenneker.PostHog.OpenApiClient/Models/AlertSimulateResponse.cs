@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Interval { get; set; }
 #endif
-        /// <summary>Anomaly score for each point (null if insufficient data).</summary>
+        /// <summary>Score for each point. Null can mean insufficient data or a valid unscored point. AI previews report model confidence only for points flagged by an anomaly verdict; all other points are null, including every point in a normal verdict.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<double?>? Scores { get; set; }

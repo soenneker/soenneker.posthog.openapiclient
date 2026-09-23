@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class PredicateIndexUsage : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Instruction for an AI rewrite of the query, set when a query edit would help.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AiFixPrompt { get; set; }
+#nullable restore
+#else
+        public string AiFixPrompt { get; set; }
+#endif
         /// <summary>The column_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,13 +30,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The end property</summary>
         public int? End { get; set; }
-        /// <summary>The fix property</summary>
+        /// <summary>Prose advice for a reader.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fix { get; set; }
 #nullable restore
 #else
         public string Fix { get; set; }
+#endif
+        /// <summary>The fix_action property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper? FixAction { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper FixAction { get; set; }
 #endif
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,6 +77,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string PropertyName { get; set; }
+#endif
+        /// <summary>A deterministic query edit that unblocks the index.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix? Quickfix { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix Quickfix { get; set; }
 #endif
         /// <summary>The scope property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PredicateScope? Scope { get; set; }
@@ -110,13 +134,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ai_fix_prompt", n => { AiFixPrompt = n.GetStringValue(); } },
                 { "column_name", n => { ColumnName = n.GetStringValue(); } },
                 { "end", n => { End = n.GetIntValue(); } },
                 { "fix", n => { Fix = n.GetStringValue(); } },
+                { "fix_action", n => { FixAction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetStringValue(); } },
                 { "physical_type", n => { PhysicalType = n.GetStringValue(); } },
                 { "property_name", n => { PropertyName = n.GetStringValue(); } },
+                { "quickfix", n => { Quickfix = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix>(global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix.CreateFromDiscriminatorValue); } },
                 { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateScope>(); } },
                 { "semantic_type", n => { SemanticType = n.GetStringValue(); } },
                 { "source_label", n => { SourceLabel = n.GetStringValue(); } },
@@ -132,13 +159,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("ai_fix_prompt", AiFixPrompt);
             writer.WriteStringValue("column_name", ColumnName);
             writer.WriteIntValue("end", End);
             writer.WriteStringValue("fix", Fix);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper>("fix_action", FixAction);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("operator", Operator);
             writer.WriteStringValue("physical_type", PhysicalType);
             writer.WriteStringValue("property_name", PropertyName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix>("quickfix", Quickfix);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateScope>("scope", Scope);
             writer.WriteStringValue("semantic_type", SemanticType);
             writer.WriteStringValue("source_label", SourceLabel);

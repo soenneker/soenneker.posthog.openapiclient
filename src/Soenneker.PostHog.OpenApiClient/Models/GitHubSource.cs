@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Source id — pass back as `source_id` (with `repo`) to read this repository.</summary>
+        /// <summary>Source id: pass back as `source_id` (with `repo`) to read this repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Prefix { get; set; }
 #endif
-        /// <summary>Repository as &apos;owner/name&apos; — pass back as `repo` to scope to it. One entry per repository a source syncs; &apos;&apos; if unknown.</summary>
+        /// <summary>Repository as &apos;owner/name&apos;: pass back as `repo` to scope to it. One entry per repository a source syncs; &apos;&apos; if unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Repo { get; set; }

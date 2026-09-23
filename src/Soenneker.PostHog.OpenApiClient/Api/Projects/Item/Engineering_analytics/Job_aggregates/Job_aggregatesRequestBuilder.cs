@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// Per-job aggregates for one workflow over a window (default -30d), one row per de-sharded job name (matrix shards aggregate together), busiest first: queue p50, duration p50/p95, failure rate, retry pressure, run share (below 1.0 = conditional job), and billable cost. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Jobs always need their run as context — this is the aggregate view; use workflow_jobs for one run&apos;s jobs. Empty when the job-level source isn&apos;t synced.
+        /// Per-job aggregates for one workflow over a window (default -30d), one row per de-sharded job name (matrix shards aggregate together), busiest first: queue p50, duration p50/p95, failure rate, retry pressure, run share (below 1.0 = conditional job), and billable cost. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Jobs always need their run as context: this is the aggregate view; use workflow_jobs for one run&apos;s jobs. Empty when the job-level source isn&apos;t synced.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobAggregate&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Per-job aggregates for one workflow over a window (default -30d), one row per de-sharded job name (matrix shards aggregate together), busiest first: queue p50, duration p50/p95, failure rate, retry pressure, run share (below 1.0 = conditional job), and billable cost. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Jobs always need their run as context — this is the aggregate view; use workflow_jobs for one run&apos;s jobs. Empty when the job-level source isn&apos;t synced.
+        /// Per-job aggregates for one workflow over a window (default -30d), one row per de-sharded job name (matrix shards aggregate together), busiest first: queue p50, duration p50/p95, failure rate, retry pressure, run share (below 1.0 = conditional job), and billable cost. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Jobs always need their run as context: this is the aggregate view; use workflow_jobs for one run&apos;s jobs. Empty when the job-level source isn&apos;t synced.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates.Job_aggregatesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Per-job aggregates for one workflow over a window (default -30d), one row per de-sharded job name (matrix shards aggregate together), busiest first: queue p50, duration p50/p95, failure rate, retry pressure, run share (below 1.0 = conditional job), and billable cost. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Jobs always need their run as context — this is the aggregate view; use workflow_jobs for one run&apos;s jobs. Empty when the job-level source isn&apos;t synced.
+        /// Per-job aggregates for one workflow over a window (default -30d), one row per de-sharded job name (matrix shards aggregate together), busiest first: queue p50, duration p50/p95, failure rate, retry pressure, run share (below 1.0 = conditional job), and billable cost. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Jobs always need their run as context: this is the aggregate view; use workflow_jobs for one run&apos;s jobs. Empty when the job-level source isn&apos;t synced.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Job_aggregatesRequestBuilderGetQueryParameters 

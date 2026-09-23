@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team&apos;s preferences about this source&apos;s records in plain language: what matters, what to skip, what&apos;s out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate&apos;s default: instead of keeping every record the steering rules don&apos;t exclude, only records that clearly match the team&apos;s preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis.</summary>
+        /// <summary>Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team&apos;s preferences about this source&apos;s records in plain language: what matters, what to skip, what&apos;s out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate&apos;s default: instead of keeping every record the steering rules don&apos;t exclude, only records that clearly match the team&apos;s preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration&apos;s teams endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty? Config { get; set; }
@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sync state of the warehouse import behind this source: `running`, `failed`, or `completed`. Null for a source that imports nothing from the warehouse, for an import that has never synced, and when the sync state could not be read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigStatus? Status { get; private set; }
 #nullable restore
 #else
-        public string Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigStatus Status { get; private set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "source_product", n => { SourceProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum>(); } },
                 { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum>(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigStatus.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

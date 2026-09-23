@@ -30,8 +30,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? JobsAvailable { get; set; }
         /// <summary>The maximum number of PRs returned.</summary>
         public int? Limit { get; set; }
+        /// <summary>Every pull request merged in the selected scope and window.</summary>
+        public int? MergedPrCount { get; set; }
         /// <summary>True when the Trunk merge-queue table is synced, so out_of_merge_queue can appear.</summary>
         public bool? MergeQueueStateAvailable { get; set; }
+        /// <summary>Average red time per merged pull request, grouped by the evidence that classifies each red stretch.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime>? RedSecondsPerMergedPr { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime> RedSecondsPerMergedPr { get; set; }
+#endif
         /// <summary>False when reviews aren&apos;t synced: review stretches read review_state_unknown.</summary>
         public bool? ReviewDataAvailable { get; set; }
         /// <summary>The GitHub login, GitHub team slug, or &apos;owner/name#number&apos; the timelines are for.</summary>
@@ -83,6 +93,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "jobs_available", n => { JobsAvailable = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "merge_queue_state_available", n => { MergeQueueStateAvailable = n.GetBoolValue(); } },
+                { "merged_pr_count", n => { MergedPrCount = n.GetIntValue(); } },
+                { "red_seconds_per_merged_pr", n => { RedSecondsPerMergedPr = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "review_data_available", n => { ReviewDataAvailable = n.GetBoolValue(); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
                 { "scope_kind", n => { ScopeKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelinesScopeKind>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelinesScopeKind.CreateFromDiscriminatorValue); } },
@@ -101,7 +113,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimeline>("items", Items);
             writer.WriteBoolValue("jobs_available", JobsAvailable);
             writer.WriteIntValue("limit", Limit);
+            writer.WriteIntValue("merged_pr_count", MergedPrCount);
             writer.WriteBoolValue("merge_queue_state_available", MergeQueueStateAvailable);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime>("red_seconds_per_merged_pr", RedSecondsPerMergedPr);
             writer.WriteBoolValue("review_data_available", ReviewDataAvailable);
             writer.WriteStringValue("scope", Scope);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelinesScopeKind>("scope_kind", ScopeKind);

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty</summary>
+    /// <summary>* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty* `low_activity` - Low activity</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalScoutSuggestionSetStatusEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "empty")]
         #pragma warning disable CS1591
         Empty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "low_activity")]
+        #pragma warning disable CS1591
+        LowActivity,
         #pragma warning restore CS1591
     }
 }

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Simulate
         {
         }
         /// <summary>
-        /// Simulate a detector on an insight&apos;s historical data. Read-only — no AlertCheck records are created.
+        /// Simulate a detector on an insight&apos;s historical data. No AlertCheck records are created. The AI detector makes a real model call, so that mode needs the &apos;alert:write&apos; scope.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Simulate
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Simulate a detector on an insight&apos;s historical data. Read-only — no AlertCheck records are created.
+        /// Simulate a detector on an insight&apos;s historical data. No AlertCheck records are created. The AI detector makes a real model call, so that mode needs the &apos;alert:write&apos; scope.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

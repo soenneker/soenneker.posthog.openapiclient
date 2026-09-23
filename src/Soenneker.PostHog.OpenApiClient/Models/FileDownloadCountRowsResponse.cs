@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of rows the query returns now. A HogQL batch export runs its query as of the time the export starts, so a run started now would export this many rows.</summary>
+        /// <summary>Number of rows the query returns with the supplied interval bounds. Data arriving between counting and exporting can change the result.</summary>
         public int? Count { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsResponse"/> and sets the default values.

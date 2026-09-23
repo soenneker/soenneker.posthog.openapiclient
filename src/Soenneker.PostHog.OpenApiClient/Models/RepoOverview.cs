@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BillableMinutes { get; set; }
         /// <summary>Billable minutes over the previous window; null when the job-level source isn&apos;t synced.</summary>
         public double? BillableMinutesPrev { get; set; }
-        /// <summary>estimated_cost_usd divided by merged_pr_count — the window&apos;s CI cost per merged PR. Null when the job-level source isn&apos;t synced or nothing merged.</summary>
+        /// <summary>estimated_cost_usd divided by merged_pr_count: the window&apos;s CI cost per merged PR. Null when the job-level source isn&apos;t synced or nothing merged.</summary>
         public double? CostPerMergeUsd { get; set; }
         /// <summary>The same ratio over the previous window. Null when the job-level source isn&apos;t synced or nothing merged.</summary>
         public double? CostPerMergeUsdPrev { get; set; }
@@ -68,11 +68,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? MedianReadyToMergeSeconds { get; set; }
         /// <summary>The same median over the previous window. Null when not observed.</summary>
         public double? MedianReadyToMergeSecondsPrev { get; set; }
-        /// <summary>Median wall clock for a PR push round to settle fully green over the window — the window-level twin of time_to_green_series, same population and exclusions. Null when no fully green rounds.</summary>
+        /// <summary>Median wall clock for a PR push round to settle fully green over the window: the window-level twin of time_to_green_series, same population and exclusions. Null when no fully green rounds.</summary>
         public double? MedianTimeToGreenSeconds { get; set; }
         /// <summary>The same median over the previous window. Null when no fully green rounds.</summary>
         public double? MedianTimeToGreenSecondsPrev { get; set; }
-        /// <summary>PRs merged in the window, all authors and bots included — the merge population that triggered the CI spend, so it divides cleanly into billable_minutes and estimated_cost_usd.</summary>
+        /// <summary>PRs merged in the window, all authors and bots included. billable_minutes and estimated_cost_usd cover every run in the window, including default-branch and unmerged PR runs, so dividing them by this count spreads all CI spend over the merges.</summary>
         public int? MergedPrCount { get; set; }
         /// <summary>Merged-PR count over the previous window.</summary>
         public int? MergedPrCountPrev { get; set; }
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? MergeQueueMedianFirstGateToMergeSeconds { get; set; }
         /// <summary>The same median over the previous window. Null when no queue-landed merges.</summary>
         public double? MergeQueueMedianFirstGateToMergeSecondsPrev { get; set; }
-        /// <summary>PRs merged in the window with at least one corroborated merge-queue gate run — the population behind every merge_queue_* landing stat. All authors, bots included.</summary>
+        /// <summary>PRs merged in the window with at least one corroborated merge-queue gate run: the population behind every merge_queue_* landing stat. All authors, bots included.</summary>
         public int? MergeQueueMergedPrCount { get; set; }
         /// <summary>Queue-landed merges over the previous window.</summary>
         public int? MergeQueueMergedPrCountPrev { get; set; }
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? MergeQueueMultiAttemptMergeShare { get; set; }
         /// <summary>The same fraction over the previous window. Null when no queue-landed merges.</summary>
         public double? MergeQueueMultiAttemptMergeSharePrev { get; set; }
-        /// <summary>p90 of the same first-gate-run-to-merge measure — the tail, where queue pain concentrates. Null when no queue-landed merges.</summary>
+        /// <summary>p90 of the same first-gate-run-to-merge measure: the tail, where queue pain concentrates. Null when no queue-landed merges.</summary>
         public double? MergeQueueP90FirstGateToMergeSeconds { get; set; }
         /// <summary>The same p90 over the previous window. Null when no queue-landed merges.</summary>
         public double? MergeQueueP90FirstGateToMergeSecondsPrev { get; set; }
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RerunCyclesPrev { get; set; }
         /// <summary>Workflow runs started in the window, all branches and workflows.</summary>
         public int? RunCount { get; set; }
-        /// <summary>Same count over the equal-length window immediately before date_from — the delta baseline.</summary>
+        /// <summary>Same count over the equal-length window immediately before date_from: the delta baseline.</summary>
         public int? RunCountPrev { get; set; }
         /// <summary>Fraction of conclusive runs that succeeded (0-1) in the window. Skipped, cancelled, neutral, and action_required runs are excluded. Null if no run reached a verdict.</summary>
         public double? SuccessRate { get; set; }

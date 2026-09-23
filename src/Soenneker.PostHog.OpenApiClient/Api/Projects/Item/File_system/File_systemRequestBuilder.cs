@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Count_by_path;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Home_folder;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Log_view;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Undo_delete;
@@ -26,6 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Count_by_path.Count_by_pathRequestBuilder Count_by_path
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Count_by_path.Count_by_pathRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The home_folder property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Home_folder.Home_folderRequestBuilder Home_folder
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Home_folder.Home_folderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The log_view property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Log_view.Log_viewRequestBuilder Log_view

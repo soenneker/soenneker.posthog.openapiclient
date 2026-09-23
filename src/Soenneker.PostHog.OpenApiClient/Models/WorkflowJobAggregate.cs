@@ -30,9 +30,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string JobName { get; set; }
 #endif
-        /// <summary>Median duration of successful job instances, in seconds — cancelled and failed instances end early and would bias the percentile. Null if none succeeded.</summary>
+        /// <summary>Median duration of successful job instances, in seconds: cancelled and failed instances end early and would bias the percentile. Null if none succeeded.</summary>
         public double? P50Seconds { get; set; }
-        /// <summary>95th-percentile duration of successful job instances, in seconds — cancelled and failed instances end early and would bias the percentile. Null if none succeeded.</summary>
+        /// <summary>95th-percentile duration of successful job instances, in seconds: cancelled and failed instances end early and would bias the percentile. Null if none succeeded.</summary>
         public double? P95Seconds { get; set; }
         /// <summary>Median queue wait (created to started) in seconds - where runner-capacity problems hide. Null when nothing started.</summary>
         public double? QueueP50Seconds { get; set; }

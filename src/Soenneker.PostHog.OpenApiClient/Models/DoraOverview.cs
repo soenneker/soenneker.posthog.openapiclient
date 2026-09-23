@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the deployments/deployment_statuses tables aren&apos;t synced for the selected repo; every other field is then empty or null, never a fake zero.</summary>
         public bool? DeployDataAvailable { get; set; }
-        /// <summary>PRs first deployed in the window — the population behind the merge-to-deploy median and box plot.</summary>
+        /// <summary>PRs first deployed in the window: the population behind the merge-to-deploy median and box plot.</summary>
         public int? DeployedPrCount { get; set; }
         /// <summary>Previous-window twin of deployed_pr_count.</summary>
         public int? DeployedPrCountPrev { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? FailedDeploymentShare { get; set; }
         /// <summary>Previous-window twin of failed_deployment_share.</summary>
         public double? FailedDeploymentSharePrev { get; set; }
-        /// <summary>Distinct GitHub team slugs from the membership snapshot, sorted — the team picker&apos;s options. Empty when membership isn&apos;t synced.</summary>
+        /// <summary>Distinct GitHub team slugs from the membership snapshot, sorted: the team picker&apos;s options. Empty when membership isn&apos;t synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? GithubTeams { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>True when the optional team-membership snapshot is synced. When false, a github_team filter cannot be honored and the merge-to-deploy figures go empty rather than silently unfiltered.</summary>
         public bool? HasMembershipData { get; set; }
-        /// <summary>The newest deployment status row synced, any environment — how fresh the deploy data is. Windows ending after this instant undercount. Null when the deploy tables are empty.</summary>
+        /// <summary>The newest deployment status row synced, any environment: how fresh the deploy data is. Windows ending after this instant undercount. Null when the deploy tables are empty.</summary>
         public DateTimeOffset? LatestDeployStatusAt { get; set; }
         /// <summary>Median seconds from a deployment&apos;s first failure status to the next successful deployment in the same environment. A time-to-restore proxy: recovery by anything other than a deploy is invisible, and failures not yet recovered are excluded. Null when no failed deploy recovered in the window.</summary>
         public double? MedianFailedDeployToNextSuccessSeconds { get; set; }
@@ -80,13 +80,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? MedianMergeToDeploySeconds { get; set; }
         /// <summary>Previous-window twin of median_merge_to_deploy_seconds.</summary>
         public double? MedianMergeToDeploySecondsPrev { get; set; }
-        /// <summary>Median seconds from a PR&apos;s open to the first successful deployment containing it — the full open-to-deploy lead time over the same deployed-PR population as median_merge_to_deploy_seconds. Null when nothing deployed in the window.</summary>
+        /// <summary>Median seconds from a PR&apos;s open to the first successful deployment containing it: the full open-to-deploy lead time over the same deployed-PR population as median_merge_to_deploy_seconds. Null when nothing deployed in the window.</summary>
         public double? MedianOpenToDeploySeconds { get; set; }
         /// <summary>Previous-window twin of median_open_to_deploy_seconds.</summary>
         public double? MedianOpenToDeploySecondsPrev { get; set; }
-        /// <summary>PRs merged in the window (bots and drafts excluded; narrowed by github_team when given) — the denominator behind unattributed_merged_pr_share.</summary>
+        /// <summary>PRs merged in the window (bots and drafts excluded; narrowed by github_team when given): the denominator behind unattributed_merged_pr_share.</summary>
         public int? MergedPrCount { get; set; }
-        /// <summary>Merge-to-deploy distribution per bucket across the window, oldest first — the box-plot series (min/p5/p25/p50/mean/p75/p95/max seconds per bucket). Empty when the deploy tables aren&apos;t synced, or when github_team was passed without membership data synced.</summary>
+        /// <summary>Merge-to-deploy distribution per bucket across the window, oldest first: the box-plot series (min/p5/p25/p50/mean/p75/p95/max seconds per bucket). Empty when the deploy tables aren&apos;t synced, or when github_team was passed without membership data synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? MergeToDeploySeries { get; set; }

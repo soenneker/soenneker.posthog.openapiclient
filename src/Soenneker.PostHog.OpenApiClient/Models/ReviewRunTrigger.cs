@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// What caused this run to exist: self-driving inbox provenance, the repo&apos;s trigger label, or the repo reviewing every PR event.* `self_driving` - SELF_DRIVING* `label` - LABEL* `all` - ALL
+    /// What caused this run to exist: self-driving inbox provenance, a manual request through the API, the repo&apos;s trigger label, or the repo reviewing every PR event.* `self_driving` - SELF_DRIVING* `manual` - MANUAL* `label` - LABEL* `all` - ALL
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReviewRunTrigger : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `self_driving` - SELF_DRIVING* `label` - LABEL* `all` - ALL</summary>
+        /// <summary>* `self_driving` - SELF_DRIVING* `manual` - MANUAL* `label` - LABEL* `all` - ALL</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunTriggerEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunTrigger"/> and sets the default values.

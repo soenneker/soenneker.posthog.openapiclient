@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>De-sharded failing job name (matrix &apos;(G/N)&apos; suffix stripped) — the group&apos;s failure signature together with the workflow. &apos;&apos; when the job-level source isn&apos;t synced and the group degrades to workflow level.</summary>
+        /// <summary>De-sharded failing job name (matrix &apos;(G/N)&apos; suffix stripped): the group&apos;s failure signature together with the workflow. &apos;&apos; when the job-level source isn&apos;t synced and the group degrades to workflow level.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FailedJob { get; set; }
@@ -26,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? FirstSeen { get; set; }
         /// <summary>When the newest failing run in the group started.</summary>
         public DateTimeOffset? LastSeen { get; set; }
-        /// <summary>Run id of the newest failing run — the drill-down anchor.</summary>
+        /// <summary>Run id of the newest failing run: the drill-down anchor.</summary>
         public int? LatestRunId { get; set; }
         /// <summary>Repository the failures occurred in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

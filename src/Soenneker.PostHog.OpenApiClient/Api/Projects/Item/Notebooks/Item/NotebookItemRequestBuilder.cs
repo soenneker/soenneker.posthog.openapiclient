@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sharing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v2;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets;
@@ -37,6 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.KernelRequestBuilder Kernel
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.KernelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The runs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Runs.RunsRequestBuilder Runs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The sharing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sharing.SharingRequestBuilder Sharing

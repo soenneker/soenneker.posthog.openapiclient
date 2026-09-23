@@ -23,13 +23,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyDateRange DateRange { get; set; }
 #endif
-        /// <summary>Property filters for the count.</summary>
+        /// <summary>Property filters for the count. Either a flat list of filters or a nested filter group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? FilterGroup { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroup? FilterGroup { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroup FilterGroup { get; set; }
 #endif
         /// <summary>Filter by service names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyDateRange.CreateFromDiscriminatorValue); } },
-                { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroup>(global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroup.CreateFromDiscriminatorValue); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "statusCodes", n => { StatusCodes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
             };
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyDateRange>("dateRange", DateRange);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>("filterGroup", FilterGroup);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroup>("filterGroup", FilterGroup);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteCollectionOfPrimitiveValues<int?>("statusCodes", StatusCodes);
             writer.WriteAdditionalData(AdditionalData);

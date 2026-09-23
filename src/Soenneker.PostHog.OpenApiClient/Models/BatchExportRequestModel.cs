@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Which data model to export (events, persons, sessions).* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql
+    /// Which data model to export: events, persons, sessions, or hogql. The hogql model exports the results of hogql_query.* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchExportRequestModel : IAdditionalDataHolder, IParsable

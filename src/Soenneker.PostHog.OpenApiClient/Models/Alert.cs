@@ -106,6 +106,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastNotifiedAt { get; private set; }
         /// <summary>The last calculated value from the most recent alert check.</summary>
         public double? LastValue { get; private set; }
+        /// <summary>Whether this alert can use the AI detector, judged for the person who created it, since scheduled checks run as the creator. Only computed when retrieving a single alert; null elsewhere.</summary>
+        public bool? LlmDetectorAvailable { get; private set; }
         /// <summary>Human-readable name for the alert.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -218,6 +220,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_checked_at", n => { LastCheckedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_notified_at", n => { LastNotifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_value", n => { LastValue = n.GetDoubleValue(); } },
+                { "llm_detector_available", n => { LlmDetectorAvailable = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
                 { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Always &apos;partial&apos; — CI events only; reviews and comments are not yet available.* `precise` - PRECISE* `coarse` - COARSE* `partial` - PARTIAL
+    /// Always &apos;partial&apos;: CI events only; reviews and comments are not yet available.* `precise` - PRECISE* `coarse` - COARSE* `partial` - PARTIAL
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PrLifecycleMetricQuality : IAdditionalDataHolder, IParsable

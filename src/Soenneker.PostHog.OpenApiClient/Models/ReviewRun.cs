@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Allowlisted, non-sensitive subset of the reviewer output blob (stamphog version, reviewer exit code). The raw reviewer stdout, PR payload, changed-file patches, and policy file contents are deliberately excluded — they carry repository content a project member without repo access must not read.</summary>
+        /// <summary>Allowlisted subset of the reviewer output blob (stamphog version, reviewer exit code). The raw reviewer stdout, PR payload, changed-file patches, and policy file contents are excluded. The reviewer&apos;s reasoning, the text stamphog posts on GitHub, is in `reasoning` instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunOutput? Output { get; private set; }
@@ -92,6 +92,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of the pull request this review run belongs to.</summary>
         public Guid? PullRequest { get; private set; }
+        /// <summary>The reviewer&apos;s reasoning, the same text stamphog posts as its GitHub review. Returned only when retrieving a single run, and null in list results. Its fields are null until the reviewer has run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning? Reasoning { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning Reasoning { get; private set; }
+#endif
         /// <summary>Full name of the repository this review run belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -116,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; private set; }
 #endif
-        /// <summary>What caused this run to exist: self-driving inbox provenance, the repo&apos;s trigger label, or the repo reviewing every PR event.* `self_driving` - SELF_DRIVING* `label` - LABEL* `all` - ALL</summary>
+        /// <summary>What caused this run to exist: self-driving inbox provenance, a manual request through the API, the repo&apos;s trigger label, or the repo reviewing every PR event.* `self_driving` - SELF_DRIVING* `manual` - MANUAL* `label` - LABEL* `all` - ALL</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunTrigger? Trigger { get; private set; }
@@ -176,6 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
                 { "pull_request", n => { PullRequest = n.GetGuidValue(); } },
+                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning.CreateFromDiscriminatorValue); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunStatus.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },

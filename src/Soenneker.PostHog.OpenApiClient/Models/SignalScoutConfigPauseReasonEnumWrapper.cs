@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures</summary>
+        /// <summary>* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures* `retired` - Retired</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReasonEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReasonEnumWrapper"/> and sets the default values.

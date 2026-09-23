@@ -16,6 +16,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Label,
         #pragma warning restore CS1591
+        [EnumMember(Value = "manual")]
+        #pragma warning disable CS1591
+        Manual,
+        #pragma warning restore CS1591
         [EnumMember(Value = "self_driving")]
         #pragma warning disable CS1591
         SelfDriving,

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// The team&apos;s selectable GitHub repositories, oldest source first — one entry per repository a source is configured to sync, so a source syncing several repositories appears once per repo. Populate a repo picker from this and pass a chosen entry&apos;s `id` back as `source_id` and its `repo` back as `repo` to the other endpoints. Includes repositories whose tables aren&apos;t fully synced yet.
+        /// The team&apos;s selectable GitHub repositories, oldest source first: one entry per repository a source is configured to sync, so a source syncing several repositories appears once per repo. Populate a repo picker from this and pass a chosen entry&apos;s `id` back as `source_id` and its `repo` back as `repo` to the other endpoints. Includes repositories whose tables aren&apos;t fully synced yet.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.GitHubSource&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// The team&apos;s selectable GitHub repositories, oldest source first — one entry per repository a source is configured to sync, so a source syncing several repositories appears once per repo. Populate a repo picker from this and pass a chosen entry&apos;s `id` back as `source_id` and its `repo` back as `repo` to the other endpoints. Includes repositories whose tables aren&apos;t fully synced yet.
+        /// The team&apos;s selectable GitHub repositories, oldest source first: one entry per repository a source is configured to sync, so a source syncing several repositories appears once per repo. Populate a repo picker from this and pass a chosen entry&apos;s `id` back as `source_id` and its `repo` back as `repo` to the other endpoints. Includes repositories whose tables aren&apos;t fully synced yet.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

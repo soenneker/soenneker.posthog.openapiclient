@@ -12,6 +12,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_comments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Pr_review_comments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Refund;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reingest;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reviewers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Signals;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.State;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Viewed;
@@ -74,6 +76,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Refund.RefundRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The reingest property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reingest.ReingestRequestBuilder Reingest
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reingest.ReingestRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reviewers property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reviewers.ReviewersRequestBuilder Reviewers
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reviewers.ReviewersRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The signals property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Signals.SignalsRequestBuilder Signals
         {
@@ -104,6 +116,24 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports/{%2Did}", rawUrl)
         {
+        }
+        /// <summary>
+        /// Soft-delete a report and its signals via the deletion workflow.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportDeletionStatus"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportDeletionStatus?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportDeletionStatus> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportDeletionStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportDeletionStatus.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReport"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -139,6 +169,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReport>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReport.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Soft-delete a report and its signals via the deletion workflow.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

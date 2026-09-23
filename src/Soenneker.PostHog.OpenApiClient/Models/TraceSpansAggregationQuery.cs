@@ -36,6 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter FilterGroup { get; set; }
 #endif
+        /// <summary>Also aggregate sessions and people per operation. Off by default: it reads the attribute maps.</summary>
+        public bool? IncludeImpact { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQueryKind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -93,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter.CreateFromDiscriminatorValue); } },
+                { "includeImpact", n => { IncludeImpact = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQueryResponse.CreateFromDiscriminatorValue); } },
@@ -111,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>("filterGroup", FilterGroup);
+            writer.WriteBoolValue("includeImpact", IncludeImpact);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQueryResponse>("response", Response);

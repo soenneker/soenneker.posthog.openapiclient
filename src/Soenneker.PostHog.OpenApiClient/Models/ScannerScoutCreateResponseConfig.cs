@@ -21,6 +21,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? ConsecutiveFailureCount { get; private set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>Set when PostHog is retiring this scout, and null otherwise. Carries the phase, the reason to show, what replaces the scout, and when it stops running. Only a canonical scout the project has not edited is ever marked: a project&apos;s own copy keeps running and reads as null.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation? Deprecation { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation Deprecation { get; private set; }
+#endif
         /// <summary>Human-readable summary of what this scout investigates, sourced from the scout skill&apos;s `description` metadata. Use it for a quick steer on the scout&apos;s focus without loading the full skill body. Empty if the skill is not currently present on the team or carries no description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic> Owners { get; private set; }
 #endif
-        /// <summary>Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), or `repeated_failures` (consecutive failed runs). Null unless `status` is `pending_pause` or `paused_by_system`.* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures</summary>
+        /// <summary>Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), or `repeated_failures` (consecutive failed runs). Null unless `status` is `pending_pause` or `paused_by_system`.* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures* `retired` - Retired</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason? PauseReason { get; private set; }
@@ -223,6 +231,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "auto_pause_exempt", n => { AutoPauseExempt = n.GetBoolValue(); } },
                 { "consecutive_failure_count", n => { ConsecutiveFailureCount = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "deprecation", n => { Deprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "emit", n => { Emit = n.GetBoolValue(); } },

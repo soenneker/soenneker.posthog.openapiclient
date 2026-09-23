@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>`fresh`: current batch. `stale`: the fleet changed since it was generated, or the batch aged past the refresh window. `failed`: the last refresh failed (items are the prior batch, if any). `empty`: nothing to suggest yet.* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty</summary>
+        /// <summary>`fresh`: current batch. `stale`: the fleet changed since it was generated, or the batch aged past the refresh window. `failed`: the last refresh failed (items are the prior batch, if any). `empty`: nothing to suggest yet. `low_activity`: the project was too quiet to scan, so nothing was generated.* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty* `low_activity` - Low activity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus? Status { get; set; }

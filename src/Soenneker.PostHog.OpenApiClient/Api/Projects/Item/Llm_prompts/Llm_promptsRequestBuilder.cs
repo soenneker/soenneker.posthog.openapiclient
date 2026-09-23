@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Llm_promptsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,label*,limit*,offset*,order_by*,search*}", pathParameters)
+        public Llm_promptsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,label*,limit*,offset*,order_by*,resolve*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Llm_promptsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,label*,limit*,offset*,order_by*,search*}", rawUrl)
+        public Llm_promptsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,label*,limit*,offset*,order_by*,resolve*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedLlmPromptListList"/></returns>
@@ -151,6 +151,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts
             /// <summary>Field to sort the prompt list by. Prefix with &apos;-&apos; for descending order.* `name` - name* `-name` - -name* `created_at` - created_at* `-created_at` - -created_at* `updated_at` - updated_at* `-updated_at` - -updated_at* `version` - version* `-version` - -version* `latest_version` - latest_version* `-latest_version` - -latest_version* `version_count` - version_count* `-version_count` - -version_count* `first_version_created_at` - first_version_created_at* `-first_version_created_at` - -first_version_created_at* `prompt_size_bytes` - prompt_size_bytes* `-prompt_size_bytes` - -prompt_size_bytes</summary>
             [QueryParameter("order_by")]
             public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptsListOrderByParameter? OrderBy { get; set; }
+            /// <summary>Replace @@@prompt:...@@@ references with the referenced prompts&apos; content in labeled results with full content. Set to false to get the raw text with the reference tags.</summary>
+            [QueryParameter("resolve")]
+            public bool? Resolve { get; set; }
             /// <summary>Optional substring filter applied to prompt names and prompt content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

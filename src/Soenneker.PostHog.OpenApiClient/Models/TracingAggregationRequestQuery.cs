@@ -39,6 +39,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get; set; }
 #endif
+        /// <summary>Also return the sessions and people behind each operation. Off by default because it reads the span and resource attribute maps, which the rest of the aggregation never touches.</summary>
+        public bool? IncludeImpact { get; set; }
         /// <summary>Max rows to return, ordered by total_duration_nano DESC. Defaults to 100; hard max 5000. Keep this small to bound the response size — a high value on high-cardinality span names (e.g. untemplated URL paths) returns a very large payload. Prefer narrowing with `serviceNames`/`filterGroup` over raising the limit.</summary>
         public int? Limit { get; set; }
         /// <summary>Row offset for pagination. Combine with `limit` and the `next_offset` returned in the response to page through results beyond the first page.</summary>
@@ -57,6 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public TracingAggregationRequestQuery()
         {
             AdditionalData = new Dictionary<string, object>();
+            IncludeImpact = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -79,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "includeImpact", n => { IncludeImpact = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -94,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange>("dateRange", DateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>("filterGroup", FilterGroup);
+            writer.WriteBoolValue("includeImpact", IncludeImpact);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("offset", Offset);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);

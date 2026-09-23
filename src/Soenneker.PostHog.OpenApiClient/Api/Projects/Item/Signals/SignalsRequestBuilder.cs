@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Processing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The config property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Config.ConfigRequestBuilder Config
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Config.ConfigRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The processing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Processing.ProcessingRequestBuilder Processing
         {

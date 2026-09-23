@@ -30,6 +30,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; set; }
         /// <summary>Whether this PR merged.</summary>
         public bool? Merged { get; set; }
+        /// <summary>When GitHub reports that this pull request merged. Null when it has not merged or the time is unavailable.</summary>
+        public DateTimeOffset? MergedAt { get; set; }
+        /// <summary>Current GitHub code review decision: approved, changes_requested, or review_required. Null when GitHub does not provide a review decision.* `approved` - Approved* `changes_requested` - Changes requested* `review_required` - Review required</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision? ReviewDecision { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision ReviewDecision { get; set; }
+#endif
         /// <summary>Latest known GitHub state.* `unknown` - Unknown* `draft` - Draft* `open` - Open* `closed` - Closed* `merged` - Merged</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,6 +86,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "merged", n => { Merged = n.GetBoolValue(); } },
+                { "merged_at", n => { MergedAt = n.GetDateTimeOffsetValue(); } },
+                { "review_decision", n => { ReviewDecision = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision.CreateFromDiscriminatorValue); } },
                 { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestState.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -91,6 +103,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("claim_id", ClaimId);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("merged", Merged);
+            writer.WriteDateTimeOffsetValue("merged_at", MergedAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision>("review_decision", ReviewDecision);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestState>("state", State);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

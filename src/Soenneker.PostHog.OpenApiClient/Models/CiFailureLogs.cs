@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog> Jobs { get; set; }
 #endif
-        /// <summary>False when no failure logs were found — CI hasn&apos;t failed, the logs aged out of the short Logs retention, or a fork PR carries no run association to resolve.</summary>
+        /// <summary>False when no failure logs were found: CI hasn&apos;t failed, the logs aged out of the short Logs retention, or a fork PR carries no run association to resolve.</summary>
         public bool? LogsAvailable { get; set; }
         /// <summary>Pull request number the failure logs are for.</summary>
         public int? PrNumber { get; set; }

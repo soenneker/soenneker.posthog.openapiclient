@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// DORA-style deploy metrics over the GitHub deployments + deployment_statuses warehouse pair, each headline with its previous-window twin: deployment frequency, merge-to-deploy lead time (with a per-bucket box-plot series), and honest proxies for change failure rate and time to restore (deploy-status based — no incident data is linked). deploy_data_available is false when the deploy tables aren&apos;t synced.
+        /// DORA-style deploy metrics over the GitHub deployments + deployment_statuses warehouse pair, each headline with its previous-window twin: deployment frequency, merge-to-deploy lead time (with a per-bucket box-plot series), and honest proxies for change failure rate and time to restore (deploy-status based: no incident data is linked). deploy_data_available is false when the deploy tables aren&apos;t synced.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// DORA-style deploy metrics over the GitHub deployments + deployment_statuses warehouse pair, each headline with its previous-window twin: deployment frequency, merge-to-deploy lead time (with a per-bucket box-plot series), and honest proxies for change failure rate and time to restore (deploy-status based — no incident data is linked). deploy_data_available is false when the deploy tables aren&apos;t synced.
+        /// DORA-style deploy metrics over the GitHub deployments + deployment_statuses warehouse pair, each headline with its previous-window twin: deployment frequency, merge-to-deploy lead time (with a per-bucket box-plot series), and honest proxies for change failure rate and time to restore (deploy-status based: no incident data is linked). deploy_data_available is false when the deploy tables aren&apos;t synced.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora.DoraRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// DORA-style deploy metrics over the GitHub deployments + deployment_statuses warehouse pair, each headline with its previous-window twin: deployment frequency, merge-to-deploy lead time (with a per-bucket box-plot series), and honest proxies for change failure rate and time to restore (deploy-status based — no incident data is linked). deploy_data_available is false when the deploy tables aren&apos;t synced.
+        /// DORA-style deploy metrics over the GitHub deployments + deployment_statuses warehouse pair, each headline with its previous-window twin: deployment frequency, merge-to-deploy lead time (with a per-bucket box-plot series), and honest proxies for change failure rate and time to restore (deploy-status based: no incident data is linked). deploy_data_available is false when the deploy tables aren&apos;t synced.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DoraRequestBuilderGetQueryParameters 

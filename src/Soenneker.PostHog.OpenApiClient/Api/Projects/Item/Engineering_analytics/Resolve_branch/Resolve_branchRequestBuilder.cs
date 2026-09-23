@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// Resolve a git branch to the pull request(s) it belongs to — the cross-product link seam so another product (the LLM analytics UI) can turn a git branch into a PR detail link. Matches the PR&apos;s head ref, open PRs first then most recently updated. Pass `timestamp` (the trace&apos;s capture time) to prefer the PR that was active at that moment when a branch name has been reused across PRs. `branch` is required. Returns a possibly-empty, possibly-multi list — an empty list is a valid 200 (the caller renders a plain chip).
+        /// Resolve a git branch to the pull request(s) it belongs to: the cross-product link seam so another product (the LLM analytics UI) can turn a git branch into a PR detail link. Matches the PR&apos;s head ref, open PRs first then most recently updated. Pass `timestamp` (the trace&apos;s capture time) to prefer the PR that was active at that moment when a branch name has been reused across PRs. `branch` is required. Returns a possibly-empty, possibly-multi list: an empty list is a valid 200 (the caller renders a plain chip).
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.BranchPrMatch&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Resolve a git branch to the pull request(s) it belongs to — the cross-product link seam so another product (the LLM analytics UI) can turn a git branch into a PR detail link. Matches the PR&apos;s head ref, open PRs first then most recently updated. Pass `timestamp` (the trace&apos;s capture time) to prefer the PR that was active at that moment when a branch name has been reused across PRs. `branch` is required. Returns a possibly-empty, possibly-multi list — an empty list is a valid 200 (the caller renders a plain chip).
+        /// Resolve a git branch to the pull request(s) it belongs to: the cross-product link seam so another product (the LLM analytics UI) can turn a git branch into a PR detail link. Matches the PR&apos;s head ref, open PRs first then most recently updated. Pass `timestamp` (the trace&apos;s capture time) to prefer the PR that was active at that moment when a branch name has been reused across PRs. `branch` is required. Returns a possibly-empty, possibly-multi list: an empty list is a valid 200 (the caller renders a plain chip).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Resolve_branch.Resolve_branchRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Resolve a git branch to the pull request(s) it belongs to — the cross-product link seam so another product (the LLM analytics UI) can turn a git branch into a PR detail link. Matches the PR&apos;s head ref, open PRs first then most recently updated. Pass `timestamp` (the trace&apos;s capture time) to prefer the PR that was active at that moment when a branch name has been reused across PRs. `branch` is required. Returns a possibly-empty, possibly-multi list — an empty list is a valid 200 (the caller renders a plain chip).
+        /// Resolve a git branch to the pull request(s) it belongs to: the cross-product link seam so another product (the LLM analytics UI) can turn a git branch into a PR detail link. Matches the PR&apos;s head ref, open PRs first then most recently updated. Pass `timestamp` (the trace&apos;s capture time) to prefer the PR that was active at that moment when a branch name has been reused across PRs. `branch` is required. Returns a possibly-empty, possibly-multi list: an empty list is a valid 200 (the caller renders a plain chip).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Resolve_branchRequestBuilderGetQueryParameters 

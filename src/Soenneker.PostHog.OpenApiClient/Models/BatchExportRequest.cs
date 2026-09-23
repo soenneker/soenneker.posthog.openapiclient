@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestFilters Filters { get; set; }
 #endif
-        /// <summary>Optional HogQL SELECT defining a custom model schema. Only recommended in advanced use cases.</summary>
+        /// <summary>HogQL SELECT query. With model &apos;hogql&apos;, its results are the data exported by every run. The query may reference the {data_interval_start} and {data_interval_end} placeholders, replaced with each run&apos;s data interval bounds, for example: WHERE timestamp &gt;= {data_interval_start} AND timestamp &lt; {data_interval_end}. Without them every run exports all rows the query returns. With model &apos;events&apos;, it defines a custom schema of columns to export instead. Required when model is &apos;hogql&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HogqlQuery { get; set; }
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestInterval Interval { get; set; }
 #endif
-        /// <summary>Which data model to export (events, persons, sessions).* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql</summary>
+        /// <summary>Which data model to export: events, persons, sessions, or hogql. The hogql model exports the results of hogql_query.* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestModel? Model { get; set; }

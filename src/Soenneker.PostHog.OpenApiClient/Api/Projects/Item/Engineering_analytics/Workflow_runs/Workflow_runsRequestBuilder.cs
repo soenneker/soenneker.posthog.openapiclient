@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Optionally scope to a single git branch via `branch` or to one run group via `run_scope`. Each row is run-level — per-job and per-step detail are not tracked yet. Use this as the GitHub &apos;workflow&apos; page between the workflow list and a single run.
+        /// Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Optionally scope to a single git branch via `branch` or to one run group via `run_scope`. Each row is run-level: per-job and per-step detail are not tracked yet. Use this as the GitHub &apos;workflow&apos; page between the workflow list and a single run.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetail&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Optionally scope to a single git branch via `branch` or to one run group via `run_scope`. Each row is run-level — per-job and per-step detail are not tracked yet. Use this as the GitHub &apos;workflow&apos; page between the workflow list and a single run.
+        /// Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Optionally scope to a single git branch via `branch` or to one run group via `run_scope`. Each row is run-level: per-job and per-step detail are not tracked yet. Use this as the GitHub &apos;workflow&apos; page between the workflow list and a single run.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Workflow_runs.Workflow_runsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Optionally scope to a single git branch via `branch` or to one run group via `run_scope`. Each row is run-level — per-job and per-step detail are not tracked yet. Use this as the GitHub &apos;workflow&apos; page between the workflow list and a single run.
+        /// Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Optionally scope to a single git branch via `branch` or to one run group via `run_scope`. Each row is run-level: per-job and per-step detail are not tracked yet. Use this as the GitHub &apos;workflow&apos; page between the workflow list and a single run.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Workflow_runsRequestBuilderGetQueryParameters 

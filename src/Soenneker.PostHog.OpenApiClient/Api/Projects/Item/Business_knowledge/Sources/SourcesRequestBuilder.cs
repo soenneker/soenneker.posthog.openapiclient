@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge/sources{?limit*,offset*,search*,source_type*}", pathParameters)
+        public SourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge/sources{?added_by*,limit*,offset*,search*,source_type*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge/sources{?limit*,offset*,search*,source_type*}", rawUrl)
+        public SourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge/sources{?added_by*,limit*,offset*,search*,source_type*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeSourceList"/></returns>
@@ -127,6 +127,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
         public partial class SourcesRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Filter by who added the source: human (you added it) or learned (from a resolved support ticket).</summary>
+            [QueryParameter("added_by")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSourcesListAddedByParameter? AddedBy { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

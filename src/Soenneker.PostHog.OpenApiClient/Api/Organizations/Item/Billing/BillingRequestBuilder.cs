@@ -3,6 +3,15 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Alerts;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Features;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Forecast;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Invoices;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Limits;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Products;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Projects;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Subscription;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +28,51 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Alerts.AlertsRequestBuilder Alerts
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Alerts.AlertsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The features property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Features.FeaturesRequestBuilder Features
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Features.FeaturesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The forecast property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Forecast.ForecastRequestBuilder Forecast
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Forecast.ForecastRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The invoices property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Invoices.InvoicesRequestBuilder Invoices
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Invoices.InvoicesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The limits property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Limits.LimitsRequestBuilder Limits
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Limits.LimitsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The products property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Products.ProductsRequestBuilder Products
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Products.ProductsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The projects property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Projects.ProjectsRequestBuilder Projects
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The spend property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend.SpendRequestBuilder Spend
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend.SpendRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The subscription property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Subscription.SubscriptionRequestBuilder Subscription
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Subscription.SubscriptionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The usage property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.UsageRequestBuilder Usage
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.UsageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.BillingRequestBuilder"/> and sets the default values.

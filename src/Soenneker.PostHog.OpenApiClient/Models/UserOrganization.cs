@@ -36,14 +36,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Default setting for &apos;Discard client IP data&apos; for new projects in this organization.</summary>
         public bool? DefaultAnonymizeIps { get; set; }
-        /// <summary>Default statistical method for new experiments in this organization.* `bayesian` - Bayesian* `frequentist` - Frequentist</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod? DefaultExperimentStatsMethod { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod DefaultExperimentStatsMethod { get; set; }
-#endif
         /// <summary>ID of the role to automatically assign to new members joining the organization</summary>
         public Guid? DefaultRoleId { get; set; }
         /// <summary>The enforce_2fa property</summary>
@@ -180,7 +172,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "customer_id", n => { CustomerId = n.GetStringValue(); } },
                 { "default_anonymize_ips", n => { DefaultAnonymizeIps = n.GetBoolValue(); } },
-                { "default_experiment_stats_method", n => { DefaultExperimentStatsMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod.CreateFromDiscriminatorValue); } },
                 { "default_role_id", n => { DefaultRoleId = n.GetGuidValue(); } },
                 { "enforce_2fa", n => { Enforce2fa = n.GetBoolValue(); } },
                 { "enforce_verified_domains", n => { EnforceVerifiedDomains = n.GetBoolValue(); } },
@@ -221,7 +212,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_publicly_shared_resources", AllowPubliclySharedResources);
             writer.WriteBoolValue("default_anonymize_ips", DefaultAnonymizeIps);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod>("default_experiment_stats_method", DefaultExperimentStatsMethod);
             writer.WriteGuidValue("default_role_id", DefaultRoleId);
             writer.WriteBoolValue("enforce_2fa", Enforce2fa);
             writer.WriteBoolValue("enforce_verified_domains", EnforceVerifiedDomains);
