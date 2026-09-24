@@ -27,6 +27,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Tag { get; set; }
 #endif
+        /// <summary>Monitor scanners only: count sessions with this verdict. Defaults to `yes`. Not applicable to other scanner types.* `yes` - Yes* `no` - No* `inconclusive` - Inconclusive</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AffectedCohortRequestVerdict? Verdict { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AffectedCohortRequestVerdict Verdict { get; set; }
+#endif
         /// <summary>Trailing window of observations to count. Defaults to 30 days.</summary>
         public int? WindowDays { get; set; }
         /// <summary>
@@ -58,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "max_score", n => { MaxScore = n.GetDoubleValue(); } },
                 { "min_score", n => { MinScore = n.GetDoubleValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
+                { "verdict", n => { Verdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AffectedCohortRequestVerdict>(global::Soenneker.PostHog.OpenApiClient.Models.AffectedCohortRequestVerdict.CreateFromDiscriminatorValue); } },
                 { "window_days", n => { WindowDays = n.GetIntValue(); } },
             };
         }
@@ -71,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("max_score", MaxScore);
             writer.WriteDoubleValue("min_score", MinScore);
             writer.WriteStringValue("tag", Tag);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AffectedCohortRequestVerdict>("verdict", Verdict);
             writer.WriteIntValue("window_days", WindowDays);
             writer.WriteAdditionalData(AdditionalData);
         }

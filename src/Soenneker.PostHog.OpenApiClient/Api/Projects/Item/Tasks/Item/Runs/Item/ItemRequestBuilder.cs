@@ -23,6 +23,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Set
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Start;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.StreamNamespace;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Stream_token;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Subscription_token;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Task_session;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Task_session_sync;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -138,6 +139,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Stream_token.Stream_tokenRequestBuilder Stream_token
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Stream_token.Stream_tokenRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The subscription_token property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Subscription_token.Subscription_tokenRequestBuilder Subscription_token
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Subscription_token.Subscription_tokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The task_session property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Task_session.Task_sessionRequestBuilder Task_session

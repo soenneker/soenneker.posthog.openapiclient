@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Edit
         {
         }
         /// <summary>
-        /// Publish per-file edits against the canvas&apos;s current source project.Diff-aware alternative to sending the complete project: each operationsets a file&apos;s content or (content null) deletes it, applied to the headthe caller read. `expected_current_version_id` is mandatory here —relative edits against an unverified base could silently merge intosomeone else&apos;s newer work.
+        /// Publish file edits against the canvas&apos;s current source project.Diff-aware alternative to sending the complete project: operationsreplace text inside a file, write, delete, or rename files, applied inorder to the head the caller read. `expected_current_version_id` is mandatory here —relative edits against an unverified base could silently merge intosomeone else&apos;s newer work.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponse"/></returns>
         /// <param name="body">Payload for publishing per-file edits against the canvas&apos;s current source.</param>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Edit
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Publish per-file edits against the canvas&apos;s current source project.Diff-aware alternative to sending the complete project: each operationsets a file&apos;s content or (content null) deletes it, applied to the headthe caller read. `expected_current_version_id` is mandatory here —relative edits against an unverified base could silently merge intosomeone else&apos;s newer work.
+        /// Publish file edits against the canvas&apos;s current source project.Diff-aware alternative to sending the complete project: operationsreplace text inside a file, write, delete, or rename files, applied inorder to the head the caller read. `expected_current_version_id` is mandatory here —relative edits against an unverified base could silently merge intosomeone else&apos;s newer work.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Payload for publishing per-file edits against the canvas&apos;s current source.</param>

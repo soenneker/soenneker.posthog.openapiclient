@@ -103,6 +103,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoRuntimeAdapter RuntimeAdapter { get; set; }
 #endif
+        /// <summary>Earliest start time in UTC. Null for runs without a schedule.</summary>
+        public DateTimeOffset? ScheduledAt { get; set; }
         /// <summary>The stage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -178,6 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoProvider>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoProvider.CreateFromDiscriminatorValue); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoReasoningEffort.CreateFromDiscriminatorValue); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoRuntimeAdapter.CreateFromDiscriminatorValue); } },
+                { "scheduled_at", n => { ScheduledAt = n.GetDateTimeOffsetValue(); } },
                 { "stage", n => { Stage = n.GetStringValue(); } },
                 { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoStateProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoStateProperty.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -206,6 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoProvider>("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
+            writer.WriteDateTimeOffsetValue("scheduled_at", ScheduledAt);
             writer.WriteStringValue("stage", Stage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoStateProperty>("state", State);
             writer.WriteStringValue("status", Status);

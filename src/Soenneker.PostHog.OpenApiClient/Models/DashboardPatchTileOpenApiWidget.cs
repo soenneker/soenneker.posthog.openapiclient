@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Widget type identifier (cannot be changed on update).* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `session_replay_list` - session_replay_list* `survey_results` - survey_results</summary>
+        /// <summary>Widget type identifier (cannot be changed on update).* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `notebook_widget` - notebook_widget* `session_replay_list` - session_replay_list* `survey_results` - survey_results</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType? WidgetType { get; set; }

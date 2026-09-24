@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The queued build. The server waits a few seconds for it, so it is often already terminal.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild? Build { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild Build { get; set; }
+#endif
         /// <summary>The canvas after the publish, including the new version pointer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "build", n => { Build = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild.CreateFromDiscriminatorValue); } },
                 { "canvas", n => { Canvas = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseCanvas>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseCanvas.CreateFromDiscriminatorValue); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetStringValue(); } },
                 { "diagnostics", n => { Diagnostics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -76,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild>("build", Build);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseCanvas>("canvas", Canvas);
             writer.WriteStringValue("current_version_id", CurrentVersionId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>("diagnostics", Diagnostics);

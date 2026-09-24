@@ -24,9 +24,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty> Conditions { get; set; }
 #endif
+        /// <summary>Output settings used to validate the preview, including numeric bounds and allows_na.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig? OutputConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig OutputConfig { get; set; }
+#endif
+        /// <summary>Expected output: boolean or numeric. Sentiment is not supported by Hog.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputType? OutputType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputType OutputType { get; set; }
+#endif
         /// <summary>Number of recent $ai_generation events to test against (1–10, default 5).</summary>
         public int? SampleCount { get; set; }
-        /// <summary>Hog source code to test. Must return true or false, or null for N/A. Output settings determine which boolean counts as a failure.</summary>
+        /// <summary>Hog source code to test. Must return a boolean or a finite number matching output_type, or null for allowed N/A. Output settings determine which boolean counts as a failure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Source { get; set; }
@@ -79,6 +95,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allows_na", n => { AllowsNa = n.GetBoolValue(); } },
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig.CreateFromDiscriminatorValue); } },
+                { "output_type", n => { OutputType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputType>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputType.CreateFromDiscriminatorValue); } },
                 { "sample_count", n => { SampleCount = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget.CreateFromDiscriminatorValue); } },
@@ -94,6 +112,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allows_na", AllowsNa);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty>("conditions", Conditions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig>("output_config", OutputConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputType>("output_type", OutputType);
             writer.WriteIntValue("sample_count", SampleCount);
             writer.WriteStringValue("source", Source);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget>("target", Target);

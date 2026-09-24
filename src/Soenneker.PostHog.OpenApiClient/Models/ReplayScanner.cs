@@ -143,6 +143,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Increments on every config-changing save. Observations snapshot this value.</summary>
         public int? ScannerVersion { get; private set; }
+        /// <summary>How much the scheduled sweep is slowed to keep this scanner inside its daily ClickHouse read budget. 1 means it checks for new recordings on the normal schedule; N means it checks once every N schedule intervals. Expensive filters raise it.</summary>
+        public int? SweepThrottleFactor { get; private set; }
         /// <summary>Organizational tags for this scanner. Distinct from a classifier&apos;s categories in scanner_config. Tags cannot contain commas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -214,6 +216,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "scanner_config", n => { ScannerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerConfig.CreateFromDiscriminatorValue); } },
                 { "scanner_type", n => { ScannerType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType.CreateFromDiscriminatorValue); } },
                 { "scanner_version", n => { ScannerVersion = n.GetIntValue(); } },
+                { "sweep_throttle_factor", n => { SweepThrottleFactor = n.GetIntValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },

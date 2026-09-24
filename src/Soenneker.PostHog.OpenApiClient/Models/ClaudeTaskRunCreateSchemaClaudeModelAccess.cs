@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ClaudeModelAccessEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelAccessEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClaudeTaskRunCreateSchemaClaudeModelAccess : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ClaudeModelAccessEnumWrapper"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelAccessEnumWrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeModelAccessEnumWrapper? ClaudeModelAccessEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ModelAccessEnumWrapper? ModelAccessEnumWrapper { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeModelAccessEnumWrapper ClaudeModelAccessEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ModelAccessEnumWrapper ModelAccessEnumWrapper { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,9 +39,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaClaudeModelAccess();
-            if("ClaudeModelAccessEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ModelAccessEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ClaudeModelAccessEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ClaudeModelAccessEnumWrapper();
+                result.ModelAccessEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ModelAccessEnumWrapper();
             }
             return result;
         }
@@ -51,9 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ClaudeModelAccessEnumWrapper != null)
+            if(ModelAccessEnumWrapper != null)
             {
-                return ClaudeModelAccessEnumWrapper.GetFieldDeserializers();
+                return ModelAccessEnumWrapper.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
@@ -68,9 +68,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ClaudeModelAccessEnumWrapper != null)
+            if(ModelAccessEnumWrapper != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeModelAccessEnumWrapper>(null, ClaudeModelAccessEnumWrapper);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelAccessEnumWrapper>(null, ModelAccessEnumWrapper);
             }
             else if(NullEnum != null)
             {

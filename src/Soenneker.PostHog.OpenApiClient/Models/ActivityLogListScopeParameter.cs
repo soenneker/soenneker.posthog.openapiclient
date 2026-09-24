@@ -288,6 +288,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         LogsRetentionRule,
         #pragma warning restore CS1591
+        [EnumMember(Value = "TracesRetentionRule")]
+        #pragma warning disable CS1591
+        TracesRetentionRule,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DashboardWidget")]
         #pragma warning disable CS1591
         DashboardWidget,

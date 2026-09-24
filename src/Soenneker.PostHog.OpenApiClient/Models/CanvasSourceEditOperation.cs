@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// One per-file edit: set a file&apos;s content, or delete it.
+    /// One file edit: replace text in a file, write a whole file, delete it, or rename it.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourceEditOperation : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The file&apos;s complete new content. Null (or omitted) deletes the file.</summary>
+        /// <summary>For &apos;write&apos;: the file&apos;s complete new content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Content { get; set; }
@@ -23,7 +23,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
-        /// <summary>Project-relative path of the file to write or delete (e.g. &quot;src/canvas.tsx&quot;).</summary>
+        /// <summary>For &apos;rename&apos;: the file&apos;s new project-relative path.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NewPath { get; set; }
+#nullable restore
+#else
+        public string NewPath { get; set; }
+#endif
+        /// <summary>For &apos;str_replace&apos;: the text that replaces old_string. An empty string deletes old_string.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NewString { get; set; }
+#nullable restore
+#else
+        public string NewString { get; set; }
+#endif
+        /// <summary>For &apos;str_replace&apos;: the exact text to replace, copied from the file with a few surrounding lines so it matches one place only. If whitespace differs slightly, a unique line-by-line match is still accepted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OldString { get; set; }
+#nullable restore
+#else
+        public string OldString { get; set; }
+#endif
+        /// <summary>What to do. &apos;str_replace&apos; replaces old_string with new_string inside the file: the default for changing an existing file. &apos;write&apos; sets the file&apos;s complete content (new files, full rewrites). &apos;delete&apos; removes the file. &apos;rename&apos; moves it to new_path. When omitted, it follows the fields sent: old_string or new_string means &apos;str_replace&apos;, new_path means &apos;rename&apos;, non-null content means &apos;write&apos;, and content null means &apos;delete&apos;. An operation with none of these fields is rejected.* `write` - Write* `delete` - Delete* `rename` - Rename* `str_replace` - Str Replace</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp? Op { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp Op { get; set; }
+#endif
+        /// <summary>Project-relative path of the file to edit (e.g. &quot;src/canvas.tsx&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Path { get; set; }
@@ -31,12 +63,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
+        /// <summary>For &apos;str_replace&apos;: replace every exact match of old_string instead of requiring exactly one.</summary>
+        public bool? ReplaceAll { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperation"/> and sets the default values.
         /// </summary>
         public CanvasSourceEditOperation()
         {
             AdditionalData = new Dictionary<string, object>();
+            ReplaceAll = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -57,7 +92,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
+                { "new_path", n => { NewPath = n.GetStringValue(); } },
+                { "new_string", n => { NewString = n.GetStringValue(); } },
+                { "old_string", n => { OldString = n.GetStringValue(); } },
+                { "op", n => { Op = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp.CreateFromDiscriminatorValue); } },
                 { "path", n => { Path = n.GetStringValue(); } },
+                { "replace_all", n => { ReplaceAll = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -68,7 +108,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
+            writer.WriteStringValue("new_path", NewPath);
+            writer.WriteStringValue("new_string", NewString);
+            writer.WriteStringValue("old_string", OldString);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp>("op", Op);
             writer.WriteStringValue("path", Path);
+            writer.WriteBoolValue("replace_all", ReplaceAll);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

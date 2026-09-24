@@ -55,6 +55,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_filter;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_schemas;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_streams;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events_retention;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_saved_metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments;
@@ -142,6 +143,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_mentions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Terminal_ai;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analytics_config;
@@ -443,6 +445,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.EventsRequestBuilder Events
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.EventsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The events_retention property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events_retention.Events_retentionRequestBuilder Events_retention
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events_retention.Events_retentionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The experiment_holdouts property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiment_holdouts.Experiment_holdoutsRequestBuilder Experiment_holdouts
@@ -878,6 +885,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.TasksRequestBuilder Tasks
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.TasksRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The terminal_ai property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Terminal_ai.Terminal_aiRequestBuilder Terminal_ai
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Terminal_ai.Terminal_aiRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tracing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.TracingRequestBuilder Tracing

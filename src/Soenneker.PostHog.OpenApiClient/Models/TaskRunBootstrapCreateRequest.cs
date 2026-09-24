@@ -35,6 +35,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess ClaudeModelAccess { get; set; }
 #endif
+        /// <summary>How the Codex runtime pays for model use. &apos;own-subscription&apos; makes the sandbox fetch a ChatGPT access token from the PostHog API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.* `posthog-gateway` - posthog-gateway* `own-subscription` - own-subscription</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess? CodexModelAccess { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess CodexModelAccess { get; set; }
+#endif
         /// <summary>Context window size for models that support the 1M window.* `200k` - 200k* `1m` - 1m</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -176,6 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "benjamin_enabled", n => { BenjaminEnabled = n.GetBoolValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "claude_model_access", n => { ClaudeModelAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess.CreateFromDiscriminatorValue); } },
+                { "codex_model_access", n => { CodexModelAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess.CreateFromDiscriminatorValue); } },
                 { "context_window", n => { ContextWindow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestContextWindow>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestContextWindow.CreateFromDiscriminatorValue); } },
                 { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
                 { "environment", n => { Environment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironment>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironment.CreateFromDiscriminatorValue); } },
@@ -206,6 +215,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("benjamin_enabled", BenjaminEnabled);
             writer.WriteStringValue("branch", Branch);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess>("claude_model_access", ClaudeModelAccess);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess>("codex_model_access", CodexModelAccess);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestContextWindow>("context_window", ContextWindow);
             writer.WriteGuidValue("custom_image_id", CustomImageId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironment>("environment", Environment);

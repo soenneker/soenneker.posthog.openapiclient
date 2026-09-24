@@ -19,6 +19,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? PrsMerged { get; set; }
         /// <summary>Implementation PRs opened by self-driving on those reports.</summary>
         public int? PrsOpened { get; set; }
+        /// <summary>The newest PRs counted in `prs_opened`, at most 20.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest>? PullRequests { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest> PullRequests { get; set; }
+#endif
+        /// <summary>The newest reports counted in `reports_contributed`, at most 20.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport>? Reports { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport> Reports { get; set; }
+#endif
         /// <summary>Signal reports that include at least one of this scanner&apos;s signals. Reports usually aggregate signals from several sources, so this counts contributions, not sole causes.</summary>
         public int? ReportsContributed { get; set; }
         /// <summary>Signals this scanner has pushed into the Signals inbox, all time.</summary>
@@ -50,6 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "prs_merged", n => { PrsMerged = n.GetIntValue(); } },
                 { "prs_opened", n => { PrsOpened = n.GetIntValue(); } },
+                { "pull_requests", n => { PullRequests = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "reports", n => { Reports = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport>(global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "reports_contributed", n => { ReportsContributed = n.GetIntValue(); } },
                 { "signals_emitted", n => { SignalsEmitted = n.GetIntValue(); } },
             };
@@ -63,6 +81,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("prs_merged", PrsMerged);
             writer.WriteIntValue("prs_opened", PrsOpened);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest>("pull_requests", PullRequests);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport>("reports", Reports);
             writer.WriteIntValue("reports_contributed", ReportsContributed);
             writer.WriteIntValue("signals_emitted", SignalsEmitted);
             writer.WriteAdditionalData(AdditionalData);

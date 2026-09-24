@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Add_repository;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Available_repositories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Install_info;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Sync_installation;
@@ -20,6 +22,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Repo_configsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The add_repository property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Add_repository.Add_repositoryRequestBuilder Add_repository
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Add_repository.Add_repositoryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The available_repositories property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Available_repositories.Available_repositoriesRequestBuilder Available_repositories
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Available_repositories.Available_repositoriesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The install_info property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Install_info.Install_infoRequestBuilder Install_info
         {

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ImpactRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{%2Did}/impact{?max_score*,min_score*,tag*,window_days*}", pathParameters)
+        public ImpactRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{%2Did}/impact{?max_score*,min_score*,tag*,verdict*,window_days*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ImpactRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{%2Did}/impact{?max_score*,min_score*,tag*,window_days*}", rawUrl)
+        public ImpactRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{%2Did}/impact{?max_score*,min_score*,tag*,verdict*,window_days*}", rawUrl)
         {
         }
         /// <summary>
@@ -101,6 +101,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
             [QueryParameter("tag")]
             public string Tag { get; set; }
 #endif
+            /// <summary>Monitor scanners only: count sessions with this verdict. Defaults to `yes`. Not applicable to other scanner types.* `yes` - Yes* `no` - No* `inconclusive` - Inconclusive</summary>
+            [QueryParameter("verdict")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.VisionScannersImpactRetrieveVerdictParameter? Verdict { get; set; }
             /// <summary>Trailing window of observations to count. Defaults to 30 days.</summary>
             [QueryParameter("window_days")]
             public int? WindowDays { get; set; }

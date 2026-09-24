@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? DeviceIdShare { get; set; }
         /// <summary>unique_persons divided by window_days. Pass it as exposure_rate_per_day to experiment-calculate-running-time, scaled by the share of traffic the experiment will include.</summary>
         public double? ExposuresPerDayEstimate { get; set; }
-        /// <summary>Up to 5 SDKs by persons reached.</summary>
+        /// <summary>Up to 5 SDKs, most persons reached first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>? Libs { get; set; }
@@ -30,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach> Libs { get; set; }
 #endif
+        /// <summary>True when more SDKs sent target events than libs lists.</summary>
+        public bool? LibsTruncated { get; set; }
         /// <summary>The target event that was counted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "device_id_share", n => { DeviceIdShare = n.GetDoubleValue(); } },
                 { "exposures_per_day_estimate", n => { ExposuresPerDayEstimate = n.GetDoubleValue(); } },
                 { "libs", n => { Libs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "libs_truncated", n => { LibsTruncated = n.GetBoolValue(); } },
                 { "source_event", n => { SourceEvent = n.GetStringValue(); } },
                 { "target_properties", n => { TargetProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "target_url_contains", n => { TargetUrlContains = n.GetStringValue(); } },
@@ -110,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("device_id_share", DeviceIdShare);
             writer.WriteDoubleValue("exposures_per_day_estimate", ExposuresPerDayEstimate);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>("libs", Libs);
+            writer.WriteBoolValue("libs_truncated", LibsTruncated);
             writer.WriteStringValue("source_event", SourceEvent);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>("target_properties", TargetProperties);
             writer.WriteStringValue("target_url_contains", TargetUrlContains);

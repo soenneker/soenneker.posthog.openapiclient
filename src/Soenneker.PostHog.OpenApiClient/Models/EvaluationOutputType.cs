@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Output format. Use &apos;boolean&apos; for pass/fail evaluations and &apos;sentiment&apos; for sentiment analysis.* `boolean` - Boolean (Pass/Fail)* `sentiment` - Sentiment
+    /// Output format: &apos;boolean&apos;, &apos;numeric&apos; for a finite score, or &apos;sentiment&apos; for sentiment analysis.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `sentiment` - Sentiment
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluationOutputType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `boolean` - Boolean (Pass/Fail)* `sentiment` - Sentiment</summary>
+        /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `sentiment` - Sentiment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OutputTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputType"/> and sets the default values.

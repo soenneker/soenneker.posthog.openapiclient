@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?client_query_id*,distinct_id*,email*,format*,limit*,offset*,properties*,search*}", pathParameters)
+        public PersonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?client_query_id*,distinct_id*,email*,format*,include_matched_fields*,limit*,offset*,properties*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -97,26 +97,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?client_query_id*,distinct_id*,email*,format*,limit*,offset*,properties*,search*}", rawUrl)
+        public PersonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?client_query_id*,distinct_id*,email*,format*,include_matched_fields*,limit*,offset*,properties*,search*}", rawUrl)
         {
         }
         /// <summary>
         /// This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonRecordList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonListRecordList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonRecordList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.PersonsRequestBuilder.PersonsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonListRecordList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.PersonsRequestBuilder.PersonsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonRecordList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.PersonsRequestBuilder.PersonsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonListRecordList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.PersonsRequestBuilder.PersonsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonRecordList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonRecordList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonListRecordList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPersonListRecordList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
@@ -186,6 +186,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsListFormatParameter? Format { get; set; }
             #pragma warning restore CS1591
+            /// <summary>Tag each search result with `matched_fields`, the searched fields the term was found in. A complete email address that exactly matches a distinct ID then returns that person first, followed by every person whose email or name property contains the address.</summary>
+            [QueryParameter("include_matched_fields")]
+            public bool? IncludeMatchedFields { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

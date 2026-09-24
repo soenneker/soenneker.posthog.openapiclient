@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Distinct sessions with an affected observation in the window. For monitors only verdict-yes observations count; for other scanner types every succeeded observation counts.</summary>
+        /// <summary>Distinct sessions with an affected observation in the window. For monitors only observations with the requested verdict count (yes by default); for other scanner types every succeeded observation counts.</summary>
         public int? AffectedSessions { get; private set; }
         /// <summary>Distinct users behind the affected sessions, by distinct ID. May include anonymous device IDs when the recorded sessions were not identified.</summary>
         public int? AffectedUsers { get; private set; }

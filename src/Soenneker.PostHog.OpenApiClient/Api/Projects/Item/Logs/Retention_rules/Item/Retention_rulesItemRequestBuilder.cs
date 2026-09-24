@@ -33,6 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
         public Retention_rulesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs/retention_rules/{id}", rawUrl)
         {
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,6 +50,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -62,6 +68,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -79,6 +88,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -96,6 +108,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRule.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -111,6 +126,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
             requestInfo.Configure(requestConfiguration);
             return requestInfo;
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -127,6 +145,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -146,6 +167,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
+        /// <summary>
+        /// Retention rules for one record kind.`TracingRetentionRuleViewSet` reuses this for span rules, which live in their own model. Itswaps the queryset, the serializer and `team_rules`, so every read and write here goes through`team_rules` rather than naming a model.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

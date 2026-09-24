@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>How long spans are kept before they are deleted, in days. Applied at ingest, so a change only affects spans received after it. Can be changed at most once per 24 hours. Span retention rules override this period for the spans they match.</summary>
+        public int? RetentionDays { get; set; }
+        /// <summary>The retention_last_updated property</summary>
+        public DateTimeOffset? RetentionLastUpdated { get; private set; }
         /// <summary>Span or resource attribute keys whose values should match a person&apos;s distinct_id — a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to [&apos;posthogDistinctId&apos;], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,6 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "retention_days", n => { RetentionDays = n.GetIntValue(); } },
+                { "retention_last_updated", n => { RetentionLastUpdated = n.GetDateTimeOffsetValue(); } },
                 { "tracing_distinct_id_attribute_keys", n => { TracingDistinctIdAttributeKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tracing_session_id_attribute_keys", n => { TracingSessionIdAttributeKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -66,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("retention_days", RetentionDays);
             writer.WriteCollectionOfPrimitiveValues<string>("tracing_distinct_id_attribute_keys", TracingDistinctIdAttributeKeys);
             writer.WriteCollectionOfPrimitiveValues<string>("tracing_session_id_attribute_keys", TracingSessionIdAttributeKeys);
             writer.WriteAdditionalData(AdditionalData);

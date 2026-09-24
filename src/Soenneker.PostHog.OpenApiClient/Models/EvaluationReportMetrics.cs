@@ -14,7 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Evaluation result type. Stored metrics without this field represent boolean evaluations.* `boolean` - Boolean (Pass/Fail)* `sentiment` - Sentiment</summary>
+        /// <summary>Numeric score configuration and passing rule used for both report periods.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig? OutputConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig OutputConfig { get; set; }
+#endif
+        /// <summary>Evaluation result type. Stored metrics without this field represent boolean evaluations.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `sentiment` - Sentiment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType? OutputType { get; set; }
@@ -22,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType OutputType { get; set; }
 #endif
-        /// <summary>Boolean pass percentage, excluding results marked not applicable.</summary>
+        /// <summary>Boolean or numeric pass percentage, excluding N/A results. Null when no numeric scores were produced.</summary>
         public double? PassRate { get; set; }
         /// <summary>ISO 8601 end of the evaluation window represented by these metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PeriodStart { get; set; }
 #endif
-        /// <summary>Boolean pass percentage for the previous period, or null when unavailable.</summary>
+        /// <summary>Boolean or numeric pass percentage for the previous period, or null when unavailable.</summary>
         public double? PreviousPassRate { get; set; }
         /// <summary>Count by result label for the previous period, or null when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig.CreateFromDiscriminatorValue); } },
                 { "output_type", n => { OutputType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType.CreateFromDiscriminatorValue); } },
                 { "pass_rate", n => { PassRate = n.GetDoubleValue(); } },
                 { "period_end", n => { PeriodEnd = n.GetStringValue(); } },
@@ -123,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig>("output_config", OutputConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType>("output_type", OutputType);
             writer.WriteDoubleValue("pass_rate", PassRate);
             writer.WriteStringValue("period_end", PeriodEnd);

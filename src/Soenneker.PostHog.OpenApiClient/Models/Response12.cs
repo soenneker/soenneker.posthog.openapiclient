@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem> Columns { get; set; }
 #endif
+        /// <summary>ISO timestamp of the oldest precompute window backing this result — surfaced as &quot;data as of X&quot;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DataComputedAt { get; set; }
+#nullable restore
+#else
+        public string DataComputedAt { get; set; }
+#endif
         /// <summary>Query error. Returned only if &apos;explain&apos; or `modifiers.debug` is true. Throws an error otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The offset property</summary>
         public int? Offset { get; set; }
+        /// <summary>True when a conversion goal&apos;s precompute has not been warmed for this window yet — the UI shows a &quot;computing&quot; state rather than empty results. Marketing analytics serves exclusively from precompute.</summary>
+        public bool? PrecomputeNotReady { get; set; }
         /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -141,12 +151,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem>(global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "dataComputedAt", n => { DataComputedAt = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
+                { "precomputeNotReady", n => { PrecomputeNotReady = n.GetBoolValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
@@ -166,12 +178,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem>("columns", Columns);
+            writer.WriteStringValue("dataComputedAt", DataComputedAt);
             writer.WriteStringValue("error", Error);
             writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
+            writer.WriteBoolValue("precomputeNotReady", PrecomputeNotReady);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_compare_date_range", ResolvedCompareDateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);

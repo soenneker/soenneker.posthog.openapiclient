@@ -169,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
             [QueryParameter("status")]
             public string Status { get; set; }
 #endif
-            /// <summary>Filter by what caused the run: self_driving, manual, label, or all.</summary>
+            /// <summary>Filter by what caused the run. Leave it unset to include runs from every trigger. &apos;all&apos; is not a wildcard: it matches only runs in repos that review every pull request event. The other values: &apos;label&apos; (the repo&apos;s trigger label opted the PR in), &apos;manual&apos; (someone requested the review through the API or MCP), and &apos;self_driving&apos; (stamphog reviewed a bot-authored PR from the inbox).</summary>
             [QueryParameter("trigger")]
             public global::Soenneker.PostHog.OpenApiClient.Models.StamphogReviewRunsListTriggerParameter? Trigger { get; set; }
         }

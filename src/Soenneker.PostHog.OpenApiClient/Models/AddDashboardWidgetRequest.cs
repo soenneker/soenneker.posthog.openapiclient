@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetAddRequestOpenApi"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetAddRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetAddRequestOpenApi"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AddDashboardWidgetRequest : IComposedTypeWrapper, IParsable
@@ -61,6 +61,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetAddRequestOpenApi LogsListWidgetAddRequestOpenApi { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetAddRequestOpenApi"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetAddRequestOpenApi? NotebookWidgetAddRequestOpenApi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetAddRequestOpenApi NotebookWidgetAddRequestOpenApi { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetAddRequestOpenApi"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,6 +119,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.LogsListWidgetAddRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetAddRequestOpenApi();
             }
+            else if("NotebookWidgetAddRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.NotebookWidgetAddRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetAddRequestOpenApi();
+            }
             else if("SessionReplayListWidgetAddRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.SessionReplayListWidgetAddRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetAddRequestOpenApi();
@@ -150,6 +162,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(LogsListWidgetAddRequestOpenApi != null)
             {
                 return LogsListWidgetAddRequestOpenApi.GetFieldDeserializers();
+            }
+            else if(NotebookWidgetAddRequestOpenApi != null)
+            {
+                return NotebookWidgetAddRequestOpenApi.GetFieldDeserializers();
             }
             else if(SessionReplayListWidgetAddRequestOpenApi != null)
             {
@@ -191,6 +207,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(LogsListWidgetAddRequestOpenApi != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetAddRequestOpenApi>(null, LogsListWidgetAddRequestOpenApi);
+            }
+            else if(NotebookWidgetAddRequestOpenApi != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetAddRequestOpenApi>(null, NotebookWidgetAddRequestOpenApi);
             }
             else if(SessionReplayListWidgetAddRequestOpenApi != null)
             {

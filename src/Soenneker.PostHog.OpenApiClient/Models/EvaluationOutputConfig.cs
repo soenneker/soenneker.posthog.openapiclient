@@ -8,14 +8,28 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem.
+    /// Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For &apos;numeric&apos;: only min/max/step, allows_na, and passing_rule {operator: &apos;gte&apos;|&apos;lte&apos;, threshold}. Do not send true_is_failure for numeric output. For &apos;sentiment&apos;: {}.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluationOutputConfig : IParsable
     {
         /// <summary>Whether the evaluation can return N/A for non-applicable generations.</summary>
         public bool? AllowsNa { get; set; }
-        /// <summary>Whether a true result means the evaluation found a problem. False (the default) suits pass/fail evaluations, where a true result satisfied the criteria. Set it to true for detector-style evaluations, so a true result is counted and labeled as a fail.</summary>
+        /// <summary>Inclusive maximum numeric score. Omit for no upper bound.</summary>
+        public double? Max { get; set; }
+        /// <summary>Inclusive minimum numeric score. Omit for no lower bound.</summary>
+        public double? Min { get; set; }
+        /// <summary>Optional numeric passing rule. Null removes the rule; historical scores use the current rule.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule? PassingRule { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule PassingRule { get; set; }
+#endif
+        /// <summary>Optional positive input increment. Does not round evaluation results.</summary>
+        public double? Step { get; set; }
+        /// <summary>Boolean output only. Omit for numeric and sentiment output. Whether a true result means the evaluation found a problem. False (the default) suits pass/fail evaluations, where a true result satisfied the criteria. Set it to true for detector-style evaluations, so a true result is counted and labeled as a fail.</summary>
         public bool? TrueIsFailure { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -36,6 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allows_na", n => { AllowsNa = n.GetBoolValue(); } },
+                { "max", n => { Max = n.GetDoubleValue(); } },
+                { "min", n => { Min = n.GetDoubleValue(); } },
+                { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule.CreateFromDiscriminatorValue); } },
+                { "step", n => { Step = n.GetDoubleValue(); } },
                 { "true_is_failure", n => { TrueIsFailure = n.GetBoolValue(); } },
             };
         }
@@ -47,6 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allows_na", AllowsNa);
+            writer.WriteDoubleValue("max", Max);
+            writer.WriteDoubleValue("min", Min);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule>("passing_rule", PassingRule);
+            writer.WriteDoubleValue("step", Step);
             writer.WriteBoolValue("true_is_failure", TrueIsFailure);
         }
     }

@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Time this discovery completed.</summary>
+        public DateTimeOffset? DiscoveredAt { get; set; }
+        /// <summary>Correlation ID for this discovery response.</summary>
+        public Guid? DiscoveryId { get; set; }
         /// <summary>GitHub installations available to link to this project: the organization&apos;s existing installations plus any the user&apos;s personal GitHub link can see but that aren&apos;t linked to any project yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,8 +26,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation> Installations { get; set; }
 #endif
+        /// <summary>Whether personal discovery succeeded, has no connection, or is unavailable.* `ok` - Ok* `not_connected` - Not Connected* `unavailable` - Unavailable</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus? PersonalDiscoveryStatus { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus PersonalDiscoveryStatus { get; set; }
+#endif
         /// <summary>Whether the requesting user has a personal GitHub account linked (via Linked Accounts). Used to prompt for that link when it would surface more installations to adopt.</summary>
         public bool? PersonalGithubConnected { get; set; }
+        /// <summary>GitHub identity of the credential used for personal discovery.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PersonalGithubLogin { get; set; }
+#nullable restore
+#else
+        public string PersonalGithubLogin { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse"/> and sets the default values.
         /// </summary>
@@ -49,8 +69,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "discovered_at", n => { DiscoveredAt = n.GetDateTimeOffsetValue(); } },
+                { "discovery_id", n => { DiscoveryId = n.GetGuidValue(); } },
                 { "installations", n => { Installations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "personal_discovery_status", n => { PersonalDiscoveryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus.CreateFromDiscriminatorValue); } },
                 { "personal_github_connected", n => { PersonalGithubConnected = n.GetBoolValue(); } },
+                { "personal_github_login", n => { PersonalGithubLogin = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -60,8 +84,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("discovered_at", DiscoveredAt);
+            writer.WriteGuidValue("discovery_id", DiscoveryId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation>("installations", Installations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus>("personal_discovery_status", PersonalDiscoveryStatus);
             writer.WriteBoolValue("personal_github_connected", PersonalGithubConnected);
+            writer.WriteStringValue("personal_github_login", PersonalGithubLogin);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

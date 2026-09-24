@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public File_systemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_system{?limit*,offset*,search*}", pathParameters)
+        public File_systemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_system{?include_content_type*,limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public File_systemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_system{?limit*,offset*,search*}", rawUrl)
+        public File_systemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_system{?include_content_type*,limit*,offset*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedFileSystemList"/></returns>
@@ -157,6 +157,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system
         public partial class File_systemRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Include meta.content_type for notebooks and insights on this page, without their contents.</summary>
+            [QueryParameter("include_content_type")]
+            public bool? IncludeContentType { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

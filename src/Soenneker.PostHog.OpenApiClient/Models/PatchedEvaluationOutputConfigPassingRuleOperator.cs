@@ -3,17 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `posthog-gateway` - posthog-gateway* `own-subscription` - own-subscription</summary>
+    /// <summary>Pass at or above (gte), or at or below (lte), the threshold.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ClaudeModelAccessEnum
+    public enum PatchedEvaluationOutputConfigPassingRuleOperator
     {
-        [EnumMember(Value = "posthog-gateway")]
+        [EnumMember(Value = "gte")]
         #pragma warning disable CS1591
-        PosthogGateway,
+        Gte,
         #pragma warning restore CS1591
-        [EnumMember(Value = "own-subscription")]
+        [EnumMember(Value = "lte")]
         #pragma warning disable CS1591
-        OwnSubscription,
+        Lte,
         #pragma warning restore CS1591
     }
 }

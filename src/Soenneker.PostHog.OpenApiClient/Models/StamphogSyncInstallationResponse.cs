@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Result of syncing an installation: rows created/kept for this team, plus conflicting repos skipped.
+    /// Result of syncing an installation: the team&apos;s rows bound to it, and what the team can add now.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StamphogSyncInstallationResponse : IAdditionalDataHolder, IParsable
@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True only on the discovery path (no installation_id) when the caller can reach no installation of this App — it isn&apos;t installed anywhere they can see. The frontend should route the user to the GitHub install page (install_url). Always false on the explicit installation_id path.</summary>
         public bool? AppNotInstalled { get; private set; }
+        /// <summary>How many repositories this team can add after the sync, across all its connected installations. List them with available_repositories.</summary>
+        public int? AvailableCount { get; private set; }
         /// <summary>Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Skipped { get; private set; }
 #endif
-        /// <summary>Repo configs now bound to this team for the installation (created this call or already present).</summary>
+        /// <summary>Repo configs this team already had for the installation&apos;s repositories, now bound to it. A sync creates no repo config: use add_repository to turn reviews on for a repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig>? Synced { get; private set; }
@@ -67,6 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "app_not_installed", n => { AppNotInstalled = n.GetBoolValue(); } },
+                { "available_count", n => { AvailableCount = n.GetIntValue(); } },
                 { "installations", n => { Installations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StamphogDiscoveredInstallation>(global::Soenneker.PostHog.OpenApiClient.Models.StamphogDiscoveredInstallation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "skipped", n => { Skipped = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "synced", n => { Synced = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig>(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig.CreateFromDiscriminatorValue)?.AsList(); } },

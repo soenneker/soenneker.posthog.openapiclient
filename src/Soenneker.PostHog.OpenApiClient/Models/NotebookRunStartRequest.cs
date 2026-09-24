@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Include prepared embedded insights when refreshing a dashboard widget. Requires notebook widgets to be enabled.</summary>
+        public bool? IncludePreparedInsights { get; set; }
         /// <summary>Replace the notebook&apos;s variables with this list before the run starts, so the results match what the document declares. Omit it to run with the variables already saved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public NotebookRunStartRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            IncludePreparedInsights = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,6 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "include_prepared_insights", n => { IncludePreparedInsights = n.GetBoolValue(); } },
                 { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -57,6 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("include_prepared_insights", IncludePreparedInsights);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }

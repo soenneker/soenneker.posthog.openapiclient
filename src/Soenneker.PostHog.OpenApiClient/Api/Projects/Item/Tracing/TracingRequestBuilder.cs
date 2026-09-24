@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Retention_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Views;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracingRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The retention_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Retention_rules.Retention_rulesRequestBuilder Retention_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Retention_rules.Retention_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The spans property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.SpansRequestBuilder Spans
         {

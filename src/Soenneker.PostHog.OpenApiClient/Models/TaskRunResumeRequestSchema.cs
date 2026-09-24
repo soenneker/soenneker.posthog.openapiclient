@@ -40,6 +40,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaMode Mode { get; set; }
 #endif
+        /// <summary>The model property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Model { get; set; }
+#nullable restore
+#else
+        public string Model { get; set; }
+#endif
         /// <summary>Initial or follow-up user message to include in the run prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaPrAuthorshipMode PrAuthorshipMode { get; set; }
 #endif
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum? ReasoningEffort { get; set; }
         /// <summary>ID of a previous run to resume from. Must belong to the same task.</summary>
         public Guid? ResumeFromRunId { get; set; }
         /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report* `agent` - agent</summary>
@@ -68,6 +78,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Optional sandbox environment to apply for this cloud run.</summary>
         public Guid? SandboxEnvironmentId { get; set; }
+        /// <summary>Earliest start time for a one-off cloud run, in ISO 8601 format. Must be in the future and within 30 days. Times without an offset use UTC. Omit or send null to start immediately.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScheduledAt { get; set; }
+#nullable restore
+#else
+        public string ScheduledAt { get; set; }
+#endif
         /// <summary>Optional signal report identifier when this run was started from Inbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,11 +123,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
                 { "github_user_token", n => { GithubUserToken = n.GetStringValue(); } },
                 { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaMode>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaMode.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetStringValue(); } },
                 { "pending_user_message", n => { PendingUserMessage = n.GetStringValue(); } },
                 { "pr_authorship_mode", n => { PrAuthorshipMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaPrAuthorshipMode>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaPrAuthorshipMode.CreateFromDiscriminatorValue); } },
+                { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>(); } },
                 { "resume_from_run_id", n => { ResumeFromRunId = n.GetGuidValue(); } },
                 { "run_source", n => { RunSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaRunSource>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaRunSource.CreateFromDiscriminatorValue); } },
                 { "sandbox_environment_id", n => { SandboxEnvironmentId = n.GetGuidValue(); } },
+                { "scheduled_at", n => { ScheduledAt = n.GetStringValue(); } },
                 { "signal_report_id", n => { SignalReportId = n.GetStringValue(); } },
             };
         }
@@ -124,11 +145,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("custom_image_id", CustomImageId);
             writer.WriteStringValue("github_user_token", GithubUserToken);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaMode>("mode", Mode);
+            writer.WriteStringValue("model", Model);
             writer.WriteStringValue("pending_user_message", PendingUserMessage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaPrAuthorshipMode>("pr_authorship_mode", PrAuthorshipMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>("reasoning_effort", ReasoningEffort);
             writer.WriteGuidValue("resume_from_run_id", ResumeFromRunId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaRunSource>("run_source", RunSource);
             writer.WriteGuidValue("sandbox_environment_id", SandboxEnvironmentId);
+            writer.WriteStringValue("scheduled_at", ScheduledAt);
             writer.WriteStringValue("signal_report_id", SignalReportId);
             writer.WriteAdditionalData(AdditionalData);
         }

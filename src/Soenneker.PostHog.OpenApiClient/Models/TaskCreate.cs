@@ -148,6 +148,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Sandbox environment for the first run when start_run is true, or for matching a pre-warmed run. Not persisted on the task.</summary>
         public Guid? SandboxEnvironmentId { get; set; }
+        /// <summary>Earliest start time for a one-off cloud run, in ISO 8601 format. Must be in the future and within 30 days. Times without an offset use UTC. Omit or send null to start immediately.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScheduledAt { get; set; }
+#nullable restore
+#else
+        public string ScheduledAt { get; set; }
+#endif
         /// <summary>Signal report this task implements, when created from a report.</summary>
         public Guid? SignalReport { get; set; }
         /// <summary>Question to forward to the signal report&apos;s scout when creating a discussion task. Send an empty string when there is no question. Omit only for older clients that embed the question in the task description. Not persisted on the task.</summary>
@@ -166,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SignalReportTaskRelationship { get; set; }
 #endif
-        /// <summary>Start the task&apos;s first cloud run immediately after creation.</summary>
+        /// <summary>Create the first cloud run. It starts immediately unless scheduled_at is set.</summary>
         public bool? StartRun { get; set; }
         /// <summary>Short human-readable title. Auto-generated from `description` when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -226,6 +234,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "runtime", n => { Runtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntime.CreateFromDiscriminatorValue); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntimeAdapter.CreateFromDiscriminatorValue); } },
                 { "sandbox_environment_id", n => { SandboxEnvironmentId = n.GetGuidValue(); } },
+                { "scheduled_at", n => { ScheduledAt = n.GetStringValue(); } },
                 { "signal_report", n => { SignalReport = n.GetGuidValue(); } },
                 { "signal_report_discussion_question", n => { SignalReportDiscussionQuestion = n.GetStringValue(); } },
                 { "signal_report_task_relationship", n => { SignalReportTaskRelationship = n.GetStringValue(); } },
@@ -263,6 +272,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntime>("runtime", Runtime);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteGuidValue("sandbox_environment_id", SandboxEnvironmentId);
+            writer.WriteStringValue("scheduled_at", ScheduledAt);
             writer.WriteGuidValue("signal_report", SignalReport);
             writer.WriteStringValue("signal_report_discussion_question", SignalReportDiscussionQuestion);
             writer.WriteStringValue("signal_report_task_relationship", SignalReportTaskRelationship);

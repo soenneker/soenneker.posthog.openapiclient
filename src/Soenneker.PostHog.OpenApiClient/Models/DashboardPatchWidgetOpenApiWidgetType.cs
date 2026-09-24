@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Widget type identifier (cannot be changed on update).* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `session_replay_list` - session_replay_list* `survey_results` - survey_results
+    /// Widget type identifier (cannot be changed on update).* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `notebook_widget` - notebook_widget* `session_replay_list` - session_replay_list* `survey_results` - survey_results
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DashboardPatchWidgetOpenApiWidgetType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `session_replay_list` - session_replay_list* `survey_results` - survey_results</summary>
+        /// <summary>* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `notebook_widget` - notebook_widget* `session_replay_list` - session_replay_list* `survey_results` - survey_results</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType"/> and sets the default values.

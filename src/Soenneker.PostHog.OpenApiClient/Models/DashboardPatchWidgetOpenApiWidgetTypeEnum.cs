@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `session_replay_list` - session_replay_list* `survey_results` - survey_results</summary>
+    /// <summary>* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `notebook_widget` - notebook_widget* `session_replay_list` - session_replay_list* `survey_results` - survey_results</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DashboardPatchWidgetOpenApiWidgetTypeEnum
     {
@@ -30,6 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "logs_list")]
         #pragma warning disable CS1591
         LogsList,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "notebook_widget")]
+        #pragma warning disable CS1591
+        NotebookWidget,
         #pragma warning restore CS1591
         [EnumMember(Value = "session_replay_list")]
         #pragma warning disable CS1591

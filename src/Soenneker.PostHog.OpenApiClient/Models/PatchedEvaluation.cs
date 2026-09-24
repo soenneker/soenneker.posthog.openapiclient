@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem.</summary>
+        /// <summary>Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For &apos;numeric&apos;: only min/max/step, allows_na, and passing_rule {operator: &apos;gte&apos;|&apos;lte&apos;, threshold}. Do not send true_is_failure for numeric output. For &apos;sentiment&apos;: {}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig? OutputConfig { get; set; }
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig OutputConfig { get; set; }
 #endif
-        /// <summary>Output format. Use &apos;boolean&apos; for pass/fail evaluations and &apos;sentiment&apos; for sentiment analysis.* `boolean` - Boolean (Pass/Fail)* `sentiment` - Sentiment</summary>
+        /// <summary>Output format: &apos;boolean&apos;, &apos;numeric&apos; for a finite score, or &apos;sentiment&apos; for sentiment analysis.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `sentiment` - Sentiment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType? OutputType { get; set; }

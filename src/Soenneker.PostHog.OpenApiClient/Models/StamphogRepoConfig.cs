@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>The caller&apos;s access level on the stamphog resource, resolved for the team that owns this row. &apos;manager&apos; is required to change enabled, review_mode, or trigger_label.</summary>
+        /// <summary>The caller&apos;s access level on the stamphog resource, resolved for the team that owns this row. &apos;editor&apos; can turn reviews on. &apos;manager&apos; is required to turn them off or to change review_mode or trigger_label.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserAccessLevel { get; private set; }

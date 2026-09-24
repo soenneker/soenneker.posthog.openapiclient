@@ -72,6 +72,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType SampleType { get; set; }
 #endif
+        /// <summary>Raw numeric score, or null when no numeric score was produced.</summary>
+        public double? Score { get; set; }
         /// <summary>Trace ID if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "result", n => { Result = n.GetBoolValue(); } },
                 { "sample_id", n => { SampleId = n.GetStringValue(); } },
                 { "sample_type", n => { SampleType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType.CreateFromDiscriminatorValue); } },
+                { "score", n => { Score = n.GetDoubleValue(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
             };
         }
@@ -131,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("result", Result);
             writer.WriteStringValue("sample_id", SampleId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>("sample_type", SampleType);
+            writer.WriteDoubleValue("score", Score);
             writer.WriteStringValue("trace_id", TraceId);
             writer.WriteAdditionalData(AdditionalData);
         }

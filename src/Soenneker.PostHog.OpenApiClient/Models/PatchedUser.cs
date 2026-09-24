@@ -70,6 +70,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FirstName { get; set; }
 #endif
+        /// <summary>When the last re-authentication stops counting as fresh. Changing `email` after this needs a new re-authentication. Null when the session has none on record.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FreshReauthExpiresAt { get; private set; }
+#nullable restore
+#else
+        public string FreshReauthExpiresAt { get; private set; }
+#endif
         /// <summary>The has_password property</summary>
         public bool? HasPassword { get; private set; }
         /// <summary>The has_seen_product_intro_for property</summary>
@@ -321,6 +329,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "events_column_config", n => { EventsColumnConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserEventsColumnConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserEventsColumnConfig.CreateFromDiscriminatorValue); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
+                { "fresh_reauth_expires_at", n => { FreshReauthExpiresAt = n.GetStringValue(); } },
                 { "has_password", n => { HasPassword = n.GetBoolValue(); } },
                 { "has_seen_product_intro_for", n => { HasSeenProductIntroFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHasSeenProductIntroFor>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHasSeenProductIntroFor.CreateFromDiscriminatorValue); } },
                 { "has_social_auth", n => { HasSocialAuth = n.GetBoolValue(); } },

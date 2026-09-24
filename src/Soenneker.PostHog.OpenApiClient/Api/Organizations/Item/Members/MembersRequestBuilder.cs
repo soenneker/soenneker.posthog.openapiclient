@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Project_access;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MembersRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The project_access property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Project_access.Project_accessRequestBuilder Project_access
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Project_access.Project_accessRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.organizations.item.members.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.WithUserUuItemRequestBuilder"/></returns>

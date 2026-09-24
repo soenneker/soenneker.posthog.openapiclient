@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Discovery response ID for diagnostics only; grants no authority.</summary>
+        public Guid? DiscoveryId { get; set; }
         /// <summary>GitHub installation ID to link; resolved within the organization when source_team_id is omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "discovery_id", n => { DiscoveryId = n.GetGuidValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "source_team_id", n => { SourceTeamId = n.GetIntValue(); } },
             };
@@ -60,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteGuidValue("discovery_id", DiscoveryId);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteIntValue("source_team_id", SourceTeamId);
             writer.WriteAdditionalData(AdditionalData);

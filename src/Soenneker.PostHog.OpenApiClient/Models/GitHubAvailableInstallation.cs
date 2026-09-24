@@ -40,6 +40,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>A project in the organization that already has this installation linked. Null when the installation isn&apos;t linked to any project yet — it was found via the user&apos;s personal GitHub link and can be adopted by linking it here.</summary>
         public int? SourceTeamId { get; set; }
+        /// <summary>Name of the project in source_team_id, so the picker can say where the installation comes from. Null for an installation no project has linked yet.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceTeamName { get; set; }
+#nullable restore
+#else
+        public string SourceTeamName { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation"/> and sets the default values.
         /// </summary>
@@ -69,6 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "account_type", n => { AccountType = n.GetStringValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "source_team_id", n => { SourceTeamId = n.GetIntValue(); } },
+                { "source_team_name", n => { SourceTeamName = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -82,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("account_type", AccountType);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteIntValue("source_team_id", SourceTeamId);
+            writer.WriteStringValue("source_team_name", SourceTeamName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

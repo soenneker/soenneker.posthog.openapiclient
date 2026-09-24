@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", pathParameters)
+        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?broadcast_eligible*,created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", rawUrl)
+        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?broadcast_eligible*,created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList"/></returns>
@@ -157,6 +157,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         public partial class Hog_flowsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Pass `true` to return broadcasts plus the ordinary workflows the broadcasts UI can render: a batch trigger and a single email step.</summary>
+            [QueryParameter("broadcast_eligible")]
+            public bool? BroadcastEligible { get; set; }
             #pragma warning disable CS1591
             [QueryParameter("created_at")]
             public DateTimeOffset? CreatedAt { get; set; }

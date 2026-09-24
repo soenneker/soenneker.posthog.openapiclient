@@ -65,6 +65,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? FilterTestAccounts { get; set; }
         /// <summary>Maximum number of events to return.</summary>
         public int? Limit { get; set; }
+        /// <summary>Source notebook short ID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NotebookShortId { get; set; }
+#nullable restore
+#else
+        public string NotebookShortId { get; set; }
+#endif
         /// <summary>Issue ranking column.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy? OrderBy { get; set; }
         /// <summary>Sort direction for orderBy.</summary>
@@ -125,6 +133,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigSeverityLevelsItem?> SeverityLevels { get; set; }
 #endif
+        /// <summary>Immutable notebook widget snapshot. Add one from a notebook widget&apos;s menu.</summary>
+        public Guid? SnapshotId { get; set; }
         /// <summary>Issue status filter.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus? Status { get; set; }
         /// <summary>Survey to show performance stats and recent responses for. Null until the user picks one.</summary>
@@ -184,6 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "experimentId", n => { ExperimentId = n.GetIntValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
+                { "notebookShortId", n => { NotebookShortId = n.GetStringValue(); } },
                 { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>(); } },
                 { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>(); } },
                 { "priorities", n => { Priorities = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>()?.AsList(); } },
@@ -193,6 +204,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "search", n => { Search = n.GetStringValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigSeverityLevelsItem>()?.AsList(); } },
+                { "snapshotId", n => { SnapshotId = n.GetGuidValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>(); } },
                 { "surveyId", n => { SurveyId = n.GetStringValue(); } },
                 { "timezone", n => { Timezone = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>(); } },
@@ -217,6 +229,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("experimentId", ExperimentId);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteIntValue("limit", Limit);
+            writer.WriteStringValue("notebookShortId", NotebookShortId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>("orderDirection", OrderDirection);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>("priorities", Priorities);
@@ -226,6 +239,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("search", Search);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigSeverityLevelsItem>("severityLevels", SeverityLevels);
+            writer.WriteGuidValue("snapshotId", SnapshotId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>("status", Status);
             writer.WriteStringValue("surveyId", SurveyId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>("timezone", Timezone);

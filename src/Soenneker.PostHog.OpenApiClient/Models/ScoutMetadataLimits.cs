@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Most scouts the project can have switched on at once. Enabling another past this is rejected.</summary>
+        public int? MaxEnabledScouts { get; set; }
         /// <summary>Most scout runs the team can start per rolling 24 hours, or null when uncapped.</summary>
         public int? MaxRunsPerDay { get; set; }
         /// <summary>Most scout runs the team can start in a single 30-minute coordinator tick.</summary>
@@ -48,6 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "max_enabled_scouts", n => { MaxEnabledScouts = n.GetIntValue(); } },
                 { "max_runs_per_day", n => { MaxRunsPerDay = n.GetIntValue(); } },
                 { "max_runs_per_tick", n => { MaxRunsPerTick = n.GetIntValue(); } },
                 { "runs_remaining_today", n => { RunsRemainingToday = n.GetIntValue(); } },
@@ -61,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("max_enabled_scouts", MaxEnabledScouts);
             writer.WriteIntValue("max_runs_per_day", MaxRunsPerDay);
             writer.WriteIntValue("max_runs_per_tick", MaxRunsPerTick);
             writer.WriteIntValue("runs_remaining_today", RunsRemainingToday);

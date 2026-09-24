@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Codex;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Slack;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IntegrationsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The codex property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Codex.CodexRequestBuilder Codex
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Codex.CodexRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The github property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.GithubRequestBuilder Github
         {

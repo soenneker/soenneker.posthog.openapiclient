@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sharing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v2;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widget_snapshots;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -53,6 +54,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v2.Sql_v2RequestBuilder Sql_v2
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v2.Sql_v2RequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The widget_snapshots property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widget_snapshots.Widget_snapshotsRequestBuilder Widget_snapshots
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widget_snapshots.Widget_snapshotsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The widgets property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.WidgetsRequestBuilder Widgets
