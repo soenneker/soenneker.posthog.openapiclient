@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Instrumentation_checklist;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Instrumentation_checklist.Instrumentation_checklistRequestBuilder Instrumentation_checklist
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Instrumentation_checklist.Instrumentation_checklistRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The offline_experiments property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder Offline_experiments
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Ai_observabilityRequestBuilder"/> and sets the default values.

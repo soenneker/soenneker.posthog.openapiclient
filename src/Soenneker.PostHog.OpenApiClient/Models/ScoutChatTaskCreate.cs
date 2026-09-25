@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SuggestionId { get; set; }
 #endif
+        /// <summary>Optional description, in the user&apos;s own words, of what the new scout should watch. The chat then opens on this request instead of asking from scratch. `author_scout` only, and not together with `suggestion_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserPrompt { get; set; }
+#nullable restore
+#else
+        public string UserPrompt { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreate"/> and sets the default values.
         /// </summary>
@@ -57,6 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "chat_type", n => { ChatType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType.CreateFromDiscriminatorValue); } },
                 { "suggestion_id", n => { SuggestionId = n.GetStringValue(); } },
+                { "user_prompt", n => { UserPrompt = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -68,6 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>("chat_type", ChatType);
             writer.WriteStringValue("suggestion_id", SuggestionId);
+            writer.WriteStringValue("user_prompt", UserPrompt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

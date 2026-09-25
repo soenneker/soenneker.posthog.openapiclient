@@ -2,6 +2,8 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction_detail;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_workflow_costs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Broken_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.CiSignalsConfig;
@@ -17,6 +19,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ma
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_cost;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_lifecycle;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pull_request_friction;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pull_request_timelines;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pull_requests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Quarantine;
@@ -47,6 +50,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Engineering_analyticsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The author_friction property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction.Author_frictionRequestBuilder Author_friction
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction.Author_frictionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The author_friction_detail property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction_detail.Author_friction_detailRequestBuilder Author_friction_detail
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction_detail.Author_friction_detailRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The author_workflow_costs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_workflow_costs.Author_workflow_costsRequestBuilder Author_workflow_costs
         {
@@ -121,6 +134,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_runs.Pr_runsRequestBuilder Pr_runs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_runs.Pr_runsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pull_request_friction property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pull_request_friction.Pull_request_frictionRequestBuilder Pull_request_friction
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pull_request_friction.Pull_request_frictionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pull_request_timelines property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pull_request_timelines.Pull_request_timelinesRequestBuilder Pull_request_timelines

@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Configs.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Configs.Sync;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Configs.Tool_catalogue;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Config
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Configs.Sync.SyncRequestBuilder Sync
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Configs.Sync.SyncRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tool_catalogue property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Configs.Tool_catalogue.Tool_catalogueRequestBuilder Tool_catalogue
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Configs.Tool_catalogue.Tool_catalogueRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.signals.scout.configs.item collection</summary>
         /// <param name="position">A UUID string identifying this Signal scout config.</param>

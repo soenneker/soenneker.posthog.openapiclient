@@ -33,6 +33,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_color_themes;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_deletion_requests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs;
@@ -335,6 +336,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_color_themes.Data_color_themesRequestBuilder Data_color_themes
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_color_themes.Data_color_themesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The data_deletion_requests property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_deletion_requests.Data_deletion_requestsRequestBuilder Data_deletion_requests
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_deletion_requests.Data_deletion_requestsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The data_modeling_jobs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs.Data_modeling_jobsRequestBuilder Data_modeling_jobs

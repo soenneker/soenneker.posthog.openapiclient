@@ -3,10 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `discussions_mentioned` - discussions_mentioned* `error_tracking_issue_assigned` - error_tracking_issue_assigned* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled* `materialized_view_sync_failed` - materialized_view_sync_failed* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate* `organization_member_join_email_disabled` - organization_member_join_email_disabled* `pipeline_notifications_disabled` - pipeline_notifications_disabled* `project_weekly_digest_disabled` - project_weekly_digest_disabled* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled</summary>
+    /// <summary>* `data_catalog_weekly_digest` - data_catalog_weekly_digest* `discussions_mentioned` - discussions_mentioned* `error_tracking_issue_assigned` - error_tracking_issue_assigned* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled* `materialized_view_sync_failed` - materialized_view_sync_failed* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate* `organization_member_join_email_disabled` - organization_member_join_email_disabled* `pipeline_notifications_disabled` - pipeline_notifications_disabled* `project_weekly_digest_disabled` - project_weekly_digest_disabled* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SettingEnum
     {
+        [EnumMember(Value = "data_catalog_weekly_digest")]
+        #pragma warning disable CS1591
+        DataCatalogWeeklyDigest,
+        #pragma warning restore CS1591
         [EnumMember(Value = "discussions_mentioned")]
         #pragma warning disable CS1591
         DiscussionsMentioned,

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Response for the `commit` artefact diff endpoint — the commit&apos;s branch rendered against therepository default branch.
+    /// Response for the `commit` artefact diff endpoint.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CommitDiffResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Unified diff (patch) text of the branch against the repository default branch, from the GitHub compare API.</summary>
+        /// <summary>Unified diff (patch) text from the linked pull request or branch comparison.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Diff { get; private set; }

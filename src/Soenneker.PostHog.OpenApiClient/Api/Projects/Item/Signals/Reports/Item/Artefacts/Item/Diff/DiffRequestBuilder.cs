@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
         }
         /// <summary>
-        /// Fetch the unified diff of a `commit` artefact&apos;s branch against the repository default branch via the team&apos;s GitHub integration — using the branch&apos;s current tip so the diff reflects the latest state of the work, not just the single recorded commit.
+        /// Fetch the unified diff for a `commit` artefact via the team&apos;s GitHub integration. A commit linked to a report pull request uses GitHub&apos;s durable pull request diff. A commit without that link compares the branch&apos;s current tip with the default branch.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CommitDiffResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CommitDiffResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CommitDiffResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch the unified diff of a `commit` artefact&apos;s branch against the repository default branch via the team&apos;s GitHub integration — using the branch&apos;s current tip so the diff reflects the latest state of the work, not just the single recorded commit.
+        /// Fetch the unified diff for a `commit` artefact via the team&apos;s GitHub integration. A commit linked to a report pull request uses GitHub&apos;s durable pull request diff. A commit without that link compares the branch&apos;s current tip with the default branch.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

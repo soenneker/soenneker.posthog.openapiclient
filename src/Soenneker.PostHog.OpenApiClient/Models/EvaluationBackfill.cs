@@ -38,6 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? FinishedAt { get; private set; }
         /// <summary>Backfill identifier.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Units still holding no result when the run finished, counted at that moment. Zero means the window is covered, whoever graded it.</summary>
+        public int? RemainingCount { get; private set; }
         /// <summary>Whether units with an existing result are evaluated again.</summary>
         public bool? RerunExisting { get; private set; }
         /// <summary>Units the live path had already covered, so nothing was dispatched.</summary>
@@ -95,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dispatched_count", n => { DispatchedCount = n.GetIntValue(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "remaining_count", n => { RemainingCount = n.GetIntValue(); } },
                 { "rerun_existing", n => { RerunExisting = n.GetBoolValue(); } },
                 { "skipped_count", n => { SkippedCount = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillStatus>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillStatus.CreateFromDiscriminatorValue); } },

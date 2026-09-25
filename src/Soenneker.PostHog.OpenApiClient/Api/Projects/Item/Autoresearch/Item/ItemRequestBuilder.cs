@@ -3,10 +3,16 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Archive;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ModelsRequests;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Pause;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Resume;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Score;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Suggestions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Train;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Validate_online;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -21,25 +27,55 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The archive property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Archive.ArchiveRequestBuilder Archive
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Archive.ArchiveRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The models property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ModelsRequests.ModelsRequestBuilder Models
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pause property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Pause.PauseRequestBuilder Pause
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Pause.PauseRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The resume property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Resume.ResumeRequestBuilder Resume
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Resume.ResumeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The runs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Runs.RunsRequestBuilder Runs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The score property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Score.ScoreRequestBuilder Score
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Score.ScoreRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The suggestions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Suggestions.SuggestionsRequestBuilder Suggestions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Suggestions.SuggestionsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The train property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Train.TrainRequestBuilder Train
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Train.TrainRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The training_runs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Training_runsRequestBuilder Training_runs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Training_runs.Training_runsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The validate_online property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Validate_online.Validate_onlineRequestBuilder Validate_online
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Validate_online.Validate_onlineRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.ItemRequestBuilder"/> and sets the default values.

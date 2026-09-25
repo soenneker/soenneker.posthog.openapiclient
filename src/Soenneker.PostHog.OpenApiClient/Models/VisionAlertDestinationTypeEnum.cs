@@ -5,7 +5,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>* `slack` - slack* `webhook` - webhook</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum VisionAlertCreateDestinationTypeEnum
+    public enum VisionAlertDestinationTypeEnum
     {
         [EnumMember(Value = "slack")]
         #pragma warning disable CS1591

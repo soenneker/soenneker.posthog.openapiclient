@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Units in the range this evaluation has already judged. They are excluded from total_units unless rerun_existing is set.</summary>
+        public int? AlreadyEvaluatedUnits { get; set; }
         /// <summary>Units that would be evaluated.</summary>
         public int? TotalUnits { get; set; }
         /// <summary>What one unit is: a generation, a trace, or a session.* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
@@ -53,6 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "already_evaluated_units", n => { AlreadyEvaluatedUnits = n.GetIntValue(); } },
                 { "total_units", n => { TotalUnits = n.GetIntValue(); } },
                 { "unit", n => { Unit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit.CreateFromDiscriminatorValue); } },
                 { "window_end", n => { WindowEnd = n.GetDateTimeOffsetValue(); } },
@@ -66,6 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("already_evaluated_units", AlreadyEvaluatedUnits);
             writer.WriteIntValue("total_units", TotalUnits);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>("unit", Unit);
             writer.WriteDateTimeOffsetValue("window_end", WindowEnd);

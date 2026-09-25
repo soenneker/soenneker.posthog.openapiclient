@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.Artifacts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.StreamNamespace;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.Tasks;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +24,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.Artifacts.ArtifactsRequestBuilder Artifacts
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.Artifacts.ArtifactsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The stream property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.StreamNamespace.StreamRequestBuilder Stream
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.StreamNamespace.StreamRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tasks property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.Tasks.TasksRequestBuilder Tasks
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.Tasks.TasksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.WithRunItemRequestBuilder"/> and sets the default values.

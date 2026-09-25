@@ -22,13 +22,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CooldownMinutes { get; set; }
         /// <summary>When the alert was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The created_by property</summary>
+        /// <summary>User who created the alert; null once that user is deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>Metric alerts only: how many periods must breach to fire (N in N-of-M).</summary>
         public int? DatapointsToAlarm { get; set; }
@@ -118,13 +118,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PatchedVisionAlertConfiguration()
         {
             AdditionalData = new Dictionary<string, object>();
-            CheckIntervalMinutes = 60;
-            CooldownMinutes = 0;
-            DatapointsToAlarm = 1;
             Enabled = true;
-            EvaluationPeriods = 1;
             Name = "Untitled alert";
-            WindowDays = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -148,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
                 { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationDirection>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationDirection.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },

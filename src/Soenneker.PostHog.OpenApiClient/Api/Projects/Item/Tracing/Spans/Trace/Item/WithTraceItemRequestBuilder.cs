@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Trace.Item.Ai_events;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Trace.
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithTraceItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The ai_events property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Trace.Item.Ai_events.Ai_eventsRequestBuilder Ai_events
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Trace.Item.Ai_events.Ai_eventsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Trace.Item.WithTraceItemRequestBuilder"/> and sets the default values.
         /// </summary>

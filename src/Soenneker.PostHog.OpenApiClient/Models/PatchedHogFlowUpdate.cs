@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowUpdateBillableActionTypes BillableActionTypes { get; private set; }
 #endif
-        /// <summary>Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window: how long after entry a conversion counts, as a duration string such as &apos;7d&apos; or &apos;12h&apos;, maximum &apos;365d&apos; (window_minutes is the deprecated integer form, in MINUTES not seconds); set one, not both. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side.</summary>
+        /// <summary>Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window: how long after entry a conversion counts, as a duration string such as &apos;7d&apos; or &apos;12h&apos;, maximum &apos;365d&apos;. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion? Conversion { get; set; }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttributesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs/attributes{?attribute_type*,dateRange*,filterGroup*,limit*,offset*,search*,search_values*,serviceNames*}", pathParameters)
+        public AttributesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs/attributes{?attribute_type*,dateRange*,date_from*,date_to*,filterGroup*,keys*,limit*,offset*,search*,search_values*,serviceNames*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttributesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs/attributes{?attribute_type*,dateRange*,filterGroup*,limit*,offset*,search*,search_values*,serviceNames*}", rawUrl)
+        public AttributesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs/attributes{?attribute_type*,dateRange*,date_from*,date_to*,filterGroup*,keys*,limit*,offset*,search*,search_values*,serviceNames*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAttributesResponse"/></returns>
@@ -81,6 +81,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes
             /// <summary>Type of attributes: &quot;log&quot; for log attributes, &quot;resource&quot; for resource attributes. Defaults to &quot;log&quot;.* `log` - log* `resource` - resource</summary>
             [QueryParameter("attribute_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.LogsAttributesRetrieveAttributeTypeParameter? AttributeType { get; set; }
+            /// <summary>Start of the range as a top-level parameter. The endpoint ignores it when you send dateRange.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("date_from")]
+            public string? DateFrom { get; set; }
+#nullable restore
+#else
+            [QueryParameter("date_from")]
+            public string DateFrom { get; set; }
+#endif
             /// <summary>Date range to search within. Defaults to last hour.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,6 +101,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes
             [QueryParameter("dateRange")]
             public string DateRange { get; set; }
 #endif
+            /// <summary>End of the range as a top-level parameter. The endpoint ignores it when you send dateRange.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("date_to")]
+            public string? DateTo { get; set; }
+#nullable restore
+#else
+            [QueryParameter("date_to")]
+            public string DateTo { get; set; }
+#endif
             /// <summary>Property filters to narrow which logs are scanned for attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,6 +120,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes
 #else
             [QueryParameter("filterGroup")]
             public string[] FilterGroup { get; set; }
+#endif
+            /// <summary>Comma-separated list of attribute keys. The endpoint returns only keys that exactly match an entry in the list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("keys")]
+            public string? Keys { get; set; }
+#nullable restore
+#else
+            [QueryParameter("keys")]
+            public string Keys { get; set; }
 #endif
             /// <summary>Max results (default: 100)</summary>
             [QueryParameter("limit")]

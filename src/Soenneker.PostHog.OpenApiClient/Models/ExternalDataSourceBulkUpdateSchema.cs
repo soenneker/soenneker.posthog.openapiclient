@@ -33,6 +33,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> EnabledColumns { get; set; }
 #endif
+        /// <summary>Days between scheduled full refreshes, from 1 to 90, or null for none. A full refresh wipes the table and re-imports every row. Re-imported rows count toward usage, and workflows and destinations that run on new rows of the table run again for every row. Incremental, append, and xmin syncs only, and never shorter than the sync frequency.</summary>
+        public int? FullRefreshIntervalDays { get; set; }
         /// <summary>Schema identifier to update.</summary>
         public Guid? Id { get; set; }
         /// <summary>Incremental cursor field for incremental or append syncs.</summary>
@@ -115,6 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "apply_sync_defaults", n => { ApplySyncDefaults = n.GetBoolValue(); } },
                 { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode.CreateFromDiscriminatorValue); } },
                 { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "full_refresh_interval_days", n => { FullRefreshIntervalDays = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetStringValue(); } },
@@ -136,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("apply_sync_defaults", ApplySyncDefaults);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>("cdc_table_mode", CdcTableMode);
             writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
+            writer.WriteIntValue("full_refresh_interval_days", FullRefreshIntervalDays);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteStringValue("incremental_field_type", IncrementalFieldType);

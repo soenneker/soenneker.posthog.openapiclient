@@ -30,10 +30,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName DisplayName { get; set; }
 #endif
+        /// <summary>Category of the skill the publisher reviewed. Registering a skill as a scout changes its category without raising its version, so the version alone would let a skill reviewed as an ordinary one publish as a scout. The request returns 409 if the category changed. Omit it to skip that check.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExpectedCategory { get; set; }
+#nullable restore
+#else
+        public string ExpectedCategory { get; set; }
+#endif
         /// <summary>Immutable ID of the skill version that the publisher reviewed.</summary>
         public Guid? ExpectedSkillId { get; set; }
         /// <summary>Skill version that the publisher reviewed. The request returns 409 if the latest version changed.</summary>
         public int? ExpectedVersion { get; set; }
+        /// <summary>Schedule, emit posture and tags to publish alongside a scout, so it arrives in another project with its cadence intact. Rejected for a skill that is not a scout.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig? ScoutConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig ScoutConfig { get; set; }
+#endif
         /// <summary>Tags used for filtering and discovery in the marketplace, e.g. [&apos;web-analytics&apos;, &apos;triage&apos;].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,8 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "author_handle", n => { AuthorHandle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle.CreateFromDiscriminatorValue); } },
                 { "display_name", n => { DisplayName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName.CreateFromDiscriminatorValue); } },
+                { "expected_category", n => { ExpectedCategory = n.GetStringValue(); } },
                 { "expected_skill_id", n => { ExpectedSkillId = n.GetGuidValue(); } },
                 { "expected_version", n => { ExpectedVersion = n.GetIntValue(); } },
+                { "scout_config", n => { ScoutConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -83,8 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle>("author_handle", AuthorHandle);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName>("display_name", DisplayName);
+            writer.WriteStringValue("expected_category", ExpectedCategory);
             writer.WriteGuidValue("expected_skill_id", ExpectedSkillId);
             writer.WriteIntValue("expected_version", ExpectedVersion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig>("scout_config", ScoutConfig);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

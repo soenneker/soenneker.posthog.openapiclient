@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `run_completed` - run_completed* `run_failed` - run_failed* `pr_created` - pr_created* `needs_attention` - needs_attention</summary>
+    /// <summary>* `run_completed` - run_completed* `run_failed` - run_failed* `pr_created` - pr_created* `pr_merged` - pr_merged* `pr_closed` - pr_closed* `needs_attention` - needs_attention</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EventsEnum
     {
@@ -18,6 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "pr_created")]
         #pragma warning disable CS1591
         PrCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pr_merged")]
+        #pragma warning disable CS1591
+        PrMerged,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pr_closed")]
+        #pragma warning disable CS1591
+        PrClosed,
         #pragma warning restore CS1591
         [EnumMember(Value = "needs_attention")]
         #pragma warning disable CS1591

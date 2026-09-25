@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The bytecode_contract property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BytecodeContract { get; set; }
+#nullable restore
+#else
+        public string BytecodeContract { get; set; }
+#endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "bytecode_contract", n => { BytecodeContract = n.GetStringValue(); } },
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "data_warehouse", n => { DataWarehouse = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -107,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty>("actions", Actions);
+            writer.WriteStringValue("bytecode_contract", BytecodeContract);
             writer.WriteStringValue("bytecode_error", BytecodeError);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty>("data_warehouse", DataWarehouse);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty>("events", Events);

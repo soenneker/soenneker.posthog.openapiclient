@@ -9,27 +9,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class PatchedVisionAlertConfigurationCreatedByHedgehogConfig : IAdditionalDataHolder, IParsable
+    public partial class OfflineExperimentItemPayloadInputInputMember1 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedByHedgehogConfig"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1"/> and sets the default values.
         /// </summary>
-        public PatchedVisionAlertConfigurationCreatedByHedgehogConfig()
+        public OfflineExperimentItemPayloadInputInputMember1()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedByHedgehogConfig"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedByHedgehogConfig CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedByHedgehogConfig();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1();
         }
         /// <summary>
         /// The deserialization information for the current model

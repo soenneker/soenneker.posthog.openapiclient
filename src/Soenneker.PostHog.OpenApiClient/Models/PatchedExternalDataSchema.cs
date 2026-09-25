@@ -64,6 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> EnabledColumns { get; set; }
 #endif
+        /// <summary>Days between scheduled full refreshes, from 1 to 90, or null for none. A full refresh wipes the table and re-imports every row, so rows deleted at the source are removed. It runs on the first scheduled sync once the interval has passed, counted from when it was saved or from the last full resync, and can start up to an hour early. Queries keep returning the current rows until a full refresh finishes, and workflows and destinations that run on new rows of the table run again for every row. Available for incremental, append, and xmin syncs only, and never shorter than the sync frequency.</summary>
+        public int? FullRefreshIntervalDays { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The incremental property</summary>
@@ -120,6 +122,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
+        /// <summary>When the next scheduled full refresh is due. The first scheduled sync that starts at most an hour before this time re-imports the table. Saving a new interval, or any full resync, moves it one interval ahead.</summary>
+        public DateTimeOffset? NextFullRefreshAt { get; private set; }
         /// <summary>Column names for primary key deduplication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -221,6 +225,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaCdcTableMode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaCdcTableMode.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "full_refresh_interval_days", n => { FullRefreshIntervalDays = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental", n => { Incremental = n.GetBoolValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
@@ -231,6 +236,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "next_full_refresh_at", n => { NextFullRefreshAt = n.GetDateTimeOffsetValue(); } },
                 { "primary_key_columns", n => { PrimaryKeyColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "row_filters", n => { RowFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaRowFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaRowFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
@@ -254,6 +260,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("api_version", ApiVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaCdcTableMode>("cdc_table_mode", CdcTableMode);
             writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
+            writer.WriteIntValue("full_refresh_interval_days", FullRefreshIntervalDays);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteIntValue("incremental_field_lookback_seconds", IncrementalFieldLookbackSeconds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaIncrementalFieldType>("incremental_field_type", IncrementalFieldType);

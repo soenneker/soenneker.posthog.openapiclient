@@ -27,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
-        /// <summary>How the Claude runtime pays for model use. &apos;own-subscription&apos; makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. Only PostHog Desktop can select &apos;own-subscription&apos;; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.* `posthog-gateway` - posthog-gateway* `own-subscription` - own-subscription</summary>
+        /// <summary>How the Claude runtime pays for model use. &apos;own-subscription&apos; makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on PostHog servers. Only PostHog Desktop and API keys can select &apos;own-subscription&apos;; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.* `posthog-gateway` - posthog-gateway* `own-subscription` - own-subscription</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaClaudeModelAccess? ClaudeModelAccess { get; set; }
