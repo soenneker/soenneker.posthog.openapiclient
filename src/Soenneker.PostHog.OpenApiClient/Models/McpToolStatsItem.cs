@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? P50Ms { get; set; }
         /// <summary>The p95_ms property</summary>
         public double? P95Ms { get; set; }
+        /// <summary>Calls to any tool in the same window and filters. The denominator for the tool&apos;s call share.</summary>
+        public int? TotalCalls { get; set; }
+        /// <summary>Conversations with a call to any tool in the same window and filters. The denominator for the tool&apos;s session share.</summary>
+        public int? TotalConversations { get; set; }
         /// <summary>The users property</summary>
         public int? Users { get; set; }
         /// <summary>Calls carrying a non-empty intent payload; the coverage denominator is `calls`.</summary>
@@ -49,6 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "errors", n => { Errors = n.GetIntValue(); } },
                 { "p50_ms", n => { P50Ms = n.GetDoubleValue(); } },
                 { "p95_ms", n => { P95Ms = n.GetDoubleValue(); } },
+                { "total_calls", n => { TotalCalls = n.GetIntValue(); } },
+                { "total_conversations", n => { TotalConversations = n.GetIntValue(); } },
                 { "users", n => { Users = n.GetIntValue(); } },
                 { "with_intent", n => { WithIntent = n.GetIntValue(); } },
             };
@@ -65,6 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("errors", Errors);
             writer.WriteDoubleValue("p50_ms", P50Ms);
             writer.WriteDoubleValue("p95_ms", P95Ms);
+            writer.WriteIntValue("total_calls", TotalCalls);
+            writer.WriteIntValue("total_conversations", TotalConversations);
             writer.WriteIntValue("users", Users);
             writer.WriteIntValue("with_intent", WithIntent);
         }

@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Harness { get; set; }
 #endif
+        /// <summary>Distinct sessions in this harness across all tools, in the same window and filters. The denominator for the tool&apos;s session share within the harness. Set only when the query has toolName.</summary>
+        public int? HarnessSessions { get; set; }
         /// <summary>The sessions property</summary>
         public int? Sessions { get; set; }
         /// <summary>The total_calls property</summary>
@@ -49,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error_rate_pct", n => { ErrorRatePct = n.GetDoubleValue(); } },
                 { "errors", n => { Errors = n.GetIntValue(); } },
                 { "harness", n => { Harness = n.GetStringValue(); } },
+                { "harness_sessions", n => { HarnessSessions = n.GetIntValue(); } },
                 { "sessions", n => { Sessions = n.GetIntValue(); } },
                 { "total_calls", n => { TotalCalls = n.GetIntValue(); } },
             };
@@ -63,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("error_rate_pct", ErrorRatePct);
             writer.WriteIntValue("errors", Errors);
             writer.WriteStringValue("harness", Harness);
+            writer.WriteIntValue("harness_sessions", HarnessSessions);
             writer.WriteIntValue("sessions", Sessions);
             writer.WriteIntValue("total_calls", TotalCalls);
         }

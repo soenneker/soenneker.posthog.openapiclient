@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emiss
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Findings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.ReportChecks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -42,6 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout.RecentPerScoutRequestBuilder RecentPerScout
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout.RecentPerScoutRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reportChecks property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.ReportChecks.ReportChecksRequestBuilder ReportChecks
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.ReportChecks.ReportChecksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tokenCosts property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts.TokenCostsRequestBuilder TokenCosts

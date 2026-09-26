@@ -13664,6 +13664,66 @@
         ]
       }
     },
+    "/api/projects/{projectId}/accounts/presence_list": {
+      "post": {
+        "tags": [
+          "accounts"
+        ],
+        "operationId": "AccountsPresenceList",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountPresenceListRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountPresenceListRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountPresenceListRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountsPresenceList200ResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "account:read"
+            ]
+          }
+        ],
+        "x-product": [
+          "customer_analytics"
+        ]
+      }
+    },
     "/api/projects/{projectId}/accounts_table_query": {
       "post": {
         "tags": [
@@ -36196,6 +36256,41 @@
         "operationId": "DataWarehouseCompletedActivityRetrieve",
         "parameters": [
           {
+            "name": "cutoff_days",
+            "in": "query",
+            "description": "Only include runs created within this many days of now. Defaults to 30.",
+            "schema": {
+              "type": "integer",
+              "default": 30
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Max rows to return. Capped at 50 server-side. Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Rows to skip, for pagination. Defaults to 0.",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "outcome",
+            "in": "query",
+            "description": "Which outcome to return: \u0027completed\u0027 or \u0027failed\u0027. Defaults to \u0027completed\u0027.\n\n* \u0060completed\u0060 - completed\n* \u0060failed\u0060 - failed",
+            "schema": {
+              "$ref": "#/components/schemas/DataWarehouseCompletedActivityRetrieveOutcomeParameter"
+            }
+          },
+          {
             "name": "projectId",
             "in": "path",
             "required": true,
@@ -36206,7 +36301,24 @@
         ],
         "responses": {
           "200": {
-            "description": "No response body"
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineActivityResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The activity query failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineError"
+                }
+              }
+            }
           }
         },
         "x-product": [
@@ -36233,14 +36345,33 @@
         ],
         "responses": {
           "200": {
-            "description": "No response body"
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataHealthIssuesResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The health query failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineError"
+                }
+              }
+            }
           }
         },
         "security": [
           {
             "PersonalAPIKeyAuth": [
               "warehouse_view:read",
-              "external_data_source:read"
+              "external_data_source:read",
+              "batch_export:read",
+              "hog_function:read"
             ]
           }
         ],
@@ -36473,6 +36604,14 @@
         "operationId": "DataWarehouseJobStatsRetrieve",
         "parameters": [
           {
+            "name": "days",
+            "in": "query",
+            "description": "Window the counts should cover, in days. One of 1, 7 or 30. Defaults to 7.\n\n* \u00601\u0060 - 1\n* \u00607\u0060 - 7\n* \u006030\u0060 - 30",
+            "schema": {
+              "$ref": "#/components/schemas/DataWarehouseJobStatsRetrieveDaysParameter"
+            }
+          },
+          {
             "name": "projectId",
             "in": "path",
             "required": true,
@@ -36483,7 +36622,34 @@
         ],
         "responses": {
           "200": {
-            "description": "No response body"
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineJobStatsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "\u0060days\u0060 was not 1, 7 or 30.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The statistics query failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineError"
+                }
+              }
+            }
           }
         },
         "x-product": [
@@ -37023,7 +37189,24 @@
         ],
         "responses": {
           "200": {
-            "description": "No response body"
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineActivityResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The activity query failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineError"
+                }
+              }
+            }
           }
         },
         "x-product": [
@@ -37050,7 +37233,24 @@
         ],
         "responses": {
           "200": {
-            "description": "No response body"
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineRowsStatsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Billing could not be reached.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PipelineError"
+                }
+              }
+            }
           }
         },
         "x-product": [
@@ -57869,6 +58069,67 @@
           {
             "PersonalAPIKeyAuth": [
               "external_data_source:read"
+            ]
+          }
+        ],
+        "x-product": [
+          "warehouse_sources"
+        ]
+      }
+    },
+    "/api/projects/{projectId}/external_data_sources/credential_accounts": {
+      "post": {
+        "tags": [
+          "external_data_sources"
+        ],
+        "description": "List the accounts a source\u0027s typed-in credentials can reach, in the shared\nIntegrationAccount shape.\n\nThe OAuth twin takes an integration id because the token already lives on the server. Here\nthe credentials are still in the form, so they arrive in the body \u2014 POST, not GET, to keep a\nprivate key out of the URL and out of anything that logs one. Nothing is cached for the same\nreason: the cache key would have to include the credentials.",
+        "operationId": "ExternalDataSourcesCredentialAccountsCreate",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialAccountsRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialAccountsRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialAccountsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationAccountsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "external_data_source:write"
             ]
           }
         ],
@@ -110417,6 +110678,66 @@
         ]
       }
     },
+    "/api/projects/{projectId}/signals/scout/runs/report-checks": {
+      "get": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "List a report\u0027s follow-up checks",
+        "description": "Every check on one report, newest first. The \u0060report_id\u0060 is the only input. Read this before writing one: a report already carrying a check for the same claim needs no second one, and a report holds at most five open checks at a time.",
+        "operationId": "SignalsScoutReportCheckList",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "query",
+            "description": "The report whose checks to list.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The report\u0027s checks, newest first.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignalsScoutReportCheckList200ResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The report does not exist for this project."
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_report:write"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_report:write"
+            ]
+          }
+        ],
+        "x-product": [
+          "signals"
+        ]
+      }
+    },
     "/api/projects/{projectId}/signals/scout/runs/token-costs": {
       "post": {
         "tags": [
@@ -145451,6 +145772,46 @@
           }
         }
       },
+      "AccountPresence": {
+        "required": [
+          "account_id",
+          "viewers"
+        ],
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Customer analytics account ID.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "viewers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountPresenceViewer"
+            },
+            "description": "People viewing this account.",
+            "readOnly": true
+          }
+        }
+      },
+      "AccountPresenceListRequest": {
+        "required": [
+          "account_ids"
+        ],
+        "type": "object",
+        "properties": {
+          "account_ids": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Up to 100 account IDs to read presence for."
+          }
+        }
+      },
       "AccountPresenceViewer": {
         "required": [
           "display_name",
@@ -171639,6 +172000,30 @@
           }
         }
       },
+      "CredentialAccountsRequest": {
+        "required": [
+          "credentials",
+          "source_type"
+        ],
+        "type": "object",
+        "properties": {
+          "source_type": {
+            "type": "string",
+            "description": "The data warehouse source type whose picker is asking (e.g. \u0027AppleSearchAds\u0027)."
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/CredentialAccountsRequestCredentialsProperty"
+          },
+          "api_version": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Vendor API version the source is pinned to. Defaults to the source\u0027s current default."
+          }
+        },
+        "description": "Body for listing accounts from credentials the user has typed but not yet submitted."
+      },
       "CurrencyCode": {
         "title": "CurrencyCode",
         "enum": [
@@ -176387,6 +176772,85 @@
             "type": "string",
             "description": "When data of this kind last reached the project. Only sources with data inside the lookback window are listed.",
             "format": "date-time"
+          }
+        }
+      },
+      "DataHealthIssue": {
+        "required": [
+          "error",
+          "failed_at",
+          "id",
+          "name",
+          "status",
+          "type",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Id of the thing that is unhealthy."
+          },
+          "name": {
+            "type": "string",
+            "description": "Table, view or export the issue is about."
+          },
+          "type": {
+            "type": "string",
+            "description": "What kind of thing is unhealthy. One of: materialized_view, external_data_sync, source, destination, transformation."
+          },
+          "source_type": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Source type for a sync issue, for example \u0027Stripe\u0027."
+          },
+          "status": {
+            "type": "string",
+            "description": "Why it is unhealthy. One of: failed, disabled, degraded, billing_limit."
+          },
+          "error": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The error, where one was recorded."
+          },
+          "failed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When it last failed.",
+            "format": "date-time"
+          },
+          "url": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Where to go to fix it."
+          }
+        }
+      },
+      "DataHealthIssuesResponse": {
+        "required": [
+          "count",
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataHealthIssue"
+            },
+            "description": "Everything currently unhealthy."
+          },
+          "count": {
+            "type": "integer",
+            "description": "How many issues are in \u0060results\u0060."
           }
         }
       },
@@ -222265,6 +222729,50 @@
           }
         }
       },
+      "JobCounts": {
+        "required": [
+          "failed",
+          "running",
+          "successful",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Runs that finished inside the window."
+          },
+          "running": {
+            "type": "integer",
+            "description": "Runs in flight right now, regardless of the window."
+          },
+          "successful": {
+            "type": "integer",
+            "description": "Runs that completed."
+          },
+          "failed": {
+            "type": "integer",
+            "description": "Runs that errored or that billing stopped."
+          }
+        }
+      },
+      "JobStatsBucket": {
+        "required": [
+          "failed",
+          "successful"
+        ],
+        "type": "object",
+        "properties": {
+          "successful": {
+            "type": "integer",
+            "description": "Runs that completed in this bucket."
+          },
+          "failed": {
+            "type": "integer",
+            "description": "Runs that failed in this bucket."
+          }
+        }
+      },
       "JsonValue": {
         "type": "object"
       },
@@ -231804,6 +232312,15 @@
             "type": "string",
             "description": "Customer-facing harness label, e.g. \u0022Claude Agent SDK\u0022, \u0022OpenAI Codex\u0022, \u0022Cursor\u0022, \u0022Other\u0022."
           },
+          "harness_sessions": {
+            "title": "Harness Sessions",
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Distinct sessions in this harness across all tools, in the same window and filters. The denominator for the tool\u0027s session share within the harness. Set only when the query has toolName.",
+            "default": null
+          },
           "sessions": {
             "title": "Sessions",
             "type": "integer"
@@ -236006,9 +236523,14 @@
           "p50_duration_ms",
           "p95_duration_ms",
           "p99_duration_ms",
+          "previous_calls",
+          "previous_errors",
+          "previous_p95_duration_ms",
+          "previous_sessions",
           "sessions",
           "tool",
           "total_calls",
+          "trend_score",
           "users"
         ],
         "type": "object",
@@ -236041,6 +236563,29 @@
             "title": "P99 Duration Ms",
             "type": "number"
           },
+          "previous_calls": {
+            "title": "Previous Calls",
+            "type": "integer",
+            "description": "Calls in the previous period: the same length of time right before the window, or for a to-date range (\u0022This month\u0022) the same part of the previous unit."
+          },
+          "previous_errors": {
+            "title": "Previous Errors",
+            "type": "integer",
+            "description": "Errored calls in the previous period."
+          },
+          "previous_p95_duration_ms": {
+            "title": "Previous P95 Duration Ms",
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "p95 duration in the previous period, or null when no previous call carried a duration."
+          },
+          "previous_sessions": {
+            "title": "Previous Sessions",
+            "type": "integer",
+            "description": "Distinct sessions that called the tool in the previous period."
+          },
           "sessions": {
             "title": "Sessions",
             "type": "integer"
@@ -236052,6 +236597,11 @@
           "total_calls": {
             "title": "Total Calls",
             "type": "integer"
+          },
+          "trend_score": {
+            "title": "Trend Score",
+            "type": "number",
+            "description": "Sort key ranking growth relative to volume, so a small tool\u0027s spike doesn\u0027t outrank a large tool\u0027s surge. Not a percentage; only meaningful for ordering."
           },
           "users": {
             "title": "Users",
@@ -236160,8 +236710,10 @@
       "McpToolQualityRowsQueryResponse": {
         "title": "MCPToolQualityRowsQueryResponse",
         "required": [
+          "previousTotalSessions",
           "results",
-          "totalCount"
+          "totalCount",
+          "totalSessions"
         ],
         "type": "object",
         "properties": {
@@ -236185,6 +236737,11 @@
           },
           "modifiers": {
             "$ref": "#/components/schemas/McpToolQualityRowsQueryResponseModifiers"
+          },
+          "previousTotalSessions": {
+            "title": "Previoustotalsessions",
+            "type": "integer",
+            "description": "The same total for the previous period, the denominator for each row\u0027s previous session share."
           },
           "query_status": {
             "$ref": "#/components/schemas/McpToolQualityRowsQueryResponseQueryStatus"
@@ -236218,6 +236775,11 @@
             "title": "Totalcount",
             "type": "integer",
             "description": "Number of tools matching the date, category, and search filters."
+          },
+          "totalSessions": {
+            "title": "Totalsessions",
+            "type": "integer",
+            "description": "Distinct sessions with any tool call in the window, ignoring category and search filters. The denominator for each row\u0027s session share."
           },
           "used_data_warehouse_sources": {
             "title": "Used Data Warehouse Sources",
@@ -236256,7 +236818,8 @@
           "p99_duration_ms",
           "users",
           "sessions",
-          "last_seen"
+          "last_seen",
+          "trend_score"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -236295,6 +236858,10 @@
             {
               "value": "last_seen",
               "name": "LastSeen"
+            },
+            {
+              "value": "trend_score",
+              "name": "TrendScore"
             }
           ]
         }
@@ -236532,6 +237099,8 @@
           "calls",
           "conversations",
           "errors",
+          "total_calls",
+          "total_conversations",
           "users",
           "with_intent"
         ],
@@ -236564,6 +237133,16 @@
               "number"
             ],
             "default": null
+          },
+          "total_calls": {
+            "title": "Total Calls",
+            "type": "integer",
+            "description": "Calls to any tool in the same window and filters. The denominator for the tool\u0027s call share."
+          },
+          "total_conversations": {
+            "title": "Total Conversations",
+            "type": "integer",
+            "description": "Conversations with a call to any tool in the same window and filters. The denominator for the tool\u0027s session share."
           },
           "users": {
             "title": "Users",
@@ -269849,6 +270428,233 @@
           }
         }
       },
+      "PipelineActivityResponse": {
+        "required": [
+          "next",
+          "previous",
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PipelineActivityRow"
+            },
+            "description": "Runs, newest first."
+          },
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Query string for the next page, or null on the last."
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Query string for the previous page, or null on the first."
+          }
+        }
+      },
+      "PipelineActivityRow": {
+        "required": [
+          "created_at",
+          "finished_at",
+          "id",
+          "latest_error",
+          "name",
+          "origin",
+          "rows",
+          "status",
+          "type",
+          "workflow_run_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Run id."
+          },
+          "type": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The source type for a sync, or \u0027Materialized view\u0027 for a model run."
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Table or view the run wrote."
+          },
+          "status": {
+            "type": "string",
+            "description": "Run status. One of: Running, Completed, Failed, BillingLimitReached, BillingLimitTooLow."
+          },
+          "rows": {
+            "type": "integer",
+            "description": "Rows the run wrote. Zero while it is still going."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When the run was created. There is no separate start time.",
+            "format": "date-time"
+          },
+          "finished_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the run ended, or null while running.",
+            "format": "date-time"
+          },
+          "latest_error": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Error the run ended with, if any."
+          },
+          "workflow_run_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Temporal run id, for finding the run\u0027s logs."
+          },
+          "origin": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Where a materialized view came from. Null for syncs."
+          }
+        }
+      },
+      "PipelineError": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "What went wrong, for a reader rather than a parser."
+          }
+        }
+      },
+      "PipelineJobStatsResponse": {
+        "required": [
+          "breakdown",
+          "cutoff_time",
+          "days",
+          "external_data_jobs",
+          "failed_jobs",
+          "modeling_jobs",
+          "successful_jobs",
+          "total_jobs"
+        ],
+        "type": "object",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "description": "Window the counts cover, in days. One of 1, 7 or 30."
+          },
+          "cutoff_time": {
+            "type": "string",
+            "description": "Start of the window, in the project\u0027s timezone.",
+            "format": "date-time"
+          },
+          "total_jobs": {
+            "type": "integer",
+            "description": "Sync runs plus materialization runs in the window."
+          },
+          "successful_jobs": {
+            "type": "integer",
+            "description": "Sync and materialization runs that completed."
+          },
+          "failed_jobs": {
+            "type": "integer",
+            "description": "Sync and materialization runs that failed."
+          },
+          "external_data_jobs": {
+            "$ref": "#/components/schemas/PipelineJobStatsResponseExternalDataJobs"
+          },
+          "modeling_jobs": {
+            "$ref": "#/components/schemas/PipelineJobStatsResponseModelingJobs"
+          },
+          "breakdown": {
+            "$ref": "#/components/schemas/PipelineJobStatsResponseBreakdownProperty"
+          }
+        }
+      },
+      "PipelineRowsStatsResponse": {
+        "required": [
+          "billing_available",
+          "billing_interval",
+          "billing_period_end",
+          "billing_period_start",
+          "breakdown_of_rows_by_source",
+          "materialized_rows_in_billing_period",
+          "pending_billing_rows",
+          "total_rows",
+          "tracked_billing_rows"
+        ],
+        "type": "object",
+        "properties": {
+          "billing_available": {
+            "type": "boolean",
+            "description": "Whether billing answered. When false, only the counts derived from runs are meaningful."
+          },
+          "billing_interval": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Length of the billing period, for example \u0027month\u0027."
+          },
+          "billing_period_start": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Start of the current billing period.",
+            "format": "date-time"
+          },
+          "billing_period_end": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "End of the current billing period.",
+            "format": "date-time"
+          },
+          "total_rows": {
+            "type": "integer",
+            "description": "Rows synced in the billing period, billed and not yet billed."
+          },
+          "tracked_billing_rows": {
+            "type": "integer",
+            "description": "Rows billing has already counted."
+          },
+          "pending_billing_rows": {
+            "type": "integer",
+            "description": "Rows synced since billing last counted."
+          },
+          "materialized_rows_in_billing_period": {
+            "type": "integer",
+            "description": "Rows written by materialized view runs in the billing period."
+          },
+          "breakdown_of_rows_by_source": {
+            "$ref": "#/components/schemas/PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty"
+          }
+        }
+      },
       "PlacementEnum": {
         "enum": [
           "left",
@@ -276717,10 +277523,20 @@
             "description": "ID of the older trace (chronologically before current)",
             "default": null
           },
+          "previousTotalSessions": {
+            "title": "Previoustotalsessions",
+            "type": "integer",
+            "description": "The same total for the previous period, the denominator for each row\u0027s previous session share."
+          },
           "totalCount": {
             "title": "Totalcount",
             "type": "integer",
             "description": "Number of tools matching the date, category, and search filters."
+          },
+          "totalSessions": {
+            "title": "Totalsessions",
+            "type": "integer",
+            "description": "Distinct sessions with any tool call in the window, ignoring category and search filters. The denominator for each row\u0027s session share."
           }
         }
       },
@@ -277227,8 +278043,10 @@
       "QueryResponseAlternative104": {
         "title": "QueryResponseAlternative104",
         "required": [
+          "previousTotalSessions",
           "results",
-          "totalCount"
+          "totalCount",
+          "totalSessions"
         ],
         "type": "object",
         "properties": {
@@ -277252,6 +278070,11 @@
           },
           "modifiers": {
             "$ref": "#/components/schemas/QueryResponseAlternative104Modifiers"
+          },
+          "previousTotalSessions": {
+            "title": "Previoustotalsessions",
+            "type": "integer",
+            "description": "The same total for the previous period, the denominator for each row\u0027s previous session share."
           },
           "query_status": {
             "$ref": "#/components/schemas/QueryResponseAlternative104QueryStatus"
@@ -277285,6 +278108,11 @@
             "title": "Totalcount",
             "type": "integer",
             "description": "Number of tools matching the date, category, and search filters."
+          },
+          "totalSessions": {
+            "title": "Totalsessions",
+            "type": "integer",
+            "description": "Distinct sessions with any tool call in the window, ignoring category and search filters. The denominator for each row\u0027s session share."
           },
           "used_data_warehouse_sources": {
             "title": "Used Data Warehouse Sources",
@@ -292468,6 +293296,51 @@
         ],
         "type": "string",
         "additionalProperties": false
+      },
+      "ReportRanking": {
+        "required": [
+          "manifest_version",
+          "model_name",
+          "model_version",
+          "readable_heads",
+          "scored_at",
+          "scores",
+          "served_key"
+        ],
+        "type": "object",
+        "properties": {
+          "served_key": {
+            "type": "string",
+            "description": "Key of the served model in the scoring pass, as \u0060\u003Cmodel_name\u003E@\u003Cmodel_version\u003E\u0060."
+          },
+          "model_name": {
+            "type": "string",
+            "description": "Feature family of the served model."
+          },
+          "model_version": {
+            "type": "string",
+            "description": "Training partition of the served model, as \u0060YYYY-MM-DD\u0060."
+          },
+          "manifest_version": {
+            "type": "string",
+            "description": "Version of the serving manifest that chose the model."
+          },
+          "scored_at": {
+            "type": "string",
+            "description": "When the scoring sweep scored the report.",
+            "format": "date-time"
+          },
+          "scores": {
+            "$ref": "#/components/schemas/ReportRankingScoresProperty"
+          },
+          "readable_heads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Heads whose holdout AUC the training run could read. Treat scores of other heads with caution."
+          }
+        }
       },
       "ReportSignalsResponse": {
         "required": [
@@ -308162,6 +309035,7 @@
           "metrics",
           "priority",
           "pull_requests",
+          "ranking",
           "refund",
           "refund_ineligibility_reason",
           "repo_slug",
@@ -308400,6 +309274,9 @@
             "description": "The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.",
             "format": "uuid",
             "readOnly": true
+          },
+          "ranking": {
+            "$ref": "#/components/schemas/SignalReportRanking"
           }
         }
       },
@@ -309381,6 +310258,7 @@
           "metrics",
           "priority",
           "pull_requests",
+          "ranking",
           "refund",
           "refund_ineligibility_reason",
           "repo_slug",
@@ -309619,6 +310497,9 @@
             "description": "The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.",
             "format": "uuid",
             "readOnly": true
+          },
+          "ranking": {
+            "$ref": "#/components/schemas/SignalReportListRanking"
           }
         }
       },
@@ -314139,6 +315020,63 @@
           }
         },
         "additionalProperties": false
+      },
+      "SourceFieldCredentialAccountSelectConfig": {
+        "title": "SourceFieldCredentialAccountSelectConfig",
+        "required": [
+          "credentialFields",
+          "label",
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "caption": {
+            "title": "Caption",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
+          "credentialFields": {
+            "title": "Credentialfields",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Names of the sibling fields whose values the account listing needs. The form sends exactly these, and the listing endpoint accepts exactly these."
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "placeholder": {
+            "title": "Placeholder",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
+          "required": {
+            "title": "Required",
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "default": null
+          },
+          "type": {
+            "$ref": "#/components/schemas/CredentialAccountSelectType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Account picker for a source whose credentials are typed into the form, not held by an\n\u0060Integration\u0060 row. Same \u0060IntegrationAccount\u0060 shape and same picker as \u0060oauth-account-select\u0060;\nonly where the credentials come from differs.\n\n\u0060credentialFields\u0060 is the security boundary. The listing endpoint accepts those field names and\nno others, so the picker cannot be used to push arbitrary connection details into a source\u0027s\nclient."
       },
       "SourceFieldFileUploadConfig": {
         "title": "SourceFieldFileUploadConfig",
@@ -386463,9 +387401,6 @@
           },
           {
             "type": "null"
-          },
-          {
-            "type": "null"
           }
         ],
         "readOnly": true
@@ -447687,6 +448622,11 @@
           "modifiers": {
             "$ref": "#/components/schemas/McpToolQualityRowsQueryResponseModifiers"
           },
+          "previousTotalSessions": {
+            "title": "Previoustotalsessions",
+            "type": "integer",
+            "description": "The same total for the previous period, the denominator for each row\u0027s previous session share."
+          },
           "query_status": {
             "$ref": "#/components/schemas/McpToolQualityRowsQueryResponseQueryStatus"
           },
@@ -447719,6 +448659,11 @@
             "title": "Totalcount",
             "type": "integer",
             "description": "Number of tools matching the date, category, and search filters."
+          },
+          "totalSessions": {
+            "title": "Totalsessions",
+            "type": "integer",
+            "description": "Distinct sessions with any tool call in the window, ignoring category and search filters. The denominator for each row\u0027s session share."
           },
           "used_data_warehouse_sources": {
             "title": "Used Data Warehouse Sources",
@@ -477719,6 +478664,62 @@
           }
         },
         "description": "Tab descriptor for the user\u0027s chosen home page \u2014 the destination opened when they click the PostHog logo or hit \u0060/\u0060. Set to a tab descriptor to pick a homepage, send \u0060null\u0060 or \u0060{}\u0060 to clear it and fall back to the project default."
+      },
+      "PipelineJobStatsResponseExternalDataJobs": {
+        "required": [
+          "failed",
+          "running",
+          "successful",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Runs that finished inside the window."
+          },
+          "running": {
+            "type": "integer",
+            "description": "Runs in flight right now, regardless of the window."
+          },
+          "successful": {
+            "type": "integer",
+            "description": "Runs that completed."
+          },
+          "failed": {
+            "type": "integer",
+            "description": "Runs that errored or that billing stopped."
+          }
+        },
+        "description": "Counts for warehouse source syncs alone."
+      },
+      "PipelineJobStatsResponseModelingJobs": {
+        "required": [
+          "failed",
+          "running",
+          "successful",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Runs that finished inside the window."
+          },
+          "running": {
+            "type": "integer",
+            "description": "Runs in flight right now, regardless of the window."
+          },
+          "successful": {
+            "type": "integer",
+            "description": "Runs that completed."
+          },
+          "failed": {
+            "type": "integer",
+            "description": "Runs that errored or that billing stopped."
+          }
+        },
+        "description": "Counts for materialized view runs alone."
       },
       "PostHogConnectionForwardMethod": {
         "required": [
@@ -543221,6 +544222,7 @@
           "metrics",
           "priority",
           "pull_requests",
+          "ranking",
           "refund",
           "refund_ineligibility_reason",
           "repo_slug",
@@ -543459,6 +544461,9 @@
             "description": "The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.",
             "format": "uuid",
             "readOnly": true
+          },
+          "ranking": {
+            "$ref": "#/components/schemas/SignalReportRanking"
           }
         },
         "description": "The report these signals were clustered into."
@@ -564668,6 +565673,52 @@
         "description": "Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) \u2014 its implementation PRs are free and cannot be refunded because nothing was charged.\n\n* \u0060posthog_health_check\u0060 - PostHog health check\n* \u0060posthog_onboarding\u0060 - PostHog onboarding\n* \u0060posthog_system\u0060 - PostHog system",
         "readOnly": true
       },
+      "SignalReportRanking": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ReportRanking"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "served_key": {
+            "type": "string",
+            "description": "Key of the served model in the scoring pass, as \u0060\u003Cmodel_name\u003E@\u003Cmodel_version\u003E\u0060."
+          },
+          "model_name": {
+            "type": "string",
+            "description": "Feature family of the served model."
+          },
+          "model_version": {
+            "type": "string",
+            "description": "Training partition of the served model, as \u0060YYYY-MM-DD\u0060."
+          },
+          "manifest_version": {
+            "type": "string",
+            "description": "Version of the serving manifest that chose the model."
+          },
+          "scored_at": {
+            "type": "string",
+            "description": "When the scoring sweep scored the report.",
+            "format": "date-time"
+          },
+          "scores": {
+            "$ref": "#/components/schemas/ReportRankingScoresProperty"
+          },
+          "readable_heads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Heads whose holdout AUC the training run could read. Treat scores of other heads with caution."
+          }
+        },
+        "description": "The served model\u0027s score from the latest ranking score artefact. Staff only: null for other users, and null when the report has no score.",
+        "readOnly": true
+      },
       "SignalReportArtefactType": {
         "required": [
           "value"
@@ -565084,6 +566135,52 @@
         "description": "Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) \u2014 its implementation PRs are free and cannot be refunded because nothing was charged.\n\n* \u0060posthog_health_check\u0060 - PostHog health check\n* \u0060posthog_onboarding\u0060 - PostHog onboarding\n* \u0060posthog_system\u0060 - PostHog system",
         "readOnly": true
       },
+      "SignalReportListRanking": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ReportRanking"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "served_key": {
+            "type": "string",
+            "description": "Key of the served model in the scoring pass, as \u0060\u003Cmodel_name\u003E@\u003Cmodel_version\u003E\u0060."
+          },
+          "model_name": {
+            "type": "string",
+            "description": "Feature family of the served model."
+          },
+          "model_version": {
+            "type": "string",
+            "description": "Training partition of the served model, as \u0060YYYY-MM-DD\u0060."
+          },
+          "manifest_version": {
+            "type": "string",
+            "description": "Version of the serving manifest that chose the model."
+          },
+          "scored_at": {
+            "type": "string",
+            "description": "When the scoring sweep scored the report.",
+            "format": "date-time"
+          },
+          "scores": {
+            "$ref": "#/components/schemas/ReportRankingScoresProperty"
+          },
+          "readable_heads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Heads whose holdout AUC the training run could read. Treat scores of other heads with caution."
+          }
+        },
+        "description": "The served model\u0027s score from the latest ranking score artefact. Staff only: null for other users, and null when the report has no score.",
+        "readOnly": true
+      },
       "SignalReportMergeResponseReport": {
         "required": [
           "actionability",
@@ -565105,6 +566202,7 @@
           "metrics",
           "priority",
           "pull_requests",
+          "ranking",
           "refund",
           "refund_ineligibility_reason",
           "repo_slug",
@@ -565343,6 +566441,9 @@
             "description": "The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.",
             "format": "uuid",
             "readOnly": true
+          },
+          "ranking": {
+            "$ref": "#/components/schemas/SignalReportRanking"
           }
         },
         "description": "The surviving report, as it stands after the merge."
@@ -566767,6 +567868,9 @@
             "$ref": "#/components/schemas/SourceFieldOAuthAccountSelectConfig"
           },
           {
+            "$ref": "#/components/schemas/SourceFieldCredentialAccountSelectConfig"
+          },
+          {
             "$ref": "#/components/schemas/SourceFieldFileUploadConfig"
           },
           {
@@ -566859,6 +567963,14 @@
             "type": "string",
             "description": "Integration kind to validate and route the account fetch through."
           },
+          "credentialFields": {
+            "title": "Credentialfields",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Names of the sibling fields whose values the account listing needs. The form sends exactly these, and the listing endpoint accepts exactly these."
+          },
           "fileFormat": {
             "$ref": "#/components/schemas/SourceFieldFileUploadJsonFormatConfig"
           },
@@ -566869,6 +567981,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
+            "credential-account-select": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "email": "#/components/schemas/SourceFieldInputConfig",
             "file-upload": "#/components/schemas/SourceFieldFileUploadConfig",
             "number": "#/components/schemas/SourceFieldInputConfig",
@@ -566888,6 +568001,7 @@
             "SourceFieldSelectConfig": "#/components/schemas/SourceFieldSelectConfig",
             "SourceFieldOAuthConfig": "#/components/schemas/SourceFieldOAuthConfig",
             "SourceFieldOAuthAccountSelectConfig": "#/components/schemas/SourceFieldOAuthAccountSelectConfig",
+            "SourceFieldCredentialAccountSelectConfig": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "SourceFieldFileUploadConfig": "#/components/schemas/SourceFieldFileUploadConfig",
             "SourceFieldSshTunnelConfig": "#/components/schemas/SourceFieldSshTunnelConfig"
           }
@@ -566931,6 +568045,9 @@
             "$ref": "#/components/schemas/SourceFieldOAuthAccountSelectConfig"
           },
           {
+            "$ref": "#/components/schemas/SourceFieldCredentialAccountSelectConfig"
+          },
+          {
             "$ref": "#/components/schemas/SourceFieldFileUploadConfig"
           },
           {
@@ -567023,6 +568140,14 @@
             "type": "string",
             "description": "Integration kind to validate and route the account fetch through."
           },
+          "credentialFields": {
+            "title": "Credentialfields",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Names of the sibling fields whose values the account listing needs. The form sends exactly these, and the listing endpoint accepts exactly these."
+          },
           "fileFormat": {
             "$ref": "#/components/schemas/SourceFieldFileUploadJsonFormatConfig"
           },
@@ -567033,6 +568158,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
+            "credential-account-select": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "email": "#/components/schemas/SourceFieldInputConfig",
             "file-upload": "#/components/schemas/SourceFieldFileUploadConfig",
             "number": "#/components/schemas/SourceFieldInputConfig",
@@ -567052,6 +568178,7 @@
             "SourceFieldSelectConfig": "#/components/schemas/SourceFieldSelectConfig",
             "SourceFieldOAuthConfig": "#/components/schemas/SourceFieldOAuthConfig",
             "SourceFieldOAuthAccountSelectConfig": "#/components/schemas/SourceFieldOAuthAccountSelectConfig",
+            "SourceFieldCredentialAccountSelectConfig": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "SourceFieldFileUploadConfig": "#/components/schemas/SourceFieldFileUploadConfig",
             "SourceFieldSshTunnelConfig": "#/components/schemas/SourceFieldSshTunnelConfig"
           }
@@ -567146,6 +568273,9 @@
             "$ref": "#/components/schemas/SourceFieldOAuthAccountSelectConfig"
           },
           {
+            "$ref": "#/components/schemas/SourceFieldCredentialAccountSelectConfig"
+          },
+          {
             "$ref": "#/components/schemas/SourceFieldFileUploadConfig"
           },
           {
@@ -567238,6 +568368,14 @@
             "type": "string",
             "description": "Integration kind to validate and route the account fetch through."
           },
+          "credentialFields": {
+            "title": "Credentialfields",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Names of the sibling fields whose values the account listing needs. The form sends exactly these, and the listing endpoint accepts exactly these."
+          },
           "fileFormat": {
             "$ref": "#/components/schemas/SourceFieldFileUploadJsonFormatConfig"
           },
@@ -567248,6 +568386,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
+            "credential-account-select": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "email": "#/components/schemas/SourceFieldInputConfig",
             "file-upload": "#/components/schemas/SourceFieldFileUploadConfig",
             "number": "#/components/schemas/SourceFieldInputConfig",
@@ -567267,6 +568406,7 @@
             "SourceFieldSelectConfig": "#/components/schemas/SourceFieldSelectConfig",
             "SourceFieldOAuthConfig": "#/components/schemas/SourceFieldOAuthConfig",
             "SourceFieldOAuthAccountSelectConfig": "#/components/schemas/SourceFieldOAuthAccountSelectConfig",
+            "SourceFieldCredentialAccountSelectConfig": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "SourceFieldFileUploadConfig": "#/components/schemas/SourceFieldFileUploadConfig",
             "SourceFieldSshTunnelConfig": "#/components/schemas/SourceFieldSshTunnelConfig"
           }
@@ -567309,6 +568449,9 @@
             "$ref": "#/components/schemas/SourceFieldOAuthAccountSelectConfig"
           },
           {
+            "$ref": "#/components/schemas/SourceFieldCredentialAccountSelectConfig"
+          },
+          {
             "$ref": "#/components/schemas/SourceFieldFileUploadConfig"
           },
           {
@@ -567401,6 +568544,14 @@
             "type": "string",
             "description": "Integration kind to validate and route the account fetch through."
           },
+          "credentialFields": {
+            "title": "Credentialfields",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Names of the sibling fields whose values the account listing needs. The form sends exactly these, and the listing endpoint accepts exactly these."
+          },
           "fileFormat": {
             "$ref": "#/components/schemas/SourceFieldFileUploadJsonFormatConfig"
           },
@@ -567411,6 +568562,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
+            "credential-account-select": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "email": "#/components/schemas/SourceFieldInputConfig",
             "file-upload": "#/components/schemas/SourceFieldFileUploadConfig",
             "number": "#/components/schemas/SourceFieldInputConfig",
@@ -567430,6 +568582,7 @@
             "SourceFieldSelectConfig": "#/components/schemas/SourceFieldSelectConfig",
             "SourceFieldOAuthConfig": "#/components/schemas/SourceFieldOAuthConfig",
             "SourceFieldOAuthAccountSelectConfig": "#/components/schemas/SourceFieldOAuthAccountSelectConfig",
+            "SourceFieldCredentialAccountSelectConfig": "#/components/schemas/SourceFieldCredentialAccountSelectConfig",
             "SourceFieldFileUploadConfig": "#/components/schemas/SourceFieldFileUploadConfig",
             "SourceFieldSshTunnelConfig": "#/components/schemas/SourceFieldSshTunnelConfig"
           }
@@ -609275,6 +610428,13 @@
         },
         "description": "Extra binary files to ship next to app.py, keyed by project-relative path (for example \u0027data/events.parquet\u0027), each as standard base64 text."
       },
+      "CredentialAccountsRequestCredentials": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Values of the sibling fields named by the picker\u0027s \u0060credentialFields\u0060. Any other key is rejected."
+      },
       "DashboardFilters": {
         "type": "object",
         "readOnly": true
@@ -611691,6 +612851,20 @@
         ],
         "default": null
       },
+      "PipelineJobStatsResponseBreakdown": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/JobStatsBucket"
+        },
+        "description": "Runs per time bucket, keyed by ISO hour when days=1 and by ISO date otherwise. Buckets with no runs are absent rather than zero."
+      },
+      "PipelineRowsStatsResponseBreakdownOfRowsBySource": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "description": "Rows synced in the billing period, keyed by source id."
+      },
       "PostHogConnectionForwardQuery": {
         "type": "object",
         "additionalProperties": {
@@ -611993,6 +613167,14 @@
         "additionalProperties": {
           "type": "string"
         }
+      },
+      "ReportRankingScores": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        },
+        "description": "Outcome head name to its calibrated probability. Empty when the served model skipped the report."
       },
       "ResolvedTemplateTrainingPopulation": {
         "type": "object",
@@ -613348,6 +614530,12 @@
           "$ref": "#/components/schemas/SupportTicket"
         }
       },
+      "AccountsPresenceList200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/AccountPresence"
+        }
+      },
       "ActionsReferencesList200Response": {
         "type": "array",
         "items": {
@@ -614048,6 +615236,12 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/SignalScoutRunSummary"
+        }
+      },
+      "SignalsScoutReportCheckList200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ScoutCheckSummary"
         }
       },
       "SignalsScoutScratchpadSearch200Response": {
@@ -632364,6 +633558,12 @@
           "$ref": "#/components/schemas/SupportTicket"
         }
       },
+      "AccountsPresenceList200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/AccountPresence"
+        }
+      },
       "ActionsReferencesList200ResponseSchema": {
         "type": "array",
         "items": {
@@ -632998,6 +634198,12 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/SignalScoutRunSummary"
+        }
+      },
+      "SignalsScoutReportCheckList200ResponseSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ScoutCheckSummary"
         }
       },
       "SignalsScoutScratchpadSearch200ResponseSchema": {
@@ -633684,6 +634890,13 @@
           "type": "string"
         },
         "description": "Extra binary files to ship next to app.py, keyed by project-relative path (for example \u0027data/events.parquet\u0027), each as standard base64 text."
+      },
+      "CredentialAccountsRequestCredentialsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Values of the sibling fields named by the picker\u0027s \u0060credentialFields\u0060. Any other key is rejected."
       },
       "CustomPropertySourceColumnPropertyMap": {
         "type": "object",
@@ -636022,6 +637235,20 @@
         "type": "object",
         "description": "Free-form scene parameters captured at pin time, used by the frontend to rehydrate the destination."
       },
+      "PipelineJobStatsResponseBreakdownProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/JobStatsBucket"
+        },
+        "description": "Runs per time bucket, keyed by ISO hour when days=1 and by ISO date otherwise. Buckets with no runs are absent rather than zero."
+      },
+      "PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "description": "Rows synced in the billing period, keyed by source id."
+      },
       "PlainThreadSignalExtraLabelsItem": {
         "type": "object"
       },
@@ -636552,6 +637779,14 @@
       "ReportMetricWriteQuery": {
         "type": "object",
         "description": "Required when authoring: a live InsightVizNode wrapping one bounded TrendsQuery. Consumers derive a BoldNumber execution for the whole-window aggregate and an ActionsBar execution for longitudinal buckets. The query must produce exactly one output series and no more than 1000 estimated longitudinal points; one formula may combine up to ten event or action source series. An affected_users metric uses exactly one source with \u0060math: dau\u0060; never sum its per-bucket unique-user values. A response omits this on list or redacts it to null on detail when the viewer lacks access to the definition."
+      },
+      "ReportRankingScoresProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        },
+        "description": "Outcome head name to its calibrated probability. Empty when the served model skipped the report."
       },
       "ResolvedTemplateTrainingPopulationProperty": {
         "type": "object",
@@ -640940,6 +642175,24 @@
         ],
         "type": "string"
       },
+      "CredentialAccountSelectType": {
+        "const": null,
+        "title": "Type",
+        "enum": [
+          "credential-account-select"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "CredentialAccountSelectType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "credential-account-select",
+              "name": "CredentialAccountSelect"
+            }
+          ]
+        }
+      },
       "FileUploadType": {
         "const": null,
         "title": "Type",
@@ -644692,6 +645945,39 @@
             }
           ]
         }
+      },
+      "DataWarehouseCompletedActivityRetrieveOutcomeParameter": {
+        "minLength": 1,
+        "enum": [
+          "completed",
+          "failed"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "DataWarehouseCompletedActivityRetrieveOutcomeParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "completed",
+              "name": "Completed"
+            },
+            {
+              "value": "failed",
+              "name": "Failed"
+            }
+          ]
+        }
+      },
+      "DataWarehouseJobStatsRetrieveDaysParameter": {
+        "enum": [
+          1,
+          7,
+          30
+        ],
+        "type": "integer",
+        "additionalProperties": false,
+        "default": 7
       },
       "DataWarehouseManagedWarehouseMonitoringTimeseriesRetrieveMetricParameter": {
         "minLength": 1,

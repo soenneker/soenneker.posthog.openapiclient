@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.By_external_id;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Presence_list;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.By_external_id.By_external_idRequestBuilder By_external_id
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.By_external_id.By_external_idRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The presence_list property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Presence_list.Presence_listRequestBuilder Presence_list
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Presence_list.Presence_listRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.accounts.item collection</summary>
         /// <param name="position">A UUID string identifying this account.</param>

@@ -40,5 +40,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         LastSeen,
         #pragma warning restore CS1591
+        [EnumMember(Value = "trend_score")]
+        #pragma warning disable CS1591
+        TrendScore,
+        #pragma warning restore CS1591
     }
 }

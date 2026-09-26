@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Check_cdc_prerequisites;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connect_link;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connections;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Credential_accounts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Database_schema;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Direct_connection_options;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Draft_custom_manifest;
@@ -45,6 +46,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connections.ConnectionsRequestBuilder Connections
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connections.ConnectionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The credential_accounts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Credential_accounts.Credential_accountsRequestBuilder Credential_accounts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Credential_accounts.Credential_accountsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The database_schema property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Database_schema.Database_schemaRequestBuilder Database_schema

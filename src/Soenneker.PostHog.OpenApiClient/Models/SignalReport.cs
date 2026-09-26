@@ -118,6 +118,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest> PullRequests { get; private set; }
 #endif
+        /// <summary>The served model&apos;s score from the latest ranking score artefact. Staff only: null for other users, and null when the report has no score.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking? Ranking { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking Ranking { get; private set; }
+#endif
         /// <summary>The report&apos;s PR refund, when one exists. One refund per report, ever.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -275,6 +283,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetric.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "priority", n => { Priority = n.GetStringValue(); } },
                 { "pull_requests", n => { PullRequests = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "ranking", n => { Ranking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking>(global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking.CreateFromDiscriminatorValue); } },
                 { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund.CreateFromDiscriminatorValue); } },
                 { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
                 { "repo_slug", n => { RepoSlug = n.GetStringValue(); } },

@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? P95DurationMs { get; set; }
         /// <summary>The p99_duration_ms property</summary>
         public double? P99DurationMs { get; set; }
+        /// <summary>Calls in the previous period: the same length of time right before the window, or for a to-date range (&quot;This month&quot;) the same part of the previous unit.</summary>
+        public int? PreviousCalls { get; set; }
+        /// <summary>Errored calls in the previous period.</summary>
+        public int? PreviousErrors { get; set; }
+        /// <summary>p95 duration in the previous period, or null when no previous call carried a duration.</summary>
+        public double? PreviousP95DurationMs { get; set; }
+        /// <summary>Distinct sessions that called the tool in the previous period.</summary>
+        public int? PreviousSessions { get; set; }
         /// <summary>The sessions property</summary>
         public int? Sessions { get; set; }
         /// <summary>The tool property</summary>
@@ -50,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The total_calls property</summary>
         public int? TotalCalls { get; set; }
+        /// <summary>Sort key ranking growth relative to volume, so a small tool&apos;s spike doesn&apos;t outrank a large tool&apos;s surge. Not a percentage; only meaningful for ordering.</summary>
+        public double? TrendScore { get; set; }
         /// <summary>The users property</summary>
         public int? Users { get; set; }
         /// <summary>
@@ -77,9 +87,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "p50_duration_ms", n => { P50DurationMs = n.GetDoubleValue(); } },
                 { "p95_duration_ms", n => { P95DurationMs = n.GetDoubleValue(); } },
                 { "p99_duration_ms", n => { P99DurationMs = n.GetDoubleValue(); } },
+                { "previous_calls", n => { PreviousCalls = n.GetIntValue(); } },
+                { "previous_errors", n => { PreviousErrors = n.GetIntValue(); } },
+                { "previous_p95_duration_ms", n => { PreviousP95DurationMs = n.GetDoubleValue(); } },
+                { "previous_sessions", n => { PreviousSessions = n.GetIntValue(); } },
                 { "sessions", n => { Sessions = n.GetIntValue(); } },
                 { "tool", n => { Tool = n.GetStringValue(); } },
                 { "total_calls", n => { TotalCalls = n.GetIntValue(); } },
+                { "trend_score", n => { TrendScore = n.GetDoubleValue(); } },
                 { "users", n => { Users = n.GetIntValue(); } },
             };
         }
@@ -97,9 +112,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("p50_duration_ms", P50DurationMs);
             writer.WriteDoubleValue("p95_duration_ms", P95DurationMs);
             writer.WriteDoubleValue("p99_duration_ms", P99DurationMs);
+            writer.WriteIntValue("previous_calls", PreviousCalls);
+            writer.WriteIntValue("previous_errors", PreviousErrors);
+            writer.WriteDoubleValue("previous_p95_duration_ms", PreviousP95DurationMs);
+            writer.WriteIntValue("previous_sessions", PreviousSessions);
             writer.WriteIntValue("sessions", Sessions);
             writer.WriteStringValue("tool", Tool);
             writer.WriteIntValue("total_calls", TotalCalls);
+            writer.WriteDoubleValue("trend_score", TrendScore);
             writer.WriteIntValue("users", Users);
         }
     }
