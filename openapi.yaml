@@ -15816,8 +15816,8 @@ paths:
         schema:
           type: string
           format: uuid
-        description: Owning task for task, task_artifact, and desktop_canvas comment
-          scopes.
+        description: Owning task for task, task_artifact, task_preview, task_browser,
+          and desktop_canvas comment scopes.
       tags:
       - comments
       security:
@@ -179259,7 +179259,13 @@ components:
           type: boolean
           description: True when more matches may exist beyond `results`, so the response
             is a top slice rather than everything that matched.
+        reranked:
+          type: boolean
+          description: True when a relevance model reordered the top results after
+            the embedding match. False when the results are in embedding distance
+            order, for example because the model did not answer in time.
       required:
+      - reranked
       - results
       - truncated
     ObservationSearchResult:
@@ -250736,7 +250742,8 @@ components:
         target:
           allOf:
           - $ref: '#/components/schemas/TaskCommentTarget'
-          description: Task, artifact, or canvas receiving the comment.
+          description: Task, artifact, canvas, preview, or in-app browser page receiving
+            the comment.
         resolved:
           type: boolean
           description: Whether the comment is resolved.
@@ -250812,7 +250819,8 @@ components:
         target:
           allOf:
           - $ref: '#/components/schemas/TaskCommentTarget'
-          description: Task, artifact, or canvas receiving the comment.
+          description: Task, artifact, canvas, preview, or in-app browser page receiving
+            the comment.
         content:
           type: string
           description: Bounded excerpt of the root comment body.
@@ -250851,7 +250859,7 @@ components:
           description: Stable target id.
         type:
           type: string
-          description: 'Target type: task, artifact, or canvas.'
+          description: 'Target type: task, artifact, canvas, preview, or browser.'
         name:
           type: string
           description: Display name of the comment target.

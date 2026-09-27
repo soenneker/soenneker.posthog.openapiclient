@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>True when a relevance model reordered the top results after the embedding match. False when the results are in embedding distance order, for example because the model did not answer in time.</summary>
+        public bool? Reranked { get; set; }
         /// <summary>Matching observations, most relevant first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "reranked", n => { Reranked = n.GetBoolValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResult>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "truncated", n => { Truncated = n.GetBoolValue(); } },
             };
@@ -60,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("reranked", Reranked);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResult>("results", Results);
             writer.WriteBoolValue("truncated", Truncated);
             writer.WriteAdditionalData(AdditionalData);

@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SelectedText { get; set; }
 #endif
-        /// <summary>Task, artifact, or canvas receiving the comment.</summary>
+        /// <summary>Task, artifact, canvas, preview, or in-app browser page receiving the comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentSummaryTarget? Target { get; set; }

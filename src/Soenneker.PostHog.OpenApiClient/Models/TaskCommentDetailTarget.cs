@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Task, artifact, or canvas receiving the comment.
+    /// Task, artifact, canvas, preview, or in-app browser page receiving the comment.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskCommentDetailTarget : IAdditionalDataHolder, IParsable
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Target type: task, artifact, or canvas.</summary>
+        /// <summary>Target type: task, artifact, canvas, preview, or browser.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the comment is resolved.</summary>
         public bool? Resolved { get; set; }
-        /// <summary>Task, artifact, or canvas receiving the comment.</summary>
+        /// <summary>Task, artifact, canvas, preview, or in-app browser page receiving the comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentDetailTarget? Target { get; set; }
