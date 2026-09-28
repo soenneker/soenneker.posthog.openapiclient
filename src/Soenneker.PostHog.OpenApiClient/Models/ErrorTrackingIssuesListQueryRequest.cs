@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestLibrary Library { get; set; }
 #endif
-        /// <summary>Page size.</summary>
+        /// <summary>Page size. Defaults to 10. Use nextOffset to fetch more rows instead of a large page.</summary>
         public int? Limit { get; set; }
         /// <summary>Pagination offset.</summary>
         public int? Offset { get; set; }
@@ -126,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string User { get; set; }
 #endif
-        /// <summary>Number of volume buckets. Defaults to 0 for compact aggregate counts.</summary>
+        /// <summary>Number of volume buckets. Defaults to 0, which returns only aggregate counts without volume buckets.</summary>
         public int? VolumeResolution { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequest"/> and sets the default values.
@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             FilterTestAccounts = true;
-            Limit = 25;
+            Limit = 10;
             Offset = 0;
             VolumeResolution = 0;
         }

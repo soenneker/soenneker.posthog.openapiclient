@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Offline_experimentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_experiments", pathParameters)
+        public Offline_experimentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_experiments{?application_version*,cursor*,dataset_identifier*,dataset_revision_identifier*,dataset_source*,date_from*,date_to*,limit*,model_version*,prompt_version*,run_source*,scorer_definition_id*,scorer_version_ids*,search*,statuses*,suite_key*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,8 +43,38 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Offline_experimentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_experiments", rawUrl)
+        public Offline_experimentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_experiments{?application_version*,cursor*,dataset_identifier*,dataset_revision_identifier*,dataset_source*,date_from*,date_to*,limit*,model_version*,prompt_version*,run_source*,scorer_definition_id*,scorer_version_ids*,search*,statuses*,suite_key*}", rawUrl)
         {
+        }
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentPage"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 503 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentPage?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder.Offline_experimentsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentPage> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder.Offline_experimentsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentPage>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceipt"/></returns>
         /// <param name="body">The request body</param>
@@ -81,6 +111,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceipt>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceipt.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder.Offline_experimentsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder.Offline_experimentsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,6 +153,144 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Offline_experimentsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
+        public partial class Offline_experimentsRequestBuilderGetQueryParameters 
+        #pragma warning restore CS1591
+        {
+            /// <summary>Exact application revision.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("application_version")]
+            public string? ApplicationVersion { get; set; }
+#nullable restore
+#else
+            [QueryParameter("application_version")]
+            public string ApplicationVersion { get; set; }
+#endif
+            /// <summary>Continuation cursor returned by the previous page.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("cursor")]
+            public string? Cursor { get; set; }
+#nullable restore
+#else
+            [QueryParameter("cursor")]
+            public string Cursor { get; set; }
+#endif
+            /// <summary>Exact durable dataset identifier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("dataset_identifier")]
+            public string? DatasetIdentifier { get; set; }
+#nullable restore
+#else
+            [QueryParameter("dataset_identifier")]
+            public string DatasetIdentifier { get; set; }
+#endif
+            /// <summary>Exact durable dataset revision identifier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("dataset_revision_identifier")]
+            public string? DatasetRevisionIdentifier { get; set; }
+#nullable restore
+#else
+            [QueryParameter("dataset_revision_identifier")]
+            public string DatasetRevisionIdentifier { get; set; }
+#endif
+            /// <summary>Exact dataset source.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("dataset_source")]
+            public string? DatasetSource { get; set; }
+#nullable restore
+#else
+            [QueryParameter("dataset_source")]
+            public string DatasetSource { get; set; }
+#endif
+            /// <summary>Inclusive execution start time, in ISO 8601 format.</summary>
+            [QueryParameter("date_from")]
+            public DateTimeOffset? DateFrom { get; set; }
+            /// <summary>Exclusive execution end time, in ISO 8601 format.</summary>
+            [QueryParameter("date_to")]
+            public DateTimeOffset? DateTo { get; set; }
+            /// <summary>Page size, from 1 to 100. Defaults to 50.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Exact model revision.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("model_version")]
+            public string? ModelVersion { get; set; }
+#nullable restore
+#else
+            [QueryParameter("model_version")]
+            public string ModelVersion { get; set; }
+#endif
+            /// <summary>Exact prompt revision.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("prompt_version")]
+            public string? PromptVersion { get; set; }
+#nullable restore
+#else
+            [QueryParameter("prompt_version")]
+            public string PromptVersion { get; set; }
+#endif
+            /// <summary>Filter ci, local, scheduled, or not_specified for omitted run source.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("run_source")]
+            public string? RunSource { get; set; }
+#nullable restore
+#else
+            [QueryParameter("run_source")]
+            public string RunSource { get; set; }
+#endif
+            /// <summary>Restrict results to this scorer definition.</summary>
+            [QueryParameter("scorer_definition_id")]
+            public Guid? ScorerDefinitionId { get; set; }
+            /// <summary>Comma-separated list of at most 20 distinct scorer-version UUIDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("scorer_version_ids")]
+            public string? ScorerVersionIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("scorer_version_ids")]
+            public string ScorerVersionIds { get; set; }
+#endif
+            /// <summary>Search experiment names.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>Comma-separated uploading, completed, or failed states. History defaults to completed; lists include all.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("statuses")]
+            public string? Statuses { get; set; }
+#nullable restore
+#else
+            [QueryParameter("statuses")]
+            public string Statuses { get; set; }
+#endif
+            /// <summary>Exact evaluation suite identifier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("suite_key")]
+            public string? SuiteKey { get; set; }
+#nullable restore
+#else
+            [QueryParameter("suite_key")]
+            public string SuiteKey { get; set; }
+#endif
         }
     }
 }

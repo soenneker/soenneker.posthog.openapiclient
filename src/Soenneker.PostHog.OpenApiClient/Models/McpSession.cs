@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Number of distinct PostHog distinct_ids that produced events in the session.</summary>
         public int? DistinctIdCount { get; private set; }
+        /// <summary>Number of the session&apos;s $mcp_tool_call events with $mcp_is_error true, counted over the same properties / filter_test_accounts matches as tool_calls.</summary>
+        public int? ErrorCalls { get; private set; }
         /// <summary>LLM-generated summary (at most two sentences) of the agent&apos;s overall goal for the session. Empty until generated on demand via the generate_intent endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "distinct_id_count", n => { DistinctIdCount = n.GetIntValue(); } },
+                { "error_calls", n => { ErrorCalls = n.GetIntValue(); } },
                 { "intent", n => { Intent = n.GetStringValue(); } },
                 { "mcp_client_name", n => { McpClientName = n.GetStringValue(); } },
                 { "person_email", n => { PersonEmail = n.GetStringValue(); } },

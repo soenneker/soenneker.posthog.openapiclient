@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse Assignee { get; set; }
 #endif
-        /// <summary>Issue description.</summary>
+        /// <summary>Issue description. List rows truncate it to a short preview; the issue detail query returns it in full.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }

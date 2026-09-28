@@ -56,6 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> MissingEvents { get; set; }
 #endif
+        /// <summary>Required webhook field names with no value yet. Deliveries are dropped while any is missing.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? MissingInputs { get; set; }
+#nullable restore
+#else
+        public List<string> MissingInputs { get; set; }
+#endif
         /// <summary>Resource name to external schema id, as configured on the webhook function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "hog_function", n => { HogFunction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction.CreateFromDiscriminatorValue); } },
                 { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseInputsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseInputsProperty.CreateFromDiscriminatorValue); } },
                 { "missing_events", n => { MissingEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "missing_inputs", n => { MissingInputs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "schema_mapping", n => { SchemaMapping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseSchemaMappingProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseSchemaMappingProperty.CreateFromDiscriminatorValue); } },
                 { "supports_webhooks", n => { SupportsWebhooks = n.GetBoolValue(); } },
                 { "webhook_url", n => { WebhookUrl = n.GetStringValue(); } },
@@ -123,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction>("hog_function", HogFunction);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseInputsProperty>("inputs", Inputs);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_events", MissingEvents);
+            writer.WriteCollectionOfPrimitiveValues<string>("missing_inputs", MissingInputs);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseSchemaMappingProperty>("schema_mapping", SchemaMapping);
             writer.WriteBoolValue("supports_webhooks", SupportsWebhooks);
             writer.WriteStringValue("webhook_url", WebhookUrl);

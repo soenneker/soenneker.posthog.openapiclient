@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; set; }
-        /// <summary>InsightSerializer restricted to identifiers + result only.</summary>
+        /// <summary>InsightSerializer restricted to identifiers, the result, and the warnings about that result.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightResult? Insight { get; set; }

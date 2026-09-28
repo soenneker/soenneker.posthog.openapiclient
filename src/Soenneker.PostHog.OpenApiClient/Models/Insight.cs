@@ -244,6 +244,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string UserAccessLevel { get; private set; }
 #endif
+        /// <summary>Warnings from the run that produced these results. A `warehouse_sync` warning means the query read a data warehouse table whose sync failed, is paused, or is overdue, so the results can be out of date. Reflects the sync state when the results were computed. Null for shared insights.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem>? Warnings { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem> Warnings { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Insight"/> and sets the default values.
         /// </summary>
@@ -308,6 +316,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "types", n => { Types = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InsightTypesItem>(global::Soenneker.PostHog.OpenApiClient.Models.InsightTypesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>

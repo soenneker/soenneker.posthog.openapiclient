@@ -167,13 +167,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters Parameters { get; set; }
 #endif
-        /// <summary>The primary_metrics_ordered_uuids property</summary>
+        /// <summary>Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids? PrimaryMetricsOrderedUuids { get; set; }
+        public List<string>? PrimaryMetricsOrderedUuids { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids PrimaryMetricsOrderedUuids { get; set; }
+        public List<string> PrimaryMetricsOrderedUuids { get; set; }
 #endif
         /// <summary>GitHub repository holding this experiment&apos;s feature-flag code, in `organization/repository` format. Used as the target of the flag-cleanup pull request opened via open_cleanup_pr on end/ship_variant. When not set, cleanup targets the team&apos;s only connected repository and is skipped if the team has several.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -231,13 +231,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetrics SecondaryMetrics { get; set; }
 #endif
-        /// <summary>The secondary_metrics_ordered_uuids property</summary>
+        /// <summary>Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetricsOrderedUuids? SecondaryMetricsOrderedUuids { get; set; }
+        public List<string>? SecondaryMetricsOrderedUuids { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetricsOrderedUuids SecondaryMetricsOrderedUuids { get; set; }
+        public List<string> SecondaryMetricsOrderedUuids { get; set; }
 #endif
         /// <summary>The start_date property</summary>
         public DateTimeOffset? StartDate { get; set; }
@@ -343,7 +343,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "only_count_matured_users", n => { OnlyCountMaturedUsers = n.GetBoolValue(); } },
                 { "original_experiment", n => { OriginalExperiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty.CreateFromDiscriminatorValue); } },
                 { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters.CreateFromDiscriminatorValue); } },
-                { "primary_metrics_ordered_uuids", n => { PrimaryMetricsOrderedUuids = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids.CreateFromDiscriminatorValue); } },
+                { "primary_metrics_ordered_uuids", n => { PrimaryMetricsOrderedUuids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "resolved_exposure_event", n => { ResolvedExposureEvent = n.GetStringValue(); } },
                 { "running_time_calculation", n => { RunningTimeCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation.CreateFromDiscriminatorValue); } },
@@ -351,7 +351,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "saved_metrics_ids", n => { SavedMetricsIds = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSavedMetricsIdsItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSavedMetricsIdsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scheduling_config", n => { SchedulingConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSchedulingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSchedulingConfig.CreateFromDiscriminatorValue); } },
                 { "secondary_metrics", n => { SecondaryMetrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetrics.CreateFromDiscriminatorValue); } },
-                { "secondary_metrics_ordered_uuids", n => { SecondaryMetricsOrderedUuids = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetricsOrderedUuids>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetricsOrderedUuids.CreateFromDiscriminatorValue); } },
+                { "secondary_metrics_ordered_uuids", n => { SecondaryMetricsOrderedUuids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "stats_config", n => { StatsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsConfig.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatus.CreateFromDiscriminatorValue); } },
@@ -389,13 +389,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("only_count_matured_users", OnlyCountMaturedUsers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty>("original_experiment", OriginalExperiment);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>("parameters", Parameters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids>("primary_metrics_ordered_uuids", PrimaryMetricsOrderedUuids);
+            writer.WriteCollectionOfPrimitiveValues<string>("primary_metrics_ordered_uuids", PrimaryMetricsOrderedUuids);
             writer.WriteStringValue("repository", Repository);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>("running_time_calculation", RunningTimeCalculation);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSavedMetricsIdsItem>("saved_metrics_ids", SavedMetricsIds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSchedulingConfig>("scheduling_config", SchedulingConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetrics>("secondary_metrics", SecondaryMetrics);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSecondaryMetricsOrderedUuids>("secondary_metrics_ordered_uuids", SecondaryMetricsOrderedUuids);
+            writer.WriteCollectionOfPrimitiveValues<string>("secondary_metrics_ordered_uuids", SecondaryMetricsOrderedUuids);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsConfig>("stats_config", StatsConfig);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);

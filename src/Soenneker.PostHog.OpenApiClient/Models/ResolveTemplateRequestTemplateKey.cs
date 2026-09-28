@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Template to resolve. Use autoresearch-templates-list to see all available templates with descriptions. Required.* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior
+    /// Template to resolve. The templates endpoint lists each one with its description. Required.* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResolveTemplateRequestTemplateKey : IAdditionalDataHolder, IParsable

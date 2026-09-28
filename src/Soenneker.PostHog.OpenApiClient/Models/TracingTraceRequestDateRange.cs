@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Date range for the query. Defaults to last 24 hours.
+    /// Date range for the query. Omit it to search all retained spans for this trace.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracingTraceRequestDateRange : IAdditionalDataHolder, IParsable

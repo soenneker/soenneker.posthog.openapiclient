@@ -62,6 +62,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AzureEndpointDisplay { get; private set; }
 #endif
+        /// <summary>Base URL of an OpenAI-compatible API (e.g. https://api.example.com/v1). Required for the openai_compatible provider; must be a public https:// URL.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BaseUrl { get; set; }
+#nullable restore
+#else
+        public string BaseUrl { get; set; }
+#endif
+        /// <summary>OpenAI-compatible base URL (read-only, for display)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BaseUrlDisplay { get; private set; }
+#nullable restore
+#else
+        public string BaseUrlDisplay { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
@@ -92,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub</summary>
+        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `openai_compatible` - OpenAI-compatible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderEnum? Provider { get; set; }
         /// <summary>The set_as_active property</summary>
         public bool? SetAsActive { get; set; }
@@ -136,6 +152,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "api_version_display", n => { ApiVersionDisplay = n.GetStringValue(); } },
                 { "azure_endpoint", n => { AzureEndpoint = n.GetStringValue(); } },
                 { "azure_endpoint_display", n => { AzureEndpointDisplay = n.GetStringValue(); } },
+                { "base_url", n => { BaseUrl = n.GetStringValue(); } },
+                { "base_url_display", n => { BaseUrlDisplay = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmProviderKeyCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmProviderKeyCreatedBy.CreateFromDiscriminatorValue); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
@@ -157,6 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("api_key", ApiKey);
             writer.WriteStringValue("api_version", ApiVersion);
             writer.WriteStringValue("azure_endpoint", AzureEndpoint);
+            writer.WriteStringValue("base_url", BaseUrl);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderEnum>("provider", Provider);
             writer.WriteBoolValue("set_as_active", SetAsActive);

@@ -21,6 +21,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsSyncing { get; private set; }
         /// <summary>When the last sync run completed; null before the first sync.</summary>
         public DateTimeOffset? LastSyncedAt { get; private set; }
+        /// <summary>Minutes between scheduled syncs.</summary>
+        public int? SyncIntervalMinutes { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncStatus"/> and sets the default values.
         /// </summary>
@@ -49,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
                 { "is_syncing", n => { IsSyncing = n.GetBoolValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
+                { "sync_interval_minutes", n => { SyncIntervalMinutes = n.GetIntValue(); } },
             };
         }
         /// <summary>

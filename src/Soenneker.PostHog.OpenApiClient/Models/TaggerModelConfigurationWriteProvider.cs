@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// LLM provider to use for this tagger.* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub
+    /// LLM provider to use for this tagger.* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `openai_compatible` - OpenAI-compatible
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaggerModelConfigurationWriteProvider : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub</summary>
+        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `openai_compatible` - OpenAI-compatible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider"/> and sets the default values.

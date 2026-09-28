@@ -30,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ContentHash { get; set; }
 #endif
+        /// <summary>Optional byte count of the content about to be uploaded. When given, the upload response also carries a presigned PUT signed for exactly this length, which S3-compatible stores without presigned POST support (such as Cloudflare R2) accept.</summary>
+        public int? ContentLength { get; set; }
         /// <summary>Optional error tracking release ID associated with this symbol set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "chunk_id", n => { ChunkId = n.GetStringValue(); } },
                 { "content_hash", n => { ContentHash = n.GetStringValue(); } },
+                { "content_length", n => { ContentLength = n.GetIntValue(); } },
                 { "release_id", n => { ReleaseId = n.GetStringValue(); } },
             };
         }
@@ -77,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("chunk_id", ChunkId);
             writer.WriteStringValue("content_hash", ContentHash);
+            writer.WriteIntValue("content_length", ContentLength);
             writer.WriteStringValue("release_id", ReleaseId);
             writer.WriteAdditionalData(AdditionalData);
         }

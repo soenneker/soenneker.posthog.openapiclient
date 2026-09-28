@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NotesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/notes{?content_max_chars*,date_from*,date_to*,include_expired*,include_general*,limit*,skill_name*}", pathParameters)
+        public NotesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/notes{?content_max_chars*,date_from*,date_to*,include_expired*,include_general*,limit*,skill_name*,text*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,11 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NotesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/notes{?content_max_chars*,date_from*,date_to*,include_expired*,include_general*,limit*,skill_name*}", rawUrl)
+        public NotesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/notes{?content_max_chars*,date_from*,date_to*,include_expired*,include_general*,limit*,skill_name*,text*}", rawUrl)
         {
         }
         /// <summary>
-        /// Return the steering notes left for this project&apos;s scouts, newest first. Pass `skill_name` to get the notes addressed to one scout (or one pipeline audience, e.g. `pipeline:report-research`) plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Results capped at 500.
+        /// Return the steering notes left for this project&apos;s scouts, newest first. Pass `skill_name` to get the notes addressed to one scout (or one pipeline audience, e.g. `pipeline:report-research`) plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Pass `text` to keep only the notes whose content contains it, case-insensitively. Results capped at 500.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ScoutNote&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ScoutNote>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ScoutNote.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Return the steering notes left for this project&apos;s scouts, newest first. Pass `skill_name` to get the notes addressed to one scout (or one pipeline audience, e.g. `pipeline:report-research`) plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Results capped at 500.
+        /// Return the steering notes left for this project&apos;s scouts, newest first. Pass `skill_name` to get the notes addressed to one scout (or one pipeline audience, e.g. `pipeline:report-research`) plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Pass `text` to keep only the notes whose content contains it, case-insensitively. Results capped at 500.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -136,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes.NotesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Return the steering notes left for this project&apos;s scouts, newest first. Pass `skill_name` to get the notes addressed to one scout (or one pipeline audience, e.g. `pipeline:report-research`) plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Results capped at 500.
+        /// Return the steering notes left for this project&apos;s scouts, newest first. Pass `skill_name` to get the notes addressed to one scout (or one pipeline audience, e.g. `pipeline:report-research`) plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Pass `text` to keep only the notes whose content contains it, case-insensitively. Results capped at 500.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class NotesRequestBuilderGetQueryParameters 
@@ -168,6 +168,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes
 #else
             [QueryParameter("skill_name")]
             public string SkillName { get; set; }
+#endif
+            /// <summary>Return only the notes whose content contains this text, case-insensitively. Pass an entity (an error id, a flag key, a page path, an event name) to find the notes about it, including older ones the newest-first cap would hide.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("text")]
+            public string? Text { get; set; }
+#nullable restore
+#else
+            [QueryParameter("text")]
+            public string Text { get; set; }
 #endif
         }
     }

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         {
         }
         /// <summary>
-        /// Record that the Search tab showed suggestions for this scope. A viewed scanner is what the scheduledrefresher keeps up to date, so the stamp lives on a CSRF-protected POST rather than the read.
+        /// Record that the Search tab showed suggestions for this scope. The scheduled refresher serves viewedscanners first, so the stamp lives on a CSRF-protected POST rather than the read.
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Record that the Search tab showed suggestions for this scope. A viewed scanner is what the scheduledrefresher keeps up to date, so the stamp lives on a CSRF-protected POST rather than the read.
+        /// Record that the Search tab showed suggestions for this scope. The scheduled refresher serves viewedscanners first, so the stamp lives on a CSRF-protected POST rather than the read.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

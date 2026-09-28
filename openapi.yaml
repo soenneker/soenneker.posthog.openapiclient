@@ -1878,18 +1878,6 @@ paths:
       tags:
       - batch_exports
       - batch_exports
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BatchExport'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/BatchExport'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/BatchExport'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - batch_export:write
@@ -1955,14 +1943,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BatchExport'
+              $ref: '#/components/schemas/BatchExportUnpauseRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BatchExport'
+              $ref: '#/components/schemas/BatchExportUnpauseRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/BatchExport'
-        required: true
+              $ref: '#/components/schemas/BatchExportUnpauseRequest'
       security:
       - PersonalAPIKeyAuth:
         - batch_export:write
@@ -9499,6 +9486,172 @@ paths:
       x-product:
       - ai_observability
   /api/projects/{project_id}/ai_observability/offline_experiments/:
+    get:
+      operationId: ai_observability_offline_experiments_list
+      parameters:
+      - in: query
+        name: application_version
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact application revision.
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          maxLength: 2048
+          minLength: 1
+        description: Continuation cursor returned by the previous page.
+      - in: query
+        name: dataset_identifier
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact durable dataset identifier.
+      - in: query
+        name: dataset_revision_identifier
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact durable dataset revision identifier.
+      - in: query
+        name: dataset_source
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact dataset source.
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          format: date-time
+        description: Inclusive execution start time, in ISO 8601 format.
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          format: date-time
+        description: Exclusive execution end time, in ISO 8601 format.
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 50
+        description: Page size, from 1 to 100. Defaults to 50.
+      - in: query
+        name: model_version
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact model revision.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: prompt_version
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact prompt revision.
+      - in: query
+        name: run_source
+        schema:
+          type: string
+          maxLength: 16
+          minLength: 1
+        description: Filter ci, local, scheduled, or not_specified for omitted run
+          source.
+      - in: query
+        name: scorer_definition_id
+        schema:
+          type: string
+          format: uuid
+        description: Restrict results to this scorer definition.
+      - in: query
+        name: scorer_version_ids
+        schema:
+          type: string
+          maxLength: 739
+          minLength: 1
+        description: Comma-separated list of at most 20 distinct scorer-version UUIDs.
+      - in: query
+        name: search
+        schema:
+          type: string
+          maxLength: 400
+          minLength: 1
+        description: Search experiment names.
+      - in: query
+        name: statuses
+        schema:
+          type: string
+          maxLength: 32
+          minLength: 1
+        description: Comma-separated uploading, completed, or failed states. History
+          defaults to completed; lists include all.
+      - in: query
+        name: suite_key
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact evaluation suite identifier.
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineExperimentPage'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
     post:
       operationId: ai_observability_offline_experiments_create
       parameters:
@@ -9564,6 +9717,68 @@ paths:
                 $ref: '#/components/schemas/OfflineEvaluationError'
           description: ''
         '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_experiments/{id}/:
+    get:
+      operationId: ai_observability_offline_experiments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Experiment UUID.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineExperimentRead'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
           content:
             application/json:
               schema:
@@ -9707,6 +9922,487 @@ paths:
           description: ''
       x-product:
       - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_experiments/{id}/items/:
+    get:
+      operationId: ai_observability_offline_experiments_items_list
+      parameters:
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          maxLength: 2048
+          minLength: 1
+        description: Continuation cursor returned by the previous page.
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Experiment UUID.
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 50
+        description: Page size, from 1 to 100. Defaults to 50.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scorer_version_ids
+        schema:
+          type: string
+          maxLength: 739
+          minLength: 1
+        description: Comma-separated list of at most 20 distinct scorer-version UUIDs.
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineItemPage'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_experiments/{id}/items/{item_id}/:
+    get:
+      operationId: ai_observability_offline_experiments_items_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Experiment UUID.
+        required: true
+      - in: path
+        name: item_id
+        schema:
+          type: string
+          format: uuid
+        description: Item UUID within the experiment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineItemRead'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_experiments/{id}/items/{item_id}/payload/:
+    get:
+      operationId: ai_observability_offline_experiments_items_payload_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Experiment UUID.
+        required: true
+      - in: path
+        name: item_id
+        schema:
+          type: string
+          format: uuid
+        description: Item UUID within the experiment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineItemPayloadRead'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_experiments/{id}/items/{item_id}/results/:
+    get:
+      operationId: ai_observability_offline_experiments_items_results_list
+      parameters:
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          maxLength: 2048
+          minLength: 1
+        description: Continuation cursor returned by the previous page.
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Experiment UUID.
+        required: true
+      - in: path
+        name: item_id
+        schema:
+          type: string
+          format: uuid
+        description: Item UUID within the experiment.
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 50
+        description: Page size, from 1 to 100. Defaults to 50.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scorer_definition_id
+        schema:
+          type: string
+          format: uuid
+        description: Restrict results to this scorer definition.
+      - in: query
+        name: scorer_version_ids
+        schema:
+          type: string
+          maxLength: 739
+          minLength: 1
+        description: Comma-separated list of at most 20 distinct scorer-version UUIDs.
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineResultPage'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_experiments/{id}/results/{result_id}/payload/:
+    get:
+      operationId: ai_observability_offline_experiments_results_payload_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Experiment UUID.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: result_id
+        schema:
+          type: string
+          format: uuid
+        description: Result UUID within the experiment.
+        required: true
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineResultPayloadRead'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_experiments/{id}/scorer_summaries/:
+    get:
+      operationId: ai_observability_offline_experiments_scorer_summaries_list
+      parameters:
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          maxLength: 2048
+          minLength: 1
+        description: Continuation cursor returned by the previous page.
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Experiment UUID.
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 50
+        description: Page size, from 1 to 100. Defaults to 50.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scorer_definition_id
+        schema:
+          type: string
+          format: uuid
+        description: Restrict results to this scorer definition.
+      - in: query
+        name: scorer_version_ids
+        schema:
+          type: string
+          maxLength: 739
+          minLength: 1
+        description: Comma-separated list of at most 20 distinct scorer-version UUIDs.
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineSummaryPage'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
   /api/projects/{project_id}/ai_observability/offline_experiments/{id}/upload/:
     post:
       operationId: ai_observability_offline_experiments_upload_create
@@ -9774,6 +10470,175 @@ paths:
                 $ref: '#/components/schemas/OfflineEvaluationError'
           description: ''
         '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/offline_scorers/{id}/history/:
+    get:
+      operationId: ai_observability_offline_scorers_history_list
+      parameters:
+      - in: query
+        name: application_version
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact application revision.
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          maxLength: 2048
+          minLength: 1
+        description: Continuation cursor returned by the previous page.
+      - in: query
+        name: dataset_identifier
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact durable dataset identifier.
+      - in: query
+        name: dataset_revision_identifier
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact durable dataset revision identifier.
+      - in: query
+        name: dataset_source
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact dataset source.
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          format: date-time
+        description: Inclusive execution start time, in ISO 8601 format.
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          format: date-time
+        description: Exclusive execution end time, in ISO 8601 format.
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Scorer definition UUID.
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 50
+        description: Page size, from 1 to 100. Defaults to 50.
+      - in: query
+        name: model_version
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact model revision.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: prompt_version
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact prompt revision.
+      - in: query
+        name: run_source
+        schema:
+          type: string
+          maxLength: 16
+          minLength: 1
+        description: Filter ci, local, scheduled, or not_specified for omitted run
+          source.
+      - in: query
+        name: scorer_version_ids
+        schema:
+          type: string
+          maxLength: 739
+          minLength: 1
+        description: Comma-separated list of at most 20 distinct scorer-version UUIDs.
+      - in: query
+        name: search
+        schema:
+          type: string
+          maxLength: 400
+          minLength: 1
+        description: Search experiment names.
+      - in: query
+        name: statuses
+        schema:
+          type: string
+          maxLength: 32
+          minLength: 1
+        description: Comma-separated uploading, completed, or failed states. History
+          defaults to completed; lists include all.
+      - in: query
+        name: suite_key
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+        description: Exact evaluation suite identifier.
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - evaluation:read
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineHistoryPage'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
+        '503':
           content:
             application/json:
               schema:
@@ -12810,18 +13675,6 @@ paths:
       tags:
       - batch_exports
       - batch_exports
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BatchExport'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/BatchExport'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/BatchExport'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - batch_export:write
@@ -12885,14 +13738,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BatchExport'
+              $ref: '#/components/schemas/BatchExportUnpauseRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BatchExport'
+              $ref: '#/components/schemas/BatchExportUnpauseRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/BatchExport'
-        required: true
+              $ref: '#/components/schemas/BatchExportUnpauseRequest'
       security:
       - PersonalAPIKeyAuth:
         - batch_export:write
@@ -13215,6 +14067,219 @@ paths:
               schema:
                 $ref: '#/components/schemas/GapTopicActionResult'
           description: ''
+      x-product:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/playground/chats/:
+    get:
+      operationId: business_knowledge_playground_chats_list
+      description: Chats started by the current user in this project.
+      summary: List business knowledge playground chats
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlaygroundChatList'
+          description: ''
+      x-product:
+      - business_knowledge
+    post:
+      operationId: business_knowledge_playground_chats_create
+      description: Create an empty chat. The first question sets the title.
+      summary: Create a business knowledge playground chat
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaygroundChat'
+          description: Empty playground chat.
+      x-product:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/playground/chats/{id}/:
+    get:
+      operationId: business_knowledge_playground_chats_retrieve
+      description: Reload a chat and its turns. Each turn's answer comes from its
+        sandbox run. A chat started before AI data processing was turned off can still
+        be read.
+      summary: Get a business knowledge playground chat
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this playground chat.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaygroundChat'
+          description: Playground chat with turns.
+        '404':
+          description: No playground chat with this id for the current user.
+      x-product:
+      - business_knowledge
+    delete:
+      operationId: business_knowledge_playground_chats_destroy
+      description: Deletes the chat and its turns. Does not cancel a running sandbox
+        agent.
+      summary: Delete a business knowledge playground chat
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this playground chat.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '204':
+          description: Chat deleted.
+      x-product:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/playground/chats/{id}/ask/:
+    post:
+      operationId: business_knowledge_playground_chats_ask_create
+      description: Append a turn and start a sandbox run. A second question in the
+        same chat while its answer is still open returns 409. Other chats can run
+        at the same time, up to 3 open answers per person.
+      summary: Ask a question in a playground chat
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this playground chat.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SandboxQuestion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SandboxQuestion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SandboxQuestion'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaygroundChat'
+          description: Chat with the new turn.
+        '403':
+          description: AI data processing is not approved for this organization.
+        '409':
+          description: This chat already has an answer that has not finished, or this
+            person already has 3 answers running.
+      x-product:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/sandbox/:
+    post:
+      operationId: business_knowledge_sandbox_create
+      description: Start a sandbox agent that can search only this project's business
+        knowledge. Returns immediately.
+      summary: Ask a business knowledge sandbox question
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SandboxQuestion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SandboxQuestion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SandboxQuestion'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SandboxRunStarted'
+          description: The sandbox run has started.
+        '403':
+          description: AI data processing is not approved for this organization.
+        '409':
+          description: This person already has a sandbox run that has not finished.
+      x-product:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/sandbox/{id}/:
+    get:
+      operationId: business_knowledge_sandbox_retrieve
+      description: Poll a sandbox run started by the current user. A run that started
+        before AI data processing was turned off can still be read.
+      summary: Get a business knowledge sandbox run
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SandboxRun'
+          description: Current sandbox run.
+        '404':
+          description: No sandbox run with this id for the current user.
       x-product:
       - business_knowledge
   /api/projects/{project_id}/business_knowledge/settings/:
@@ -13591,6 +14656,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalendarSyncTriggerResponse'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/calendar_sync/interval/:
+    post:
+      operationId: calendar_sync_interval_create
+      description: |-
+        Calendar-sync controls for Customer analytics settings. Sync runs on an hourly
+        Temporal schedule; this surface only offers the manual "sync now" escape hatch.
+      summary: Set Google account sync interval
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - calendar_sync
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarSyncInterval'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CalendarSyncInterval'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CalendarSyncInterval'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarSyncInterval'
           description: ''
       x-product:
       - customer_analytics
@@ -38169,18 +39266,6 @@ paths:
       tags:
       - batch_exports
       - file_download_batch_exports
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - batch_export:write
@@ -41351,6 +42436,258 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppMetricsTotalsResponse'
+          description: ''
+      x-product:
+      - workflows
+  /api/projects/{project_id}/hog_flows/{id}/proposals/:
+    get:
+      operationId: hog_flows_proposals_list
+      description: |-
+        Agent-authored changes to this workflow, awaiting a human's decision.
+
+        Creating one stages nothing: a proposal only reaches the workflow's draft once a human
+        approves it, and only reaches the live config once someone publishes that draft.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this hog flow.
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - applied
+          - approved
+          - rejected
+          - suggested
+        description: Only return proposals in this status (suggested, approved, rejected,
+          applied).
+      tags:
+      - hog_flows
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWorkflowProposalList'
+          description: ''
+      x-product:
+      - workflows
+    post:
+      operationId: hog_flows_proposals_create
+      description: |-
+        Agent-authored changes to this workflow, awaiting a human's decision.
+
+        Creating one stages nothing: a proposal only reaches the workflow's draft once a human
+        approves it, and only reaches the live config once someone publishes that draft.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this hog flow.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - hog_flows
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowProposalCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowProposalCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowProposalCreate'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProposal'
+          description: ''
+      x-product:
+      - workflows
+  /api/projects/{project_id}/hog_flows/{id}/proposals/{proposal_id}/:
+    get:
+      operationId: hog_flows_proposals_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this hog flow.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: proposal_id
+        schema:
+          type: string
+          format: uuid
+        description: Proposal to fetch.
+        required: true
+      tags:
+      - hog_flows
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProposal'
+          description: ''
+      x-product:
+      - workflows
+  /api/projects/{project_id}/hog_flows/{id}/proposals/{proposal_id}/approve/:
+    post:
+      operationId: hog_flows_proposals_approve_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this hog flow.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: proposal_id
+        schema:
+          type: string
+          format: uuid
+        description: Proposal to approve.
+        required: true
+      tags:
+      - hog_flows
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowProposalApproveRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowProposalApproveRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowProposalApproveRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProposal'
+          description: ''
+      x-product:
+      - workflows
+  /api/projects/{project_id}/hog_flows/{id}/proposals/{proposal_id}/outcome/:
+    get:
+      operationId: hog_flows_proposals_outcome_retrieve
+      description: |-
+        What the change did: the target metric and its counter-metrics, before and after.
+
+        Both sides are read from the per-version metric series, so "before" is the version the
+        suggestion was written against and "after" is the version it went live as. Each number
+        carries its own `n`, and anything under the minimum sample is flagged rather than presented
+        as a result — a verdict off twenty sends is the loop's most embarrassing failure mode.
+        Comparing two windows is not a controlled experiment; that is what the A/B step is for.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this hog flow.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: proposal_id
+        schema:
+          type: string
+          format: uuid
+        description: Proposal to read outcomes for.
+        required: true
+      - in: query
+        name: window
+        schema:
+          type: string
+        description: Relative window, e.g. -7d. Defaults to -7d.
+      tags:
+      - hog_flows
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProposalOutcome'
+          description: ''
+      x-product:
+      - workflows
+  /api/projects/{project_id}/hog_flows/{id}/proposals/{proposal_id}/reject/:
+    post:
+      operationId: hog_flows_proposals_reject_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this hog flow.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: proposal_id
+        schema:
+          type: string
+          format: uuid
+        description: Proposal to reject.
+        required: true
+      tags:
+      - hog_flows
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProposal'
           description: ''
       x-product:
       - workflows
@@ -46369,6 +47706,7 @@ paths:
           - gemini
           - minimax
           - openai
+          - openai_compatible
           - openrouter
           - together_ai
           - zeabur
@@ -47390,6 +48728,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScoreDefinition'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/llm_analytics/score_definitions/{id}/versions/:
+    get:
+      operationId: llm_analytics_score_definitions_versions_list
+      parameters:
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          maxLength: 2048
+          minLength: 1
+        description: Continuation cursor from the prior page.
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this score definition.
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 50
+        description: Maximum versions to return.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - llm_analytics
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScoreDefinitionVersionPage'
+          description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/llm_analytics/score_definitions/{id}/versions/{version_id}/:
+    get:
+      operationId: llm_analytics_score_definitions_versions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this score definition.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: version_id
+        schema:
+          type: string
+          format: uuid
+        description: Immutable version UUID.
+        required: true
+      tags:
+      - llm_analytics
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScoreDefinitionVersion'
           description: ''
       x-product:
       - ai_observability
@@ -52268,6 +53680,15 @@ paths:
           default: false
         description: Whether to also apply the project's internal and test user filters
           (its test_account_filters setting) on top of `properties`.
+      - in: query
+        name: has_errors
+        schema:
+          type:
+          - boolean
+          - 'null'
+        description: Filter by session outcome. true keeps sessions with at least
+          one errored tool call ($mcp_is_error), false keeps sessions with none. Omit
+          to list both.
       - in: query
         name: limit
         schema:
@@ -64609,11 +66030,11 @@ paths:
         a status type reverts the report''s canonical status to the previous version
         (latest-wins over what remains). `task_run` artefacts are an append-only work
         log and cannot be deleted. Neither can the types this API cannot write, which
-        the pipeline owns: `check_cancelled`, `check_expired`, `check_result`, `check_scheduled`,
-        `code_review`, `implementation_decision`, `implementation_dispatch`, `implementation_handover`,
-        `implementation_replacement`, `pull_request`, `ranking_score`, `report_link`,
-        `summary_change`, `task_run`, `title_change`, `video_segment`, `work_claim`,
-        `work_release`.'
+        the pipeline owns: `autostart_skip`, `check_cancelled`, `check_expired`, `check_result`,
+        `check_scheduled`, `code_review`, `implementation_decision`, `implementation_dispatch`,
+        `implementation_handover`, `implementation_replacement`, `pull_request`, `ranking_score`,
+        `report_link`, `summary_change`, `task_run`, `title_change`, `video_segment`,
+        `work_claim`, `work_release`.'
       summary: Delete an artefact
       parameters:
       - in: path
@@ -65568,7 +66989,8 @@ paths:
         to browse every note. Expired notes are excluded unless `include_expired=true`.
         `date_from` / `date_to` are a half-open window on `created_at` (`>= date_from`,
         `< date_to`); pass `date_to` (the `created_at` of the oldest note seen) to
-        walk past the cap. Results capped at 500.
+        walk past the cap. Pass `text` to keep only the notes whose content contains
+        it, case-insensitively. Results capped at 500.
       summary: List scout notes
       parameters:
       - in: query
@@ -65624,6 +67046,16 @@ paths:
           notes for the whole fleet. Pass a configured scout's skill name or a pipeline
           audience (`pipeline:report-research`). Omit to browse every note on the
           project.
+      - in: query
+        name: text
+        schema:
+          type: string
+          maxLength: 200
+          minLength: 1
+        description: Return only the notes whose content contains this text, case-insensitively.
+          Pass an entity (an error id, a flag key, a page path, an event name) to
+          find the notes about it, including older ones the newest-first cap would
+          hide.
       tags:
       - signals
       security:
@@ -65915,8 +67347,9 @@ paths:
         leaves the check unanswered. The verdict lands on the report as a `check_result`
         entry people read in the inbox. `failed` retires the check, `passed` re-arms
         a recurring one, and `errored` retries it, so send the outcome you actually
-        reached rather than the one that closes the loop. A run may only close a check
-        dispatched to its own scout.
+        reached rather than the one that closes the loop. A run may close the check
+        it was dispatched for, or a check on its own scout that is due or waiting
+        on a run.
       summary: Record the verdict on a report check
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -65955,8 +67388,9 @@ paths:
           description: Verdict recorded on the report, and the check advanced or retired.
         '400':
           description: The check does not exist for this project, already finished,
-            is measured by the coordinator rather than a run, runs on another scout,
-            or is not waiting on a run.
+            waits for its report to resolve, is measured by the coordinator rather
+            than a run, runs on another scout, or is neither waiting on a run nor
+            due.
         '404':
           description: Run not found for this project.
       x-product:
@@ -70479,7 +71913,9 @@ paths:
         - person:read
         - group:read
         - integration:read
+        - user:read
         - query:read
+        - action:read
         - data_catalog:read
         - insight:read
         - dashboard:read
@@ -70499,7 +71935,9 @@ paths:
         - person:read
         - group:read
         - integration:read
+        - user:read
         - query:read
+        - action:read
         - data_catalog:read
         - insight:read
         - dashboard:read
@@ -70837,6 +72275,7 @@ paths:
           - task_analysis
           - workflow
           - space_setup
+          - business_knowledge
           type: string
           minLength: 1
         description: |-
@@ -70865,6 +72304,7 @@ paths:
           * `task_analysis` - Task Analysis
           * `workflow` - Workflow
           * `space_setup` - Space Setup
+          * `business_knowledge` - Business Knowledge
       - in: query
         name: hog_flow_id
         schema:
@@ -71555,7 +72995,10 @@ paths:
   /api/projects/{project_id}/tasks/{id}/run/:
     post:
       operationId: tasks_run_create
-      description: Create a new task run and kick off the workflow.
+      description: 'Create a new task run and kick off the workflow. **Responds with
+        the task, not the run**: the new run is nested under `latest_run`, and the
+        top-level `id` is still the task''s. Read `latest_run.id` for anything run-scoped,
+        such as the run''s stream and command endpoints.'
       summary: Run task
       parameters:
       - in: header
@@ -72819,7 +74262,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TaskRunErrorResponse'
-          description: Invalid command or no active sandbox
+          description: Invalid command, or no active sandbox. Code `sandbox_not_ready`
+            is transient rather than a refusal — the run exists but its agent server
+            is still starting, which is the usual answer to a command sent as soon
+            as the run asks for one. Retry it until the request you are answering
+            expires. Every other 400 is fatal.
         '403':
           content:
             application/json:
@@ -73347,7 +74794,8 @@ paths:
   /api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_summary/:
     patch:
       operationId: tasks_runs_set_summary_partial_update
-      description: Replace the running summary for a task run.
+      description: Replace the running summary for a task run, and optionally its
+        slug tags.
       summary: Set task run summary
       parameters:
       - in: path
@@ -78131,8 +79579,8 @@ paths:
     post:
       operationId: vision_observations_search_viewed_create
       description: |-
-        Record that the Search tab showed suggestions for this scope. A viewed scanner is what the scheduled
-        refresher keeps up to date, so the stamp lives on a CSRF-protected POST rather than the read.
+        Record that the Search tab showed suggestions for this scope. The scheduled refresher serves viewed
+        scanners first, so the stamp lives on a CSRF-protected POST rather than the read.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -96520,7 +97968,6 @@ components:
           description: |-
             A choice of supported BatchExportDestination types.
 
-            * `S3` - S3
             * `AwsS3` - Aws S3
             * `S3Compatible` - S3 Compatible
             * `Snowflake` - Snowflake
@@ -96579,7 +98026,6 @@ components:
           Redshift: '#/components/schemas/RedshiftDestinationConfig'
     BatchExportDestinationDestinationEnum:
       enum:
-      - S3
       - AwsS3
       - S3Compatible
       - Snowflake
@@ -96594,7 +98040,6 @@ components:
       - FileDownload
       type: string
       description: |-
-        * `S3` - S3
         * `AwsS3` - Aws S3
         * `S3Compatible` - S3 Compatible
         * `Snowflake` - Snowflake
@@ -96865,6 +98310,14 @@ components:
         * `TimedOut` - Timedout
         * `Running` - Running
         * `Starting` - Starting
+    BatchExportUnpauseRequest:
+      type: object
+      properties:
+        backfill:
+          type: boolean
+          default: false
+          description: Whether to backfill the runs that the batch export missed while
+            it was paused.
     BehavioralEventSource:
       enum:
       - events
@@ -100804,6 +102257,18 @@ components:
       - end_date
       - integration_id
       - start_date
+    CalendarSyncInterval:
+      type: object
+      properties:
+        integration_id:
+          type: integer
+          description: Id of the connected Google account.
+        sync_interval_minutes:
+          type: integer
+          description: 'Minutes between scheduled syncs: 5, 15, 30, or 60.'
+      required:
+      - integration_id
+      - sync_interval_minutes
     CalendarSyncStatus:
       type: object
       description: Sync state of one connected calendar (read-only).
@@ -100823,10 +102288,15 @@ components:
           type: boolean
           readOnly: true
           description: Whether a sync run is currently in flight.
+        sync_interval_minutes:
+          type: integer
+          readOnly: true
+          description: Minutes between scheduled syncs.
       required:
       - integration_id
       - is_syncing
       - last_synced_at
+      - sync_interval_minutes
     CalendarSyncTrigger:
       type: object
       description: Request body of the calendar sync-now trigger.
@@ -126018,7 +127488,8 @@ components:
           type:
           - string
           - 'null'
-          description: Issue description.
+          description: Issue description. List rows truncate it to a short preview;
+            the issue detail query returns it in full.
         status:
           type: string
           description: Issue status.
@@ -126234,7 +127705,8 @@ components:
           type:
           - string
           - 'null'
-          description: Issue description.
+          description: Issue description. List rows truncate it to a short preview;
+            the issue detail query returns it in full.
         status:
           type: string
           description: Issue status.
@@ -126660,8 +128132,9 @@ components:
           type: integer
           maximum: 100
           minimum: 1
-          default: 25
-          description: Page size.
+          default: 10
+          description: Page size. Defaults to 10. Use nextOffset to fetch more rows
+            instead of a large page.
         offset:
           type: integer
           minimum: 0
@@ -126672,8 +128145,8 @@ components:
           maximum: 200
           minimum: 0
           default: 0
-          description: Number of volume buckets. Defaults to 0 for compact aggregate
-            counts.
+          description: Number of volume buckets. Defaults to 0, which returns only
+            aggregate counts without volume buckets.
         library:
           oneOf:
           - type: string
@@ -128277,6 +129750,18 @@ components:
           description: Presigned POST against the standard S3 endpoint, present only
             when the primary URL uses transfer acceleration. For clients whose network
             blocks the accelerated endpoint.
+        presigned_put_url:
+          type: string
+          format: uri
+          description: 'Presigned PUT for the upload, present only when the request
+            declared `content_length`. Send the raw bytes with a matching `Content-Length`
+            header. Prefer this over `presigned_url`: presigned POST is an AWS extension
+            that some S3-compatible stores reject.'
+        fallback_presigned_put_url:
+          type: string
+          format: uri
+          description: Presigned PUT against the standard S3 endpoint, present only
+            when the primary PUT uses transfer acceleration.
       required:
       - presigned_url
       - symbol_set_id
@@ -128333,6 +129818,15 @@ components:
           - 'null'
           description: Optional hash of the symbol set content, used to skip unchanged
             uploads.
+        content_length:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          description: Optional byte count of the content about to be uploaded. When
+            given, the upload response also carries a presigned PUT signed for exactly
+            this length, which S3-compatible stores without presigned POST support
+            (such as Cloudflare R2) accept.
       required:
       - chunk_id
     ErrorTrackingTopFrame:
@@ -131626,8 +133120,28 @@ components:
             set, cleanup targets the team's only connected repository and is skipped
             if the team has several.
           maxLength: 255
-        primary_metrics_ordered_uuids: {}
-        secondary_metrics_ordered_uuids: {}
+        primary_metrics_ordered_uuids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'Display order of the primary metrics, as metric uuids. This
+            is a display hint only: a metric not in the list renders after the listed
+            ones in stored order, and an entry that matches no metric is ignored.
+            Send it only to reorder metrics. Adding or removing metrics does not need
+            it.'
+        secondary_metrics_ordered_uuids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'Display order of the secondary metrics, as metric uuids. This
+            is a display hint only: a metric not in the list renders after the listed
+            ones in stored order, and an entry that matches no metric is ignored.
+            Send it only to reorder metrics. Adding or removing metrics does not need
+            it.'
         only_count_matured_users:
           type: boolean
         update_feature_flag_params:
@@ -137269,8 +138783,28 @@ components:
             set, cleanup targets the team's only connected repository and is skipped
             if the team has several.
           maxLength: 255
-        primary_metrics_ordered_uuids: {}
-        secondary_metrics_ordered_uuids: {}
+        primary_metrics_ordered_uuids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'Display order of the primary metrics, as metric uuids. This
+            is a display hint only: a metric not in the list renders after the listed
+            ones in stored order, and an entry that matches no metric is ignored.
+            Send it only to reorder metrics. Adding or removing metrics does not need
+            it.'
+        secondary_metrics_ordered_uuids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'Display order of the secondary metrics, as metric uuids. This
+            is a display hint only: a metric not in the list renders after the listed
+            ones in stored order, and an entry that matches no metric is ignored.
+            Send it only to reorder metrics. Adding or removing metrics does not need
+            it.'
         only_count_matured_users:
           type: boolean
         update_feature_flag_params:
@@ -147079,67 +148613,6 @@ components:
         * `acknowledged` - Acknowledged
         * `resolved` - Resolved
         * `dismissed` - Dismissed
-    FileDownloadBatchExportOnDemand:
-      type: object
-      description: Request shape for a FileDownload batch export on demand.
-      properties:
-        file:
-          $ref: '#/components/schemas/FileDownloadDestinationFileConfig'
-        model:
-          $ref: '#/components/schemas/FileDownloadBatchExportOnDemandModelEnum'
-        include:
-          type: array
-          items:
-            type: string
-        exclude:
-          type: array
-          items:
-            type: string
-        hogql_query:
-          type: string
-          description: HogQL SELECT query whose results are exported. This model is
-            in closed beta and is enabled per team; when it is not enabled, the request
-            fails with a permission error that names HogQL batch exports. Contact
-            PostHog support to request access. The query may reference the {data_interval_start}
-            and {data_interval_end} placeholders. Provide a value for each placeholder
-            the query references; missing referenced bounds are rejected, not inferred.
-            When both bounds are supplied, they must span at most seven days. Neither
-            supplied bound may be in the future. Without placeholders, the query runs
-            unchanged, even if bounds are supplied. Every column in the SELECT clause
-            must be a field or have an alias. It is recommended to limit the query
-            with a WHERE clause, for example bounding timestamp on the events table,
-            both to avoid exporting more rows than expected and because user queries
-            run under stricter resource limits than the other models.
-        data_interval_start:
-          type: string
-          format: date-time
-          description: Start of the export interval. Required for the events, persons,
-            and sessions models. For HogQL, required only when the query references
-            {data_interval_start}. A supplied start must not be in the future. When
-            both bounds are supplied, the interval must span at most seven days.
-        data_interval_end:
-          type: string
-          format: date-time
-          description: End of the export interval. Required for the events, persons,
-            and sessions models. For HogQL, required only when the query references
-            {data_interval_end}. A supplied end must not be in the future or precede
-            a supplied start. Bounds replace HogQL placeholders; they do not add filters
-            to the query.
-      required:
-      - file
-      - model
-    FileDownloadBatchExportOnDemandModelEnum:
-      enum:
-      - events
-      - persons
-      - sessions
-      - hogql
-      type: string
-      description: |-
-        * `events` - events
-        * `persons` - persons
-        * `sessions` - sessions
-        * `hogql` - hogql
     FileDownloadCountRowsRequest:
       type: object
       description: Request shape for counting the rows a file download batch export
@@ -157003,6 +158476,7 @@ components:
       - session_recordings
       - errortracking
       - clientwarnings
+      - heatmaps
       - ai
       type: string
       description: |-
@@ -157010,6 +158484,7 @@ components:
         * `session_recordings` - Session Recordings
         * `errortracking` - Errortracking
         * `clientwarnings` - Clientwarnings
+        * `heatmaps` - Heatmaps
         * `ai` - Ai
     IngestionWarningV2Sample:
       type: object
@@ -157518,6 +158993,15 @@ components:
           readOnly: true
           description: What ClickHouse read for this insight's last slow run, with
             the findings of its query scan.
+        warnings:
+          oneOf:
+          - $ref: '#/components/schemas/_InsightResultWarnings'
+          - type: 'null'
+          readOnly: true
+          description: Warnings from the run that produced these results. A `warehouse_sync`
+            warning means the query read a data warehouse table whose sync failed,
+            is paused, or is overdue, so the results can be out of date. Reflects
+            the sync state when the results were computed. Null for shared insights.
         _create_in_folder:
           type: string
           writeOnly: true
@@ -157578,6 +159062,7 @@ components:
       - types
       - updated_at
       - user_access_level
+      - warnings
     InsightActorsQuery:
       additionalProperties: false
       properties:
@@ -157923,7 +159408,8 @@ components:
       type: object
     InsightResult:
       type: object
-      description: InsightSerializer restricted to identifiers + result only.
+      description: InsightSerializer restricted to identifiers, the result, and the
+        warnings about that result.
       properties:
         id:
           type: integer
@@ -157943,12 +159429,22 @@ components:
           readOnly: true
         result:
           readOnly: true
+        warnings:
+          oneOf:
+          - $ref: '#/components/schemas/_InsightResultWarnings'
+          - type: 'null'
+          readOnly: true
+          description: Warnings from the run that produced these results. A `warehouse_sync`
+            warning means the query read a data warehouse table whose sync failed,
+            is paused, or is overdue, so the results can be out of date. Reflects
+            the sync state when the results were computed. Null for shared insights.
       required:
       - derived_name
       - id
       - name
       - result
       - short_id
+      - warnings
     InsightThreshold:
       additionalProperties: false
       properties:
@@ -160616,6 +162112,7 @@ components:
       - together_ai
       - minimax
       - zeabur
+      - openai_compatible
       type: string
       description: |-
         * `openai` - Openai
@@ -160627,6 +162124,7 @@ components:
         * `together_ai` - Together AI
         * `minimax` - MiniMax
         * `zeabur` - Zeabur AI Hub
+        * `openai_compatible` - OpenAI-compatible
     LLMProviderKey:
       type: object
       properties:
@@ -160676,6 +162174,19 @@ components:
           - 'null'
           readOnly: true
           description: Azure API version (read-only, for display)
+        base_url:
+          type: string
+          format: uri
+          writeOnly: true
+          description: Base URL of an OpenAI-compatible API (e.g. https://api.example.com/v1).
+            Required for the openai_compatible provider; must be a public https://
+            URL.
+        base_url_display:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: OpenAI-compatible base URL (read-only, for display)
         set_as_active:
           type: boolean
           writeOnly: true
@@ -160698,6 +162209,7 @@ components:
       - api_key_masked
       - api_version_display
       - azure_endpoint_display
+      - base_url_display
       - created_at
       - created_by
       - error_message
@@ -169322,6 +170834,12 @@ components:
           type: integer
           readOnly: true
           description: Total number of $mcp_tool_call events in the session.
+        error_calls:
+          type: integer
+          readOnly: true
+          description: Number of the session's $mcp_tool_call events with $mcp_is_error
+            true, counted over the same properties / filter_test_accounts matches
+            as tool_calls.
         session_start:
           type: string
           format: date-time
@@ -169371,6 +170889,7 @@ components:
       required:
       - distinct_id
       - distinct_id_count
+      - error_calls
       - intent
       - mcp_client_name
       - person_email
@@ -179538,6 +181057,30 @@ components:
             the resulting ReplayObservation via GET /vision/scanners/{id}/observations/?session_id=<session_id>.
       required:
       - workflow_id
+    OfflineCategorySummary:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Category key from the pinned configuration.
+        count:
+          type: integer
+          description: Successful results selecting this category.
+        rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Selection count divided by successful result count; null with
+            no successes.
+        label:
+          type: string
+          description: Category label from the pinned configuration.
+      required:
+      - count
+      - key
+      - label
+      - rate
     OfflineEvaluationError:
       type: object
       properties:
@@ -179698,6 +181241,167 @@ components:
             in the frontend.
       required:
       - results
+    OfflineExperimentPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total authorized rows matching the filters, independent of
+            this page.
+        next_cursor:
+          type:
+          - string
+          - 'null'
+          description: Continuation cursor, or null after the final page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineExperimentRead'
+          description: Experiment page.
+      required:
+      - count
+      - next_cursor
+      - results
+    OfflineExperimentRead:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Stable experiment UUID.
+        name:
+          type: string
+          description: Experiment name.
+        run_source:
+          description: |-
+            Execution source.
+
+            * `ci` - CI
+            * `local` - Local
+            * `scheduled` - Scheduled
+          oneOf:
+          - $ref: '#/components/schemas/OfflineExperimentRunSourceEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OfflineExperimentStatusEnum'
+          description: |-
+            Upload lifecycle state.
+
+            * `uploading` - Uploading
+            * `completed` - Completed
+            * `failed` - Failed
+        started_at:
+          type: string
+          format: date-time
+          description: Caller-supplied execution time.
+        created_at:
+          type: string
+          format: date-time
+          description: First server acceptance time.
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Server closure time, or null while uploading.
+        expected_item_count:
+          type:
+          - integer
+          - 'null'
+          description: Declared expected items, when supplied.
+        expected_result_count:
+          type:
+          - integer
+          - 'null'
+          description: Declared expected results across all scorers.
+        accepted_item_count:
+          type: integer
+          description: Observed items, including items without a selected scorer result.
+        visible_result_count:
+          type:
+          - integer
+          - 'null'
+          description: Results visible to this caller; unavailable without scorer-read
+            scope.
+        visible_scorer_definition_count:
+          type:
+          - integer
+          - 'null'
+          description: Distinct visible scorer definitions.
+        visible_scorer_version_count:
+          type:
+          - integer
+          - 'null'
+          description: Distinct visible scorer versions.
+        result_count_scope:
+          type: string
+          description: authorized for visible-result counts, or unavailable without
+            scorer-read scope.
+        suite_key:
+          type:
+          - string
+          - 'null'
+          description: Durable suite identifier.
+        dataset_source:
+          type:
+          - string
+          - 'null'
+          description: Dataset provider or source.
+        dataset_identifier:
+          type:
+          - string
+          - 'null'
+          description: Durable dataset identifier.
+        dataset_revision_identifier:
+          type:
+          - string
+          - 'null'
+          description: Durable dataset revision identifier.
+        dataset_revision_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Optional hosted revision navigation reference.
+        application_version:
+          type:
+          - string
+          - 'null'
+          description: Application revision under evaluation.
+        model_version:
+          type:
+          - string
+          - 'null'
+          description: Model revision under evaluation.
+        prompt_version:
+          type:
+          - string
+          - 'null'
+          description: Prompt revision under evaluation.
+      required:
+      - accepted_item_count
+      - application_version
+      - created_at
+      - dataset_identifier
+      - dataset_revision_id
+      - dataset_revision_identifier
+      - dataset_source
+      - expected_item_count
+      - expected_result_count
+      - finished_at
+      - id
+      - model_version
+      - name
+      - prompt_version
+      - result_count_scope
+      - run_source
+      - started_at
+      - status
+      - suite_key
+      - visible_result_count
+      - visible_scorer_definition_count
+      - visible_scorer_version_count
     OfflineExperimentRunSourceEnum:
       enum:
       - ci
@@ -179718,6 +181422,584 @@ components:
         * `uploading` - Uploading
         * `completed` - Completed
         * `failed` - Failed
+    OfflineHistoryPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total authorized rows matching the filters, independent of
+            this page.
+        next_cursor:
+          type:
+          - string
+          - 'null'
+          description: Continuation cursor, or null after the final page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineHistoryPoint'
+          description: Experiment/scorer-version history page.
+      required:
+      - count
+      - next_cursor
+      - results
+    OfflineHistoryPoint:
+      type: object
+      properties:
+        experiment:
+          allOf:
+          - $ref: '#/components/schemas/OfflineExperimentRead'
+          description: Experiment execution and cohort context.
+        summary:
+          allOf:
+          - $ref: '#/components/schemas/OfflineScorerSummary'
+          description: Complete summary for one experiment and scorer version.
+      required:
+      - experiment
+      - summary
+    OfflineItemPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total authorized rows matching the filters, independent of
+            this page.
+        next_cursor:
+          type:
+          - string
+          - 'null'
+          description: Continuation cursor, or null after the final page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineItemRead'
+          description: Item page.
+        scorer_versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineScorerVersionRead'
+          description: Selected scorer versions, each returned once, including versions
+            with no results.
+      required:
+      - count
+      - next_cursor
+      - results
+      - scorer_versions
+    OfflineItemPayloadRead:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Owning item UUID.
+        payload_state:
+          allOf:
+          - $ref: '#/components/schemas/PayloadStateEnum'
+          description: |-
+            Durable payload storage state.
+
+            * `not_provided` - Not provided
+            * `available` - Available
+            * `expired` - Expired
+        payload_expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Payload retention deadline.
+        available:
+          type: boolean
+          description: Whether the stored payload is currently available.
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/OfflineExperimentItemPayloadInput'
+          - type: 'null'
+          description: Stored item payload, preserving omitted properties and JSON
+            null; null if unavailable.
+      required:
+      - available
+      - data
+      - id
+      - payload_expires_at
+      - payload_state
+    OfflineItemRead:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Stable item UUID.
+        experiment_id:
+          type: string
+          format: uuid
+          description: Owning experiment UUID.
+        case_key:
+          type:
+          - string
+          - 'null'
+          description: Optional stable case identifier.
+        trial:
+          type:
+          - string
+          - 'null'
+          description: Optional trial identifier within a case.
+        dataset_item_identifier:
+          type:
+          - string
+          - 'null'
+          description: Durable dataset item identifier.
+        dataset_item_version_identifier:
+          type:
+          - string
+          - 'null'
+          description: Durable dataset item-version identifier.
+        dataset_item_version_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Optional hosted item-version navigation reference.
+        application_trace_id:
+          type:
+          - string
+          - 'null'
+          description: Optional application trace navigation reference.
+        accepted_at:
+          type: string
+          format: date-time
+          description: Original server acceptance time.
+        payload_state:
+          allOf:
+          - $ref: '#/components/schemas/PayloadStateEnum'
+          description: |-
+            Item payload storage state.
+
+            * `not_provided` - Not provided
+            * `available` - Available
+            * `expired` - Expired
+        payload_expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Payload retention deadline; cleanup is not yet enabled.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineResultCell'
+          description: Cells for explicitly selected scorer versions; empty when none
+            selected.
+      required:
+      - accepted_at
+      - application_trace_id
+      - case_key
+      - dataset_item_identifier
+      - dataset_item_version_id
+      - dataset_item_version_identifier
+      - experiment_id
+      - id
+      - payload_expires_at
+      - payload_state
+      - results
+      - trial
+    OfflineResultCell:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Stable result UUID.
+        item_id:
+          type: string
+          format: uuid
+          description: Item evaluated by this result.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OfflineEvaluationResultStatusEnum'
+          description: |-
+            Evaluation outcome.
+
+            * `ok` - OK
+            * `error` - Error
+            * `skipped` - Skipped
+            * `not_applicable` - Not applicable
+        value:
+          oneOf:
+          - type: number
+            format: double
+          - type: boolean
+          - type: array
+            items:
+              type: string
+              maxLength: 128
+            minItems: 1
+            uniqueItems: true
+          - type: 'null'
+          description: Typed score for ok outcomes; null for other outcomes.
+        error_code:
+          type:
+          - string
+          - 'null'
+          description: Optional evaluator error code.
+        evaluator_trace_id:
+          type:
+          - string
+          - 'null'
+          description: Optional evaluator trace navigation reference.
+        evaluated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Caller-supplied evaluation time.
+        accepted_at:
+          type: string
+          format: date-time
+          description: Original server acceptance time.
+        payload_state:
+          allOf:
+          - $ref: '#/components/schemas/PayloadStateEnum'
+          description: |-
+            Result payload storage state.
+
+            * `not_provided` - Not provided
+            * `available` - Available
+            * `expired` - Expired
+        payload_expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Payload retention deadline; cleanup is not yet enabled.
+        scorer_version_id:
+          type: string
+          format: uuid
+          description: Exact scorer-version UUID in the item page's scorer_versions
+            list.
+      required:
+      - accepted_at
+      - error_code
+      - evaluated_at
+      - evaluator_trace_id
+      - id
+      - item_id
+      - payload_expires_at
+      - payload_state
+      - scorer_version_id
+      - status
+      - value
+    OfflineResultPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total authorized rows matching the filters, independent of
+            this page.
+        next_cursor:
+          type:
+          - string
+          - 'null'
+          description: Continuation cursor, or null after the final page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineResultRead'
+          description: Result page.
+      required:
+      - count
+      - next_cursor
+      - results
+    OfflineResultPayloadRead:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Owning result UUID.
+        payload_state:
+          allOf:
+          - $ref: '#/components/schemas/PayloadStateEnum'
+          description: |-
+            Durable payload storage state.
+
+            * `not_provided` - Not provided
+            * `available` - Available
+            * `expired` - Expired
+        payload_expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Payload retention deadline.
+        available:
+          type: boolean
+          description: Whether the stored payload is currently available.
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/OfflineEvaluationResultPayloadInput'
+          - type: 'null'
+          description: Stored reasoning/error payload; null if unavailable.
+      required:
+      - available
+      - data
+      - id
+      - payload_expires_at
+      - payload_state
+    OfflineResultRead:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Stable result UUID.
+        item_id:
+          type: string
+          format: uuid
+          description: Item evaluated by this result.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OfflineEvaluationResultStatusEnum'
+          description: |-
+            Evaluation outcome.
+
+            * `ok` - OK
+            * `error` - Error
+            * `skipped` - Skipped
+            * `not_applicable` - Not applicable
+        value:
+          oneOf:
+          - type: number
+            format: double
+          - type: boolean
+          - type: array
+            items:
+              type: string
+              maxLength: 128
+            minItems: 1
+            uniqueItems: true
+          - type: 'null'
+          description: Typed score for ok outcomes; null for other outcomes.
+        error_code:
+          type:
+          - string
+          - 'null'
+          description: Optional evaluator error code.
+        evaluator_trace_id:
+          type:
+          - string
+          - 'null'
+          description: Optional evaluator trace navigation reference.
+        evaluated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Caller-supplied evaluation time.
+        accepted_at:
+          type: string
+          format: date-time
+          description: Original server acceptance time.
+        payload_state:
+          allOf:
+          - $ref: '#/components/schemas/PayloadStateEnum'
+          description: |-
+            Result payload storage state.
+
+            * `not_provided` - Not provided
+            * `available` - Available
+            * `expired` - Expired
+        payload_expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Payload retention deadline; cleanup is not yet enabled.
+        scorer:
+          allOf:
+          - $ref: '#/components/schemas/OfflineScorerVersionRead'
+          description: Pinned scorer version.
+      required:
+      - accepted_at
+      - error_code
+      - evaluated_at
+      - evaluator_trace_id
+      - id
+      - item_id
+      - payload_expires_at
+      - payload_state
+      - scorer
+      - status
+      - value
+    OfflineScorerSummary:
+      type: object
+      properties:
+        scorer:
+          allOf:
+          - $ref: '#/components/schemas/OfflineScorerVersionRead'
+          description: Exact scorer version summarized.
+        observed_item_count:
+          type: integer
+          description: All observed experiment items, independent of scorer selection
+            or item pagination.
+        result_count:
+          type: integer
+          description: Submitted results for this scorer version, across all statuses.
+        status_counts:
+          allOf:
+          - $ref: '#/components/schemas/OfflineStatusCounts'
+          description: Counts for each submitted outcome.
+        missing_result_count:
+          type: integer
+          description: Observed items without a result for this version; not the number
+            of all intended missing items.
+        distinct_case_count:
+          type: integer
+          description: Distinct non-null case keys in observed items.
+        items_with_case_key_count:
+          type: integer
+          description: Observed items with case keys.
+        items_without_case_key_count:
+          type: integer
+          description: Observed items without case keys.
+        trial_item_count:
+          type: integer
+          description: Observed items with trial identifiers.
+        distinct_trial_count:
+          type: integer
+          description: Distinct case/trial identities; trial-only items remain independent.
+        mean:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Numeric mean of successful scores only; null for other kinds
+            or no successes.
+        true_count:
+          type:
+          - integer
+          - 'null'
+          description: Successful boolean true results; null for other kinds.
+        false_count:
+          type:
+          - integer
+          - 'null'
+          description: Successful boolean false results; null for other kinds.
+        true_rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Boolean true fraction among successes; null with no successes
+            or for other kinds.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineCategorySummary'
+          description: Pinned categorical distribution; multiselect rates may sum
+            above one.
+      required:
+      - categories
+      - distinct_case_count
+      - distinct_trial_count
+      - false_count
+      - items_with_case_key_count
+      - items_without_case_key_count
+      - mean
+      - missing_result_count
+      - observed_item_count
+      - result_count
+      - scorer
+      - status_counts
+      - trial_item_count
+      - true_count
+      - true_rate
+    OfflineScorerVersionRead:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Exact immutable scorer-version UUID.
+        definition_id:
+          type: string
+          format: uuid
+          description: Stable scorer definition UUID.
+        version:
+          type: integer
+          description: Version number within the definition.
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ScoreDefinitionKindEnum'
+          description: |-
+            Scorer value kind.
+
+            * `categorical` - categorical
+            * `numeric` - numeric
+            * `boolean` - boolean
+        name:
+          type: string
+          description: Current scorer display name.
+        description:
+          type: string
+          description: Current scorer description.
+        archived:
+          type: boolean
+          description: Whether the scorer is archived.
+        config:
+          allOf:
+          - $ref: '#/components/schemas/ScoreDefinitionConfig'
+          description: Pinned immutable configuration used to interpret these results.
+      required:
+      - archived
+      - config
+      - definition_id
+      - description
+      - id
+      - kind
+      - name
+      - version
+    OfflineStatusCounts:
+      type: object
+      properties:
+        ok:
+          type: integer
+          description: Successful results.
+        error:
+          type: integer
+          description: Evaluator errors.
+        skipped:
+          type: integer
+          description: Skipped evaluations.
+        not_applicable:
+          type: integer
+          description: Not-applicable evaluations.
+      required:
+      - error
+      - not_applicable
+      - ok
+      - skipped
+    OfflineSummaryPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total authorized rows matching the filters, independent of
+            this page.
+        next_cursor:
+          type:
+          - string
+          - 'null'
+          description: Continuation cursor, or null after the final page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfflineScorerSummary'
+          description: Scorer-version summary page; each group includes all matching
+            results.
+      required:
+      - count
+      - next_cursor
+      - results
     OnErrorEnum:
       enum:
       - continue
@@ -186795,6 +189077,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WizardSessionDTO'
+    PaginatedWorkflowProposalList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProposal'
     ParserMode:
       enum:
       - cpp_only
@@ -191537,8 +193844,28 @@ components:
             set, cleanup targets the team's only connected repository and is skipped
             if the team has several.
           maxLength: 255
-        primary_metrics_ordered_uuids: {}
-        secondary_metrics_ordered_uuids: {}
+        primary_metrics_ordered_uuids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'Display order of the primary metrics, as metric uuids. This
+            is a display hint only: a metric not in the list renders after the listed
+            ones in stored order, and an entry that matches no metric is ignored.
+            Send it only to reorder metrics. Adding or removing metrics does not need
+            it.'
+        secondary_metrics_ordered_uuids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'Display order of the secondary metrics, as metric uuids. This
+            is a display hint only: a metric not in the list renders after the listed
+            ones in stored order, and an entry that matches no metric is ignored.
+            Send it only to reorder metrics. Adding or removing metrics does not need
+            it.'
         only_count_matured_users:
           type: boolean
         update_feature_flag_params:
@@ -193441,6 +195768,15 @@ components:
           readOnly: true
           description: What ClickHouse read for this insight's last slow run, with
             the findings of its query scan.
+        warnings:
+          oneOf:
+          - $ref: '#/components/schemas/_InsightResultWarnings'
+          - type: 'null'
+          readOnly: true
+          description: Warnings from the run that produced these results. A `warehouse_sync`
+            warning means the query read a data warehouse table whose sync failed,
+            is paused, or is overdue, so the results can be out of date. Reflects
+            the sync state when the results were computed. Null for shared insights.
         _create_in_folder:
           type: string
           writeOnly: true
@@ -193696,6 +196032,19 @@ components:
           - 'null'
           readOnly: true
           description: Azure API version (read-only, for display)
+        base_url:
+          type: string
+          format: uri
+          writeOnly: true
+          description: Base URL of an OpenAI-compatible API (e.g. https://api.example.com/v1).
+            Required for the openai_compatible provider; must be a public https://
+            URL.
+        base_url_display:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: OpenAI-compatible base URL (read-only, for display)
         set_as_active:
           type: boolean
           writeOnly: true
@@ -198183,6 +200532,18 @@ components:
           type: string
           description: Complete running summary that replaces the prior summary.
           maxLength: 1500
+        tags:
+          type: array
+          items:
+            type: string
+            description: A lowercase kebab-case slug, for example `feature-flags`
+              or `bug-fix`.
+            maxLength: 50
+            pattern: ^[a-z0-9]+(?:-[a-z0-9]+)*$(?!\n)
+          description: Complete set of slug tags that replaces the prior tags. The
+            agent chooses the tags. Omit the field to keep the current tags. Send
+            an empty list to remove them.
+          maxItems: 10
     PatchedTaskRunUpdate:
       type: object
       properties:
@@ -198276,6 +200637,7 @@ components:
             * `task_analysis` - Task Analysis
             * `workflow` - Workflow
             * `space_setup` - Space Setup
+            * `business_knowledge` - Business Knowledge
         repository:
           type:
           - string
@@ -200623,6 +202985,16 @@ components:
           description: Pause the grouping pipeline until this timestamp (ISO 8601).
       required:
       - timestamp
+    PayloadStateEnum:
+      enum:
+      - not_provided
+      - available
+      - expired
+      type: string
+      description: |-
+        * `not_provided` - Not provided
+        * `available` - Available
+        * `expired` - Expired
     PendingCelebration:
       type: object
       properties:
@@ -201946,6 +204318,104 @@ components:
       - createdAt
       title: PlainThreadSignalExtra
       type: object
+    PlaygroundChat:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Playground chat id.
+        title:
+          type: string
+          description: First question, truncated. Empty until someone asks.
+        created_at:
+          type: string
+          format: date-time
+          description: When this chat was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: When this chat was last asked in.
+        has_open_turn:
+          type: boolean
+          description: True while an answer in this chat is still running. Another
+            question in this chat returns 409 until it finishes.
+        turns:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaygroundTurn'
+          description: Questions in this chat, oldest first. Each turn's answer comes
+            from its sandbox run.
+      required:
+      - created_at
+      - has_open_turn
+      - id
+      - title
+      - turns
+      - updated_at
+    PlaygroundChatList:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Playground chat id.
+        title:
+          type: string
+          description: First question, truncated. Empty until someone asks.
+        created_at:
+          type: string
+          format: date-time
+          description: When this chat was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: When this chat was last asked in.
+        has_open_turn:
+          type: boolean
+          description: True while an answer in this chat is still running. Another
+            question in this chat returns 409 until it finishes.
+      required:
+      - created_at
+      - has_open_turn
+      - id
+      - title
+      - updated_at
+    PlaygroundTurn:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Turn id.
+        question:
+          type: string
+          description: Question that started this turn's sandbox run.
+        task_id:
+          type: string
+          format: uuid
+          description: Sandbox task id for this turn.
+        position:
+          type: integer
+          description: Order of this turn in the chat, starting at 0.
+        run:
+          oneOf:
+          - $ref: '#/components/schemas/SandboxRun'
+          - type: 'null'
+          description: Current sandbox run for this turn. Null when the run cannot
+            be loaded.
+        error:
+          type:
+          - string
+          - 'null'
+          description: Why this turn could not be loaded. Null when run is present.
+      required:
+      - error
+      - id
+      - position
+      - question
+      - run
+      - task_id
     PluginLogEntry:
       type: object
       properties:
@@ -223185,7 +225655,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/TemplateKeyEnum'
           description: |-
-            Template to resolve. Use autoresearch-templates-list to see all available templates with descriptions. Required.
+            Template to resolve. The templates endpoint lists each one with its description. Required.
 
             * `likely_active_soon` - Likely Active Soon
             * `at_risk_of_inactivity` - At Risk Of Inactivity
@@ -229858,6 +232328,136 @@ components:
           description: Bind a brand-new sandbox conversation to an existing Task so
             the first message resumes that Task's run. Honored only when this request
             creates the conversation row; ignored for an already-existing conversation.
+    SandboxPollStatusEnum:
+      enum:
+      - running
+      - completed
+      - failed
+      - cancelled
+      type: string
+      description: |-
+        * `running` - Running
+        * `completed` - Completed
+        * `failed` - Failed
+        * `cancelled` - Cancelled
+    SandboxQuestion:
+      type: object
+      properties:
+        question:
+          type: string
+          description: Question to answer from this project's business knowledge.
+            Blank questions are rejected. Maximum 4000 characters.
+          maxLength: 4000
+      required:
+      - question
+    SandboxRun:
+      type: object
+      properties:
+        task_id:
+          type: string
+          format: uuid
+          description: Sandbox task id.
+        run_id:
+          type: string
+          format: uuid
+          description: Latest run id for this task.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SandboxPollStatusEnum'
+          description: |-
+            running while the agent works. completed carries reply and sources. failed and cancelled carry error.
+
+            * `running` - Running
+            * `completed` - Completed
+            * `failed` - Failed
+            * `cancelled` - Cancelled
+        reply:
+          type:
+          - string
+          - 'null'
+          description: Answer text when status is completed. Null otherwise.
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/SandboxSource'
+          description: Sources cited in a completed answer. Empty when the run has
+            not completed.
+        searches:
+          type: array
+          items:
+            $ref: '#/components/schemas/SandboxSearch'
+          description: Business knowledge search and window calls observed in the
+            run log.
+        error:
+          type:
+          - string
+          - 'null'
+          description: Why the run did not produce an answer. Null while running and
+            on a completed answer.
+        docs_search_called:
+          type: boolean
+          description: True when the run log contains an exact docs-search call. That
+            tool is not granted to this sandbox.
+      required:
+      - docs_search_called
+      - error
+      - reply
+      - run_id
+      - searches
+      - sources
+      - status
+      - task_id
+    SandboxRunStarted:
+      type: object
+      properties:
+        task_id:
+          type: string
+          format: uuid
+          description: Sandbox task id. Poll this id until the run finishes.
+        run_id:
+          type: string
+          format: uuid
+          description: Run id for this question.
+      required:
+      - run_id
+      - task_id
+    SandboxSearch:
+      type: object
+      properties:
+        tool:
+          allOf:
+          - $ref: '#/components/schemas/SandboxToolNameEnum'
+          description: |-
+            Business knowledge tool the agent called.
+
+            * `business-knowledge-documents-search` - Search
+            * `business-knowledge-document-window-retrieve` - Window
+        input:
+          type: string
+          description: Tool input the agent sent.
+      required:
+      - input
+      - tool
+    SandboxSource:
+      type: object
+      properties:
+        ref:
+          type: string
+          description: Source reference the reply relies on.
+        excerpt:
+          type: string
+          description: Short excerpt that supports the reply.
+      required:
+      - excerpt
+      - ref
+    SandboxToolNameEnum:
+      enum:
+      - business-knowledge-documents-search
+      - business-knowledge-document-window-retrieve
+      type: string
+      description: |-
+        * `business-knowledge-documents-search` - Search
+        * `business-knowledge-document-window-retrieve` - Window
     SavedHeatmapCaptureRequest:
       type: object
       properties:
@@ -231335,6 +233935,77 @@ components:
             fails with 409. Omit to skip the optimistic-concurrency check.
       required:
       - config
+    ScoreDefinitionVersion:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID identifying this exact immutable version.
+        definition_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Scorer definition that owns this version.
+        version:
+          type: integer
+          readOnly: true
+          description: Immutable version number within this scorer.
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ScoreDefinitionKindEnum'
+          readOnly: true
+          description: |-
+            Scorer value kind.
+
+            * `categorical` - categorical
+            * `numeric` - numeric
+            * `boolean` - boolean
+        config:
+          allOf:
+          - $ref: '#/components/schemas/ScoreDefinitionConfig'
+          readOnly: true
+          description: Immutable configuration for this exact version.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Time this version was created.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: User who created this version.
+      required:
+      - config
+      - created_at
+      - created_by
+      - definition_id
+      - id
+      - kind
+      - version
+    ScoreDefinitionVersionPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total immutable versions for this scorer.
+        next_cursor:
+          type:
+          - string
+          - 'null'
+          description: Continuation cursor, or null on the last page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoreDefinitionVersion'
+          description: Versions on this page, newest first.
+      required:
+      - count
+      - next_cursor
+      - results
     ScorerHistogram:
       type: object
       properties:
@@ -231474,14 +234145,46 @@ components:
           - string
           - 'null'
           description: Verdict of the most recent run; null before the first.
+        run_state:
+          type: string
+          description: 'Where the check is in its run cycle. `waiting_on_report`:
+            pending, no fix to measure yet. `paused`: active, but its report is suppressed
+            or its horizon passed, so nothing runs it. `scheduled`: active, not due
+            yet. `due`: due now, so a run on the check''s scout may record the verdict.
+            `queued`: a run was dispatched and has not started. `running`: the dispatched
+            run started and has time left. `stale`: the dispatched run recorded nothing
+            in its window, so the coordinator dispatches again. Any other value is
+            the terminal status.'
+        waiting_on_run:
+          type: boolean
+          description: True while an `agent` check waits on a dispatched run to record
+            its verdict.
+        dispatched_run_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: The scout run the coordinator dispatched for the check, once
+            it started. Null while queued.
+        dispatched_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the coordinator last dispatched a run for the check. Null
+            when no run waits.
       required:
       - check_id
+      - dispatched_at
+      - dispatched_run_id
       - kind
       - last_outcome
       - next_run_at
       - report_id
+      - run_state
       - status
       - title
+      - waiting_on_run
     ScoutCost:
       type: object
       description: What one scout spent in the window, and what it produced for that
@@ -235557,6 +238260,7 @@ components:
       - code_review
       - related_to
       - report_link
+      - autostart_skip
       - work_claim
       - work_release
       - pull_request
@@ -235589,6 +238293,7 @@ components:
         * `code_review` - Code Review
         * `related_to` - Related To
         * `report_link` - Report Link
+        * `autostart_skip` - Autostart Skip
         * `work_claim` - Work Claim
         * `work_release` - Work Release
         * `pull_request` - Pull Request
@@ -250173,6 +252878,7 @@ components:
             * `together_ai` - Together AI
             * `minimax` - MiniMax
             * `zeabur` - Zeabur AI Hub
+            * `openai_compatible` - OpenAI-compatible
         model:
           type: string
           description: Provider model identifier to use for this tagger.
@@ -250212,6 +252918,7 @@ components:
             * `together_ai` - Together AI
             * `minimax` - MiniMax
             * `zeabur` - Zeabur AI Hub
+            * `openai_compatible` - OpenAI-compatible
         model:
           type: string
           description: Provider model identifier to use for this tagger.
@@ -250928,6 +253635,7 @@ components:
             * `task_analysis` - Task Analysis
             * `workflow` - Workflow
             * `space_setup` - Space Setup
+            * `business_knowledge` - Business Knowledge
         repository:
           type:
           - string
@@ -251538,6 +254246,7 @@ components:
       - task_analysis
       - workflow
       - space_setup
+      - business_knowledge
       type: string
       description: |-
         * `onboarding` - Onboarding
@@ -251563,6 +254272,7 @@ components:
         * `task_analysis` - Task Analysis
         * `workflow` - Workflow
         * `space_setup` - Space Setup
+        * `business_knowledge` - Business Knowledge
     TaskPinRequest:
       type: object
       properties:
@@ -252542,6 +255252,12 @@ components:
           - 'null'
           description: Latest summary for this task, including a summary inherited
             from an earlier run.
+        task_tags:
+          type: array
+          items:
+            type: string
+          description: Latest slug tags for this task, including tags inherited from
+            an earlier run.
         state:
           type: object
           additionalProperties: true
@@ -252588,6 +255304,7 @@ components:
       - status
       - task
       - task_summary
+      - task_tags
     TaskRunDetailDTOProviderEnum:
       enum:
       - anthropic
@@ -254159,6 +256876,7 @@ components:
             * `task_analysis` - Task Analysis
             * `workflow` - Workflow
             * `space_setup` - Space Setup
+            * `business_knowledge` - Business Knowledge
         repository:
           type:
           - string
@@ -259531,7 +262249,10 @@ components:
           description: Cursor for fetching the next page of results
           title: After
         dateRange:
-          $ref: '#/components/schemas/DateRange'
+          anyOf:
+          - $ref: '#/components/schemas/DateRange'
+          - type: 'null'
+          default: null
         excludeAttributes:
           anyOf:
           - type: boolean
@@ -259646,8 +262367,6 @@ components:
           default: null
           description: version of the node, used for schema migrations
           title: Version
-      required:
-      - dateRange
       title: TraceSpansQuery
       type: object
     TraceSpansQueryResponse:
@@ -268728,6 +271447,12 @@ components:
             type: string
           description: Desired provider events not yet on the webhook (manual setup,
             or created before a new table).
+        missing_inputs:
+          type: array
+          items:
+            type: string
+          description: Required webhook field names with no value yet. Deliveries
+            are dropped while any is missing.
       required:
       - auto_creation_blocked_reason
       - exists
@@ -270921,6 +273646,268 @@ components:
       - run_share
       - runs_in
       - shard_count
+    WorkflowProposal:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+          readOnly: true
+          description: Short summary of the proposed change.
+        rationale:
+          type: string
+          readOnly: true
+          description: Why the producer thinks this change is worth making.
+        content:
+          type: object
+          additionalProperties: true
+          description: 'Only the content fields the proposal changes. Valid keys:
+            actions, edges, trigger_masking, conversion, exit_condition, email_sending_rate_limit,
+            variables. Each value has the same shape as on the workflow itself.'
+          readOnly: true
+        evidence:
+          type: object
+          additionalProperties: true
+          description: 'The numbers behind the proposal, read back by name. Five keys
+            are required: `metric`, the metric name; `current_value`, its value as
+            a number (a rate as a fraction, 0.0865, never a string); `unit`, either
+            `rate` or `count`, since 1.0 is either every message or one of them; `n`,
+            the denominator that value was computed over; and `guardrails`, a list
+            of {metric, value, n, unit} counter-metrics read over the same window,
+            empty only if none apply. Also conventional: target_value, window, query,
+            app_source_id. A rate with no denominator lets a reviewer mistake noise
+            for a result, a target with no counter-metrics hides a change that lifts
+            one number by harming another, and a number under a key of your own reads
+            to a person as no evidence at all.'
+          readOnly: true
+        step_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: 'The workflow step this is about. Set for a change to one step:
+            the evidence and the outcome then read that step''s metrics, so a change
+            to one email in a sequence is not measured against the rest. Null only
+            for a change that spans the workflow, such as its exit condition or a
+            step being taken out, which is measured on the workflow''s own numbers.'
+        base_version:
+          type: integer
+          readOnly: true
+          description: Live workflow version this was authored against. Approving
+            compares the steps and fields this changes against that version to tell
+            whether somebody else already changed them.
+        is_stale:
+          type: boolean
+          readOnly: true
+          description: Whether approving this would undo an edit made since it was
+            proposed. False while the workflow only changed elsewhere, because approving
+            merges per step.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/WorkflowProposalStatusEnum'
+          readOnly: true
+        source_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Stable id of the producing agent run or finding, e.g. 'run:<run
+            id>:finding:<finding id>'.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        resolved_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        resolved_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+        applied_version:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: Workflow version the approved change went live as.
+      required:
+      - applied_version
+      - base_version
+      - content
+      - created_at
+      - evidence
+      - id
+      - is_stale
+      - rationale
+      - resolved_at
+      - resolved_by
+      - source_id
+      - status
+      - step_id
+      - title
+    WorkflowProposalApproveRequest:
+      type: object
+      properties:
+        overwrite:
+          type: boolean
+          default: false
+          description: Replace the open staged draft with this proposal's content.
+            Without it, approving while a draft is open returns 409.
+        expected_draft_updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The draft_updated_at of the staged draft this overwrite was
+            confirmed against. A draft with a different stamp returns 409 instead
+            of being overwritten. Omit to overwrite unconditionally.
+    WorkflowProposalCreate:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Short summary of the proposed change.
+          maxLength: 200
+        rationale:
+          type: string
+          description: Why this change is worth making, in prose a human reads.
+        content:
+          type: object
+          additionalProperties: true
+          description: Only the workflow content fields this proposal changes. Approving
+            merges them over the live content to build the staged draft, so unrelated
+            parts of the workflow stay as they are. In `actions`, send each step you
+            change with its `id` and only the fields you change; they merge into the
+            live step, and a null field deletes it.
+        evidence:
+          type: object
+          additionalProperties: true
+          description: The metric numbers behind the proposal, so a human can judge
+            it without re-deriving them.
+        base_version:
+          type: integer
+          description: 'Workflow version this was authored against. Required when
+            the proposal changes actions, edges or variables: it is the snapshot approve
+            compares against to tell whether someone edited the same steps since,
+            and a defaulted version would read as current however long the producer
+            took. Defaults to the current live version otherwise.'
+        step_id:
+          type:
+          - string
+          - 'null'
+          description: 'The step this is about. Send it for a change to one step:
+            both the evidence and the outcome then read that step''s metrics, so a
+            change to one email in a sequence is not measured against the rest. Leave
+            it out only for a change that spans the workflow, such as its exit condition
+            or a step being taken out, which is measured on the workflow''s own numbers.'
+          maxLength: 200
+        source_id:
+          type:
+          - string
+          - 'null'
+          description: Stable id of the producing agent run or finding. Posting the
+            same one twice returns the existing proposal instead of creating a duplicate.
+          maxLength: 200
+      required:
+      - content
+      - rationale
+      - title
+    WorkflowProposalMetric:
+      type: object
+      properties:
+        metric:
+          type: string
+          description: What was measured, e.g. 'email open rate'.
+        value:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The rate over the window, or null when there was nothing to
+            divide.
+        n:
+          type: integer
+          description: Observations the rate was computed over.
+        below_minimum_sample:
+          type: boolean
+          description: True when n is too small for the rate to mean anything. Show
+            it labelled, not as a finding.
+      required:
+      - below_minimum_sample
+      - metric
+      - n
+      - value
+    WorkflowProposalOutcome:
+      type: object
+      properties:
+        window:
+          type: string
+          description: Relative window both sides were measured over.
+        before:
+          oneOf:
+          - $ref: '#/components/schemas/WorkflowProposalVersionOutcome'
+          - type: 'null'
+          description: The version the change was proposed against.
+        after:
+          oneOf:
+          - $ref: '#/components/schemas/WorkflowProposalVersionOutcome'
+          - type: 'null'
+          description: The version it went live as. Null until the proposal is applied.
+        unavailable_guardrails:
+          type: array
+          items:
+            type: string
+          description: Counter-metrics that cannot be read yet, named so their absence
+            is not read as zero.
+      required:
+      - after
+      - before
+      - unavailable_guardrails
+      - window
+    WorkflowProposalStatusEnum:
+      enum:
+      - suggested
+      - approved
+      - rejected
+      - applied
+      type: string
+      description: |-
+        * `suggested` - Suggested
+        * `approved` - Approved
+        * `rejected` - Rejected
+        * `applied` - Applied
+    WorkflowProposalVersionOutcome:
+      type: object
+      properties:
+        version:
+          type: integer
+          description: Workflow version these numbers belong to.
+        target:
+          allOf:
+          - $ref: '#/components/schemas/WorkflowProposalMetric'
+          description: The metric the suggestion aimed at.
+        click_through:
+          allOf:
+          - $ref: '#/components/schemas/WorkflowProposalMetric'
+          description: Click-through rate over the same window and denominator, since
+            opens alone can move without clicks.
+        guardrails:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProposalMetric'
+          description: Counter-metrics over the same window, so a harmful win is visible.
+      required:
+      - click_through
+      - guardrails
+      - target
+      - version
     WorkflowRunActivity:
       type: object
       properties:
@@ -271743,6 +274730,15 @@ components:
       - $ref: '#/components/schemas/DataVisualizationNode'
       - $ref: '#/components/schemas/HogQuery'
       title: _InsightQuerySchema
+    _InsightResultWarnings:
+      description: Warnings attached to the query response that produced an insight's
+        results.
+      items:
+        anyOf:
+        - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+        - $ref: '#/components/schemas/AccessControlFilterWarning'
+      title: _InsightResultWarnings
+      type: array
     _LogAttributeEntry:
       type: object
       properties:
@@ -276167,8 +279163,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/_TracingTraceAiEvent'
-          description: AI events in the trace, earliest start first.
+          description: AI events in the trace, earliest start first, up to `limit`
+            of them.
+        limit:
+          type: integer
+          description: The most AI events the lookup returns for one trace.
+        has_more:
+          type: boolean
+          description: Whether the trace has more AI events than `results` holds.
+            The full list is in AI observability under the events' `ai_trace_id`.
       required:
+      - has_more
+      - limit
       - results
     _TracingTraceErrorCount:
       type: object
@@ -276189,7 +279195,8 @@ components:
         dateRange:
           allOf:
           - $ref: '#/components/schemas/_TracingDateRange'
-          description: Date range for the query. Defaults to last 24 hours.
+          description: Date range for the query. Omit it to search all retained spans
+            for this trace.
         excludeAttributes:
           type: boolean
           default: false

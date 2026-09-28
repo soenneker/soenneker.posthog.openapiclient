@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// InsightSerializer restricted to identifiers + result only.
+    /// InsightSerializer restricted to identifiers, the result, and the warnings about that result.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InsightResult : IAdditionalDataHolder, IParsable
@@ -49,6 +49,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ShortId { get; private set; }
 #endif
+        /// <summary>Warnings from the run that produced these results. A `warehouse_sync` warning means the query read a data warehouse table whose sync failed, is paused, or is overdue, so the results can be out of date. Reflects the sync state when the results were computed. Null for shared insights.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem>? Warnings { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem> Warnings { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightResult"/> and sets the default values.
         /// </summary>
@@ -79,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultResult>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResultResult.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>

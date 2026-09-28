@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// A choice of supported BatchExportDestination types.* `S3` - S3* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download
+    /// A choice of supported BatchExportDestination types.* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchExportDestinationType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `S3` - S3* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
+        /// <summary>* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationDestinationEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType"/> and sets the default values.

@@ -17,6 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The check.</summary>
         public Guid? CheckId { get; set; }
+        /// <summary>When the coordinator last dispatched a run for the check. Null when no run waits.</summary>
+        public DateTimeOffset? DispatchedAt { get; set; }
+        /// <summary>The scout run the coordinator dispatched for the check, once it started. Null while queued.</summary>
+        public Guid? DispatchedRunId { get; set; }
         /// <summary>`metric_threshold` (the coordinator measures it) or `agent` (a run does).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,6 +41,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? NextRunAt { get; set; }
         /// <summary>The report it is attached to.</summary>
         public Guid? ReportId { get; set; }
+        /// <summary>Where the check is in its run cycle. `waiting_on_report`: pending, no fix to measure yet. `paused`: active, but its report is suppressed or its horizon passed, so nothing runs it. `scheduled`: active, not due yet. `due`: due now, so a run on the check&apos;s scout may record the verdict. `queued`: a run was dispatched and has not started. `running`: the dispatched run started and has time left. `stale`: the dispatched run recorded nothing in its window, so the coordinator dispatches again. Any other value is the terminal status.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RunState { get; set; }
+#nullable restore
+#else
+        public string RunState { get; set; }
+#endif
         /// <summary>`pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,6 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>True while an `agent` check waits on a dispatched run to record its verdict.</summary>
+        public bool? WaitingOnRun { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutCheckSummary"/> and sets the default values.
         /// </summary>
@@ -79,12 +93,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "check_id", n => { CheckId = n.GetGuidValue(); } },
+                { "dispatched_at", n => { DispatchedAt = n.GetDateTimeOffsetValue(); } },
+                { "dispatched_run_id", n => { DispatchedRunId = n.GetGuidValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "last_outcome", n => { LastOutcome = n.GetStringValue(); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },
                 { "report_id", n => { ReportId = n.GetGuidValue(); } },
+                { "run_state", n => { RunState = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
+                { "waiting_on_run", n => { WaitingOnRun = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -95,12 +113,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("check_id", CheckId);
+            writer.WriteDateTimeOffsetValue("dispatched_at", DispatchedAt);
+            writer.WriteGuidValue("dispatched_run_id", DispatchedRunId);
             writer.WriteStringValue("kind", Kind);
             writer.WriteStringValue("last_outcome", LastOutcome);
             writer.WriteDateTimeOffsetValue("next_run_at", NextRunAt);
             writer.WriteGuidValue("report_id", ReportId);
+            writer.WriteStringValue("run_state", RunState);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("title", Title);
+            writer.WriteBoolValue("waiting_on_run", WaitingOnRun);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

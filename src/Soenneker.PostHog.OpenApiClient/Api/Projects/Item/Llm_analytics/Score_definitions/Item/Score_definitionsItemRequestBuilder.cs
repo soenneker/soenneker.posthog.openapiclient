@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_definitions.Item.New_version;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_definitions.Item.Versions;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_definitions.Item.New_version.New_versionRequestBuilder New_version
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_definitions.Item.New_version.New_versionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The versions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_definitions.Item.Versions.VersionsRequestBuilder Versions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_definitions.Item.Versions.VersionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Score_definitions.Item.Score_definitionsItemRequestBuilder"/> and sets the default values.

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `video_segment` - Video Segment* `safety_judgment` - Safety Judgment* `actionability_judgment` - Actionability Judgment* `priority_judgment` - Priority Judgment* `signal_finding` - Signal Finding* `repo_selection` - Repo Selection* `suggested_reviewers` - Suggested Reviewers* `channel_assignment` - Channel Assignment* `dismissal` - Dismissal* `code_reference` - Code Reference* `commit` - Commit* `task_run` - Task Run* `note` - Note* `title_change` - Title Change* `summary_change` - Summary Change* `code_review` - Code Review* `related_to` - Related To* `report_link` - Report Link* `work_claim` - Work Claim* `work_release` - Work Release* `pull_request` - Pull Request* `check_result` - Check Result* `check_scheduled` - Check Scheduled* `check_expired` - Check Expired* `check_cancelled` - Check Cancelled* `implementation_decision` - Implementation Decision* `implementation_dispatch` - Implementation Dispatch* `implementation_replacement` - Implementation Replacement* `implementation_handover` - Implementation Handover* `ranking_score` - Ranking Score</summary>
+    /// <summary>* `video_segment` - Video Segment* `safety_judgment` - Safety Judgment* `actionability_judgment` - Actionability Judgment* `priority_judgment` - Priority Judgment* `signal_finding` - Signal Finding* `repo_selection` - Repo Selection* `suggested_reviewers` - Suggested Reviewers* `channel_assignment` - Channel Assignment* `dismissal` - Dismissal* `code_reference` - Code Reference* `commit` - Commit* `task_run` - Task Run* `note` - Note* `title_change` - Title Change* `summary_change` - Summary Change* `code_review` - Code Review* `related_to` - Related To* `report_link` - Report Link* `autostart_skip` - Autostart Skip* `work_claim` - Work Claim* `work_release` - Work Release* `pull_request` - Pull Request* `check_result` - Check Result* `check_scheduled` - Check Scheduled* `check_expired` - Check Expired* `check_cancelled` - Check Cancelled* `implementation_decision` - Implementation Decision* `implementation_dispatch` - Implementation Dispatch* `implementation_replacement` - Implementation Replacement* `implementation_handover` - Implementation Handover* `ranking_score` - Ranking Score</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalReportArtefactArtefactTypeEnum
     {
@@ -78,6 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "report_link")]
         #pragma warning disable CS1591
         ReportLink,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "autostart_skip")]
+        #pragma warning disable CS1591
+        AutostartSkip,
         #pragma warning restore CS1591
         [EnumMember(Value = "work_claim")]
         #pragma warning disable CS1591

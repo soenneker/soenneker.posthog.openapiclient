@@ -139,6 +139,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TaskSummary { get; set; }
 #endif
+        /// <summary>Latest slug tags for this task, including tags inherited from an earlier run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? TaskTags { get; set; }
+#nullable restore
+#else
+        public List<string> TaskTags { get; set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -186,6 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "task", n => { Task = n.GetGuidValue(); } },
                 { "task_summary", n => { TaskSummary = n.GetStringValue(); } },
+                { "task_tags", n => { TaskTags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -215,6 +224,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("status", Status);
             writer.WriteGuidValue("task", Task);
             writer.WriteStringValue("task_summary", TaskSummary);
+            writer.WriteCollectionOfPrimitiveValues<string>("task_tags", TaskTags);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

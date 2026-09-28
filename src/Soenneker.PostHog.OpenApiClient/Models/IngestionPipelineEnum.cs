@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `analytics` - Analytics* `session_recordings` - Session Recordings* `errortracking` - Errortracking* `clientwarnings` - Clientwarnings* `ai` - Ai</summary>
+    /// <summary>* `analytics` - Analytics* `session_recordings` - Session Recordings* `errortracking` - Errortracking* `clientwarnings` - Clientwarnings* `heatmaps` - Heatmaps* `ai` - Ai</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum IngestionPipelineEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "clientwarnings")]
         #pragma warning disable CS1591
         Clientwarnings,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "heatmaps")]
+        #pragma warning disable CS1591
+        Heatmaps,
         #pragma warning restore CS1591
         [EnumMember(Value = "ai")]
         #pragma warning disable CS1591

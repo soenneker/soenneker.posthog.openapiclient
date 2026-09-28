@@ -100,5 +100,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         SpaceSetup,
         #pragma warning restore CS1591
+        [EnumMember(Value = "business_knowledge")]
+        #pragma warning disable CS1591
+        BusinessKnowledge,
+        #pragma warning restore CS1591
     }
 }

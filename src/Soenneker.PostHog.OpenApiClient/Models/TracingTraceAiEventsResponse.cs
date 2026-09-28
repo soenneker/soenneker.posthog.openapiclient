@@ -14,7 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>AI events in the trace, earliest start first.</summary>
+        /// <summary>Whether the trace has more AI events than `results` holds. The full list is in AI observability under the events&apos; `ai_trace_id`.</summary>
+        public bool? HasMore { get; set; }
+        /// <summary>The most AI events the lookup returns for one trace.</summary>
+        public int? Limit { get; set; }
+        /// <summary>AI events in the trace, earliest start first, up to `limit` of them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEvent>? Results { get; set; }
@@ -47,6 +51,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "has_more", n => { HasMore = n.GetBoolValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEvent.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -57,6 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("has_more", HasMore);
+            writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEvent>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }

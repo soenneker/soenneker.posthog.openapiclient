@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>LLM provider to use for this tagger.* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub</summary>
+        /// <summary>LLM provider to use for this tagger.* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `openai_compatible` - OpenAI-compatible</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationProvider? Provider { get; set; }

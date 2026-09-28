@@ -32,6 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Openai,
         #pragma warning restore CS1591
+        [EnumMember(Value = "openai_compatible")]
+        #pragma warning disable CS1591
+        OpenaiCompatible,
+        #pragma warning restore CS1591
         [EnumMember(Value = "openrouter")]
         #pragma warning disable CS1591
         Openrouter,

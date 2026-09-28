@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,filter_test_accounts*,limit*,offset*,order_by*,properties*,search*}", pathParameters)
+        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,filter_test_accounts*,has_errors*,limit*,offset*,order_by*,properties*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,filter_test_accounts*,limit*,offset*,order_by*,properties*,search*}", rawUrl)
+        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/mcp_analytics/sessions{?date_from*,date_to*,filter_test_accounts*,has_errors*,limit*,offset*,order_by*,properties*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -133,6 +133,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
             /// <summary>Whether to also apply the project&apos;s internal and test user filters (its test_account_filters setting) on top of `properties`.</summary>
             [QueryParameter("filter_test_accounts")]
             public bool? FilterTestAccounts { get; set; }
+            /// <summary>Filter by session outcome. true keeps sessions with at least one errored tool call ($mcp_is_error), false keeps sessions with none. Omit to list both.</summary>
+            [QueryParameter("has_errors")]
+            public bool? HasErrors { get; set; }
             /// <summary>Maximum number of sessions to return per page. Defaults to 100; values above 500 are rejected.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
+        /// <summary>Complete set of slug tags that replaces the prior tags. The agent chooses the tags. Omit the field to keep the current tags. Send an empty list to remove them.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetSummaryRequest"/> and sets the default values.
         /// </summary>
@@ -48,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "summary", n => { Summary = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("summary", Summary);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

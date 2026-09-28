@@ -27,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Integration { get; set; }
         /// <summary>ID of a team-scoped Integration providing credentials, for destinations that authenticate through one. Required for all of them.</summary>
         public int? IntegrationId { get; set; }
-        /// <summary>A choice of supported BatchExportDestination types.* `S3` - S3* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
+        /// <summary>A choice of supported BatchExportDestination types.* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType? Type { get; set; }

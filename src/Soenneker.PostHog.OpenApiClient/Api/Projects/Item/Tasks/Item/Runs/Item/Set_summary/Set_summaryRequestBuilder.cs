@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         {
         }
         /// <summary>
-        /// Replace the running summary for a task run.
+        /// Replace the running summary for a task run, and optionally its slug tags.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Replace the running summary for a task run.
+        /// Replace the running summary for a task run, and optionally its slug tags.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

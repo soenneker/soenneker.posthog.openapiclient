@@ -3,14 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `S3` - S3* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
+    /// <summary>* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BatchExportDestinationDestinationEnum
     {
-        [EnumMember(Value = "S3")]
-        #pragma warning disable CS1591
-        S3,
-        #pragma warning restore CS1591
         [EnumMember(Value = "AwsS3")]
         #pragma warning disable CS1591
         AwsS3,

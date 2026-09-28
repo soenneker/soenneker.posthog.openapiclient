@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TargetEvent { get; set; }
 #endif
-        /// <summary>Template to resolve. Use autoresearch-templates-list to see all available templates with descriptions. Required.* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
+        /// <summary>Template to resolve. The templates endpoint lists each one with its description. Required.* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey? TemplateKey { get; set; }
