@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Selected category keys. An empty list is an applicable result; null means no categorical result was produced.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Categories { get; set; }
+#nullable restore
+#else
+        public List<string> Categories { get; set; }
+#endif
         /// <summary>Error message if the Hog code raised an exception.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -107,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "categories", n => { Categories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "event_uuid", n => { EventUuid = n.GetStringValue(); } },
                 { "input_preview", n => { InputPreview = n.GetStringValue(); } },
@@ -126,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
             writer.WriteStringValue("error", Error);
             writer.WriteStringValue("event_uuid", EventUuid);
             writer.WriteStringValue("input_preview", InputPreview);

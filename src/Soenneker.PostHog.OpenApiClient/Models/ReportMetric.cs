@@ -23,6 +23,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Caption { get; set; }
 #endif
+        /// <summary>Suggested days after release before assessing impact, not a monitoring schedule.</summary>
+        public int? DecisionWindowDays { get; set; }
+        /// <summary>Whether success means at most or at least goal_value.* `at_most` - at_most* `at_least` - at_least</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalDirection? GoalDirection { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalDirection GoalDirection { get; set; }
+#endif
+        /// <summary>Whether the goal compares with the whole query window or each chart bucket.* `whole_window` - whole_window* `per_interval` - per_interval</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalGrain? GoalGrain { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalGrain GoalGrain { get; set; }
+#endif
+        /// <summary>Proposed threshold after release. Informational only; does not schedule a check.</summary>
+        public double? GoalValue { get; set; }
         /// <summary>What the value measures, independent of how it is formatted or drawn.* `affected_users` - affected_users* `affected_sessions` - affected_sessions* `occurrences` - occurrences* `conversion_rate` - conversion_rate* `error_rate` - error_rate* `duration` - duration* `revenue` - revenue* `custom` - custom</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,6 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricId { get; set; }
 #endif
+        /// <summary>Optional number of qualifying observations before assessing impact.</summary>
+        public int? MinimumDataPoints { get; set; }
         /// <summary>Required when authoring: a live InsightVizNode wrapping one bounded TrendsQuery. Consumers derive a BoldNumber execution for the whole-window aggregate and an ActionsBar execution for longitudinal buckets. The query must produce exactly one output series and no more than 1000 estimated longitudinal points; one formula may combine up to ten event or action source series. An affected_users metric uses exactly one source with `math: dau`; never sum its per-bucket unique-user values. A response omits this on list or redacts it to null on detail when the viewer lacks access to the definition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,8 +139,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "caption", n => { Caption = n.GetStringValue(); } },
+                { "decision_window_days", n => { DecisionWindowDays = n.GetIntValue(); } },
+                { "goal_direction", n => { GoalDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalDirection>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalDirection.CreateFromDiscriminatorValue); } },
+                { "goal_grain", n => { GoalGrain = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalGrain>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalGrain.CreateFromDiscriminatorValue); } },
+                { "goal_value", n => { GoalValue = n.GetDoubleValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricKind>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricKind.CreateFromDiscriminatorValue); } },
                 { "metric_id", n => { MetricId = n.GetStringValue(); } },
+                { "minimum_data_points", n => { MinimumDataPoints = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricQuery.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricRole>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricRole.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
@@ -137,8 +164,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("caption", Caption);
+            writer.WriteIntValue("decision_window_days", DecisionWindowDays);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalDirection>("goal_direction", GoalDirection);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricGoalGrain>("goal_grain", GoalGrain);
+            writer.WriteDoubleValue("goal_value", GoalValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricKind>("kind", Kind);
             writer.WriteStringValue("metric_id", MetricId);
+            writer.WriteIntValue("minimum_data_points", MinimumDataPoints);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricQuery>("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricRole>("role", Role);
             writer.WriteCollectionOfPrimitiveValues<double?>("series", Series);

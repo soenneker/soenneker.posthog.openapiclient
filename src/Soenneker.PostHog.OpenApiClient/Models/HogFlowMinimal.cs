@@ -99,6 +99,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Newest task this loop workflow created, as its last run. Null when the workflow is not a loop or has not run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun? LastRun { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun LastRun { get; private set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -196,6 +204,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit.CreateFromDiscriminatorValue); } },
                 { "exit_condition", n => { ExitCondition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalExitCondition>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalExitCondition.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalStatus.CreateFromDiscriminatorValue); } },

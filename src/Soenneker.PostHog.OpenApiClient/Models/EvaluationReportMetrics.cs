@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Numeric score configuration and passing rule used for both report periods.</summary>
+        /// <summary>Output configuration and passing rule used for both report periods.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig? OutputConfig { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig OutputConfig { get; set; }
 #endif
-        /// <summary>Evaluation result type. Stored metrics without this field represent boolean evaluations.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `sentiment` - Sentiment</summary>
+        /// <summary>Evaluation result type. Stored metrics without this field represent boolean evaluations.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical* `sentiment` - Sentiment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType? OutputType { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType OutputType { get; set; }
 #endif
-        /// <summary>Boolean or numeric pass percentage, excluding N/A results. Null when no numeric scores were produced.</summary>
+        /// <summary>Pass percentage excluding N/A. With no applicable results, numeric and categorical reports return null; boolean reports return 0.</summary>
         public double? PassRate { get; set; }
         /// <summary>ISO 8601 end of the evaluation window represented by these metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PeriodStart { get; set; }
 #endif
-        /// <summary>Boolean or numeric pass percentage for the previous period, or null when unavailable.</summary>
+        /// <summary>Pass percentage for boolean, numeric, or categorical results in the previous period, or null when unavailable.</summary>
         public double? PreviousPassRate { get; set; }
         /// <summary>Count by result label for the previous period, or null when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

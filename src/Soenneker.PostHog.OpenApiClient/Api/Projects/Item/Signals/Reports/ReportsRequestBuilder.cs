@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Refresh_metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Source_metadata;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -48,6 +49,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary.RefundSummaryRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The source_metadata property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Source_metadata.Source_metadataRequestBuilder Source_metadata
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Source_metadata.Source_metadataRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.signals.reports.item collection</summary>
         /// <param name="position">A UUID string identifying this signal report.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.ItemRequestBuilder"/></returns>
@@ -65,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", pathParameters)
+        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", pathParameters)
         {
         }
         /// <summary>
@@ -73,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", rawUrl)
+        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSignalReportListList"/></returns>
@@ -149,6 +155,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>When true, the list includes reports in every status with no default exclusions applied — currently that adds suppressed (dismissed) reports, which are otherwise hidden. Use it to see the full inbox state (e.g. deduplicating before creating a report) and read each row&apos;s status (plus dismissal_reason/dismissal_note on dismissed rows) before acting. Deleted reports are terminal and never returned. Defaults to false, which keeps the existing default exclusions. Ignored when an explicit &apos;status&apos; filter is set — that filter alone decides which statuses are returned.</summary>
             [QueryParameter("include_all_statuses")]
             public bool? IncludeAllStatuses { get; set; }
+            /// <summary>Fill `source_products` and `scout_name` on each row. These come from ClickHouse, so pass false to skip that lookup and get the page from Postgres only: rows then carry an empty `source_products` and a null `scout_name`. Load them after with `source_metadata`. Defaults to true.</summary>
+            [QueryParameter("include_source_metadata")]
+            public bool? IncludeSourceMetadata { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

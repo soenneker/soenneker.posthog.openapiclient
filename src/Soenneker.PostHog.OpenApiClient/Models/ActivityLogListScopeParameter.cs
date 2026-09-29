@@ -220,6 +220,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Action,
         #pragma warning restore CS1591
+        [EnumMember(Value = "AccountView")]
+        #pragma warning disable CS1591
+        AccountView,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AlertConfiguration")]
         #pragma warning disable CS1591
         AlertConfiguration,

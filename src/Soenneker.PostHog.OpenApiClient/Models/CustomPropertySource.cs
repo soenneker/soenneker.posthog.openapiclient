@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Person and group sources only: {warehouse_column: description} giving each mapped column a human-facing description, seeded from the warehouse column&apos;s information_schema description. Optional per column. Create-only.</summary>
+        /// <summary>Person and group sources only: {warehouse_column: description} giving each mapped column a human-facing description, seeded from the warehouse column&apos;s information_schema description. Optional per column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceColumnDescriptions? ColumnDescriptions { get; set; }

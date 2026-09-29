@@ -8,13 +8,29 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Writable fields for updating a source. ``definition`` and ``saved_query`` are create-only, sothey are intentionally absent — only these reach the facade&apos;s update.
+    /// Writable fields for updating a source. Binding and definition fields are create-only, so theyare intentionally absent — only these reach the facade&apos;s update.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedCustomPropertySourceUpdate : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Person and group sources only: {warehouse_column: description} for mapped columns. Optional per column.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnDescriptions? ColumnDescriptions { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnDescriptions ColumnDescriptions { get; set; }
+#endif
+        /// <summary>Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnPropertyMap? ColumnPropertyMap { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnPropertyMap ColumnPropertyMap { get; set; }
+#endif
         /// <summary>Whether the source syncs; re-enabling it resets the failure count.</summary>
         public bool? IsEnabled { get; set; }
         /// <summary>Column in the view whose value matches an account&apos;s external_id.</summary>
@@ -58,6 +74,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "column_descriptions", n => { ColumnDescriptions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnDescriptions>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnDescriptions.CreateFromDiscriminatorValue); } },
+                { "column_property_map", n => { ColumnPropertyMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnPropertyMap>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnPropertyMap.CreateFromDiscriminatorValue); } },
                 { "is_enabled", n => { IsEnabled = n.GetBoolValue(); } },
                 { "key_column", n => { KeyColumn = n.GetStringValue(); } },
                 { "source_column", n => { SourceColumn = n.GetStringValue(); } },
@@ -70,6 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnDescriptions>("column_descriptions", ColumnDescriptions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdateColumnPropertyMap>("column_property_map", ColumnPropertyMap);
             writer.WriteBoolValue("is_enabled", IsEnabled);
             writer.WriteStringValue("key_column", KeyColumn);
             writer.WriteStringValue("source_column", SourceColumn);

@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Data
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Diagnose;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Explain_conversion_goal;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Setup_plan;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Source_validation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Suggest_conversion_goals;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Suggest_utm_mappings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Test_mapping;
@@ -53,6 +54,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Setup_plan.Setup_planRequestBuilder Setup_plan
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Setup_plan.Setup_planRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The source_validation property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Source_validation.Source_validationRequestBuilder Source_validation
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Source_validation.Source_validationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The suggest_conversion_goals property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Suggest_conversion_goals.Suggest_conversion_goalsRequestBuilder Suggest_conversion_goals

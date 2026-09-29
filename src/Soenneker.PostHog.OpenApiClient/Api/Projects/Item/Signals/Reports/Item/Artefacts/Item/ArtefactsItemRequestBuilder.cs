@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Activate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Diff;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ArtefactsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The activate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Activate.ActivateRequestBuilder Activate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Activate.ActivateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The diff property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Diff.DiffRequestBuilder Diff
         {

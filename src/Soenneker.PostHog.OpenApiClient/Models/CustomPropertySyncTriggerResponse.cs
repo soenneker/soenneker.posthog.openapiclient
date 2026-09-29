@@ -15,9 +15,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Backfill only: true when a backfill for this table was already running and this call coalesced.</summary>
+        /// <summary>Backfill only: true when a run was already in flight and this call queued its follow-up.</summary>
         public bool? AlreadyRunning { get; set; }
-        /// <summary>&apos;triggered&apos; (sync now started the warehouse sync), &apos;started&apos; (a new backfill began), or &apos;already_running&apos; (a backfill for this table was already in flight, so this was a no-op).* `triggered` - triggered* `started` - started* `already_running` - already_running</summary>
+        /// <summary>&apos;triggered&apos; (sync now started the warehouse sync), &apos;started&apos; (a new backfill began), or &apos;already_running&apos; (a backfill was in flight and a latest-state follow-up was queued).* `triggered` - triggered* `started` - started* `already_running` - already_running</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus? Status { get; set; }

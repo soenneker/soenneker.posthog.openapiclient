@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs;
-using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer;
@@ -42,11 +41,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Advanced_activity_logsRequestBuilder Advanced_activity_logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Advanced_activity_logsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The batch_exports property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports.Batch_exportsRequestBuilder Batch_exports
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports.Batch_exportsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The billing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.BillingRequestBuilder Billing

@@ -34,6 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Units the backfill has started an evaluation for so far.</summary>
         public int? DispatchedCount { get; private set; }
+        /// <summary>Units whose evaluation failed to start. They have no result and count toward remaining_count.</summary>
+        public int? FailedCount { get; private set; }
         /// <summary>When the backfill reached a terminal status; null while it runs.</summary>
         public DateTimeOffset? FinishedAt { get; private set; }
         /// <summary>Backfill identifier.</summary>
@@ -60,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillTarget Target { get; private set; }
 #endif
-        /// <summary>Units matched at creation; the ceiling on dispatched_count.</summary>
+        /// <summary>Units matched at creation. Units that land in the window later can take dispatched_count and skipped_count past it.</summary>
         public int? TotalCount { get; private set; }
         /// <summary>Exclusive end of the window.</summary>
         public DateTimeOffset? WindowEnd { get; private set; }
@@ -95,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "dispatched_count", n => { DispatchedCount = n.GetIntValue(); } },
+                { "failed_count", n => { FailedCount = n.GetIntValue(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "remaining_count", n => { RemainingCount = n.GetIntValue(); } },

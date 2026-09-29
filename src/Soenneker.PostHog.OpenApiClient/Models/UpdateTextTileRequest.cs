@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. PostHog&apos;s Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentContext { get; set; }
+#nullable restore
+#else
+        public string AgentContext { get; set; }
+#endif
         /// <summary>New markdown body for the text tile. Omit to leave the body unchanged. Max 4000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "agent_context", n => { AgentContext = n.GetStringValue(); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "color", n => { Color = n.GetStringValue(); } },
                 { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts.CreateFromDiscriminatorValue); } },
@@ -78,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("agent_context", AgentContext);
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("color", Color);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts>("layouts", Layouts);

@@ -78,6 +78,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus Status { get; private set; }
 #endif
+        /// <summary>What the digest posted: its headline and the merged pull requests it listed. Both are empty on a run with nothing to post, and on runs stored before this format.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunSummary? Summary { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunSummary Summary { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DigestRun"/> and sets the default values.
         /// </summary>
@@ -114,6 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slack_channel_name", n => { SlackChannelName = n.GetStringValue(); } },
                 { "slack_message_ts", n => { SlackMessageTs = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.DigestRunSummary.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

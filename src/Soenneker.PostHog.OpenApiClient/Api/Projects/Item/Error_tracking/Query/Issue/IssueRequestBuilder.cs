@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Query
         {
         }
         /// <summary>
-        /// Fetch one error tracking issue with impact counts, top in_app frame, latest release, and optional sparkline.
+        /// Fetch one error tracking issue with impact counts, top in_app frame, latest release, and optional sparkline and event breakdown.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetail"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Query
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetail>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetail.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch one error tracking issue with impact counts, top in_app frame, latest release, and optional sparkline.
+        /// Fetch one error tracking issue with impact counts, top in_app frame, latest release, and optional sparkline and event breakdown.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

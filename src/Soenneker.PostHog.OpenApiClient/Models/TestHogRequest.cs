@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty> Conditions { get; set; }
 #endif
-        /// <summary>Output settings used to validate the preview, including numeric bounds and allows_na.</summary>
+        /// <summary>Output settings used to validate the preview, including bounds, categories, and allows_na.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig? OutputConfig { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig OutputConfig { get; set; }
 #endif
-        /// <summary>Expected output: boolean or numeric. Sentiment is not supported by Hog.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric</summary>
+        /// <summary>Expected output: boolean, numeric, or categorical. Sentiment is not supported by Hog.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputType? OutputType { get; set; }
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Number of recent $ai_generation events to test against (1–10, default 5).</summary>
         public int? SampleCount { get; set; }
-        /// <summary>Hog source code to test. Must return a boolean or a finite number matching output_type, or null for allowed N/A. Output settings determine which boolean counts as a failure.</summary>
+        /// <summary>Hog source code to test. Return a boolean, finite number, or category keys matching output_type. Categorical single selection accepts one key or a one-item list; multiple selection accepts a list, including []. Return null only for allowed N/A. Output settings determine which boolean counts as a failure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Source { get; set; }

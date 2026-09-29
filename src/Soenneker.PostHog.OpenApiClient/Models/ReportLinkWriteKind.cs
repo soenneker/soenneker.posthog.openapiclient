@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// How the edited report relates to `report_id`. `depends_on` for work that cannot land until the other report&apos;s fix does, `part_of` for one piece of a larger report, `follow_up_of` for work the other report left behind, `duplicate_of` for the same problem filed twice, and `recurrence_of` for a problem a resolved report already covered.* `depends_on` - Depends on* `part_of` - Part of* `follow_up_of` - Follow-up of* `duplicate_of` - Duplicate of* `recurrence_of` - Recurrence of
+    /// How this report relates to `report_id`. `depends_on` for work that cannot land until the other report&apos;s fix does, `part_of` for one piece of a larger report, `follow_up_of` for work the other report left behind, `duplicate_of` for the same problem filed twice, and `recurrence_of` for a problem a resolved report already covered.* `depends_on` - Depends on* `part_of` - Part of* `follow_up_of` - Follow-up of* `duplicate_of` - Duplicate of* `recurrence_of` - Recurrence of
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReportLinkWriteKind : IAdditionalDataHolder, IParsable

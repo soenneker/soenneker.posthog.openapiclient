@@ -27,13 +27,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The number you measured, when the check came down to one. Leave it out otherwise.</summary>
         public double? ObservedValue { get; set; }
-        /// <summary>`passed` when the expectation still holds, `failed` when it does not, and `errored` when you could not establish either. `failed` retires the check, so use it for a conclusion, not a suspicion.* `passed` - Passed* `failed` - Failed* `errored` - Errored</summary>
+        /// <summary>`passed` when the evidence meets the check&apos;s stated bar and the expectation holds, `failed` when the evidence meets the bar and the expectation does not hold. `inconclusive` when your tools worked but the evidence cannot settle the question; give a `reason`. `errored` only when a tool, query, or model call failed. `failed` retires the check, so use it for a conclusion, not a suspicion.* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestOutcome? Outcome { get; set; }
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestOutcome Outcome { get; set; }
+#endif
+        /// <summary>Required with `inconclusive`, and refused with any other outcome. `awaiting_data`: the data can still arrive (a rollout lag, a soak not complete, too few samples so far), so the check looks again later. `unmeasurable`: the data the check needs is not captured. `needs_manual_verification`: only a person or another environment can verify it. `no_fix_to_measure`: nothing was changed to fix the claim, so no window after a fix exists. A report resolved without a pull request still has a window that starts when it resolved. Every reason except `awaiting_data` ends the check.* `awaiting_data` - Awaiting Data* `unmeasurable` - Unmeasurable* `needs_manual_verification` - Needs Manual Verification* `no_fix_to_measure` - No Fix To Measure</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestReason? Reason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestReason Reason { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequest"/> and sets the default values.
@@ -64,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "explanation", n => { Explanation = n.GetStringValue(); } },
                 { "observed_value", n => { ObservedValue = n.GetDoubleValue(); } },
                 { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestOutcome.CreateFromDiscriminatorValue); } },
+                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestReason>(global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestReason.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("explanation", Explanation);
             writer.WriteDoubleValue("observed_value", ObservedValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestOutcome>("outcome", Outcome);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestReason>("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

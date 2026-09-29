@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut.Bulk_update;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut.Reorder;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class File_system_shortcutRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk_update property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut.Bulk_update.Bulk_updateRequestBuilder Bulk_update
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut.Bulk_update.Bulk_updateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The reorder property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut.Reorder.ReorderRequestBuilder Reorder
         {

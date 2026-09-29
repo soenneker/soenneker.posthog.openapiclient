@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// One typed, directed link to write on the report being edited.
+    /// One typed, directed link to write on the report being emitted or edited.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReportLinkWrite : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How the edited report relates to `report_id`. `depends_on` for work that cannot land until the other report&apos;s fix does, `part_of` for one piece of a larger report, `follow_up_of` for work the other report left behind, `duplicate_of` for the same problem filed twice, and `recurrence_of` for a problem a resolved report already covered.* `depends_on` - Depends on* `part_of` - Part of* `follow_up_of` - Follow-up of* `duplicate_of` - Duplicate of* `recurrence_of` - Recurrence of</summary>
+        /// <summary>How this report relates to `report_id`. `depends_on` for work that cannot land until the other report&apos;s fix does, `part_of` for one piece of a larger report, `follow_up_of` for work the other report left behind, `duplicate_of` for the same problem filed twice, and `recurrence_of` for a problem a resolved report already covered.* `depends_on` - Depends on* `part_of` - Part of* `follow_up_of` - Follow-up of* `duplicate_of` - Duplicate of* `recurrence_of` - Recurrence of</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind? Kind { get; set; }

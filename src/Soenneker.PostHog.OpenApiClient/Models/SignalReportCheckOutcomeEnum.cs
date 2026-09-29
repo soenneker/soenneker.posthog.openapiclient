@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `passed` - Passed* `failed` - Failed* `errored` - Errored</summary>
+    /// <summary>* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalReportCheckOutcomeEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "errored")]
         #pragma warning disable CS1591
         Errored,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "inconclusive")]
+        #pragma warning disable CS1591
+        Inconclusive,
         #pragma warning restore CS1591
     }
 }

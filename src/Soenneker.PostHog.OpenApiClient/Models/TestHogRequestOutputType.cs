@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Expected output: boolean or numeric. Sentiment is not supported by Hog.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric
+    /// Expected output: boolean, numeric, or categorical. Sentiment is not supported by Hog.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TestHogRequestOutputType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric</summary>
+        /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogEvaluationOutputTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputType"/> and sets the default values.

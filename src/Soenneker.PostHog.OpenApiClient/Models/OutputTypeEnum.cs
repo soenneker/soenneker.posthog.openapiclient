@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `sentiment` - Sentiment</summary>
+    /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical* `sentiment` - Sentiment</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OutputTypeEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "numeric")]
         #pragma warning disable CS1591
         Numeric,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "categorical")]
+        #pragma warning disable CS1591
+        Categorical,
         #pragma warning restore CS1591
         [EnumMember(Value = "sentiment")]
         #pragma warning disable CS1591

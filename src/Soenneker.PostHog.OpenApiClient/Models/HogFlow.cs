@@ -115,6 +115,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Newest task this loop workflow created, as its last run. Null when the workflow is not a loop or has not run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun? LastRun { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun LastRun { get; private set; }
+#endif
         /// <summary>Workflow name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -217,6 +225,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "email_sending_resumed_at", n => { EmailSendingResumedAt = n.GetDateTimeOffsetValue(); } },
                 { "exit_condition", n => { ExitCondition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct.CreateFromDiscriminatorValue); } },
                 { "schedules", n => { Schedules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule.CreateFromDiscriminatorValue)?.AsList(); } },

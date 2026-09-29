@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For &apos;numeric&apos;: only min/max/step, allows_na, and passing_rule {operator: &apos;gte&apos;|&apos;lte&apos;, threshold}. Do not send true_is_failure for numeric output. For &apos;sentiment&apos;: {}.
+    /// Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For &apos;numeric&apos;: only min/max/step, allows_na, and passing_rule {operator: &apos;gte&apos;|&apos;lte&apos;, threshold}. For &apos;categorical&apos;: options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For &apos;sentiment&apos;: {}.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluationOutputConfig : IParsable
@@ -19,7 +19,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? Max { get; set; }
         /// <summary>Inclusive minimum numeric score. Omit for no lower bound.</summary>
         public double? Min { get; set; }
-        /// <summary>Optional numeric passing rule. Null removes the rule; historical scores use the current rule.</summary>
+        /// <summary>Categorical output options. Keys identify stored results; labels are displayed to users.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigOptionsItem>? Options { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigOptionsItem> Options { get; set; }
+#endif
+        /// <summary>Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule? PassingRule { get; set; }
@@ -27,9 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule PassingRule { get; set; }
 #endif
+        /// <summary>Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigSelectionMode? SelectionMode { get; set; }
         /// <summary>Optional positive input increment. Does not round evaluation results.</summary>
         public double? Step { get; set; }
-        /// <summary>Boolean output only. Omit for numeric and sentiment output. Whether a true result means the evaluation found a problem. False (the default) suits pass/fail evaluations, where a true result satisfied the criteria. Set it to true for detector-style evaluations, so a true result is counted and labeled as a fail.</summary>
+        /// <summary>Boolean output only. Omit for numeric, categorical, and sentiment output. Whether a true result means the evaluation found a problem. False (the default) suits pass/fail evaluations, where a true result satisfied the criteria. Set it to true for detector-style evaluations, so a true result is counted and labeled as a fail.</summary>
         public bool? TrueIsFailure { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "allows_na", n => { AllowsNa = n.GetBoolValue(); } },
                 { "max", n => { Max = n.GetDoubleValue(); } },
                 { "min", n => { Min = n.GetDoubleValue(); } },
+                { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigOptionsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigOptionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule.CreateFromDiscriminatorValue); } },
+                { "selection_mode", n => { SelectionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigSelectionMode>(); } },
                 { "step", n => { Step = n.GetDoubleValue(); } },
                 { "true_is_failure", n => { TrueIsFailure = n.GetBoolValue(); } },
             };
@@ -67,7 +79,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("allows_na", AllowsNa);
             writer.WriteDoubleValue("max", Max);
             writer.WriteDoubleValue("min", Min);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigOptionsItem>("options", Options);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigPassingRule>("passing_rule", PassingRule);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfigSelectionMode>("selection_mode", SelectionMode);
             writer.WriteDoubleValue("step", Step);
             writer.WriteBoolValue("true_is_failure", TrueIsFailure);
         }

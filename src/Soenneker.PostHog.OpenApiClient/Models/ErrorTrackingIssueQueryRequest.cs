@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When true, exclude internal/test account data from results. Defaults to true.</summary>
         public bool? FilterTestAccounts { get; set; }
+        /// <summary>Set true to include the issue page breakdowns: the most common paths (or URLs when events have no path), screens, browsers, OS, libraries, library versions, and app versions, each with a count, plus the sessions with the most events. Covers at most the last 30 days of dateRange. Adds one aggregate query, so request it only to answer where, for whom, or on which platforms the issue happens. Defaults to false.</summary>
+        public bool? IncludeBreakdown { get; set; }
         /// <summary>Set true to include a compact numeric occurrence sparkline. Defaults to false.</summary>
         public bool? IncludeSparkline { get; set; }
         /// <summary>Error tracking issue ID.</summary>
@@ -37,6 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             FilterTestAccounts = true;
+            IncludeBreakdown = false;
             IncludeSparkline = false;
             VolumeResolution = 0;
         }
@@ -60,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequestDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequestDateRange.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "includeBreakdown", n => { IncludeBreakdown = n.GetBoolValue(); } },
                 { "includeSparkline", n => { IncludeSparkline = n.GetBoolValue(); } },
                 { "issueId", n => { IssueId = n.GetGuidValue(); } },
                 { "volumeResolution", n => { VolumeResolution = n.GetIntValue(); } },
@@ -74,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequestDateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteBoolValue("includeBreakdown", IncludeBreakdown);
             writer.WriteBoolValue("includeSparkline", IncludeSparkline);
             writer.WriteGuidValue("issueId", IssueId);
             writer.WriteIntValue("volumeResolution", VolumeResolution);

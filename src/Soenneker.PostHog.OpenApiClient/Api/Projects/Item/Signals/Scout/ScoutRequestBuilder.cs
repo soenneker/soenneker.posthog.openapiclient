@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Members;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Metadata;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Project_profile;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Rubrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratchpad;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Suggestions;
@@ -55,6 +56,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Project_profile.Project_profileRequestBuilder Project_profile
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Project_profile.Project_profileRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The rubrics property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Rubrics.RubricsRequestBuilder Rubrics
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Rubrics.RubricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The runs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RunsRequestBuilder Runs

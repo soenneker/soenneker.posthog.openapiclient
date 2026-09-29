@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &apos;triggered&apos; (sync now started the warehouse sync), &apos;started&apos; (a new backfill began), or &apos;already_running&apos; (a backfill for this table was already in flight, so this was a no-op).* `triggered` - triggered* `started` - started* `already_running` - already_running
+    /// &apos;triggered&apos; (sync now started the warehouse sync), &apos;started&apos; (a new backfill began), or &apos;already_running&apos; (a backfill was in flight and a latest-state follow-up was queued).* `triggered` - triggered* `started` - started* `already_running` - already_running
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertySyncTriggerResponseStatus : IAdditionalDataHolder, IParsable

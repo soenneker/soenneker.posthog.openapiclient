@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/account?external_id={external_id}", pathParameters)
+        public AccountRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/account", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/account?external_id={external_id}", rawUrl)
+        public AccountRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/account", rawUrl)
         {
         }
         /// <summary>
@@ -63,6 +63,35 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Create an account by external ID. If the account already exists, return it unchanged with HTTP 200. Accepts the team secret API token or a project secret API key with the `account:write` scope.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerAnalyticsExternalAccountCreate400ResponseSchema">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountError">When receiving a 403 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.PostHog.OpenApiClient.Models.CustomerAnalyticsExternalAccountCreate400ResponseSchema.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountError.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Fetch one account by external ID with its properties, controlled relationship ownership, tags, active relationship assignments and custom property values. Accepts the team secret API token or a project secret API key with the `account:read` scope.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -76,9 +105,31 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Account.AccountRequestBuilder.AccountRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/api/customer_analytics/external/account?external_id={external_id}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Create an account by external ID. If the account already exists, return it unchanged with HTTP 200. Accepts the team secret API token or a project secret API key with the `account:write` scope.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

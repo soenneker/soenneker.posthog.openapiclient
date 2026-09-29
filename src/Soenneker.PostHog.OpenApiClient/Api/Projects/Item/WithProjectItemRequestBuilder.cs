@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_notes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_relationship_definitions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_track_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_views;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts_table_query;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions;
@@ -196,6 +197,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_track_rules.Account_track_rulesRequestBuilder Account_track_rules
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_track_rules.Account_track_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The account_views property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_views.Account_viewsRequestBuilder Account_views
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_views.Account_viewsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The accounts property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.AccountsRequestBuilder Accounts

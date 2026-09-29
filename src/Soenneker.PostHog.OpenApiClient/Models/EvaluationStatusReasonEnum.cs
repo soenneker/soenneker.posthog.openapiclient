@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `provider_key_required` - No provider API key configured* `provider_key_deleted` - Provider API key was deleted* `no_default_model` - No default model available for the selected provider* `provider_key_invalid` - Provider API key is invalid* `provider_key_permission_denied` - Provider API key lacks model access* `provider_key_quota_exceeded` - Provider API key quota exceeded* `provider_key_rate_limited` - Provider API key is rate limited* `model_not_found` - Model not found* `hog_error` - Hog evaluation code failed</summary>
+    /// <summary>* `provider_key_required` - No provider API key configured* `provider_key_deleted` - Provider API key was deleted* `no_default_model` - No default model available for the selected provider* `provider_key_invalid` - Provider API key is invalid* `provider_key_permission_denied` - Provider API key lacks model access* `provider_key_quota_exceeded` - Provider API key quota exceeded* `provider_key_rate_limited` - Provider API key is rate limited* `model_not_found` - Model not found* `model_not_supported` - Model does not support chat completions* `hog_error` - Hog evaluation code failed</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EvaluationStatusReasonEnum
     {
@@ -38,6 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "model_not_found")]
         #pragma warning disable CS1591
         ModelNotFound,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "model_not_supported")]
+        #pragma warning disable CS1591
+        ModelNotSupported,
         #pragma warning restore CS1591
         [EnumMember(Value = "hog_error")]
         #pragma warning disable CS1591

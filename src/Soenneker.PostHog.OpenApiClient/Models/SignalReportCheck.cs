@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind Kind { get; private set; }
 #endif
-        /// <summary>Verdict of the most recent run.* `passed` - Passed* `failed` - Failed* `errored` - Errored</summary>
+        /// <summary>Verdict of the most recent run.* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcome? LastOutcome { get; private set; }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RunsRemaining { get; private set; }
         /// <summary>How long after the report resolves a `pending` check waits before its first run. Null on a check that named its own `next_run_at`.</summary>
         public int? SoakMinutes { get; private set; }
-        /// <summary>`pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `expired` - Expired* `cancelled` - Cancelled</summary>
+        /// <summary>`pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive* `expired` - Expired* `cancelled` - Cancelled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus? Status { get; private set; }

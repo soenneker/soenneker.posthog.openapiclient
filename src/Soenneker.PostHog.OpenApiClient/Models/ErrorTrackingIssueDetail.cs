@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse Assignee { get; set; }
 #endif
+        /// <summary>Aggregate over matching events. Returned only when includeBreakdown is true.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown? Breakdown { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown Breakdown { get; set; }
+#endif
         /// <summary>Issue description. List rows truncate it to a short preview; the issue detail query returns it in full.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -151,6 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "aggregations", n => { Aggregations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations.CreateFromDiscriminatorValue); } },
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse.CreateFromDiscriminatorValue); } },
+                { "breakdown", n => { Breakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "first_seen", n => { FirstSeen = n.GetDateTimeOffsetValue(); } },
                 { "function", n => { Function = n.GetStringValue(); } },
@@ -176,6 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations>("aggregations", Aggregations);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown>("breakdown", Breakdown);
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("first_seen", FirstSeen);
             writer.WriteStringValue("function", Function);

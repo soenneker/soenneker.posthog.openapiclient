@@ -8,15 +8,35 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Optional numeric passing rule. Null removes the rule; historical scores use the current rule.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchedEvaluationOutputConfigPassingRule : IParsable
+    public partial class PatchedEvaluationOutputConfigPassingRule : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Pass at or above (gte), or at or below (lte), the threshold.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOperator? Operator { get; set; }
-        /// <summary>Finite passing threshold within any configured score bounds.</summary>
-        public double? Threshold { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleMember1? PatchedEvaluationOutputConfigPassingRuleMember1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleMember1 PatchedEvaluationOutputConfigPassingRuleMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf1? PatchedEvaluationOutputConfigPassingRuleOneOf1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf1 PatchedEvaluationOutputConfigPassingRuleOneOf1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf2? PatchedEvaluationOutputConfigPassingRuleOneOf2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf2 PatchedEvaluationOutputConfigPassingRuleOneOf2 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -25,7 +45,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRule();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRule();
+            if("PatchedEvaluationOutputConfigPassingRuleOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.PatchedEvaluationOutputConfigPassingRuleOneOf1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf1();
+            }
+            else if("PatchedEvaluationOutputConfigPassingRuleOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.PatchedEvaluationOutputConfigPassingRuleOneOf2 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf2();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -33,11 +63,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(PatchedEvaluationOutputConfigPassingRuleMember1 != null)
             {
-                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOperator>(); } },
-                { "threshold", n => { Threshold = n.GetDoubleValue(); } },
-            };
+                return PatchedEvaluationOutputConfigPassingRuleMember1.GetFieldDeserializers();
+            }
+            else if(PatchedEvaluationOutputConfigPassingRuleOneOf1 != null)
+            {
+                return PatchedEvaluationOutputConfigPassingRuleOneOf1.GetFieldDeserializers();
+            }
+            else if(PatchedEvaluationOutputConfigPassingRuleOneOf2 != null)
+            {
+                return PatchedEvaluationOutputConfigPassingRuleOneOf2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -46,8 +84,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOperator>("operator", Operator);
-            writer.WriteDoubleValue("threshold", Threshold);
+            if(PatchedEvaluationOutputConfigPassingRuleMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleMember1>(null, PatchedEvaluationOutputConfigPassingRuleMember1);
+            }
+            else if(PatchedEvaluationOutputConfigPassingRuleOneOf1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf1>(null, PatchedEvaluationOutputConfigPassingRuleOneOf1);
+            }
+            else if(PatchedEvaluationOutputConfigPassingRuleOneOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfigPassingRuleOneOf2>(null, PatchedEvaluationOutputConfigPassingRuleOneOf2);
+            }
         }
     }
 }

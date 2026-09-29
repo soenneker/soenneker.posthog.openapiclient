@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// `passed` when the expectation still holds, `failed` when it does not, and `errored` when you could not establish either. `failed` retires the check, so use it for a conclusion, not a suspicion.* `passed` - Passed* `failed` - Failed* `errored` - Errored
+    /// `passed` when the evidence meets the check&apos;s stated bar and the expectation holds, `failed` when the evidence meets the bar and the expectation does not hold. `inconclusive` when your tools worked but the evidence cannot settle the question; give a `reason`. `errored` only when a tool, query, or model call failed. `failed` retires the check, so use it for a conclusion, not a suspicion.* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RecordCheckResultRequestOutcome : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `passed` - Passed* `failed` - Failed* `errored` - Errored</summary>
+        /// <summary>* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckOutcomeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultRequestOutcome"/> and sets the default values.
