@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When generation completed or failed.</summary>
         public DateTimeOffset? CompletedAt { get; set; }
+        /// <summary>Optional priorities supplied for this generation only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Context { get; set; }
+#nullable restore
+#else
+        public string Context { get; set; }
+#endif
         /// <summary>Failure message and suggested next step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "context", n => { Context = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "requested_at", n => { RequestedAt = n.GetDateTimeOffsetValue(); } },
@@ -100,6 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);
+            writer.WriteStringValue("context", Context);
             writer.WriteStringValue("error", Error);
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("requested_at", RequestedAt);

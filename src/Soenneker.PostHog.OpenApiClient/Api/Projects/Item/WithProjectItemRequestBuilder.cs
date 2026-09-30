@@ -114,6 +114,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Object_media_previews;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Paths_v2;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Platform_alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Posthog_connections;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_enablement;
@@ -164,6 +165,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_links;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_achievements;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_bot_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_profiles;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_proposals;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_runs;
@@ -743,6 +745,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.PersonsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The platform_alerts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Platform_alerts.Platform_alertsRequestBuilder Platform_alerts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Platform_alerts.Platform_alertsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The plugin_configs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Plugin_configsRequestBuilder Plugin_configs
         {
@@ -992,6 +999,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_bot_rules.Web_analytics_bot_rulesRequestBuilder Web_analytics_bot_rules
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_bot_rules.Web_analytics_bot_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The web_analytics_content_autopilot_opportunities property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Web_analytics_content_autopilot_opportunitiesRequestBuilder Web_analytics_content_autopilot_opportunities
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Web_analytics_content_autopilot_opportunitiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The web_analytics_content_autopilot_profiles property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_profiles.Web_analytics_content_autopilot_profilesRequestBuilder Web_analytics_content_autopilot_profiles

@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AzureEndpointDisplay { get; private set; }
 #endif
-        /// <summary>Base URL of an OpenAI-compatible API (e.g. https://api.example.com/v1). Required for the openai_compatible provider; must be a public https:// URL.</summary>
+        /// <summary>Public HTTPS base URL of an OpenAI-compatible or System One API. For System One, end before /systemone.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BaseUrl { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BaseUrl { get; set; }
 #endif
-        /// <summary>OpenAI-compatible base URL (read-only, for display)</summary>
+        /// <summary>Configured provider base URL (read-only, for display)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BaseUrlDisplay { get; private set; }
@@ -108,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `openai_compatible` - OpenAI-compatible</summary>
+        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `system_one` - System One* `openai_compatible` - OpenAI-compatible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderEnum? Provider { get; set; }
         /// <summary>The set_as_active property</summary>
         public bool? SetAsActive { get; set; }
@@ -119,6 +119,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmProviderKeyState State { get; private set; }
+#endif
+        /// <summary>Model ID served by the System One endpoint.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SystemOneModel { get; set; }
+#nullable restore
+#else
+        public string SystemOneModel { get; set; }
+#endif
+        /// <summary>Configured System One model ID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SystemOneModelDisplay { get; private set; }
+#nullable restore
+#else
+        public string SystemOneModelDisplay { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmProviderKey"/> and sets the default values.
@@ -163,6 +179,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderEnum>(); } },
                 { "set_as_active", n => { SetAsActive = n.GetBoolValue(); } },
                 { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmProviderKeyState>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmProviderKeyState.CreateFromDiscriminatorValue); } },
+                { "system_one_model", n => { SystemOneModel = n.GetStringValue(); } },
+                { "system_one_model_display", n => { SystemOneModelDisplay = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -179,6 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderEnum>("provider", Provider);
             writer.WriteBoolValue("set_as_active", SetAsActive);
+            writer.WriteStringValue("system_one_model", SystemOneModel);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

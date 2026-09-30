@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Availabl
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Read_state;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Refresh_metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Source_metadata;
@@ -38,6 +39,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses.Pr_ci_statusesRequestBuilder Pr_ci_statuses
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses.Pr_ci_statusesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The read_state property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Read_state.Read_stateRequestBuilder Read_state
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Read_state.Read_stateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refresh_metrics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Refresh_metrics.Refresh_metricsRequestBuilder Refresh_metrics
@@ -71,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", pathParameters)
+        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,unread*,use_priority_preference*,view*}", pathParameters)
         {
         }
         /// <summary>
@@ -79,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", rawUrl)
+        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,unread*,use_priority_preference*,view*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSignalReportListList"/></returns>
@@ -283,6 +289,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>Filter by whether the report has no owner and no draft, open, or unknown PR. Resolved reports are never unclaimed.</summary>
             [QueryParameter("unclaimed")]
             public bool? Unclaimed { get; set; }
+            /// <summary>Filter by the current user&apos;s report read state.</summary>
+            [QueryParameter("unread")]
+            public bool? Unread { get; set; }
             /// <summary>When true and priority is omitted, include priorities at or above the requesting user&apos;s personal PR-generation threshold, falling back to the project threshold.</summary>
             [QueryParameter("use_priority_preference")]
             public bool? UsePriorityPreference { get; set; }

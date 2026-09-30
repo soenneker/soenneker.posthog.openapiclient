@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem> Columns { get; set; }
 #endif
+        /// <summary>Nonempty property-filter groups are ORed together; filters within each group use AND. Global filters still apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? FilterGroups { get; set; }
+#nullable restore
+#else
+        public UntypedNode FilterGroups { get; set; }
+#endif
         /// <summary>Filters are combined with AND. Values within tag and assignment filters use OR.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filterGroups", n => { FilterGroups = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "includeChurned", n => { IncludeChurned = n.GetBoolValue(); } },
                 { "includeIgnored", n => { IncludeIgnored = n.GetBoolValue(); } },
@@ -121,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem>("columns", Columns);
+            writer.WriteObjectValue<UntypedNode>("filterGroups", FilterGroups);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryFiltersItem>("filters", Filters);
             writer.WriteBoolValue("includeChurned", IncludeChurned);
             writer.WriteBoolValue("includeIgnored", IncludeIgnored);

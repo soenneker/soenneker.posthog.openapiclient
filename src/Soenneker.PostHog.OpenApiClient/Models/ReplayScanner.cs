@@ -99,6 +99,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Succeeded observations this scanner produced in the current billing period.</summary>
         public int? ObservationsThisMonth { get; private set; }
+        /// <summary>The current prompt condensed by AI into the one question the scanner answers about a session. Falls back to the prompt&apos;s first line when no question matches the current prompt.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PromptQuestion { get; private set; }
+#nullable restore
+#else
+        public string PromptQuestion { get; private set; }
+#endif
         /// <summary>LLM provider. v1 is Google-only.* `google` - Google</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -209,6 +217,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "observations_this_month", n => { ObservationsThisMonth = n.GetIntValue(); } },
+                { "prompt_question", n => { PromptQuestion = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerQuery.CreateFromDiscriminatorValue); } },
                 { "sampling_mode", n => { SamplingMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode.CreateFromDiscriminatorValue); } },

@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Event_definitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions{?exclude_hidden*,exclude_stale*,limit*,names*,offset*}", pathParameters)
+        public Event_definitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions{?event_type*,exclude_hidden*,exclude_stale*,excluded_properties*,limit*,names*,offset*,ordering*,search*,tags*,verified*}", pathParameters)
         {
         }
         /// <summary>
@@ -85,9 +85,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Event_definitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions{?exclude_hidden*,exclude_stale*,limit*,names*,offset*}", rawUrl)
+        public Event_definitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions{?event_type*,exclude_hidden*,exclude_stale*,excluded_properties*,limit*,names*,offset*,ordering*,search*,tags*,verified*}", rawUrl)
         {
         }
+        /// <summary>
+        /// List the event definitions of a project. On projects with more than 50000 event definitions, `count` stops at 10000 and `count_is_capped` is true, unless the request sets `search`, `exclude_stale`, `verified`, `names`, `tags` or `event_type=event_posthog`. Projects with more than 100000 event definitions also default to ordering by name under the same condition.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedEnterpriseEventDefinitionList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -120,6 +123,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// List the event definitions of a project. On projects with more than 50000 event definitions, `count` stops at 10000 and `count_is_capped` is true, unless the request sets `search`, `exclude_stale`, `verified`, `names`, `tags` or `event_type=event_posthog`. Projects with more than 100000 event definitions also default to ordering by name under the same condition.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -164,11 +170,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Event_definitionsRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// List the event definitions of a project. On projects with more than 50000 event definitions, `count` stops at 10000 and `count_is_capped` is true, unless the request sets `search`, `exclude_stale`, `verified`, `names`, `tags` or `event_type=event_posthog`. Projects with more than 100000 event definitions also default to ordering by name under the same condition.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class Event_definitionsRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
+            /// <summary>`event_custom` keeps only names without a `$` prefix and `event_posthog` only names with one. Default `event`.</summary>
+            [QueryParameter("event_type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionsListEventTypeParameter? EventType { get; set; }
+            /// <summary>JSON-encoded list of event names to omit. The name matches the property definitions endpoint that shares it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("excluded_properties")]
+            public string? ExcludedProperties { get; set; }
+#nullable restore
+#else
+            [QueryParameter("excluded_properties")]
+            public string ExcludedProperties { get; set; }
+#endif
             /// <summary>When true, omit events that have been explicitly hidden by a team admin (Enterprise only).</summary>
             [QueryParameter("exclude_hidden")]
             public bool? ExcludeHidden { get; set; }
@@ -191,6 +211,39 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Sort keys, prefixed with `-` for descending. Default `-last_seen_at::date` then `name`. Projects with more than 100000 event definitions default to `name`, unless the request sets `search`, `exclude_stale`, `verified`, `names`, `tags` or `event_type=event_posthog`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionsListOrderingParameterItem[]? Ordering { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionsListOrderingParameterItem[] Ordering { get; set; }
+#endif
+            /// <summary>Case-insensitive match on the event name. Every whitespace-separated term has to match.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>JSON-encoded list of tag names. Keeps events that carry any of them.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tags")]
+            public string? Tags { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tags")]
+            public string Tags { get; set; }
+#endif
+            /// <summary>When true, keep only verified events and core PostHog events. When false, keep the rest (Enterprise only).</summary>
+            [QueryParameter("verified")]
+            public bool? Verified { get; set; }
         }
     }
 }

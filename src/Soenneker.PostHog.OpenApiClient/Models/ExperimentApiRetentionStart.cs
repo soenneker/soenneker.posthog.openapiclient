@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Action ID. Required for ActionsNode.</summary>
         public int? Id { get; set; }
         /// <summary>Pass &apos;ExperimentExposureNode&apos; to start retention from the experiment&apos;s own exposure event; the other fields then stay unset.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.Kind2? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Kind3? Kind { get; set; }
         /// <summary>How to aggregate this source. Defaults to &apos;total&apos; (event count). Use &apos;sum&apos; together with math_property to aggregate a numeric property — e.g. a ratio numerator of revenue per order. Other options: &apos;avg&apos;, &apos;min&apos;, &apos;max&apos;, &apos;unique_session&apos;, &apos;dau&apos;, &apos;unique_group&apos;, &apos;hogql&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind2>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind3>(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper8>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper8.CreateFromDiscriminatorValue); } },
                 { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper8>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper8.CreateFromDiscriminatorValue); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("event", Event);
             writer.WriteIntValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind2>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind3>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper8>("math", Math);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper8>("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);

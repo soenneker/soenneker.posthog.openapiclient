@@ -16,6 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The count property</summary>
         public int? Count { get; set; }
+        /// <summary>True when `count` stopped at a cap, so it is a lower bound and `next` keeps paging past it.</summary>
+        public bool? CountIsCapped { get; set; }
         /// <summary>The next property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
+                { "count_is_capped", n => { CountIsCapped = n.GetBoolValue(); } },
                 { "next", n => { Next = n.GetStringValue(); } },
                 { "previous", n => { Previous = n.GetStringValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -79,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
+            writer.WriteBoolValue("count_is_capped", CountIsCapped);
             writer.WriteStringValue("next", Next);
             writer.WriteStringValue("previous", Previous);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition>("results", Results);

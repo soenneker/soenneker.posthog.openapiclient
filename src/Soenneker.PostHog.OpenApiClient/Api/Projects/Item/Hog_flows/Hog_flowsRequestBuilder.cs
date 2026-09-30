@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", pathParameters)
+        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,status*,trigger*,type*,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", rawUrl)
+        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,status*,trigger*,type*,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList"/></returns>
@@ -187,6 +187,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Only workflows someone turned suggestions on for.</summary>
+            [QueryParameter("optimization_enabled")]
+            public bool? OptimizationEnabled { get; set; }
             /// <summary>Filter to workflows owned by a product surface, e.g. `loops` for Desktop loops.</summary>
             [QueryParameter("origin_product")]
             public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsListOriginProductParameter? OriginProduct { get; set; }

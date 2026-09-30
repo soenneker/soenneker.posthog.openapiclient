@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `openai_compatible` - OpenAI-compatible</summary>
+        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `system_one` - System One* `openai_compatible` - OpenAI-compatible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderEnum? Provider { get; set; }
         /// <summary>Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed.</summary>
         public Guid? ProviderKeyId { get; set; }

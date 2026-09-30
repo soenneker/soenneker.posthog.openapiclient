@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Detail response for a task.Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` /``github_user_integration`` are integration ids, ``signal_report`` is the report id, and``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``.
+    /// The task ``run`` action&apos;s response: the refreshed task detail plus the run this call made.``run`` is the run the call created or activated — the payload a caller reads run-scoped idsfrom, instead of inferring them from ``latest_run`` (or, worse, the top-level task ``id``).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunResponse : IAdditionalDataHolder, IParsable
@@ -105,6 +105,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
+        /// <summary>The run this call created or activated. Read run-scoped ids from here — `run.id` is the id the run&apos;s stream and command endpoints take, while the top-level `id` is the task&apos;s. Set on every 200; when `run_error` is also set, the run exists but its workflow did not start.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto? Run { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto Run { get; set; }
+#endif
         /// <summary>Error returned when the run could not start.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -196,6 +204,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
+                { "run", n => { Run = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto.CreateFromDiscriminatorValue); } },
                 { "run_error", n => { RunError = n.GetStringValue(); } },
                 { "runtime", n => { Runtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRuntime.CreateFromDiscriminatorValue); } },
                 { "signal_report", n => { SignalReport = n.GetGuidValue(); } },
@@ -232,6 +241,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("repository", Repository);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>("run", Run);
             writer.WriteStringValue("run_error", RunError);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRuntime>("runtime", Runtime);
             writer.WriteGuidValue("signal_report", SignalReport);

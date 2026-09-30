@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Compl
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Completed_activityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse/completed_activity{?cutoff_days*,limit*,offset*,outcome*}", pathParameters)
+        public Completed_activityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse/completed_activity{?cutoff_days*,kind*,limit*,offset*,outcome*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Compl
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Completed_activityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse/completed_activity{?cutoff_days*,limit*,offset*,outcome*}", rawUrl)
+        public Completed_activityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse/completed_activity{?cutoff_days*,kind*,limit*,offset*,outcome*}", rawUrl)
         {
         }
         /// <summary>
@@ -93,6 +93,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Compl
             /// <summary>Only include runs created within this many days of now. Defaults to 30.</summary>
             [QueryParameter("cutoff_days")]
             public int? CutoffDays { get; set; }
+            /// <summary>Which runs to return: &apos;import&apos; for warehouse source syncs, &apos;model&apos; for materialized view runs, &apos;all&apos; for both. Defaults to &apos;all&apos;.* `all` - all* `import` - import* `model` - model</summary>
+            [QueryParameter("kind")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseCompletedActivityRetrieveKindParameter? Kind { get; set; }
             /// <summary>Max rows to return. Capped at 50 server-side. Defaults to 20.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

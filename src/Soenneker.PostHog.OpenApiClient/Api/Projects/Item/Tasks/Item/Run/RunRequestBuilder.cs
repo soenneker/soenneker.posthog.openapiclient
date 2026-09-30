@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Run
         {
         }
         /// <summary>
-        /// Create a new task run and kick off the workflow. **Responds with the task, not the run**: the new run is nested under `latest_run`, and the top-level `id` is still the task&apos;s. Read `latest_run.id` for anything run-scoped, such as the run&apos;s stream and command endpoints.
+        /// Create a new task run and kick off the workflow. The response is the refreshed task with the created run under the top-level `run` key: read `run.id` for anything run-scoped, such as the run&apos;s stream and command endpoints. The top-level `id` is the task&apos;s, and `latest_run` mirrors `run` only as long as nothing newer starts — reading either of those as the created run is deprecated.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Run
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new task run and kick off the workflow. **Responds with the task, not the run**: the new run is nested under `latest_run`, and the top-level `id` is still the task&apos;s. Read `latest_run.id` for anything run-scoped, such as the run&apos;s stream and command endpoints.
+        /// Create a new task run and kick off the workflow. The response is the refreshed task with the created run under the top-level `run` key: read `run.id` for anything run-scoped, such as the run&apos;s stream and command endpoints. The top-level `id` is the task&apos;s, and `latest_run` mirrors `run` only as long as nothing newer starts — reading either of those as the created run is deprecated.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

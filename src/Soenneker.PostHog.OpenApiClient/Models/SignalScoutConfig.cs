@@ -53,6 +53,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>When the coordinator last dispatched this scout. Null if it has never run.</summary>
         public DateTimeOffset? LastRunAt { get; private set; }
+        /// <summary>Who controls this scout now. `team`: a person set it up or has changed it. `background`: PostHog runs it in the background and no person has edited it yet. Any edit through this API changes `background` to `team`.* `team` - Team* `background` - Background</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy? ManagedBy { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy ManagedBy { get; private set; }
+#endif
         /// <summary>MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic> Owners { get; private set; }
 #endif
-        /// <summary>Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), or `repeated_failures` (consecutive failed runs). Null unless `status` is `pending_pause` or `paused_by_system`.* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures* `retired` - Retired</summary>
+        /// <summary>Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` (PostHog retired the scout), or `background_removed` (the background lane stopped managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`.* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures* `retired` - Retired* `background_removed` - Background removed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason? PauseReason { get; private set; }
@@ -195,7 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it — the coordinator stamps `last_run_at` with a direct write — so this reads as when the scout was last tuned rather than when it last ran.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
+        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? WriteScopes { get; private set; }
@@ -238,6 +246,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
+                { "managed_by", n => { ManagedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy.CreateFromDiscriminatorValue); } },
                 { "mcp_gateway_server_ids", n => { McpGatewayServerIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "network_access", n => { NetworkAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess.CreateFromDiscriminatorValue); } },

@@ -36,20 +36,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Met
         /// <summary>
         /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.

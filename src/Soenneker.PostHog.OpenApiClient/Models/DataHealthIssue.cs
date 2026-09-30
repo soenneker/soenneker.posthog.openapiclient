@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
-        /// <summary>When it last failed.</summary>
+        /// <summary>When a sync issue&apos;s table last synced successfully. Null if it never has.</summary>
         public DateTimeOffset? FailedAt { get; set; }
         /// <summary>Id of the thing that is unhealthy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,6 +55,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Status { get; set; }
+#endif
+        /// <summary>How a sync issue&apos;s table is kept up to date, for example &apos;incremental&apos; or &apos;webhook&apos;. A webhook table is pushed to rather than pulled on a schedule. Null for other types.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SyncType { get; set; }
+#nullable restore
+#else
+        public string SyncType { get; set; }
 #endif
         /// <summary>What kind of thing is unhealthy. One of: materialized_view, external_data_sync, source, destination, transformation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "source_type", n => { SourceType = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "sync_type", n => { SyncType = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -120,6 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("source_type", SourceType);
             writer.WriteStringValue("status", Status);
+            writer.WriteStringValue("sync_type", SyncType);
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

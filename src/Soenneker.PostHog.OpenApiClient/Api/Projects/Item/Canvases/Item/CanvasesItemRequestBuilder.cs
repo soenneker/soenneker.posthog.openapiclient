@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Actions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Comments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Connectors;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Draft;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts;
@@ -45,6 +46,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds.BuildsRequestBuilder Builds
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds.BuildsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The comments property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Comments.CommentsRequestBuilder Comments
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Comments.CommentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The connectors property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Connectors.ConnectorsRequestBuilder Connectors

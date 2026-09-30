@@ -55,22 +55,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Met
         /// <summary>
         /// Trigger a batch recalculation of all metrics for this experiment.Returns 201 with the new pending recalculation, or 200 with the active one if a recalculation isalready pending or in progress for this experiment. The response payload intentionally does notinclude the `results` array — at POST time the workflow has just been queued and no per-metricresults exist yet. Clients should poll `GET metrics_recalculation/{id}/` for results as the workflowprogresses.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJob"/></returns>
         /// <param name="body">Request body for triggering a metrics recalculation.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJob?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJob> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJob>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJob.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Trigger a batch recalculation of all metrics for this experiment.Returns 201 with the new pending recalculation, or 200 with the active one if a recalculation isalready pending or in progress for this experiment. The response payload intentionally does notinclude the `results` array — at POST time the workflow has just been queued and no per-metricresults exist yet. Clients should poll `GET metrics_recalculation/{id}/` for results as the workflowprogresses.

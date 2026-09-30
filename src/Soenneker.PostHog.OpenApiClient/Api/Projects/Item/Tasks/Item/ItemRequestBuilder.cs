@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Comments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Handoff;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Pin;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Review;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Run;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Staged_artifacts;
@@ -52,6 +53,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence.PresenceRequestBuilder Presence
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence.PresenceRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The review property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Review.ReviewRequestBuilder Review
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Review.ReviewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The run property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Run.RunRequestBuilder Run

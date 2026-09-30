@@ -8,11 +8,19 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModelEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchExportModel : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModelEnumWrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModelEnumWrapper? BatchExportModelEnumWrapper { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModelEnumWrapper BatchExportModelEnumWrapper { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -20,14 +28,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper BlankEnumWrapper { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelEnumWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ModelEnumWrapper? ModelEnumWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ModelEnumWrapper ModelEnumWrapper { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,13 +47,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel();
-            if("BlankEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("BatchExportModelEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.BatchExportModelEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModelEnumWrapper();
+            }
+            else if("BlankEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper();
-            }
-            else if("ModelEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ModelEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ModelEnumWrapper();
             }
             return result;
         }
@@ -63,13 +63,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BlankEnumWrapper != null)
+            if(BatchExportModelEnumWrapper != null)
+            {
+                return BatchExportModelEnumWrapper.GetFieldDeserializers();
+            }
+            else if(BlankEnumWrapper != null)
             {
                 return BlankEnumWrapper.GetFieldDeserializers();
-            }
-            else if(ModelEnumWrapper != null)
-            {
-                return ModelEnumWrapper.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
@@ -84,13 +84,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BlankEnumWrapper != null)
+            if(BatchExportModelEnumWrapper != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModelEnumWrapper>(null, BatchExportModelEnumWrapper);
+            }
+            else if(BlankEnumWrapper != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper>(null, BlankEnumWrapper);
-            }
-            else if(ModelEnumWrapper != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelEnumWrapper>(null, ModelEnumWrapper);
             }
             else if(NullEnum != null)
             {

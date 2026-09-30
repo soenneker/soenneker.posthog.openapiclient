@@ -3,21 +3,18 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>Pass &apos;ExperimentExposureNode&apos; to start retention from the experiment&apos;s own exposure event; the other fields then stay unset.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Kind2
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "EventsNode")]
+        [EnumMember(Value = "ExperimentEventExposureConfig")]
         #pragma warning disable CS1591
-        EventsNode,
+        ExperimentEventExposureConfig,
         #pragma warning restore CS1591
         [EnumMember(Value = "ActionsNode")]
         #pragma warning disable CS1591
         ActionsNode,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "ExperimentExposureNode")]
-        #pragma warning disable CS1591
-        ExperimentExposureNode,
         #pragma warning restore CS1591
     }
 }

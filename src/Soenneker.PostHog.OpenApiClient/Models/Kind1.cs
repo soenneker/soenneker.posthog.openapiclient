@@ -8,9 +8,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public enum Kind1
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "ExperimentEventExposureConfig")]
+        [EnumMember(Value = "EventsNode")]
         #pragma warning disable CS1591
-        ExperimentEventExposureConfig,
+        EventsNode,
         #pragma warning restore CS1591
         [EnumMember(Value = "ActionsNode")]
         #pragma warning disable CS1591

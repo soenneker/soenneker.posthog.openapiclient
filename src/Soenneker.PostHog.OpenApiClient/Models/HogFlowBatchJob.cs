@@ -14,9 +14,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>When the batch run was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The created_by property</summary>
+        /// <summary>User who started the batch run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCreatedBy? CreatedBy { get; private set; }
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of the workflow this batch run belongs to.</summary>
         public Guid? HogFlow { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>ID of the batch run.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Not currently tracked — stays at its initial value. Use the workflow logs/metrics endpoints for run outcome.* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus Status { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>When the batch run was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Variable value overrides applied to this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

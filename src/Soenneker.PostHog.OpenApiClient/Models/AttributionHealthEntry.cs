@@ -24,9 +24,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Events whose utm_source matched this integration</summary>
         public int? EventsMatchedLast7d { get; set; }
-        /// <summary>Of the matched events, how many look paid: a cost-bearing utm_medium (cpc, cpm, cpv, cpa, ppc, retargeting, or anything starting with &apos;paid&apos;) or a gclid/gad_source click id.</summary>
+        /// <summary>Of the matched events, how many show paid evidence for this integration: a cost-bearing utm_medium (cpc, cpm, cpv, cpa, ppc, retargeting, or anything starting with &apos;paid&apos;) or one of this integration&apos;s own ad click parameters in the event properties or the current URL (for example gclid for Google Ads or msclkid for Microsoft Ads). Pinterest clicks with pp=1 never count. Campaign names, fbclid, and epik alone do not count.</summary>
         public int? EventsMatchedPaidLast7d { get; set; }
-        /// <summary>Of the matched events, how many carry any utm_medium. Zero paid with a non-zero count here means the traffic is tagged and organic; both zero means the team doesn&apos;t tag medium, which says nothing.</summary>
+        /// <summary>Matched events carrying any utm_medium in the lookback window. Zero means no matched event carried a medium, including when no events matched. Missing paid signals do not prove organic traffic.</summary>
         public int? EventsMatchedTaggedMediumLast7d { get; set; }
         /// <summary>Events that look like this integration&apos;s but don&apos;t match exactly</summary>
         public int? EventsUnmatchedLikelyYoursLast7d { get; set; }

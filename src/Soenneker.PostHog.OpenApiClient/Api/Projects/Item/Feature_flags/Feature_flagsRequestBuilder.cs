@@ -188,10 +188,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Feature_flagsRequestBuilderGetQueryParameters 
         {
-            #pragma warning disable CS1591
+            /// <summary>&apos;true&apos; and &apos;false&apos; filter on serving state, the flag&apos;s `active` column. &apos;STALE&apos; returns enabled flags only, so a disabled flag is never STALE. An enabled flag matches when its last recorded `$feature_flag_called` event is more than 30 days old. With no recorded event, it matches when it is at least 30 days old and either stores `filters` as `{}` or serves one result to everyone through a release condition at 100% with no property filters. A flag with no recorded event and an empty `groups` list does not match, even when its `status` reads STALE. An SDK that sends no `$feature_flag_called` event leaves no record, so a STALE flag can still be in use.</summary>
             [QueryParameter("active")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListActiveParameter? Active { get; set; }
-            #pragma warning restore CS1591
             /// <summary>Filter by archived state. When omitted, archived flags are excluded.</summary>
             [QueryParameter("archived")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListArchivedParameter? Archived { get; set; }

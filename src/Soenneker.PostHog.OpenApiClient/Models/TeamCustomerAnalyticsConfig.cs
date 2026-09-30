@@ -24,6 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Ordered account properties shown until a user saves a personal pinned-property selection. Pass an empty list to show no properties by default.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>? DefaultPinnedProperties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty> DefaultPinnedProperties { get; set; }
+#endif
         /// <summary>Event used to count payments on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "account_group_type_index", n => { AccountGroupTypeIndex = n.GetIntValue(); } },
                 { "activity_event", n => { ActivityEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent.CreateFromDiscriminatorValue); } },
+                { "default_pinned_properties", n => { DefaultPinnedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "payment_event", n => { PaymentEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent.CreateFromDiscriminatorValue); } },
                 { "signup_event", n => { SignupEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent.CreateFromDiscriminatorValue); } },
                 { "signup_pageview_event", n => { SignupPageviewEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent.CreateFromDiscriminatorValue); } },
@@ -98,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("account_group_type_index", AccountGroupTypeIndex);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent>("activity_event", ActivityEvent);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>("default_pinned_properties", DefaultPinnedProperties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent>("payment_event", PaymentEvent);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent>("signup_event", SignupEvent);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent>("signup_pageview_event", SignupPageviewEvent);

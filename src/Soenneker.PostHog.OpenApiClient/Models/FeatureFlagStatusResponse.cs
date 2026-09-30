@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout Rollout { get; set; }
 #endif
-        /// <summary>Flag staleness/evaluation status: active, stale, archived, deleted, or unknown. &apos;active&apos; means the flag was recently evaluated (or has no usage data yet) — it does NOT mean the flag is fully rolled out. Use the `rollout` object to determine rollout completeness.</summary>
+        /// <summary>Staleness classification: active, stale, archived, deleted, or unknown. This is not the serving state, and this response carries no serving-state field: read the `active` field of the flag itself from the list or retrieve endpoint. A disabled flag that is not archived or deleted reports &apos;active&apos;, because disabled flags are not evaluated for staleness. &apos;active&apos; also does NOT mean the flag is fully rolled out. Use the `rollout` object to determine rollout completeness.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

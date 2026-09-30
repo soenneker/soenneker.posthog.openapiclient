@@ -58,6 +58,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? NextObservationId { get; private set; }
         /// <summary>Id of the preceding sibling observation for the same scanner (prev/next nav), honoring any list filters and ordering passed to retrieve; only set on retrieve, null at the start of the set.</summary>
         public Guid? PreviousObservationId { get; private set; }
+        /// <summary>The scanner&apos;s prompt condensed into the one question it answers about a session. Null when the prompt has changed since this observation was scanned, since the question then describes a different prompt; read `scanner_snapshot.scanner_config.prompt` instead.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PromptQuestion { get; private set; }
+#nullable restore
+#else
+        public string PromptQuestion { get; private set; }
+#endif
         /// <summary>Email of the person in the recorded session (the subject being watched, not the user who triggered the observation), captured at scan time. Null when the session had no identified person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -179,6 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "next_observation_id", n => { NextObservationId = n.GetGuidValue(); } },
                 { "previous_observation_id", n => { PreviousObservationId = n.GetGuidValue(); } },
+                { "prompt_question", n => { PromptQuestion = n.GetStringValue(); } },
                 { "recording_subject_email", n => { RecordingSubjectEmail = n.GetStringValue(); } },
                 { "scanner_id", n => { ScannerId = n.GetGuidValue(); } },
                 { "scanner_origin", n => { ScannerOrigin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin.CreateFromDiscriminatorValue); } },

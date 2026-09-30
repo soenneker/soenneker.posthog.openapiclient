@@ -40,6 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Openrouter,
         #pragma warning restore CS1591
+        [EnumMember(Value = "system_one")]
+        #pragma warning disable CS1591
+        SystemOne,
+        #pragma warning restore CS1591
         [EnumMember(Value = "together_ai")]
         #pragma warning disable CS1591
         TogetherAi,

@@ -51,6 +51,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceName { get; private set; }
 #endif
+        /// <summary>Fetched page URL. Empty for text and file sources.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; private set; }
+#nullable restore
+#else
+        public string Url { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeDocumentWindow"/> and sets the default values.
         /// </summary>
@@ -82,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "heading_path", n => { HeadingPath = n.GetStringValue(); } },
                 { "ordinal", n => { Ordinal = n.GetIntValue(); } },
                 { "source_name", n => { SourceName = n.GetStringValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>

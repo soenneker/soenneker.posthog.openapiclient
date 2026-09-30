@@ -13,6 +13,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocatio
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Optimization;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Publish;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Rerun;
@@ -83,6 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.MetricsRequestBuilder Metrics
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The optimization property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Optimization.OptimizationRequestBuilder Optimization
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Optimization.OptimizationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The proposals property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals.ProposalsRequestBuilder Proposals

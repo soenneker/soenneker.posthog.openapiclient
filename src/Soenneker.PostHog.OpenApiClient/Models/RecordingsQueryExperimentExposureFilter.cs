@@ -24,6 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Variant { get; set; }
 #endif
+        /// <summary>Narrow to persons exposed to any of these variants. Defaults to all of the experiment&apos;s variants. Do not combine with `variant`, the single-variant form that predates this field.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Variants { get; set; }
+#nullable restore
+#else
+        public List<string> Variants { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,6 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
                 { "in_session", n => { InSession = n.GetBoolValue(); } },
                 { "variant", n => { Variant = n.GetStringValue(); } },
+                { "variants", n => { Variants = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("experiment_id", ExperimentId);
             writer.WriteBoolValue("in_session", InSession);
             writer.WriteStringValue("variant", Variant);
+            writer.WriteCollectionOfPrimitiveValues<string>("variants", Variants);
         }
     }
 }

@@ -153,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The status property</summary>
+        /// <summary>Staleness classification: ACTIVE, STALE, ARCHIVED, DELETED or UNKNOWN. This is not the serving state. Read the `active` field for that. A disabled flag that is not archived or deleted reports ACTIVE, because disabled flags are not evaluated for staleness.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }

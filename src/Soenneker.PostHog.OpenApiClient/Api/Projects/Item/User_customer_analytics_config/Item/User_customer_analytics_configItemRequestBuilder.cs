@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analyt
         {
         }
         /// <summary>
-        /// Get the requesting user&apos;s account sidebar and task digest configuration for this project. The first read creates an empty configuration row.
+        /// Get the requesting user&apos;s account sidebar and task digest configuration for this project. Project defaults are returned until the user saves a personal pinned-property selection.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analyt
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfig.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get the requesting user&apos;s account sidebar and task digest configuration for this project. The first read creates an empty configuration row.
+        /// Get the requesting user&apos;s account sidebar and task digest configuration for this project. Project defaults are returned until the user saves a personal pinned-property selection.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

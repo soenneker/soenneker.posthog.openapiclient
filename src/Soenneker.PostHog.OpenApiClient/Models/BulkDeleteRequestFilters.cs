@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BulkDeleteRequestFilters : IAdditionalDataHolder, IParsable
     {
-        /// <summary>Filter by active state.* `true` - true* `false` - false* `STALE` - STALE</summary>
+        /// <summary>&apos;true&apos; and &apos;false&apos; filter on serving state, the flag&apos;s `active` column. &apos;STALE&apos; returns enabled flags only, so a disabled flag is never STALE. An enabled flag matches when its last recorded `$feature_flag_called` event is more than 30 days old. With no recorded event, it matches when it is at least 30 days old and either stores `filters` as `{}` or serves one result to everyone through a release condition at 100% with no property filters. A flag with no recorded event and an empty `groups` list does not match, even when its `status` reads STALE. An SDK that sends no `$feature_flag_called` event leaves no record, so a STALE flag can still be in use.* `true` - true* `false` - false* `STALE` - STALE</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive? Active { get; set; }

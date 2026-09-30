@@ -175,6 +175,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig FeatureFlagPolicyConfig { get; set; }
 #endif
+        /// <summary>Which table this project&apos;s feature flag usage data is read from. PostHog sets it for the whole organization. 0 reads the events table. 1 and 2 read the flag_evaluations table.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatFlagEvaluationsMode? FlagEvaluationsMode { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatFlagEvaluationsMode FlagEvaluationsMode { get; private set; }
+#endif
         /// <summary>Default value for the `persist` option on newly created feature flags.</summary>
         public bool? FlagsPersistenceDefault { get; set; }
         /// <summary>The group_types property</summary>
@@ -574,6 +582,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "feature_flag_confirmation_enabled", n => { FeatureFlagConfirmationEnabled = n.GetBoolValue(); } },
                 { "feature_flag_confirmation_message", n => { FeatureFlagConfirmationMessage = n.GetStringValue(); } },
                 { "feature_flag_policy_config", n => { FeatureFlagPolicyConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig.CreateFromDiscriminatorValue); } },
+                { "flag_evaluations_mode", n => { FlagEvaluationsMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatFlagEvaluationsMode>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatFlagEvaluationsMode.CreateFromDiscriminatorValue); } },
                 { "flags_persistence_default", n => { FlagsPersistenceDefault = n.GetBoolValue(); } },
                 { "group_types", n => { GroupTypes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatGroupTypesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatGroupTypesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "has_completed_onboarding_for", n => { HasCompletedOnboardingFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatHasCompletedOnboardingFor>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatHasCompletedOnboardingFor.CreateFromDiscriminatorValue); } },

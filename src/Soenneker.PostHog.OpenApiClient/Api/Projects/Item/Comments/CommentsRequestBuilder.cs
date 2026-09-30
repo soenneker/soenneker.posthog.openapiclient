@@ -203,7 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             [QueryParameter("source_comment")]
             public string SourceComment { get; set; }
 #endif
-            /// <summary>Owning task for task, task_artifact, task_preview, task_browser, and desktop_canvas comment scopes.</summary>
+            /// <summary>Owning task for task, task_artifact, task_preview, task_browser, and canvas comment scopes.</summary>
             [QueryParameter("task_id")]
             public Guid? TaskId { get; set; }
         }

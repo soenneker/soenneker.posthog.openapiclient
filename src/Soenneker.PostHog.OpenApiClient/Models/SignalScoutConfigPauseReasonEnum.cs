@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures* `retired` - Retired</summary>
+    /// <summary>* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures* `retired` - Retired* `background_removed` - Background removed</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalScoutConfigPauseReasonEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "retired")]
         #pragma warning disable CS1591
         Retired,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "background_removed")]
+        #pragma warning disable CS1591
+        BackgroundRemoved,
         #pragma warning restore CS1591
     }
 }

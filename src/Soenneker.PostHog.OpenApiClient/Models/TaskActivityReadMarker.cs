@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mark activity at or before this timestamp read without clearing newer activity.</summary>
         public DateTimeOffset? SeenBefore { get; set; }
-        /// <summary>Task whose displayed activity should be marked read.</summary>
+        /// <summary>Task whose displayed activity should be marked read. Optional when activity_id is set.</summary>
         public Guid? TaskId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityReadMarker"/> and sets the default values.
