@@ -15,7 +15,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Highest-priority rule the observation satisfied: `signal_emitted` (it pushed a signal), `unusual_verdict` (a monitor answer that is the minority for that scanner this window), `verdict_yes` (a monitor hit, when the window is too thin to know which answer is unusual), `outlier_score` (far from the scanner&apos;s window average), `rare_tag` (a tag uncommon for the scanner this window), `novel_summary` (a summary that reads unlike the scanner&apos;s other sessions this window), `notable` (the scan itself judged the session worth watching), `friction` (the scan describes errors, retries, or dead ends), `unviewed_recent` (new to you), `recent` (nothing special, newest available).* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
+        /// <summary>The decision model&apos;s 0-1 judgment that the session is worth watching, for `jev_watchable`.</summary>
+        public double? JevProbability { get; set; }
+        /// <summary>Highest-priority rule the observation satisfied: `signal_emitted` (it pushed a signal), `unusual_verdict` (a monitor answer that is the minority for that scanner this window), `verdict_yes` (a monitor hit, when the window is too thin to know which answer is unusual), `outlier_score` (far from the scanner&apos;s window average), `rare_tag` (a tag uncommon for the scanner this window), `novel_summary` (a summary that reads unlike the scanner&apos;s other sessions this window), `notable` (the scan itself judged the session worth watching), `friction` (the scan describes errors, retries, or dead ends), `jev_watchable` (the decision model judged the session worth watching; teams on the Jev ranker experiment only), `unviewed_recent` (new to you), `recent` (nothing special, newest available).* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `jev_watchable` - Jev Watchable* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind? Kind { get; set; }
@@ -25,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The scan&apos;s own 0-1 judgment of how much a team would benefit from watching, for `notable`.</summary>
         public double? Notability { get; set; }
-        /// <summary>The scan&apos;s own sentence naming why the session is worth watching. Present only on the `notable` reason kind, and preferred over copy derived from the reason kind. Absent on observations scanned before notability shipped.</summary>
+        /// <summary>The scan&apos;s own sentence naming why the session is worth watching. Present on the `notable` and `jev_watchable` reason kinds when the scan itself found the session notable, and preferred over copy derived from the reason kind. Absent on observations scanned before notability shipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NotabilityReason { get; set; }
@@ -100,6 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "jev_probability", n => { JevProbability = n.GetDoubleValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>(global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind.CreateFromDiscriminatorValue); } },
                 { "notability", n => { Notability = n.GetDoubleValue(); } },
                 { "notability_reason", n => { NotabilityReason = n.GetStringValue(); } },
@@ -121,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("jev_probability", JevProbability);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>("kind", Kind);
             writer.WriteDoubleValue("notability", Notability);
             writer.WriteStringValue("notability_reason", NotabilityReason);

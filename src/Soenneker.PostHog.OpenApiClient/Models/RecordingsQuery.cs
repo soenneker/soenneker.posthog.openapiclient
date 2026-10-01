@@ -68,6 +68,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> DistinctIds { get; set; }
 #endif
+        /// <summary>Where a filter that is evaluated against events must match. &apos;session&apos; (default) matches an event anywhere in the session, including before the recording started or after it ended. &apos;recording&apos; only matches events from one minute before the recording starts until one minute after it ends. This applies to every filter the events table answers: events, actions, event properties, and, when the project resolves them on events, person, group, and cohort properties.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScopeWrapper? EventMatchScope { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScopeWrapper EventMatchScope { get; set; }
+#endif
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -232,6 +240,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
                 { "distinct_ids", n => { DistinctIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "event_match_scope", n => { EventMatchScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScopeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScopeWrapper.CreateFromDiscriminatorValue); } },
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEventsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEventsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "experiment_exposure", n => { ExperimentExposure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter.CreateFromDiscriminatorValue); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
@@ -269,6 +278,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
             writer.WriteCollectionOfPrimitiveValues<string>("distinct_ids", DistinctIds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScopeWrapper>("event_match_scope", EventMatchScope);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEventsItemProperty>("events", Events);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>("experiment_exposure", ExperimentExposure);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);

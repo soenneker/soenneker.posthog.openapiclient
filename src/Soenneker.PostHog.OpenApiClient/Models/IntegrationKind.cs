@@ -184,5 +184,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         YoutubeAnalytics,
         #pragma warning restore CS1591
+        [EnumMember(Value = "twitter-ads")]
+        #pragma warning disable CS1591
+        TwitterAds,
+        #pragma warning restore CS1591
     }
 }

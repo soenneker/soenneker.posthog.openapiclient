@@ -68,6 +68,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The pr_number property</summary>
         public int? PrNumber { get; set; }
+        /// <summary>Why CI submitted the run. `review` runs gate the PR and need approval. `observe` runs are tracking-only, for example default-branch pushes and merge-queue runs, and can never be approved.* `review` - review* `observe` - observe</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunPurpose? Purpose { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunPurpose Purpose { get; private set; }
+#endif
         /// <summary>The repo_id property</summary>
         public Guid? RepoId { get; set; }
         /// <summary>The run_type property</summary>
@@ -141,6 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_stale", n => { IsStale = n.GetBoolValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RunMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
+                { "purpose", n => { Purpose = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunPurpose>(global::Soenneker.PostHog.OpenApiClient.Models.RunPurpose.CreateFromDiscriminatorValue); } },
                 { "repo_id", n => { RepoId = n.GetGuidValue(); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.RunSearchMatchType.CreateFromDiscriminatorValue); } },

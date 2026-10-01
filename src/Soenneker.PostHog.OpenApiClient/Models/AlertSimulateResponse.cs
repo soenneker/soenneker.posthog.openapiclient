@@ -40,6 +40,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Dates { get; set; }
 #endif
+        /// <summary>Exclusive end of the latest eligible interval.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EvaluatedIntervalEnd { get; set; }
+#nullable restore
+#else
+        public string EvaluatedIntervalEnd { get; set; }
+#endif
+        /// <summary>Start of the latest eligible interval.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EvaluatedIntervalStart { get; set; }
+#nullable restore
+#else
+        public string EvaluatedIntervalStart { get; set; }
+#endif
+        /// <summary>Project timezone of the interval.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EvaluatedIntervalTimezone { get; set; }
+#nullable restore
+#else
+        public string EvaluatedIntervalTimezone { get; set; }
+#endif
+        /// <summary>Completed intervals skipped.</summary>
+        public int? EvaluationDelayIntervals { get; set; }
         /// <summary>Interval of the trends query (hour, day, week, month).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,6 +137,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "breakdown_results", n => { BreakdownResults = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "data", n => { Data = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "dates", n => { Dates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "evaluated_interval_end", n => { EvaluatedIntervalEnd = n.GetStringValue(); } },
+                { "evaluated_interval_start", n => { EvaluatedIntervalStart = n.GetStringValue(); } },
+                { "evaluated_interval_timezone", n => { EvaluatedIntervalTimezone = n.GetStringValue(); } },
+                { "evaluation_delay_intervals", n => { EvaluationDelayIntervals = n.GetIntValue(); } },
                 { "interval", n => { Interval = n.GetStringValue(); } },
                 { "scores", n => { Scores = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "sub_detector_scores", n => { SubDetectorScores = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -130,6 +160,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult>("breakdown_results", BreakdownResults);
             writer.WriteCollectionOfPrimitiveValues<double?>("data", Data);
             writer.WriteCollectionOfPrimitiveValues<string>("dates", Dates);
+            writer.WriteStringValue("evaluated_interval_end", EvaluatedIntervalEnd);
+            writer.WriteStringValue("evaluated_interval_start", EvaluatedIntervalStart);
+            writer.WriteStringValue("evaluated_interval_timezone", EvaluatedIntervalTimezone);
+            writer.WriteIntValue("evaluation_delay_intervals", EvaluationDelayIntervals);
             writer.WriteStringValue("interval", Interval);
             writer.WriteCollectionOfPrimitiveValues<double?>("scores", Scores);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>("sub_detector_scores", SubDetectorScores);

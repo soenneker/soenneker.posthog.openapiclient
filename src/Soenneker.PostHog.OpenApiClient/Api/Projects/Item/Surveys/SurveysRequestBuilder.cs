@@ -70,6 +70,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         public SurveysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys{?archived*,created_by*,ids,limit*,offset*,search*,status*,type*}", rawUrl)
         {
         }
+        /// <summary>
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSurveyList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,6 +88,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSurveyList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSurveyList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -102,6 +108,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -118,6 +127,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -146,10 +158,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.SurveysRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class SurveysRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
             #pragma warning disable CS1591
             [QueryParameter("archived")]

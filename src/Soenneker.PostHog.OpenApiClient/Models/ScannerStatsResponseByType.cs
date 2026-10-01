@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-scanner-type breakdown (monitor / classifier / scorer / summarizer).
+    /// Per-scanner-type breakdown (monitor / classifier / scorer / summarizer / experiment).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScannerStatsResponseByType : IAdditionalDataHolder, IParsable
@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Classifier { get; set; }
+#endif
+        /// <summary>Per-scanner-type count of enabled vs total scanners.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Experiment { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Experiment { get; set; }
 #endif
         /// <summary>Per-scanner-type count of enabled vs total scanners.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "classifier", n => { Classifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats.CreateFromDiscriminatorValue); } },
+                { "experiment", n => { Experiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats.CreateFromDiscriminatorValue); } },
                 { "monitor", n => { Monitor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats.CreateFromDiscriminatorValue); } },
                 { "scorer", n => { Scorer = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats.CreateFromDiscriminatorValue); } },
                 { "summarizer", n => { Summarizer = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats.CreateFromDiscriminatorValue); } },
@@ -86,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>("classifier", Classifier);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>("experiment", Experiment);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>("monitor", Monitor);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>("scorer", Scorer);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats>("summarizer", Summarizer);

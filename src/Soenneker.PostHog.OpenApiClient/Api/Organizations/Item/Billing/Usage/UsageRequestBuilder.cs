@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.Status;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.Timeseries;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UsageRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The export property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.Export.ExportRequestBuilder Export
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.Export.ExportRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The status property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Usage.Status.StatusRequestBuilder Status
         {

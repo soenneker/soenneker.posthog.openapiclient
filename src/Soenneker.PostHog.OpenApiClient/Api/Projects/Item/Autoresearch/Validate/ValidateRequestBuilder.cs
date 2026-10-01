@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Validat
         {
         }
         /// <summary>
-        /// Validate a proposed pipeline&apos;s target event and population before creating it. Returns volume estimates, base rate, and any warnings. Creation does not enforce the result: &apos;population_too_large&apos; and &apos;horizon_exceeds_lookback&apos; mean a training run would fail, and the other &apos;error&apos; codes mean the data is too thin for a reliable model. Call this before autoresearch-create.
+        /// Validate a proposed pipeline&apos;s target event and population before creating it. Returns volume estimates, base rate, and any warnings. Creation does not enforce the result: &apos;horizon_exceeds_lookback&apos; and an &apos;error&apos; &apos;population_too_large&apos; mean a run would fail, and the other &apos;error&apos; codes mean the data is too thin for a reliable model. Call this before autoresearch-create.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Validat
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Validate a proposed pipeline&apos;s target event and population before creating it. Returns volume estimates, base rate, and any warnings. Creation does not enforce the result: &apos;population_too_large&apos; and &apos;horizon_exceeds_lookback&apos; mean a training run would fail, and the other &apos;error&apos; codes mean the data is too thin for a reliable model. Call this before autoresearch-create.
+        /// Validate a proposed pipeline&apos;s target event and population before creating it. Returns volume estimates, base rate, and any warnings. Creation does not enforce the result: &apos;horizon_exceeds_lookback&apos; and an &apos;error&apos; &apos;population_too_large&apos; mean a run would fail, and the other &apos;error&apos; codes mean the data is too thin for a reliable model. Call this before autoresearch-create.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

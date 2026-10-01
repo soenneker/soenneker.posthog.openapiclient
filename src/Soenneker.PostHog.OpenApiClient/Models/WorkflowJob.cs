@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobCiEngine? CiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobCiEngine CiEngine { get; set; }
+#endif
         /// <summary>When the job completed, or null while still running.</summary>
         public DateTimeOffset? CompletedAt { get; set; }
         /// <summary>Job conclusion (&apos;success&apos;, &apos;failure&apos;, &apos;cancelled&apos;, &apos;skipped&apos;, ...), or null while running.</summary>
@@ -28,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? DurationSeconds { get; set; }
         /// <summary>Estimated cost in USD from runner tier + elapsed time; null when the tier is unknown or the job hasn&apos;t finished.</summary>
         public double? EstimatedCostUsd { get; set; }
-        /// <summary>GitHub Actions job id.</summary>
+        /// <summary>Integer job id; unique only together with ci_engine.</summary>
         public int? Id { get; set; }
         /// <summary>Job name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,6 +45,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Source-native attempt id; use with ci_engine for identity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NativeAttemptId { get; set; }
+#nullable restore
+#else
+        public string NativeAttemptId { get; set; }
+#endif
+        /// <summary>Source-native job id; use with ci_engine for identity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NativeJobId { get; set; }
+#nullable restore
+#else
+        public string NativeJobId { get; set; }
+#endif
+        /// <summary>Source-native run id; use with ci_engine for identity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NativeRunId { get; set; }
+#nullable restore
+#else
+        public string NativeRunId { get; set; }
+#endif
+        /// <summary>Source-native workflow run id; use with ci_engine for identity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NativeWorkflowRunId { get; set; }
+#nullable restore
+#else
+        public string NativeWorkflowRunId { get; set; }
 #endif
         /// <summary>The workflow run id this job belongs to.</summary>
         public int? RunId { get; set; }
@@ -91,12 +131,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobCiEngine.CreateFromDiscriminatorValue); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "conclusion", n => { Conclusion = n.GetStringValue(); } },
                 { "duration_seconds", n => { DurationSeconds = n.GetIntValue(); } },
                 { "estimated_cost_usd", n => { EstimatedCostUsd = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "native_attempt_id", n => { NativeAttemptId = n.GetStringValue(); } },
+                { "native_job_id", n => { NativeJobId = n.GetStringValue(); } },
+                { "native_run_id", n => { NativeRunId = n.GetStringValue(); } },
+                { "native_workflow_run_id", n => { NativeWorkflowRunId = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetIntValue(); } },
                 { "runner_label", n => { RunnerLabel = n.GetStringValue(); } },
                 { "runner_provider", n => { RunnerProvider = n.GetStringValue(); } },
@@ -111,12 +156,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobCiEngine>("ci_engine", CiEngine);
             writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);
             writer.WriteStringValue("conclusion", Conclusion);
             writer.WriteIntValue("duration_seconds", DurationSeconds);
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteIntValue("id", Id);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("native_attempt_id", NativeAttemptId);
+            writer.WriteStringValue("native_job_id", NativeJobId);
+            writer.WriteStringValue("native_run_id", NativeRunId);
+            writer.WriteStringValue("native_workflow_run_id", NativeWorkflowRunId);
             writer.WriteIntValue("run_id", RunId);
             writer.WriteStringValue("runner_label", RunnerLabel);
             writer.WriteStringValue("runner_provider", RunnerProvider);

@@ -126,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string User { get; set; }
 #endif
-        /// <summary>Number of volume buckets. Defaults to 0, which returns only aggregate counts without volume buckets.</summary>
+        /// <summary>Integer count of equal-width time buckets across dateRange, from 0 to 200. Not a time unit: &apos;hour&apos;, &apos;day&apos;, and &apos;week&apos; are invalid. Example: 7 with a 7-day dateRange gives daily buckets. Defaults to 0, which returns only aggregate counts without volume buckets.</summary>
         public int? VolumeResolution { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequest"/> and sets the default values.

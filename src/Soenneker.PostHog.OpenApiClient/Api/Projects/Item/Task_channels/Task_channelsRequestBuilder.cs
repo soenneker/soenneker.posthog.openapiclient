@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Contributors;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session_test;
@@ -22,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Task_channelsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The contributors property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Contributors.ContributorsRequestBuilder Contributors
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Contributors.ContributorsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The onboarding_session property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session.Onboarding_sessionRequestBuilder Onboarding_session
         {

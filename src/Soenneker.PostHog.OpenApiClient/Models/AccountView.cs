@@ -14,6 +14,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether the requesting user can change the view visibility.</summary>
+        public bool? CanChangeVisibility { get; private set; }
+        /// <summary>Whether the requesting user can delete the view.</summary>
+        public bool? CanDelete { get; private set; }
+        /// <summary>Whether the requesting user can edit the view.</summary>
+        public bool? CanEdit { get; private set; }
         /// <summary>Validated Markdown notebook document.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,13 +56,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Optimistic concurrency version.</summary>
         public int? Version { get; private set; }
-        /// <summary>Account views created through this API are private.</summary>
+        /// <summary>Whether the view is personal or available to the project.* `private` - Personal* `team` - Team</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Visibility { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility? Visibility { get; private set; }
 #nullable restore
 #else
-        public string Visibility { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility Visibility { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountView"/> and sets the default values.
@@ -83,6 +89,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "can_change_visibility", n => { CanChangeVisibility = n.GetBoolValue(); } },
+                { "can_delete", n => { CanDelete = n.GetBoolValue(); } },
+                { "can_edit", n => { CanEdit = n.GetBoolValue(); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewContentComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AccountViewContentComposed.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
@@ -92,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "text_content", n => { TextContent = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
-                { "visibility", n => { Visibility = n.GetStringValue(); } },
+                { "visibility", n => { Visibility = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility>(global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

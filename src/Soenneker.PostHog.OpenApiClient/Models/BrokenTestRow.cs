@@ -52,6 +52,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LatestBranch { get; set; }
 #endif
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine? LatestCiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine LatestCiEngine { get; set; }
+#endif
         /// <summary>The most recent failing workflow run for this fingerprint: pass it to run_failure_logs to fetch the actual failing log lines.</summary>
         public int? LatestRunId { get; set; }
         /// <summary>Failure lines on the default branch (master/main). 0 means it never reached trunk.</summary>
@@ -122,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "job_name", n => { JobName = n.GetStringValue(); } },
                 { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
                 { "latest_branch", n => { LatestBranch = n.GetStringValue(); } },
+                { "latest_ci_engine", n => { LatestCiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine.CreateFromDiscriminatorValue); } },
                 { "latest_run_id", n => { LatestRunId = n.GetIntValue(); } },
                 { "master_hits", n => { MasterHits = n.GetIntValue(); } },
                 { "occurrences", n => { Occurrences = n.GetIntValue(); } },
@@ -145,6 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("job_name", JobName);
             writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
             writer.WriteStringValue("latest_branch", LatestBranch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine>("latest_ci_engine", LatestCiEngine);
             writer.WriteIntValue("latest_run_id", LatestRunId);
             writer.WriteIntValue("master_hits", MasterHits);
             writer.WriteIntValue("occurrences", Occurrences);

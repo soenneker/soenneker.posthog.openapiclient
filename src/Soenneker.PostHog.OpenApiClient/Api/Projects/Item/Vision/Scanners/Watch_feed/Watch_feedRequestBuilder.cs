@@ -118,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
             [QueryParameter("scanner_ids")]
             public string ScannerIds { get; set; }
 #endif
-            /// <summary>Restrict the feed to observations from scanners of this type.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
+            /// <summary>Restrict the feed to observations from scanners of this type.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
             [QueryParameter("scanner_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.VisionScannersWatchFeedRetrieveScannerTypeParameter? ScannerType { get; set; }
             /// <summary>Case-insensitive text to match against the scan&apos;s own words (title, summary, reasoning, and the notability sentence) and the scanner&apos;s name. Applied before ranking, so it searches the whole window rather than the items that would have surfaced without it.</summary>

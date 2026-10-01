@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the event occurred.</summary>
         public DateTimeOffset? At { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine? CiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine CiEngine { get; set; }
+#endif
         /// <summary>Optional detail: workflow name and conclusion for CI events, the acting user&apos;s login for draft/ready transitions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "at", n => { At = n.GetDateTimeOffsetValue(); } },
+                { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine.CreateFromDiscriminatorValue); } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind>(global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind.CreateFromDiscriminatorValue); } },
                 { "run_id", n => { RunId = n.GetIntValue(); } },
@@ -73,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("at", At);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine>("ci_engine", CiEngine);
             writer.WriteStringValue("detail", Detail);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind>("kind", Kind);
             writer.WriteIntValue("run_id", RunId);

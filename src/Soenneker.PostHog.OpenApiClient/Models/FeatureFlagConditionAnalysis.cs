@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? RolloutExcluded { get; set; }
         /// <summary>Rollout percentage for this condition (0.0-100.0)</summary>
         public double? RolloutPercentage { get; set; }
-        /// <summary>Variant associated with this condition</summary>
+        /// <summary>Variant associated with this condition. Empty or null when the condition has no variant override.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Variant { get; set; }

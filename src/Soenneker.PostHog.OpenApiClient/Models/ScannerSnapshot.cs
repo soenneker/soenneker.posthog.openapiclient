@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig ScannerConfig { get; set; }
 #endif
-        /// <summary>Scanner type (monitor, classifier, scorer, summarizer) at run time.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
+        /// <summary>Scanner type (monitor, classifier, scorer, summarizer, experiment) at run time.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType? ScannerType { get; set; }

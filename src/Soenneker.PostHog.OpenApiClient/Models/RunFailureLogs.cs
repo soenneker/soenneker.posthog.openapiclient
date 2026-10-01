@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogsCiEngine? CiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogsCiEngine CiEngine { get; set; }
+#endif
         /// <summary>Failed CI jobs of this run with their thinned failure logs, grouped by job.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,6 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogsCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogsCiEngine.CreateFromDiscriminatorValue); } },
                 { "jobs", n => { Jobs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog>(global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "logs_available", n => { LogsAvailable = n.GetBoolValue(); } },
                 { "run_id", n => { RunId = n.GetIntValue(); } },
@@ -66,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogsCiEngine>("ci_engine", CiEngine);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog>("jobs", Jobs);
             writer.WriteBoolValue("logs_available", LogsAvailable);
             writer.WriteIntValue("run_id", RunId);

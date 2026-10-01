@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Per-scanner-type breakdown (monitor / classifier / scorer / summarizer).</summary>
+        /// <summary>Per-scanner-type breakdown (monitor / classifier / scorer / summarizer / experiment).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ScannerStatsResponseByType? ByType { get; set; }

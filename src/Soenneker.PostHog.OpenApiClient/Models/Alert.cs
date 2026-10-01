@@ -68,6 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the alert is actively being evaluated.</summary>
         public bool? Enabled { get; set; }
+        /// <summary>Skip this many completed insight intervals after excluding the ongoing interval (0-100, default 0). Time-series Trends only. A positive delay requires check_ongoing_interval=false. Uses the insight interval, not the check frequency. Allows late data to arrive, but also delays detection of real problems.</summary>
+        public int? EvaluationDelayIntervals { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object.</summary>
@@ -210,6 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCreatedBy.CreateFromDiscriminatorValue); } },
                 { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "evaluation_delay_intervals", n => { EvaluationDelayIntervals = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
                 { "insight_display_name", n => { InsightDisplayName = n.GetStringValue(); } },
@@ -245,6 +248,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>("config", Config);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig>("detector_config", DetectorConfig);
             writer.WriteBoolValue("enabled", Enabled);
+            writer.WriteIntValue("evaluation_delay_intervals", EvaluationDelayIntervals);
             writer.WriteIntValue("insight", Insight);
             writer.WriteBoolValue("investigation_agent_enabled", InvestigationAgentEnabled);
             writer.WriteBoolValue("investigation_gates_notifications", InvestigationGatesNotifications);

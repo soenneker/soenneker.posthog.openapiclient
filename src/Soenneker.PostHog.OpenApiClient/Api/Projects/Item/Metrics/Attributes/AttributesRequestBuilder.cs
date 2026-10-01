@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AttributesRequestBuilderGetQueryParameters 
         {
-            /// <summary>Lower bound (inclusive) of the window keys are suggested from. ISO 8601. Defaults to 7 days ago.</summary>
+            /// <summary>Lower bound (inclusive) of the window keys are suggested from. ISO 8601. Defaults to 24 hours ago.</summary>
             [QueryParameter("dateFrom")]
             public DateTimeOffset? DateFrom { get; set; }
             /// <summary>Upper bound (exclusive) of the window. ISO 8601. Defaults to now.</summary>

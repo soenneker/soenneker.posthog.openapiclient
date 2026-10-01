@@ -64,8 +64,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> EnabledColumns { get; set; }
 #endif
-        /// <summary>Days between scheduled full refreshes, from 1 to 90, or null for none. A full refresh wipes the table and re-imports every row, so rows deleted at the source are removed. It runs on the first scheduled sync once the interval has passed, counted from when it was saved or from the last full resync, and can start up to an hour early. Queries keep returning the current rows until a full refresh finishes, and workflows and destinations that run on new rows of the table run again for every row. Available for incremental, append, and xmin syncs only, and never shorter than the sync frequency.</summary>
+        /// <summary>Days between scheduled full refreshes, from 1 to 90, or null for none. A full refresh wipes the table and re-imports every row, so rows deleted at the source are removed. It runs on the first scheduled sync once the interval has passed, counted from when it was saved or from the last full resync (or, when full_refresh_time_of_day is set, from the slot of that time the last refresh served), and can start up to an hour early. Queries keep returning the current rows until a full refresh finishes, and workflows and destinations that run on new rows of the table run again for every row. Available for incremental, append, and xmin syncs only, and never shorter than the sync frequency.</summary>
         public int? FullRefreshIntervalDays { get; set; }
+        /// <summary>UTC time of day (HH:MM:SS) that scheduled full refreshes are due, for example outside working hours. The refresh runs on the first scheduled sync from up to an hour before this time, so on a table that syncs every few hours it can run hours later. Each interval counts from the slot of this time that the last refresh or save served, where a slot less than an hour away counts as served. Saving a new time restarts the clock, so the first refresh after a save can come up to a day before a full interval has passed. Null counts the interval from when it was saved or from the last full resync. Cleared when full_refresh_interval_days is null.</summary>
+        public Time? FullRefreshTimeOfDay { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The incremental property</summary>
@@ -122,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
-        /// <summary>When the next scheduled full refresh is due. The first scheduled sync that starts at most an hour before this time re-imports the table. Saving a new interval, or any full resync, moves it one interval ahead.</summary>
+        /// <summary>When the next scheduled full refresh is due. The first scheduled sync that starts at most an hour before this time re-imports the table. Saving a new interval or time, or any full resync, moves it one interval ahead, onto full_refresh_time_of_day when that is set.</summary>
         public DateTimeOffset? NextFullRefreshAt { get; private set; }
         /// <summary>Column names for primary key deduplication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -226,6 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "full_refresh_interval_days", n => { FullRefreshIntervalDays = n.GetIntValue(); } },
+                { "full_refresh_time_of_day", n => { FullRefreshTimeOfDay = n.GetTimeValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental", n => { Incremental = n.GetBoolValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
@@ -261,6 +264,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaCdcTableMode>("cdc_table_mode", CdcTableMode);
             writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
             writer.WriteIntValue("full_refresh_interval_days", FullRefreshIntervalDays);
+            writer.WriteTimeValue("full_refresh_time_of_day", FullRefreshTimeOfDay);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteIntValue("incremental_field_lookback_seconds", IncrementalFieldLookbackSeconds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaIncrementalFieldType>("incremental_field_type", IncrementalFieldType);

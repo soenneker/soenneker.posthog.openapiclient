@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ValuesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/events/values{?format*}", pathParameters)
+        public ValuesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/events/values?key={key}{&event_name*,format*,is_column*,value*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,24 +30,30 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ValuesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/events/values{?format*}", rawUrl)
+        public ValuesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/events/values?key={key}{&event_name*,format*,is_column*,value*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <summary>
+        /// List values of an event property from recent events.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyValuesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyValuesResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyValuesResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyValuesResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyValuesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// List values of an event property from recent events.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -72,15 +79,49 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Values.ValuesRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// List values of an event property from recent events.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class ValuesRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
+            /// <summary>Only read values from events with these names. Repeat to pass several. Required with a personal API key. Projects that read values from the precomputed property values table ignore this filter.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("event_name")]
+            public string[]? EventName { get; set; }
+#nullable restore
+#else
+            [QueryParameter("event_name")]
+            public string[] EventName { get; set; }
+#endif
             #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.EventsValuesRetrieveFormatParameter? Format { get; set; }
             #pragma warning restore CS1591
+            /// <summary>Read &apos;key&apos; as an events table column, not a property.</summary>
+            [QueryParameter("is_column")]
+            public bool? IsColumn { get; set; }
+            /// <summary>The property to list values for.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("key")]
+            public string? Key { get; set; }
+#nullable restore
+#else
+            [QueryParameter("key")]
+            public string Key { get; set; }
+#endif
+            /// <summary>Only return values that contain this text, ignoring case.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("value")]
+            public string? Value { get; set; }
+#nullable restore
+#else
+            [QueryParameter("value")]
+            public string Value { get; set; }
+#endif
         }
     }
 }

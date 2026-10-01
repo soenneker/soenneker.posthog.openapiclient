@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Documents;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Playground;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Repositories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sandbox;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Settings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources;
@@ -34,6 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Playground.PlaygroundRequestBuilder Playground
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Playground.PlaygroundRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The repositories property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Repositories.RepositoriesRequestBuilder Repositories
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Repositories.RepositoriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The sandbox property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sandbox.SandboxRequestBuilder Sandbox

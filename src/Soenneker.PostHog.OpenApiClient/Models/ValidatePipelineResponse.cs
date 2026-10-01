@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Fraction of the training population that performed the target event.</summary>
         public double? BaseRate { get; set; }
-        /// <summary>False when any warning has severity &apos;error&apos;. Creation does not enforce it, but a definition with &apos;population_too_large&apos; or &apos;horizon_exceeds_lookback&apos; cannot train.</summary>
+        /// <summary>False when any warning has severity &apos;error&apos;. Creation does not enforce it, but a definition with an &apos;error&apos; &apos;population_too_large&apos; or &apos;horizon_exceeds_lookback&apos; cannot train or score.</summary>
         public bool? CanProceed { get; set; }
         /// <summary>Why validation did not run, or null when it did. A query error in the definition itself is passed through; any other failure is a generic message and the detail is logged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

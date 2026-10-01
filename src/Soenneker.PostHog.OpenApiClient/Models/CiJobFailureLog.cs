@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLogCiEngine? CiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLogCiEngine CiEngine { get; set; }
+#endif
         /// <summary>Job conclusion (&apos;failure&apos;, &apos;timed_out&apos;, ...). Only failed jobs have logs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Conclusion { get; set; }
 #endif
-        /// <summary>GitHub Actions job id of the failed job.</summary>
+        /// <summary>Integer job id of the failed job; unique only together with ci_engine.</summary>
         public int? JobId { get; set; }
         /// <summary>Number of lines returned for this job (after the per-job cap).</summary>
         public int? LineCount { get; set; }
@@ -74,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "branch", n => { Branch = n.GetStringValue(); } },
+                { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLogCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLogCiEngine.CreateFromDiscriminatorValue); } },
                 { "conclusion", n => { Conclusion = n.GetStringValue(); } },
                 { "job_id", n => { JobId = n.GetIntValue(); } },
                 { "line_count", n => { LineCount = n.GetIntValue(); } },
@@ -91,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("branch", Branch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLogCiEngine>("ci_engine", CiEngine);
             writer.WriteStringValue("conclusion", Conclusion);
             writer.WriteIntValue("job_id", JobId);
             writer.WriteIntValue("line_count", LineCount);

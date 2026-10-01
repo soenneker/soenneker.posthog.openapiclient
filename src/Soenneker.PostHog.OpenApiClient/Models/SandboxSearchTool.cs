@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Business knowledge tool the agent called.* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window
+    /// Business knowledge tool the agent called.* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window* `business-knowledge-repositories-search` - Repository search* `business-knowledge-repositories-file-retrieve` - Repository file
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SandboxSearchTool : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window</summary>
+        /// <summary>* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window* `business-knowledge-repositories-search` - Repository search* `business-knowledge-repositories-file-retrieve` - Repository file</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxToolNameEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool"/> and sets the default values.

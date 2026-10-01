@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Available_reviewers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_you;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Read_state;
@@ -34,6 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder BulkState
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The for_you property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_you.For_youRequestBuilder For_you
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_you.For_youRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pr_ci_statuses property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses.Pr_ci_statusesRequestBuilder Pr_ci_statuses

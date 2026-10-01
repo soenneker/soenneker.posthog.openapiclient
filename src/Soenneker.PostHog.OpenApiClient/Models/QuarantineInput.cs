@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The expires_at property</summary>
+        /// <summary>When the quarantine lifts itself, as an ISO 8601 datetime. Through MCP an omitted or later expiry becomes 30 days from now; anywhere else omitting it means no expiry.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
         /// <summary>Snapshot identifier to quarantine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Identifier { get; set; }
 #endif
+        /// <summary>Post the quarantine to the Slack channel of the team that owns the story, naming the user who quarantined it. Only Storybook snapshots have an owning team. Best effort: skipped when the story has no owning team or the project has no Slack integration.</summary>
+        public bool? NotifyOwners { get; set; }
         /// <summary>Why this snapshot is being quarantined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,6 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public QuarantineInput()
         {
             AdditionalData = new Dictionary<string, object>();
+            NotifyOwners = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -61,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
+                { "notify_owners", n => { NotifyOwners = n.GetBoolValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "source_run_id", n => { SourceRunId = n.GetGuidValue(); } },
             };
@@ -74,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("identifier", Identifier);
+            writer.WriteBoolValue("notify_owners", NotifyOwners);
             writer.WriteStringValue("reason", Reason);
             writer.WriteGuidValue("source_run_id", SourceRunId);
             writer.WriteAdditionalData(AdditionalData);

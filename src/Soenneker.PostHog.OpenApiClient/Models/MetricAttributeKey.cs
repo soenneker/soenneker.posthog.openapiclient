@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Number of distinct values for this attribute in recent series metadata.</summary>
+        /// <summary>Number of distinct values for this attribute in recent data.</summary>
         public int? ValueCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricAttributeKey"/> and sets the default values.

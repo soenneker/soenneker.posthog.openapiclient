@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IncludeSparkline { get; set; }
         /// <summary>Error tracking issue ID.</summary>
         public Guid? IssueId { get; set; }
-        /// <summary>Volume buckets. Maximum 200.</summary>
+        /// <summary>Integer count of equal-width time buckets across dateRange, from 0 to 200. Not a time unit: &apos;hour&apos;, &apos;day&apos;, and &apos;week&apos; are invalid. Example: 7 with a 7-day dateRange gives daily buckets. Defaults to 0, or to 12 when includeSparkline is true.</summary>
         public int? VolumeResolution { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequest"/> and sets the default values.

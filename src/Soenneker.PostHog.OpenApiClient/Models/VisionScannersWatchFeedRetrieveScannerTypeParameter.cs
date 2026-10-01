@@ -24,5 +24,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Summarizer,
         #pragma warning restore CS1591
+        [EnumMember(Value = "experiment")]
+        #pragma warning disable CS1591
+        Experiment,
+        #pragma warning restore CS1591
     }
 }

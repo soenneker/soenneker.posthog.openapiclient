@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? FailedMetrics { get; private set; }
         /// <summary>Unique identifier for this recalculation job</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Map of metric_uuid to error details</summary>
+        /// <summary>Terminal failure per metric_uuid: {step, message, error_type, retriable, timestamp}. retriable is true when a transient error exhausted its attempts, so a heal_latest_run or manual_retry can succeed; false when the metric config, the data, or a resource limit must change first</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRunMetricErrors? MetricErrors { get; private set; }

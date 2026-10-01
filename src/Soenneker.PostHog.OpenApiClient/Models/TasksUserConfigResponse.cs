@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Your personal instructions, which PostHog cloud agents read in Tasks runs you start, after the project instructions. Anyone who continues a task you started can see them. Empty when unset.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentInstructions { get; set; }
+#nullable restore
+#else
+        public string AgentInstructions { get; set; }
+#endif
         /// <summary>The requesting user&apos;s per-project default AI run triple; all fields null when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "agent_instructions", n => { AgentInstructions = n.GetStringValue(); } },
                 { "ai_run_preferences", n => { AiRunPreferences = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences>(global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences.CreateFromDiscriminatorValue); } },
                 { "resolved_ai_run_defaults", n => { ResolvedAiRunDefaults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults>(global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults.CreateFromDiscriminatorValue); } },
             };
@@ -67,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("agent_instructions", AgentInstructions);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences>("ai_run_preferences", AiRunPreferences);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults>("resolved_ai_run_defaults", ResolvedAiRunDefaults);
             writer.WriteAdditionalData(AdditionalData);

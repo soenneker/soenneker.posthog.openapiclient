@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ite
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReposRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github/{installationId}/repos{?limit*,offset*,search*}", pathParameters)
+        public ReposRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github/{installationId}/repos{?compact*,limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ite
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReposRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github/{installationId}/repos{?limit*,offset*,search*}", rawUrl)
+        public ReposRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github/{installationId}/repos{?compact*,limit*,offset*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -91,6 +91,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ite
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ReposRequestBuilderGetQueryParameters 
         {
+            /// <summary>When true, return only id, name, and full_name for each repository. Use it to list large rosters in fewer, smaller pages.</summary>
+            [QueryParameter("compact")]
+            public bool? Compact { get; set; }
             /// <summary>Maximum number of repositories to return per request (max 500).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

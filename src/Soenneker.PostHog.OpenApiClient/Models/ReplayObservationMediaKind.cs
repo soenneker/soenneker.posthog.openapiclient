@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// `thumbnail` for the single frame that illustrates the observation, `clip` for a short video.* `thumbnail` - Thumbnail* `clip` - Clip
+    /// `thumbnail` for the single frame that illustrates the observation, `chapter` for the frame of one summary chapter, `clip` for a short video.* `thumbnail` - Thumbnail* `clip` - Clip* `chapter` - Chapter
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReplayObservationMediaKind : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `thumbnail` - Thumbnail* `clip` - Clip</summary>
+        /// <summary>* `thumbnail` - Thumbnail* `clip` - Clip* `chapter` - Chapter</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKindEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind"/> and sets the default values.

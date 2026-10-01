@@ -16,6 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether more repositories are available beyond this page.</summary>
         public bool? HasMore { get; set; }
+        /// <summary>The offset to pass to get the next page, or null when this page is the last one.</summary>
+        public int? NextOffset { get; set; }
         /// <summary>The repositories property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,6 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
+                { "next_offset", n => { NextOffset = n.GetIntValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };
@@ -64,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("has_more", HasMore);
+            writer.WriteIntValue("next_offset", NextOffset);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>("repositories", Repositories);
             writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);

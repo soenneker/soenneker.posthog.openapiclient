@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.ModelsRequests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pinned;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pull_request_titles;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repositories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness;
@@ -54,6 +55,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pinned.PinnedRequestBuilder Pinned
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pinned.PinnedRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pull_request_titles property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pull_request_titles.Pull_request_titlesRequestBuilder Pull_request_titles
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pull_request_titles.Pull_request_titlesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repo_routing_rules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_rules.Repo_routing_rulesRequestBuilder Repo_routing_rules

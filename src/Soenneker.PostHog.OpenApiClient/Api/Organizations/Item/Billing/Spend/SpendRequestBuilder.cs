@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend.Timeseries;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SpendRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The export property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend.Export.ExportRequestBuilder Export
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend.Export.ExportRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The timeseries property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Spend.Timeseries.TimeseriesRequestBuilder Timeseries
         {

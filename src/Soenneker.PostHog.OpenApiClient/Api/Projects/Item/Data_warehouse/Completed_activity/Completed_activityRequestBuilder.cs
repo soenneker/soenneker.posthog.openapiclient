@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Compl
             /// <summary>Rows to skip, for pagination. Defaults to 0.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Which outcome to return: &apos;completed&apos; or &apos;failed&apos;. Defaults to &apos;completed&apos;.* `completed` - completed* `failed` - failed</summary>
+            /// <summary>Which outcome to return: &apos;completed&apos;, &apos;failed&apos;, or &apos;all&apos; for every run that finished either way. Defaults to &apos;completed&apos;. Running jobs come from `running_activity` instead.* `completed` - completed* `failed` - failed* `all` - all</summary>
             [QueryParameter("outcome")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseCompletedActivityRetrieveOutcomeParameter? Outcome { get; set; }
         }

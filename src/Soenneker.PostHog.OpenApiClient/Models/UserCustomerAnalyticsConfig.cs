@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class UserCustomerAnalyticsConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Personal order, visibility, and default for account tabs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigAccountDetailTabs? AccountDetailTabs { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigAccountDetailTabs AccountDetailTabs { get; private set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Account properties pinned in sidebar display order.</summary>
@@ -55,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_detail_tabs", n => { AccountDetailTabs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigAccountDetailTabs>(global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigAccountDetailTabs.CreateFromDiscriminatorValue); } },
                 { "pinned_properties", n => { PinnedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "task_digest", n => { TaskDigest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigTaskDigest>(global::Soenneker.PostHog.OpenApiClient.Models.UserCustomerAnalyticsConfigTaskDigest.CreateFromDiscriminatorValue); } },
             };

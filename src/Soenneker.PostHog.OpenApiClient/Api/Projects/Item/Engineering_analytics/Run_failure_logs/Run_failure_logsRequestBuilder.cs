@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Run_failure_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/run_failure_logs?run_id={run_id}{&repo*,source_id*}", pathParameters)
+        public Run_failure_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/run_failure_logs?run_id={run_id}{&ci_engine*,repo*,source_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Run_failure_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/run_failure_logs?run_id={run_id}{&repo*,source_id*}", rawUrl)
+        public Run_failure_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/run_failure_logs?run_id={run_id}{&ci_engine*,repo*,source_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -85,6 +85,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Run_failure_logsRequestBuilderGetQueryParameters 
         {
+            /// <summary>CI engine. Required when run_id exists in both engines.</summary>
+            [QueryParameter("ci_engine")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.EngineeringAnalyticsRunFailureLogsCiEngineParameter? CiEngine { get; set; }
             /// <summary>&apos;owner/name&apos; repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source&apos;s first repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

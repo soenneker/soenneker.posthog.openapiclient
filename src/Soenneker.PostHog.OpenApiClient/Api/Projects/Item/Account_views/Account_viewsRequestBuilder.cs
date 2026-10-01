@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_views
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Create a private account view
+        /// Create a personal account view
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountView"/></returns>
         /// <param name="body">The request body</param>
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Account_views
             return requestInfo;
         }
         /// <summary>
-        /// Create a private account view
+        /// Create a personal account view
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

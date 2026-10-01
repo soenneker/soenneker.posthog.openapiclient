@@ -26,6 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? FirstSeen { get; set; }
         /// <summary>When the newest failing run in the group started.</summary>
         public DateTimeOffset? LastSeen { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine? LatestCiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine LatestCiEngine { get; set; }
+#endif
         /// <summary>Run id of the newest failing run: the drill-down anchor.</summary>
         public int? LatestRunId { get; set; }
         /// <summary>Repository the failures occurred in.</summary>
@@ -74,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "failed_job", n => { FailedJob = n.GetStringValue(); } },
                 { "first_seen", n => { FirstSeen = n.GetDateTimeOffsetValue(); } },
                 { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
+                { "latest_ci_engine", n => { LatestCiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine.CreateFromDiscriminatorValue); } },
                 { "latest_run_id", n => { LatestRunId = n.GetIntValue(); } },
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo>(global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo.CreateFromDiscriminatorValue); } },
                 { "run_count", n => { RunCount = n.GetIntValue(); } },
@@ -90,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("failed_job", FailedJob);
             writer.WriteDateTimeOffsetValue("first_seen", FirstSeen);
             writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine>("latest_ci_engine", LatestCiEngine);
             writer.WriteIntValue("latest_run_id", LatestRunId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo>("repo", Repo);
             writer.WriteIntValue("run_count", RunCount);

@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerConfig ScannerConfig { get; set; }
 #endif
-        /// <summary>The scanner type the draft picked for the goal.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
+        /// <summary>The scanner type the draft picked for the goal.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType? ScannerType { get; set; }

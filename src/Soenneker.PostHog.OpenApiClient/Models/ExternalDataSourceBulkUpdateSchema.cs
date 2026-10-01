@@ -35,6 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Days between scheduled full refreshes, from 1 to 90, or null for none. A full refresh wipes the table and re-imports every row. Re-imported rows count toward usage, and workflows and destinations that run on new rows of the table run again for every row. Incremental, append, and xmin syncs only, and never shorter than the sync frequency.</summary>
         public int? FullRefreshIntervalDays { get; set; }
+        /// <summary>UTC time of day (HH:MM:SS) that scheduled full refreshes are due, for example outside working hours. The refresh runs on the first scheduled sync from up to an hour before this time, so on a table that syncs every few hours it can run hours later. Each interval counts from the slot of this time that the last refresh or save served, where a slot less than an hour away counts as served. Saving a new time restarts the clock, so the first refresh after a save can come up to a day before a full interval has passed. Null counts the interval from when it was saved or from the last full resync. Cleared when full_refresh_interval_days is null.</summary>
+        public Time? FullRefreshTimeOfDay { get; set; }
         /// <summary>Schema identifier to update.</summary>
         public Guid? Id { get; set; }
         /// <summary>Incremental cursor field for incremental or append syncs.</summary>
@@ -118,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode.CreateFromDiscriminatorValue); } },
                 { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "full_refresh_interval_days", n => { FullRefreshIntervalDays = n.GetIntValue(); } },
+                { "full_refresh_time_of_day", n => { FullRefreshTimeOfDay = n.GetTimeValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetStringValue(); } },
@@ -140,6 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>("cdc_table_mode", CdcTableMode);
             writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
             writer.WriteIntValue("full_refresh_interval_days", FullRefreshIntervalDays);
+            writer.WriteTimeValue("full_refresh_time_of_day", FullRefreshTimeOfDay);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteStringValue("incremental_field_type", IncrementalFieldType);

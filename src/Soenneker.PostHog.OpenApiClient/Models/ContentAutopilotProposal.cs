@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Content brief the draft was written from.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief? Brief { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief Brief { get; set; }
+#endif
         /// <summary>Structured package that accompanies the exported Markdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Run that generated this proposal.</summary>
         public Guid? RunId { get; private set; }
+        /// <summary>Factual claims in the draft and the site pages that support them.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry>? SourceLedger { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry> SourceLedger { get; set; }
+#endif
         /// <summary>Primary query or topic targeted by this proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,6 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "brief", n => { Brief = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief.CreateFromDiscriminatorValue); } },
                 { "content_package", n => { ContentPackage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -136,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "proposal_type", n => { ProposalType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalProposalType>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalProposalType.CreateFromDiscriminatorValue); } },
                 { "proposed_markdown", n => { ProposedMarkdown = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
+                { "source_ledger", n => { SourceLedger = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "target_query", n => { TargetQuery = n.GetStringValue(); } },
                 { "target_url", n => { TargetUrl = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -150,8 +168,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief>("brief", Brief);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage>("content_package", ContentPackage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>("evidence", Evidence);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry>("source_ledger", SourceLedger);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalValidationReport>("validation_report", ValidationReport);
             writer.WriteAdditionalData(AdditionalData);
         }

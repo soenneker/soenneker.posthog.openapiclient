@@ -23,9 +23,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>A built-in AI event property. Creates its definition if missing. Provide this or property_definition_id.* `$ai_trace_id` - $ai_trace_id* `$ai_session_id` - $ai_session_id* `$ai_parent_id` - $ai_parent_id* `$ai_span_id` - $ai_span_id* `$ai_span_type` - $ai_span_type* `$ai_generation_id` - $ai_generation_id* `$ai_experiment_id` - $ai_experiment_id* `$ai_span_name` - $ai_span_name* `$ai_trace_name` - $ai_trace_name* `$ai_prompt_name` - $ai_prompt_name* `$ai_model` - $ai_model* `$ai_provider` - $ai_provider* `$ai_framework` - $ai_framework* `$ai_total_tokens` - $ai_total_tokens* `$ai_input_tokens` - $ai_input_tokens* `$ai_output_tokens` - $ai_output_tokens* `$ai_text_input_tokens` - $ai_text_input_tokens* `$ai_text_output_tokens` - $ai_text_output_tokens* `$ai_image_input_tokens` - $ai_image_input_tokens* `$ai_image_output_tokens` - $ai_image_output_tokens* `$ai_audio_input_tokens` - $ai_audio_input_tokens* `$ai_audio_output_tokens` - $ai_audio_output_tokens* `$ai_video_input_tokens` - $ai_video_input_tokens* `$ai_video_output_tokens` - $ai_video_output_tokens* `$ai_reasoning_tokens` - $ai_reasoning_tokens* `$ai_cache_read_input_tokens` - $ai_cache_read_input_tokens* `$ai_cache_creation_input_tokens` - $ai_cache_creation_input_tokens* `$ai_web_search_count` - $ai_web_search_count* `$ai_input_cost_usd` - $ai_input_cost_usd* `$ai_output_cost_usd` - $ai_output_cost_usd* `$ai_total_cost_usd` - $ai_total_cost_usd* `$ai_request_cost_usd` - $ai_request_cost_usd* `$ai_web_search_cost_usd` - $ai_web_search_cost_usd* `$ai_audio_cost_usd` - $ai_audio_cost_usd* `$ai_image_cost_usd` - $ai_image_cost_usd* `$ai_video_cost_usd` - $ai_video_cost_usd* `$ai_latency` - $ai_latency* `$ai_time_to_first_token` - $ai_time_to_first_token* `$ai_is_error` - $ai_is_error* `$ai_error` - $ai_error* `$ai_error_type` - $ai_error_type* `$ai_error_normalized` - $ai_error_normalized* `$ai_input` - $ai_input* `$ai_output` - $ai_output* `$ai_output_choices` - $ai_output_choices* `$ai_input_state` - $ai_input_state* `$ai_output_state` - $ai_output_state* `$ai_tools` - $ai_tools</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAiProperty? AiProperty { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAiProperty AiProperty { get; set; }
+#endif
         /// <summary>The organization member UUID to set an override for.</summary>
         public Guid? OrganizationMember { get; set; }
-        /// <summary>The property definition ID this rule applies to.</summary>
+        /// <summary>The existing property definition ID. Provide this or ai_property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PropertyDefinitionId { get; set; }
@@ -61,6 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "access_level", n => { AccessLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAccessLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAccessLevel.CreateFromDiscriminatorValue); } },
+                { "ai_property", n => { AiProperty = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAiProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAiProperty.CreateFromDiscriminatorValue); } },
                 { "organization_member", n => { OrganizationMember = n.GetGuidValue(); } },
                 { "property_definition_id", n => { PropertyDefinitionId = n.GetStringValue(); } },
                 { "role", n => { Role = n.GetGuidValue(); } },
@@ -74,6 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAccessLevel>("access_level", AccessLevel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlUpdateAiProperty>("ai_property", AiProperty);
             writer.WriteGuidValue("organization_member", OrganizationMember);
             writer.WriteStringValue("property_definition_id", PropertyDefinitionId);
             writer.WriteGuidValue("role", Role);

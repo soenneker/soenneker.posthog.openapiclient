@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window</summary>
+    /// <summary>* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window* `business-knowledge-repositories-search` - Repository search* `business-knowledge-repositories-file-retrieve` - Repository file</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SandboxToolNameEnum
     {
@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "business-knowledge-document-window-retrieve")]
         #pragma warning disable CS1591
         BusinessKnowledgeDocumentWindowRetrieve,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "business-knowledge-repositories-search")]
+        #pragma warning disable CS1591
+        BusinessKnowledgeRepositoriesSearch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "business-knowledge-repositories-file-retrieve")]
+        #pragma warning disable CS1591
+        BusinessKnowledgeRepositoriesFileRetrieve,
         #pragma warning restore CS1591
     }
 }

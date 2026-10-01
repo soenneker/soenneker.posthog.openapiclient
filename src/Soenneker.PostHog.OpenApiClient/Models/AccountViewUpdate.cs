@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Version returned by the last read.</summary>
         public int? Version { get; set; }
-        /// <summary>Views can only be private.* `private` - Personal</summary>
+        /// <summary>New visibility. Only the creator or a project admin can change it.* `private` - Personal* `team` - Team</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility? Visibility { get; set; }

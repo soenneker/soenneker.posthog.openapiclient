@@ -52,6 +52,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Rows the run wrote. Zero while it is still going.</summary>
         public int? Rows { get; set; }
+        /// <summary>Id of the source the run belongs to, for linking to it. Null for model runs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceId { get; set; }
+#nullable restore
+#else
+        public string SourceId { get; set; }
+#endif
         /// <summary>Run status. One of: Running, Completed, Failed, BillingLimitReached, BillingLimitTooLow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -108,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin", n => { Origin = n.GetStringValue(); } },
                 { "rows", n => { Rows = n.GetIntValue(); } },
+                { "source_id", n => { SourceId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "workflow_run_id", n => { WorkflowRunId = n.GetStringValue(); } },
@@ -127,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("origin", Origin);
             writer.WriteIntValue("rows", Rows);
+            writer.WriteStringValue("source_id", SourceId);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("workflow_run_id", WorkflowRunId);

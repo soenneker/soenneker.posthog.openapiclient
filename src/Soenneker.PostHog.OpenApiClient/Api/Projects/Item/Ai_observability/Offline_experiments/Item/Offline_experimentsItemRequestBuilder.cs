@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Complete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Fail;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Items;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Result_cells;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Results;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Scorer_summaries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Upload;
@@ -37,6 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Items.ItemsRequestBuilder Items
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Items.ItemsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The result_cells property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Result_cells.Result_cellsRequestBuilder Result_cells
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Result_cells.Result_cellsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The results property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Offline_experiments.Item.Results.ResultsRequestBuilder Results

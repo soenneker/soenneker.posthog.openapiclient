@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `private` - Personal</summary>
+    /// <summary>* `open` - OPEN* `done` - DONE</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum AccountViewUpdateVisibilityEnum
+    public enum BriefingItemStateEnum
     {
-        [EnumMember(Value = "private")]
+        [EnumMember(Value = "open")]
         #pragma warning disable CS1591
-        PrivateValue,
+        Open,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "done")]
+        #pragma warning disable CS1591
+        Done,
         #pragma warning restore CS1591
     }
 }

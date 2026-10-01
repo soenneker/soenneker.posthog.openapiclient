@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Attention_pull_requests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction_detail;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_workflow_costs;
@@ -50,6 +51,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Engineering_analyticsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The attention_pull_requests property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Attention_pull_requests.Attention_pull_requestsRequestBuilder Attention_pull_requests
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Attention_pull_requests.Attention_pull_requestsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The author_friction property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction.Author_frictionRequestBuilder Author_friction
         {

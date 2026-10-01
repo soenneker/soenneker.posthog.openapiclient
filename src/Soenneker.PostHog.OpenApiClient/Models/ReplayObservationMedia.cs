@@ -27,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Id of this media entry.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>`thumbnail` for the single frame that illustrates the observation, `clip` for a short video.* `thumbnail` - Thumbnail* `clip` - Clip</summary>
+        /// <summary>`thumbnail` for the single frame that illustrates the observation, `chapter` for the frame of one summary chapter, `clip` for a short video.* `thumbnail` - Thumbnail* `clip` - Clip* `chapter` - Chapter</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind? Kind { get; private set; }
@@ -35,6 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind Kind { get; private set; }
 #endif
+        /// <summary>Order among media of the same kind. For a `chapter` frame, the index into `model_output.chapters`.</summary>
+        public int? Position { get; private set; }
         /// <summary>Where a clip ends in the analysis video, in milliseconds. Null for thumbnails.</summary>
         public int? VideoEndMs { get; private set; }
         /// <summary>Where this media starts in the analysis video, in milliseconds.</summary>
@@ -68,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind.CreateFromDiscriminatorValue); } },
+                { "position", n => { Position = n.GetIntValue(); } },
                 { "video_end_ms", n => { VideoEndMs = n.GetIntValue(); } },
                 { "video_start_ms", n => { VideoStartMs = n.GetIntValue(); } },
             };

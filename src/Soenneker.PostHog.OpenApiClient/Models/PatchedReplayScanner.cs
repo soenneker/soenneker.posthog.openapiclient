@@ -75,6 +75,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes FeedbackThemes { get; private set; }
 #endif
+        /// <summary>The goal an AI draft was built from, in the creator&apos;s own words, so the scanner keeps what it was meant to find. Set on create only and ignored on update.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Goal { get; set; }
+#nullable restore
+#else
+        public string Goal { get; set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Watermark for the scanner&apos;s last scheduled fire. Mirrors Temporal schedule state for recovery.</summary>
@@ -141,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerConfig ScannerConfig { get; set; }
 #endif
-        /// <summary>What the scanner does: monitor, classifier, scorer, or summarizer.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
+        /// <summary>What the scanner does: monitor, classifier, scorer, or summarizer.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerType? ScannerType { get; set; }
@@ -211,6 +219,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "estimated_monthly_observations", n => { EstimatedMonthlyObservations = n.GetIntValue(); } },
                 { "experiment_targeting", n => { ExperimentTargeting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting.CreateFromDiscriminatorValue); } },
                 { "feedback_themes", n => { FeedbackThemes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes>(global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes.CreateFromDiscriminatorValue); } },
+                { "goal", n => { Goal = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_swept_at", n => { LastSweptAt = n.GetDateTimeOffsetValue(); } },
                 { "limit_reached", n => { LimitReached = n.GetBoolValue(); } },
@@ -244,6 +253,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("emits_signals", EmitsSignals);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting>("experiment_targeting", ExperimentTargeting);
+            writer.WriteStringValue("goal", Goal);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerModel>("model", Model);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerProvider>("provider", Provider);

@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Draft;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Refresh;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_conten
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Web_analytics_content_autopilot_opportunitiesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The draft property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Draft.DraftRequestBuilder Draft
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Draft.DraftRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The refresh property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_content_autopilot_opportunities.Refresh.RefreshRequestBuilder Refresh
         {

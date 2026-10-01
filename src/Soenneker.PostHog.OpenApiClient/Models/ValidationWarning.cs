@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Machine-readable warning code. &apos;population_too_large&apos; and &apos;horizon_exceeds_lookback&apos; mean a training run would fail: fix the definition before creating. &apos;low_volume&apos;, &apos;low_positives&apos; and &apos;low_negatives&apos; mean the data is too thin for a reliable model (severity &apos;error&apos;, advisory). &apos;moderate_volume&apos;, &apos;mostly_anonymous_population&apos;, &apos;extreme_imbalance&apos; and &apos;near_universal&apos; are severity &apos;warning&apos;.</summary>
+        /// <summary>Machine-readable warning code. &apos;horizon_exceeds_lookback&apos;, and &apos;population_too_large&apos; with severity &apos;error&apos;, mean a run would fail: fix the definition before creating. &apos;population_too_large&apos; with severity &apos;info&apos; means training uses a sample of the population. &apos;low_volume&apos;, &apos;low_positives&apos; and &apos;low_negatives&apos; mean the data is too thin for a reliable model (severity &apos;error&apos;, advisory). &apos;moderate_volume&apos;, &apos;mostly_anonymous_population&apos;, &apos;extreme_imbalance&apos; and &apos;near_universal&apos; are severity &apos;warning&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get; set; }

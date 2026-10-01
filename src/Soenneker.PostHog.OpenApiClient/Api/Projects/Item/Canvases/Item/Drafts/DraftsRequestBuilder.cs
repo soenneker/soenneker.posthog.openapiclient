@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DraftsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/drafts{?limit*,offset*}", pathParameters)
+        public DraftsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/drafts", pathParameters)
         {
         }
         /// <summary>
@@ -30,26 +30,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DraftsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/drafts{?limit*,offset*}", rawUrl)
+        public DraftsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/drafts", rawUrl)
         {
         }
         /// <summary>
         /// The canvas&apos;s staged draft versions, newest first, each with its latest build status.A draft is a version that was built but never made the head. Preview onewith `source?version_id=`, then make it live with `promote`.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasDraftList"/></returns>
+        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraft&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasDraftList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts.DraftsRequestBuilder.DraftsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraft>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasDraftList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts.DraftsRequestBuilder.DraftsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraft>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasDraftList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasDraftList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraft>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraft.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
         /// <summary>
         /// The canvas&apos;s staged draft versions, newest first, each with its latest build status.A draft is a version that was built but never made the head. Preview onewith `source?version_id=`, then make it live with `promote`.
@@ -58,11 +59,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts.DraftsRequestBuilder.DraftsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts.DraftsRequestBuilder.DraftsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -78,19 +79,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts.DraftsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts.DraftsRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// The canvas&apos;s staged draft versions, newest first, each with its latest build status.A draft is a version that was built but never made the head. Preview onewith `source?version_id=`, then make it live with `promote`.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DraftsRequestBuilderGetQueryParameters 
-        {
-            /// <summary>Number of results to return per page.</summary>
-            [QueryParameter("limit")]
-            public int? Limit { get; set; }
-            /// <summary>The initial index from which to return the results.</summary>
-            [QueryParameter("offset")]
-            public int? Offset { get; set; }
         }
     }
 }

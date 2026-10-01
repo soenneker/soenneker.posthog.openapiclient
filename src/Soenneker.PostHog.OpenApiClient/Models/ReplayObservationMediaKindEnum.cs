@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `thumbnail` - Thumbnail* `clip` - Clip</summary>
+    /// <summary>* `thumbnail` - Thumbnail* `clip` - Clip* `chapter` - Chapter</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ReplayObservationMediaKindEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "clip")]
         #pragma warning disable CS1591
         Clip,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "chapter")]
+        #pragma warning disable CS1591
+        Chapter,
         #pragma warning restore CS1591
     }
 }

@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the most recent decisive failure started, or null.</summary>
         public DateTimeOffset? LastFailureAt { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthItemLatestCiEngine? LatestCiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthItemLatestCiEngine LatestCiEngine { get; set; }
+#endif
         /// <summary>The latest_run_attempt property</summary>
         public int? LatestRunAttempt { get; set; }
         /// <summary>Raw conclusion of the most recent completed run (&apos;success&apos;, &apos;cancelled&apos;, &apos;skipped&apos;, ...), so a real pass can be told from a non-failure non-success. Null when none completed.</summary>
@@ -117,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "estimated_cost_usd", n => { EstimatedCostUsd = n.GetDoubleValue(); } },
                 { "granularity", n => { Granularity = n.GetStringValue(); } },
                 { "last_failure_at", n => { LastFailureAt = n.GetDateTimeOffsetValue(); } },
+                { "latest_ci_engine", n => { LatestCiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthItemLatestCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthItemLatestCiEngine.CreateFromDiscriminatorValue); } },
                 { "latest_run_attempt", n => { LatestRunAttempt = n.GetIntValue(); } },
                 { "latest_run_conclusion", n => { LatestRunConclusion = n.GetStringValue(); } },
                 { "latest_run_failed", n => { LatestRunFailed = n.GetBoolValue(); } },
@@ -147,6 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteStringValue("granularity", Granularity);
             writer.WriteDateTimeOffsetValue("last_failure_at", LastFailureAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthItemLatestCiEngine>("latest_ci_engine", LatestCiEngine);
             writer.WriteIntValue("latest_run_attempt", LatestRunAttempt);
             writer.WriteStringValue("latest_run_conclusion", LatestRunConclusion);
             writer.WriteBoolValue("latest_run_failed", LatestRunFailed);

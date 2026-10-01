@@ -87,6 +87,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty StructuredOutputSchema { get; set; }
 #endif
+        /// <summary>Optional id of the canonical scout suggestion this request turns on. It records that the scout came from that suggestion. An id this project&apos;s batch does not hold is ignored.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SuggestionId { get; set; }
+#nullable restore
+#else
+        public string SuggestionId { get; set; }
+#endif
         /// <summary>Free-form labels for grouping the fleet, e.g. `[&quot;revenue&quot;, &quot;on-call&quot;]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
-        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
+        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? WriteScopes { get; set; }
@@ -140,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
+                { "suggestion_id", n => { SuggestionId = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "write_scopes", n => { WriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -163,6 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("run_cron_schedule", RunCronSchedule);
             writer.WriteIntValue("run_interval_minutes", RunIntervalMinutes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);
+            writer.WriteStringValue("suggestion_id", SuggestionId);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteCollectionOfPrimitiveValues<string>("write_scopes", WriteScopes);
             writer.WriteAdditionalData(AdditionalData);

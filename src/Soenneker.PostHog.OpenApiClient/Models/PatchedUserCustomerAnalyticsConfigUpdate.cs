@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class PatchedUserCustomerAnalyticsConfigUpdate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Complete personal account tab configuration. Omit to keep it unchanged.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs? AccountDetailTabs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs AccountDetailTabs { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Complete ordered list of account properties to pin. Omit to keep the current pins; pass an empty list to clear them.</summary>
@@ -55,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_detail_tabs", n => { AccountDetailTabs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs.CreateFromDiscriminatorValue); } },
                 { "pinned_properties", n => { PinnedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "task_digest", n => { TaskDigest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest.CreateFromDiscriminatorValue); } },
             };
@@ -66,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs>("account_detail_tabs", AccountDetailTabs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>("pinned_properties", PinnedProperties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest>("task_digest", TaskDigest);
             writer.WriteAdditionalData(AdditionalData);

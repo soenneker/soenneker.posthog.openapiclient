@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivityPointCiEngine? CiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivityPointCiEngine CiEngine { get; set; }
+#endif
         /// <summary>Run conclusion (&apos;success&apos;, &apos;failure&apos;, &apos;timed_out&apos;, &apos;cancelled&apos;, &apos;skipped&apos;, ...), or null while still in progress.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -42,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Attributed pull request number, or 0 when unattributed.</summary>
         public int? PrNumber { get; set; }
-        /// <summary>GitHub Actions run id.</summary>
+        /// <summary>Integer run id; unique only together with ci_engine.</summary>
         public int? RunId { get; set; }
         /// <summary>When the run started. Never null on this endpoint: runs without a parseable start timestamp are excluded from the window (they can&apos;t be plotted on the chart&apos;s time axis).</summary>
         public DateTimeOffset? RunStartedAt { get; set; }
@@ -71,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivityPointCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivityPointCiEngine.CreateFromDiscriminatorValue); } },
                 { "conclusion", n => { Conclusion = n.GetStringValue(); } },
                 { "duration_seconds", n => { DurationSeconds = n.GetIntValue(); } },
                 { "head_branch", n => { HeadBranch = n.GetStringValue(); } },
@@ -87,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivityPointCiEngine>("ci_engine", CiEngine);
             writer.WriteStringValue("conclusion", Conclusion);
             writer.WriteIntValue("duration_seconds", DurationSeconds);
             writer.WriteStringValue("head_branch", HeadBranch);

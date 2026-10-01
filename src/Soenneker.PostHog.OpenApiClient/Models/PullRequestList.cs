@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Pull requests, newest first, capped at `limit`.</summary>
+        /// <summary>This page of pull requests, newest first, capped at `limit`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItem>? Items { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Maximum number of pull requests returned in `items`.</summary>
         public int? Limit { get; set; }
-        /// <summary>True when more pull requests match than the cap; `items` is the newest `limit` rows and the aggregate counts in ci_cards can exceed it.</summary>
+        /// <summary>True when more pull requests match after this page; call again with `offset` increased by `limit` to read them. The aggregate counts in ci_cards can exceed `items`.</summary>
         public bool? Truncated { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestList"/> and sets the default values.

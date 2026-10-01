@@ -47,6 +47,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> InternalLinks { get; set; }
 #endif
+        /// <summary>JSON-LD structured data to embed in the page, such as an FAQPage document.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? JsonLd { get; set; }
+#nullable restore
+#else
+        public string JsonLd { get; set; }
+#endif
+        /// <summary>Suggested llms.txt entry for the page.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LlmsTxtLine { get; set; }
+#nullable restore
+#else
+        public string LlmsTxtLine { get; set; }
+#endif
         /// <summary>URL slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,6 +116,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "file_path", n => { FilePath = n.GetStringValue(); } },
                 { "frontmatter", n => { Frontmatter = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotFrontmatterEntry>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotFrontmatterEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "internal_links", n => { InternalLinks = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "json_ld", n => { JsonLd = n.GetStringValue(); } },
+                { "llms_txt_line", n => { LlmsTxtLine = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "source_notes", n => { SourceNotes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -116,6 +134,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("file_path", FilePath);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotFrontmatterEntry>("frontmatter", Frontmatter);
             writer.WriteCollectionOfPrimitiveValues<string>("internal_links", InternalLinks);
+            writer.WriteStringValue("json_ld", JsonLd);
+            writer.WriteStringValue("llms_txt_line", LlmsTxtLine);
             writer.WriteStringValue("slug", Slug);
             writer.WriteCollectionOfPrimitiveValues<string>("source_notes", SourceNotes);
             writer.WriteStringValue("title", Title);

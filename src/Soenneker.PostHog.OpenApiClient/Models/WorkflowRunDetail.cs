@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailCiEngine? CiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailCiEngine CiEngine { get; set; }
+#endif
         /// <summary>Pull request whose merge produced this run&apos;s head commit, resolved through the merged pull request&apos;s merge commit and falling back to the commit subject&apos;s &apos;(#NNNN)&apos; suffix. Null when neither resolves. The only PR attribution a default-branch push has: read pr_number first and fall back to this.</summary>
         public int? CommitPrNumber { get; set; }
         /// <summary>Run conclusion (&apos;success&apos;, &apos;failure&apos;, &apos;timed_out&apos;, &apos;cancelled&apos;, &apos;skipped&apos;, &apos;action_required&apos;, ...), or null while still in progress.</summary>
@@ -42,10 +50,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string HeadSha { get; set; }
 #endif
-        /// <summary>GitHub Actions run id.</summary>
+        /// <summary>Integer run id; unique only together with ci_engine.</summary>
         public int? Id { get; set; }
         /// <summary>True when a merge queue pushed this run to gate pr_number, rather than the author pushing it. Count it when measuring CI; drop it when counting what the author did.</summary>
         public bool? IsMergeQueue { get; set; }
+        /// <summary>Source-native run id; use with ci_engine for identity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NativeRunId { get; set; }
+#nullable restore
+#else
+        public string NativeRunId { get; set; }
+#endif
+        /// <summary>Source-native workflow run id; use with ci_engine for identity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NativeWorkflowRunId { get; set; }
+#nullable restore
+#else
+        public string NativeWorkflowRunId { get; set; }
+#endif
         /// <summary>Pull request this run ran for, from the run&apos;s own-repo PR association; 0 when unattributed (a default-branch push, or a fork PR).</summary>
         public int? PrNumber { get; set; }
         /// <summary>Repository the run belongs to.</summary>
@@ -70,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the run was last updated (its finish time once completed), or null when unstarted.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>GitHub Actions workflow name.</summary>
+        /// <summary>CI workflow name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? WorkflowName { get; set; }
@@ -103,6 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailCiEngine.CreateFromDiscriminatorValue); } },
                 { "commit_pr_number", n => { CommitPrNumber = n.GetIntValue(); } },
                 { "conclusion", n => { Conclusion = n.GetStringValue(); } },
                 { "duration_seconds", n => { DurationSeconds = n.GetIntValue(); } },
@@ -110,6 +135,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_merge_queue", n => { IsMergeQueue = n.GetBoolValue(); } },
+                { "native_run_id", n => { NativeRunId = n.GetStringValue(); } },
+                { "native_workflow_run_id", n => { NativeWorkflowRunId = n.GetStringValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailRepo>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailRepo.CreateFromDiscriminatorValue); } },
                 { "run_attempt", n => { RunAttempt = n.GetIntValue(); } },
@@ -126,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailCiEngine>("ci_engine", CiEngine);
             writer.WriteIntValue("commit_pr_number", CommitPrNumber);
             writer.WriteStringValue("conclusion", Conclusion);
             writer.WriteIntValue("duration_seconds", DurationSeconds);
@@ -133,6 +161,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("head_sha", HeadSha);
             writer.WriteIntValue("id", Id);
             writer.WriteBoolValue("is_merge_queue", IsMergeQueue);
+            writer.WriteStringValue("native_run_id", NativeRunId);
+            writer.WriteStringValue("native_workflow_run_id", NativeWorkflowRunId);
             writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunDetailRepo>("repo", Repo);
             writer.WriteIntValue("run_attempt", RunAttempt);

@@ -8,15 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Views can only be private.* `private` - Personal
+    /// New visibility. Only the creator or a project admin can change it.* `private` - Personal* `team` - Team
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountViewUpdateVisibility : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `private` - Personal</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibilityEnum? Value { get; set; }
+        /// <summary>* `private` - Personal* `team` - Team</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibilityEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibilityEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibilityEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibilityEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibilityEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

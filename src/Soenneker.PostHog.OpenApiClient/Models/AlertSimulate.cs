@@ -38,6 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig DetectorConfig { get; set; }
 #endif
+        /// <summary>Skip this many completed insight intervals before simulation, matching live evaluation. Time-series Trends only; a positive delay requires check_ongoing_interval=false.</summary>
+        public int? EvaluationDelayIntervals { get; set; }
         /// <summary>Numeric insight ID or saved insight short ID to simulate the detector on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public AlertSimulate()
         {
             AdditionalData = new Dictionary<string, object>();
+            EvaluationDelayIntervals = 0;
             SeriesIndex = 0;
         }
         /// <summary>
@@ -77,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>(global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion.CreateFromDiscriminatorValue); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig.CreateFromDiscriminatorValue); } },
+                { "evaluation_delay_intervals", n => { EvaluationDelayIntervals = n.GetIntValue(); } },
                 { "insight", n => { Insight = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateInsight>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateInsight.CreateFromDiscriminatorValue); } },
                 { "series_index", n => { SeriesIndex = n.GetIntValue(); } },
             };
@@ -91,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>("config", Config);
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig>("detector_config", DetectorConfig);
+            writer.WriteIntValue("evaluation_delay_intervals", EvaluationDelayIntervals);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateInsight>("insight", Insight);
             writer.WriteIntValue("series_index", SeriesIndex);
             writer.WriteAdditionalData(AdditionalData);

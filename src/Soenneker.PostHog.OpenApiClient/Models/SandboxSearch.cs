@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Input { get; set; }
 #endif
-        /// <summary>Business knowledge tool the agent called.* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window</summary>
+        /// <summary>Business knowledge tool the agent called.* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window* `business-knowledge-repositories-search` - Repository search* `business-knowledge-repositories-file-retrieve` - Repository file</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool? Tool { get; set; }

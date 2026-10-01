@@ -16,11 +16,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Billable (self-hosted) minutes for this run attempt.</summary>
         public double? BillableMinutes { get; set; }
+        /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunCostCiEngine? CiEngine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunCostCiEngine CiEngine { get; set; }
+#endif
         /// <summary>Estimated dollar cost for this run attempt, or null when nothing was costable.</summary>
         public double? EstimatedCostUsd { get; set; }
         /// <summary>Re-run attempt number; 1 for the first attempt.</summary>
         public int? RunAttempt { get; set; }
-        /// <summary>GitHub Actions run id this cost is for.</summary>
+        /// <summary>Integer run id this cost is for; unique only together with ci_engine.</summary>
         public int? RunId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunCost"/> and sets the default values.
@@ -48,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "billable_minutes", n => { BillableMinutes = n.GetDoubleValue(); } },
+                { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunCostCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.RunCostCiEngine.CreateFromDiscriminatorValue); } },
                 { "estimated_cost_usd", n => { EstimatedCostUsd = n.GetDoubleValue(); } },
                 { "run_attempt", n => { RunAttempt = n.GetIntValue(); } },
                 { "run_id", n => { RunId = n.GetIntValue(); } },
@@ -61,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("billable_minutes", BillableMinutes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunCostCiEngine>("ci_engine", CiEngine);
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteIntValue("run_attempt", RunAttempt);
             writer.WriteIntValue("run_id", RunId);

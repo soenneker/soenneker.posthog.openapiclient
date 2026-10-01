@@ -57,6 +57,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild PublishedBuild { get; set; }
 #endif
+        /// <summary>URL of the sandbox document that renders the head source project in an iframe, served from the artifact origin. Load it by URL, not as srcdoc. Null when artifact delivery is unavailable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SandboxDocumentUrl { get; private set; }
+#nullable restore
+#else
+        public string SandboxDocumentUrl { get; private set; }
+#endif
         /// <summary>The head source project, present only when the canvas has no live build to render (the client-side fallback tier). Null otherwise, and always null for grid canvases.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "has_active_build", n => { HasActiveBuild = n.GetBoolValue(); } },
                 { "layout", n => { Layout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout.CreateFromDiscriminatorValue); } },
                 { "published_build", n => { PublishedBuild = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild.CreateFromDiscriminatorValue); } },
+                { "sandbox_document_url", n => { SandboxDocumentUrl = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject.CreateFromDiscriminatorValue); } },
             };
         }

@@ -147,6 +147,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_mentions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Terminal_ai;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analytics_config;
@@ -909,6 +910,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Terminal_ai.Terminal_aiRequestBuilder Terminal_ai
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Terminal_ai.Terminal_aiRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The today property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.TodayRequestBuilder Today
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.TodayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tracing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.TracingRequestBuilder Tracing
