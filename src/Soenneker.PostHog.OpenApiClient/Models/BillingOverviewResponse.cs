@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> AvailableProductFeatures { get; set; }
 #endif
+        /// <summary>Set when a provisioning partner pays for this organization and the organization has no Stripe customer of its own. Self-serve subscription and payment changes are refused while it is set. Null otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner? BillingManagedByPartner { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner BillingManagedByPartner { get; set; }
+#endif
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -260,6 +268,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "account_owner", n => { AccountOwner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner.CreateFromDiscriminatorValue); } },
                 { "amount_off_expires_at", n => { AmountOffExpiresAt = n.GetStringValue(); } },
                 { "available_product_features", n => { AvailableProductFeatures = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "billing_managed_by_partner", n => { BillingManagedByPartner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>(global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner.CreateFromDiscriminatorValue); } },
                 { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod.CreateFromDiscriminatorValue); } },
                 { "billing_plan", n => { BillingPlan = n.GetStringValue(); } },
                 { "current_total_amount_usd", n => { CurrentTotalAmountUsd = n.GetStringValue(); } },
@@ -300,6 +309,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner>("account_owner", AccountOwner);
             writer.WriteStringValue("amount_off_expires_at", AmountOffExpiresAt);
             writer.WriteCollectionOfPrimitiveValues<string>("available_product_features", AvailableProductFeatures);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>("billing_managed_by_partner", BillingManagedByPartner);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod>("billing_period", BillingPeriod);
             writer.WriteStringValue("billing_plan", BillingPlan);
             writer.WriteStringValue("current_total_amount_usd", CurrentTotalAmountUsd);

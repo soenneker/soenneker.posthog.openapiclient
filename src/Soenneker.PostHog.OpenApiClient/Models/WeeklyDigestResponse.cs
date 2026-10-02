@@ -46,6 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.Goal> Goals { get; set; }
 #endif
+        /// <summary>Period, filters and metric definitions behind the numbers, and a status that explains a zero.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata Metadata { get; set; }
+#endif
         /// <summary>Total pageviews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bounce_rate", n => { BounceRate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate.CreateFromDiscriminatorValue); } },
                 { "dashboard_url", n => { DashboardUrl = n.GetStringValue(); } },
                 { "goals", n => { Goals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Goal>(global::Soenneker.PostHog.OpenApiClient.Models.Goal.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata.CreateFromDiscriminatorValue); } },
                 { "pageviews", n => { Pageviews = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews.CreateFromDiscriminatorValue); } },
                 { "sessions", n => { Sessions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions.CreateFromDiscriminatorValue); } },
                 { "top_pages", n => { TopPages = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TopPage>(global::Soenneker.PostHog.OpenApiClient.Models.TopPage.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -133,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate>("bounce_rate", BounceRate);
             writer.WriteStringValue("dashboard_url", DashboardUrl);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Goal>("goals", Goals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata>("metadata", Metadata);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews>("pageviews", Pageviews);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions>("sessions", Sessions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TopPage>("top_pages", TopPages);

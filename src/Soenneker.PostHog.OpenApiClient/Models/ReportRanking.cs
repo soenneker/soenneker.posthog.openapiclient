@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Outcome head name to its probability divided by the head&apos;s training base rate, e.g. 2.7 means 2.7x as likely as the average report. A head without a saved base rate has no entry.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty? Lifts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty Lifts { get; set; }
+#endif
         /// <summary>Version of the serving manifest that chose the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "lifts", n => { Lifts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty.CreateFromDiscriminatorValue); } },
                 { "manifest_version", n => { ManifestVersion = n.GetStringValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "model_version", n => { ModelVersion = n.GetStringValue(); } },
@@ -105,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty>("lifts", Lifts);
             writer.WriteStringValue("manifest_version", ManifestVersion);
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("model_version", ModelVersion);

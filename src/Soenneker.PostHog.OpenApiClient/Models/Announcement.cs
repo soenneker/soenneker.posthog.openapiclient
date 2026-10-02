@@ -52,6 +52,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
+        /// <summary>Slack identity the message is posted under: &apos;bot&apos; posts as SupportHog, &apos;user&apos; posts under the Slack name and avatar of the person sending it (matched by their PostHog email).* `bot` - SupportHog* `user` - The person who created it</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementSendAs? SendAs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementSendAs SendAs { get; set; }
+#endif
+        /// <summary>Slack display name the message was posted under when send_as is &apos;user&apos;; empty otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderDisplayName { get; private set; }
+#nullable restore
+#else
+        public string SenderDisplayName { get; private set; }
+#endif
         /// <summary>When delivery finished (all channels resolved). Null while pending/sending.</summary>
         public DateTimeOffset? SentAt { get; private set; }
         /// <summary>Number of channels the message was successfully delivered to.</summary>
@@ -106,6 +122,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "failed_count", n => { FailedCount = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
+                { "send_as", n => { SendAs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementSendAs>(global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementSendAs.CreateFromDiscriminatorValue); } },
+                { "sender_display_name", n => { SenderDisplayName = n.GetStringValue(); } },
                 { "sent_at", n => { SentAt = n.GetDateTimeOffsetValue(); } },
                 { "sent_count", n => { SentCount = n.GetIntValue(); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
@@ -122,6 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("channels", Channels);
             writer.WriteStringValue("message", Message);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementSendAs>("send_as", SendAs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

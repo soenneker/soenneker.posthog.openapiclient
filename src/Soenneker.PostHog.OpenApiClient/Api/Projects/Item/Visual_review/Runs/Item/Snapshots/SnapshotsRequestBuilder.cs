@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SnapshotsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs/{id}/snapshots{?exclude_unchanged*,include_quarantined*,limit*,offset*,snapshot_id*}", pathParameters)
+        public SnapshotsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs/{id}/snapshots{?exclude_unchanged*,include_quarantined*,limit*,offset*,quarantined_only*,snapshot_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SnapshotsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs/{id}/snapshots{?exclude_unchanged*,include_quarantined*,limit*,offset*,snapshot_id*}", rawUrl)
+        public SnapshotsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs/{id}/snapshots{?exclude_unchanged*,include_quarantined*,limit*,offset*,quarantined_only*,snapshot_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -97,6 +97,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Whether to list only the snapshots whose identifier is currently quarantined. Defaults to false. When true, `include_quarantined` is ignored and quarantined snapshots are returned. Combine with `exclude_unchanged=false` to find a quarantined story that rendered `unchanged`, which is the snapshot to request a lift on merge for.</summary>
+            [QueryParameter("quarantined_only")]
+            public bool? QuarantinedOnly { get; set; }
             /// <summary>Return only the snapshot with this id, read from the `id` field of a snapshot in the run. Use it to fetch one snapshot without listing the whole run.</summary>
             [QueryParameter("snapshot_id")]
             public Guid? SnapshotId { get; set; }

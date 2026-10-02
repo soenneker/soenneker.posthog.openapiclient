@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,unread*,use_priority_preference*,view*}", pathParameters)
+        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,created_after*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,unread*,use_priority_preference*,view*}", pathParameters)
         {
         }
         /// <summary>
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,unread*,use_priority_preference*,view*}", rawUrl)
+        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,created_after*,has_implementation_pr*,include_all_statuses*,include_source_metadata*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,unread*,use_priority_preference*,view*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSignalReportListList"/></returns>
@@ -161,6 +161,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>Return the filtered total with an empty results page. Skips report ordering, serialization, and decorative metadata lookups. Defaults to false.</summary>
             [QueryParameter("count_only")]
             public bool? CountOnly { get; set; }
+            /// <summary>ISO 8601 datetime. Keeps reports created at or after this time.</summary>
+            [QueryParameter("created_after")]
+            public DateTimeOffset? CreatedAfter { get; set; }
             /// <summary>Filter reports by whether an implementation pull request is attached. &apos;true&apos; keeps only reports with a PR; &apos;false&apos; keeps only those without. Pair with count_only=true to return only the filtered total.</summary>
             [QueryParameter("has_implementation_pr")]
             public bool? HasImplementationPr { get; set; }
@@ -176,7 +179,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Comma-separated ordering clauses. Each clause is a field name optionally prefixed with &apos;-&apos; for descending. Allowed fields: status, is_suggested_reviewer, signal_count, total_weight, priority, created_at, updated_at, id. Defaults to &apos;-is_suggested_reviewer,status,-updated_at&apos;.</summary>
+            /// <summary>Comma-separated ordering clauses. Each clause is a field name optionally prefixed with &apos;-&apos; for descending. Allowed fields: status, is_suggested_reviewer, signal_count, total_weight, priority, created_at, updated_at, id, ranking_pr_merged, ranking_pr_created, ranking_action, ranking_open. Defaults to &apos;-is_suggested_reviewer,status,-updated_at&apos;. The ranking_* fields sort by the served ranking model&apos;s probability for that outcome head, with unscored reports last in either direction. They are staff only: other users get a 400.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("ordering")]

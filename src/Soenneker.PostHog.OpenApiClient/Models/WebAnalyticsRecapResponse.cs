@@ -55,6 +55,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.RecapHighlight> Highlights { get; set; }
 #endif
+        /// <summary>Period, filters and metric definitions behind the numbers, and a status that explains a zero.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponseMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponseMetadata Metadata { get; set; }
+#endif
         /// <summary>Total pageviews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -161,6 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dashboard_url", n => { DashboardUrl = n.GetStringValue(); } },
                 { "goals", n => { Goals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Goal>(global::Soenneker.PostHog.OpenApiClient.Models.Goal.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "highlights", n => { Highlights = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecapHighlight>(global::Soenneker.PostHog.OpenApiClient.Models.RecapHighlight.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponseMetadata.CreateFromDiscriminatorValue); } },
                 { "pageviews", n => { Pageviews = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponsePageviews>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponsePageviews.CreateFromDiscriminatorValue); } },
                 { "period_end", n => { PeriodEnd = n.GetDateValue(); } },
                 { "period_label", n => { PeriodLabel = n.GetStringValue(); } },
@@ -186,6 +195,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("dashboard_url", DashboardUrl);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Goal>("goals", Goals);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecapHighlight>("highlights", Highlights);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponseMetadata>("metadata", Metadata);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsRecapResponsePageviews>("pageviews", Pageviews);
             writer.WriteDateValue("period_end", PeriodEnd);
             writer.WriteStringValue("period_label", PeriodLabel);

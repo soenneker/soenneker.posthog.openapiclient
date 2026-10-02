@@ -41,6 +41,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RecommendedNext { get; set; }
 #endif
+        /// <summary>Short id of the report notebook you built for this run. Stored in the run summary only if the notebook exists in this project; an unknown id is dropped and does not fail the completion.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReportNotebookShortId { get; set; }
+#nullable restore
+#else
+        public string ReportNotebookShortId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRun"/> and sets the default values.
         /// </summary>
@@ -70,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distillation", n => { Distillation = n.GetStringValue(); } },
                 { "model_explanation", n => { ModelExplanation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty.CreateFromDiscriminatorValue); } },
                 { "recommended_next", n => { RecommendedNext = n.GetStringValue(); } },
+                { "report_notebook_short_id", n => { ReportNotebookShortId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -83,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("distillation", Distillation);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty>("model_explanation", ModelExplanation);
             writer.WriteStringValue("recommended_next", RecommendedNext);
+            writer.WriteStringValue("report_notebook_short_id", ReportNotebookShortId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

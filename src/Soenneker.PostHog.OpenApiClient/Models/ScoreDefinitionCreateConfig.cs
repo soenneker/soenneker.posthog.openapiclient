@@ -39,6 +39,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption> Options { get; set; }
 #endif
+        /// <summary>Optional passing categories. Omit or set null for neutral scores. Each scorer version keeps its own rule.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule? PassingRule { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule PassingRule { get; set; }
+#endif
         /// <summary>Whether reviewers can select one option or multiple options. Defaults to `single`.* `single` - single* `multiple` - multiple</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Optional increment step for numeric input, for example 1 or 0.5.</summary>
         public double? Step { get; set; }
+        /// <summary>Whether true means failure. False, omitted, or null means true passes in offline evaluations.</summary>
+        public bool? TrueIsFailure { get; set; }
         /// <summary>Optional label for a true value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,8 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "min", n => { Min = n.GetDoubleValue(); } },
                 { "min_selections", n => { MinSelections = n.GetIntValue(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule.CreateFromDiscriminatorValue); } },
                 { "selection_mode", n => { SelectionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode.CreateFromDiscriminatorValue); } },
                 { "step", n => { Step = n.GetDoubleValue(); } },
+                { "true_is_failure", n => { TrueIsFailure = n.GetBoolValue(); } },
                 { "true_label", n => { TrueLabel = n.GetStringValue(); } },
             };
         }
@@ -106,8 +118,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("min", Min);
             writer.WriteIntValue("min_selections", MinSelections);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>("options", Options);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule>("passing_rule", PassingRule);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>("selection_mode", SelectionMode);
             writer.WriteDoubleValue("step", Step);
+            writer.WriteBoolValue("true_is_failure", TrueIsFailure);
             writer.WriteStringValue("true_label", TrueLabel);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -58,6 +58,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Identifier of the materialized result, used as the paging key.</summary>
         public Guid? ResultId { get; set; }
+        /// <summary>The plain-text form of a Python node&apos;s last expression, as Jupyter shows it under Out[n]. Absent when the cell ends in a statement, a None value, a semicolon, or a dataframe.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResultText { get; set; }
+#nullable restore
+#else
+        public string ResultText { get; set; }
+#endif
         /// <summary>Number of rows in the result.</summary>
         public int? RowCount { get; set; }
         /// <summary>Run outcome: &apos;ok&apos;, &apos;error&apos;, or &apos;interrupted&apos; (user-requested stop).</summary>
@@ -134,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "result_id", n => { ResultId = n.GetGuidValue(); } },
+                { "result_text", n => { ResultText = n.GetStringValue(); } },
                 { "row_count", n => { RowCount = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "stderr", n => { Stderr = n.GetStringValue(); } },
@@ -156,6 +165,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_more", HasMore);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>("media", Media);
             writer.WriteGuidValue("result_id", ResultId);
+            writer.WriteStringValue("result_text", ResultText);
             writer.WriteIntValue("row_count", RowCount);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("stderr", Stderr);

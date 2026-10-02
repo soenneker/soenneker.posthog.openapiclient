@@ -7,6 +7,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Approve;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Complete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Finalize;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Lift_on_merge;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Quarantine_lifts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Recompute;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.SnapshotHistory;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Snapshots;
@@ -45,6 +47,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Finalize.FinalizeRequestBuilder Finalize
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Finalize.FinalizeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The lift_on_merge property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Lift_on_merge.Lift_on_mergeRequestBuilder Lift_on_merge
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Lift_on_merge.Lift_on_mergeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The quarantine_lifts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Quarantine_lifts.Quarantine_liftsRequestBuilder Quarantine_lifts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Quarantine_lifts.Quarantine_liftsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recompute property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Recompute.RecomputeRequestBuilder Recompute

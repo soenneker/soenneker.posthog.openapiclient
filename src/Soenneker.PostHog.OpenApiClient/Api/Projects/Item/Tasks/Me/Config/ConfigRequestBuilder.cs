@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.Agent_instructions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.Task_defaults;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -23,12 +24,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.Agent_instructions.Agent_instructionsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The task_defaults property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.Task_defaults.Task_defaultsRequestBuilder Task_defaults
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.Task_defaults.Task_defaultsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.ConfigRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ConfigRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/@me/config{?limit*,offset*}", pathParameters)
+        public ConfigRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/@me/config", pathParameters)
         {
         }
         /// <summary>
@@ -36,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ConfigRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/@me/config{?limit*,offset*}", rawUrl)
+        public ConfigRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/@me/config", rawUrl)
         {
         }
         /// <summary>
@@ -47,11 +53,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.ConfigRequestBuilder.ConfigRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.ConfigRequestBuilder.ConfigRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -84,11 +90,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.ConfigRequestBuilder.ConfigRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.ConfigRequestBuilder.ConfigRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -126,19 +132,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.ConfigRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.Config.ConfigRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// Retrieve your per-project default AI run preferences, plus the resolved defaults a new run will use when no explicit runtime selection is sent (your preference over the project default).
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ConfigRequestBuilderGetQueryParameters 
-        {
-            /// <summary>Number of results to return per page.</summary>
-            [QueryParameter("limit")]
-            public int? Limit { get; set; }
-            /// <summary>The initial index from which to return the results.</summary>
-            [QueryParameter("offset")]
-            public int? Offset { get; set; }
         }
     }
 }

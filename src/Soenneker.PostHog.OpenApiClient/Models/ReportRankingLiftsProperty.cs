@@ -7,29 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Outcome head name to its probability divided by the head&apos;s training base rate, e.g. 2.7 means 2.7x as likely as the average report. A head without a saved base rate has no entry.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class PatchedProjectBackwardCompatConversationsSettings : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class ReportRankingLiftsProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty"/> and sets the default values.
         /// </summary>
-        public PatchedProjectBackwardCompatConversationsSettings()
+        public ReportRankingLiftsProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingLiftsProperty();
         }
         /// <summary>
         /// The deserialization information for the current model

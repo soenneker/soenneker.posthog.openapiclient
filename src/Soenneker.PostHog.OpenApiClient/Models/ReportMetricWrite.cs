@@ -31,26 +31,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison Comparison { get; set; }
 #endif
-        /// <summary>Suggested days after release before assessing impact, not a monitoring schedule.</summary>
-        public int? DecisionWindowDays { get; set; }
-        /// <summary>Whether success means at most or at least goal_value.* `at_most` - at_most* `at_least` - at_least</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalDirection? GoalDirection { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalDirection GoalDirection { get; set; }
-#endif
-        /// <summary>Whether the goal compares with the whole query window or each chart bucket.* `whole_window` - whole_window* `per_interval` - per_interval</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalGrain? GoalGrain { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalGrain GoalGrain { get; set; }
-#endif
-        /// <summary>Proposed threshold after release. Informational only; does not schedule a check.</summary>
-        public double? GoalValue { get; set; }
         /// <summary>What the value measures, independent of how it is formatted or drawn.* `affected_users` - affected_users* `affected_sessions` - affected_sessions* `occurrences` - occurrences* `conversion_rate` - conversion_rate* `error_rate` - error_rate* `duration` - duration* `revenue` - revenue* `custom` - custom</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,8 +47,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricId { get; set; }
 #endif
-        /// <summary>Optional number of qualifying observations before assessing impact.</summary>
-        public int? MinimumDataPoints { get; set; }
         /// <summary>Required when authoring: a live InsightVizNode wrapping one bounded TrendsQuery. Consumers derive a BoldNumber execution for the whole-window aggregate and an ActionsBar execution for longitudinal buckets. The query must produce exactly one output series and no more than 1000 estimated longitudinal points; one formula may combine up to ten event or action source series. An affected_users metric uses exactly one source with `math: dau`; never sum its per-bucket unique-user values. A response omits this on list or redacts it to null on detail when the viewer lacks access to the definition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -148,13 +126,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "caption", n => { Caption = n.GetStringValue(); } },
                 { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison.CreateFromDiscriminatorValue); } },
-                { "decision_window_days", n => { DecisionWindowDays = n.GetIntValue(); } },
-                { "goal_direction", n => { GoalDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalDirection>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalDirection.CreateFromDiscriminatorValue); } },
-                { "goal_grain", n => { GoalGrain = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalGrain>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalGrain.CreateFromDiscriminatorValue); } },
-                { "goal_value", n => { GoalValue = n.GetDoubleValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteKind>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteKind.CreateFromDiscriminatorValue); } },
                 { "metric_id", n => { MetricId = n.GetStringValue(); } },
-                { "minimum_data_points", n => { MinimumDataPoints = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteQuery.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteRole>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteRole.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
@@ -174,13 +147,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("caption", Caption);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison>("comparison", Comparison);
-            writer.WriteIntValue("decision_window_days", DecisionWindowDays);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalDirection>("goal_direction", GoalDirection);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteGoalGrain>("goal_grain", GoalGrain);
-            writer.WriteDoubleValue("goal_value", GoalValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteKind>("kind", Kind);
             writer.WriteStringValue("metric_id", MetricId);
-            writer.WriteIntValue("minimum_data_points", MinimumDataPoints);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteQuery>("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteRole>("role", Role);
             writer.WriteCollectionOfPrimitiveValues<double?>("series", Series);

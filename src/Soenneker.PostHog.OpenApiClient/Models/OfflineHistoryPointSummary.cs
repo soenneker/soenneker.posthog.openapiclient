@@ -27,6 +27,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? DistinctCaseCount { get; set; }
         /// <summary>Distinct case/trial identities; trial-only items remain independent.</summary>
         public int? DistinctTrialCount { get; set; }
+        /// <summary>Successful results failing the pinned rule; null for unconfigured numeric or categorical scorers.</summary>
+        public int? FailCount { get; set; }
         /// <summary>Successful boolean false results; null for other kinds.</summary>
         public int? FalseCount { get; set; }
         /// <summary>Observed items with case keys.</summary>
@@ -39,6 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? MissingResultCount { get; set; }
         /// <summary>All observed experiment items, independent of scorer selection or item pagination.</summary>
         public int? ObservedItemCount { get; set; }
+        /// <summary>Successful results passing the pinned rule. Boolean scores default to true passing; null for unconfigured numeric or categorical scorers.</summary>
+        public int? PassCount { get; set; }
+        /// <summary>Passing fraction among successful results; null without successful results or an applicable rule. Boolean scores default to true passing. Excludes errors, skipped, not-applicable, and missing results.</summary>
+        public double? PassRate { get; set; }
         /// <summary>Submitted results for this scorer version, across all statuses.</summary>
         public int? ResultCount { get; set; }
         /// <summary>Exact scorer version summarized.</summary>
@@ -91,12 +97,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "categories", n => { Categories = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "distinct_case_count", n => { DistinctCaseCount = n.GetIntValue(); } },
                 { "distinct_trial_count", n => { DistinctTrialCount = n.GetIntValue(); } },
+                { "fail_count", n => { FailCount = n.GetIntValue(); } },
                 { "false_count", n => { FalseCount = n.GetIntValue(); } },
                 { "items_with_case_key_count", n => { ItemsWithCaseKeyCount = n.GetIntValue(); } },
                 { "items_without_case_key_count", n => { ItemsWithoutCaseKeyCount = n.GetIntValue(); } },
                 { "mean", n => { Mean = n.GetDoubleValue(); } },
                 { "missing_result_count", n => { MissingResultCount = n.GetIntValue(); } },
                 { "observed_item_count", n => { ObservedItemCount = n.GetIntValue(); } },
+                { "pass_count", n => { PassCount = n.GetIntValue(); } },
+                { "pass_rate", n => { PassRate = n.GetDoubleValue(); } },
                 { "result_count", n => { ResultCount = n.GetIntValue(); } },
                 { "scorer", n => { Scorer = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer.CreateFromDiscriminatorValue); } },
                 { "status_counts", n => { StatusCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts.CreateFromDiscriminatorValue); } },
@@ -115,12 +124,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary>("categories", Categories);
             writer.WriteIntValue("distinct_case_count", DistinctCaseCount);
             writer.WriteIntValue("distinct_trial_count", DistinctTrialCount);
+            writer.WriteIntValue("fail_count", FailCount);
             writer.WriteIntValue("false_count", FalseCount);
             writer.WriteIntValue("items_with_case_key_count", ItemsWithCaseKeyCount);
             writer.WriteIntValue("items_without_case_key_count", ItemsWithoutCaseKeyCount);
             writer.WriteDoubleValue("mean", Mean);
             writer.WriteIntValue("missing_result_count", MissingResultCount);
             writer.WriteIntValue("observed_item_count", ObservedItemCount);
+            writer.WriteIntValue("pass_count", PassCount);
+            writer.WriteDoubleValue("pass_rate", PassRate);
             writer.WriteIntValue("result_count", ResultCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer>("scorer", Scorer);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts>("status_counts", StatusCounts);

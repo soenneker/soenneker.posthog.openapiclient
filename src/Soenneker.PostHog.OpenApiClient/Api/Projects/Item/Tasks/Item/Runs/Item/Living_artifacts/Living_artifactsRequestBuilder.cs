@@ -55,21 +55,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         /// <summary>
         /// Returns stable, versioned artifact handles created by the run&apos;s task.
         /// </summary>
-        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse&gt;</returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-            return collectionResult?.AsList();
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a stable, editable artifact handle from direct markdown/text content or an existing run artifact. Slack adapters deliver into the mapped Slack thread; document artifacts use external connector storage when available.

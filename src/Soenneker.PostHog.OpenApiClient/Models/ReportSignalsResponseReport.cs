@@ -195,6 +195,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; private set; }
 #endif
+        /// <summary>The opening of `summary` as plain text on one line: the text before its first section heading, with chart links removed and other links reduced to their text. At most 450 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SummaryLead { get; private set; }
+#nullable restore
+#else
+        public string SummaryLead { get; private set; }
+#endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -295,6 +303,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus.CreateFromDiscriminatorValue); } },
                 { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
+                { "summary_lead", n => { SummaryLead = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "total_weight", n => { TotalWeight = n.GetDoubleValue(); } },
                 { "tracker_issue_error", n => { TrackerIssueError = n.GetStringValue(); } },

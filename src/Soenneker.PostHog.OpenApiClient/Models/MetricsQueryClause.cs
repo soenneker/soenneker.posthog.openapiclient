@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Series identity includes the OTel type — one name can exist as e.g. both a counter and a gauge — so a clause pins it to avoid blending distinct series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper? MetricType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper2? MetricType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper MetricType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper2 MetricType { get; set; }
 #endif
         /// <summary>Alias a formula refers to (e.g. &quot;a&quot;); must be unique within the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "groupBy", n => { GroupBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryGroupBy>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryGroupBy.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
-                { "metricType", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "metricType", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper2.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "quantile", n => { Quantile = n.GetDoubleValue(); } },
             };
@@ -94,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>("filters", Filters);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryGroupBy>("groupBy", GroupBy);
             writer.WriteStringValue("metricName", MetricName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper>("metricType", MetricType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper2>("metricType", MetricType);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("quantile", Quantile);
         }

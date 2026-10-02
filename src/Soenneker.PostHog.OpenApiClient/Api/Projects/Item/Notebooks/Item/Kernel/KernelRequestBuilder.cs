@@ -2,8 +2,10 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Complete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Execute;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Inspect;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Restart;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Start;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Status;
@@ -20,6 +22,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kerne
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class KernelRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The complete property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Complete.CompleteRequestBuilder Complete
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Complete.CompleteRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The config property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Config.ConfigRequestBuilder Config
         {
@@ -29,6 +36,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kerne
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Execute.ExecuteRequestBuilder Execute
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Execute.ExecuteRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The inspect property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Inspect.InspectRequestBuilder Inspect
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Inspect.InspectRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The restart property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Restart.RestartRequestBuilder Restart

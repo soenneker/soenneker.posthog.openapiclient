@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Edit;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Edit.EditRequestBuilder Edit
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Edit.EditRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The versions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.VersionsRequestBuilder Versions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.VersionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Living_artifactsItemRequestBuilder"/> and sets the default values.

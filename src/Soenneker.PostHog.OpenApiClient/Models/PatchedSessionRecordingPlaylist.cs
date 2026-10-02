@@ -32,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreateInFolder { get; set; }
 #endif
+        /// <summary>How the PostHog app created the playlist, for product analytics. Not stored.* `new` - new* `pin` - pin* `duplicate` - duplicate</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingPlaylistCreationMethod? CreationMethod { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingPlaylistCreationMethod CreationMethod { get; set; }
+#endif
         /// <summary>Set to true to soft-delete the playlist.</summary>
         public bool? Deleted { get; set; }
         /// <summary>The derived_name property</summary>
@@ -134,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingPlaylistCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingPlaylistCreatedBy.CreateFromDiscriminatorValue); } },
+                { "creation_method", n => { CreationMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingPlaylistCreationMethod>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingPlaylistCreationMethod.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "derived_name", n => { DerivedName = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -157,6 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingPlaylistCreationMethod>("creation_method", CreationMethod);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("derived_name", DerivedName);
             writer.WriteStringValue("description", Description);

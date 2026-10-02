@@ -36,6 +36,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Rank { get; set; }
         /// <summary>* `claimed_by_you` - CLAIMED_BY_YOU* `waiting_for_you` - WAITING_FOR_YOU* `suggested_reviewer` - SUGGESTED_REVIEWER* `urgent_for_project` - URGENT_FOR_PROJECT* `dashboard_you_viewed` - DASHBOARD_YOU_VIEWED* `dashboard_you_starred` - DASHBOARD_YOU_STARRED* `insight_you_viewed` - INSIGHT_YOU_VIEWED* `insight_you_starred` - INSIGHT_YOU_STARRED* `alert_firing` - ALERT_FIRING* `assigned_ticket` - ASSIGNED_TICKET* `assigned_error_issue` - ASSIGNED_ERROR_ISSUE* `review_requested` - REVIEW_REQUESTED* `your_pull_request` - YOUR_PULL_REQUEST</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TodayItemReasonEnum? Reason { get; set; }
+        /// <summary>For a report, its priority, summary, implementation pull request and the metric snapshots the viewer may read. Null for every other item and for a deleted report.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemReport? Report { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemReport Report { get; set; }
+#endif
         /// <summary>Short fact under the label, at most 40 characters, for example &apos;Spend down 37%&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,8 +62,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceProduct { get; set; }
 #endif
-        /// <summary>* `open` - OPEN* `done` - DONE</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemStateEnum? State { get; set; }
+        /// <summary>`done` when the item was resolved since the briefing was written, `dismissed` when it was dismissed or suppressed, else `open`. Pull requests always stay `open`.* `open` - OPEN* `done` - DONE* `dismissed` - DISMISSED</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemState? State { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemState State { get; set; }
+#endif
         /// <summary>The item&apos;s own title, as the source names it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,10 +116,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
                 { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TodayItemReasonEnum>(); } },
+                { "report", n => { Report = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemReport>(global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemReport.CreateFromDiscriminatorValue); } },
                 { "signal", n => { Signal = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TodayItemSourceEnum>(); } },
                 { "source_product", n => { SourceProduct = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemStateEnum>(); } },
+                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemState>(global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemState.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -122,10 +137,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("label", Label);
             writer.WriteIntValue("rank", Rank);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TodayItemReasonEnum>("reason", Reason);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemReport>("report", Report);
             writer.WriteStringValue("signal", Signal);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TodayItemSourceEnum>("source", Source);
             writer.WriteStringValue("source_product", SourceProduct);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemStateEnum>("state", State);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BriefingItemState>("state", State);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

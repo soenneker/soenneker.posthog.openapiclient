@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `open` - OPEN* `done` - DONE</summary>
+    /// <summary>* `open` - OPEN* `done` - DONE* `dismissed` - DISMISSED</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BriefingItemStateEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "done")]
         #pragma warning disable CS1591
         Done,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "dismissed")]
+        #pragma warning disable CS1591
+        Dismissed,
         #pragma warning restore CS1591
     }
 }

@@ -41,6 +41,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricId { get; set; }
 #endif
+        /// <summary>How to draw this measurement; copied from a referenced metric.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind? MetricKind { get; set; }
         /// <summary>Concrete places to look, such as an issue id, a service name, or a query to repeat.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,6 +67,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SkillName { get; set; }
 #endif
+        /// <summary>Optional value suffix.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Unit { get; set; }
+#nullable restore
+#else
+        public string Unit { get; set; }
+#endif
+        /// <summary>How to format measured values; copied from a referenced metric.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat? ValueFormat { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig"/> and sets the default values.
         /// </summary>
@@ -94,9 +106,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>(global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison.CreateFromDiscriminatorValue); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "metric_id", n => { MetricId = n.GetStringValue(); } },
+                { "metric_kind", n => { MetricKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>(); } },
                 { "probe_hints", n => { ProbeHints = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty.CreateFromDiscriminatorValue); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
+                { "unit", n => { Unit = n.GetStringValue(); } },
+                { "value_format", n => { ValueFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>(); } },
             };
         }
         /// <summary>
@@ -110,9 +125,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>("comparison", Comparison);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("metric_id", MetricId);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>("metric_kind", MetricKind);
             writer.WriteCollectionOfPrimitiveValues<string>("probe_hints", ProbeHints);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>("query", Query);
             writer.WriteStringValue("skill_name", SkillName);
+            writer.WriteStringValue("unit", Unit);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>("value_format", ValueFormat);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

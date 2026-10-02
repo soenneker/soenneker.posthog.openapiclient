@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks.Item.Approve;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks.Item.Replace;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +19,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChecksItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The approve property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks.Item.Approve.ApproveRequestBuilder Approve
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks.Item.Approve.ApproveRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The replace property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks.Item.Replace.ReplaceRequestBuilder Replace
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks.Item.Replace.ReplaceRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Checks.Item.ChecksItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -52,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Checks attached to a signal report: read and cancel.There is no create here. A check is authored by a scout run or by the research pipeline, boththrough `report_check_authoring.create_check`. An `agent` check puts its author&apos;s prose in frontof a privileged scout run, and `task:write` does not authorize that, so no caller-facingendpoint accepts one. Anyone who can read the report can read its checks, and a person canstill stop one.There is no update: a check is a claim about the future, and editing its threshold after aresult would make the recorded verdict unreadable. Cancel it and let its author write a new one.
+        /// Checks attached to a signal report: read, approve, replace metrics, and cancel.There is no create here. A check is authored by a scout run or by the research pipeline, boththrough `report_check_authoring.create_check`. An `agent` check puts its author&apos;s prose in frontof a privileged scout run, and `task:write` does not authorize that, so no caller-facingendpoint accepts one. Anyone who can read the report can read its checks, and a person canstill stop one.There is no in-place update: a check is a claim about the future, and editing its thresholdafter a result would make the recorded verdict unreadable. Replacing an open metric checkcancels the old row and creates a new one in one transaction.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -89,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return requestInfo;
         }
         /// <summary>
-        /// Checks attached to a signal report: read and cancel.There is no create here. A check is authored by a scout run or by the research pipeline, boththrough `report_check_authoring.create_check`. An `agent` check puts its author&apos;s prose in frontof a privileged scout run, and `task:write` does not authorize that, so no caller-facingendpoint accepts one. Anyone who can read the report can read its checks, and a person canstill stop one.There is no update: a check is a claim about the future, and editing its threshold after aresult would make the recorded verdict unreadable. Cancel it and let its author write a new one.
+        /// Checks attached to a signal report: read, approve, replace metrics, and cancel.There is no create here. A check is authored by a scout run or by the research pipeline, boththrough `report_check_authoring.create_check`. An `agent` check puts its author&apos;s prose in frontof a privileged scout run, and `task:write` does not authorize that, so no caller-facingendpoint accepts one. Anyone who can read the report can read its checks, and a person canstill stop one.There is no in-place update: a check is a claim about the future, and editing its thresholdafter a result would make the recorded verdict unreadable. Replacing an open metric checkcancels the old row and creates a new one in one transaction.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

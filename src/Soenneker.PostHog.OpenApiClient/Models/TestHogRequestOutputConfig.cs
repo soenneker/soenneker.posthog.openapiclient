@@ -15,9 +15,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Whether the evaluation can return N/A for non-applicable generations.</summary>
         public bool? AllowsNa { get; set; }
-        /// <summary>Inclusive maximum numeric score. Omit for no upper bound.</summary>
+        /// <summary>Inclusive maximum numeric score. Omit for no upper bound. Required for System One numeric judges and must exceed min.</summary>
         public double? Max { get; set; }
-        /// <summary>Inclusive minimum numeric score. Omit for no lower bound.</summary>
+        /// <summary>Inclusive minimum numeric score. Omit for no lower bound. Required for System One numeric judges.</summary>
         public double? Min { get; set; }
         /// <summary>Categorical output options. Keys identify stored results; labels are displayed to users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

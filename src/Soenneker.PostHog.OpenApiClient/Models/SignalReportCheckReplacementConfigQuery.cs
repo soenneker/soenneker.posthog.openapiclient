@@ -7,31 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Live InsightVizNode wrapping one TrendsQuery: supplied by the caller, or copied from the named metric when the check is created. `dateRange.date_from` must be a relative window such as `-13d`, and `date_to` must be empty, so the check measures the days before each run rather than the days before it was written. The query must produce exactly one output series: use one event or action series, or combine up to ten of them with exactly one formula. Use no breakdown and no compare mode. A `trendsFilter.display` of `Metric` turns compare mode on, so `metricShowChange` is switched off for you unless `metricSummary` is `latest`, which keeps compare mode off already.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class GoalDirectionEnumWrapper3 : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class SignalReportCheckReplacementConfigQuery : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `at_most` - at_most* `at_least` - at_least</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalDirectionEnum? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GoalDirectionEnumWrapper3"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery"/> and sets the default values.
         /// </summary>
-        public GoalDirectionEnumWrapper3()
+        public SignalReportCheckReplacementConfigQuery()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GoalDirectionEnumWrapper3"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.GoalDirectionEnumWrapper3 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GoalDirectionEnumWrapper3();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,7 +40,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalDirectionEnum>(); } },
             };
         }
         /// <summary>
@@ -51,7 +49,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalDirectionEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

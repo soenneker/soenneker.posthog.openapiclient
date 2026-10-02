@@ -61,6 +61,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RecommendedNext { get; set; }
 #endif
+        /// <summary>Short id of the report notebook the agent built for this run. Empty if there is none.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReportNotebookShortId { get; set; }
+#nullable restore
+#else
+        public string ReportNotebookShortId { get; set; }
+#endif
         /// <summary>Target event the run&apos;s pipeline predicts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "horizon_days", n => { HorizonDays = n.GetIntValue(); } },
                 { "kept_ladder", n => { KeptLadder = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>(global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "recommended_next", n => { RecommendedNext = n.GetStringValue(); } },
+                { "report_notebook_short_id", n => { ReportNotebookShortId = n.GetStringValue(); } },
                 { "target_event", n => { TargetEvent = n.GetStringValue(); } },
             };
         }
@@ -120,6 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("horizon_days", HorizonDays);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>("kept_ladder", KeptLadder);
             writer.WriteStringValue("recommended_next", RecommendedNext);
+            writer.WriteStringValue("report_notebook_short_id", ReportNotebookShortId);
             writer.WriteStringValue("target_event", TargetEvent);
             writer.WriteAdditionalData(AdditionalData);
         }

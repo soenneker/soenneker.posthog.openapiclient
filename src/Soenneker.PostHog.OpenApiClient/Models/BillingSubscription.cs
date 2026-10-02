@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The amount_off_expires_at property</summary>
         public DateTimeOffset? AmountOffExpiresAt { get; set; }
+        /// <summary>Set when a provisioning partner pays for this organization and the organization has no Stripe customer of its own. Self-serve subscription and payment changes are refused while it is set. Null otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner? BillingManagedByPartner { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner BillingManagedByPartner { get; set; }
+#endif
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -148,6 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "amount_off_expires_at", n => { AmountOffExpiresAt = n.GetDateTimeOffsetValue(); } },
+                { "billing_managed_by_partner", n => { BillingManagedByPartner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>(global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner.CreateFromDiscriminatorValue); } },
                 { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod.CreateFromDiscriminatorValue); } },
                 { "billing_plan", n => { BillingPlan = n.GetStringValue(); } },
                 { "billing_portal_url", n => { BillingPortalUrl = n.GetStringValue(); } },
@@ -175,6 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("amount_off_expires_at", AmountOffExpiresAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>("billing_managed_by_partner", BillingManagedByPartner);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>("billing_period", BillingPeriod);
             writer.WriteStringValue("billing_plan", BillingPlan);
             writer.WriteStringValue("billing_portal_url", BillingPortalUrl);

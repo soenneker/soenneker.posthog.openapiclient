@@ -39,6 +39,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults ResolvedAiRunDefaults { get; set; }
 #endif
+        /// <summary>Your per-project defaults for new tasks. Unset defaults are false.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults? TaskDefaults { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults TaskDefaults { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponse"/> and sets the default values.
         /// </summary>
@@ -67,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "agent_instructions", n => { AgentInstructions = n.GetStringValue(); } },
                 { "ai_run_preferences", n => { AiRunPreferences = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences>(global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences.CreateFromDiscriminatorValue); } },
                 { "resolved_ai_run_defaults", n => { ResolvedAiRunDefaults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults>(global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults.CreateFromDiscriminatorValue); } },
+                { "task_defaults", n => { TaskDefaults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults>(global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -79,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("agent_instructions", AgentInstructions);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences>("ai_run_preferences", AiRunPreferences);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults>("resolved_ai_run_defaults", ResolvedAiRunDefaults);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults>("task_defaults", TaskDefaults);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

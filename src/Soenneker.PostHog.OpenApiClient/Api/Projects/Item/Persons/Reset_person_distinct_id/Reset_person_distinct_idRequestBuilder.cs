@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person
         {
         }
         /// <summary>
-        /// Reset a distinct_id for a deleted person. This allows the distinct_id to be used again.
+        /// Fix a distinct_id that stays hidden after its person was deleted and created again. Does nothing if no live person uses this distinct_id. In that case, send a new event for it instead.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Reset a distinct_id for a deleted person. This allows the distinct_id to be used again.
+        /// Fix a distinct_id that stays hidden after its person was deleted and created again. Does nothing if no live person uses this distinct_id. In that case, send a new event for it instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Reset a distinct_id for a deleted person. This allows the distinct_id to be used again.
+        /// Fix a distinct_id that stays hidden after its person was deleted and created again. Does nothing if no live person uses this distinct_id. In that case, send a new event for it instead.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Reset_person_distinct_idRequestBuilderPostQueryParameters 

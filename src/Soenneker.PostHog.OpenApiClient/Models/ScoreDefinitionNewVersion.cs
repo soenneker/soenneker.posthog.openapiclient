@@ -24,6 +24,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionNewVersionConfig Config { get; set; }
 #endif
+        /// <summary>Updated scorer description, saved with this version.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
+        /// <summary>Updated scorer name, saved with this version.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionNewVersion"/> and sets the default values.
         /// </summary>
@@ -51,6 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "base_version", n => { BaseVersion = n.GetIntValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionNewVersionConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionNewVersionConfig.CreateFromDiscriminatorValue); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -62,6 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("base_version", BaseVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionNewVersionConfig>("config", Config);
+            writer.WriteStringValue("description", Description);
+            writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

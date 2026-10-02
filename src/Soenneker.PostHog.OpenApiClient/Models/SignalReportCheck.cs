@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The approved_at property</summary>
+        public DateTimeOffset? ApprovedAt { get; private set; }
         /// <summary>What the check measures and what the result must satisfy; the shape depends on `kind`. `query` and `baseline_value` are null when you cannot read the data they describe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RunIntervalMinutes { get; private set; }
         /// <summary>Evaluations still owed before the check retires as passed.</summary>
         public int? RunsRemaining { get; private set; }
-        /// <summary>How long after the report resolves a `pending` check waits before its first run. Null on a check that named its own `next_run_at`.</summary>
+        /// <summary>Minimum wait after resolution, in minutes. Metric checks also wait for a full post-resolution query window. Null on legacy checks that did not record a soak.</summary>
         public int? SoakMinutes { get; private set; }
         /// <summary>`pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive* `expired` - Expired* `cancelled` - Cancelled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -109,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "approved_at", n => { ApprovedAt = n.GetDateTimeOffsetValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckConfigComposed>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckConfigComposed.CreateFromDiscriminatorValue); } },
                 { "consecutive_errors", n => { ConsecutiveErrors = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },

@@ -85,13 +85,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? CompletedSnippetOnboarding { get; set; }
         /// <summary>Enables the customer conversations / live chat product for this project.</summary>
         public bool? ConversationsEnabled { get; set; }
-        /// <summary>The conversations_settings property</summary>
+        /// <summary>Settings for Conversations. Must be a JSON object or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings? ConversationsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettingsProperty? ConversationsSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings ConversationsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettingsProperty ConversationsSettings { get; set; }
 #endif
         /// <summary>The cookieless_server_hash_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -567,7 +567,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "capture_performance_opt_in", n => { CapturePerformanceOptIn = n.GetBoolValue(); } },
                 { "completed_snippet_onboarding", n => { CompletedSnippetOnboarding = n.GetBoolValue(); } },
                 { "conversations_enabled", n => { ConversationsEnabled = n.GetBoolValue(); } },
-                { "conversations_settings", n => { ConversationsSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings.CreateFromDiscriminatorValue); } },
+                { "conversations_settings", n => { ConversationsSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettingsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettingsProperty.CreateFromDiscriminatorValue); } },
                 { "cookieless_server_hash_mode", n => { CookielessServerHashMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatCookielessServerHashMode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatCookielessServerHashMode.CreateFromDiscriminatorValue); } },
                 { "correlation_config", n => { CorrelationConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatCorrelationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatCorrelationConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -667,7 +667,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("capture_performance_opt_in", CapturePerformanceOptIn);
             writer.WriteBoolValue("completed_snippet_onboarding", CompletedSnippetOnboarding);
             writer.WriteBoolValue("conversations_enabled", ConversationsEnabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettings>("conversations_settings", ConversationsSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatConversationsSettingsProperty>("conversations_settings", ConversationsSettings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatCookielessServerHashMode>("cookieless_server_hash_mode", CookielessServerHashMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatCorrelationConfig>("correlation_config", CorrelationConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig>("customer_analytics_config", CustomerAnalyticsConfig);

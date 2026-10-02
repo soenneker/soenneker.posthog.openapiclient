@@ -274,6 +274,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -297,6 +299,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -334,9 +338,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - billing
       - billing
@@ -382,6 +386,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -405,6 +411,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -442,9 +450,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - billing
       - billing
@@ -576,6 +584,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -599,6 +609,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -636,9 +648,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - billing
       - billing
@@ -684,6 +696,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -707,6 +721,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -744,9 +760,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - billing
       - billing
@@ -2336,6 +2352,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -2349,6 +2367,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -2386,9 +2406,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - organizations
       - billing
@@ -2437,6 +2457,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -2461,6 +2483,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -2498,9 +2522,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - organizations
       - billing
@@ -2589,6 +2613,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -2602,6 +2628,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -2639,9 +2667,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - organizations
       - billing
@@ -2716,6 +2744,8 @@ paths:
           type:
           - string
           - 'null'
+        description: End date (YYYY-MM-DD, UTC), inclusive. Defaults to yesterday
+          if both dates are omitted, or today if only start_date is provided.
       - in: query
         name: interval
         schema:
@@ -2740,6 +2770,8 @@ paths:
           type:
           - string
           - 'null'
+        description: Start date (YYYY-MM-DD, UTC), or "all" for 2020-01-01. If both
+          dates are omitted, defaults to 30 days ago.
       - in: query
         name: team_ids
         schema:
@@ -2777,9 +2809,9 @@ paths:
           posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period,
           sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period,
           workflow_emails_sent_in_period, workflow_billable_invocations_in_period,
-          logs_mb_in_period, logs_retention_30d_mb_in_period, replay_vision_credits_used_in_period,
-          data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"].
-          Omit for all types.'
+          logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period,
+          replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g.
+          ["event_count_in_period","recording_count_in_period"]. Omit for all types.'
       tags:
       - organizations
       - billing
@@ -10734,6 +10766,47 @@ paths:
               schema:
                 $ref: '#/components/schemas/OfflineEvaluationError'
           description: ''
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/traces/{id}/:
+    get:
+      operationId: ai_observability_traces_retrieve
+      description: 'A trace ready to render: its tree with roll-ups, timeline, totals
+        and person, without inputs or outputs.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The trace id, sent as the unpadded base64url encoding of its
+          UTF-8 bytes.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: timestamp_hint
+        schema:
+          type: string
+          format: date-time
+        description: When the trace happened, as carried by links into it. Lets a
+          trace older than the AI events retention load from the shared events table.
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trace'
+          description: ''
+        '400':
+          description: The timestamp hint or the encoded trace id is malformed.
+        '404':
+          description: No trace with this id in the project.
+        '429':
+          description: Too many queries are running for the project or organization.
       x-product:
       - ai_observability
   /api/projects/{project_id}/alerts/:
@@ -38483,8 +38556,9 @@ paths:
 
         Returns same format as bulk_delete for UI compatibility.
 
-        Uses bulk operations for efficiency: database updates are batched and cache
-        invalidation happens once at the end rather than per-flag.
+        Config version 1 flags are deleted with batched updates, and cache invalidation
+        runs once at the end. Config version 2 flags are deleted one at a time through
+        ``update_flag``. Each one bumps its ``version`` and commits on its own.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -58699,6 +58773,46 @@ paths:
           description: No response body
       x-product:
       - notebooks
+  /api/projects/{project_id}/notebooks/{short_id}/kernel/complete/:
+    post:
+      operationId: notebooks_kernel_complete_create
+      description: Completions for the cursor position in a Python cell, from the
+        notebook's running kernel. Returns no matches when no kernel is running or
+        the kernel is busy, and never starts one.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: short_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - notebooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotebookKernelCompleteRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NotebookKernelCompleteRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NotebookKernelCompleteRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - notebook:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotebookKernelCompleteResponse'
+          description: ''
+      x-product:
+      - notebooks
   /api/projects/{project_id}/notebooks/{short_id}/kernel/config/:
     post:
       operationId: notebooks_kernel_config_create
@@ -58764,6 +58878,46 @@ paths:
       responses:
         '200':
           description: No response body
+      x-product:
+      - notebooks
+  /api/projects/{project_id}/notebooks/{short_id}/kernel/inspect/:
+    post:
+      operationId: notebooks_kernel_inspect_create
+      description: The signature and docstring of the name at the cursor in a Python
+        cell, from the notebook's running kernel. Returns found=false when no kernel
+        is running or the kernel is busy.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: short_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - notebooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotebookKernelInspectRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NotebookKernelInspectRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NotebookKernelInspectRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - notebook:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotebookKernelInspectResponse'
+          description: ''
       x-product:
       - notebooks
   /api/projects/{project_id}/notebooks/{short_id}/kernel/restart/:
@@ -61162,8 +61316,9 @@ paths:
   /api/projects/{project_id}/persons/reset_person_distinct_id/:
     post:
       operationId: persons_reset_person_distinct_id_create
-      description: Reset a distinct_id for a deleted person. This allows the distinct_id
-        to be used again.
+      description: Fix a distinct_id that stays hidden after its person was deleted
+        and created again. Does nothing if no live person uses this distinct_id. In
+        that case, send a new event for it instead.
       parameters:
       - in: query
         name: format
@@ -65611,6 +65766,12 @@ paths:
         description: Return the filtered total with an empty results page. Skips report
           ordering, serialization, and decorative metadata lookups. Defaults to false.
       - in: query
+        name: created_after
+        schema:
+          type: string
+          format: date-time
+        description: ISO 8601 datetime. Keeps reports created at or after this time.
+      - in: query
         name: has_implementation_pr
         schema:
           type: boolean
@@ -65656,8 +65817,11 @@ paths:
           type: string
         description: 'Comma-separated ordering clauses. Each clause is a field name
           optionally prefixed with ''-'' for descending. Allowed fields: status, is_suggested_reviewer,
-          signal_count, total_weight, priority, created_at, updated_at, id. Defaults
-          to ''-is_suggested_reviewer,status,-updated_at''.'
+          signal_count, total_weight, priority, created_at, updated_at, id, ranking_pr_merged,
+          ranking_pr_created, ranking_action, ranking_open. Defaults to ''-is_suggested_reviewer,status,-updated_at''.
+          The ranking_* fields sort by the served ranking model''s probability for
+          that outcome head, with unscored reports last in either direction. They
+          are staff only: other users get a 400.'
       - in: query
         name: priority
         schema:
@@ -67098,7 +67262,7 @@ paths:
     get:
       operationId: signals_report_checks_retrieve
       description: |-
-        Checks attached to a signal report: read and cancel.
+        Checks attached to a signal report: read, approve, replace metrics, and cancel.
 
         There is no create here. A check is authored by a scout run or by the research pipeline, both
         through `report_check_authoring.create_check`. An `agent` check puts its author's prose in front
@@ -67106,8 +67270,9 @@ paths:
         endpoint accepts one. Anyone who can read the report can read its checks, and a person can
         still stop one.
 
-        There is no update: a check is a claim about the future, and editing its threshold after a
-        result would make the recorded verdict unreadable. Cancel it and let its author write a new one.
+        There is no in-place update: a check is a claim about the future, and editing its threshold
+        after a result would make the recorded verdict unreadable. Replacing an open metric check
+        cancels the old row and creates a new one in one transaction.
       summary: Get a single check
       parameters:
       - in: path
@@ -67173,6 +67338,94 @@ paths:
         - task:write
       - PersonalAPIKeyAuth:
         - task:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalReportCheck'
+          description: ''
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/reports/{report_id}/checks/{id}/approve/:
+    post:
+      operationId: signals_report_checks_approve_create
+      description: Record a person's quality signal. Approval does not affect scheduling
+        or execution.
+      summary: Approve a follow-up check
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Signal report check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: report_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - task:write
+      - PersonalAPIKeyAuth:
+        - task:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalReportCheck'
+          description: ''
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/reports/{report_id}/checks/{id}/replace/:
+    post:
+      operationId: signals_report_checks_replace_create
+      description: Atomically replace an open metric check. The old check stays live
+        if the new one is invalid.
+      summary: Replace a metric follow-up check
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Signal report check.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: report_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignalReportCheckReplacement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignalReportCheckReplacement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignalReportCheckReplacement'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - task:write
+        - query:read
+      - PersonalAPIKeyAuth:
+        - task:write
+        - query:read
       responses:
         '200':
           content:
@@ -76525,9 +76778,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TaskRunLivingArtifactsResponse'
+                $ref: '#/components/schemas/TaskRunLivingArtifactsResponse'
           description: Living artifacts registered for this task run
         '404':
           description: Run not found
@@ -76683,6 +76934,63 @@ paths:
           description: Invalid artifact update
         '404':
           description: Living artifact not found
+      x-product:
+      - tasks
+  /api/projects/{project_id}/tasks/{task_id}/runs/{run_id}/living_artifacts/{id}/versions/{version}/:
+    get:
+      operationId: tasks_runs_living_artifacts_version_content
+      description: Streams the content of one living artifact version from the app
+        origin. Slack file versions return their stored file. Slack canvas and message
+        versions return their text.
+      summary: Download one version of a living artifact
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: run_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: task_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: version
+        schema:
+          type: integer
+        description: Version number of the living artifact, as listed in its versions.
+        required: true
+      tags:
+      - tasks
+      security:
+      - PersonalAPIKeyAuth:
+        - task:read
+      - PersonalAPIKeyAuth:
+        - task:read
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+          description: Version content, with the content type the version was saved
+            with
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskRunErrorResponse'
+          description: Unable to read the version
+        '404':
+          description: Living artifact or version not found, or the version keeps
+            no content
       x-product:
       - tasks
   /api/projects/{project_id}/tasks/{task_id}/runs/{run_id}/living_artifacts/chart/:
@@ -76917,18 +77225,6 @@ paths:
         resolved defaults a new run will use when no explicit runtime selection is
         sent (your preference over the project default).
       parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - tasks
@@ -77014,6 +77310,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TasksAgentInstructions'
+          description: ''
+      x-product:
+      - tasks
+  /api/projects/{project_id}/tasks/@me/config/task_defaults/:
+    post:
+      operationId: tasks_me_config_task_defaults_create
+      description: Update your per-project defaults for new tasks. Fields you leave
+        out keep their stored value.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - tasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TasksTaskDefaultsUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TasksTaskDefaultsUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TasksTaskDefaultsUpdate'
+      security:
+      - PersonalAPIKeyAuth:
+        - task:write
+      - PersonalAPIKeyAuth:
+        - task:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TasksTaskDefaults'
           description: ''
       x-product:
       - tasks
@@ -84136,6 +84466,107 @@ paths:
           description: ''
       x-product:
       - visual_review
+  /api/projects/{project_id}/visual_review/runs/{id}/lift_on_merge/:
+    post:
+      operationId: visual_review_runs_lift_on_merge_create
+      description: 'Lift a quarantined snapshot''s quarantine once this run''s pull
+        request merges. The lift applies only after a default-branch run that contains
+        the merge renders the expected picture, and the baseline entry holds that
+        same picture. Requesting a lift never approves a picture: approve a changed
+        or new snapshot by identifier first. Requesting again from the same pull request
+        replaces the pending request.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - visual_review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LiftOnMergeInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LiftOnMergeInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LiftOnMergeInput'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuarantineLiftEntry'
+          description: ''
+      x-product:
+      - visual_review
+  /api/projects/{project_id}/visual_review/runs/{id}/quarantine_lifts/:
+    get:
+      operationId: visual_review_runs_quarantine_lifts_list
+      description: Every request to lift a quarantine when this run's pull request
+        merges, newest first, in any state. Empty for a run without a pull request.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - visual_review
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuarantineLiftEntry'
+          description: ''
+      x-product:
+      - visual_review
+  /api/projects/{project_id}/visual_review/runs/{id}/quarantine_lifts/{request_id}/cancel/:
+    post:
+      operationId: visual_review_runs_quarantine_lifts_cancel_create
+      description: Withdraw a pending request to lift a quarantine when this run's
+        pull request merges.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: request_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of a pending lift request for this run's pull request.
+        required: true
+      tags:
+      - visual_review
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:write
+      responses:
+        '204':
+          description: No response body
+      x-product:
+      - visual_review
   /api/projects/{project_id}/visual_review/runs/{id}/recompute/:
     post:
       operationId: visual_review_runs_recompute_create
@@ -84254,6 +84685,16 @@ paths:
         schema:
           type: integer
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: quarantined_only
+        schema:
+          type: boolean
+          default: false
+        description: Whether to list only the snapshots whose identifier is currently
+          quarantined. Defaults to false. When true, `include_quarantined` is ignored
+          and quarantined snapshots are returned. Combine with `exclude_unchanged=false`
+          to find a quarantined story that rendered `unchanged`, which is the snapshot
+          to request a lift on merge for.
       - in: query
         name: snapshot_id
         schema:
@@ -96209,6 +96650,20 @@ components:
             * `sent` - Sent
             * `partially_failed` - Partially failed
             * `failed` - Failed
+        send_as:
+          allOf:
+          - $ref: '#/components/schemas/AnnouncementSendAsEnum'
+          default: bot
+          description: |-
+            Slack identity the message is posted under: 'bot' posts as SupportHog, 'user' posts under the Slack name and avatar of the person sending it (matched by their PostHog email).
+
+            * `bot` - SupportHog
+            * `user` - The person who created it
+        sender_display_name:
+          type: string
+          readOnly: true
+          description: Slack display name the message was posted under when send_as
+            is 'user'; empty otherwise.
         total_channels:
           type: integer
           readOnly: true
@@ -96259,6 +96714,7 @@ components:
       - failed_count
       - id
       - message
+      - sender_display_name
       - sent_at
       - sent_count
       - short_id
@@ -96348,6 +96804,14 @@ components:
         * `pending` - Pending
         * `sent` - Sent
         * `failed` - Failed
+    AnnouncementSendAsEnum:
+      enum:
+      - bot
+      - user
+      type: string
+      description: |-
+        * `bot` - SupportHog
+        * `user` - The person who created it
     AnnouncementStatusEnum:
       enum:
       - pending
@@ -101793,6 +102257,15 @@ components:
             $ref: '#/components/schemas/ProductLimit'
       required:
       - results
+    BillingManagedByPartner:
+      type: object
+      properties:
+        partner_name:
+          type: string
+          description: Name of the partner that pays for this organization. Can be
+            empty.
+      required:
+      - partner_name
     BillingOverviewResponse:
       type: object
       properties:
@@ -101900,6 +102373,15 @@ components:
         customer_trust_scores: {}
         never_drop_data:
           type: boolean
+        billing_managed_by_partner:
+          oneOf:
+          - $ref: '#/components/schemas/BillingManagedByPartner'
+          - type: 'null'
+          description: Set when a provisioning partner pays for this organization
+            and the organization has no Stripe customer of its own. Self-serve subscription
+            and payment changes are refused while it is set. Null otherwise.
+      required:
+      - billing_managed_by_partner
     BillingPeriod:
       type: object
       properties:
@@ -102326,8 +102808,16 @@ components:
           format: uri
         license:
           $ref: '#/components/schemas/License'
+        billing_managed_by_partner:
+          oneOf:
+          - $ref: '#/components/schemas/BillingManagedByPartner'
+          - type: 'null'
+          description: Set when a provisioning partner pays for this organization
+            and the organization has no Stripe customer of its own. Self-serve subscription
+            and payment changes are refused while it is set. Null otherwise.
       required:
       - amount_off_expires_at
+      - billing_managed_by_partner
       - billing_period
       - billing_plan
       - billing_portal_url
@@ -102524,6 +103014,12 @@ components:
     BooleanScoreDefinitionConfig:
       type: object
       properties:
+        true_is_failure:
+          type:
+          - boolean
+          - 'null'
+          description: Whether true means failure. False, omitted, or null means true
+            passes in offline evaluations.
         true_label:
           type: string
           description: Optional label for a true value.
@@ -103254,6 +103750,13 @@ components:
           - 'null'
           description: For a report, the product its signals came from, for example
             error_tracking or session_replay. Null for every other item.
+        report:
+          oneOf:
+          - $ref: '#/components/schemas/BriefingItemReport'
+          - type: 'null'
+          description: For a report, its priority, summary, implementation pull request
+            and the metric snapshots the viewer may read. Null for every other item
+            and for a deleted report.
         group:
           $ref: '#/components/schemas/TodayItemGroupEnum'
         source:
@@ -103261,27 +103764,182 @@ components:
         reason:
           $ref: '#/components/schemas/TodayItemReasonEnum'
         state:
-          $ref: '#/components/schemas/BriefingItemStateEnum'
+          allOf:
+          - $ref: '#/components/schemas/BriefingItemStateEnum'
+          description: |-
+            `done` when the item was resolved since the briefing was written, `dismissed` when it was dismissed or suppressed, else `open`. Pull requests always stay `open`.
+
+            * `open` - OPEN
+            * `done` - DONE
+            * `dismissed` - DISMISSED
       required:
       - group
       - key
       - label
       - rank
       - reason
+      - report
       - signal
       - source
       - source_product
       - state
       - title
       - url
+    BriefingItemChart:
+      type: object
+      properties:
+        chart_id:
+          type: string
+          description: Stable slug of the chart within its report.
+        title:
+          type: string
+          description: Short heading of the chart.
+        query:
+          description: The query node the report body draws, as the report stores
+            it.
+      required:
+      - chart_id
+      - query
+      - title
+    BriefingItemMetric:
+      type: object
+      properties:
+        metric_id:
+          type: string
+          description: Stable slug of the metric within its report.
+        title:
+          type: string
+          description: Short label of what the metric measures.
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ReportMetricKindEnum'
+          description: |-
+            What the value measures, for example affected_users.
+
+            * `affected_users` - affected_users
+            * `affected_sessions` - affected_sessions
+            * `occurrences` - occurrences
+            * `conversion_rate` - conversion_rate
+            * `error_rate` - error_rate
+            * `duration` - duration
+            * `revenue` - revenue
+            * `custom` - custom
+        role:
+          allOf:
+          - $ref: '#/components/schemas/RoleEnum'
+          description: |-
+            `primary` for the report's key observation, otherwise `supporting`.
+
+            * `primary` - primary
+            * `supporting` - supporting
+        value:
+          type: number
+          format: double
+          description: The latest saved snapshot of the metric.
+        series:
+          type:
+          - array
+          - 'null'
+          items:
+            type: number
+            format: double
+          description: Trailing per-bucket values saved with the snapshot, oldest
+            first. Null when none were saved.
+        value_format:
+          allOf:
+          - $ref: '#/components/schemas/ValueFormatEnum'
+          description: |-
+            How to format the value, for example count.
+
+            * `number` - number
+            * `count` - count
+            * `percentage` - percentage
+            * `percentage_scaled` - percentage_scaled
+            * `duration` - duration
+            * `currency` - currency
+        unit:
+          type:
+          - string
+          - 'null'
+          description: Optional short suffix or currency code, such as USD.
+        query:
+          description: The metric's live InsightVizNode wrapping one TrendsQuery,
+            as the report stores it.
+      required:
+      - kind
+      - metric_id
+      - query
+      - role
+      - series
+      - title
+      - unit
+      - value
+      - value_format
+    BriefingItemReport:
+      type: object
+      properties:
+        priority:
+          type:
+          - string
+          - 'null'
+          description: The report's priority, P0 to P4, or null if unset.
+        summary:
+          type: string
+          description: The report's summary, shortened to a few sentences.
+        pull_request_state:
+          description: |-
+            State of the report's implementation pull request, or null when it has none.
+
+            * `draft` - draft
+            * `open` - open
+            * `closed` - closed
+            * `merged` - merged
+          oneOf:
+          - $ref: '#/components/schemas/PullRequestStateEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        pull_request_url:
+          type:
+          - string
+          - 'null'
+          description: URL of the report's implementation pull request, or null when
+            it has none.
+        signal_count:
+          type: integer
+          description: How many signals the report groups.
+        updated_at:
+          type: string
+          format: date-time
+          description: When the report last changed.
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/BriefingItemMetric'
+          description: The report's metrics that have a saved snapshot, in the report's
+            order.
+        charts:
+          type: array
+          items:
+            $ref: '#/components/schemas/BriefingItemChart'
+          description: The charts in the report body, in the report's order.
+      required:
+      - charts
+      - metrics
+      - priority
+      - pull_request_state
+      - pull_request_url
+      - signal_count
+      - summary
+      - updated_at
     BriefingItemStateEnum:
       enum:
       - open
       - done
+      - dismissed
       type: string
       description: |-
         * `open` - OPEN
         * `done` - DONE
+        * `dismissed` - DISMISSED
     BriefingSegment:
       type: object
       properties:
@@ -107551,6 +108209,12 @@ components:
           minimum: 1
           description: Optional maximum number of options that can be selected when
             `selection_mode` is `multiple`.
+        passing_rule:
+          oneOf:
+          - $ref: '#/components/schemas/CategoricalScorePassingRule'
+          - type: 'null'
+          description: Optional passing categories. Omit or set null for neutral scores.
+            Each scorer version keeps its own rule.
       required:
       - options
     CategoricalScoreOption:
@@ -107568,6 +108232,18 @@ components:
       required:
       - key
       - label
+    CategoricalScorePassingRule:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            type: string
+            maxLength: 128
+          description: Passing category keys. Every returned category must be included.
+            An empty list makes all accepted offline results fail.
+      required:
+      - categories
     CdcEnableResponse:
       type: object
       properties:
@@ -110405,6 +111081,12 @@ components:
             winning signal, the key transform, the dead-ends. Stored in the run summary
             as the cheapest thing the next run reads. Max 2000 characters.
           maxLength: 2000
+        report_notebook_short_id:
+          type: string
+          default: ''
+          description: Short id of the report notebook you built for this run. Stored
+            in the run summary only if the notebook exists in this project; an unknown
+            id is dropped and does not fail the completion.
     ComposeTicket:
       type: object
       properties:
@@ -121360,6 +122042,7 @@ components:
             * `Donorbox` - Donorbox
             * `Doorloop` - Doorloop
             * `Dovetail` - Dovetail
+            * `Dragonboat` - Dragonboat
             * `Drchrono` - Drchrono
             * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
             * `EcbDataPortal` - EcbDataPortal
@@ -123553,6 +124236,59 @@ components:
       - width
       - x
       - y
+    DigestDataStatusEnum:
+      enum:
+      - ok
+      - no_web_sessions
+      - no_sessions
+      - unknown
+      type: string
+      description: |-
+        * `ok` - OK
+        * `no_web_sessions` - No web sessions
+        * `no_sessions` - No sessions
+        * `unknown` - Unknown
+    DigestMetadata:
+      type: object
+      properties:
+        data_status:
+          allOf:
+          - $ref: '#/components/schemas/DigestDataStatusEnum'
+          description: |-
+            How to read the headline numbers. 'ok': the headline has pageviews or sessions in the period. 'no_web_sessions': the headline is zero, but the project has sessions in the period. None of them contain a $pageview or $screen event from a non-test account. Query the sessions table directly to count them. 'no_sessions': the project has no sessions in the period. 'unknown': the headline is zero, and the check for other sessions in the period failed. Query the sessions table directly to count them.
+
+            * `ok` - OK
+            * `no_web_sessions` - No web sessions
+            * `no_sessions` - No sessions
+            * `unknown` - Unknown
+        date_from:
+          type: string
+          format: date-time
+          description: Start of the current period, in the project timezone.
+        date_to:
+          type: string
+          format: date-time
+          description: End of the current period, in the project timezone.
+        timezone:
+          type: string
+          description: Project timezone for the period boundaries.
+        filter_test_accounts:
+          type: boolean
+          description: True when the headline metrics, top pages and top sources exclude
+            events from test accounts. Goal conversions include them.
+        notes:
+          type: array
+          items:
+            type: string
+          description: Metric definitions to use when you compare the digest with
+            a direct query.
+      required:
+      - data_status
+      - date_from
+      - date_to
+      - filter_test_accounts
+      - notes
+      - timezone
     DigestRun:
       type: object
       properties:
@@ -124674,6 +125410,7 @@ components:
             * `Donorbox` - Donorbox
             * `Doorloop` - Doorloop
             * `Dovetail` - Dovetail
+            * `Dragonboat` - Dragonboat
             * `Drchrono` - Drchrono
             * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
             * `EcbDataPortal` - EcbDataPortal
@@ -133440,11 +134177,13 @@ components:
               - number
               - 'null'
               description: Inclusive minimum numeric score. Omit for no lower bound.
+                Required for System One numeric judges.
             max:
               type:
               - number
               - 'null'
               description: Inclusive maximum numeric score. Omit for no upper bound.
+                Required for System One numeric judges and must exceed min.
             step:
               type:
               - number
@@ -134144,11 +134883,13 @@ components:
               - number
               - 'null'
               description: Inclusive minimum numeric score. Omit for no lower bound.
+                Required for System One numeric judges.
             max:
               type:
               - number
               - 'null'
               description: Inclusive maximum numeric score. Omit for no upper bound.
+                Required for System One numeric judges and must exceed min.
             step:
               type:
               - number
@@ -144977,6 +145718,7 @@ components:
             * `Donorbox` - Donorbox
             * `Doorloop` - Doorloop
             * `Dovetail` - Dovetail
+            * `Dragonboat` - Dragonboat
             * `Drchrono` - Drchrono
             * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
             * `EcbDataPortal` - EcbDataPortal
@@ -146376,6 +147118,7 @@ components:
             * `Donorbox` - Donorbox
             * `Doorloop` - Doorloop
             * `Dovetail` - Dovetail
+            * `Dragonboat` - Dragonboat
             * `Drchrono` - Drchrono
             * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
             * `EcbDataPortal` - EcbDataPortal
@@ -148029,6 +148772,7 @@ components:
       - Donorbox
       - Doorloop
       - Dovetail
+      - Dragonboat
       - Drchrono
       - Dynamics365BusinessCentral
       - EcbDataPortal
@@ -149385,6 +150129,7 @@ components:
         * `Donorbox` - Donorbox
         * `Doorloop` - Doorloop
         * `Dovetail` - Dovetail
+        * `Dragonboat` - Dragonboat
         * `Drchrono` - Drchrono
         * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
         * `EcbDataPortal` - EcbDataPortal
@@ -168402,6 +169147,19 @@ components:
       - dormant
       title: LifecycleToggle
       type: string
+    LiftOnMergeInput:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Identifier of a quarantined snapshot in this run, such as a
+            Storybook story ID. The snapshot's picture is what a default-branch run
+            must render for the quarantine to lift. An unchanged snapshot uses its
+            baseline. A changed or new snapshot must be approved first, because requesting
+            a lift never approves a picture.
+          maxLength: 512
+      required:
+      - identifier
     LighthouseAuditRequest:
       type: object
       description: 'Request body for `scout-lighthouse-audit`: one page, one device
@@ -177602,6 +178360,21 @@ components:
           description: Whether the tool completed successfully.
           title: Success
           type: boolean
+        error_type:
+          anyOf:
+          - enum:
+            - validation
+            - permission
+            - timeout
+            - memory_limit
+            - rate_limited
+            - api_5xx
+            - internal
+            type: string
+          - type: 'null'
+          default: null
+          description: Failure category for MCP analytics.
+          title: Error Type
       required:
       - content
       - success
@@ -182298,6 +183071,44 @@ components:
           description: The value observed when the check was written, recorded on
             each result for context.
           title: Baseline Value
+        metric_kind:
+          anyOf:
+          - enum:
+            - affected_users
+            - affected_sessions
+            - occurrences
+            - conversion_rate
+            - error_rate
+            - duration
+            - revenue
+            - custom
+            type: string
+          - type: 'null'
+          default: null
+          description: How to draw this measurement; copied from a referenced metric.
+          title: Metric Kind
+        value_format:
+          anyOf:
+          - enum:
+            - number
+            - count
+            - percentage
+            - percentage_scaled
+            - duration
+            - currency
+            type: string
+          - type: 'null'
+          default: null
+          description: How to format measured values; copied from a referenced metric.
+          title: Value Format
+        unit:
+          anyOf:
+          - maxLength: 40
+            type: string
+          - type: 'null'
+          default: null
+          description: Optional value suffix.
+          title: Unit
       required:
       - comparison
       title: MetricThresholdConfig
@@ -182483,6 +183294,14 @@ components:
         metricName:
           title: Metricname
           type: string
+        metricType:
+          anyOf:
+          - $ref: '#/components/schemas/MetricsOtelType'
+          - type: 'null'
+          default: null
+          description: 'Pins the OTel type, as on a MetricsQuery clause: one name
+            can exist as more than one type, and the heatmap must grid only the distribution
+            series.'
         modifiers:
           anyOf:
           - $ref: '#/components/schemas/HogQLQueryModifiers'
@@ -183725,6 +184544,52 @@ components:
       - key
       - memory_gb
       - name
+    NotebookKernelCompleteRequest:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The full source of the cell being edited.
+          maxLength: 100000
+        cursor_pos:
+          type: integer
+          minimum: 0
+          description: Character offset of the cursor in `code`, counting from 0.
+      required:
+      - code
+      - cursor_pos
+    NotebookKernelCompleteResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotebookKernelCompletion'
+          description: Completions from the live kernel's namespace. Empty when no
+            kernel is running.
+        cursor_start:
+          type: integer
+          description: Start offset of the text the completions replace.
+        cursor_end:
+          type: integer
+          description: End offset of the text the completions replace.
+      required:
+      - cursor_end
+      - cursor_start
+      - matches
+    NotebookKernelCompletion:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The text that replaces `code[cursor_start:cursor_end]`.
+        type:
+          type: string
+          description: 'What the match names, as the kernel reports it: ''function'',
+            ''module'', ''instance'', … or blank.'
+      required:
+      - text
+      - type
     NotebookKernelConfig:
       type: object
       properties:
@@ -183792,6 +184657,40 @@ components:
       - hourly_price
       - restart_required
       - restarted
+    NotebookKernelInspectRequest:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The full source of the cell being edited.
+          maxLength: 100000
+        cursor_pos:
+          type: integer
+          minimum: 0
+          description: Character offset of the cursor in `code`, counting from 0.
+        detail_level:
+          type: integer
+          maximum: 1
+          minimum: 0
+          default: 0
+          description: 0 for the signature and docstring, 1 to add the source when
+            the kernel can find it.
+      required:
+      - code
+      - cursor_pos
+    NotebookKernelInspectResponse:
+      type: object
+      properties:
+        found:
+          type: boolean
+          description: Whether the kernel found an object at the cursor.
+        text:
+          type: string
+          description: The object's signature and docstring as plain text. Blank when
+            not found.
+      required:
+      - found
+      - text
     NotebookKernelState:
       type: object
       properties:
@@ -184183,6 +185082,11 @@ components:
             $ref: '#/components/schemas/NotebookSQLV2Media'
           description: Rich outputs from a Python node run, e.g. matplotlib figures
             as PNGs.
+        result_text:
+          type: string
+          description: The plain-text form of a Python node's last expression, as
+            Jupyter shows it under Out[n]. Absent when the cell ends in a statement,
+            a None value, a semicolon, or a dataframe.
         columns:
           type: array
           items:
@@ -184756,6 +185660,38 @@ components:
           format: double
           description: Optional increment step for numeric input, for example 1 or
             0.5.
+        passing_rule:
+          oneOf:
+          - $ref: '#/components/schemas/NumericScorePassingRule'
+          - type: 'null'
+          description: Optional passing rule. Omit or set null for neutral scores.
+            Each scorer version keeps its own rule.
+    NumericScorePassingRule:
+      type: object
+      properties:
+        operator:
+          allOf:
+          - $ref: '#/components/schemas/NumericScorePassingRuleSerializerOperatorEnum'
+          description: |-
+            Pass at or above (gte), or at or below (lte), the threshold.
+
+            * `gte` - At or above
+            * `lte` - At or below
+        threshold:
+          type: number
+          format: double
+          description: Finite passing threshold within any configured score bounds.
+      required:
+      - operator
+      - threshold
+    NumericScorePassingRuleSerializerOperatorEnum:
+      enum:
+      - gte
+      - lte
+      type: string
+      description: |-
+        * `gte` - At or above
+        * `lte` - At or below
     OAuthRedirectResponse:
       type: object
       properties:
@@ -186091,6 +187027,27 @@ components:
           format: double
           description: Boolean true fraction among successes; null with no successes
             or for other kinds.
+        pass_count:
+          type:
+          - integer
+          - 'null'
+          description: Successful results passing the pinned rule. Boolean scores
+            default to true passing; null for unconfigured numeric or categorical
+            scorers.
+        fail_count:
+          type:
+          - integer
+          - 'null'
+          description: Successful results failing the pinned rule; null for unconfigured
+            numeric or categorical scorers.
+        pass_rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Passing fraction among successful results; null without successful
+            results or an applicable rule. Boolean scores default to true passing.
+            Excludes errors, skipped, not-applicable, and missing results.
         categories:
           type: array
           items:
@@ -186101,12 +187058,15 @@ components:
       - categories
       - distinct_case_count
       - distinct_trial_count
+      - fail_count
       - false_count
       - items_with_case_key_count
       - items_without_case_key_count
       - mean
       - missing_result_count
       - observed_item_count
+      - pass_count
+      - pass_rate
       - result_count
       - scorer
       - status_counts
@@ -197421,11 +198381,13 @@ components:
               - number
               - 'null'
               description: Inclusive minimum numeric score. Omit for no lower bound.
+                Required for System One numeric judges.
             max:
               type:
               - number
               - 'null'
               description: Inclusive maximum numeric score. Omit for no upper bound.
+                Required for System One numeric judges and must exceed min.
             step:
               type:
               - number
@@ -202856,7 +203818,12 @@ components:
           - 'null'
           description: Enables the customer conversations / live chat product for
             this project.
-        conversations_settings: {}
+        conversations_settings:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+          description: Settings for Conversations. Must be a JSON object or null.
         logs_settings: {}
         proactive_tasks_enabled:
           type:
@@ -203975,6 +204942,16 @@ components:
           type: string
           writeOnly: true
           title: ' create in folder'
+        creation_method:
+          allOf:
+          - $ref: '#/components/schemas/SessionRecordingPlaylistCreationMethodEnum'
+          writeOnly: true
+          description: |-
+            How the PostHog app created the playlist, for product analytics. Not stored.
+
+            * `new` - new
+            * `pin` - pin
+            * `duplicate` - duplicate
     PatchedSignalReportArtefactLogUpdate:
       type: object
       description: |-
@@ -211465,7 +212442,12 @@ components:
           - 'null'
           description: Enables the customer conversations / live chat product for
             this project.
-        conversations_settings: {}
+        conversations_settings:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+          description: Settings for Conversations. Must be a JSON object or null.
         logs_settings: {}
         proactive_tasks_enabled:
           type:
@@ -213709,6 +214691,18 @@ components:
           readOnly: true
       required:
       - reaction
+    PullRequestStateEnum:
+      enum:
+      - draft
+      - open
+      - closed
+      - merged
+      type: string
+      description: |-
+        * `draft` - draft
+        * `open` - open
+        * `closed` - closed
+        * `merged` - merged
     PullRequestTimelines:
       type: object
       properties:
@@ -213970,6 +214964,109 @@ components:
       required:
       - identifier
       - reason
+    QuarantineLiftEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: UUID of the lift request.
+        quarantine_id:
+          type: string
+          format: uuid
+          description: UUID of the quarantine event this request lifts. A later quarantine
+            of the same snapshot is a different event.
+        identifier:
+          type: string
+          description: Snapshot identifier under quarantine.
+        run_type:
+          type: string
+          description: Run type of the quarantine, for example storybook.
+        pr_number:
+          type: integer
+          description: Pull request whose merge the lift waits for.
+        expected_hash:
+          type: string
+          description: Content hash a default-branch run must render, against a baseline
+            entry with the same hash, for the lift to apply.
+        state:
+          allOf:
+          - $ref: '#/components/schemas/QuarantineLiftStateEnum'
+          description: |-
+            `pending` waits for the merge and a matching default-branch run. `applied` lifted the quarantine. `cancelled` was withdrawn, or the pull request closed without merging into the run's branch. `superseded` means the quarantine ended some other way, or another request lifted it.
+
+            * `pending` - pending
+            * `applied` - applied
+            * `cancelled` - cancelled
+            * `superseded` - superseded
+        detail:
+          type: string
+          description: The latest verification outcome, in plain words.
+        created_at:
+          type: string
+          format: date-time
+          description: When the lift was requested.
+        updated_at:
+          type: string
+          format: date-time
+          description: When the request last changed.
+        resolved_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the request left `pending`. Null while it waits.
+        source_run_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Run the lift was requested from. Null after that run is deleted.
+        requested_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasicInfo'
+          - type: 'null'
+          description: User who requested the lift, or on whose behalf an agent did.
+        merge_commit_sha:
+          type:
+          - string
+          - 'null'
+          description: Merge commit of the pull request. Set when the lift applies.
+        lifted_at_sha:
+          type:
+          - string
+          - 'null'
+          description: Commit of the default-branch run that proved the fix and lifted
+            the quarantine. A branch that does not contain it still treats the snapshot
+            as quarantined.
+        source:
+          type: string
+          description: 'Who requested the lift: `human` for a person in the UI, `agent`
+            for an agent through MCP.'
+      required:
+      - created_at
+      - detail
+      - expected_hash
+      - id
+      - identifier
+      - pr_number
+      - quarantine_id
+      - run_type
+      - source
+      - state
+      - updated_at
+    QuarantineLiftStateEnum:
+      enum:
+      - pending
+      - applied
+      - cancelled
+      - superseded
+      type: string
+      description: |-
+        * `pending` - pending
+        * `applied` - applied
+        * `cancelled` - cancelled
+        * `superseded` - superseded
     QuarantineModeEnum:
       enum:
       - run
@@ -230422,47 +231519,6 @@ components:
             narrows the count or a caveat on the data. Omit it rather than restate
             the title, unit, or window.
           maxLength: 500
-        goal_value:
-          type:
-          - number
-          - 'null'
-          format: double
-          description: Proposed threshold after release. Informational only; does
-            not schedule a check.
-        goal_direction:
-          description: |-
-            Whether success means at most or at least goal_value.
-
-            * `at_most` - at_most
-            * `at_least` - at_least
-          oneOf:
-          - $ref: '#/components/schemas/GoalDirectionEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        goal_grain:
-          allOf:
-          - $ref: '#/components/schemas/GoalGrainEnum'
-          default: whole_window
-          description: |-
-            Whether the goal compares with the whole query window or each chart bucket.
-
-            * `whole_window` - whole_window
-            * `per_interval` - per_interval
-        decision_window_days:
-          type:
-          - integer
-          - 'null'
-          maximum: 30
-          minimum: 1
-          description: Suggested days after release before assessing impact, not a
-            monitoring schedule.
-        minimum_data_points:
-          type:
-          - integer
-          - 'null'
-          maximum: 1000
-          minimum: 1
-          description: Optional number of qualifying observations before assessing
-            impact.
         comparison:
           oneOf:
           - $ref: '#/components/schemas/ReportMetricComparison'
@@ -230520,6 +231576,14 @@ components:
             format: double
           description: Outcome head name to its calibrated probability. Empty when
             the served model skipped the report.
+        lifts:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: Outcome head name to its probability divided by the head's
+            training base rate, e.g. 2.7 means 2.7x as likely as the average report.
+            A head without a saved base rate has no entry.
         readable_heads:
           type: array
           items:
@@ -230527,6 +231591,7 @@ components:
           description: Heads whose holdout AUC the training run could read. Treat
             scores of other heads with caution.
       required:
+      - lifts
       - manifest_version
       - model_name
       - model_version
@@ -239536,6 +240601,15 @@ components:
     ScoreDefinitionNewVersion:
       type: object
       properties:
+        name:
+          type: string
+          description: Updated scorer name, saved with this version.
+          maxLength: 255
+        description:
+          type:
+          - string
+          - 'null'
+          description: Updated scorer description, saved with this version.
         config:
           allOf:
           - $ref: '#/components/schemas/ScoreDefinitionConfig'
@@ -242315,6 +243389,16 @@ components:
           type: string
           writeOnly: true
           title: ' create in folder'
+        creation_method:
+          allOf:
+          - $ref: '#/components/schemas/SessionRecordingPlaylistCreationMethodEnum'
+          writeOnly: true
+          description: |-
+            How the PostHog app created the playlist, for product analytics. Not stored.
+
+            * `new` - new
+            * `pin` - pin
+            * `duplicate` - duplicate
       required:
       - created_at
       - created_by
@@ -242324,6 +243408,16 @@ components:
       - last_modified_by
       - recordings_counts
       - short_id
+    SessionRecordingPlaylistCreationMethodEnum:
+      enum:
+      - new
+      - pin
+      - duplicate
+      type: string
+      description: |-
+        * `new` - new
+        * `pin` - pin
+        * `duplicate` - duplicate
     SessionRecordingPlaylistPlaylistTypeEnum:
       enum:
       - collection
@@ -243697,6 +244791,12 @@ components:
           - string
           - 'null'
           readOnly: true
+        summary_lead:
+          type: string
+          readOnly: true
+          description: 'The opening of `summary` as plain text on one line: the text
+            before its first section heading, with chart links removed and other links
+            reduced to their text. At most 450 characters.'
         status:
           allOf:
           - $ref: '#/components/schemas/SignalReportStatusEnum'
@@ -243949,6 +245049,7 @@ components:
       - status
       - suggested_prompts
       - summary
+      - summary_lead
       - title
       - total_weight
       - tracker_issue_error
@@ -244430,6 +245531,12 @@ components:
           description: What the check measures and what the result must satisfy; the
             shape depends on `kind`. `query` and `baseline_value` are null when you
             cannot read the data they describe.
+        approved_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
         next_run_at:
           type: string
           format: date-time
@@ -244441,8 +245548,9 @@ components:
           - integer
           - 'null'
           readOnly: true
-          description: How long after the report resolves a `pending` check waits
-            before its first run. Null on a check that named its own `next_run_at`.
+          description: Minimum wait after resolution, in minutes. Metric checks also
+            wait for a full post-resolution query window. Null on legacy checks that
+            did not record a soak.
         run_interval_minutes:
           type:
           - integer
@@ -244501,6 +245609,7 @@ components:
           format: date-time
           readOnly: true
       required:
+      - approved_at
       - config
       - consecutive_errors
       - created_at
@@ -244554,6 +245663,25 @@ components:
         * `failed` - Failed
         * `errored` - Errored
         * `inconclusive` - Inconclusive
+    SignalReportCheckReplacement:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Label for the new metric check.
+          maxLength: 200
+        rationale:
+          type: string
+          description: Why this check is better.
+          maxLength: 2000
+        config:
+          allOf:
+          - $ref: '#/components/schemas/MetricThresholdConfig'
+          description: Metric threshold configuration, including a bounded query and
+            comparison.
+      required:
+      - config
+      - title
     SignalReportCheckStatusEnum:
       enum:
       - pending
@@ -244680,6 +245808,12 @@ components:
           - string
           - 'null'
           readOnly: true
+        summary_lead:
+          type: string
+          readOnly: true
+          description: 'The opening of `summary` as plain text on one line: the text
+            before its first section heading, with chart links removed and other links
+            reduced to their text. At most 450 characters.'
         status:
           allOf:
           - $ref: '#/components/schemas/SignalReportStatusEnum'
@@ -244932,6 +246066,7 @@ components:
       - status
       - suggested_prompts
       - summary
+      - summary_lead
       - title
       - total_weight
       - tracker_issue_error
@@ -249938,6 +251073,7 @@ components:
             * `Donorbox` - Donorbox
             * `Doorloop` - Doorloop
             * `Dovetail` - Dovetail
+            * `Dragonboat` - Dragonboat
             * `Drchrono` - Drchrono
             * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
             * `EcbDataPortal` - EcbDataPortal
@@ -251944,6 +253080,7 @@ components:
             * `Donorbox` - Donorbox
             * `Doorloop` - Doorloop
             * `Dovetail` - Dovetail
+            * `Dragonboat` - Dragonboat
             * `Drchrono` - Drchrono
             * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
             * `EcbDataPortal` - EcbDataPortal
@@ -253375,6 +254512,7 @@ components:
             * `Donorbox` - Donorbox
             * `Doorloop` - Doorloop
             * `Dovetail` - Dovetail
+            * `Dragonboat` - Dragonboat
             * `Drchrono` - Drchrono
             * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral
             * `EcbDataPortal` - EcbDataPortal
@@ -263175,6 +264313,35 @@ components:
         * `user` - user
         * `team` - team
         * `none` - none
+    TasksTaskDefaults:
+      type: object
+      description: The requesting user's per-project task defaults, shared by PostHog
+        Desktop and the web app.
+      properties:
+        start_in_plan_mode:
+          type: boolean
+          description: 'When true, new tasks start in plan mode: the agent makes a
+            plan and waits for approval.'
+        auto_publish_cloud_runs:
+          type: boolean
+          description: When true, a cloud run that changes code always opens a draft
+            pull request.
+      required:
+      - auto_publish_cloud_runs
+      - start_in_plan_mode
+    TasksTaskDefaultsUpdate:
+      type: object
+      description: A partial update of the requesting user's task defaults. Fields
+        left out keep their stored value.
+      properties:
+        start_in_plan_mode:
+          type: boolean
+          description: 'When true, new tasks start in plan mode: the agent makes a
+            plan and waits for approval.'
+        auto_publish_cloud_runs:
+          type: boolean
+          description: When true, a cloud run that changes code always opens a draft
+            pull request.
     TasksTeamConfigResponse:
       type: object
       description: Team-level tasks configuration.
@@ -263210,10 +264377,16 @@ components:
           description: Your personal instructions, which PostHog cloud agents read
             in Tasks runs you start, after the project instructions. Anyone who continues
             a task you started can see them. Empty when unset.
+        task_defaults:
+          allOf:
+          - $ref: '#/components/schemas/TasksTaskDefaults'
+          description: Your per-project defaults for new tasks. Unset defaults are
+            false.
       required:
       - agent_instructions
       - ai_run_preferences
       - resolved_ai_run_defaults
+      - task_defaults
     TaxonomicFilterGroupType:
       enum:
       - metadata
@@ -264442,11 +265615,13 @@ components:
               - number
               - 'null'
               description: Inclusive minimum numeric score. Omit for no lower bound.
+                Required for System One numeric judges.
             max:
               type:
               - number
               - 'null'
               description: Inclusive maximum numeric score. Omit for no upper bound.
+                Required for System One numeric judges and must exceed min.
             step:
               type:
               - number
@@ -267540,6 +268715,70 @@ components:
       - change
       - name
       - visitors
+    Trace:
+      properties:
+        id:
+          title: Id
+          type: string
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        createdAt:
+          format: date-time
+          title: Createdat
+          type: string
+        sessionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sessionid
+        person:
+          anyOf:
+          - $ref: '#/components/schemas/TracePerson'
+          - type: 'null'
+        totals:
+          $ref: '#/components/schemas/TraceNodeStats'
+        hasError:
+          title: Haserror
+          type: boolean
+        errorCount:
+          title: Errorcount
+          type: integer
+        tree:
+          items:
+            $ref: '#/components/schemas/TraceNode'
+          title: Tree
+          type: array
+        timeline:
+          items:
+            $ref: '#/components/schemas/TraceTimelineRow'
+          title: Timeline
+          type: array
+        totalMs:
+          title: Totalms
+          type: number
+        threadNodeIds:
+          items:
+            type: string
+          title: Threadnodeids
+          type: array
+      required:
+      - id
+      - name
+      - createdAt
+      - sessionId
+      - person
+      - totals
+      - hasError
+      - errorCount
+      - tree
+      - timeline
+      - totalMs
+      - threadNodeIds
+      title: Trace
+      type: object
     TraceNeighborsQuery:
       additionalProperties: false
       properties:
@@ -267687,12 +268926,110 @@ components:
           title: Warnings
       title: TraceNeighborsQueryResponse
       type: object
+    TraceNode:
+      properties:
+        id:
+          title: Id
+          type: string
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/TraceNodeKindEnum'
+          title: Kind
+        name:
+          title: Name
+          type: string
+        model:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Model
+        stats:
+          $ref: '#/components/schemas/TraceNodeStats'
+        hasError:
+          title: Haserror
+          type: boolean
+        children:
+          items:
+            $ref: '#/components/schemas/TraceNode'
+          title: Children
+          type: array
+      required:
+      - id
+      - kind
+      - name
+      - model
+      - stats
+      - hasError
+      - children
+      title: TraceNode
+      type: object
+    TraceNodeKindEnum:
+      enum:
+      - trace
+      - span
+      - generation
+      - embedding
+      type: string
+    TraceNodeStats:
+      properties:
+        costUsd:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Costusd
+        inputTokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Inputtokens
+        outputTokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Outputtokens
+        cacheReadTokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Cachereadtokens
+        cacheWriteTokens:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Cachewritetokens
+        latencyMs:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Latencyms
+      required:
+      - costUsd
+      - inputTokens
+      - outputTokens
+      - cacheReadTokens
+      - cacheWriteTokens
+      - latencyMs
+      title: TraceNodeStats
+      type: object
     TraceOrderColumn:
       enum:
       - timestamp
       - duration
       title: TraceOrderColumn
       type: string
+    TracePerson:
+      properties:
+        distinctId:
+          title: Distinctid
+          type: string
+        label:
+          title: Label
+          type: string
+      required:
+      - distinctId
+      - label
+      title: TracePerson
+      type: object
     TraceQuery:
       additionalProperties: false
       properties:
@@ -268889,6 +270226,42 @@ components:
       - results
       title: TraceSpansTreeQueryResponse
       type: object
+    TraceTimelineRow:
+      properties:
+        id:
+          title: Id
+          type: string
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/TraceNodeKindEnum'
+          title: Kind
+        name:
+          title: Name
+          type: string
+        depth:
+          title: Depth
+          type: integer
+        startMs:
+          title: Startms
+          type: number
+        durationMs:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Durationms
+        hasError:
+          title: Haserror
+          type: boolean
+      required:
+      - id
+      - kind
+      - name
+      - depth
+      - startMs
+      - durationMs
+      - hasError
+      title: TraceTimelineRow
+      type: object
     TracesQuery:
       additionalProperties: false
       properties:
@@ -269367,6 +270740,11 @@ components:
           type: string
           description: Agent's 1–2 sentence distillation of what this run learned.
             Empty if not provided.
+        report_notebook_short_id:
+          type: string
+          default: ''
+          description: Short id of the report notebook the agent built for this run.
+            Empty if there is none.
       required:
       - best_holdout_score
       - champion_model_class
@@ -274989,6 +276367,11 @@ components:
           items:
             $ref: '#/components/schemas/Goal'
           description: Goal conversions.
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/DigestMetadata'
+          description: Period, filters and metric definitions behind the numbers,
+            and a status that explains a zero.
         dashboard_url:
           type: string
           format: uri
@@ -275026,6 +276409,7 @@ components:
       - dashboard_url
       - goals
       - highlights
+      - metadata
       - pageviews
       - period_end
       - period_label
@@ -277776,6 +279160,11 @@ components:
           items:
             $ref: '#/components/schemas/Goal'
           description: Goal conversions.
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/DigestMetadata'
+          description: Period, filters and metric definitions behind the numbers,
+            and a status that explains a zero.
         dashboard_url:
           type: string
           format: uri
@@ -277785,6 +279174,7 @@ components:
       - bounce_rate
       - dashboard_url
       - goals
+      - metadata
       - pageviews
       - sessions
       - top_pages
