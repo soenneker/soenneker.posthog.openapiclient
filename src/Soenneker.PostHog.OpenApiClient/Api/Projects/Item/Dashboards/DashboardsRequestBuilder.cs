@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DashboardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?exclude_generated*,folder*,format*,include_dashboards*,limit*,offset*,pinned*,search*}", pathParameters)
+        public DashboardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?exclude_generated*,folder*,format*,include_dashboards*,limit*,offset*,ordering*,pinned*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DashboardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?exclude_generated*,folder*,format*,include_dashboards*,limit*,offset*,pinned*,search*}", rawUrl)
+        public DashboardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?exclude_generated*,folder*,format*,include_dashboards*,limit*,offset*,ordering*,pinned*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDashboardBasicList"/></returns>
@@ -174,6 +174,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Optional. `-last_viewed_at` puts the dashboards you viewed most recently first. A dashboard you never viewed sorts by its creation time. This order replaces the search relevance order.</summary>
+            [QueryParameter("ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.LastViewedAtOrdering? Ordering { get; set; }
             /// <summary>Optional. Return only pinned dashboards.</summary>
             [QueryParameter("pinned")]
             public bool? Pinned { get; set; }

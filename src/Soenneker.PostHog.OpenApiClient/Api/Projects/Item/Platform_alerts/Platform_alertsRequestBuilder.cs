@@ -19,9 +19,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Platform_alerts
     public partial class Platform_alertsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.platform_alerts.item collection</summary>
-        /// <param name="position">A UUID string identifying this platform alert configuration.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Platform_alerts.Item.Platform_alertsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Platform_alerts.Item.Platform_alertsItemRequestBuilder this[Guid position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Platform_alerts.Item.Platform_alertsItemRequestBuilder this[string position]
         {
             get
             {

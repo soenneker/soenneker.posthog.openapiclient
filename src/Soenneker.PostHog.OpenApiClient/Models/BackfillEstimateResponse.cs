@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? TotalCredits { get; set; }
         /// <summary>Upper bound on the sessions the backfill would scan, after sampling and quality filters and excluding sessions this scanner already reported an observation for.</summary>
         public int? TotalSessions { get; set; }
-        /// <summary>The window upper bound after clamping to now.</summary>
+        /// <summary>The window upper bound after clamping to now and, for an experiment scanner, to the experiment&apos;s end date.</summary>
         public DateTimeOffset? WindowEnd { get; set; }
         /// <summary>The window lower bound the estimate covered.</summary>
         public DateTimeOffset? WindowStart { get; set; }

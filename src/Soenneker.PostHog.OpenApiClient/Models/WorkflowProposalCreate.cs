@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Workflow version this was authored against. Required when the proposal changes actions, edges or variables: it is the snapshot approve compares against to tell whether someone edited the same steps since, and a defaulted version would read as current however long the producer took. Defaults to the current live version otherwise.</summary>
+        /// <summary>Workflow version this was authored against, as read from the workflow. It is the snapshot approve compares against to tell whether someone edited the same steps or fields since, and a defaulted version would read as current however long the producer took.</summary>
         public int? BaseVersion { get; set; }
         /// <summary>Only the workflow content fields this proposal changes. Approving merges them over the live content to build the staged draft, so unrelated parts of the workflow stay as they are. In `actions`, send each step you change with its `id` and only the fields you change; they merge into the live step, and a null field deletes it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

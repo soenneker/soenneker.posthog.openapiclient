@@ -123,6 +123,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct OriginProduct { get; private set; }
 #endif
+        /// <summary>How many suggested changes are waiting for a person on this workflow. Counted on the list only.</summary>
+        public int? PendingSuggestions { get; private set; }
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -131,6 +133,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalStatus Status { get; private set; }
 #endif
+        /// <summary>Whether someone turned suggestions on for this workflow. Read on the list only.</summary>
+        public bool? SuggestionsEnabled { get; private set; }
         /// <summary>The trigger property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -207,7 +211,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct.CreateFromDiscriminatorValue); } },
+                { "pending_suggestions", n => { PendingSuggestions = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalStatus.CreateFromDiscriminatorValue); } },
+                { "suggestions_enabled", n => { SuggestionsEnabled = n.GetBoolValue(); } },
                 { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTrigger>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTrigger.CreateFromDiscriminatorValue); } },
                 { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTriggerMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTriggerMasking.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

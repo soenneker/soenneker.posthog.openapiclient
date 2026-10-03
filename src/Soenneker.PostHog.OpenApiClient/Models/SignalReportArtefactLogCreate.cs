@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, impact_measurement_plan, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
+        /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ArtefactType { get; set; }

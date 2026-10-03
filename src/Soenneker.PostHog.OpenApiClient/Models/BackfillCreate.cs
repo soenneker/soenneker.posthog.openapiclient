@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The most this backfill may cost, in credits (1 credit = $0.01): pass the `total_credits` from the estimate the person agreed to. The create is rejected if the window now costs more.</summary>
         public int? MaxTotalCredits { get; set; }
-        /// <summary>Exclusive upper bound of the window; clamped server-side to now.</summary>
+        /// <summary>Exclusive upper bound of the window; clamped server-side to now, and for an experiment scanner to the experiment&apos;s end date.</summary>
         public DateTimeOffset? WindowEnd { get; set; }
         /// <summary>Inclusive lower bound of the historical window to scan.</summary>
         public DateTimeOffset? WindowStart { get; set; }

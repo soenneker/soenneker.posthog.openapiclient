@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.Totals;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.VersionNamespace;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metri
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.Totals.TotalsRequestBuilder Totals
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.Totals.TotalsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The version property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.VersionNamespace.VersionRequestBuilder Version
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.VersionNamespace.VersionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.MetricsRequestBuilder"/> and sets the default values.

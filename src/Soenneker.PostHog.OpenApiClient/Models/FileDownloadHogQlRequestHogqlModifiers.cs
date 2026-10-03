@@ -111,6 +111,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper ParserMode { get; set; }
 #endif
+        /// <summary>Push an `id IN (SELECT person_id FROM &lt;left table&gt; WHERE …)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query&apos;s left-table filters can reach. Applies only to a persons join from the query&apos;s own FROM table.</summary>
+        public bool? PersonIdPushdown { get; set; }
         /// <summary>The personsArgMaxVersion property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -226,6 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "optimizeJoinedFilters", n => { OptimizeJoinedFilters = n.GetBoolValue(); } },
                 { "optimizeProjections", n => { OptimizeProjections = n.GetBoolValue(); } },
                 { "parserMode", n => { ParserMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper.CreateFromDiscriminatorValue); } },
+                { "personIdPushdown", n => { PersonIdPushdown = n.GetBoolValue(); } },
                 { "personsArgMaxVersion", n => { PersonsArgMaxVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper.CreateFromDiscriminatorValue); } },
                 { "personsJoinMode", n => { PersonsJoinMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper.CreateFromDiscriminatorValue); } },
                 { "personsOnEventsMode", n => { PersonsOnEventsMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper.CreateFromDiscriminatorValue); } },
@@ -271,6 +274,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("optimizeJoinedFilters", OptimizeJoinedFilters);
             writer.WriteBoolValue("optimizeProjections", OptimizeProjections);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper>("parserMode", ParserMode);
+            writer.WriteBoolValue("personIdPushdown", PersonIdPushdown);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper>("personsArgMaxVersion", PersonsArgMaxVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper>("personsJoinMode", PersonsJoinMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper>("personsOnEventsMode", PersonsOnEventsMode);

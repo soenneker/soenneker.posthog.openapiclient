@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The numbers behind the proposal, read back by name. Five keys are required: `metric`, the metric name; `current_value`, its value as a number (a rate as a fraction, 0.0865, never a string); `unit`, either `rate` or `count`, since 1.0 is either every message or one of them; `n`, the denominator that value was computed over; and `guardrails`, a list of {metric, value, n, unit} counter-metrics read over the same window, empty only if none apply. Also conventional: target_value, window, query, app_source_id. A rate with no denominator lets a reviewer mistake noise for a result, a target with no counter-metrics hides a change that lifts one number by harming another, and a number under a key of your own reads to a person as no evidence at all.</summary>
+        /// <summary>The numbers behind the proposal, read back by name. Five keys are required: `metric`, the metric name; `current_value`, its value as a number (a rate as a fraction, 0.0865, never a string); `unit`, either `rate` or `count`, since 1.0 is either every message or one of them; `n`, the denominator that value was computed over; and `guardrails`, a list of {metric, value, n, unit} counter-metrics read over the same window, empty only if none apply. PostHog then reads the step&apos;s own metrics at `base_version` when the suggestion is filed and stores them under `measured`; the page shows that reading and flags a disagreement with yours. Also conventional: target_value, window, query, app_source_id. A rate with no denominator lets a reviewer mistake noise for a result, a target with no counter-metrics hides a change that lifts one number by harming another, and a number under a key of your own reads to a person as no evidence at all.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalEvidenceProperty? Evidence { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Whether approving this would undo an edit made since it was proposed. False while the workflow only changed elsewhere, because approving merges per step.</summary>
+        /// <summary>Whether approving this would undo an edit made since it was proposed. False while the workflow only changed elsewhere, because approving merges only what the proposal changes.</summary>
         public bool? IsStale { get; private set; }
         /// <summary>Why the producer thinks this change is worth making.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

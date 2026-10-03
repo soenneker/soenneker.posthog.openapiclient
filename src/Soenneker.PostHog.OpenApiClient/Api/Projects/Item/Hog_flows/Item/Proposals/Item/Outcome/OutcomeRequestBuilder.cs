@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Propo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OutcomeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/proposals/{proposalId}/outcome{?window*}", pathParameters)
+        public OutcomeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/proposals/{proposalId}/outcome", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Propo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OutcomeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/proposals/{proposalId}/outcome{?window*}", rawUrl)
+        public OutcomeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/proposals/{proposalId}/outcome", rawUrl)
         {
         }
         /// <summary>
@@ -41,11 +41,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Propo
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals.Item.Outcome.OutcomeRequestBuilder.OutcomeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals.Item.Outcome.OutcomeRequestBuilder.OutcomeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -58,11 +58,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Propo
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals.Item.Outcome.OutcomeRequestBuilder.OutcomeRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals.Item.Outcome.OutcomeRequestBuilder.OutcomeRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -78,23 +78,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Propo
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals.Item.Outcome.OutcomeRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Proposals.Item.Outcome.OutcomeRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// What the change did: the target metric and its counter-metrics, before and after.Both sides are read from the per-version metric series, so &quot;before&quot; is the version thesuggestion was written against and &quot;after&quot; is the version it went live as. Each numbercarries its own `n`, and anything under the minimum sample is flagged rather than presentedas a result — a verdict off twenty sends is the loop&apos;s most embarrassing failure mode.Comparing two windows is not a controlled experiment; that is what the A/B step is for.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class OutcomeRequestBuilderGetQueryParameters 
-        {
-            /// <summary>Relative window, e.g. -7d. Defaults to -7d.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("window")]
-            public string? Window { get; set; }
-#nullable restore
-#else
-            [QueryParameter("window")]
-            public string Window { get; set; }
-#endif
         }
     }
 }

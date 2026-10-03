@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/wizard/runs{?limit*,offset*,status}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/wizard/runs{?created_after*,limit*,offset*,status}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/wizard/runs{?limit*,offset*,status}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/wizard/runs{?created_after*,limit*,offset*,status}", rawUrl)
         {
         }
         /// <summary>
@@ -151,6 +151,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RunsRequestBuilderGetQueryParameters 
         {
+            /// <summary>Only return runs created after this timestamp.</summary>
+            [QueryParameter("created_after")]
+            public DateTimeOffset? CreatedAfter { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

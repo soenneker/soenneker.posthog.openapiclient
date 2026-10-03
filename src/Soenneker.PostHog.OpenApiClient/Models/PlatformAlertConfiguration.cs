@@ -22,7 +22,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert> Alerts { get; private set; }
 #endif
-        /// <summary>Minutes between scheduled checks.</summary>
+        /// <summary>Local time (HH:MM in the project timezone) a calendar recurrence lands on. Null means the default anchor for the unit.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AnchorTime { get; private set; }
+#nullable restore
+#else
+        public string AnchorTime { get; private set; }
+#endif
+        /// <summary>Minutes between scheduled checks. Applies when recurrence_unit is null.</summary>
         public int? CheckIntervalMinutes { get; private set; }
         /// <summary>Number of checks in a row that failed to evaluate.</summary>
         public int? ConsecutiveFailures { get; private set; }
@@ -50,6 +58,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the next check is due. Null when no check is scheduled.</summary>
         public DateTimeOffset? NextCheckAt { get; private set; }
+        /// <summary>Calendar unit the alert recurs on. Null means it recurs on check_interval_minutes.* `day` - Day* `week` - Week* `month` - Month</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit? RecurrenceUnit { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit RecurrenceUnit { get; private set; }
+#endif
         /// <summary>Blocked local time windows (HH:MM in the project timezone) when the alert does not run. Null means no quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -114,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "alerts", n => { Alerts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "anchor_time", n => { AnchorTime = n.GetStringValue(); } },
                 { "check_interval_minutes", n => { CheckIntervalMinutes = n.GetIntValue(); } },
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
                 { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
@@ -125,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "legacy_configuration_id", n => { LegacyConfigurationId = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
+                { "recurrence_unit", n => { RecurrenceUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit.CreateFromDiscriminatorValue); } },
                 { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "source_config", n => { SourceConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty.CreateFromDiscriminatorValue); } },
                 { "source_kind", n => { SourceKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind.CreateFromDiscriminatorValue); } },

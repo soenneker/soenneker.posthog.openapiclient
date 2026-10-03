@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithVersionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/{%2Did}/runs/{%2Did}/living_artifacts/{id}/versions/{version}", pathParameters)
+        public WithVersionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/{%2Did}/runs/{%2Did}/living_artifacts/{id}/versions/{version}{?download*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,44 +30,45 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithVersionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/{%2Did}/runs/{%2Did}/living_artifacts/{id}/versions/{version}", rawUrl)
+        public WithVersionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/{%2Did}/runs/{%2Did}/living_artifacts/{id}/versions/{version}{?download*}", rawUrl)
         {
         }
         /// <summary>
-        /// Streams the content of one living artifact version from the app origin. Slack file versions return their stored file. Slack canvas and message versions return their text.
+        /// Returns the content of one living artifact version. Slack file versions return their stored file, streamed from the app origin for a preview or redirected to a presigned URL with download=true. Slack canvas and message versions return their text.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 413 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.Item.WithVersionItemRequestBuilder.WithVersionItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.Item.WithVersionItemRequestBuilder.WithVersionItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
+                { "413", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Streams the content of one living artifact version from the app origin. Slack file versions return their stored file. Slack canvas and message versions return their text.
+        /// Returns the content of one living artifact version. Slack file versions return their stored file, streamed from the app origin for a preview or redirected to a presigned URL with download=true. Slack canvas and message versions return their text.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.Item.WithVersionItemRequestBuilder.WithVersionItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.Item.WithVersionItemRequestBuilder.WithVersionItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -83,6 +84,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.Item.WithVersionItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts.Item.Versions.Item.WithVersionItemRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Returns the content of one living artifact version. Slack file versions return their stored file, streamed from the app origin for a preview or redirected to a presigned URL with download=true. Slack canvas and message versions return their text.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class WithVersionItemRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Set to true to save the version. A stored file then redirects to a short-lived presigned URL, so a large file never passes through the app. Leave unset for an inline preview.</summary>
+            [QueryParameter("download")]
+            public bool? Download { get; set; }
         }
     }
 }

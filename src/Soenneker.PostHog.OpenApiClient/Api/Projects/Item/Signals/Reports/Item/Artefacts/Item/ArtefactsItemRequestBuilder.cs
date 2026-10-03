@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Activate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Diff;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -19,11 +18,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ArtefactsItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The activate property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Activate.ActivateRequestBuilder Activate
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Activate.ActivateRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The diff property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Artefacts.Item.Diff.DiffRequestBuilder Diff
         {
@@ -46,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
         }
         /// <summary>
-        /// Delete an artefact, addressed by id. Deleting the latest row of a status type reverts the report&apos;s canonical status to the previous version (latest-wins over what remains). `task_run` artefacts are an append-only work log and cannot be deleted. Neither can the types this API cannot write, which the pipeline owns: `autostart_skip`, `check_cancelled`, `check_expired`, `check_result`, `check_scheduled`, `code_review`, `implementation_decision`, `implementation_dispatch`, `implementation_handover`, `implementation_replacement`, `pull_request`, `ranking_score`, `report_link`, `summary_change`, `task_run`, `title_change`, `video_segment`, `work_claim`, `work_release`.
+        /// Delete an artefact, addressed by id. Deleting the latest row of a status type reverts the report&apos;s canonical status to the previous version (latest-wins over what remains). `task_run` artefacts are an append-only work log and cannot be deleted. Neither can the types this API cannot write, which the pipeline owns: `autostart_skip`, `check_cancelled`, `check_expired`, `check_result`, `check_scheduled`, `code_review`, `impact_measurement_plan`, `implementation_decision`, `implementation_dispatch`, `implementation_handover`, `implementation_replacement`, `pull_request`, `ranking_score`, `report_link`, `summary_change`, `task_run`, `title_change`, `video_segment`, `work_claim`, `work_release`.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an artefact, addressed by id. Deleting the latest row of a status type reverts the report&apos;s canonical status to the previous version (latest-wins over what remains). `task_run` artefacts are an append-only work log and cannot be deleted. Neither can the types this API cannot write, which the pipeline owns: `autostart_skip`, `check_cancelled`, `check_expired`, `check_result`, `check_scheduled`, `code_review`, `implementation_decision`, `implementation_dispatch`, `implementation_handover`, `implementation_replacement`, `pull_request`, `ranking_score`, `report_link`, `summary_change`, `task_run`, `title_change`, `video_segment`, `work_claim`, `work_release`.
+        /// Delete an artefact, addressed by id. Deleting the latest row of a status type reverts the report&apos;s canonical status to the previous version (latest-wins over what remains). `task_run` artefacts are an append-only work log and cannot be deleted. Neither can the types this API cannot write, which the pipeline owns: `autostart_skip`, `check_cancelled`, `check_expired`, `check_result`, `check_scheduled`, `code_review`, `impact_measurement_plan`, `implementation_decision`, `implementation_dispatch`, `implementation_handover`, `implementation_replacement`, `pull_request`, `ranking_score`, `report_link`, `summary_change`, `task_run`, `title_change`, `video_segment`, `work_claim`, `work_release`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

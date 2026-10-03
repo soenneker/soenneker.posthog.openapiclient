@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The version it went live as. Null until the proposal is applied.</summary>
+        /// <summary>The versions that carried the change. Null until the proposal is applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? After { get; set; }
@@ -30,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome Before { get; set; }
 #endif
+        /// <summary>The version that changed what the suggestion changed, which is where the after side stops. Null while the change is still live.</summary>
+        public int? ChangeEndedAtVersion { get; set; }
         /// <summary>Counter-metrics that cannot be read yet, named so their absence is not read as zero.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,13 +40,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> UnavailableGuardrails { get; set; }
 #endif
-        /// <summary>Relative window both sides were measured over.</summary>
+        /// <summary>Every published version around the change, each read over its own time live, so a later edit shows up as its own point rather than ending the comparison.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Window { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>? Versions { get; set; }
 #nullable restore
 #else
-        public string Window { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome> Versions { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome"/> and sets the default values.
@@ -73,8 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome.CreateFromDiscriminatorValue); } },
                 { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome.CreateFromDiscriminatorValue); } },
+                { "change_ended_at_version", n => { ChangeEndedAtVersion = n.GetIntValue(); } },
                 { "unavailable_guardrails", n => { UnavailableGuardrails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "window", n => { Window = n.GetStringValue(); } },
+                { "versions", n => { Versions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -86,8 +89,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>("after", After);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>("before", Before);
+            writer.WriteIntValue("change_ended_at_version", ChangeEndedAtVersion);
             writer.WriteCollectionOfPrimitiveValues<string>("unavailable_guardrails", UnavailableGuardrails);
-            writer.WriteStringValue("window", Window);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>("versions", Versions);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

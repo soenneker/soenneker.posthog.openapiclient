@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether PostHog may read this workflow&apos;s metrics and suggest changes to it.</summary>
+        /// <summary>Whether PostHog may suggest changes to this workflow.</summary>
         public bool? Enabled { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimization"/> and sets the default values.

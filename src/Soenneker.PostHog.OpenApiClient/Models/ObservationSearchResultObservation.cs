@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DistinctId { get; private set; }
 #endif
-        /// <summary>Populated on terminal non-success statuses; formatted as `kind:human-readable message`. For `ineligible`, kind is one of no_recording / too_short / too_inactive / too_long / no_events / no_snapshots / too_large. For `failed`, kind is one of provider_transient / provider_rejected / rasterization_failed / validation_failed / infra_transient / internal_error / orphaned.</summary>
+        /// <summary>Populated on terminal non-success statuses; formatted as `kind:human-readable message`. For `ineligible`, kind is one of no_recording / too_short / too_inactive / too_long / no_events / no_snapshots / too_large / not_exposed / experiment_unresolved. For `failed`, kind is one of provider_transient / provider_rejected / rasterization_failed / validation_failed / infra_transient / internal_error / orphaned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorReason { get; private set; }

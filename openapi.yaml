@@ -15111,6 +15111,15 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: ordering
+        schema:
+          type: string
+          enum:
+          - -created_at
+          - -updated_at
+        description: Sort order. -created_at (default) puts the newest canvases first.
+          -updated_at puts the most recently changed canvases first.
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -20570,6 +20579,15 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: ordering
+        schema:
+          type: string
+          enum:
+          - -last_viewed_at
+        description: Optional. `-last_viewed_at` puts the dashboards you viewed most
+          recently first. A dashboard you never viewed sorts by its creation time.
+          This order replaces the search relevance order.
       - in: query
         name: pinned
         schema:
@@ -43203,14 +43221,116 @@ paths:
           description: ''
       x-product:
       - workflows
+  /api/projects/{project_id}/hog_flows/{id}/metrics/version/:
+    get:
+      operationId: hog_flows_metrics_version_retrieve
+      description: |-
+        One published version's series. Every hog flow metric is mirrored under
+        `hog_flow_version` with the version appended to the id, which is what makes "before and
+        after this change" answerable at all. The unversioned read keys batch and broadcast runs on
+        the run instead, so it is not the sum of the versions.
+      parameters:
+      - in: query
+        name: after
+        schema:
+          type: string
+          default: -7d
+          minLength: 1
+        description: Start of the time range. Accepts relative formats like '-7d',
+          '-24h' or ISO 8601 timestamps. Defaults to '-7d'.
+      - in: query
+        name: before
+        schema:
+          type: string
+          minLength: 1
+        description: End of the time range. Same format as 'after'. Defaults to now.
+      - in: query
+        name: breakdown_by
+        schema:
+          enum:
+          - name
+          - kind
+          type: string
+          default: kind
+          minLength: 1
+        description: |-
+          Group the series by metric 'name' or 'kind'. Defaults to 'kind'.
+
+          * `name` - name
+          * `kind` - kind
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this hog flow.
+        required: true
+      - in: query
+        name: instance_id
+        schema:
+          type: string
+          minLength: 1
+        description: Filter metrics to a specific execution instance.
+      - in: query
+        name: interval
+        schema:
+          enum:
+          - hour
+          - day
+          - week
+          type: string
+          default: day
+          minLength: 1
+        description: |-
+          Time bucket size for the series. One of: hour, day, week. Defaults to 'day'.
+
+          * `hour` - hour
+          * `day` - day
+          * `week` - week
+      - in: query
+        name: kind
+        schema:
+          type: string
+          minLength: 1
+        description: Comma-separated metric kinds to filter by, e.g. 'success,failure'.
+      - in: query
+        name: name
+        schema:
+          type: string
+          minLength: 1
+        description: Comma-separated metric names to filter by.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: version
+        schema:
+          type: integer
+        description: 'Read one workflow version''s series: every run of that version,
+          keyed on the workflow. The unversioned read keys batch and broadcast runs
+          on the run instead, so it is not the sum of the versions; compare versions
+          with each other, not with it.'
+        required: true
+      tags:
+      - hog_flows
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppMetricsResponse'
+          description: ''
+      x-product:
+      - workflows
   /api/projects/{project_id}/hog_flows/{id}/optimization/:
     get:
       operationId: hog_flows_optimization_retrieve
       description: |-
-        Whether PostHog may look at this workflow and suggest changes to it.
+        Whether PostHog may suggest changes to this workflow.
 
-        Turning it off stops a producer reading the workflow. Suggestions already made are left
-        alone: someone still has them to resolve.
+        Turning it off stops new suggestions. Suggestions already made are left alone: someone
+        still has them to resolve.
       parameters:
       - in: path
         name: id
@@ -43237,10 +43357,10 @@ paths:
     post:
       operationId: hog_flows_optimization_create
       description: |-
-        Whether PostHog may look at this workflow and suggest changes to it.
+        Whether PostHog may suggest changes to this workflow.
 
-        Turning it off stops a producer reading the workflow. Suggestions already made are left
-        alone: someone still has them to resolve.
+        Turning it off stops new suggestions. Suggestions already made are left alone: someone
+        still has them to resolve.
       parameters:
       - in: path
         name: id
@@ -43362,7 +43482,7 @@ paths:
         required: true
       security:
       - PersonalAPIKeyAuth:
-        - hog_flow:write
+        - hog_flow_proposal:write
       responses:
         '201':
           content:
@@ -43476,11 +43596,6 @@ paths:
           format: uuid
         description: Proposal to read outcomes for.
         required: true
-      - in: query
-        name: window
-        schema:
-          type: string
-        description: Relative window, e.g. -7d. Defaults to -7d.
       tags:
       - hog_flows
       security:
@@ -61412,7 +61527,7 @@ paths:
                 $ref: '#/components/schemas/PaginatedPlatformAlertConfigurationList'
           description: ''
       x-product:
-      - alerts
+      - alerts_platform
   /api/projects/{project_id}/platform_alerts/{id}/:
     get:
       operationId: platform_alerts_retrieve
@@ -61421,8 +61536,6 @@ paths:
         name: id
         schema:
           type: string
-          format: uuid
-        description: A UUID string identifying this platform alert configuration.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -61438,7 +61551,7 @@ paths:
                 $ref: '#/components/schemas/PlatformAlertConfiguration'
           description: ''
       x-product:
-      - alerts
+      - alerts_platform
   /api/projects/{project_id}/plugin_configs/{plugin_config_id}/logs/:
     get:
       operationId: plugin_configs_logs_list
@@ -67073,10 +67186,10 @@ paths:
         (latest-wins over what remains). `task_run` artefacts are an append-only work
         log and cannot be deleted. Neither can the types this API cannot write, which
         the pipeline owns: `autostart_skip`, `check_cancelled`, `check_expired`, `check_result`,
-        `check_scheduled`, `code_review`, `implementation_decision`, `implementation_dispatch`,
-        `implementation_handover`, `implementation_replacement`, `pull_request`, `ranking_score`,
-        `report_link`, `summary_change`, `task_run`, `title_change`, `video_segment`,
-        `work_claim`, `work_release`.'
+        `check_scheduled`, `code_review`, `impact_measurement_plan`, `implementation_decision`,
+        `implementation_dispatch`, `implementation_handover`, `implementation_replacement`,
+        `pull_request`, `ranking_score`, `report_link`, `summary_change`, `task_run`,
+        `title_change`, `video_segment`, `work_claim`, `work_release`.'
       summary: Delete an artefact
       parameters:
       - in: path
@@ -67110,55 +67223,6 @@ paths:
           description: Artefact type cannot be deleted through the API.
         '404':
           description: Artefact not found for this report / project.
-      x-product:
-      - signals
-  /api/projects/{project_id}/signals/reports/{report_id}/artefacts/{id}/activate/:
-    post:
-      operationId: signals_reports_artefacts_activate_create
-      description: |-
-        Artefacts attached to a signal report.
-
-        Two write surfaces, both gated by the `task:write` scope (already held by the agent tokens):
-
-        - PUT edits a report's suggested reviewers: it appends a new `suggested_reviewers` status
-          artefact (latest-wins, so the new row becomes current) with bespoke reviewer enrichment,
-          merging commits/names forward from the current reviewers. Other types return 400.
-        - POST / PATCH / DELETE manage artefacts, except for the types the pipeline owns
-          (`NON_WRITABLE_ARTEFACT_TYPES`) and, for DELETE, the append-only `task_run` log; all of
-          those return 400 naming the type.
-          Log entries accumulate; status types (judgments, repo selection, suggested reviewers, channel assignments)
-          are latest-wins, so appending a new version supersedes the previous one as the report's
-          canonical status. Content is validated against the type's schema. Team scoping is
-          enforced by `safely_get_queryset`, so an artefact id from another team / a deleted
-          report 404s.
-
-        Writes are attributed: to the task named by the `X-PostHog-Task-Id` header (set automatically
-        for sandbox agents) when present, else to the requesting user.
-      summary: Activate a proposed impact measurement
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this signal report artefact.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      - in: path
-        name: report_id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - signals
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SignalReportArtefactWriteResponse'
-          description: ''
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/{report_id}/artefacts/{id}/diff/:
@@ -76939,11 +77003,19 @@ paths:
   /api/projects/{project_id}/tasks/{task_id}/runs/{run_id}/living_artifacts/{id}/versions/{version}/:
     get:
       operationId: tasks_runs_living_artifacts_version_content
-      description: Streams the content of one living artifact version from the app
-        origin. Slack file versions return their stored file. Slack canvas and message
+      description: Returns the content of one living artifact version. Slack file
+        versions return their stored file, streamed from the app origin for a preview
+        or redirected to a presigned URL with download=true. Slack canvas and message
         versions return their text.
       summary: Download one version of a living artifact
       parameters:
+      - in: query
+        name: download
+        schema:
+          type: boolean
+        description: Set to true to save the version. A stored file then redirects
+          to a short-lived presigned URL, so a large file never passes through the
+          app. Leave unset for an inline preview.
       - in: path
         name: id
         schema:
@@ -76982,6 +77054,9 @@ paths:
                 format: binary
           description: Version content, with the content type the version was saved
             with
+        '302':
+          description: With download=true, a redirect to a presigned URL for the stored
+            file
         '400':
           content:
             application/json:
@@ -76991,6 +77066,12 @@ paths:
         '404':
           description: Living artifact or version not found, or the version keeps
             no content
+        '413':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskRunErrorResponse'
+          description: The stored file is too large to preview. Request it with download=true.
       x-product:
       - tasks
   /api/projects/{project_id}/tasks/{task_id}/runs/{run_id}/living_artifacts/chart/:
@@ -88224,6 +88305,12 @@ paths:
       operationId: wizard_runs_list
       description: List Wizard runs for this project, ordered from newest to oldest.
       parameters:
+      - in: query
+        name: created_after
+        schema:
+          type: string
+          format: date-time
+        description: Only return runs created after this timestamp.
       - name: limit
         required: false
         in: query
@@ -99325,7 +99412,7 @@ components:
           type: string
           format: date-time
           description: Exclusive upper bound of the window; clamped server-side to
-            now.
+            now, and for an experiment scanner to the experiment's end date.
         max_total_credits:
           type: integer
           minimum: 0
@@ -99365,7 +99452,8 @@ components:
         window_end:
           type: string
           format: date-time
-          description: The window upper bound after clamping to now.
+          description: The window upper bound after clamping to now and, for an experiment
+            scanner, to the experiment's end date.
       required:
       - credits_per_observation
       - credits_remaining
@@ -99396,7 +99484,7 @@ components:
           type: string
           format: date-time
           description: Exclusive upper bound of the window; clamped server-side to
-            now.
+            now, and for an experiment scanner to the experiment's end date.
       required:
       - window_end
       - window_start
@@ -105517,6 +105605,16 @@ components:
       description: |-
         * `started` - started
         * `already_running` - already_running
+    CalendarUnitEnum:
+      enum:
+      - day
+      - week
+      - month
+      type: string
+      description: |-
+        * `day` - Day
+        * `week` - Week
+        * `month` - Month
     CallToolBlocked:
       type: object
       properties:
@@ -159759,6 +159857,20 @@ components:
           readOnly: true
           description: Newest task this loop workflow created, as its last run. Null
             when the workflow is not a loop or has not run.
+        pending_suggestions:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: How many suggested changes are waiting for a person on this
+            workflow. Counted on the list only.
+        suggestions_enabled:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Whether someone turned suggestions on for this workflow. Read
+            on the list only.
       required:
       - abort_action
       - actions
@@ -159775,7 +159887,9 @@ components:
       - last_run
       - name
       - origin_product
+      - pending_suggestions
       - status
+      - suggestions_enabled
       - trigger
       - trigger_masking
       - updated_at
@@ -159787,8 +159901,7 @@ components:
       properties:
         enabled:
           type: boolean
-          description: Whether PostHog may read this workflow's metrics and suggest
-            changes to it.
+          description: Whether PostHog may suggest changes to this workflow.
       required:
       - enabled
     HogFlowOriginProductEnum:
@@ -162296,6 +162409,16 @@ components:
             divergences without failing the request. The `rust_py_*` modes drive the
             same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast`
             dataclass instances directly via PyO3, skipping the JSON round-trip.
+        personIdPushdown:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Push an `id IN (SELECT person_id FROM <left table> WHERE …)`
+            predicate into the joined persons subquery, so the latest-version lookup
+            only reads persons that the outer query's left-table filters can reach.
+            Applies only to a persons join from the query's own FROM table.
+          title: Personidpushdown
         personsArgMaxVersion:
           anyOf:
           - $ref: '#/components/schemas/PersonsArgMaxVersion'
@@ -209779,7 +209902,26 @@ components:
         check_interval_minutes:
           type: integer
           readOnly: true
-          description: Minutes between scheduled checks.
+          description: Minutes between scheduled checks. Applies when recurrence_unit
+            is null.
+        recurrence_unit:
+          readOnly: true
+          description: |-
+            Calendar unit the alert recurs on. Null means it recurs on check_interval_minutes.
+
+            * `day` - Day
+            * `week` - Week
+            * `month` - Month
+          oneOf:
+          - $ref: '#/components/schemas/CalendarUnitEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        anchor_time:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Local time (HH:MM in the project timezone) a calendar recurrence
+            lands on. Null means the default anchor for the unit.
         evaluation_periods:
           type: integer
           readOnly: true
@@ -209837,6 +209979,7 @@ components:
           description: Runtime state for each result group of this configuration.
       required:
       - alerts
+      - anchor_time
       - check_interval_minutes
       - consecutive_failures
       - cooldown_minutes
@@ -209848,6 +209991,7 @@ components:
       - legacy_configuration_id
       - name
       - next_check_at
+      - recurrence_unit
       - schedule_restriction
       - source_config
       - source_kind
@@ -229722,9 +229866,10 @@ components:
           readOnly: true
           description: Populated on terminal non-success statuses; formatted as `kind:human-readable
             message`. For `ineligible`, kind is one of no_recording / too_short /
-            too_inactive / too_long / no_events / no_snapshots / too_large. For `failed`,
-            kind is one of provider_transient / provider_rejected / rasterization_failed
-            / validation_failed / infra_transient / internal_error / orphaned.
+            too_inactive / too_long / no_events / no_snapshots / too_large / not_exposed
+            / experiment_unresolved. For `failed`, kind is one of provider_transient
+            / provider_rejected / rasterization_failed / validation_failed / infra_transient
+            / internal_error / orphaned.
         workflow_id:
           type: string
           readOnly: true
@@ -239667,6 +239812,20 @@ components:
           - type: 'null'
           description: Extra draws taken to verify a monitor `yes` verdict. Null when
             the scan did not verify one.
+        experiment_variant:
+          type:
+          - string
+          - 'null'
+          description: 'Experiment scanners only: the variant the exposure data attributes
+            this session''s person to. Null on the other types and on rows scanned
+            before variant attribution shipped.'
+        session_duration_s:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: 'Experiment scanners only: the scanned session''s duration
+            in seconds.'
       required:
       - model_output
       - signals_count
@@ -245223,8 +245382,8 @@ components:
         artefact_type:
           type: string
           description: 'The artefact type. One of: actionability_judgment, channel_assignment,
-            code_reference, commit, dismissal, impact_measurement_plan, note, priority_judgment,
-            related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers.
+            code_reference, commit, dismissal, note, priority_judgment, related_to,
+            repo_selection, safety_judgment, signal_finding, suggested_reviewers.
             Log types accumulate; status types (safety_judgment, actionability_judgment,
             priority_judgment, repo_selection, suggested_reviewers, channel_assignment)
             are latest-wins — appending a new version supersedes the previous one
@@ -255027,16 +255186,6 @@ components:
       description: |-
         * `at_least` - At least
         * `at_most` - At most
-    SpaceGoalPeriodEnum:
-      enum:
-      - day
-      - week
-      - month
-      type: string
-      description: |-
-        * `day` - Day
-        * `week` - Week
-        * `month` - Month
     SpaceGoalWrite:
       type: object
       description: The metric a goal space should move.
@@ -255048,7 +255197,7 @@ components:
           maxLength: 2000
         period:
           allOf:
-          - $ref: '#/components/schemas/SpaceGoalPeriodEnum'
+          - $ref: '#/components/schemas/CalendarUnitEnum'
           default: week
           description: |-
             How often the metric is measured.
@@ -281364,11 +281513,14 @@ components:
             `rate` or `count`, since 1.0 is either every message or one of them; `n`,
             the denominator that value was computed over; and `guardrails`, a list
             of {metric, value, n, unit} counter-metrics read over the same window,
-            empty only if none apply. Also conventional: target_value, window, query,
-            app_source_id. A rate with no denominator lets a reviewer mistake noise
-            for a result, a target with no counter-metrics hides a change that lifts
-            one number by harming another, and a number under a key of your own reads
-            to a person as no evidence at all.'
+            empty only if none apply. PostHog then reads the step''s own metrics at
+            `base_version` when the suggestion is filed and stores them under `measured`;
+            the page shows that reading and flags a disagreement with yours. Also
+            conventional: target_value, window, query, app_source_id. A rate with
+            no denominator lets a reviewer mistake noise for a result, a target with
+            no counter-metrics hides a change that lifts one number by harming another,
+            and a number under a key of your own reads to a person as no evidence
+            at all.'
           readOnly: true
         step_id:
           type:
@@ -281391,7 +281543,7 @@ components:
           readOnly: true
           description: Whether approving this would undo an edit made since it was
             proposed. False while the workflow only changed elsewhere, because approving
-            merges per step.
+            merges only what the proposal changes.
         status:
           allOf:
           - $ref: '#/components/schemas/WorkflowProposalStatusEnum'
@@ -281480,11 +281632,11 @@ components:
             it without re-deriving them.
         base_version:
           type: integer
-          description: 'Workflow version this was authored against. Required when
-            the proposal changes actions, edges or variables: it is the snapshot approve
-            compares against to tell whether someone edited the same steps since,
-            and a defaulted version would read as current however long the producer
-            took. Defaults to the current live version otherwise.'
+          minimum: 1
+          description: Workflow version this was authored against, as read from the
+            workflow. It is the snapshot approve compares against to tell whether
+            someone edited the same steps or fields since, and a defaulted version
+            would read as current however long the producer took.
         step_id:
           type:
           - string
@@ -281503,6 +281655,7 @@ components:
             same one twice returns the existing proposal instead of creating a duplicate.
           maxLength: 200
       required:
+      - base_version
       - content
       - rationale
       - title
@@ -281534,9 +281687,13 @@ components:
     WorkflowProposalOutcome:
       type: object
       properties:
-        window:
-          type: string
-          description: Relative window both sides were measured over.
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProposalVersionOutcome'
+          description: Every published version around the change, each read over its
+            own time live, so a later edit shows up as its own point rather than ending
+            the comparison.
         before:
           oneOf:
           - $ref: '#/components/schemas/WorkflowProposalVersionOutcome'
@@ -281546,7 +281703,14 @@ components:
           oneOf:
           - $ref: '#/components/schemas/WorkflowProposalVersionOutcome'
           - type: 'null'
-          description: The version it went live as. Null until the proposal is applied.
+          description: The versions that carried the change. Null until the proposal
+            is applied.
+        change_ended_at_version:
+          type:
+          - integer
+          - 'null'
+          description: The version that changed what the suggestion changed, which
+            is where the after side stops. Null while the change is still live.
         unavailable_guardrails:
           type: array
           items:
@@ -281556,8 +281720,9 @@ components:
       required:
       - after
       - before
+      - change_ended_at_version
       - unavailable_guardrails
-      - window
+      - versions
     WorkflowProposalStatusEnum:
       enum:
       - suggested
@@ -281576,10 +281741,50 @@ components:
         version:
           type: integer
           description: Workflow version these numbers belong to.
+        applied:
+          type: boolean
+          description: Whether the suggestion went live as this version.
+        proposed_against:
+          type: boolean
+          description: Whether the suggestion was written against this version.
+        carries_change:
+          type: boolean
+          description: Whether this version still holds what the suggestion changed.
+        other_changes:
+          type: boolean
+          description: Whether this version also changed something the suggestion
+            did not, which the numbers cannot separate.
+        changes:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowVersionChange'
+          description: What this version changed against the version before it.
+        published_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When this version went live.
+        published_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          description: Who published this version.
+        versions:
+          type: array
+          items:
+            type: integer
+          description: Every version summed into these numbers. The after side runs
+            on while later versions keep the change.
         target:
           allOf:
           - $ref: '#/components/schemas/WorkflowProposalMetric'
           description: The metric the suggestion aimed at.
+        secondary:
+          allOf:
+          - $ref: '#/components/schemas/WorkflowProposalMetric'
+          description: The rate read beside the target, so a lift in one is visible
+            against the other.
         click_through:
           allOf:
           - $ref: '#/components/schemas/WorkflowProposalMetric'
@@ -281870,6 +282075,36 @@ components:
       - operator
       title: WorkflowVariablePropertyFilter
       type: object
+    WorkflowVersionChange:
+      type: object
+      properties:
+        step_name:
+          type:
+          - string
+          - 'null'
+          description: Step the field belongs to, or null for a workflow field.
+        field:
+          type: string
+          description: What changed, as a person reads it, e.g. 'email > subject'.
+        before:
+          type:
+          - string
+          - 'null'
+          description: Value in the version before this one.
+        after:
+          type:
+          - string
+          - 'null'
+          description: Value this version published.
+        from_suggestion:
+          type: boolean
+          description: Whether the suggestion is what changed this field.
+      required:
+      - after
+      - before
+      - field
+      - from_suggestion
+      - step_name
     WriterEnum:
       enum:
       - agent

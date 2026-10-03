@@ -14,6 +14,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether the suggestion went live as this version.</summary>
+        public bool? Applied { get; set; }
+        /// <summary>Whether this version still holds what the suggestion changed.</summary>
+        public bool? CarriesChange { get; set; }
+        /// <summary>What this version changed against the version before it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVersionChange>? Changes { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVersionChange> Changes { get; set; }
+#endif
         /// <summary>Click-through rate over the same window and denominator, since opens alone can move without clicks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,6 +42,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalMetric> Guardrails { get; set; }
 #endif
+        /// <summary>Whether this version also changed something the suggestion did not, which the numbers cannot separate.</summary>
+        public bool? OtherChanges { get; set; }
+        /// <summary>Whether the suggestion was written against this version.</summary>
+        public bool? ProposedAgainst { get; set; }
+        /// <summary>When this version went live.</summary>
+        public DateTimeOffset? PublishedAt { get; set; }
+        /// <summary>Who published this version.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? PublishedBy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic PublishedBy { get; set; }
+#endif
+        /// <summary>The rate read beside the target, so a lift in one is visible against the other.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary? Secondary { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary Secondary { get; set; }
+#endif
         /// <summary>The metric the suggestion aimed at.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,6 +74,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Workflow version these numbers belong to.</summary>
         public int? Version { get; set; }
+        /// <summary>Every version summed into these numbers. The after side runs on while later versions keep the change.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<int?>? Versions { get; set; }
+#nullable restore
+#else
+        public List<int?> Versions { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome"/> and sets the default values.
         /// </summary>
@@ -65,10 +107,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "applied", n => { Applied = n.GetBoolValue(); } },
+                { "carries_change", n => { CarriesChange = n.GetBoolValue(); } },
+                { "changes", n => { Changes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVersionChange>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVersionChange.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "click_through", n => { ClickThrough = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeClickThrough>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeClickThrough.CreateFromDiscriminatorValue); } },
                 { "guardrails", n => { Guardrails = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalMetric>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalMetric.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "other_changes", n => { OtherChanges = n.GetBoolValue(); } },
+                { "proposed_against", n => { ProposedAgainst = n.GetBoolValue(); } },
+                { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
+                { "published_by", n => { PublishedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "secondary", n => { Secondary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary.CreateFromDiscriminatorValue); } },
                 { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeTarget>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeTarget.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
+                { "versions", n => { Versions = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -78,10 +129,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("applied", Applied);
+            writer.WriteBoolValue("carries_change", CarriesChange);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVersionChange>("changes", Changes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeClickThrough>("click_through", ClickThrough);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalMetric>("guardrails", Guardrails);
+            writer.WriteBoolValue("other_changes", OtherChanges);
+            writer.WriteBoolValue("proposed_against", ProposedAgainst);
+            writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>("published_by", PublishedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary>("secondary", Secondary);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeTarget>("target", Target);
             writer.WriteIntValue("version", Version);
+            writer.WriteCollectionOfPrimitiveValues<int?>("versions", Versions);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Optim
         {
         }
         /// <summary>
-        /// Whether PostHog may look at this workflow and suggest changes to it.Turning it off stops a producer reading the workflow. Suggestions already made are leftalone: someone still has them to resolve.
+        /// Whether PostHog may suggest changes to this workflow.Turning it off stops new suggestions. Suggestions already made are left alone: someonestill has them to resolve.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimization"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Optim
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimization>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimization.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Whether PostHog may look at this workflow and suggest changes to it.Turning it off stops a producer reading the workflow. Suggestions already made are leftalone: someone still has them to resolve.
+        /// Whether PostHog may suggest changes to this workflow.Turning it off stops new suggestions. Suggestions already made are left alone: someonestill has them to resolve.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimization"/></returns>
         /// <param name="body">The request body</param>
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Optim
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimization>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimization.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Whether PostHog may look at this workflow and suggest changes to it.Turning it off stops a producer reading the workflow. Suggestions already made are leftalone: someone still has them to resolve.
+        /// Whether PostHog may suggest changes to this workflow.Turning it off stops new suggestions. Suggestions already made are left alone: someonestill has them to resolve.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Optim
             return requestInfo;
         }
         /// <summary>
-        /// Whether PostHog may look at this workflow and suggest changes to it.Turning it off stops a producer reading the workflow. Suggestions already made are leftalone: someone still has them to resolve.
+        /// Whether PostHog may suggest changes to this workflow.Turning it off stops new suggestions. Suggestions already made are left alone: someonestill has them to resolve.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

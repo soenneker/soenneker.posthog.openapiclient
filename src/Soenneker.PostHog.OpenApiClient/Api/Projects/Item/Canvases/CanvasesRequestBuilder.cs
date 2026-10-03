@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CanvasesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,kind*,limit*,offset*,search*}", pathParameters)
+        public CanvasesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,kind*,limit*,offset*,ordering*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CanvasesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,kind*,limit*,offset*,search*}", rawUrl)
+        public CanvasesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,kind*,limit*,offset*,ordering*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -170,6 +170,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Sort order. -created_at (default) puts the newest canvases first. -updated_at puts the most recently changed canvases first.</summary>
+            [QueryParameter("ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.CanvasesListOrderingParameter? Ordering { get; set; }
             /// <summary>Only return canvases whose name or description contains this text (case-insensitive).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
