@@ -34,14 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChange> Changes { get; private set; }
 #endif
-        /// <summary>System that recorded the request change.* `manual` - Manual* `github` - GitHub</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `manual` - Manual* `github` - GitHub</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeSource? ChangeSource { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeSource ChangeSource { get; private set; }
-#endif
         /// <summary>Stable request history entry ID.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Whether this entry records the request&apos;s initial values.</summary>
@@ -73,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "actor_id", n => { ActorId = n.GetIntValue(); } },
                 { "actor_name", n => { ActorName = n.GetStringValue(); } },
-                { "change_source", n => { ChangeSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeSource>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeSource.CreateFromDiscriminatorValue); } },
+                { "change_source", n => { ChangeSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeSource>(); } },
                 { "changed_at", n => { ChangedAt = n.GetDateTimeOffsetValue(); } },
                 { "changes", n => { Changes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChange>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChange.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

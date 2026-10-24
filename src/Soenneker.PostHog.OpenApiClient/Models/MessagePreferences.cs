@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Map of category ID to preference status (`OPTED_IN`, `OPTED_OUT` or `NO_PREFERENCE`). The reserved `$all` key covers every marketing message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessagePreferencesPreferences? Preferences { get; set; }
+        public UntypedNode? Preferences { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessagePreferencesPreferences Preferences { get; set; }
+        public UntypedNode Preferences { get; set; }
 #endif
         /// <summary>When the preference was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
-                { "preferences", n => { Preferences = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessagePreferencesPreferences>(global::Soenneker.PostHog.OpenApiClient.Models.MessagePreferencesPreferences.CreateFromDiscriminatorValue); } },
+                { "preferences", n => { Preferences = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("identifier", Identifier);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessagePreferencesPreferences>("preferences", Preferences);
+            writer.WriteObjectValue<UntypedNode>("preferences", Preferences);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

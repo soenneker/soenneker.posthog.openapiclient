@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Compiled server-side from &apos;filters&apos;. Do not set; ignored if sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode Bytecode { get; set; }
+        public UntypedNode Bytecode { get; set; }
 #endif
         /// <summary>Event-based conversion goals: [{filters: {events: [{id, name, type: &apos;events&apos;}], ...}}].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "window", n => { Window = n.GetStringValue(); } },
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode>("bytecode", Bytecode);
+            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent>("events", Events);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty>("filters", Filters);
             writer.WriteStringValue("window", Window);

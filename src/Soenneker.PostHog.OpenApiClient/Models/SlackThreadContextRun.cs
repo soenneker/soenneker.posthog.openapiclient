@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LogUrl { get; set; }
 #endif
-        /// <summary>Temporal workflow id of the Slack mention that dispatched this run (`posthog-code-mention-&lt;workspace&gt;:&lt;event_id_or_channel:ts&gt;`). Null for runs created before this field was persisted.</summary>
+        /// <summary>Temporal workflow id of the Slack mention that dispatched this run (`slack-app-mention-processing-&lt;workspace&gt;:&lt;event_id_or_channel:ts&gt;`). Null for runs created before this field was persisted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MentionWorkflowId { get; set; }

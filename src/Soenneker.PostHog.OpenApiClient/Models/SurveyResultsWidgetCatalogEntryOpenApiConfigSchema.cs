@@ -8,13 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas).
+    /// Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SurveyResultsWidgetCatalogEntryOpenApiConfigSchema : IAdditionalDataHolder, IParsable
+    public partial class SurveyResultsWidgetCatalogEntryOpenApiConfigSchema : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Null or omitted means all time (the survey&apos;s full lifetime).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,7 +36,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public SurveyResultsWidgetCatalogEntryOpenApiConfigSchema()
         {
-            AdditionalData = new Dictionary<string, object>();
             Limit = 10;
         }
         /// <summary>
@@ -74,7 +71,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>("dateRange", DateRange);
             writer.WriteIntValue("limit", Limit);
             writer.WriteStringValue("surveyId", SurveyId);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

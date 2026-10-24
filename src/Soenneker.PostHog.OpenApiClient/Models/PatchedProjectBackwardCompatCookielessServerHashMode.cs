@@ -8,19 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CookielessServerHashModeEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="int"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedProjectBackwardCompatCookielessServerHashMode : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CookielessServerHashModeEnumWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CookielessServerHashModeEnumWrapper? CookielessServerHashModeEnumWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CookielessServerHashModeEnumWrapper CookielessServerHashModeEnumWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="int"/></summary>
+        public int? Integer { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatCookielessServerHashMode();
-            if("CookielessServerHashModeEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetIntValue() is int integerValue)
             {
-                result.CookielessServerHashModeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.CookielessServerHashModeEnumWrapper();
+                result.Integer = integerValue;
             }
             return result;
         }
@@ -51,11 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CookielessServerHashModeEnumWrapper != null)
-            {
-                return CookielessServerHashModeEnumWrapper.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
@@ -68,13 +58,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(CookielessServerHashModeEnumWrapper != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CookielessServerHashModeEnumWrapper>(null, CookielessServerHashModeEnumWrapper);
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+            }
+            else if(Integer != null)
+            {
+                writer.WriteIntValue(null, Integer);
             }
         }
     }

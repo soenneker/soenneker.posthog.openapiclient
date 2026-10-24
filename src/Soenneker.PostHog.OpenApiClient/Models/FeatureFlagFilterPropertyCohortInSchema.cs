@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Set to true in responses when the cohort is deleted or does not exist. The flag cannot evaluate this condition. Ignored on write.</summary>
+        public bool? CohortDeleted { get; set; }
+        /// <summary>Set to true in responses when no cohort with this id exists in the project, so it cannot be restored. `cohort_deleted` is also true. Absent for a soft-deleted cohort. Ignored on write.</summary>
+        public bool? CohortMissing { get; set; }
         /// <summary>Resolved cohort name for cohort-type filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,29 +36,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Membership operator for cohort properties.* `in` - in* `not_in` - not_in</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `in` - in* `not_in` - not_in</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator Operator { get; set; }
-#endif
-        /// <summary>Cohort property type required for in/not_in operators.* `cohort` - cohort</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `cohort` - cohort</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType Type { get; set; }
-#endif
         /// <summary>Cohort comparison value (single or list, depending on usage).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema"/> and sets the default values.
@@ -81,12 +73,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cohort_deleted", n => { CohortDeleted = n.GetBoolValue(); } },
+                { "cohort_missing", n => { CohortMissing = n.GetBoolValue(); } },
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType>(); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -96,12 +90,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("cohort_deleted", CohortDeleted);
+            writer.WriteBoolValue("cohort_missing", CohortMissing);
             writer.WriteStringValue("cohort_name", CohortName);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType>("type", Type);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

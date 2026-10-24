@@ -41,13 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown> Breakdowns { get; set; }
 #endif
         /// <summary>The breakdown_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownTypeWrapper? BreakdownType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownTypeWrapper BreakdownType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType? BreakdownType { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -73,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "breakdown_limit", n => { BreakdownLimit = n.GetIntValue(); } },
                 { "breakdown_normalize_url", n => { BreakdownNormalizeUrl = n.GetBoolValue(); } },
                 { "breakdown_path_cleaning", n => { BreakdownPathCleaning = n.GetBoolValue(); } },
-                { "breakdown_type", n => { BreakdownType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "breakdown_type", n => { BreakdownType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType>(); } },
                 { "breakdowns", n => { Breakdowns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown>(global::Soenneker.PostHog.OpenApiClient.Models.Breakdown.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("breakdown_normalize_url", BreakdownNormalizeUrl);
             writer.WriteBoolValue("breakdown_path_cleaning", BreakdownPathCleaning);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown>("breakdowns", Breakdowns);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownTypeWrapper>("breakdown_type", BreakdownType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType>("breakdown_type", BreakdownType);
         }
     }
 }

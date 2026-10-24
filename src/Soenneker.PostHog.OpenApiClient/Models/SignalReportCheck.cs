@@ -34,14 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? ExpiresAt { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>How the check is evaluated.* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind Kind { get; private set; }
-#endif
         /// <summary>Verdict of the most recent run.* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,9 +44,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcome LastOutcome { get; private set; }
 #endif
+        /// <summary>Why the most recent run could not settle the claim. Set only when `last_outcome` is `inconclusive`: `awaiting_data`, `unmeasurable`, `needs_manual_verification`, or `no_fix_to_measure`.* `awaiting_data` - Awaiting Data* `unmeasurable` - Unmeasurable* `needs_manual_verification` - Needs Manual Verification* `no_fix_to_measure` - No Fix To Measure</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcomeReason? LastOutcomeReason { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcomeReason LastOutcomeReason { get; private set; }
+#endif
         /// <summary>When the check last ran; null before its first run.</summary>
         public DateTimeOffset? LastRunAt { get; private set; }
-        /// <summary>When the coordinator next evaluates the check. Provisional while the check is `pending`: the report resolving is what sets it.</summary>
+        /// <summary>Server-derived timing for open checks on Monitoring reports, including archived Monitoring periods. Omitted when Monitoring is disabled or the check is outside that lane.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming? MonitoringTiming { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming MonitoringTiming { get; private set; }
+#endif
+        /// <summary>Stored coordinator schedule, provisional while pending. During Monitoring this can be the observation-window end rather than another measurement; use `monitoring_timing` for interim timing.</summary>
         public DateTimeOffset? NextRunAt { get; private set; }
         /// <summary>Why the author set the check.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,20 +72,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rationale { get; private set; }
 #endif
-        /// <summary>Gap between runs for a recurring check; null for a one-shot.</summary>
+        /// <summary>Gap between interim Monitoring measurements or recurring verdicts. Null uses the Monitoring executor&apos;s default cadence, otherwise denotes a one-shot check.</summary>
         public int? RunIntervalMinutes { get; private set; }
-        /// <summary>Evaluations still owed before the check retires as passed.</summary>
+        /// <summary>Terminal evaluations still owed before the check retires as passed. Interim Monitoring observations do not consume this count.</summary>
         public int? RunsRemaining { get; private set; }
-        /// <summary>Minimum wait after resolution, in minutes. Metric checks also wait for a full post-resolution query window. Null on legacy checks that did not record a soak.</summary>
+        /// <summary>This check&apos;s observation window during Monitoring, in minutes. Otherwise the minimum wait after resolution; metric checks also wait for a full post-resolution query window. Null on legacy checks.</summary>
         public int? SoakMinutes { get; private set; }
-        /// <summary>`pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive* `expired` - Expired* `cancelled` - Cancelled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `active` - Active* `passed` - Passed* `failed` - Failed* `errored` - Errored* `inconclusive` - Inconclusive* `expired` - Expired* `cancelled` - Cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus Status { get; private set; }
-#endif
         /// <summary>Short label for the expectation, e.g. `Checkout 500s stay below 10 a day`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -118,15 +122,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dispatched_at", n => { DispatchedAt = n.GetDateTimeOffsetValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckKind>(); } },
                 { "last_outcome", n => { LastOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcome.CreateFromDiscriminatorValue); } },
+                { "last_outcome_reason", n => { LastOutcomeReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcomeReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcomeReason.CreateFromDiscriminatorValue); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
+                { "monitoring_timing", n => { MonitoringTiming = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming>(global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming.CreateFromDiscriminatorValue); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "runs_remaining", n => { RunsRemaining = n.GetIntValue(); } },
                 { "soak_minutes", n => { SoakMinutes = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckStatus>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

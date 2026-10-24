@@ -54,13 +54,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Selector { get; set; }
 #endif
-        /// <summary>The selector_regex property</summary>
+        /// <summary>Compiled regex the selector matches against the event elements chain. Null when no selector is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SelectorRegex { get; private set; }
 #nullable restore
 #else
         public string SelectorRegex { get; private set; }
+#endif
+        /// <summary>Set when the selector compiles to a matcher that cannot match any event. Null when the selector is valid or absent.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SelectorWarning { get; private set; }
+#nullable restore
+#else
+        public string SelectorWarning { get; private set; }
 #endif
         /// <summary>HTML tag name to match (e.g. &quot;button&quot;, &quot;a&quot;, &quot;input&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -133,6 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.ActionStepPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "selector", n => { Selector = n.GetStringValue(); } },
                 { "selector_regex", n => { SelectorRegex = n.GetStringValue(); } },
+                { "selector_warning", n => { SelectorWarning = n.GetStringValue(); } },
                 { "tag_name", n => { TagName = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "text_matching", n => { TextMatching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJsonTextMatching>(global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJsonTextMatching.CreateFromDiscriminatorValue); } },

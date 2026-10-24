@@ -33,14 +33,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Current state of the capability* `needs_setup` - needs_setup* `detected` - detected* `waiting_for_data` - waiting_for_data* `ready` - ready* `not_applicable` - not_applicable* `unknown` - unknown</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `needs_setup` - needs_setup* `detected` - detected* `waiting_for_data` - waiting_for_data* `ready` - ready* `not_applicable` - not_applicable* `unknown` - unknown</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityStateState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityStateState State { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseCoreSuggestions"/> and sets the default values.
         /// </summary>
@@ -69,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "estimated", n => { Estimated = n.GetBoolValue(); } },
                 { "evidence", n => { Evidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseCoreSuggestionsEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseCoreSuggestionsEvidence.CreateFromDiscriminatorValue); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityStateState>(global::Soenneker.PostHog.OpenApiClient.Models.CapabilityStateState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityStateState>(); } },
             };
         }
         /// <summary>
@@ -82,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("estimated", Estimated);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseCoreSuggestionsEvidence>("evidence", Evidence);
             writer.WriteStringValue("reason", Reason);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityStateState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityStateState>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

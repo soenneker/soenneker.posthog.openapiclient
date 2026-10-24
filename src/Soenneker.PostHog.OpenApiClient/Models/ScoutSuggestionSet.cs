@@ -40,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>`fresh`: current batch. `stale`: the fleet changed since it was generated, or the batch aged past the refresh window. `failed`: the last refresh failed (items are the prior batch, if any). `empty`: nothing to suggest yet. `low_activity`: the project was too quiet to scan, so nothing was generated.* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty* `low_activity` - Low activity</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `fresh` - Fresh* `stale` - Stale* `failed` - Failed* `empty` - Empty* `low_activity` - Low activity</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSet"/> and sets the default values.
         /// </summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "generated_at", n => { GeneratedAt = n.GetDateTimeOffsetValue(); } },
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus>(); } },
             };
         }
         /// <summary>
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("generated_at", GeneratedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>("items", Items);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionSetStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

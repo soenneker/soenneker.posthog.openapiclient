@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ObjectId { get; set; }
 #endif
-        /// <summary>PostHog object kind used to resolve the reference.* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `report` - report* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `report` - report* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind? ObjectKind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind ObjectKind { get; set; }
-#endif
         /// <summary>Stable identifier of the completed assistant message containing the reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object_id", n => { ObjectId = n.GetStringValue(); } },
-                { "object_kind", n => { ObjectKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind.CreateFromDiscriminatorValue); } },
+                { "object_kind", n => { ObjectKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind>(); } },
                 { "source_message_id", n => { SourceMessageId = n.GetStringValue(); } },
             };
         }
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object_id", ObjectId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind>("object_kind", ObjectKind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceObjectKind>("object_kind", ObjectKind);
             writer.WriteStringValue("source_message_id", SourceMessageId);
             writer.WriteAdditionalData(AdditionalData);
         }

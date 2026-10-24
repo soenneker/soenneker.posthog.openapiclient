@@ -62,10 +62,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordTagsItem>? Tags { get; set; }
+        public UntypedNode? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordTagsItem> Tags { get; set; }
+        public UntypedNode Tags { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecord"/> and sets the default values.
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "primary_property", n => { PrimaryProperty = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -122,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("post_to_slack", PostToSlack);
             writer.WriteStringValue("primary_property", PrimaryProperty);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordTagsItem>("tags", Tags);
+            writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

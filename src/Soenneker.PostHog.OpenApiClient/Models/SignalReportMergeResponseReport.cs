@@ -103,6 +103,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetric> Metrics { get; private set; }
 #endif
+        /// <summary>Original implementation-complete time for this Monitoring period, null before entry. Present only when Monitoring is enabled.</summary>
+        public DateTimeOffset? MonitoringStartedAt { get; private set; }
+        /// <summary>The plan this report leads or is a step of, with every step in it. A report that other reports link to with `part_of` is a plan. Null when the report is in no plan, and always null in list responses, because finding a plan&apos;s steps scans the project&apos;s report links.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan? Plan { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan Plan { get; private set; }
+#endif
         /// <summary>P0–P4 from the latest priority judgment artefact (when present).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -119,13 +129,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest> PullRequests { get; private set; }
 #endif
-        /// <summary>The served model&apos;s score from the latest ranking score artefact. Staff only: null for other users, and null when the report has no score.</summary>
+        /// <summary>The served ranking model&apos;s predictions from the latest ranking score artefact. Its status says whether the report is scored, stale or unscored, or that the user cannot see the ranking model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking? Ranking { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking? Ranking { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking Ranking { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking Ranking { get; private set; }
 #endif
         /// <summary>The report&apos;s PR refund, when one exists. One refund per report, ever.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -151,6 +161,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RepoSlug { get; private set; }
 #endif
+        /// <summary>Reviewer control and state token for preparing an automatic proposal.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse? ReviewerAssignment { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse ReviewerAssignment { get; private set; }
+#endif
         /// <summary>skill_name slug of the scout that authored this report, when scout-authored (from ClickHouse); null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -171,14 +189,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> SourceProducts { get; private set; }
 #endif
-        /// <summary>The status property</summary>
+        /// <summary>A product the team does not use that would have given this report better evidence, from the latest source suggestion artefact. Null when there is none, or when the team now uses the product. Always null in list responses, because its in-use check can query ClickHouse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion? SourceSuggestion { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion SourceSuggestion { get; private set; }
 #endif
+        /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus? Status { get; private set; }
         /// <summary>Follow-up prompts the report&apos;s author suggests sending about it (questions to ask, or next-step actions to request), in the order they were written. The inbox offers them above the `Ask AI` box; clicking one fills the box with it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -202,6 +222,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string SummaryLead { get; private set; }
+#endif
+        /// <summary>The judge&apos;s explanation when suppression_source is `safety_judge` or `not_actionable`. Null otherwise, or when the judge gave none.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SuppressionExplanation { get; private set; }
+#nullable restore
+#else
+        public string SuppressionExplanation { get; private set; }
+#endif
+        /// <summary>Who or what suppressed the report. Null unless status is suppressed. `dismissed`: a person or agent dismissed it, it was merged into another report, or its pull request closed without merging; dismissal_reason says which when one was given. `safety_judge`: the safety judge marked it unsafe. `not_actionable`: the actionability judge marked it not actionable. `system`: suppressed by the pipeline for another reason. Every value except `dismissed` is a verdict nobody has reviewed, listed by the `held_back` inbox view.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource? SuppressionSource { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource SuppressionSource { get; private set; }
+#endif
+        /// <summary>Free-form lowercase kebab-case slug tags for grouping and filtering reports, at most 10. Empty when the report has no tags.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; private set; }
+#nullable restore
+#else
+        public List<string> Tags { get; private set; }
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -240,13 +284,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Derived remediation state: unclaimed, working, in_review, or done.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState? WorkState { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState WorkState { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportMergeResponseReport"/> and sets the default values.
         /// </summary>
@@ -290,27 +328,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "implementation_pr_url", n => { ImplementationPrUrl = n.GetStringValue(); } },
                 { "is_suggested_reviewer", n => { IsSuggestedReviewer = n.GetBoolValue(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetric.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "monitoring_started_at", n => { MonitoringStartedAt = n.GetDateTimeOffsetValue(); } },
+                { "plan", n => { Plan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan>(global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetStringValue(); } },
                 { "pull_requests", n => { PullRequests = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "ranking", n => { Ranking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking>(global::Soenneker.PostHog.OpenApiClient.Models.ReportRanking.CreateFromDiscriminatorValue); } },
+                { "ranking", n => { Ranking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking.CreateFromDiscriminatorValue); } },
                 { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund.CreateFromDiscriminatorValue); } },
                 { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
                 { "repo_slug", n => { RepoSlug = n.GetStringValue(); } },
+                { "reviewer_assignment", n => { ReviewerAssignment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse.CreateFromDiscriminatorValue); } },
                 { "scout_name", n => { ScoutName = n.GetStringValue(); } },
                 { "signal_count", n => { SignalCount = n.GetIntValue(); } },
                 { "signals_at_run", n => { SignalsAtRun = n.GetIntValue(); } },
                 { "source_products", n => { SourceProducts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus.CreateFromDiscriminatorValue); } },
+                { "source_suggestion", n => { SourceSuggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion>(global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus>(); } },
                 { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "summary_lead", n => { SummaryLead = n.GetStringValue(); } },
+                { "suppression_explanation", n => { SuppressionExplanation = n.GetStringValue(); } },
+                { "suppression_source", n => { SuppressionSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "total_weight", n => { TotalWeight = n.GetDoubleValue(); } },
                 { "tracker_issue_error", n => { TrackerIssueError = n.GetStringValue(); } },
                 { "tracker_issue_reference", n => { TrackerIssueReference = n.GetStringValue(); } },
                 { "tracker_issue_url", n => { TrackerIssueUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "work_state", n => { WorkState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState.CreateFromDiscriminatorValue); } },
+                { "work_state", n => { WorkState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState>(); } },
             };
         }
         /// <summary>

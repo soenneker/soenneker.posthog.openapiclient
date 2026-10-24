@@ -18,18 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Person and group sources only: {warehouse_column: description} for mapped columns. Optional per column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnDescriptions? ColumnDescriptions { get; set; }
+        public UntypedNode? ColumnDescriptions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnDescriptions ColumnDescriptions { get; set; }
+        public UntypedNode ColumnDescriptions { get; set; }
 #endif
         /// <summary>Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnPropertyMap? ColumnPropertyMap { get; set; }
+        public UntypedNode? ColumnPropertyMap { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnPropertyMap ColumnPropertyMap { get; set; }
+        public UntypedNode ColumnPropertyMap { get; set; }
 #endif
         /// <summary>Whether the source syncs; re-enabling it resets the failure count.</summary>
         public bool? IsEnabled { get; set; }
@@ -74,8 +74,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "column_descriptions", n => { ColumnDescriptions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnDescriptions>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnDescriptions.CreateFromDiscriminatorValue); } },
-                { "column_property_map", n => { ColumnPropertyMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnPropertyMap>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnPropertyMap.CreateFromDiscriminatorValue); } },
+                { "column_descriptions", n => { ColumnDescriptions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "column_property_map", n => { ColumnPropertyMap = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "is_enabled", n => { IsEnabled = n.GetBoolValue(); } },
                 { "key_column", n => { KeyColumn = n.GetStringValue(); } },
                 { "source_column", n => { SourceColumn = n.GetStringValue(); } },
@@ -88,8 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnDescriptions>("column_descriptions", ColumnDescriptions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceUpdateColumnPropertyMap>("column_property_map", ColumnPropertyMap);
+            writer.WriteObjectValue<UntypedNode>("column_descriptions", ColumnDescriptions);
+            writer.WriteObjectValue<UntypedNode>("column_property_map", ColumnPropertyMap);
             writer.WriteBoolValue("is_enabled", IsEnabled);
             writer.WriteStringValue("key_column", KeyColumn);
             writer.WriteStringValue("source_column", SourceColumn);

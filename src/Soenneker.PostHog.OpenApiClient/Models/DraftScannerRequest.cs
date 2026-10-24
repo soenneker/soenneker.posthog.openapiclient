@@ -15,6 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>A launched experiment the person picked for the scanner to watch. The draft is then an `experiment` scanner on it.</summary>
+        public long? ExperimentId { get; set; }
+        /// <summary>Draft a scanner that runs only on the organization&apos;s free monthly credits, so it never adds to the bill and pauses when they run out. The draft is sized to those free credits and comes back with `free_only` true and no `credit_limit`. Use instead of `monthly_credit_budget`.</summary>
+        public bool? FreeOnly { get; set; }
         /// <summary>What the user wants to accomplish, e.g. &apos;find out where users get stuck during onboarding&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Goal { get; set; }
 #endif
-        /// <summary>Goal-based flow only: credits a month to spend (1 credit = $0.01). The draft picks the `model`, then solves `sampling_mode` and `sampling_rate` so the projected spend lands on this number, and sets `credit_limit` to it as a hard cap. Omitted on the legacy flow, and ignored while the goal-based flow&apos;s flag is off for the caller.</summary>
+        /// <summary>Credits a month to spend (1 credit = $0.01). The draft picks the `model`, then solves `sampling_mode` and `sampling_rate` so the projected spend lands on this number, and sets `credit_limit` to it as a hard cap. Ask the person for it rather than guessing. Required unless `free_only` is true, and not allowed with it.</summary>
         public int? MonthlyCreditBudget { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerRequest"/> and sets the default values.
@@ -31,6 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DraftScannerRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            FreeOnly = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -50,6 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "experiment_id", n => { ExperimentId = n.GetLongValue(); } },
+                { "free_only", n => { FreeOnly = n.GetBoolValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
                 { "monthly_credit_budget", n => { MonthlyCreditBudget = n.GetIntValue(); } },
             };
@@ -61,6 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteLongValue("experiment_id", ExperimentId);
+            writer.WriteBoolValue("free_only", FreeOnly);
             writer.WriteStringValue("goal", Goal);
             writer.WriteIntValue("monthly_credit_budget", MonthlyCreditBudget);
             writer.WriteAdditionalData(AdditionalData);

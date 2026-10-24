@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQueryKind? Kind { get; set; }
         /// <summary>The modelName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper? ModelName { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper ModelName { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName? ModelName { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "issueId", n => { IssueId = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQueryKind>(); } },
-                { "modelName", n => { ModelName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper.CreateFromDiscriminatorValue); } },
+                { "modelName", n => { ModelName = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "rendering", n => { Rendering = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQueryResponse.CreateFromDiscriminatorValue); } },
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("issueId", IssueId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQueryKind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper>("modelName", ModelName);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>("modelName", ModelName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("rendering", Rendering);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQueryResponse>("response", Response);

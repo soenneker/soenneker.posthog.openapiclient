@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Extra form fields to send alongside the file in the same POST.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaUploadStartedFormFieldsProperty? FormFields { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaUploadStartedFormFieldsProperty? FormFields { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaUploadStartedFormFieldsProperty FormFields { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaUploadStartedFormFieldsProperty FormFields { get; private set; }
 #endif
         /// <summary>Id of the pending upload — pass this to complete_upload.</summary>
         public Guid? Id { get; private set; }
@@ -72,7 +72,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaUploadStartedFormFieldsProperty>("form_fields", FormFields);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

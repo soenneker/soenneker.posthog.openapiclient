@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&apos;ready&apos;: the build finished. The canvas is live with this version when canvas.published_build_id equals this id; then you do not need canvas-builds-retrieve. &apos;failed&apos;: fix the error diagnostics and save again. &apos;queued&apos; or &apos;building&apos;: poll canvas-builds-retrieve until the build is terminal.* `queued` - queued* `building` - building* `ready` - ready* `failed` - failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `queued` - queued* `building` - building* `ready` - ready* `failed` - failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus? BuildStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus BuildStatus { get; set; }
-#endif
         /// <summary>Structured diagnostics recorded by the build (errors explain a failed status).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "build_status", n => { BuildStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus.CreateFromDiscriminatorValue); } },
+                { "build_status", n => { BuildStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus>(); } },
                 { "diagnostics", n => { Diagnostics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
             };
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus>("build_status", BuildStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus>("build_status", BuildStatus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>("diagnostics", Diagnostics);
             writer.WriteStringValue("id", Id);
             writer.WriteAdditionalData(AdditionalData);

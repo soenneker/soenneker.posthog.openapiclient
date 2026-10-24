@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many draft→validate→repair rounds were run.</summary>
         public int? Attempts { get; set; }
-        /// <summary>&apos;ok&apos; = a manifest validated; &apos;invalid&apos; = a manifest was drafted but never validated within the budget (see error; manifest_json holds the last attempt to fix by hand); &apos;model_error&apos; = the model returned no usable JSON.* `ok` - ok* `invalid` - invalid* `model_error` - model_error</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - ok* `invalid` - invalid* `model_error` - model_error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus? DraftStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus DraftStatus { get; set; }
-#endif
         /// <summary>The last validation error when draft_status is not &apos;ok&apos;; null on success.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attempts", n => { Attempts = n.GetIntValue(); } },
-                { "draft_status", n => { DraftStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus.CreateFromDiscriminatorValue); } },
+                { "draft_status", n => { DraftStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus>(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "manifest_json", n => { ManifestJson = n.GetStringValue(); } },
                 { "resource_names", n => { ResourceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -88,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("attempts", Attempts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus>("draft_status", DraftStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus>("draft_status", DraftStatus);
             writer.WriteStringValue("error", Error);
             writer.WriteStringValue("manifest_json", ManifestJson);
             writer.WriteCollectionOfPrimitiveValues<string>("resource_names", ResourceNames);

@@ -30,12 +30,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportFilters? Filters { get; set; }
+        public UntypedNode? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportFilters Filters { get; set; }
+        public UntypedNode Filters { get; set; }
 #endif
-        /// <summary>HogQL modifiers to use when the query runs. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. For example, set convertToProjectTimezone to false to export timestamps in UTC instead of the project timezone.</summary>
+        /// <summary>HogQL modifiers to use when the query runs, as an object keyed by modifier name, for example {&quot;convertToProjectTimezone&quot;: true}. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. If neither sets convertToProjectTimezone, it defaults to false, so timestamps are exported in UTC. Set it to true to export timestamps in the project timezone instead. Unknown modifier names are rejected. On update, the object replaces the modifiers stored on the export, so include every modifier to keep, or send null to remove them all.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? HogqlModifiers { get; set; }
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers HogqlModifiers { get; set; }
 #endif
-        /// <summary>HogQL SELECT query. With model &apos;hogql&apos;, its results are the data exported by every run. The query may reference the {data_interval_start} and {data_interval_end} placeholders, replaced with each run&apos;s data interval bounds, for example: WHERE timestamp &gt;= {data_interval_start} AND timestamp &lt; {data_interval_end}. Without them every run exports all rows the query returns. With model &apos;events&apos;, it defines a custom schema of columns to export instead. Required when model is &apos;hogql&apos;.</summary>
+        /// <summary>HogQL SELECT query. With model &apos;hogql&apos;, its results are the data exported by every run. The query may reference the {data_interval_start} and {data_interval_end} placeholders, replaced with each run&apos;s data interval bounds, for example: WHERE timestamp &gt;= {data_interval_start} AND timestamp &lt; {data_interval_end}. Without them every run exports all rows the query returns. Required when model is &apos;hogql&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HogqlQuery { get; set; }
@@ -53,14 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>How often the batch export should run.* `hour` - hour* `day` - day* `week` - week* `every 5 minutes` - every 5 minutes* `every 15 minutes` - every 15 minutes</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `APPEND` - Append* `MERGE` - Merge</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportIncrementalMode? IncrementalMode { get; set; }
+        /// <summary>* `hour` - hour* `day` - day* `week` - week* `every 5 minutes` - every 5 minutes* `every 15 minutes` - every 15 minutes</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportInterval? Interval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportInterval Interval { get; set; }
-#endif
         /// <summary>The timestamp at which this BatchExport was last paused.</summary>
         public DateTimeOffset? LastPausedAt { get; set; }
         /// <summary>The timestamp at which this BatchExport was last updated.</summary>
@@ -73,14 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRun> LatestRuns { get; private set; }
 #endif
-        /// <summary>Which model this BatchExport is exporting.* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel? Model { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel Model { get; set; }
-#endif
         /// <summary>A human-readable name for this BatchExport.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,13 +85,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? OffsetHour { get; set; }
         /// <summary>Whether this BatchExport is paused or not.</summary>
         public bool? Paused { get; set; }
+        /// <summary>The column or columns in the provided HogQL query that make up the primary key for a HogQL-backed batch export. Required if incremental mode is &apos;MERGE&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? PrimaryKey { get; set; }
+#nullable restore
+#else
+        public List<string> PrimaryKey { get; set; }
+#endif
         /// <summary>A schema of custom fields to select when exporting data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportSchema? Schema { get; private set; }
+        public UntypedNode? Schema { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportSchema Schema { get; private set; }
+        public UntypedNode Schema { get; private set; }
 #endif
         /// <summary>Time before which any Batch Export runs won&apos;t be triggered.</summary>
         public DateTimeOffset? StartAt { get; set; }
@@ -114,6 +112,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportTimezone Timezone { get; set; }
+#endif
+        /// <summary>The column or columns in the provided HogQL query that make up the version key for a HogQL-backed batch export.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? VersionKey { get; set; }
+#nullable restore
+#else
+        public List<string> VersionKey { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExport"/> and sets the default values.
@@ -143,23 +149,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "destination", n => { Destination = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationComposed>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationComposed.CreateFromDiscriminatorValue); } },
                 { "end_at", n => { EndAt = n.GetDateTimeOffsetValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportFilters>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "hogql_modifiers", n => { HogqlModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "hogql_query", n => { HogqlQuery = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportInterval>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportInterval.CreateFromDiscriminatorValue); } },
+                { "incremental_mode", n => { IncrementalMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportIncrementalMode>(); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportInterval>(); } },
                 { "last_paused_at", n => { LastPausedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_runs", n => { LatestRuns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRun>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRun.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "offset_day", n => { OffsetDay = n.GetIntValue(); } },
                 { "offset_hour", n => { OffsetHour = n.GetIntValue(); } },
                 { "paused", n => { Paused = n.GetBoolValue(); } },
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportSchema>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportSchema.CreateFromDiscriminatorValue); } },
+                { "primary_key", n => { PrimaryKey = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "schema", n => { Schema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "start_at", n => { StartAt = n.GetDateTimeOffsetValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "timezone", n => { Timezone = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportTimezone>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportTimezone.CreateFromDiscriminatorValue); } },
+                { "version_key", n => { VersionKey = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -171,18 +180,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationComposed>("destination", Destination);
             writer.WriteDateTimeOffsetValue("end_at", EndAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportFilters>("filters", Filters);
+            writer.WriteObjectValue<UntypedNode>("filters", Filters);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("hogql_modifiers", HogqlModifiers);
             writer.WriteStringValue("hogql_query", HogqlQuery);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportInterval>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportIncrementalMode>("incremental_mode", IncrementalMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportInterval>("interval", Interval);
             writer.WriteDateTimeOffsetValue("last_paused_at", LastPausedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel>("model", Model);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportModel>("model", Model);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("offset_day", OffsetDay);
             writer.WriteIntValue("offset_hour", OffsetHour);
             writer.WriteBoolValue("paused", Paused);
+            writer.WriteCollectionOfPrimitiveValues<string>("primary_key", PrimaryKey);
             writer.WriteDateTimeOffsetValue("start_at", StartAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportTimezone>("timezone", Timezone);
+            writer.WriteCollectionOfPrimitiveValues<string>("version_key", VersionKey);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

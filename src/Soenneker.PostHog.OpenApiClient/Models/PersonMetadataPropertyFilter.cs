@@ -30,8 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataType? Type { get; set; }
+        /// <summary>Top-level columns on the persons table (e.g. created_at), not properties JSON</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataPropertyFilterType? Type { get; set; }
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataPropertyFilterType>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataPropertyFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataPropertyFilterValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataPropertyFilterType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataPropertyFilterValue>("value", Value);
         }
     }

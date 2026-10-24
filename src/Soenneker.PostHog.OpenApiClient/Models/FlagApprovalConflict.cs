@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The change request that was opened, serialized in full.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictChangeRequest? ChangeRequest { get; set; }
+        public UntypedNode? ChangeRequest { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictChangeRequest ChangeRequest { get; set; }
+        public UntypedNode ChangeRequest { get; set; }
 #endif
         /// <summary>Id of the change request that was opened.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,10 +61,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who can approve the change request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictRequiredApprovers? RequiredApprovers { get; set; }
+        public UntypedNode? RequiredApprovers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictRequiredApprovers RequiredApprovers { get; set; }
+        public UntypedNode RequiredApprovers { get; set; }
 #endif
         /// <summary>Id of the flag the change request targets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,12 +115,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "change_request", n => { ChangeRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictChangeRequest>(global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictChangeRequest.CreateFromDiscriminatorValue); } },
+                { "change_request", n => { ChangeRequest = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "change_request_id", n => { ChangeRequestId = n.GetStringValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
-                { "required_approvers", n => { RequiredApprovers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictRequiredApprovers>(global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictRequiredApprovers.CreateFromDiscriminatorValue); } },
+                { "required_approvers", n => { RequiredApprovers = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "resource_id", n => { ResourceId = n.GetStringValue(); } },
                 { "resource_type", n => { ResourceType = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -133,12 +133,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictChangeRequest>("change_request", ChangeRequest);
+            writer.WriteObjectValue<UntypedNode>("change_request", ChangeRequest);
             writer.WriteStringValue("change_request_id", ChangeRequestId);
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("detail", Detail);
             writer.WriteStringValue("message", MessageEscaped);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagApprovalConflictRequiredApprovers>("required_approvers", RequiredApprovers);
+            writer.WriteObjectValue<UntypedNode>("required_approvers", RequiredApprovers);
             writer.WriteStringValue("resource_id", ResourceId);
             writer.WriteStringValue("resource_type", ResourceType);
             writer.WriteStringValue("status", Status);

@@ -112,6 +112,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         IsCleanedPathExact,
         #pragma warning restore CS1591
+        [EnumMember(Value = "is_cleaned_path_not_exact")]
+        #pragma warning disable CS1591
+        IsCleanedPathNotExact,
+        #pragma warning restore CS1591
         [EnumMember(Value = "flag_evaluates_to")]
         #pragma warning disable CS1591
         FlagEvaluatesTo,

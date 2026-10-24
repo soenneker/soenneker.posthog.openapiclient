@@ -8,27 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnumWrapper4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SimpleExternalDataSchemaSyncType : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34? BlankEnumWrapper34 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34 BlankEnumWrapper34 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnumWrapper4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnumWrapper4? ExternalDataSchemaSyncTypeEnumWrapper4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnumWrapper4 ExternalDataSchemaSyncTypeEnumWrapper4 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnum? ExternalDataSchemaSyncTypeEnum { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,13 +41,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.SimpleExternalDataSchemaSyncType();
-            if("BlankEnumWrapper34".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnum externalDataSchemaSyncTypeEnumValue)
             {
-                result.BlankEnumWrapper34 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34();
+                result.ExternalDataSchemaSyncTypeEnum = externalDataSchemaSyncTypeEnumValue;
             }
-            else if("ExternalDataSchemaSyncTypeEnumWrapper4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetStringValue() is string stringValue)
             {
-                result.ExternalDataSchemaSyncTypeEnumWrapper4 = new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnumWrapper4();
+                result.String = stringValue;
             }
             return result;
         }
@@ -63,15 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BlankEnumWrapper34 != null)
-            {
-                return BlankEnumWrapper34.GetFieldDeserializers();
-            }
-            else if(ExternalDataSchemaSyncTypeEnumWrapper4 != null)
-            {
-                return ExternalDataSchemaSyncTypeEnumWrapper4.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
@@ -84,17 +70,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BlankEnumWrapper34 != null)
+            if(ExternalDataSchemaSyncTypeEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34>(null, BlankEnumWrapper34);
-            }
-            else if(ExternalDataSchemaSyncTypeEnumWrapper4 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnumWrapper4>(null, ExternalDataSchemaSyncTypeEnumWrapper4);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncTypeEnum>(null, ExternalDataSchemaSyncTypeEnum);
             }
             else if(NullEnum != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

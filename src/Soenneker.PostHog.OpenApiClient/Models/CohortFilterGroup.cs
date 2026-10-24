@@ -14,13 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class CohortFilterGroup : IParsable
     {
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType Type { get; set; }
-#endif
         /// <summary>The values property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType>(); } },
                 { "values", n => { Values = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType>("type", Type);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem>("values", Values);
         }
     }

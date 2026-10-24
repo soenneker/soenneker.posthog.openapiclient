@@ -18,27 +18,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional JSON-RPC request ID (string or number)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestId? Id { get; set; }
+        public UntypedNode? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestId Id { get; set; }
+        public UntypedNode Id { get; set; }
 #endif
-        /// <summary>JSON-RPC version, must be &apos;2.0&apos;* `2.0` - 2.0</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `2.0` - 2.0</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc? Jsonrpc { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc Jsonrpc { get; set; }
-#endif
-        /// <summary>Command method to execute on the agent server* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `credential_response` - credential_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear* `side_question` - side_question</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `credential_response` - credential_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear* `side_question` - side_question</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod? Method { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod Method { get; set; }
-#endif
         /// <summary>Parameters for the command</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,9 +60,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestId>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestId.CreateFromDiscriminatorValue); } },
-                { "jsonrpc", n => { Jsonrpc = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc.CreateFromDiscriminatorValue); } },
-                { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "jsonrpc", n => { Jsonrpc = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc>(); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod>(); } },
                 { "params", n => { Params = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty.CreateFromDiscriminatorValue); } },
             };
         }
@@ -85,9 +73,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestId>("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc>("jsonrpc", Jsonrpc);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod>("method", Method);
+            writer.WriteObjectValue<UntypedNode>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc>("jsonrpc", Jsonrpc);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod>("method", Method);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty>("params", Params);
             writer.WriteAdditionalData(AdditionalData);
         }

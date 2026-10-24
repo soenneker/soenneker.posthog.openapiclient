@@ -15,9 +15,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Whether the evaluation can return N/A for non-applicable generations.</summary>
         public bool? AllowsNa { get; set; }
-        /// <summary>Inclusive maximum numeric score. Omit for no upper bound. Required for System One numeric judges and must exceed min.</summary>
+        /// <summary>Boolean decision-model judges only. Minimum probability of true required for a true result, inclusive. Omit or set null to use 0.5. Applies to new runs; historical results are unchanged.</summary>
+        public double? DecisionThreshold { get; set; }
+        /// <summary>Inclusive maximum numeric score. Omit for no upper bound. Required for numeric decision models and must exceed min.</summary>
         public double? Max { get; set; }
-        /// <summary>Inclusive minimum numeric score. Omit for no lower bound. Required for System One numeric judges.</summary>
+        /// <summary>Inclusive minimum numeric score. Omit for no lower bound. Required for numeric decision models.</summary>
         public double? Min { get; set; }
         /// <summary>Categorical output options. Keys identify stored results; labels are displayed to users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -60,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allows_na", n => { AllowsNa = n.GetBoolValue(); } },
+                { "decision_threshold", n => { DecisionThreshold = n.GetDoubleValue(); } },
                 { "max", n => { Max = n.GetDoubleValue(); } },
                 { "min", n => { Min = n.GetDoubleValue(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -77,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allows_na", AllowsNa);
+            writer.WriteDoubleValue("decision_threshold", DecisionThreshold);
             writer.WriteDoubleValue("max", Max);
             writer.WriteDoubleValue("min", Min);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem>("options", Options);

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InsightActorsQueryOptionsSource : IComposedTypeWrapper, IParsable
@@ -20,14 +20,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery ExperimentActorsQuery { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery? FunnelCorrelationActorsQuery { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery FunnelCorrelationActorsQuery { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,7 +63,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsSource();
             result.ExperimentActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery();
-            result.FunnelCorrelationActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery();
             result.FunnelsActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery();
             result.InsightActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery();
             result.PathsV2ActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ActorsQuery();
@@ -84,9 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ExperimentActorsQuery != null || FunnelCorrelationActorsQuery != null || FunnelsActorsQuery != null || InsightActorsQuery != null || PathsV2ActorsQuery != null || StickinessActorsQuery != null)
+            if(ExperimentActorsQuery != null || FunnelsActorsQuery != null || InsightActorsQuery != null || PathsV2ActorsQuery != null || StickinessActorsQuery != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentActorsQuery, FunnelCorrelationActorsQuery, FunnelsActorsQuery, InsightActorsQuery, PathsV2ActorsQuery, StickinessActorsQuery);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentActorsQuery, FunnelsActorsQuery, InsightActorsQuery, PathsV2ActorsQuery, StickinessActorsQuery);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -97,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery>(null, ExperimentActorsQuery, FunnelCorrelationActorsQuery, FunnelsActorsQuery, InsightActorsQuery, PathsV2ActorsQuery, StickinessActorsQuery);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery>(null, ExperimentActorsQuery, FunnelsActorsQuery, InsightActorsQuery, PathsV2ActorsQuery, StickinessActorsQuery);
         }
     }
 }

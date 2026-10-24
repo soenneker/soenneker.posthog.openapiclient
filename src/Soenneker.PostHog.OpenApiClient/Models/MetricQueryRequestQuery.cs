@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Aggregation applied per time bucket, always across series rather than across raw samples. &apos;sum&apos;, &apos;avg&apos;, &apos;min&apos;, &apos;max&apos; and &apos;p95&apos; reduce each series to its last sample in the bucket and then combine those, so the result does not scale with the scrape rate; &apos;count&apos; is the number of series that reported. &apos;rate&apos; (per-second) and &apos;increase&apos; are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). &apos;histogram_quantile&apos; interpolates from OTel histogram buckets and requires &apos;quantile&apos;.* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation? Aggregation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation Aggregation { get; set; }
-#endif
         /// <summary>Full multi-clause form: each clause is an independent metric selection sharing the request&apos;s time grid (maximum 10). Mutually exclusive with &apos;metricName&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,10 +25,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause> Clauses { get; set; }
 #endif
-        /// <summary>Lower bound (inclusive) for the query range. ISO 8601.</summary>
-        public DateTimeOffset? DateFrom { get; set; }
-        /// <summary>Upper bound (exclusive) for the query range. Defaults to now if omitted.</summary>
-        public DateTimeOffset? DateTo { get; set; }
+        /// <summary>Lower bound (inclusive) for the query range. ISO 8601, or a relative offset back from now such as &apos;-1h&apos;, &apos;-7d&apos;, &apos;-2w&apos;, &apos;-1m&apos; (months). Defaults to 24 hours before dateTo.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DateFrom { get; set; }
+#nullable restore
+#else
+        public string DateFrom { get; set; }
+#endif
+        /// <summary>Upper bound (exclusive) for the query range. ISO 8601 or a relative offset like dateFrom. Defaults to now if omitted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DateTo { get; set; }
+#nullable restore
+#else
+        public string DateTo { get; set; }
+#endif
         /// <summary>Label predicates ANDed together. Rows must satisfy every filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy> GroupBy { get; set; }
 #endif
-        /// <summary>Bucket size for the shared time grid. Omit to auto-pick (~60 buckets across the range).* `second` - second* `minute` - minute* `minute_5` - minute_5* `minute_15` - minute_15* `hour` - hour* `hour_6` - hour_6* `day` - day* `week` - week</summary>
+        /// <summary>Bucket size for the shared time grid. Omit to auto-pick (~60 buckets across the range).* `second_15` - second_15* `second_30` - second_30* `minute` - minute* `minute_5` - minute_5* `minute_15` - minute_15* `minute_30` - minute_30* `hour` - hour* `hour_6` - hour_6* `day` - day* `week` - week</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval? Interval { get; set; }
@@ -85,6 +91,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Quantile in (0, 1) for &apos;histogram_quantile&apos; (e.g. 0.95). Ignored for other aggregations.</summary>
         public double? Quantile { get; set; }
+        /// <summary>Counter-aware transform applied to each series before the aggregation: &apos;rate&apos; (per-second) or &apos;increase&apos;. Combine with &apos;none&apos; to get one rate line per series. Do not combine with the &apos;rate&apos; or &apos;increase&apos; aggregations.* `rate` - rate* `increase` - increase</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction? RangeFunction { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction RangeFunction { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryRequestQuery"/> and sets the default values.
         /// </summary>
@@ -110,10 +124,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregation", n => { Aggregation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation>(global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation.CreateFromDiscriminatorValue); } },
+                { "aggregation", n => { Aggregation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation>(); } },
                 { "clauses", n => { Clauses = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause>(global::Soenneker.PostHog.OpenApiClient.Models.MetricClause.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "dateFrom", n => { DateFrom = n.GetDateTimeOffsetValue(); } },
-                { "dateTo", n => { DateTo = n.GetDateTimeOffsetValue(); } },
+                { "dateFrom", n => { DateFrom = n.GetStringValue(); } },
+                { "dateTo", n => { DateTo = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>(global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "formula", n => { Formula = n.GetStringValue(); } },
                 { "groupBy", n => { GroupBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy>(global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -121,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
                 { "metricType", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType>(global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType.CreateFromDiscriminatorValue); } },
                 { "quantile", n => { Quantile = n.GetDoubleValue(); } },
+                { "rangeFunction", n => { RangeFunction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction>(global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -130,10 +145,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation>("aggregation", Aggregation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation>("aggregation", Aggregation);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause>("clauses", Clauses);
-            writer.WriteDateTimeOffsetValue("dateFrom", DateFrom);
-            writer.WriteDateTimeOffsetValue("dateTo", DateTo);
+            writer.WriteStringValue("dateFrom", DateFrom);
+            writer.WriteStringValue("dateTo", DateTo);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>("filters", Filters);
             writer.WriteStringValue("formula", Formula);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy>("groupBy", GroupBy);
@@ -141,6 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("metricName", MetricName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType>("metricType", MetricType);
             writer.WriteDoubleValue("quantile", Quantile);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction>("rangeFunction", RangeFunction);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -42,6 +42,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BorderColor { get; set; }
 #endif
+        /// <summary>CSS border-radius value of the survey box.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BorderRadius { get; set; }
+#nullable restore
+#else
+        public string BorderRadius { get; set; }
+#endif
         /// <summary>The boxPadding property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +57,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string BoxPadding { get; set; }
+#endif
+        /// <summary>CSS box-shadow value of the survey box.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BoxShadow { get; set; }
+#nullable restore
+#else
+        public string BoxShadow { get; set; }
 #endif
         /// <summary>The descriptionTextColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,6 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DisabledButtonOpacity { get; set; }
 #endif
+        /// <summary>Whether to show an intro screen before the first question. The intro screen shows only when introScreenHeader or introScreenDescription is set.</summary>
+        public bool? DisplayIntroScreen { get; set; }
         /// <summary>The displayThankYouMessage property</summary>
         public bool? DisplayThankYouMessage { get; set; }
         /// <summary>The fontFamily property</summary>
@@ -75,6 +93,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string FontFamily { get; set; }
+#endif
+        /// <summary>Background color of open text inputs and rating buttons.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InputBackground { get; set; }
+#nullable restore
+#else
+        public string InputBackground { get; set; }
+#endif
+        /// <summary>Text color of open text inputs and rating buttons. Calculated from inputBackground when not set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InputTextColor { get; set; }
+#nullable restore
+#else
+        public string InputTextColor { get; set; }
+#endif
+        /// <summary>Label of the button that closes the intro screen and starts the survey.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IntroScreenButtonText { get; set; }
+#nullable restore
+#else
+        public string IntroScreenButtonText { get; set; }
+#endif
+        /// <summary>Body text of the intro screen.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IntroScreenDescription { get; set; }
+#nullable restore
+#else
+        public string IntroScreenDescription { get; set; }
+#endif
+        /// <summary>* `html` - html* `text` - text</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaIntroScreenDescriptionContentType? IntroScreenDescriptionContentType { get; set; }
+        /// <summary>Heading of the intro screen.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IntroScreenHeader { get; set; }
+#nullable restore
+#else
+        public string IntroScreenHeader { get; set; }
 #endif
         /// <summary>The maxWidth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,6 +152,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Placeholder { get; set; }
 #endif
+        /// <summary>* `top_left` - top_left* `top_center` - top_center* `top_right` - top_right* `middle_left` - middle_left* `middle_center` - middle_center* `middle_right` - middle_right* `left` - left* `center` - center* `right` - right* `next_to_trigger` - next_to_trigger</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaPosition? Position { get; set; }
         /// <summary>The ratingButtonActiveColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -142,8 +204,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubmitButtonTextColor { get; set; }
 #endif
-        /// <summary>The surveyPopupDelaySeconds property</summary>
+        /// <summary>Seconds to wait before a popover survey appears. Null shows it without a delay.</summary>
         public int? SurveyPopupDelaySeconds { get; set; }
+        /// <summary>* `top` - top* `left` - left* `right` - right* `bottom` - bottom</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaTabPosition? TabPosition { get; set; }
         /// <summary>The textColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -151,6 +215,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string TextColor { get; set; }
+#endif
+        /// <summary>Color of secondary text, such as question descriptions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TextSubtleColor { get; set; }
+#nullable restore
+#else
+        public string TextSubtleColor { get; set; }
 #endif
         /// <summary>The thankYouMessageCloseButtonText property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -244,13 +316,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "backButtonText", n => { BackButtonText = n.GetStringValue(); } },
                 { "backgroundColor", n => { BackgroundColor = n.GetStringValue(); } },
                 { "borderColor", n => { BorderColor = n.GetStringValue(); } },
+                { "borderRadius", n => { BorderRadius = n.GetStringValue(); } },
                 { "boxPadding", n => { BoxPadding = n.GetStringValue(); } },
+                { "boxShadow", n => { BoxShadow = n.GetStringValue(); } },
                 { "descriptionTextColor", n => { DescriptionTextColor = n.GetStringValue(); } },
                 { "disabledButtonOpacity", n => { DisabledButtonOpacity = n.GetStringValue(); } },
+                { "displayIntroScreen", n => { DisplayIntroScreen = n.GetBoolValue(); } },
                 { "displayThankYouMessage", n => { DisplayThankYouMessage = n.GetBoolValue(); } },
                 { "fontFamily", n => { FontFamily = n.GetStringValue(); } },
+                { "inputBackground", n => { InputBackground = n.GetStringValue(); } },
+                { "inputTextColor", n => { InputTextColor = n.GetStringValue(); } },
+                { "introScreenButtonText", n => { IntroScreenButtonText = n.GetStringValue(); } },
+                { "introScreenDescription", n => { IntroScreenDescription = n.GetStringValue(); } },
+                { "introScreenDescriptionContentType", n => { IntroScreenDescriptionContentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaIntroScreenDescriptionContentType>(); } },
+                { "introScreenHeader", n => { IntroScreenHeader = n.GetStringValue(); } },
                 { "maxWidth", n => { MaxWidth = n.GetStringValue(); } },
                 { "placeholder", n => { Placeholder = n.GetStringValue(); } },
+                { "position", n => { Position = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaPosition>(); } },
                 { "ratingButtonActiveColor", n => { RatingButtonActiveColor = n.GetStringValue(); } },
                 { "ratingButtonColor", n => { RatingButtonColor = n.GetStringValue(); } },
                 { "ratingButtonHoverColor", n => { RatingButtonHoverColor = n.GetStringValue(); } },
@@ -259,7 +341,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "submitButtonText", n => { SubmitButtonText = n.GetStringValue(); } },
                 { "submitButtonTextColor", n => { SubmitButtonTextColor = n.GetStringValue(); } },
                 { "surveyPopupDelaySeconds", n => { SurveyPopupDelaySeconds = n.GetIntValue(); } },
+                { "tabPosition", n => { TabPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaTabPosition>(); } },
                 { "textColor", n => { TextColor = n.GetStringValue(); } },
+                { "textSubtleColor", n => { TextSubtleColor = n.GetStringValue(); } },
                 { "thankYouMessageCloseButtonText", n => { ThankYouMessageCloseButtonText = n.GetStringValue(); } },
                 { "thankYouMessageDescription", n => { ThankYouMessageDescription = n.GetStringValue(); } },
                 { "thankYouMessageDescriptionContentType", n => { ThankYouMessageDescriptionContentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum>(); } },
@@ -284,13 +368,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("backButtonText", BackButtonText);
             writer.WriteStringValue("backgroundColor", BackgroundColor);
             writer.WriteStringValue("borderColor", BorderColor);
+            writer.WriteStringValue("borderRadius", BorderRadius);
             writer.WriteStringValue("boxPadding", BoxPadding);
+            writer.WriteStringValue("boxShadow", BoxShadow);
             writer.WriteStringValue("descriptionTextColor", DescriptionTextColor);
             writer.WriteStringValue("disabledButtonOpacity", DisabledButtonOpacity);
+            writer.WriteBoolValue("displayIntroScreen", DisplayIntroScreen);
             writer.WriteBoolValue("displayThankYouMessage", DisplayThankYouMessage);
             writer.WriteStringValue("fontFamily", FontFamily);
+            writer.WriteStringValue("inputBackground", InputBackground);
+            writer.WriteStringValue("inputTextColor", InputTextColor);
+            writer.WriteStringValue("introScreenButtonText", IntroScreenButtonText);
+            writer.WriteStringValue("introScreenDescription", IntroScreenDescription);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaIntroScreenDescriptionContentType>("introScreenDescriptionContentType", IntroScreenDescriptionContentType);
+            writer.WriteStringValue("introScreenHeader", IntroScreenHeader);
             writer.WriteStringValue("maxWidth", MaxWidth);
             writer.WriteStringValue("placeholder", Placeholder);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaPosition>("position", Position);
             writer.WriteStringValue("ratingButtonActiveColor", RatingButtonActiveColor);
             writer.WriteStringValue("ratingButtonColor", RatingButtonColor);
             writer.WriteStringValue("ratingButtonHoverColor", RatingButtonHoverColor);
@@ -299,7 +393,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("submitButtonText", SubmitButtonText);
             writer.WriteStringValue("submitButtonTextColor", SubmitButtonTextColor);
             writer.WriteIntValue("surveyPopupDelaySeconds", SurveyPopupDelaySeconds);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaTabPosition>("tabPosition", TabPosition);
             writer.WriteStringValue("textColor", TextColor);
+            writer.WriteStringValue("textSubtleColor", TextSubtleColor);
             writer.WriteStringValue("thankYouMessageCloseButtonText", ThankYouMessageCloseButtonText);
             writer.WriteStringValue("thankYouMessageDescription", ThankYouMessageDescription);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum>("thankYouMessageDescriptionContentType", ThankYouMessageDescriptionContentType);

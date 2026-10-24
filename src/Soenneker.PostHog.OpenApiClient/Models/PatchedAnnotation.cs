@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes.* `USR` - user* `GIT` - GitHub</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `USR` - user* `GIT` - GitHub</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreationType? CreationType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreationType CreationType { get; set; }
-#endif
         /// <summary>Optional dashboard ID to attach this annotation to. Must belong to the current project.</summary>
         public int? DashboardId { get; set; }
         /// <summary>Optional insight ID to attach this annotation to. Must belong to the current project.</summary>
@@ -92,14 +86,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsightShortId { get; private set; }
 #endif
-        /// <summary>Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationScope Scope { get; set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -130,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreatedBy.CreateFromDiscriminatorValue); } },
-                { "creation_type", n => { CreationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreationType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreationType.CreateFromDiscriminatorValue); } },
+                { "creation_type", n => { CreationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreationType>(); } },
                 { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
                 { "dashboard_item", n => { DashboardItem = n.GetIntValue(); } },
                 { "dashboard_name", n => { DashboardName = n.GetStringValue(); } },
@@ -142,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "insight_derived_name", n => { InsightDerivedName = n.GetStringValue(); } },
                 { "insight_name", n => { InsightName = n.GetStringValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationScope>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationScope>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -154,14 +142,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreationType>("creation_type", CreationType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationCreationType>("creation_type", CreationType);
             writer.WriteIntValue("dashboard_id", DashboardId);
             writer.WriteIntValue("dashboard_item", DashboardItem);
             writer.WriteDateTimeOffsetValue("date_marker", DateMarker);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("emoji", Emoji);
             writer.WriteBoolValue("hidden_in_user_interface", HiddenInUserInterface);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAnnotationScope>("scope", Scope);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

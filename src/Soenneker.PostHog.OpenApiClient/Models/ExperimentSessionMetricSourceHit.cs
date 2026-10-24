@@ -29,14 +29,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceName { get; set; }
 #endif
-        /// <summary>What this source means to its metric: &apos;source&apos; (a mean metric&apos;s single event), &apos;step&apos; (a funnel step, numbered by source_index), &apos;numerator&apos;/&apos;denominator&apos; (a ratio metric&apos;s two sides), or &apos;retention_start&apos;/&apos;retention_completion&apos; (a retention metric&apos;s start event and return visit). A hit on one source is not a hit on the metric as the analysis counts it.* `source` - source* `step` - step* `numerator` - numerator* `denominator` - denominator* `retention_start` - retention_start* `retention_completion` - retention_completion</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `source` - source* `step` - step* `numerator` - numerator* `denominator` - denominator* `retention_start` - retention_start* `retention_completion` - retention_completion</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole? SourceRole { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole SourceRole { get; set; }
-#endif
         /// <summary>Total number of sources the metric is defined over.</summary>
         public int? SourceTotal { get; set; }
         /// <summary>Ascending timestamps of this source&apos;s matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count.</summary>
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "first_timestamp", n => { FirstTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "source_index", n => { SourceIndex = n.GetIntValue(); } },
                 { "source_name", n => { SourceName = n.GetStringValue(); } },
-                { "source_role", n => { SourceRole = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole.CreateFromDiscriminatorValue); } },
+                { "source_role", n => { SourceRole = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole>(); } },
                 { "source_total", n => { SourceTotal = n.GetIntValue(); } },
                 { "timestamps", n => { Timestamps = n.GetCollectionOfPrimitiveValues<DateTimeOffset?>()?.AsList(); } },
             };
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("first_timestamp", FirstTimestamp);
             writer.WriteIntValue("source_index", SourceIndex);
             writer.WriteStringValue("source_name", SourceName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole>("source_role", SourceRole);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole>("source_role", SourceRole);
             writer.WriteIntValue("source_total", SourceTotal);
             writer.WriteCollectionOfPrimitiveValues<DateTimeOffset?>("timestamps", Timestamps);
             writer.WriteAdditionalData(AdditionalData);

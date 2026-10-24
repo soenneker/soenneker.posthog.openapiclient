@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfigEvents? Events { get; set; }
+        public UntypedNode? Events { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfigEvents Events { get; set; }
+        public UntypedNode Events { get; set; }
 #endif
         /// <summary>The filter_test_accounts property</summary>
         public bool? FilterTestAccounts { get; set; }
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_currency", n => { BaseCurrency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum>(); } },
-                { "events", n => { Events = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfigEvents>(global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfigEvents.CreateFromDiscriminatorValue); } },
+                { "events", n => { Events = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
             };
         }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum>("base_currency", BaseCurrency);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfigEvents>("events", Events);
+            writer.WriteObjectValue<UntypedNode>("events", Events);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteAdditionalData(AdditionalData);
         }

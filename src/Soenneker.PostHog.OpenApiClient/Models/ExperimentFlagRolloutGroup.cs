@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroupPropertiesItem>? Properties { get; set; }
+        public UntypedNode? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroupPropertiesItem> Properties { get; set; }
+        public UntypedNode Properties { get; set; }
 #endif
         /// <summary>Percentage of users who enter the experiment (0-100).</summary>
         public int? RolloutPercentage { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroupPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroupPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "rollout_percentage", n => { RolloutPercentage = n.GetIntValue(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroupPropertiesItem>("properties", Properties);
+            writer.WriteObjectValue<UntypedNode>("properties", Properties);
             writer.WriteIntValue("rollout_percentage", RolloutPercentage);
             writer.WriteAdditionalData(AdditionalData);
         }

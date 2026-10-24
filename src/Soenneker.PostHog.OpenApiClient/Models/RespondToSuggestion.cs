@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AgentResponse { get; set; }
 #endif
-        /// <summary>How the agent handled the suggestion: &apos;picked_up&apos; (applied as a search constraint), &apos;acted_on&apos; (spawned one or more iterations), or &apos;dismissed&apos; (rejected — explain why in agent_response).* `picked_up` - picked_up* `acted_on` - acted_on* `dismissed` - dismissed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `picked_up` - picked_up* `acted_on` - acted_on* `dismissed` - dismissed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestionStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestionStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestion"/> and sets the default values.
         /// </summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent_response", n => { AgentResponse = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestionStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestionStatus>(); } },
             };
         }
         /// <summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("agent_response", AgentResponse);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestionStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RespondToSuggestionStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

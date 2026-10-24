@@ -12,6 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class DataWarehouseSyncWarning : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>True when the last sync is still within the table&apos;s sync interval, so the data is current and the warning only says it will stop updating (a sync paused recently). False or absent when the data is out of date.</summary>
+        public bool? DataIsCurrent { get; set; }
         /// <summary>Human-readable warning shown to the user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "data_is_current", n => { DataIsCurrent = n.GetBoolValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "schema_name", n => { SchemaName = n.GetStringValue(); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
@@ -96,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("data_is_current", DataIsCurrent);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("schema_name", SchemaName);
             writer.WriteStringValue("source_id", SourceId);

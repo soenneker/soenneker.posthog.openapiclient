@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Database { get; set; }
 #endif
-        /// <summary>Connection host — the warehouse name is the SNI subdomain, e.g. my-warehouse.dw.us.postwh.com</summary>
+        /// <summary>Postgres connection host. The warehouse name is the SNI subdomain, e.g. my-warehouse.dw.us.postwh.com</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Host { get; set; }

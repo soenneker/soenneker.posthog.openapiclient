@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MessageId { get; set; }
 #endif
-        /// <summary>Send outcome: &apos;accepted&apos; (queued for delivery — not a delivery confirmation), &apos;target_finished&apos; (the peer&apos;s workflow is gone), or &apos;rejected&apos; (throttled or invalid).* `accepted` - accepted* `target_finished` - target_finished* `rejected` - rejected</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `accepted` - accepted* `target_finished` - target_finished* `rejected` - rejected</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponseResult? Result { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponseResult Result { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponse"/> and sets the default values.
         /// </summary>
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponseResult.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponseResult>(); } },
             };
         }
         /// <summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("detail", Detail);
             writer.WriteStringValue("message_id", MessageId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponseResult>("result", Result);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPeerMessageResponseResult>("result", Result);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

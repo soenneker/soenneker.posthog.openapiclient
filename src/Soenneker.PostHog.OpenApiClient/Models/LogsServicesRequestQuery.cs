@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `none` - No baseline* `previous_period` - Previous period* `previous_day` - Same window a day earlier* `previous_week` - Same window a week earlier</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesBodyCompare? Compare { get; set; }
         /// <summary>Date range for the services aggregation. Defaults to last hour.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,6 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesBodyDateRange DateRange { get; set; }
+#endif
+        /// <summary>Deployment environment, matched without case against the first set resource attribute of deployment.environment.name, deployment.environment and env. &quot;(none)&quot; matches logs without one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Environment { get; set; }
+#nullable restore
+#else
+        public string Environment { get; set; }
 #endif
         /// <summary>Property filters for the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,7 +98,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "compare", n => { Compare = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesBodyCompare>(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesBodyDateRange.CreateFromDiscriminatorValue); } },
+                { "environment", n => { Environment = n.GetStringValue(); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
                 { "serviceNameSearch", n => { ServiceNameSearch = n.GetStringValue(); } },
@@ -103,7 +115,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesBodyCompare>("compare", Compare);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesBodyDateRange>("dateRange", DateRange);
+            writer.WriteStringValue("environment", Environment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>("filterGroup", FilterGroup);
             writer.WriteStringValue("searchTerm", SearchTerm);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);

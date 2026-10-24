@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `personal_api_key` - personal_api_key* `project_secret_api_key` - project_secret_api_key* `oauth_access_token` - oauth_access_token* `oauth_refresh_token` - oauth_refresh_token</summary>
+    /// <summary>* `personal_api_key` - personal_api_key* `project_secret_api_key` - project_secret_api_key* `team_secret_token` - team_secret_token* `oauth_access_token` - oauth_access_token* `oauth_refresh_token` - oauth_refresh_token</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LeakedKeyReportResponseTypeEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "project_secret_api_key")]
         #pragma warning disable CS1591
         ProjectSecretApiKey,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "team_secret_token")]
+        #pragma warning disable CS1591
+        TeamSecretToken,
         #pragma warning restore CS1591
         [EnumMember(Value = "oauth_access_token")]
         #pragma warning disable CS1591

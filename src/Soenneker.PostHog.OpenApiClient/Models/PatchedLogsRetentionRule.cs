@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{&quot;retention_days&quot;:30,&quot;filter_group&quot;:{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;key&quot;:&quot;service.name&quot;,&quot;operator&quot;:&quot;exact&quot;,&quot;value&quot;:&quot;api&quot;}]}]}}`. Logs matching no enabled rule keep the environment&apos;s default retention.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsRetentionRuleConfig? Config { get; set; }
+        public UntypedNode? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsRetentionRuleConfig Config { get; set; }
+        public UntypedNode Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsRetentionRuleConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsRetentionRuleConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsRetentionRuleConfig>("config", Config);
+            writer.WriteObjectValue<UntypedNode>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("priority", Priority);

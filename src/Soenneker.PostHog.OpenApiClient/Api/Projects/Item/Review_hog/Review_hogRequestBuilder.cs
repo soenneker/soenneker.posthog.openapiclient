@@ -3,7 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Blind_spots;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Installation_claims;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Perspectives;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Project_settings;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repositories;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repository_choices;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repository_overview;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Resolution;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Validators;
@@ -24,10 +29,35 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Blind_spots.Blind_spotsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The installation_claims property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Installation_claims.Installation_claimsRequestBuilder Installation_claims
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Installation_claims.Installation_claimsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The perspectives property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Perspectives.PerspectivesRequestBuilder Perspectives
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Perspectives.PerspectivesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The project_settings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Project_settings.Project_settingsRequestBuilder Project_settings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Project_settings.Project_settingsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The repositories property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repositories.RepositoriesRequestBuilder Repositories
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repositories.RepositoriesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The repository_choices property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repository_choices.Repository_choicesRequestBuilder Repository_choices
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repository_choices.Repository_choicesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The repository_overview property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repository_overview.Repository_overviewRequestBuilder Repository_overview
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repository_overview.Repository_overviewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The resolution property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Resolution.ResolutionRequestBuilder Resolution

@@ -17,14 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Lookback length in days. Required and used only when period_type is last_n_days.</summary>
         public int? Days { get; set; }
-        /// <summary>How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief.* `last_n_days` - last_n_days* `since_last_run` - since_last_run</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `last_n_days` - last_n_days* `since_last_run` - since_last_run</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType? PeriodType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType PeriodType { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListPeriod"/> and sets the default values.
         /// </summary>
@@ -51,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "days", n => { Days = n.GetIntValue(); } },
-                { "period_type", n => { PeriodType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType>(global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType.CreateFromDiscriminatorValue); } },
+                { "period_type", n => { PeriodType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("days", Days);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType>("period_type", PeriodType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType>("period_type", PeriodType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

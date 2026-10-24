@@ -25,14 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CurrentPartition { get; set; }
 #endif
-        /// <summary>Warehouse dataset represented by this status.* `events` - events* `persons` - persons</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `events` - events* `persons` - persons</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset? Dataset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset Dataset { get; set; }
-#endif
         /// <summary>Human-readable explanation of the current readiness state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,14 +37,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the durable backfill status last changed.</summary>
         public DateTimeOffset? LastUpdatedAt { get; set; }
-        /// <summary>User-facing readiness state for this dataset.* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState? ReadinessState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState ReadinessState { get; set; }
-#endif
         /// <summary>Expected historical partitions, or null while the range is being calculated.</summary>
         public int? TotalPartitions { get; set; }
         /// <summary>
@@ -80,10 +68,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "completed_partitions", n => { CompletedPartitions = n.GetIntValue(); } },
                 { "current_partition", n => { CurrentPartition = n.GetStringValue(); } },
-                { "dataset", n => { Dataset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset.CreateFromDiscriminatorValue); } },
+                { "dataset", n => { Dataset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset>(); } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "readiness_state", n => { ReadinessState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState.CreateFromDiscriminatorValue); } },
+                { "readiness_state", n => { ReadinessState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState>(); } },
                 { "total_partitions", n => { TotalPartitions = n.GetIntValue(); } },
             };
         }
@@ -96,10 +84,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("completed_partitions", CompletedPartitions);
             writer.WriteStringValue("current_partition", CurrentPartition);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset>("dataset", Dataset);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset>("dataset", Dataset);
             writer.WriteStringValue("detail", Detail);
             writer.WriteDateTimeOffsetValue("last_updated_at", LastUpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState>("readiness_state", ReadinessState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState>("readiness_state", ReadinessState);
             writer.WriteIntValue("total_partitions", TotalPartitions);
             writer.WriteAdditionalData(AdditionalData);
         }

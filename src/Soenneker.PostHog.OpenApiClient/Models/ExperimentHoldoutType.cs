@@ -63,13 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string UpdatedAt { get; set; }
 #endif
         /// <summary>Read-only, server-computed effective access level; absent on a not-yet-created holdout.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevelWrapper? UserAccessLevel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevelWrapper UserAccessLevel { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevel? UserAccessLevel { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -95,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
-                { "user_access_level", n => { UserAccessLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevelWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevelWrapper.CreateFromDiscriminatorValue); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevel>(); } },
             };
         }
         /// <summary>
@@ -112,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("updated_at", UpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevelWrapper>("user_access_level", UserAccessLevel);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlLevel>("user_access_level", UserAccessLevel);
         }
     }
 }

@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&apos;inserted&apos; when the current image gained these rows, &apos;deleted&apos; when it lost them. A deleted band has no rows of its own in the current image, so its y is the seam the removed rows left behind.* `inserted` - inserted* `deleted` - deleted</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `inserted` - inserted* `deleted` - deleted</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ShiftBandKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ShiftBandKind Kind { get; set; }
-#endif
         /// <summary>How many rows the band covers.</summary>
         public int? Rows { get; set; }
         /// <summary>First row of the band, in current-image coordinates.</summary>
@@ -51,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBandKind>(global::Soenneker.PostHog.OpenApiClient.Models.ShiftBandKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBandKind>(); } },
                 { "rows", n => { Rows = n.GetIntValue(); } },
                 { "y", n => { Y = n.GetIntValue(); } },
             };
@@ -63,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBandKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBandKind>("kind", Kind);
             writer.WriteIntValue("rows", Rows);
             writer.WriteIntValue("y", Y);
             writer.WriteAdditionalData(AdditionalData);

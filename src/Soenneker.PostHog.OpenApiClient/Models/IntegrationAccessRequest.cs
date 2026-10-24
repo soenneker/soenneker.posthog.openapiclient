@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The kind of integration the member is requesting be connected (e.g. &apos;slack&apos;, &apos;github&apos;).* `anthropic` - Anthropic* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `helpscout` - Helpscout* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `twitter-ads` - Twitter Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel* `youtube-analytics` - Youtube Analytics</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `anthropic` - Anthropic* `apple-ads` - Apple Ads* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `helpscout` - Helpscout* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `twitter-ads` - Twitter Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel* `youtube-analytics` - Youtube Analytics</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccessRequestKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccessRequestKind Kind { get; set; }
-#endif
         /// <summary>Explanation from the requester of why this integration is needed. Shown to admins in the notification email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccessRequestKind>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccessRequestKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccessRequestKind>(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
             };
         }
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccessRequestKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccessRequestKind>("kind", Kind);
             writer.WriteStringValue("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -21,20 +21,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Only the content fields the proposal changes. Valid keys: actions, edges, trigger_masking, conversion, exit_condition, email_sending_rate_limit, variables. Each value has the same shape as on the workflow itself.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalContentProperty? Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalContentProperty? Content { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalContentProperty Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalContentProperty Content { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The numbers behind the proposal, read back by name. Five keys are required: `metric`, the metric name; `current_value`, its value as a number (a rate as a fraction, 0.0865, never a string); `unit`, either `rate` or `count`, since 1.0 is either every message or one of them; `n`, the denominator that value was computed over; and `guardrails`, a list of {metric, value, n, unit} counter-metrics read over the same window, empty only if none apply. PostHog then reads the step&apos;s own metrics at `base_version` when the suggestion is filed and stores them under `measured`; the page shows that reading and flags a disagreement with yours. Also conventional: target_value, window, query, app_source_id. A rate with no denominator lets a reviewer mistake noise for a result, a target with no counter-metrics hides a change that lifts one number by harming another, and a number under a key of your own reads to a person as no evidence at all.</summary>
+        /// <summary>The numbers behind the proposal, read back by name. Five keys are required: `metric`, the metric name; `current_value`, its value as a number (a rate as a fraction, 0.0865, never a string); `unit`, either `rate` or `count`, since 1.0 is either every message or one of them; `n`, the denominator that value was computed over; and `guardrails`, a list of {metric, value, n, unit} counter-metrics read over the same window, empty only if none apply. PostHog then reads the step&apos;s own metrics at `base_version` when the suggestion is filed and stores them under `measured`; the page shows that reading and flags a disagreement with yours. Also conventional: target_value, window (a relative one such as `-7d`, or an ISO 8601 interval `start/end` with offsets, which PostHog reads back exactly), query, app_source_id. A rate with no denominator lets a reviewer mistake noise for a result, a target with no counter-metrics hides a change that lifts one number by harming another, and a number under a key of your own reads to a person as no evidence at all.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalEvidenceProperty? Evidence { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalEvidenceProperty? Evidence { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalEvidenceProperty Evidence { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalEvidenceProperty Evidence { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -47,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Rationale { get; private set; }
+#endif
+        /// <summary>Why the person who rejected this suggestion rejected it, or empty when they gave no reason.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RejectionReason { get; private set; }
+#nullable restore
+#else
+        public string RejectionReason { get; private set; }
 #endif
         /// <summary>The resolved_at property</summary>
         public DateTimeOffset? ResolvedAt { get; private set; }
@@ -66,14 +74,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceId { get; private set; }
 #endif
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `suggested` - Suggested* `approved` - Approved* `rejected` - Rejected* `applied` - Applied</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalStatus Status { get; private set; }
-#endif
         /// <summary>The workflow step this is about. Set for a change to one step: the evidence and the outcome then read that step&apos;s metrics, so a change to one email in a sequence is not measured against the rest. Null only for a change that spans the workflow, such as its exit condition or a step being taken out, which is measured on the workflow&apos;s own numbers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -123,10 +125,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_stale", n => { IsStale = n.GetBoolValue(); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
+                { "rejection_reason", n => { RejectionReason = n.GetStringValue(); } },
                 { "resolved_at", n => { ResolvedAt = n.GetDateTimeOffsetValue(); } },
                 { "resolved_by", n => { ResolvedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalStatus>(); } },
                 { "step_id", n => { StepId = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -138,8 +141,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalContentProperty>("content", Content);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalEvidenceProperty>("evidence", Evidence);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

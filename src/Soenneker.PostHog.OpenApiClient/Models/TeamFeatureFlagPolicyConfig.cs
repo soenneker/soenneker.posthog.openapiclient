@@ -14,6 +14,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Domains to block from feature flag requests (/flags and /decide), up to 100. A domain also covers its subdomains. It is compared with the Origin header, or with the Referer header when Origin is missing. Entries are stored lowercase without duplicates. A pasted URL is reduced to its domain, and an internationalized domain is stored as punycode.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? BlockedHosts { get; set; }
+#nullable restore
+#else
+        public List<string> BlockedHosts { get; set; }
+#endif
+        /// <summary>IPv4 or IPv6 addresses or CIDR ranges to block from feature flag requests (/flags and /decide), up to 100. Ranges can be /8 or narrower for IPv4 and /16 or narrower for IPv6. Entries are stored in canonical form without duplicates, and an IPv4-mapped IPv6 address is stored as IPv4.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? BlockedIps { get; set; }
+#nullable restore
+#else
+        public List<string> BlockedIps { get; set; }
+#endif
         /// <summary>When enabled, a new feature flag needs at least one tag, and a tagged flag cannot lose its last one. A create that declares it comes from a survey, experiment, early access feature, product tour, or web experiment is exempt, because those forms have no tag input. The caller sets that declaration, so a flag can still be created without a tag.</summary>
         public bool? RequireTags { get; set; }
         /// <summary>
@@ -41,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "blocked_hosts", n => { BlockedHosts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "blocked_ips", n => { BlockedIps = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "require_tags", n => { RequireTags = n.GetBoolValue(); } },
             };
         }
@@ -51,6 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("blocked_hosts", BlockedHosts);
+            writer.WriteCollectionOfPrimitiveValues<string>("blocked_ips", BlockedIps);
             writer.WriteBoolValue("require_tags", RequireTags);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CheckIntervalMinutes { get; private set; }
         /// <summary>Number of consecutive evaluation failures. Resets on success. Server-managed.</summary>
         public int? ConsecutiveFailures { get; private set; }
-        /// <summary>Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown.</summary>
+        /// <summary>Minimum minutes between notifications. The alert notifies once when it starts firing and once when it resolves. It does not notify again on each check while it stays firing. A fire or resolve notification inside the cooldown is skipped. Cooldown does not apply to PagerDuty incidents. 0 means no minimum.</summary>
         public int? CooldownMinutes { get; set; }
         /// <summary>When the alert was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Notification destination types configured for this alert — e.g. &apos;slack&apos;, &apos;webhook&apos;. Empty list means no notifications will fire. One or more destinations should be added after creating an alert.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum?>? DestinationTypes { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationTypeEnum?>? DestinationTypes { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum?> DestinationTypes { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationTypeEnum?> DestinationTypes { get; private set; }
 #endif
         /// <summary>Whether the alert is actively being evaluated. Disabling resets the state to not_firing.</summary>
         public bool? Enabled { get; set; }
@@ -54,11 +54,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the alert was first enabled. Null means the alert is still in draft state.</summary>
         public DateTimeOffset? FirstEnabledAt { get; private set; }
+        /// <summary>How the alert splits its results into instances. Mode single keeps one instance for the whole alert. Mode by_result_labels with keys service_name and/or severity_text keeps one instance per service or severity, each firing and resolving on its own, and needs threshold_operator above. Only an alert the alerts platform evaluates can group. Any other alert reads as single and rejects a different value. Omit it on update to keep the current grouping. Changing the keys deletes the existing instances and closes their notification threads without a message.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationGrouping? Grouping { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationGrouping Grouping { get; set; }
+#endif
         /// <summary>Unique identifier for this alert.</summary>
         public Guid? Id { get; private set; }
         /// <summary>When the alert was last evaluated. Server-managed.</summary>
         public DateTimeOffset? LastCheckedAt { get; private set; }
-        /// <summary>Error message from the most recent errored check, or null if the alert&apos;s most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth.</summary>
+        /// <summary>Error message from the most recent errored check, or null if the alert&apos;s most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth. For an alert the alerts platform evaluates, sourced from the platform&apos;s check history.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastErrorMessage { get; private set; }
@@ -78,6 +86,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the next evaluation is scheduled. Server-managed.</summary>
         public DateTimeOffset? NextCheckAt { get; private set; }
+        /// <summary>Whether the alerts platform evaluates this alert and sends its notifications. Only such an alert can set a grouping other than single.</summary>
+        public bool? PlatformOwned { get; private set; }
         /// <summary>Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,15 +98,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.</summary>
         public DateTimeOffset? SnoozeUntil { get; set; }
-        /// <summary>Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState? State { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState State { get; private set; }
-#endif
-        /// <summary>Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the &apos;Last 24h&apos; status bar on the alert list.</summary>
+        /// <summary>Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. For an alert the alerts platform evaluates, state changes come from the platform&apos;s check history instead. Drives the &apos;Last 24h&apos; status bar on the alert list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval>? StateTimeline { get; private set; }
@@ -106,14 +110,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the &apos;above&apos; operator to fire on any matching log.</summary>
         public int? ThresholdCount { get; set; }
-        /// <summary>Whether the alert fires when the count is above or below the threshold.* `above` - Above* `below` - Below</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `above` - Above* `below` - Below</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator? ThresholdOperator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator ThresholdOperator { get; set; }
-#endif
         /// <summary>When the alert was last modified.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60.</summary>
@@ -155,23 +153,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationCreatedBy.CreateFromDiscriminatorValue); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
-                { "destination_types", n => { DestinationTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum>()?.AsList(); } },
+                { "destination_types", n => { DestinationTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationTypeEnum>()?.AsList(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationFilters.CreateFromDiscriminatorValue); } },
                 { "first_enabled_at", n => { FirstEnabledAt = n.GetDateTimeOffsetValue(); } },
+                { "grouping", n => { Grouping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationGrouping>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationGrouping.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_checked_at", n => { LastCheckedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_error_message", n => { LastErrorMessage = n.GetStringValue(); } },
                 { "last_notified_at", n => { LastNotifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
+                { "platform_owned", n => { PlatformOwned = n.GetBoolValue(); } },
                 { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState>(); } },
                 { "state_timeline", n => { StateTimeline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "threshold_count", n => { ThresholdCount = n.GetIntValue(); } },
-                { "threshold_operator", n => { ThresholdOperator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator.CreateFromDiscriminatorValue); } },
+                { "threshold_operator", n => { ThresholdOperator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "window_minutes", n => { WindowMinutes = n.GetIntValue(); } },
             };
@@ -188,11 +188,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationGrouping>("grouping", Grouping);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
             writer.WriteIntValue("threshold_count", ThresholdCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator>("threshold_operator", ThresholdOperator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator>("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("window_minutes", WindowMinutes);
             writer.WriteAdditionalData(AdditionalData);
         }

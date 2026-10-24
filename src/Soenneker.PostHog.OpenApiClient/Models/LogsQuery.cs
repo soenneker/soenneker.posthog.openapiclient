@@ -69,13 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The offset property</summary>
         public int? Offset { get; set; }
         /// <summary>The orderBy property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderByWrapper? OrderBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderByWrapper OrderBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderBy? OrderBy { get; set; }
         /// <summary>Show logs for a given person</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -133,21 +127,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?> SeverityLevels { get; set; }
 #endif
         /// <summary>Field to break down sparkline data by (used only by sparkline endpoint)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownByWrapper? SparklineBreakdownBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownByWrapper SparklineBreakdownBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy? SparklineBreakdownBy { get; set; }
         /// <summary>Metric used to rank breakdown values before the tail is collapsed into a single &quot;other&quot; bucket, so the returned row count stays bounded (used only by sparkline endpoint). Defaults to ranking by log count.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankByWrapper? SparklineRankBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankByWrapper SparklineRankBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankBy? SparklineRankBy { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -186,7 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "liveLogsCheckpoint", n => { LiveLogsCheckpoint = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderByWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderByWrapper.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderBy>(); } },
                 { "personId", n => { PersonId = n.GetStringValue(); } },
                 { "resourceFingerprint", n => { ResourceFingerprint = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -194,8 +176,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "sessionId", n => { SessionId = n.GetStringValue(); } },
                 { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>()?.AsList(); } },
-                { "sparklineBreakdownBy", n => { SparklineBreakdownBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownByWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownByWrapper.CreateFromDiscriminatorValue); } },
-                { "sparklineRankBy", n => { SparklineRankBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankByWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankByWrapper.CreateFromDiscriminatorValue); } },
+                { "sparklineBreakdownBy", n => { SparklineBreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy>(); } },
+                { "sparklineRankBy", n => { SparklineRankBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankBy>(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -217,7 +199,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("liveLogsCheckpoint", LiveLogsCheckpoint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderByWrapper>("orderBy", OrderBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderBy>("orderBy", OrderBy);
             writer.WriteStringValue("personId", PersonId);
             writer.WriteStringValue("resourceFingerprint", ResourceFingerprint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse>("response", Response);
@@ -225,8 +207,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteStringValue("sessionId", SessionId);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>("severityLevels", SeverityLevels);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownByWrapper>("sparklineBreakdownBy", SparklineBreakdownBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankByWrapper>("sparklineRankBy", SparklineRankBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy>("sparklineBreakdownBy", SparklineBreakdownBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankBy>("sparklineRankBy", SparklineRankBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
         }

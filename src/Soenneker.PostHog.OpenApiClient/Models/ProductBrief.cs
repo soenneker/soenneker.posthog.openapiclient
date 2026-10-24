@@ -60,22 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> SourcesUsed { get; private set; }
 #endif
-        /// <summary>Lifecycle status: generating, ready, quiet (nothing confident to say), or failed.* `generating` - Generating* `ready` - Ready* `quiet` - Quiet* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `generating` - Generating* `ready` - Ready* `quiet` - Quiet* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefStatus Status { get; private set; }
-#endif
-        /// <summary>What started the generation: on_demand or scheduled.* `on_demand` - On Demand* `scheduled` - Scheduled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `on_demand` - On Demand* `scheduled` - Scheduled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefTrigger? Trigger { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefTrigger Trigger { get; private set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -111,8 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefPeriod.CreateFromDiscriminatorValue); } },
                 { "sections", n => { Sections = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BriefSection>(global::Soenneker.PostHog.OpenApiClient.Models.BriefSection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sources_used", n => { SourcesUsed = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefStatus.CreateFromDiscriminatorValue); } },
-                { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefTrigger>(global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefTrigger.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefStatus>(); } },
+                { "trigger", n => { Trigger = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefTrigger>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

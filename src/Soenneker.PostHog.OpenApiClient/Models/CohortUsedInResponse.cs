@@ -38,6 +38,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights Insights { get; set; }
 #endif
+        /// <summary>Environments across the project that use this cohort in &apos;Filter out internal and test users&apos;, with truncation metadata</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters? TestAccountFilters { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters TestAccountFilters { get; set; }
+#endif
+        /// <summary>Active workflows that trigger on this cohort or branch on its membership. While any exist, the cohort cannot be deleted or edited in a way that stops it updating in real time.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows? Workflows { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows Workflows { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponse"/> and sets the default values.
         /// </summary>
@@ -66,6 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cohorts", n => { Cohorts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts>(global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts.CreateFromDiscriminatorValue); } },
                 { "feature_flags", n => { FeatureFlags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags>(global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags.CreateFromDiscriminatorValue); } },
                 { "insights", n => { Insights = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights>(global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights.CreateFromDiscriminatorValue); } },
+                { "test_account_filters", n => { TestAccountFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters>(global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters.CreateFromDiscriminatorValue); } },
+                { "workflows", n => { Workflows = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows>(global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,6 +96,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts>("cohorts", Cohorts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags>("feature_flags", FeatureFlags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights>("insights", Insights);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters>("test_account_filters", TestAccountFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows>("workflows", Workflows);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

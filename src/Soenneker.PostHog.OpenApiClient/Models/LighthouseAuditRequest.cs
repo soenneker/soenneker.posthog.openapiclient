@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Which device profile to emulate. Desktop and mobile produce different numbers, so audit the one whose field data you are explaining.* `desktop` - desktop* `mobile` - mobile</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `desktop` - desktop* `mobile` - mobile</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditRequestFormFactor? FormFactor { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditRequestFormFactor FormFactor { get; set; }
-#endif
         /// <summary>The page to audit. Must be an https url on an allowed host — public PostHog pages only. Pages behind a login cannot be audited: the browser signs in to nothing, so it would measure the login screen and report its numbers as the page&apos;s.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "form_factor", n => { FormFactor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditRequestFormFactor>(global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditRequestFormFactor.CreateFromDiscriminatorValue); } },
+                { "form_factor", n => { FormFactor = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditRequestFormFactor>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditRequestFormFactor>("form_factor", FormFactor);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditRequestFormFactor>("form_factor", FormFactor);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

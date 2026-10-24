@@ -26,10 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Request ID echoed back (string or number)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId? Id { get; set; }
+        public UntypedNode? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId Id { get; set; }
+        public UntypedNode Id { get; set; }
 #endif
         /// <summary>JSON-RPC version</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Command result. Permission responses confirm acceptance only with resolved=true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult? Result { get; set; }
+        public UntypedNode? Result { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult Result { get; set; }
+        public UntypedNode Result { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse"/> and sets the default values.
@@ -73,9 +73,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty.CreateFromDiscriminatorValue); } },
-                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "jsonrpc", n => { Jsonrpc = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -86,9 +86,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty>("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId>("id", Id);
+            writer.WriteObjectValue<UntypedNode>("id", Id);
             writer.WriteStringValue("jsonrpc", Jsonrpc);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult>("result", Result);
+            writer.WriteObjectValue<UntypedNode>("result", Result);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

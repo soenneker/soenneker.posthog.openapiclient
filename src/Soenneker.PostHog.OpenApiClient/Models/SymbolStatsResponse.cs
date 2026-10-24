@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Bucketing applied: &apos;line&apos; when no symbols were supplied, &apos;symbol&apos; otherwise.* `line` - line* `symbol` - symbol</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `line` - line* `symbol` - symbol</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsResponseGranularity? Granularity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsResponseGranularity Granularity { get; set; }
-#endif
         /// <summary>One row per bucket, ordered by line ascending.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "granularity", n => { Granularity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsResponseGranularity>(global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsResponseGranularity.CreateFromDiscriminatorValue); } },
+                { "granularity", n => { Granularity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsResponseGranularity>(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsRow>(global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsRow.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsResponseGranularity>("granularity", Granularity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsResponseGranularity>("granularity", Granularity);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsRow>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }

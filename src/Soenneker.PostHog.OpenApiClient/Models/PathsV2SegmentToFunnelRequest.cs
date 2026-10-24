@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The PathsV2Query the segment is displayed under (JSON object with kind `PathsV2Query`). Step sources, path cleaning, excluded items, date range, and the gap or conversion window are read from it, so the emitted funnel counts exactly what the chart shows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelRequestQuery? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelRequestQuery Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelRequest"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentItem>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelRequestQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentItem>("items", Items);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelRequestQuery>("query", Query);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

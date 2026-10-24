@@ -69,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Query in whose context to validate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery? SourceQuery { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery? SourceQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery SourceQuery { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery SourceQuery { get; set; }
 #endif
         /// <summary>Start position of the editor word</summary>
         public int? StartPosition { get; set; }
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteResponse>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteResponse.CreateFromDiscriminatorValue); } },
-                { "sourceQuery", n => { SourceQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery.CreateFromDiscriminatorValue); } },
+                { "sourceQuery", n => { SourceQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery>(global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery.CreateFromDiscriminatorValue); } },
                 { "startPosition", n => { StartPosition = n.GetIntValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery>("sourceQuery", SourceQuery);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery>("sourceQuery", SourceQuery);
             writer.WriteIntValue("startPosition", StartPosition);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);

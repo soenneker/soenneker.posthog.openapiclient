@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Which policy layer decided the state.* `rule` - rule* `scope` - scope* `team` - team* `preset` - preset* `legacy` - legacy* `default` - default</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `rule` - rule* `scope` - scope* `team` - team* `preset` - preset* `legacy` - legacy* `default` - default</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy? DecidedBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy DecidedBy { get; set; }
-#endif
         /// <summary>Tool description from the upstream server.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,14 +37,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsDestructive { get; set; }
         /// <summary>True when no state is editable for this scope (a rule match or a Blocked team ceiling).</summary>
         public bool? Locked { get; set; }
-        /// <summary>Effective state for the scope.* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState? PolicyState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState PolicyState { get; set; }
-#endif
         /// <summary>Matching org rule description, when decided_by is rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -108,12 +96,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "decided_by", n => { DecidedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy.CreateFromDiscriminatorValue); } },
+                { "decided_by", n => { DecidedBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "input_schema", n => { InputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "is_destructive", n => { IsDestructive = n.GetBoolValue(); } },
                 { "locked", n => { Locked = n.GetBoolValue(); } },
-                { "policy_state", n => { PolicyState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState.CreateFromDiscriminatorValue); } },
+                { "policy_state", n => { PolicyState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState>(); } },
                 { "rule_description", n => { RuleDescription = n.GetStringValue(); } },
                 { "rule_name", n => { RuleName = n.GetStringValue(); } },
                 { "team_state", n => { TeamState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState.CreateFromDiscriminatorValue); } },
@@ -127,12 +115,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy>("decided_by", DecidedBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy>("decided_by", DecidedBy);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty>("input_schema", InputSchema);
             writer.WriteBoolValue("is_destructive", IsDestructive);
             writer.WriteBoolValue("locked", Locked);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState>("policy_state", PolicyState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState>("policy_state", PolicyState);
             writer.WriteStringValue("rule_description", RuleDescription);
             writer.WriteStringValue("rule_name", RuleName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState>("team_state", TeamState);

@@ -55,21 +55,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>True for internal notes not visible to the customer.</summary>
         public bool? IsPrivate { get; private set; }
-        /// <summary>What the message is, and whether it was sent to the customer. customer_message: written by the customer. sent_reply: a reply sent to the customer by a teammate, a workflow or the AI. It does not confirm that the customer received it, because delivery can fail. internal_note: a note for the team only. It was never sent to the customer. ai_draft: a reply or question the AI wrote for a teammate to review. It was never sent to the customer.* `customer_message` - Customer message* `sent_reply` - Sent reply* `internal_note` - Internal note* `ai_draft` - AI draft</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `customer_message` - Customer message* `sent_reply` - Sent reply* `internal_note` - Internal note* `ai_draft` - AI draft</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageMessageType? MessageType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageMessageType MessageType { get; private set; }
-#endif
         /// <summary>TipTap rich content JSON, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageRichContent? RichContent { get; private set; }
+        public UntypedNode? RichContent { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageRichContent RichContent { get; private set; }
+        public UntypedNode RichContent { get; private set; }
 #endif
         /// <summary>Edit count. 0 means never edited.</summary>
         public int? Version { get; private set; }
@@ -106,8 +100,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "has_full_email_content", n => { HasFullEmailContent = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_private", n => { IsPrivate = n.GetBoolValue(); } },
-                { "message_type", n => { MessageType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageMessageType>(global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageMessageType.CreateFromDiscriminatorValue); } },
-                { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageRichContent.CreateFromDiscriminatorValue); } },
+                { "message_type", n => { MessageType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageMessageType>(); } },
+                { "rich_content", n => { RichContent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }

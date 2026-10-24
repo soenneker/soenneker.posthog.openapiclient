@@ -13,21 +13,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Line interpolation: straight segments or a smoothed curve through the points.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper? Curve { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper Curve { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Curve? Curve { get; set; }
         /// <summary>How series are told apart: one color per series, or one color at stepped opacities.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper? SeriesColorMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper SeriesColorMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode? SeriesColorMode { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,8 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "curve", n => { Curve = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper.CreateFromDiscriminatorValue); } },
-                { "seriesColorMode", n => { SeriesColorMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper.CreateFromDiscriminatorValue); } },
+                { "curve", n => { Curve = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Curve>(); } },
+                { "seriesColorMode", n => { SeriesColorMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode>(); } },
             };
         }
         /// <summary>
@@ -57,8 +45,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper>("curve", Curve);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorModeWrapper>("seriesColorMode", SeriesColorMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Curve>("curve", Curve);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode>("seriesColorMode", SeriesColorMode);
         }
     }
 }

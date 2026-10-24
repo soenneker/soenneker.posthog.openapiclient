@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig OutputConfig { get; set; }
 #endif
-        /// <summary>Evaluation result type. Stored metrics without this field represent boolean evaluations.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical* `sentiment` - Sentiment</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical* `sentiment` - Sentiment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType? OutputType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType OutputType { get; set; }
-#endif
         /// <summary>Pass percentage excluding N/A. With no applicable results, numeric and categorical reports return null; boolean reports return 0.</summary>
         public double? PassRate { get; set; }
         /// <summary>ISO 8601 end of the evaluation window represented by these metrics.</summary>
@@ -112,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig.CreateFromDiscriminatorValue); } },
-                { "output_type", n => { OutputType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType.CreateFromDiscriminatorValue); } },
+                { "output_type", n => { OutputType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType>(); } },
                 { "pass_rate", n => { PassRate = n.GetDoubleValue(); } },
                 { "period_end", n => { PeriodEnd = n.GetStringValue(); } },
                 { "period_start", n => { PeriodStart = n.GetStringValue(); } },
@@ -133,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig>("output_config", OutputConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType>("output_type", OutputType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType>("output_type", OutputType);
             writer.WriteDoubleValue("pass_rate", PassRate);
             writer.WriteStringValue("period_end", PeriodEnd);
             writer.WriteStringValue("period_start", PeriodStart);

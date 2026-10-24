@@ -12,24 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class PieChartSettings : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Whether to show the aggregation total below the chart. Defaults to on.</summary>
+        /// <summary>Whether to show the aggregation total. Defaults to on only when slices show values.</summary>
         public bool? ShowTotal { get; set; }
-        /// <summary>What to render on each slice. Defaults to labels.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SliceContentWrapper? SliceContent { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SliceContentWrapper SliceContent { get; set; }
-#endif
+        /// <summary>What to render on each slice. Defaults to values.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SliceContent? SliceContent { get; set; }
         /// <summary>Whether slice values show as absolute amounts or shares of the total. Only applies when `sliceContent` is `values`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplayWrapper? ValueDisplay { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplayWrapper ValueDisplay { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay? ValueDisplay { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -49,8 +37,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "showTotal", n => { ShowTotal = n.GetBoolValue(); } },
-                { "sliceContent", n => { SliceContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SliceContentWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.SliceContentWrapper.CreateFromDiscriminatorValue); } },
-                { "valueDisplay", n => { ValueDisplay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplayWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplayWrapper.CreateFromDiscriminatorValue); } },
+                { "sliceContent", n => { SliceContent = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SliceContent>(); } },
+                { "valueDisplay", n => { ValueDisplay = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay>(); } },
             };
         }
         /// <summary>
@@ -61,8 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("showTotal", ShowTotal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SliceContentWrapper>("sliceContent", SliceContent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplayWrapper>("valueDisplay", ValueDisplay);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SliceContent>("sliceContent", SliceContent);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay>("valueDisplay", ValueDisplay);
         }
     }
 }

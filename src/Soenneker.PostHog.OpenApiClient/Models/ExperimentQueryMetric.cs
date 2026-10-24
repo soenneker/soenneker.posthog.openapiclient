@@ -55,19 +55,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("metric_type")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric();
-            if("ExperimentFunnelMetric".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("funnel".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentFunnelMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric();
             }
-            else if("ExperimentMeanMetric".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("mean".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentMeanMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric();
             }
-            else if("ExperimentRatioMetric".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ratio".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentRatioMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric();
             }
-            else if("ExperimentRetentionMetric".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("retention".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentRetentionMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
             }

@@ -39,13 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Export ID used to check status and download the file.</summary>
         public int? Id { get; private set; }
         /// <summary>Current export state: pending, complete, or failed.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportReadStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportReadStatus Status { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportRead"/> and sets the default values.
         /// </summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expires_after", n => { ExpiresAfter = n.GetDateTimeOffsetValue(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportReadStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportReadStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportReadStatus>(); } },
             };
         }
         /// <summary>

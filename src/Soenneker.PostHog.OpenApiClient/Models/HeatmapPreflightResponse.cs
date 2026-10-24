@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BodyExcerpt { get; set; }
 #endif
-        /// <summary>Whether the page can be embedded in the live preview iframe. &apos;blocked&apos; means the site&apos;s own headers forbid it, so only a screenshot or session recording background can work. &apos;unknown&apos; means we could not tell, for example because the page was unreachable or redirected.* `allowed` - allowed* `blocked` - blocked* `unknown` - unknown</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `allowed` - allowed* `blocked` - blocked* `unknown` - unknown</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming? Framing { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming Framing { get; set; }
-#endif
         /// <summary>HTTP status the page returned to us. A 4xx or 5xx here points at the customer&apos;s host or CDN rather than at PostHog. Null when the page could not be reached at all.</summary>
         public int? HttpStatus { get; set; }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "blocked_by", n => { BlockedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy.CreateFromDiscriminatorValue); } },
                 { "body_excerpt", n => { BodyExcerpt = n.GetStringValue(); } },
-                { "framing", n => { Framing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming.CreateFromDiscriminatorValue); } },
+                { "framing", n => { Framing = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming>(); } },
                 { "http_status", n => { HttpStatus = n.GetIntValue(); } },
             };
         }
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy>("blocked_by", BlockedBy);
             writer.WriteStringValue("body_excerpt", BodyExcerpt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming>("framing", Framing);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming>("framing", Framing);
             writer.WriteIntValue("http_status", HttpStatus);
             writer.WriteAdditionalData(AdditionalData);
         }

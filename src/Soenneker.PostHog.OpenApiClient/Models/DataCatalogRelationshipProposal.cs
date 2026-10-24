@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Extra join configuration, e.g. a field mapping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalConfiguration? Configuration { get; set; }
+        public UntypedNode? Configuration { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalConfiguration Configuration { get; set; }
+        public UntypedNode Configuration { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sampling evidence: match rates, sample values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalEvidence? Evidence { get; set; }
+        public UntypedNode? Evidence { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalEvidence Evidence { get; set; }
+        public UntypedNode Evidence { get; set; }
 #endif
         /// <summary>Accessor the join adds to the source table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,11 +140,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
-                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalConfiguration.CreateFromDiscriminatorValue); } },
+                { "configuration", n => { Configuration = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "created_join", n => { CreatedJoin = n.GetGuidValue(); } },
-                { "evidence", n => { Evidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalEvidence.CreateFromDiscriminatorValue); } },
+                { "evidence", n => { Evidence = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "field_name", n => { FieldName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "joining_table_key", n => { JoiningTableKey = n.GetStringValue(); } },
@@ -166,8 +166,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("confidence", Confidence);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalConfiguration>("configuration", Configuration);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalEvidence>("evidence", Evidence);
+            writer.WriteObjectValue<UntypedNode>("configuration", Configuration);
+            writer.WriteObjectValue<UntypedNode>("evidence", Evidence);
             writer.WriteStringValue("field_name", FieldName);
             writer.WriteStringValue("joining_table_key", JoiningTableKey);
             writer.WriteStringValue("joining_table_name", JoiningTableName);

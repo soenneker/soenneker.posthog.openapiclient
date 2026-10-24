@@ -8,49 +8,27 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Tagger configuration. For tagger_type &apos;llm&apos;: {prompt, tags, min_tags?, max_tags?}. For tagger_type &apos;hog&apos;: {source, tags?}.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TaggerUpdateTaggerConfig : IAdditionalDataHolder, IParsable
+    public partial class TaggerUpdateTaggerConfig : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Maximum number of tags to apply (null = no limit)</summary>
-        public int? MaxTags { get; set; }
-        /// <summary>Minimum number of tags to apply</summary>
-        public int? MinTags { get; set; }
-        /// <summary>Prompt instructing the LLM how to tag generations</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1? TaggerUpdateTaggerConfigMember1 { get; set; }
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1 TaggerUpdateTaggerConfigMember1 { get; set; }
 #endif
-        /// <summary>Hog source code to classify a generation into tags.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2? TaggerUpdateTaggerConfigMember2 { get; set; }
 #nullable restore
 #else
-        public string Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2 TaggerUpdateTaggerConfigMember2 { get; set; }
 #endif
-        /// <summary>Available tags the LLM can assign</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>? Tags { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition> Tags { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig"/> and sets the default values.
-        /// </summary>
-        public TaggerUpdateTaggerConfig()
-        {
-            AdditionalData = new Dictionary<string, object>();
-            MinTags = 0;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -59,7 +37,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,14 +47,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(TaggerUpdateTaggerConfigMember1 != null)
             {
-                { "max_tags", n => { MaxTags = n.GetIntValue(); } },
-                { "min_tags", n => { MinTags = n.GetIntValue(); } },
-                { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
-            };
+                return TaggerUpdateTaggerConfigMember1.GetFieldDeserializers();
+            }
+            else if(TaggerUpdateTaggerConfigMember2 != null)
+            {
+                return TaggerUpdateTaggerConfigMember2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -83,12 +64,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("max_tags", MaxTags);
-            writer.WriteIntValue("min_tags", MinTags);
-            writer.WriteStringValue("prompt", Prompt);
-            writer.WriteStringValue("source", Source);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>("tags", Tags);
-            writer.WriteAdditionalData(AdditionalData);
+            if(TaggerUpdateTaggerConfigMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1>(null, TaggerUpdateTaggerConfigMember1);
+            }
+            else if(TaggerUpdateTaggerConfigMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2>(null, TaggerUpdateTaggerConfigMember2);
+            }
         }
     }
 }

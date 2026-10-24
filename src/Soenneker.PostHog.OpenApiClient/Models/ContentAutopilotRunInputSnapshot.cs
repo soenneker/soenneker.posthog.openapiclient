@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> BrandRules { get; set; }
 #endif
-        /// <summary>Confidence level based on the available data sources.* `standard` - Standard* `lower` - Lower</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `standard` - Standard* `lower` - Lower</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence? Confidence { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence Confidence { get; set; }
-#endif
         /// <summary>Site paths authorized for this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "brand_rules", n => { BrandRules = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "confidence", n => { Confidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence.CreateFromDiscriminatorValue); } },
+                { "confidence", n => { Confidence = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence>(); } },
                 { "content_boundaries", n => { ContentBoundaries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "domain", n => { Domain = n.GetStringValue(); } },
                 { "source_urls", n => { SourceUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -95,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("brand_rules", BrandRules);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence>("confidence", Confidence);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence>("confidence", Confidence);
             writer.WriteCollectionOfPrimitiveValues<string>("content_boundaries", ContentBoundaries);
             writer.WriteStringValue("domain", Domain);
             writer.WriteCollectionOfPrimitiveValues<string>("source_urls", SourceUrls);

@@ -8,19 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnumWrapper2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ActionStepJsonHrefMatching : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnumWrapper2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnumWrapper2? ActionStepMatchingEnumWrapper2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnumWrapper2 ActionStepMatchingEnumWrapper2 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnum? ActionStepMatchingEnum { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJsonHrefMatching();
-            if("ActionStepMatchingEnumWrapper2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnum actionStepMatchingEnumValue)
             {
-                result.ActionStepMatchingEnumWrapper2 = new global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnumWrapper2();
+                result.ActionStepMatchingEnum = actionStepMatchingEnumValue;
             }
             return result;
         }
@@ -51,11 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ActionStepMatchingEnumWrapper2 != null)
-            {
-                return ActionStepMatchingEnumWrapper2.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
@@ -68,9 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ActionStepMatchingEnumWrapper2 != null)
+            if(ActionStepMatchingEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnumWrapper2>(null, ActionStepMatchingEnumWrapper2);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepMatchingEnum>(null, ActionStepMatchingEnum);
             }
             else if(NullEnum != null)
             {

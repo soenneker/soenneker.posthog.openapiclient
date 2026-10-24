@@ -46,14 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>When reviews run: &apos;all&apos; reviews every pull request (the default); &apos;label&apos; reviews only pull requests carrying the trigger label, mirroring the Action&apos;s opt-in flow.* `all` - all* `label` - label</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `all` - All pull requests* `label` - Labeled pull requests</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode? ReviewMode { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode ReviewMode { get; private set; }
-#endif
         /// <summary>Pull request label that triggers a review when review_mode is &apos;label&apos;. Defaults to &apos;stamphog&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "review_mode", n => { ReviewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode>(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode.CreateFromDiscriminatorValue); } },
+                { "review_mode", n => { ReviewMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode>(); } },
                 { "trigger_label", n => { TriggerLabel = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },

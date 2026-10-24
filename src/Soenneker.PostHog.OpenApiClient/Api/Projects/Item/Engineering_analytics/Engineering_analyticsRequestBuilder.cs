@@ -9,13 +9,16 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Au
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Broken_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.CiSignalsConfig;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_cards;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_data_freshness;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_failure_logs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_timing_context;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_comparison;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_log_insights;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Master_failures;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_cost;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_lifecycle;
@@ -81,10 +84,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_cards.Ci_cardsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The ci_data_freshness property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_data_freshness.Ci_data_freshnessRequestBuilder Ci_data_freshness
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_data_freshness.Ci_data_freshnessRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The ci_failure_logs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_failure_logs.Ci_failure_logsRequestBuilder Ci_failure_logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_failure_logs.Ci_failure_logsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The ci_timing_context property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_timing_context.Ci_timing_contextRequestBuilder Ci_timing_context
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_timing_context.Ci_timing_contextRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ciSignalsConfig property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.CiSignalsConfig.CiSignalsConfigRequestBuilder CiSignalsConfig
@@ -120,6 +133,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates.Job_aggregatesRequestBuilder Job_aggregates
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates.Job_aggregatesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The job_log_insights property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_log_insights.Job_log_insightsRequestBuilder Job_log_insights
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_log_insights.Job_log_insightsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The master_failures property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Master_failures.Master_failuresRequestBuilder Master_failures

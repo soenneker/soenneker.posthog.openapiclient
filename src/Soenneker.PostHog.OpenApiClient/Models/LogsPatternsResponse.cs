@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Sampled { get; set; }
         /// <summary>Rows scanned: the sample size for body mining, or the full matching count for stored-pattern aggregation.</summary>
         public int? ScannedCount { get; set; }
-        /// <summary>Whether counts come from stored-pattern aggregation or body masking and Drain3 mining.* `stored_patterns` - stored_patterns* `body_mining` - body_mining</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `stored_patterns` - stored_patterns* `body_mining` - body_mining</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource Source { get; set; }
-#endif
         /// <summary>Time buckets that every pattern&apos;s `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sample_coverage_pct", n => { SampleCoveragePct = n.GetDoubleValue(); } },
                 { "sampled", n => { Sampled = n.GetBoolValue(); } },
                 { "scanned_count", n => { ScannedCount = n.GetIntValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource>(); } },
                 { "sparkline_buckets", n => { SparklineBuckets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_count", n => { TotalCount = n.GetIntValue(); } },
             };
@@ -117,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("sample_coverage_pct", SampleCoveragePct);
             writer.WriteBoolValue("sampled", Sampled);
             writer.WriteIntValue("scanned_count", ScannedCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource>("source", Source);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>("sparkline_buckets", SparklineBuckets);
             writer.WriteIntValue("total_count", TotalCount);
             writer.WriteAdditionalData(AdditionalData);

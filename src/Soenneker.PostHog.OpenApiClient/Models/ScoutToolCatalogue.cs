@@ -31,6 +31,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset> Presets { get; set; }
 #endif
+        /// <summary>Tools every scout run holds. Show these as always available, excluding them from saved selections.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? RunContextTools { get; private set; }
+#nullable restore
+#else
+        public List<string> RunContextTools { get; private set; }
+#endif
+        /// <summary>Tool selections expanded and validated on save.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset>? ToolPresets { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset> ToolPresets { get; set; }
+#endif
         /// <summary>Every catalogued MCP tool, ordered by name. Tools that a successor has replaced are left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,6 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "grantable_write_scopes", n => { GrantableWriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "presets", n => { Presets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "run_context_tools", n => { RunContextTools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "tool_presets", n => { ToolPresets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -78,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("grantable_write_scopes", GrantableWriteScopes);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset>("presets", Presets);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset>("tool_presets", ToolPresets);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry>("tools", Tools);
             writer.WriteAdditionalData(AdditionalData);
         }

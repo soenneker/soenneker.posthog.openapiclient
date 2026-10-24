@@ -17,14 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifier of the run that is still executing</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Status of the executing run (pending or in_progress)* `pending` - Pending* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRunStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRunStatus Status { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun"/> and sets the default values.
         /// </summary>
@@ -51,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRunStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRunStatus>(); } },
             };
         }
         /// <summary>

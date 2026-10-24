@@ -8,19 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertiesWrapper7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesMember1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesMember1"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StickinessQueryProperties : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertiesWrapper7"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertiesWrapper7? PropertiesWrapper7 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertiesWrapper7 PropertiesWrapper7 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter PropertyGroupFilter { get; set; }
+#endif
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item>? StickinessQueryPropertiesAnyOf1Item { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item> StickinessQueryPropertiesAnyOf1Item { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,9 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryProperties();
-            result.PropertiesWrapper7 = new global::Soenneker.PostHog.OpenApiClient.Models.PropertiesWrapper7();
-            result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
-            result.StickinessQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesMember1();
+            if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item> stickinessQueryPropertiesAnyOf1ItemValue)
+            {
+                result.StickinessQueryPropertiesAnyOf1Item = stickinessQueryPropertiesAnyOf1ItemValue;
+            }
+            else {
+                result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
+                result.StickinessQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesMember1();
+            }
             return result;
         }
         /// <summary>
@@ -57,9 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(PropertiesWrapper7 != null || PropertyGroupFilter != null || StickinessQueryPropertiesMember1 != null)
+            if(PropertyGroupFilter != null || StickinessQueryPropertiesMember1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertiesWrapper7, PropertyGroupFilter, StickinessQueryPropertiesMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertyGroupFilter, StickinessQueryPropertiesMember1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -70,7 +75,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesWrapper7>(null, PropertiesWrapper7, PropertyGroupFilter, StickinessQueryPropertiesMember1);
+            if(StickinessQueryPropertiesAnyOf1Item != null)
+            {
+                writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryPropertiesAnyOf1Item>(null, StickinessQueryPropertiesAnyOf1Item);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(null, PropertyGroupFilter, StickinessQueryPropertiesMember1);
+            }
         }
     }
 }

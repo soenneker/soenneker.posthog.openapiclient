@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.PersonFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PersonFilter();
             }
-            else if("PersonMetadataFilter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("person_metadata".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.PersonMetadataFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PersonMetadataFilter();
             }

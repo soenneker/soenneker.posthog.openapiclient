@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Payload associated with the flag result, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload? Payload { get; set; }
+        public UntypedNode? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload Payload { get; set; }
+        public UntypedNode Payload { get; set; }
 #endif
         /// <summary>Person properties at the time of evaluation (for historical evaluations)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The evaluated value of the feature flag (boolean or variant key string)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult? Result { get; set; }
+        public UntypedNode? Result { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult Result { get; set; }
+        public UntypedNode Result { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponse"/> and sets the default values.
@@ -109,11 +109,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evaluation_distinct_id", n => { EvaluationDistinctId = n.GetStringValue(); } },
                 { "flag_key", n => { FlagKey = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "person_properties", n => { PersonProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "reason_description", n => { ReasonDescription = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -127,11 +127,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>("conditions", Conditions);
             writer.WriteStringValue("evaluation_distinct_id", EvaluationDistinctId);
             writer.WriteStringValue("flag_key", FlagKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload>("payload", Payload);
+            writer.WriteObjectValue<UntypedNode>("payload", Payload);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty>("person_properties", PersonProperties);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("reason_description", ReasonDescription);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult>("result", Result);
+            writer.WriteObjectValue<UntypedNode>("result", Result);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

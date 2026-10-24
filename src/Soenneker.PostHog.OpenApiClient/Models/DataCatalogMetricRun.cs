@@ -62,18 +62,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Async query status, when the run is not blocking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus? QueryStatus { get; set; }
+        public UntypedNode? QueryStatus { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus QueryStatus { get; set; }
+        public UntypedNode QueryStatus { get; set; }
 #endif
         /// <summary>The query results, for an executable metric. Null for a markdown metric.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults? Results { get; set; }
+        public UntypedNode? Results { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults Results { get; set; }
+        public UntypedNode Results { get; set; }
 #endif
         /// <summary>Row limit applied to this run. Null when no row cap was reported: a markdown metric, an insight or trends query, or a HogQL metric that sets its own LIMIT or uses a UNION. This field cannot verify the completeness of those runs.</summary>
         public int? RowLimit { get; set; }
@@ -125,8 +125,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_drifted", n => { IsDrifted = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "posthog_url", n => { PosthogUrl = n.GetStringValue(); } },
-                { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults.CreateFromDiscriminatorValue); } },
+                { "query_status", n => { QueryStatus = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "row_limit", n => { RowLimit = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "unit", n => { Unit = n.GetStringValue(); } },
@@ -146,8 +146,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_drifted", IsDrifted);
             writer.WriteStringValue("kind", Kind);
             writer.WriteStringValue("posthog_url", PosthogUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunQueryStatus>("query_status", QueryStatus);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunResults>("results", Results);
+            writer.WriteObjectValue<UntypedNode>("query_status", QueryStatus);
+            writer.WriteObjectValue<UntypedNode>("results", Results);
             writer.WriteIntValue("row_limit", RowLimit);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("unit", Unit);

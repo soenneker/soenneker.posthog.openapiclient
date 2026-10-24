@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Aggregation applied per time bucket; same semantics as the top-level aggregation.* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseAggregation? Aggregation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseAggregation Aggregation { get; set; }
-#endif
         /// <summary>Label predicates ANDed together for this clause.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +58,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Quantile in (0, 1) for &apos;histogram_quantile&apos;.</summary>
         public double? Quantile { get; set; }
+        /// <summary>Counter-aware transform applied to each series before the aggregation: &apos;rate&apos; (per-second) or &apos;increase&apos;. Combine with &apos;none&apos; to get one rate line per series. Do not combine with the &apos;rate&apos; or &apos;increase&apos; aggregations.* `rate` - rate* `increase` - increase</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction? RangeFunction { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction RangeFunction { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricClause"/> and sets the default values.
         /// </summary>
@@ -89,13 +91,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregation", n => { Aggregation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseAggregation>(global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseAggregation.CreateFromDiscriminatorValue); } },
+                { "aggregation", n => { Aggregation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseAggregation>(); } },
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>(global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "groupBy", n => { GroupBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy>(global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
                 { "metricType", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType>(global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "quantile", n => { Quantile = n.GetDoubleValue(); } },
+                { "rangeFunction", n => { RangeFunction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction>(global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -105,13 +108,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseAggregation>("aggregation", Aggregation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseAggregation>("aggregation", Aggregation);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>("filters", Filters);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy>("groupBy", GroupBy);
             writer.WriteStringValue("metricName", MetricName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType>("metricType", MetricType);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("quantile", Quantile);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction>("rangeFunction", RangeFunction);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

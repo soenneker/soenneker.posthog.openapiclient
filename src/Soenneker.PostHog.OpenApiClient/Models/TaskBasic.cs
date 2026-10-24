@@ -29,6 +29,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CiPrompt { get; set; }
 #endif
+        /// <summary>First-party PostHog client that created this task.* `posthog_desktop` - PostHog Desktop* `posthog_mobile` - PostHog Mobile* `posthog_web` - PostHog Web</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance? ClientProvenance { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance ClientProvenance { get; set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The created_by property</summary>
@@ -105,14 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>Agent protocol and harness used for this task&apos;s runs.* `acp` - ACP* `pi` - Pi</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `acp` - ACP* `pi` - Pi</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicRuntime? Runtime { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicRuntime Runtime { get; set; }
-#endif
         /// <summary>The signal_report property</summary>
         public Guid? SignalReport { get; set; }
         /// <summary>The slack_thread_references property</summary>
@@ -174,6 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "archived_at", n => { ArchivedAt = n.GetDateTimeOffsetValue(); } },
                 { "channel", n => { Channel = n.GetGuidValue(); } },
                 { "ci_prompt", n => { CiPrompt = n.GetStringValue(); } },
+                { "client_provenance", n => { ClientProvenance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance>(global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "description_preview", n => { DescriptionPreview = n.GetStringValue(); } },
@@ -188,7 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "runtime", n => { Runtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicRuntime.CreateFromDiscriminatorValue); } },
+                { "runtime", n => { Runtime = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicRuntime>(); } },
                 { "signal_report", n => { SignalReport = n.GetGuidValue(); } },
                 { "slack_thread_references", n => { SlackThreadReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadReferenceDto>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadReferenceDto.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -209,6 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("archived_at", ArchivedAt);
             writer.WriteGuidValue("channel", Channel);
             writer.WriteStringValue("ci_prompt", CiPrompt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance>("client_provenance", ClientProvenance);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteIntValue("github_integration", GithubIntegration);
@@ -222,7 +226,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("repository", Repository);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicRuntime>("runtime", Runtime);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicRuntime>("runtime", Runtime);
             writer.WriteGuidValue("signal_report", SignalReport);
             writer.WriteStringValue("slug", Slug);
             writer.WriteIntValue("task_number", TaskNumber);

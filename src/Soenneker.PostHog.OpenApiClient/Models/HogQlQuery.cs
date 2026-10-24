@@ -20,6 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConnectionId { get; set; }
 #endif
+        /// <summary>Compile and run this query against the hosted Trino target.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget? ExecutionTarget { get; set; }
         /// <summary>The explain property</summary>
         public bool? Explain { get; set; }
         /// <summary>Extra filters applied to query via {filters} or the column-bound {filters(expr AS key, ...)} placeholder</summary>
@@ -111,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "connectionId", n => { ConnectionId = n.GetStringValue(); } },
+                { "executionTarget", n => { ExecutionTarget = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>(); } },
                 { "explain", n => { Explain = n.GetBoolValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryKind>(); } },
@@ -133,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("connectionId", ConnectionId);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>("executionTarget", ExecutionTarget);
             writer.WriteBoolValue("explain", Explain);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>("filters", Filters);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryKind>("kind", Kind);

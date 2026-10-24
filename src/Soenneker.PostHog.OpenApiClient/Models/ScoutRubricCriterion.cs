@@ -48,14 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PassCondition { get; set; }
 #endif
-        /// <summary>Shared default or scout-specific criterion.* `default` - Default* `custom` - Custom</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `default` - Default* `custom` - Custom</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterionSource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterionSource Source { get; set; }
-#endif
         /// <summary>Short name for the criterion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "pass_condition", n => { PassCondition = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterionSource>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterionSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterionSource>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -110,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("pass_condition", PassCondition);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterionSource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterionSource>("source", Source);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

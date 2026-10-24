@@ -26,14 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the status changed.</summary>
         public DateTimeOffset? ChangedAt { get; private set; }
-        /// <summary>System that recorded the status change.* `manual` - Manual* `github` - GitHub</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `manual` - Manual* `github` - GitHub</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryChangeSource? ChangeSource { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryChangeSource ChangeSource { get; private set; }
-#endif
         /// <summary>Stable status history entry ID.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Status before this change. Null identifies the initial status.* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
@@ -44,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryPreviousStatus PreviousStatus { get; private set; }
 #endif
-        /// <summary>Status after this change.* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryRequestStatus? RequestStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryRequestStatus RequestStatus { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistory"/> and sets the default values.
         /// </summary>
@@ -79,11 +67,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "actor_id", n => { ActorId = n.GetIntValue(); } },
                 { "actor_name", n => { ActorName = n.GetStringValue(); } },
-                { "change_source", n => { ChangeSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryChangeSource>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryChangeSource.CreateFromDiscriminatorValue); } },
+                { "change_source", n => { ChangeSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryChangeSource>(); } },
                 { "changed_at", n => { ChangedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "previous_status", n => { PreviousStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryPreviousStatus>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryPreviousStatus.CreateFromDiscriminatorValue); } },
-                { "request_status", n => { RequestStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryRequestStatus.CreateFromDiscriminatorValue); } },
+                { "request_status", n => { RequestStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusHistoryRequestStatus>(); } },
             };
         }
         /// <summary>

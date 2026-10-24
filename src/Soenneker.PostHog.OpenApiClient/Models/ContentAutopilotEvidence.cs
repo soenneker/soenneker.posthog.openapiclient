@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Explanation { get; set; }
 #endif
-        /// <summary>Reason the opportunity was selected.* `poor_ctr` - Poor click-through rate* `content_gap` - Content gap* `organic_decline` - Organic decline* `ai_visibility_gap` - AI visibility gap* `site_hygiene` - Site hygiene</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `poor_ctr` - Poor click-through rate* `content_gap` - Content gap* `organic_decline` - Organic decline* `ai_visibility_gap` - AI visibility gap* `site_hygiene` - Site hygiene</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidenceOpportunityKind? OpportunityKind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidenceOpportunityKind OpportunityKind { get; set; }
-#endif
         /// <summary>Page supported by this evidence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "explanation", n => { Explanation = n.GetStringValue(); } },
-                { "opportunity_kind", n => { OpportunityKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidenceOpportunityKind>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidenceOpportunityKind.CreateFromDiscriminatorValue); } },
+                { "opportunity_kind", n => { OpportunityKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidenceOpportunityKind>(); } },
                 { "page_url", n => { PageUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidencePageUrl>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidencePageUrl.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
             };
@@ -85,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("explanation", Explanation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidenceOpportunityKind>("opportunity_kind", OpportunityKind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidenceOpportunityKind>("opportunity_kind", OpportunityKind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidencePageUrl>("page_url", PageUrl);
             writer.WriteStringValue("query", Query);
             writer.WriteAdditionalData(AdditionalData);

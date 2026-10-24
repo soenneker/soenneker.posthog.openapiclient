@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Dashboard ID to subscribe to (mutually exclusive with insight on create).</summary>
         public int? Dashboard { get; set; }
-        /// <summary>List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10.</summary>
+        /// <summary>List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 20.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? DashboardExportInsights { get; set; }
@@ -83,14 +83,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the subscription is active. Set to false to pause delivery without deleting. Auto-set to false when the delivery integration becomes invalid.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>How often to deliver: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteFrequency? Frequency { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteFrequency Frequency { get; set; }
-#endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>Insight ID to subscribe to (mutually exclusive with dashboard on create).</summary>
@@ -133,14 +127,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ResourceName { get; private set; }
 #endif
-        /// <summary>What the subscription delivers: &apos;insight&apos; (snapshot of one insight), &apos;dashboard&apos; (snapshot of one dashboard), or &apos;ai_prompt&apos; (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt).* `insight` - Insight* `dashboard` - Dashboard* `ai_prompt` - AI prompt</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `insight` - Insight* `dashboard` - Dashboard* `ai_prompt` - AI prompt</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteResourceType? ResourceType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteResourceType ResourceType { get; private set; }
-#endif
         /// <summary>Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected.</summary>
         public bool? SendTestNow { get; set; }
         /// <summary>When to start delivering (ISO 8601 datetime). The date anchors the recurrence and may be in the past. Deliveries run on half-hour cycles at :00 and :30. Other minute values are accepted for backward compatibility, but delivery happens during the next cycle instead of at that exact minute.</summary>
@@ -163,14 +151,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SummaryPromptGuide { get; set; }
 #endif
-        /// <summary>Delivery channel: email, slack, or teams.* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteTargetType? TargetType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteTargetType TargetType { get; set; }
-#endif
         /// <summary>Recipient(s): comma-separated email addresses for email, Slack channel name/ID for slack, or a Microsoft Teams webhook URL for teams. A Teams webhook URL is only ever returned as its host, because the URL authorizes a post to the channel by itself. On update, omit the field to keep the stored URL, or send a full URL to replace it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -227,7 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "delivery_config", n => { DeliveryConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteDeliveryConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteDeliveryConfig.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "frequency", n => { Frequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteFrequency>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteFrequency.CreateFromDiscriminatorValue); } },
+                { "frequency", n => { Frequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteFrequency>(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
@@ -237,13 +219,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "next_delivery_date", n => { NextDeliveryDate = n.GetDateTimeOffsetValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "resource_name", n => { ResourceName = n.GetStringValue(); } },
-                { "resource_type", n => { ResourceType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteResourceType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteResourceType.CreateFromDiscriminatorValue); } },
+                { "resource_type", n => { ResourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteResourceType>(); } },
                 { "send_test_now", n => { SendTestNow = n.GetBoolValue(); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "summary_enabled", n => { SummaryEnabled = n.GetBoolValue(); } },
                 { "summary_prompt_guide", n => { SummaryPromptGuide = n.GetStringValue(); } },
-                { "target_type", n => { TargetType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteTargetType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteTargetType.CreateFromDiscriminatorValue); } },
+                { "target_type", n => { TargetType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteTargetType>(); } },
                 { "target_value", n => { TargetValue = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "until_date", n => { UntilDate = n.GetDateTimeOffsetValue(); } },
@@ -266,7 +248,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteDeliveryConfig>("delivery_config", DeliveryConfig);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteFrequency>("frequency", Frequency);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteFrequency>("frequency", Frequency);
             writer.WriteIntValue("insight", Insight);
             writer.WriteIntValue("integration_id", IntegrationId);
             writer.WriteIntValue("interval", Interval);
@@ -276,7 +258,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteBoolValue("summary_enabled", SummaryEnabled);
             writer.WriteStringValue("summary_prompt_guide", SummaryPromptGuide);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteTargetType>("target_type", TargetType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteTargetType>("target_type", TargetType);
             writer.WriteStringValue("target_value", TargetValue);
             writer.WriteStringValue("title", Title);
             writer.WriteDateTimeOffsetValue("until_date", UntilDate);

@@ -16,5 +16,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Everyone,
         #pragma warning restore CS1591
+        [EnumMember(Value = "own_deep")]
+        #pragma warning disable CS1591
+        OwnDeep,
+        #pragma warning restore CS1591
     }
 }

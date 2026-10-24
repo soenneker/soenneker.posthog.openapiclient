@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Use &apos;public&apos; for access by all project members. Use &apos;private&apos; for access by channel members only. Defaults to &apos;public&apos;. This endpoint cannot create personal #me spaces.* `public` - public* `private` - private</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `public` - public* `private` - private</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType? ChannelType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType ChannelType { get; set; }
-#endif
         /// <summary>User IDs to add to a private channel. The requester is always a member. The endpoint ignores this field for public channels and skips users without project access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "channel_type", n => { ChannelType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType.CreateFromDiscriminatorValue); } },
+                { "channel_type", n => { ChannelType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType>(); } },
                 { "member_ids", n => { MemberIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "star", n => { Star = n.GetBoolValue(); } },
@@ -79,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType>("channel_type", ChannelType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType>("channel_type", ChannelType);
             writer.WriteCollectionOfPrimitiveValues<int?>("member_ids", MemberIds);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("star", Star);

@@ -21,10 +21,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionBytecode? Bytecode { get; private set; }
+        public UntypedNode? Bytecode { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionBytecode Bytecode { get; private set; }
+        public UntypedNode Bytecode { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -57,10 +57,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Config staged for review but not live yet: a full snapshot of hog, inputs_schema, inputs, filters, mappings and masking. Null when nothing is staged. Publish or discard it to clear.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionDraft? Draft { get; private set; }
+        public UntypedNode? Draft { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionDraft Draft { get; private set; }
+        public UntypedNode Draft { get; private set; }
 #endif
         /// <summary>When config was last staged for review, or null when nothing is staged.</summary>
         public DateTimeOffset? DraftUpdatedAt { get; private set; }
@@ -213,13 +213,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "base_updated_at", n => { BaseUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "batch_export_id", n => { BatchExportId = n.GetGuidValue(); } },
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionBytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "draft", n => { Draft = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionDraft>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionDraft.CreateFromDiscriminatorValue); } },
+                { "draft", n => { Draft = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "draft_updated_at", n => { DraftUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "execution_order", n => { ExecutionOrder = n.GetIntValue(); } },

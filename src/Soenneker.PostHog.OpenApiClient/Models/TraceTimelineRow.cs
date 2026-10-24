@@ -29,13 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRowKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRowKind Kind { get; set; }
-#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "durationMs", n => { DurationMs = n.GetDoubleValue(); } },
                 { "hasError", n => { HasError = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRowKind>(global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRowKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRowKind>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "startMs", n => { StartMs = n.GetDoubleValue(); } },
             };
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("durationMs", DurationMs);
             writer.WriteBoolValue("hasError", HasError);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRowKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRowKind>("kind", Kind);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("startMs", StartMs);
             writer.WriteAdditionalData(AdditionalData);

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Machine-readable warning code. &apos;horizon_exceeds_lookback&apos;, and &apos;population_too_large&apos; with severity &apos;error&apos;, mean a run would fail: fix the definition before creating. &apos;population_too_large&apos; with severity &apos;info&apos; means training uses a sample of the population. &apos;low_volume&apos;, &apos;low_positives&apos; and &apos;low_negatives&apos; mean the data is too thin for a reliable model (severity &apos;error&apos;, advisory). &apos;moderate_volume&apos;, &apos;mostly_anonymous_population&apos;, &apos;extreme_imbalance&apos; and &apos;near_universal&apos; are severity &apos;warning&apos;.</summary>
+        /// <summary>Machine-readable warning code. &apos;horizon_exceeds_lookback&apos;, and &apos;population_too_large&apos; with severity &apos;error&apos;, mean a run would fail: fix the definition before creating. &apos;population_too_large&apos; with severity &apos;info&apos; means training uses a sample of the population, or each scoring run scores a rolling part of it: users never scored first, then users whose last score was oldest. &apos;low_volume&apos;, &apos;low_positives&apos; and &apos;low_negatives&apos; mean the data is too thin for a reliable model (severity &apos;error&apos;, advisory). &apos;moderate_volume&apos;, &apos;mostly_anonymous_population&apos;, &apos;extreme_imbalance&apos; and &apos;near_universal&apos; are severity &apos;warning&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get; set; }
@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
-        /// <summary>Severity level. &apos;error&apos; means training would fail or the data is too thin for a reliable model; see &apos;code&apos; for which. &apos;warning&apos; is worth acknowledging. Creation enforces none of them.* `info` - info* `warning` - warning* `error` - error</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `info` - info* `warning` - warning* `error` - error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarningSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarningSeverity Severity { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning"/> and sets the default values.
         /// </summary>
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarningSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarningSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarningSeverity>(); } },
             };
         }
         /// <summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarningSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarningSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

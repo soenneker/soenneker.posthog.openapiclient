@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AiModel { get; set; }
 #endif
-        /// <summary>Which assertion to make. Determines the shape of config; see /check_types/.* `not_null` - not_null* `unique` - unique* `accepted_values` - accepted_values* `relationships` - relationships* `row_count` - row_count* `freshness` - freshness* `custom_sql` - custom_sql</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_null` - not_null* `unique` - unique* `accepted_values` - accepted_values* `relationships` - relationships* `row_count` - row_count* `freshness` - freshness* `custom_sql` - custom_sql</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCheckType? CheckType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCheckType CheckType { get; set; }
-#endif
         /// <summary>Column the check applies to. Omit for table-scoped types like row_count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,14 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>Whether a human (&apos;user&apos;) or an agent (&apos;ai_generated&apos;) authored this check.* `user` - user* `ai_generated` - ai_generated</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `ai_generated` - ai_generated</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedSource? CreatedSource { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedSource CreatedSource { get; set; }
-#endif
         /// <summary>Why this check exists and what a failure means.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -125,14 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reasoning { get; set; }
 #endif
-        /// <summary>&apos;error&apos; failures mark the subject failing and notify; &apos;warn&apos; failures only surface.* `error` - error* `warn` - warn</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `error` - error* `warn` - warn</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSeverity Severity { get; set; }
-#endif
         /// <summary>Queryable name of the subject, refreshed on every run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -149,14 +131,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubjectStatus { get; private set; }
 #endif
-        /// <summary>Kind of object being checked: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSubjectType? SubjectType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSubjectType SubjectType { get; private set; }
-#endif
         /// <summary>Id of the table, view, metric, or PostHog table being checked. Null once the subject is deleted.</summary>
         public Guid? SubjectUuid { get; private set; }
         /// <summary>Free-form string labels for grouping and filtering.</summary>
@@ -195,13 +171,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ai_model", n => { AiModel = n.GetStringValue(); } },
-                { "check_type", n => { CheckType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCheckType>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCheckType.CreateFromDiscriminatorValue); } },
+                { "check_type", n => { CheckType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCheckType>(); } },
                 { "column_name", n => { ColumnName = n.GetStringValue(); } },
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedBy.CreateFromDiscriminatorValue); } },
-                { "created_source", n => { CreatedSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedSource>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedSource.CreateFromDiscriminatorValue); } },
+                { "created_source", n => { CreatedSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedSource>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "failing_since", n => { FailingSince = n.GetDateTimeOffsetValue(); } },
@@ -213,10 +189,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckName>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckName.CreateFromDiscriminatorValue); } },
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSeverity>(); } },
                 { "subject_name", n => { SubjectName = n.GetStringValue(); } },
                 { "subject_status", n => { SubjectStatus = n.GetStringValue(); } },
-                { "subject_type", n => { SubjectType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSubjectType>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSubjectType.CreateFromDiscriminatorValue); } },
+                { "subject_type", n => { SubjectType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSubjectType>(); } },
                 { "subject_uuid", n => { SubjectUuid = n.GetGuidValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -230,16 +206,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("ai_model", AiModel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCheckType>("check_type", CheckType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCheckType>("check_type", CheckType);
             writer.WriteStringValue("column_name", ColumnName);
             writer.WriteDoubleValue("confidence", Confidence);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckConfigProperty>("config", Config);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedSource>("created_source", CreatedSource);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckCreatedSource>("created_source", CreatedSource);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckName>("name", Name);
             writer.WriteStringValue("reasoning", Reasoning);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckSeverity>("severity", Severity);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

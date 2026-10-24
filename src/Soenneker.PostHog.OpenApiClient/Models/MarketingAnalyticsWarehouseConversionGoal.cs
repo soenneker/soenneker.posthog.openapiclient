@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IdField { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalKind? Kind { get; set; }
         /// <summary>The math property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,10 +86,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The math_group_type_index property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper17? MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMathGroupTypeIndex? MathGroupTypeIndex { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper17 MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMathGroupTypeIndex MathGroupTypeIndex { get; set; }
 #endif
         /// <summary>The math_hogql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -204,9 +204,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dw_source_type", n => { DwSourceType = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "id_field", n => { IdField = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeKind>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalKind>(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMath>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMath.CreateFromDiscriminatorValue); } },
-                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper17>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper17.CreateFromDiscriminatorValue); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMathGroupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMathGroupTypeIndex.CreateFromDiscriminatorValue); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
                 { "math_multiplier", n => { MathMultiplier = n.GetDoubleValue(); } },
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
@@ -238,9 +238,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("dw_source_type", DwSourceType);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("id_field", IdField);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMath>("math", Math);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper17>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoalMathGroupTypeIndex>("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
             writer.WriteDoubleValue("math_multiplier", MathMultiplier);
             writer.WriteStringValue("math_property", MathProperty);

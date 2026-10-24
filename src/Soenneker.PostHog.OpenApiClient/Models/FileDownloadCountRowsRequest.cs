@@ -19,7 +19,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? DataIntervalEnd { get; set; }
         /// <summary>Start of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_start}. A supplied start must not be in the future. When both bounds are supplied, the interval must span at most seven days.</summary>
         public DateTimeOffset? DataIntervalStart { get; set; }
-        /// <summary>HogQL modifiers to use when the query runs. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. For example, set convertToProjectTimezone to false to export timestamps in UTC instead of the project timezone.</summary>
+        /// <summary>HogQL modifiers to use when the query runs, as an object keyed by modifier name, for example {&quot;convertToProjectTimezone&quot;: true}. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. If neither sets convertToProjectTimezone, it defaults to false, so timestamps are exported in UTC. Set it to true to export timestamps in the project timezone instead. Unknown modifier names are rejected. On update, the object replaces the modifiers stored on the export, so include every modifier to keep, or send null to remove them all.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers? HogqlModifiers { get; set; }
@@ -35,14 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string HogqlQuery { get; set; }
 #endif
-        /// <summary>Model to count rows for. Only &apos;hogql&apos; is supported.* `hogql` - hogql</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `hogql` - hogql</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel? Model { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel Model { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequest"/> and sets the default values.
         /// </summary>
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "data_interval_start", n => { DataIntervalStart = n.GetDateTimeOffsetValue(); } },
                 { "hogql_modifiers", n => { HogqlModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers.CreateFromDiscriminatorValue); } },
                 { "hogql_query", n => { HogqlQuery = n.GetStringValue(); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel>(); } },
             };
         }
         /// <summary>
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("data_interval_start", DataIntervalStart);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers>("hogql_modifiers", HogqlModifiers);
             writer.WriteStringValue("hogql_query", HogqlQuery);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel>("model", Model);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel>("model", Model);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

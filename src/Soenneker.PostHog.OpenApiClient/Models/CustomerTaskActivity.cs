@@ -12,14 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class CustomerTaskActivity : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Action that produced the activity.* `created` - Created* `updated` - Updated* `archived` - Archived* `restored` - Restored</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `created` - Created* `updated` - Updated* `archived` - Archived* `restored` - Restored</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActivityType? ActivityType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActivityType ActivityType { get; private set; }
-#endif
         /// <summary>User who made the change, if known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "activity_type", n => { ActivityType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActivityType>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActivityType.CreateFromDiscriminatorValue); } },
+                { "activity_type", n => { ActivityType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActivityType>(); } },
                 { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser.CreateFromDiscriminatorValue); } },
                 { "changes", n => { Changes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChange>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChange.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },

@@ -15,6 +15,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `weighted-score` - weighted-score* `jev` - jev</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedResponseRanker? Ranker { get; set; }
+        /// <summary>The team&apos;s variant of the `vision-watch-feed-ranker` experiment flag (`control`, `jev-shadow`, `jev`), or null when the team takes no part. Unlike `ranker`, it tells the shadow arm from control. Clients report it on the feed-viewed event as `$feature/vision-watch-feed-ranker`, which is the exposure the experiment counts.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RankerVariant { get; set; }
+#nullable restore
+#else
+        public string RankerVariant { get; set; }
+#endif
         /// <summary>Succeeded observations in the window worth watching, most interesting first, each carrying the reason it ranked. Every observation that carries a finding is returned; observations that carry none (`unviewed_recent`, `recent`) are returned only to pad a near-empty feed to three items, so a quiet window answers with a handful of rows rather than a full page of newest clips.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ranker", n => { Ranker = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedResponseRanker>(); } },
+                { "ranker_variant", n => { RankerVariant = n.GetStringValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedItem>(global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -58,6 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedResponseRanker>("ranker", Ranker);
+            writer.WriteStringValue("ranker_variant", RankerVariant);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedItem>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }

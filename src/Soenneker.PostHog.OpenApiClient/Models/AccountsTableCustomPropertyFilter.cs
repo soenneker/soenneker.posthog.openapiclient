@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string DefinitionId { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyFilterKind? Kind { get; set; }
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyOperator? Operator { get; set; }
         /// <summary>Values interpreted according to the custom property definition&apos;s display type.</summary>
@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "definitionId", n => { DefinitionId = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyKind>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyFilterKind>(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyOperator>(); } },
                 { "values", n => { Values = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("definitionId", DefinitionId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyFilterKind>("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyOperator>("operator", Operator);
             writer.WriteCollectionOfPrimitiveValues<string>("values", Values);
         }

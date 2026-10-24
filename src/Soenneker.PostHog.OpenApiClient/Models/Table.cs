@@ -62,19 +62,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The external_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty? ExternalSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty? ExternalSchema { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty ExternalSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty ExternalSchema { get; private set; }
 #endif
-        /// <summary>File format of the objects the pattern matches. Every matched file must share this format.* `CSV` - CSV* `CSVWithNames` - CSVWithNames* `Parquet` - Parquet* `JSONEachRow` - JSON* `Delta` - Delta* `DeltaS3Wrapper` - DeltaS3Wrapper</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `CSV` - CSV* `CSVWithNames` - CSVWithNames* `Parquet` - Parquet* `JSONEachRow` - JSON* `Delta` - Delta* `DeltaS3Wrapper` - DeltaS3Wrapper</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TableFormat? Format { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableFormat Format { get; set; }
-#endif
         /// <summary>Dotted name the table is queried by in HogQL (e.g. `googleanalytics.devices` or `postgres.&lt;prefix&gt;.&lt;table&gt;`), as opposed to `name`, which is the underlying storage identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -150,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "external_data_source", n => { ExternalDataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableExternalDataSource>(global::Soenneker.PostHog.OpenApiClient.Models.TableExternalDataSource.CreateFromDiscriminatorValue); } },
                 { "external_schema", n => { ExternalSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty.CreateFromDiscriminatorValue); } },
-                { "format", n => { Format = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormat>(global::Soenneker.PostHog.OpenApiClient.Models.TableFormat.CreateFromDiscriminatorValue); } },
+                { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormat>(); } },
                 { "hogql_name", n => { HogqlName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -168,8 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Credential>("credential", Credential);
             writer.WriteBoolValue("deleted", Deleted);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty>("external_schema", ExternalSchema);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormat>("format", Format);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormat>("format", Format);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableOptionsProperty>("options", Options);
             writer.WriteStringValue("url_pattern", UrlPattern);

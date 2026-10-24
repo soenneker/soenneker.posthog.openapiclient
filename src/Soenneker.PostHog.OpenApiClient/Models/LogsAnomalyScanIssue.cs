@@ -22,22 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<DateTimeOffset?> AnomalousBucketTimes { get; set; }
 #endif
-        /// <summary>up covers spikes; down covers drops and silences (which share one issue per service).* `up` - up* `down` - down</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `up` - up* `down` - down</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection? Direction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection Direction { get; set; }
-#endif
-        /// <summary>Most severe verdict the issue reached. A drop that deepens into silence escalates in place.* `spike` - spike* `drop` - drop* `silence` - silence</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `spike` - spike* `drop` - drop* `silence` - silence</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind Kind { get; set; }
-#endif
         /// <summary>Most recent anomalous bucket attributed to this issue.</summary>
         public DateTimeOffset? LastAnomalousAt { get; set; }
         /// <summary>Bucket where the issue first opened.</summary>
@@ -52,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Severity { get; set; }
 #endif
-        /// <summary>Lifecycle state at the end of the evaluation window.* `pending` - pending* `active` - active* `resolved` - resolved</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - pending* `active` - active* `resolved` - resolved</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState State { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue"/> and sets the default values.
         /// </summary>
@@ -86,13 +68,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "anomalous_bucket_times", n => { AnomalousBucketTimes = n.GetCollectionOfPrimitiveValues<DateTimeOffset?>()?.AsList(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind>(); } },
                 { "last_anomalous_at", n => { LastAnomalousAt = n.GetDateTimeOffsetValue(); } },
                 { "opened_at", n => { OpenedAt = n.GetDateTimeOffsetValue(); } },
                 { "resolved_at", n => { ResolvedAt = n.GetDateTimeOffsetValue(); } },
                 { "severity", n => { Severity = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState>(); } },
             };
         }
         /// <summary>
@@ -103,13 +85,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<DateTimeOffset?>("anomalous_bucket_times", AnomalousBucketTimes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection>("direction", Direction);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection>("direction", Direction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind>("kind", Kind);
             writer.WriteDateTimeOffsetValue("last_anomalous_at", LastAnomalousAt);
             writer.WriteDateTimeOffsetValue("opened_at", OpenedAt);
             writer.WriteDateTimeOffsetValue("resolved_at", ResolvedAt);
             writer.WriteStringValue("severity", Severity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

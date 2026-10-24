@@ -39,14 +39,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The operation to apply.* `set_grid` - set_grid* `add_placement` - add_placement* `update_placement` - update_placement* `remove_placement` - remove_placement</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `set_grid` - set_grid* `add_placement` - add_placement* `update_placement` - update_placement* `remove_placement` - remove_placement</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationOp? Op { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationOp Op { get; set; }
-#endif
         /// <summary>For add_placement: the placement to add.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "changes", n => { Changes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChanges>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChanges.CreateFromDiscriminatorValue); } },
                 { "grid", n => { Grid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationGrid>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationGrid.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "op", n => { Op = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationOp>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationOp.CreateFromDiscriminatorValue); } },
+                { "op", n => { Op = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationOp>(); } },
                 { "placement", n => { Placement = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationPlacement>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationPlacement.CreateFromDiscriminatorValue); } },
             };
         }
@@ -97,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChanges>("changes", Changes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationGrid>("grid", Grid);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationOp>("op", Op);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationOp>("op", Op);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationPlacement>("placement", Placement);
             writer.WriteAdditionalData(AdditionalData);
         }

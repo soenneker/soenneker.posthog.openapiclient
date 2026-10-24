@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Metadata for the comment target, anchor, thread state, and owning task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentItemContext? ItemContext { get; set; }
+        public UntypedNode? ItemContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentItemContext ItemContext { get; set; }
+        public UntypedNode ItemContext { get; set; }
 #endif
         /// <summary>The item_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The rich_content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentRichContent? RichContent { get; set; }
+        public UntypedNode? RichContent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentRichContent RichContent { get; set; }
+        public UntypedNode RichContent { get; set; }
 #endif
         /// <summary>The scope property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -142,10 +142,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_task", n => { IsTask = n.GetBoolValue(); } },
-                { "item_context", n => { ItemContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentItemContext>(global::Soenneker.PostHog.OpenApiClient.Models.CommentItemContext.CreateFromDiscriminatorValue); } },
+                { "item_context", n => { ItemContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "item_id", n => { ItemId = n.GetStringValue(); } },
                 { "mentions", n => { Mentions = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.CommentRichContent.CreateFromDiscriminatorValue); } },
+                { "rich_content", n => { RichContent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
                 { "slack_thread", n => { SlackThread = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadRef>(global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadRef.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -163,10 +163,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("content", Content);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("is_task", IsTask);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentItemContext>("item_context", ItemContext);
+            writer.WriteObjectValue<UntypedNode>("item_context", ItemContext);
             writer.WriteStringValue("item_id", ItemId);
             writer.WriteCollectionOfPrimitiveValues<int?>("mentions", Mentions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentRichContent>("rich_content", RichContent);
+            writer.WriteObjectValue<UntypedNode>("rich_content", RichContent);
             writer.WriteStringValue("scope", Scope);
             writer.WriteStringValue("slug", Slug);
             writer.WriteGuidValue("source_comment", SourceComment);

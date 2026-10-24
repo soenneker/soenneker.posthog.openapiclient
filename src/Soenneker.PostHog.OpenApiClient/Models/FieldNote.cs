@@ -56,14 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ElementText { get; set; }
 #endif
-        /// <summary>Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create.* `pending` - Pending* `acknowledged` - Acknowledged* `resolved` - Resolved* `dismissed` - Dismissed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `acknowledged` - Acknowledged* `resolved` - Resolved* `dismissed` - Dismissed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus? FieldNoteStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus FieldNoteStatus { get; set; }
-#endif
         /// <summary>Hostname of the page, used to scope field notes to a site.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -155,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "element_chain", n => { ElementChain = n.GetStringValue(); } },
                 { "element_context", n => { ElementContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteElementContextProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteElementContextProperty.CreateFromDiscriminatorValue); } },
                 { "element_text", n => { ElementText = n.GetStringValue(); } },
-                { "field_note_status", n => { FieldNoteStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus>(global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus.CreateFromDiscriminatorValue); } },
+                { "field_note_status", n => { FieldNoteStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus>(); } },
                 { "host", n => { Host = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "pathname", n => { Pathname = n.GetStringValue(); } },
@@ -178,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("element_chain", ElementChain);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteElementContextProperty>("element_context", ElementContext);
             writer.WriteStringValue("element_text", ElementText);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus>("field_note_status", FieldNoteStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus>("field_note_status", FieldNoteStatus);
             writer.WriteStringValue("host", Host);
             writer.WriteStringValue("pathname", Pathname);
             writer.WriteStringValue("resolution", Resolution);

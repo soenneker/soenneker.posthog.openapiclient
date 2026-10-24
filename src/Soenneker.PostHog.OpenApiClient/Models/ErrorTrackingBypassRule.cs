@@ -19,18 +19,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Populated when the rule has been automatically disabled (for example, after its filters failed to evaluate during ingestion). Null while the rule is active.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleDisabledData? DisabledData { get; set; }
+        public UntypedNode? DisabledData { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleDisabledData DisabledData { get; set; }
+        public UntypedNode DisabledData { get; set; }
 #endif
         /// <summary>Property-group filters that define which incoming error events bypass rate limiting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleFilters? Filters { get; set; }
+        public UntypedNode? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleFilters Filters { get; set; }
+        public UntypedNode Filters { get; set; }
 #endif
         /// <summary>Unique identifier of the bypass rule.</summary>
         public Guid? Id { get; private set; }
@@ -64,8 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "disabled_data", n => { DisabledData = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleDisabledData>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleDisabledData.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleFilters.CreateFromDiscriminatorValue); } },
+                { "disabled_data", n => { DisabledData = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "order_key", n => { OrderKey = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -78,8 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleDisabledData>("disabled_data", DisabledData);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBypassRuleFilters>("filters", Filters);
+            writer.WriteObjectValue<UntypedNode>("disabled_data", DisabledData);
+            writer.WriteObjectValue<UntypedNode>("filters", Filters);
             writer.WriteIntValue("order_key", OrderKey);
             writer.WriteAdditionalData(AdditionalData);
         }

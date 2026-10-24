@@ -49,13 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Show the change pill comparing the first point to the latest point.</summary>
         public bool? ShowChange { get; set; }
         /// <summary>Which value the resting headline shows: the latest point, the total, or the average of the returned points.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummaryWrapper? Summary { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummaryWrapper Summary { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Summary? Summary { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings"/> and sets the default values.
         /// </summary>
@@ -88,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "lineDecreaseColor", n => { LineDecreaseColor = n.GetStringValue(); } },
                 { "lineIncreaseColor", n => { LineIncreaseColor = n.GetStringValue(); } },
                 { "showChange", n => { ShowChange = n.GetBoolValue(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummaryWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.SummaryWrapper.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Summary>(); } },
             };
         }
         /// <summary>
@@ -104,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("lineDecreaseColor", LineDecreaseColor);
             writer.WriteStringValue("lineIncreaseColor", LineIncreaseColor);
             writer.WriteBoolValue("showChange", ShowChange);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummaryWrapper>("summary", Summary);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Summary>("summary", Summary);
         }
     }
 }

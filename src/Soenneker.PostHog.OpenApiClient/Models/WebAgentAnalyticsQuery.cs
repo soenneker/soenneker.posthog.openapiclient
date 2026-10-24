@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
 #endif
         /// <summary>The contentGrouping property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGroupingWrapper? ContentGrouping { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGroupingWrapper ContentGrouping { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGrouping? ContentGrouping { get; set; }
         /// <summary>The conversionGoal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,13 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IntentKey { get; set; }
 #endif
         /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper18? Interval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper18 Interval { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>Opaque journey identifier returned by the journeys list, used to load one journey&apos;s timeline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,10 +93,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The orderBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem>? OrderBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem?>? OrderBy { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem> OrderBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem?> OrderBy { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -170,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
-                { "contentGrouping", n => { ContentGrouping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGroupingWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGroupingWrapper.CreateFromDiscriminatorValue); } },
+                { "contentGrouping", n => { ContentGrouping = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGrouping>(); } },
                 { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryConversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryConversionGoal.CreateFromDiscriminatorValue); } },
                 { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
@@ -179,14 +167,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "includeCrawlers", n => { IncludeCrawlers = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "intentKey", n => { IntentKey = n.GetStringValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper18>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper18.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
                 { "journeyKey", n => { JourneyKey = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "llmsTxtUrl", n => { LlmsTxtUrl = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem>(global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem>()?.AsList(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "queryType", n => { QueryType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryType>(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -206,7 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGroupingWrapper>("contentGrouping", ContentGrouping);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGrouping>("contentGrouping", ContentGrouping);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryConversionGoal>("conversionGoal", ConversionGoal);
             writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
@@ -215,14 +203,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("includeCrawlers", IncludeCrawlers);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteStringValue("intentKey", IntentKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper18>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
             writer.WriteStringValue("journeyKey", JourneyKey);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteStringValue("llmsTxtUrl", LlmsTxtUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem>("orderBy", OrderBy);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryOrderByItem>("orderBy", OrderBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryPropertiesItem>("properties", Properties);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryType>("queryType", QueryType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryResponse>("response", Response);

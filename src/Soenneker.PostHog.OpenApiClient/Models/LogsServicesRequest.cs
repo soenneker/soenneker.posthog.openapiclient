@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Explicit baseline window. Takes precedence over `query.compare`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestBaselineDateRange? BaselineDateRange { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestBaselineDateRange BaselineDateRange { get; set; }
+#endif
         /// <summary>The services aggregation query to execute.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "baselineDateRange", n => { BaselineDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestBaselineDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestBaselineDateRange.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestQuery.CreateFromDiscriminatorValue); } },
             };
         }
@@ -57,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestBaselineDateRange>("baselineDateRange", BaselineDateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesRequestQuery>("query", Query);
             writer.WriteAdditionalData(AdditionalData);
         }

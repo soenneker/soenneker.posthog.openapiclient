@@ -38,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Site profile used by this run.</summary>
         public Guid? ProfileId { get; private set; }
-        /// <summary>Current durable workflow status.* `pending` - Pending* `generating` - Generating* `ready_for_review` - Ready for review* `completed` - Completed* `canceled` - Canceled* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `generating` - Generating* `ready_for_review` - Ready for review* `completed` - Completed* `canceled` - Canceled* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunRunStatus? RunStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunRunStatus RunStatus { get; private set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -79,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "input_snapshot", n => { InputSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot.CreateFromDiscriminatorValue); } },
                 { "profile_id", n => { ProfileId = n.GetGuidValue(); } },
-                { "run_status", n => { RunStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunRunStatus.CreateFromDiscriminatorValue); } },
+                { "run_status", n => { RunStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunRunStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

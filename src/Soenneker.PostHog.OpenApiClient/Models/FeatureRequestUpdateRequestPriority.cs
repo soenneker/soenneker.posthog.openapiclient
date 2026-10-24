@@ -8,19 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnumWrapper2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestUpdateRequestPriority : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnumWrapper2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnumWrapper2? FeatureRequestPriorityEnumWrapper2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnumWrapper2 FeatureRequestPriorityEnumWrapper2 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnum? FeatureRequestPriorityEnum { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestPriority();
-            if("FeatureRequestPriorityEnumWrapper2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnum featureRequestPriorityEnumValue)
             {
-                result.FeatureRequestPriorityEnumWrapper2 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnumWrapper2();
+                result.FeatureRequestPriorityEnum = featureRequestPriorityEnumValue;
             }
             return result;
         }
@@ -51,11 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(FeatureRequestPriorityEnumWrapper2 != null)
-            {
-                return FeatureRequestPriorityEnumWrapper2.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
@@ -68,9 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(FeatureRequestPriorityEnumWrapper2 != null)
+            if(FeatureRequestPriorityEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnumWrapper2>(null, FeatureRequestPriorityEnumWrapper2);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestPriorityEnum>(null, FeatureRequestPriorityEnum);
             }
             else if(NullEnum != null)
             {

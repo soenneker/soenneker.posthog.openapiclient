@@ -26,18 +26,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Unique identifier of this alert instance.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Result labels and their values for the group this instance tracks, such as {&quot;service_name&quot;: &quot;checkout&quot;}. Empty when the source does not group results.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertLabelsProperty? Labels { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertLabelsProperty Labels { get; private set; }
+#endif
         /// <summary>When a notification was last sent for this instance.</summary>
         public DateTimeOffset? LastNotifiedAt { get; private set; }
         /// <summary>Time until which notifications are snoozed. Null when not snoozed.</summary>
         public DateTimeOffset? SnoozeUntil { get; private set; }
-        /// <summary>Current state of this alert instance.* `not_firing` - Not firing* `firing` - Firing* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_firing` - Not firing* `firing` - Firing* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertState? State { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertState State { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert"/> and sets the default values.
         /// </summary>
@@ -66,9 +68,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "firing_started_at", n => { FiringStartedAt = n.GetDateTimeOffsetValue(); } },
                 { "grouping_key", n => { GroupingKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertLabelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "last_notified_at", n => { LastNotifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertState>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertState>(); } },
             };
         }
         /// <summary>

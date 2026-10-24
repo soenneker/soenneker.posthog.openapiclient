@@ -25,20 +25,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.Kind1? Kind { get; set; }
         /// <summary>How to aggregate this source. Defaults to &apos;total&apos; (event count). Use &apos;sum&apos; together with math_property to aggregate a numeric property — e.g. a ratio numerator of revenue per order. Other options: &apos;avg&apos;, &apos;min&apos;, &apos;max&apos;, &apos;unique_session&apos;, &apos;dau&apos;, &apos;unique_group&apos;, &apos;hogql&apos;.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper7? Math { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper7 Math { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType? Math { get; set; }
         /// <summary>Group type index to aggregate over. Required when math is &apos;unique_group&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper7? MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex? MathGroupTypeIndex { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper7 MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex MathGroupTypeIndex { get; set; }
 #endif
         /// <summary>HogQL aggregation expression. Required when math is &apos;hogql&apos; — without it the metric silently falls back to a plain count/sum.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,8 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind1>(); } },
-                { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper7>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper7.CreateFromDiscriminatorValue); } },
-                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper7>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper7.CreateFromDiscriminatorValue); } },
+                { "math", n => { Math = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>(); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex.CreateFromDiscriminatorValue); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -102,8 +96,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("event", Event);
             writer.WriteIntValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind1>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper7>("math", Math);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper7>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>("math", Math);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex>("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
             writer.WriteStringValue("math_property", MathProperty);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter>("properties", Properties);

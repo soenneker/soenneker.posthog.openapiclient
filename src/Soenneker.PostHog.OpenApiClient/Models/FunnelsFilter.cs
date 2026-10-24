@@ -13,23 +13,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Render only annotations with this scope. Only applies to historical-trends funnels.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper? AnnotationsScope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper AnnotationsScope { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? AnnotationsScope { get; set; }
         /// <summary>The binCount property</summary>
         public int? BinCount { get; set; }
         /// <summary>The breakdownAttributionType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2? BreakdownAttributionType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2 BreakdownAttributionType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionType? BreakdownAttributionType { get; set; }
         /// <summary>The breakdownAttributionValue property</summary>
         public int? BreakdownAttributionValue { get; set; }
         /// <summary>Breakdown table sorting. Format: &apos;column_key&apos; or &apos;-column_key&apos; (descending)</summary>
@@ -69,41 +57,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnelFromStep property</summary>
         public int? FunnelFromStep { get; set; }
         /// <summary>The funnelOrderType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3? FunnelOrderType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3 FunnelOrderType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue? FunnelOrderType { get; set; }
         /// <summary>The funnelStepReference property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper? FunnelStepReference { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper FunnelStepReference { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReference? FunnelStepReference { get; set; }
         /// <summary>To select the range of steps for trends &amp; time to convert funnels, 0-indexed</summary>
         public int? FunnelToStep { get; set; }
         /// <summary>The funnelVizType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper? FunnelVizType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper FunnelVizType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizType? FunnelVizType { get; set; }
         /// <summary>The funnelWindowInterval property</summary>
         public int? FunnelWindowInterval { get; set; }
         /// <summary>The funnelWindowIntervalUnit property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7? FunnelWindowIntervalUnit { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7 FunnelWindowIntervalUnit { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? FunnelWindowIntervalUnit { get; set; }
         /// <summary>Goal Lines</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -123,21 +87,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Trends only: hide periods whose conversion window has not fully elapsed yet, so the recent tail of the trend isn&apos;t dragged down by entrants who still have time to convert.</summary>
         public bool? HideIncompleteConversionWindowPeriods { get; set; }
         /// <summary>The layout property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper? Layout { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper Layout { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout? Layout { get; set; }
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2? LegendPosition { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2 LegendPosition { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -185,9 +137,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "annotationsScope", n => { AnnotationsScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper.CreateFromDiscriminatorValue); } },
+                { "annotationsScope", n => { AnnotationsScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>(); } },
                 { "binCount", n => { BinCount = n.GetIntValue(); } },
-                { "breakdownAttributionType", n => { BreakdownAttributionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2.CreateFromDiscriminatorValue); } },
+                { "breakdownAttributionType", n => { BreakdownAttributionType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionType>(); } },
                 { "breakdownAttributionValue", n => { BreakdownAttributionValue = n.GetIntValue(); } },
                 { "breakdownSorting", n => { BreakdownSorting = n.GetStringValue(); } },
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
@@ -195,17 +147,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "exclusions", n => { Exclusions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "funnelAggregateByHogQL", n => { FunnelAggregateByHogQL = n.GetStringValue(); } },
                 { "funnelFromStep", n => { FunnelFromStep = n.GetIntValue(); } },
-                { "funnelOrderType", n => { FunnelOrderType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3.CreateFromDiscriminatorValue); } },
-                { "funnelStepReference", n => { FunnelStepReference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper.CreateFromDiscriminatorValue); } },
+                { "funnelOrderType", n => { FunnelOrderType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue>(); } },
+                { "funnelStepReference", n => { FunnelStepReference = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReference>(); } },
                 { "funnelToStep", n => { FunnelToStep = n.GetIntValue(); } },
-                { "funnelVizType", n => { FunnelVizType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "funnelVizType", n => { FunnelVizType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizType>(); } },
                 { "funnelWindowInterval", n => { FunnelWindowInterval = n.GetIntValue(); } },
-                { "funnelWindowIntervalUnit", n => { FunnelWindowIntervalUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7.CreateFromDiscriminatorValue); } },
+                { "funnelWindowIntervalUnit", n => { FunnelWindowIntervalUnit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>(); } },
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hiddenLegendBreakdowns", n => { HiddenLegendBreakdowns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "hideIncompleteConversionWindowPeriods", n => { HideIncompleteConversionWindowPeriods = n.GetBoolValue(); } },
-                { "layout", n => { Layout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper.CreateFromDiscriminatorValue); } },
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2.CreateFromDiscriminatorValue); } },
+                { "layout", n => { Layout = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout>(); } },
+                { "legendPosition", n => { LegendPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>(); } },
                 { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty.CreateFromDiscriminatorValue); } },
                 { "showAnnotations", n => { ShowAnnotations = n.GetBoolValue(); } },
                 { "showLegend", n => { ShowLegend = n.GetBoolValue(); } },
@@ -221,9 +173,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper>("annotationsScope", AnnotationsScope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>("annotationsScope", AnnotationsScope);
             writer.WriteIntValue("binCount", BinCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper2>("breakdownAttributionType", BreakdownAttributionType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionType>("breakdownAttributionType", BreakdownAttributionType);
             writer.WriteIntValue("breakdownAttributionValue", BreakdownAttributionValue);
             writer.WriteStringValue("breakdownSorting", BreakdownSorting);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
@@ -231,17 +183,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem>("exclusions", Exclusions);
             writer.WriteStringValue("funnelAggregateByHogQL", FunnelAggregateByHogQL);
             writer.WriteIntValue("funnelFromStep", FunnelFromStep);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper3>("funnelOrderType", FunnelOrderType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReferenceWrapper>("funnelStepReference", FunnelStepReference);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue>("funnelOrderType", FunnelOrderType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReference>("funnelStepReference", FunnelStepReference);
             writer.WriteIntValue("funnelToStep", FunnelToStep);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizTypeWrapper>("funnelVizType", FunnelVizType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizType>("funnelVizType", FunnelVizType);
             writer.WriteIntValue("funnelWindowInterval", FunnelWindowInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7>("funnelWindowIntervalUnit", FunnelWindowIntervalUnit);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>("funnelWindowIntervalUnit", FunnelWindowIntervalUnit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
             writer.WriteCollectionOfPrimitiveValues<string>("hiddenLegendBreakdowns", HiddenLegendBreakdowns);
             writer.WriteBoolValue("hideIncompleteConversionWindowPeriods", HideIncompleteConversionWindowPeriods);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper>("layout", Layout);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2>("legendPosition", LegendPosition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout>("layout", Layout);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>("legendPosition", LegendPosition);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty>("resultCustomizations", ResultCustomizations);
             writer.WriteBoolValue("showAnnotations", ShowAnnotations);
             writer.WriteBoolValue("showLegend", ShowLegend);

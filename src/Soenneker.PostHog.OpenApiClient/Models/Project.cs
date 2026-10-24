@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Id { get; private set; }
         /// <summary>Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes.</summary>
         public bool? IsPendingDeletion { get; private set; }
+        /// <summary>ID of the uploaded image shown as this project&apos;s logo. Null when the project has no logo.</summary>
+        public Guid? LogoMediaId { get; private set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deletion_scheduled_at", n => { DeletionScheduledAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
+                { "logo_media_id", n => { LogoMediaId = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetGuidValue(); } },
                 { "product_description", n => { ProductDescription = n.GetStringValue(); } },

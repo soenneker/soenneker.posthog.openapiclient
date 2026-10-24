@@ -21,21 +21,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string AggregationProperty { get; set; }
 #endif
         /// <summary>The type of property to aggregate on (event, person or data_warehouse). Defaults to event.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyTypeWrapper? AggregationPropertyType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyTypeWrapper AggregationPropertyType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType? AggregationPropertyType { get; set; }
         /// <summary>The aggregation type to use for retention</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationTypeWrapper? AggregationType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationTypeWrapper AggregationType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationType? AggregationType { get; set; }
         /// <summary>Chart rendering style overrides (line shape).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,21 +39,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>For data warehouse based retention insights when the aggregation target can&apos;t be mapped to persons or groups.</summary>
         public bool? CustomAggregationTarget { get; set; }
         /// <summary>The dashboardDisplay property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayTypeWrapper? DashboardDisplay { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayTypeWrapper DashboardDisplay { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType? DashboardDisplay { get; set; }
         /// <summary>controls the display of the retention graph</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper2? Display { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper2 Display { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
         /// <summary>The goalLines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,23 +51,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get; set; }
 #endif
         /// <summary>The meanRetentionCalculation property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper? MeanRetentionCalculation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper MeanRetentionCalculation { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation? MeanRetentionCalculation { get; set; }
         /// <summary>The minimumOccurrences property</summary>
         public int? MinimumOccurrences { get; set; }
         /// <summary>The period property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper? Period { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper Period { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod? Period { get; set; }
         /// <summary>Custom brackets for retention calculations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,21 +65,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<double?> RetentionCustomBrackets { get; set; }
 #endif
         /// <summary>Whether retention is with regard to initial cohort size, or that of the previous period.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper? RetentionReference { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper RetentionReference { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference? RetentionReference { get; set; }
         /// <summary>The retentionType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper? RetentionType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper RetentionType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionType? RetentionType { get; set; }
         /// <summary>The returningEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -139,13 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity TargetEntity { get; set; }
 #endif
         /// <summary>The time window mode to use for retention calculations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper? TimeWindowMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper TimeWindowMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode? TimeWindowMode { get; set; }
         /// <summary>The totalIntervals property</summary>
         public int? TotalIntervals { get; set; }
         /// <summary>
@@ -175,27 +121,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "aggregationProperty", n => { AggregationProperty = n.GetStringValue(); } },
-                { "aggregationPropertyType", n => { AggregationPropertyType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyTypeWrapper.CreateFromDiscriminatorValue); } },
-                { "aggregationType", n => { AggregationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.AggregationTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "aggregationPropertyType", n => { AggregationPropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>(); } },
+                { "aggregationType", n => { AggregationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>(); } },
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
                 { "cohortLabelStartIndex", n => { CohortLabelStartIndex = n.GetIntValue(); } },
                 { "cumulative", n => { Cumulative = n.GetBoolValue(); } },
                 { "customAggregationTarget", n => { CustomAggregationTarget = n.GetBoolValue(); } },
-                { "dashboardDisplay", n => { DashboardDisplay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayTypeWrapper.CreateFromDiscriminatorValue); } },
-                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper2.CreateFromDiscriminatorValue); } },
+                { "dashboardDisplay", n => { DashboardDisplay = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType>(); } },
+                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); } },
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "meanRetentionCalculation", n => { MeanRetentionCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper.CreateFromDiscriminatorValue); } },
+                { "meanRetentionCalculation", n => { MeanRetentionCalculation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation>(); } },
                 { "minimumOccurrences", n => { MinimumOccurrences = n.GetIntValue(); } },
-                { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper.CreateFromDiscriminatorValue); } },
+                { "period", n => { Period = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod>(); } },
                 { "retentionCustomBrackets", n => { RetentionCustomBrackets = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "retentionReference", n => { RetentionReference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper.CreateFromDiscriminatorValue); } },
-                { "retentionType", n => { RetentionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "retentionReference", n => { RetentionReference = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference>(); } },
+                { "retentionType", n => { RetentionType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionType>(); } },
                 { "returningEntity", n => { ReturningEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
                 { "selectedInterval", n => { SelectedInterval = n.GetIntValue(); } },
                 { "showMeanLine", n => { ShowMeanLine = n.GetBoolValue(); } },
                 { "showTrendLines", n => { ShowTrendLines = n.GetBoolValue(); } },
                 { "targetEntity", n => { TargetEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
-                { "timeWindowMode", n => { TimeWindowMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper.CreateFromDiscriminatorValue); } },
+                { "timeWindowMode", n => { TimeWindowMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode>(); } },
                 { "totalIntervals", n => { TotalIntervals = n.GetIntValue(); } },
             };
         }
@@ -207,27 +153,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("aggregationProperty", AggregationProperty);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyTypeWrapper>("aggregationPropertyType", AggregationPropertyType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationTypeWrapper>("aggregationType", AggregationType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>("aggregationPropertyType", AggregationPropertyType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>("aggregationType", AggregationType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
             writer.WriteIntValue("cohortLabelStartIndex", CohortLabelStartIndex);
             writer.WriteBoolValue("cumulative", Cumulative);
             writer.WriteBoolValue("customAggregationTarget", CustomAggregationTarget);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayTypeWrapper>("dashboardDisplay", DashboardDisplay);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper2>("display", Display);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType>("dashboardDisplay", DashboardDisplay);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("display", Display);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper>("meanRetentionCalculation", MeanRetentionCalculation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation>("meanRetentionCalculation", MeanRetentionCalculation);
             writer.WriteIntValue("minimumOccurrences", MinimumOccurrences);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper>("period", Period);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod>("period", Period);
             writer.WriteCollectionOfPrimitiveValues<double?>("retentionCustomBrackets", RetentionCustomBrackets);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper>("retentionReference", RetentionReference);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper>("retentionType", RetentionType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference>("retentionReference", RetentionReference);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionType>("retentionType", RetentionType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("returningEntity", ReturningEntity);
             writer.WriteIntValue("selectedInterval", SelectedInterval);
             writer.WriteBoolValue("showMeanLine", ShowMeanLine);
             writer.WriteBoolValue("showTrendLines", ShowTrendLines);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("targetEntity", TargetEntity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowModeWrapper>("timeWindowMode", TimeWindowMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode>("timeWindowMode", TimeWindowMode);
             writer.WriteIntValue("totalIntervals", TotalIntervals);
         }
     }

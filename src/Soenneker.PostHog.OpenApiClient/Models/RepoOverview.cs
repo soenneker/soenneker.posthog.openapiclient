@@ -54,6 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline DeliveryPipeline { get; set; }
 #endif
+        /// <summary>Slice of billable_minutes from jobs that ran on the Depot CI engine; null when the job-level source isn&apos;t synced.</summary>
+        public double? DepotCiBillableMinutes { get; set; }
+        /// <summary>Depot CI billable minutes over the previous window; null when the job-level source isn&apos;t synced.</summary>
+        public double? DepotCiBillableMinutesPrev { get; set; }
         /// <summary>Estimated CI cost in USD (billable minutes x runner-tier rate); null when the job-level source isn&apos;t synced.</summary>
         public double? EstimatedCostUsd { get; set; }
         /// <summary>Estimated cost over the previous window; null when the job-level source isn&apos;t synced.</summary>
@@ -158,6 +162,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RerunCycles { get; set; }
         /// <summary>Re-run cycles over the previous window.</summary>
         public int? RerunCyclesPrev { get; set; }
+        /// <summary>PRs merged in the window whose title names a revert: GitHub&apos;s &apos;Revert &quot;...&quot;&apos; or a conventional-commit &apos;revert: ...&apos; / &apos;revert(scope): ...&apos; title. Counts the revert when it merges, not the change it undid, which may have merged in an earlier window. Same population as merged_pr_count.</summary>
+        public int? RevertingPrCount { get; set; }
+        /// <summary>Reverting-PR count over the previous window.</summary>
+        public int? RevertingPrCountPrev { get; set; }
+        /// <summary>reverting_pr_count divided by merged_pr_count: the share of merges that undid an earlier merge. The guardrail to watch when review requirements are loosened. Null when nothing merged.</summary>
+        public double? RevertShare { get; set; }
+        /// <summary>The same share over the previous window. Null when nothing merged.</summary>
+        public double? RevertSharePrev { get; set; }
+        /// <summary>Reverting merges over all merges (all authors, bots included) per bucket across the window, oldest first, zero-filled, bucketed by revert_share_series_granularity. Empty buckets carry a null share; the whole series is empty when include_series=false.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket>? RevertShareSeries { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket> RevertShareSeries { get; set; }
+#endif
+        /// <summary>Bucket width of the revert_share_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RevertShareSeriesGranularity { get; set; }
+#nullable restore
+#else
+        public string RevertShareSeriesGranularity { get; set; }
+#endif
         /// <summary>Workflow runs started in the window, all branches and workflows.</summary>
         public int? RunCount { get; set; }
         /// <summary>Same count over the equal-length window immediately before date_from: the delta baseline.</summary>
@@ -231,6 +259,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cost_series_granularity", n => { CostSeriesGranularity = n.GetStringValue(); } },
                 { "default_branch", n => { DefaultBranch = n.GetStringValue(); } },
                 { "delivery_pipeline", n => { DeliveryPipeline = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline>(global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline.CreateFromDiscriminatorValue); } },
+                { "depot_ci_billable_minutes", n => { DepotCiBillableMinutes = n.GetDoubleValue(); } },
+                { "depot_ci_billable_minutes_prev", n => { DepotCiBillableMinutesPrev = n.GetDoubleValue(); } },
                 { "estimated_cost_usd", n => { EstimatedCostUsd = n.GetDoubleValue(); } },
                 { "estimated_cost_usd_prev", n => { EstimatedCostUsdPrev = n.GetDoubleValue(); } },
                 { "jobs_available", n => { JobsAvailable = n.GetBoolValue(); } },
@@ -271,6 +301,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ready_to_merge_series_granularity", n => { ReadyToMergeSeriesGranularity = n.GetStringValue(); } },
                 { "rerun_cycles", n => { RerunCycles = n.GetIntValue(); } },
                 { "rerun_cycles_prev", n => { RerunCyclesPrev = n.GetIntValue(); } },
+                { "revert_share", n => { RevertShare = n.GetDoubleValue(); } },
+                { "revert_share_prev", n => { RevertSharePrev = n.GetDoubleValue(); } },
+                { "revert_share_series", n => { RevertShareSeries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket>(global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "revert_share_series_granularity", n => { RevertShareSeriesGranularity = n.GetStringValue(); } },
+                { "reverting_pr_count", n => { RevertingPrCount = n.GetIntValue(); } },
+                { "reverting_pr_count_prev", n => { RevertingPrCountPrev = n.GetIntValue(); } },
                 { "run_count", n => { RunCount = n.GetIntValue(); } },
                 { "run_count_prev", n => { RunCountPrev = n.GetIntValue(); } },
                 { "success_rate", n => { SuccessRate = n.GetDoubleValue(); } },
@@ -296,6 +332,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cost_series_granularity", CostSeriesGranularity);
             writer.WriteStringValue("default_branch", DefaultBranch);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline>("delivery_pipeline", DeliveryPipeline);
+            writer.WriteDoubleValue("depot_ci_billable_minutes", DepotCiBillableMinutes);
+            writer.WriteDoubleValue("depot_ci_billable_minutes_prev", DepotCiBillableMinutesPrev);
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteDoubleValue("estimated_cost_usd_prev", EstimatedCostUsdPrev);
             writer.WriteBoolValue("jobs_available", JobsAvailable);
@@ -336,6 +374,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("ready_to_merge_series_granularity", ReadyToMergeSeriesGranularity);
             writer.WriteIntValue("rerun_cycles", RerunCycles);
             writer.WriteIntValue("rerun_cycles_prev", RerunCyclesPrev);
+            writer.WriteIntValue("reverting_pr_count", RevertingPrCount);
+            writer.WriteIntValue("reverting_pr_count_prev", RevertingPrCountPrev);
+            writer.WriteDoubleValue("revert_share", RevertShare);
+            writer.WriteDoubleValue("revert_share_prev", RevertSharePrev);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket>("revert_share_series", RevertShareSeries);
+            writer.WriteStringValue("revert_share_series_granularity", RevertShareSeriesGranularity);
             writer.WriteIntValue("run_count", RunCount);
             writer.WriteIntValue("run_count_prev", RunCountPrev);
             writer.WriteDoubleValue("success_rate", SuccessRate);

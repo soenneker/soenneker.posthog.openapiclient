@@ -13,6 +13,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Impact;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.LatencyHeatmap;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.ServiceNames;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Service_health;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Sparkline;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.SymbolStats;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Trace;
@@ -79,6 +80,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Query.QueryRequestBuilder Query
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The service_health property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Service_health.Service_healthRequestBuilder Service_health
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Service_health.Service_healthRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The serviceNames property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.ServiceNames.ServiceNamesRequestBuilder ServiceNames

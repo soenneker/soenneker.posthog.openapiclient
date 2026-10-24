@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Stable code identifying why the mutation was rejected.* `dataset_archived` - dataset_archived* `dataset_name_conflict` - dataset_name_conflict* `dataset_item_archived` - dataset_item_archived* `dataset_item_active` - dataset_item_active* `client_item_id_conflict` - client_item_id_conflict* `limit_reached` - limit_reached* `stale_version` - stale_version</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `dataset_archived` - dataset_archived* `dataset_name_conflict` - dataset_name_conflict* `dataset_item_archived` - dataset_item_archived* `dataset_item_active` - dataset_item_active* `client_item_id_conflict` - client_item_id_conflict* `limit_reached` - limit_reached* `stale_version` - stale_version</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseCode? Code { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseCode Code { get; set; }
-#endif
         /// <summary>Number of resources that already exist.</summary>
         public int? CurrentCount { get; set; }
         /// <summary>Existing item ID when the conflict concerns a client item ID.</summary>
@@ -41,14 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Limit { get; set; }
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
-        /// <summary>Resource whose configured limit was reached.* `datasets` - datasets* `dataset_items` - dataset_items* `dataset_item_versions` - dataset_item_versions</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `datasets` - datasets* `dataset_items` - dataset_items* `dataset_item_versions` - dataset_item_versions</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseResource? Resource { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseResource Resource { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponse"/> and sets the default values.
         /// </summary>
@@ -74,13 +62,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseCode>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseCode.CreateFromDiscriminatorValue); } },
+                { "code", n => { Code = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseCode>(); } },
                 { "current_count", n => { CurrentCount = n.GetIntValue(); } },
                 { "current_item_id", n => { CurrentItemId = n.GetGuidValue(); } },
                 { "current_version", n => { CurrentVersion = n.GetIntValue(); } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "resource", n => { Resource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseResource>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseResource.CreateFromDiscriminatorValue); } },
+                { "resource", n => { Resource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseResource>(); } },
             };
         }
         /// <summary>
@@ -90,13 +78,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseCode>("code", Code);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseCode>("code", Code);
             writer.WriteIntValue("current_count", CurrentCount);
             writer.WriteGuidValue("current_item_id", CurrentItemId);
             writer.WriteIntValue("current_version", CurrentVersion);
             writer.WriteStringValue("detail", Detail);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseResource>("resource", Resource);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponseResource>("resource", Resource);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

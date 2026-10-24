@@ -39,8 +39,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreditsPerObservation { get; private set; }
         /// <summary>Credits this scanner&apos;s succeeded observations consumed in the current billing period (1 credit = $0.01). Matches the window of the org-wide quota meter.</summary>
         public int? CreditsThisMonth { get; private set; }
-        /// <summary>Credits counted against `credit_limit` for the current billing period: settled receipts plus in-flight observations and running prompt tests, priced from their frozen snapshot model. This is what the limit gate measures, so it includes work still in progress. It is not the same as `credits_this_month`, which counts only succeeded observations.</summary>
+        /// <summary>Credits counted against `credit_limit` for the current billing period: settled receipts plus in-flight observations, priced from their frozen snapshot model. This is what the limit gate measures, so it includes work still in progress. It is not the same as `credits_this_month`, which counts only succeeded observations. For a `free_only` scanner bound by the organization&apos;s free credits, this is the organization&apos;s usage, not the scanner&apos;s own.</summary>
         public int? CreditsUsedAgainstLimit { get; private set; }
+        /// <summary>Dashboard created for this scanner with the create_dashboard action. Null when none was created or the user deleted it.</summary>
+        public int? DashboardId { get; private set; }
+        /// <summary>Whether to offer the user a dashboard for this scanner: true when the scanner has no dashboard and at least 20 succeeded observations to chart. Offer it once and do not repeat the offer if the user declines.</summary>
+        public bool? DashboardSuggested { get; private set; }
         /// <summary>Free-form description shown in the scanner management UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,14 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerExperimentTargeting ExperimentTargeting { get; set; }
 #endif
-        /// <summary>AI summary of the team&apos;s written thumbs-down feedback into recurring failure modes. Refreshed with prompt recommendations; null until enough feedback accumulates.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes? FeedbackThemes { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes FeedbackThemes { get; private set; }
-#endif
+        /// <summary>Run only while the organization has free credits left this billing period, so the scanner never adds spend.</summary>
+        public bool? FreeOnly { get; set; }
         /// <summary>The goal an AI draft was built from, in the creator&apos;s own words, so the scanner keeps what it was meant to find. Set on create only and ignored on update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,16 +85,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>Watermark for the scanner&apos;s last scheduled fire. Mirrors Temporal schedule state for recovery.</summary>
         public DateTimeOffset? LastSweptAt { get; private set; }
-        /// <summary>Whether this scanner has stopped because of its own credit limit. True when `credit_limit` is set and the budget left cannot cover one more observation, which is the same test the scanner&apos;s enforcement gates apply. Always false when no limit is set.</summary>
+        /// <summary>True when the organization&apos;s free credits bind this `free_only` scanner rather than its own `credit_limit`. `credits_used_against_limit` is then the organization&apos;s usage, measured against its free credits.</summary>
+        public bool? LimitFromFreeCredits { get; private set; }
+        /// <summary>Whether this scanner has stopped because of its own credit limit, or, for a `free_only` scanner, because the organization has used its free credits. True when the budget left cannot cover one more observation, which is the same test the scanner&apos;s enforcement gates apply. Always false when no limit is set and `free_only` is false.</summary>
         public bool? LimitReached { get; private set; }
-        /// <summary>Concrete model to use for this scanner.* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel? Model { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel Model { get; set; }
-#endif
         /// <summary>Human-readable scanner name. Unique within the team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,48 +109,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PromptQuestion { get; private set; }
 #endif
-        /// <summary>LLM provider. v1 is Google-only.* `google` - Google</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `google` - Google</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider? Provider { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider Provider { get; set; }
-#endif
         /// <summary>Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerQuery? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerQuery Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
-        /// <summary>Quality pre-filter applied before random sampling. focused = top sessions only, balanced = drops the lowest-quality, comprehensive = no filter (default).* `focused` - Focused* `balanced` - Balanced* `comprehensive` - Comprehensive</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `focused` - Focused* `balanced` - Balanced* `comprehensive` - Comprehensive</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode? SamplingMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode SamplingMode { get; set; }
-#endif
         /// <summary>0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision.</summary>
         public double? SamplingRate { get; set; }
         /// <summary>Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerConfig? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerConfig ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get; set; }
 #endif
-        /// <summary>What the scanner does: monitor, classifier, scorer, or summarizer.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType? ScannerType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType ScannerType { get; set; }
-#endif
         /// <summary>Increments on every config-changing save. Observations snapshot this value.</summary>
         public int? ScannerVersion { get; private set; }
         /// <summary>How much the scheduled sweep is slowed to keep this scanner inside its daily ClickHouse read budget. 1 means it checks for new recordings on the normal schedule; N means it checks once every N schedule intervals. Expensive filters raise it.</summary>
@@ -211,6 +187,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "credits_per_observation", n => { CreditsPerObservation = n.GetIntValue(); } },
                 { "credits_this_month", n => { CreditsThisMonth = n.GetIntValue(); } },
                 { "credits_used_against_limit", n => { CreditsUsedAgainstLimit = n.GetIntValue(); } },
+                { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
+                { "dashboard_suggested", n => { DashboardSuggested = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "emits_signals", n => { EmitsSignals = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
@@ -218,21 +196,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "estimated_monthly_credits", n => { EstimatedMonthlyCredits = n.GetIntValue(); } },
                 { "estimated_monthly_observations", n => { EstimatedMonthlyObservations = n.GetIntValue(); } },
                 { "experiment_targeting", n => { ExperimentTargeting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerExperimentTargeting>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerExperimentTargeting.CreateFromDiscriminatorValue); } },
-                { "feedback_themes", n => { FeedbackThemes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes>(global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes.CreateFromDiscriminatorValue); } },
+                { "free_only", n => { FreeOnly = n.GetBoolValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_swept_at", n => { LastSweptAt = n.GetDateTimeOffsetValue(); } },
+                { "limit_from_free_credits", n => { LimitFromFreeCredits = n.GetBoolValue(); } },
                 { "limit_reached", n => { LimitReached = n.GetBoolValue(); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "observations_this_month", n => { ObservationsThisMonth = n.GetIntValue(); } },
                 { "prompt_question", n => { PromptQuestion = n.GetStringValue(); } },
-                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider.CreateFromDiscriminatorValue); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerQuery.CreateFromDiscriminatorValue); } },
-                { "sampling_mode", n => { SamplingMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode.CreateFromDiscriminatorValue); } },
+                { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider>(); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "sampling_mode", n => { SamplingMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode>(); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
-                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerConfig.CreateFromDiscriminatorValue); } },
-                { "scanner_type", n => { ScannerType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType.CreateFromDiscriminatorValue); } },
+                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "scanner_type", n => { ScannerType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType>(); } },
                 { "scanner_version", n => { ScannerVersion = n.GetIntValue(); } },
                 { "sweep_throttle_factor", n => { SweepThrottleFactor = n.GetIntValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -253,15 +232,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("emits_signals", EmitsSignals);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerExperimentTargeting>("experiment_targeting", ExperimentTargeting);
+            writer.WriteBoolValue("free_only", FreeOnly);
             writer.WriteStringValue("goal", Goal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel>("model", Model);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerModel>("model", Model);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider>("provider", Provider);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerQuery>("query", Query);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode>("sampling_mode", SamplingMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerProvider>("provider", Provider);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerSamplingMode>("sampling_mode", SamplingMode);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerConfig>("scanner_config", ScannerConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType>("scanner_type", ScannerType);
+            writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerScannerType>("scanner_type", ScannerType);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

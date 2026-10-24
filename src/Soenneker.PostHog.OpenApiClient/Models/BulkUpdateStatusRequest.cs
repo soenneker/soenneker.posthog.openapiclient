@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> Ids { get; set; }
 #endif
-        /// <summary>New status to apply to all selected tickets: new, open, pending, on_hold, or resolved.* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ids", n => { Ids = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<Guid?>("ids", Ids);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

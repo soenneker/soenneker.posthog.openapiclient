@@ -41,14 +41,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Where the description came from: canonical (a curated, documentation-sourced description the source ships for its well-known tables/columns), ai_generated (drafted by an LLM), or user_edited (written or edited by a user).* `canonical` - Canonical* `ai_generated` - AI generated* `user_edited` - User edited</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `canonical` - Canonical* `ai_generated` - AI generated* `user_edited` - User edited</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseColumnAnnotationDescriptionSource? DescriptionSource { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseColumnAnnotationDescriptionSource DescriptionSource { get; private set; }
-#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>True once a user has edited this annotation; such rows are never overwritten.</summary>
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "column_name", n => { ColumnName = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "description_source", n => { DescriptionSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseColumnAnnotationDescriptionSource>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseColumnAnnotationDescriptionSource.CreateFromDiscriminatorValue); } },
+                { "description_source", n => { DescriptionSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseColumnAnnotationDescriptionSource>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_user_edited", n => { IsUserEdited = n.GetBoolValue(); } },
                 { "table", n => { Table = n.GetGuidValue(); } },

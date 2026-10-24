@@ -11,10 +11,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// Optional input/output payload, up to 1 MiB and 32 JSON levels. Omission, {} and null properties differ.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ItemSubmissionPayload : IAdditionalDataHolder, IParsable
+    public partial class ItemSubmissionPayload : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The expected_output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayloadMetadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayloadMetadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,13 +45,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput Output { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayload"/> and sets the default values.
-        /// </summary>
-        public ItemSubmissionPayload()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -74,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "expected_output", n => { ExpectedOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput.CreateFromDiscriminatorValue); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput.CreateFromDiscriminatorValue); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayloadMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayloadMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput.CreateFromDiscriminatorValue); } },
             };
         }
@@ -87,9 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput>("expected_output", ExpectedOutput);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput>("input", Input);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayloadMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty>("metadata", Metadata);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput>("output", Output);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -33,6 +33,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the caller may change access rules in this project.</summary>
         public bool? CanEdit { get; set; }
+        /// <summary>Whether the access rules of this project are locked to Terraform.</summary>
+        public bool? IsManagedByTerraform { get; set; }
         /// <summary>The resource types that accept rules on single objects, with the levels each accepts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "available_project_levels", n => { AvailableProjectLevels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "available_resource_levels", n => { AvailableResourceLevels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "can_edit", n => { CanEdit = n.GetBoolValue(); } },
+                { "is_managed_by_terraform", n => { IsManagedByTerraform = n.GetBoolValue(); } },
                 { "object_rule_resources", n => { ObjectRuleResources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource>(global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "project_access_level", n => { ProjectAccessLevel = n.GetStringValue(); } },
                 { "resource_access_levels", n => { ResourceAccessLevels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty.CreateFromDiscriminatorValue); } },
@@ -100,6 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("available_project_levels", AvailableProjectLevels);
             writer.WriteCollectionOfPrimitiveValues<string>("available_resource_levels", AvailableResourceLevels);
             writer.WriteBoolValue("can_edit", CanEdit);
+            writer.WriteBoolValue("is_managed_by_terraform", IsManagedByTerraform);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource>("object_rule_resources", ObjectRuleResources);
             writer.WriteStringValue("project_access_level", ProjectAccessLevel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty>("resource_access_levels", ResourceAccessLevels);

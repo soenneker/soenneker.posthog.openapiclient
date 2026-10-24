@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Preset color token used to render the option (&apos;preset-1&apos; through &apos;preset-10&apos;).* `preset-1` - preset-1* `preset-2` - preset-2* `preset-3` - preset-3* `preset-4` - preset-4* `preset-5` - preset-5* `preset-6` - preset-6* `preset-7` - preset-7* `preset-8` - preset-8* `preset-9` - preset-9* `preset-10` - preset-10</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `preset-1` - preset-1* `preset-2` - preset-2* `preset-3` - preset-3* `preset-4` - preset-4* `preset-5` - preset-5* `preset-6` - preset-6* `preset-7` - preset-7* `preset-8` - preset-8* `preset-9` - preset-9* `preset-10` - preset-10</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOptionColor? Color { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOptionColor Color { get; set; }
-#endif
         /// <summary>Server-assigned stable id of the option. Omit for new options; send it back unchanged when editing so renames and removals can be told apart.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "color", n => { Color = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOptionColor>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOptionColor.CreateFromDiscriminatorValue); } },
+                { "color", n => { Color = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOptionColor>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
             };
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOptionColor>("color", Color);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOptionColor>("color", Color);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("label", Label);
             writer.WriteAdditionalData(AdditionalData);

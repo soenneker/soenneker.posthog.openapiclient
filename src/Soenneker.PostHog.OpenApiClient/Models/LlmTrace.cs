@@ -59,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The inputState property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceInputState? InputState { get; set; }
+        public UntypedNode? InputState { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceInputState InputState { get; set; }
+        public UntypedNode InputState { get; set; }
 #endif
         /// <summary>The inputTokens property</summary>
         public double? InputTokens { get; set; }
@@ -73,10 +73,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The outputState property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceOutputState? OutputState { get; set; }
+        public UntypedNode? OutputState { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceOutputState OutputState { get; set; }
+        public UntypedNode OutputState { get; set; }
 #endif
         /// <summary>The outputTokens property</summary>
         public double? OutputTokens { get; set; }
@@ -145,11 +145,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEvent>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEvent.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "inputCost", n => { InputCost = n.GetDoubleValue(); } },
-                { "inputState", n => { InputState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceInputState>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceInputState.CreateFromDiscriminatorValue); } },
+                { "inputState", n => { InputState = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "inputTokens", n => { InputTokens = n.GetDoubleValue(); } },
                 { "isSupportTrace", n => { IsSupportTrace = n.GetBoolValue(); } },
                 { "outputCost", n => { OutputCost = n.GetDoubleValue(); } },
-                { "outputState", n => { OutputState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceOutputState>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceOutputState.CreateFromDiscriminatorValue); } },
+                { "outputState", n => { OutputState = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "outputTokens", n => { OutputTokens = n.GetDoubleValue(); } },
                 { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson.CreateFromDiscriminatorValue); } },
                 { "requestCost", n => { RequestCost = n.GetDoubleValue(); } },
@@ -175,11 +175,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEvent>("events", Events);
             writer.WriteStringValue("id", Id);
             writer.WriteDoubleValue("inputCost", InputCost);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceInputState>("inputState", InputState);
+            writer.WriteObjectValue<UntypedNode>("inputState", InputState);
             writer.WriteDoubleValue("inputTokens", InputTokens);
             writer.WriteBoolValue("isSupportTrace", IsSupportTrace);
             writer.WriteDoubleValue("outputCost", OutputCost);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceOutputState>("outputState", OutputState);
+            writer.WriteObjectValue<UntypedNode>("outputState", OutputState);
             writer.WriteDoubleValue("outputTokens", OutputTokens);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson>("person", Person);
             writer.WriteDoubleValue("requestCost", RequestCost);

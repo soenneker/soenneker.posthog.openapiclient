@@ -59,15 +59,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Exclude internal and test users by applying the respective filters</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>Granularity of the response. Can be one of `hour`, `day`, `week` or `month`</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17? Interval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17 Interval { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryKind? Kind { get; set; }
+        /// <summary>Live series for a Marketing cost trend when materialization coverage is incomplete.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsCostFallback? MarketingAnalyticsCostFallback { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsCostFallback MarketingAnalyticsCostFallback { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -153,8 +155,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryKind>(); } },
+                { "marketingAnalyticsCostFallback", n => { MarketingAnalyticsCostFallback = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsCostFallback>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsCostFallback.CreateFromDiscriminatorValue); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryProperties>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryProperties.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -180,8 +183,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryKind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsCostFallback>("marketingAnalyticsCostFallback", MarketingAnalyticsCostFallback);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryProperties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponse>("response", Response);

@@ -62,14 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StoragePath { get; set; }
 #endif
-        /// <summary>Classification for the artifact* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment* `skill_bundle` - skill_bundle</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment* `skill_bundle` - skill_bundle</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUpload"/> and sets the default values.
         /// </summary>
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "storage_path", n => { StoragePath = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType>(); } },
             };
         }
         /// <summary>
@@ -117,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("source", Source);
             writer.WriteStringValue("storage_path", StoragePath);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

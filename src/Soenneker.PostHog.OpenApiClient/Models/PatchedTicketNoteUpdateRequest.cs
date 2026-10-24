@@ -26,10 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional TipTap rich content JSON. Omit or pass null to clear previous rich content so the thread falls back to the markdown message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketNoteUpdateRequestRichContent? RichContent { get; set; }
+        public UntypedNode? RichContent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketNoteUpdateRequestRichContent RichContent { get; set; }
+        public UntypedNode RichContent { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketNoteUpdateRequest"/> and sets the default values.
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketNoteUpdateRequestRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketNoteUpdateRequestRichContent.CreateFromDiscriminatorValue); } },
+                { "rich_content", n => { RichContent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketNoteUpdateRequestRichContent>("rich_content", RichContent);
+            writer.WriteObjectValue<UntypedNode>("rich_content", RichContent);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

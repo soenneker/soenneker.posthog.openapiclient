@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The anomaly_scores property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckAnomalyScores? AnomalyScores { get; private set; }
+        public UntypedNode? AnomalyScores { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckAnomalyScores AnomalyScores { get; private set; }
+        public UntypedNode AnomalyScores { get; private set; }
 #endif
         /// <summary>The calculated_value property</summary>
         public double? CalculatedValue { get; private set; }
@@ -37,10 +37,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty? Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty? Error { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty Error { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -88,39 +88,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? NotificationSentAt { get; private set; }
         /// <summary>The notification_suppressed_by_agent property</summary>
         public bool? NotificationSuppressedByAgent { get; private set; }
-        /// <summary>The state property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `Firing` - Firing* `Not firing` - Not firing* `Errored` - Errored* `Snoozed` - Snoozed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckState? State { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckState State { get; private set; }
-#endif
         /// <summary>The targets_notified property</summary>
         public bool? TargetsNotified { get; private set; }
         /// <summary>The triggered_dates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredDates? TriggeredDates { get; private set; }
+        public UntypedNode? TriggeredDates { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredDates TriggeredDates { get; private set; }
+        public UntypedNode TriggeredDates { get; private set; }
 #endif
         /// <summary>The triggered_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredMetadata? TriggeredMetadata { get; private set; }
+        public UntypedNode? TriggeredMetadata { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredMetadata TriggeredMetadata { get; private set; }
+        public UntypedNode TriggeredMetadata { get; private set; }
 #endif
         /// <summary>The triggered_points property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredPoints? TriggeredPoints { get; private set; }
+        public UntypedNode? TriggeredPoints { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredPoints TriggeredPoints { get; private set; }
+        public UntypedNode TriggeredPoints { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck"/> and sets the default values.
@@ -147,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "anomaly_scores", n => { AnomalyScores = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckAnomalyScores>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckAnomalyScores.CreateFromDiscriminatorValue); } },
+                { "anomaly_scores", n => { AnomalyScores = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "calculated_value", n => { CalculatedValue = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "deliveries", n => { Deliveries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertDelivery>(global::Soenneker.PostHog.OpenApiClient.Models.AlertDelivery.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -160,11 +154,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "investigation_verdict", n => { InvestigationVerdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckInvestigationVerdict>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckInvestigationVerdict.CreateFromDiscriminatorValue); } },
                 { "notification_sent_at", n => { NotificationSentAt = n.GetDateTimeOffsetValue(); } },
                 { "notification_suppressed_by_agent", n => { NotificationSuppressedByAgent = n.GetBoolValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckState>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckState>(); } },
                 { "targets_notified", n => { TargetsNotified = n.GetBoolValue(); } },
-                { "triggered_dates", n => { TriggeredDates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredDates>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredDates.CreateFromDiscriminatorValue); } },
-                { "triggered_metadata", n => { TriggeredMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredMetadata.CreateFromDiscriminatorValue); } },
-                { "triggered_points", n => { TriggeredPoints = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredPoints>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckTriggeredPoints.CreateFromDiscriminatorValue); } },
+                { "triggered_dates", n => { TriggeredDates = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "triggered_metadata", n => { TriggeredMetadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "triggered_points", n => { TriggeredPoints = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -174,7 +168,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty>("error", Error);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

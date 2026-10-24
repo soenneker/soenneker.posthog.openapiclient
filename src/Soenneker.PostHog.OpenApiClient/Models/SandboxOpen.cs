@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
-        /// <summary>Initial permission mode for the sandbox agent session. Defaults to `auto`, which allows safe tool use while preserving explicit confirmations.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxOpenInitialPermissionMode? InitialPermissionMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxOpenInitialPermissionMode InitialPermissionMode { get; set; }
-#endif
         /// <summary>Bind a brand-new sandbox conversation to an existing Task so the first message resumes that Task&apos;s run. Honored only when this request creates the conversation row; ignored for an already-existing conversation.</summary>
         public Guid? TaskId { get; set; }
         /// <summary>Client-generated trace id correlated with the resulting Run&apos;s SSE stream.</summary>
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "attached_context", n => { AttachedContext = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SandboxAttachedContextItem>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxAttachedContextItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
-                { "initial_permission_mode", n => { InitialPermissionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxOpenInitialPermissionMode>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxOpenInitialPermissionMode.CreateFromDiscriminatorValue); } },
+                { "initial_permission_mode", n => { InitialPermissionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxOpenInitialPermissionMode>(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
                 { "trace_id", n => { TraceId = n.GetGuidValue(); } },
             };
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SandboxAttachedContextItem>("attached_context", AttachedContext);
             writer.WriteStringValue("content", Content);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxOpenInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxOpenInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteGuidValue("trace_id", TraceId);
             writer.WriteAdditionalData(AdditionalData);

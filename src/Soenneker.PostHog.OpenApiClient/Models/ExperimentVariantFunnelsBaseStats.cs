@@ -9,21 +9,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ExperimentVariantFunnelsBaseStats : IParsable
+    public partial class ExperimentVariantFunnelsBaseStats : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The failure_count property</summary>
-        public double? FailureCount { get; set; }
-        /// <summary>The key property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Key { get; set; }
-#nullable restore
-#else
-        public string Key { get; set; }
-#endif
-        /// <summary>The success_count property</summary>
-        public double? SuccessCount { get; set; }
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats"/> and sets the default values.
+        /// </summary>
+        public ExperimentVariantFunnelsBaseStats()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -42,9 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "failure_count", n => { FailureCount = n.GetDoubleValue(); } },
-                { "key", n => { Key = n.GetStringValue(); } },
-                { "success_count", n => { SuccessCount = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -54,9 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("failure_count", FailureCount);
-            writer.WriteStringValue("key", Key);
-            writer.WriteDoubleValue("success_count", SuccessCount);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

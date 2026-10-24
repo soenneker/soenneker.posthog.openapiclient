@@ -20,14 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? End { get; set; }
         /// <summary>Interval start (UTC, inclusive).</summary>
         public DateTimeOffset? Start { get; set; }
-        /// <summary>Alert state during this interval.* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateIntervalState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateIntervalState State { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "end", n => { End = n.GetDateTimeOffsetValue(); } },
                 { "start", n => { Start = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateIntervalState>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateIntervalState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateIntervalState>(); } },
             };
         }
         /// <summary>
@@ -69,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteDateTimeOffsetValue("end", End);
             writer.WriteDateTimeOffsetValue("start", Start);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateIntervalState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateIntervalState>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

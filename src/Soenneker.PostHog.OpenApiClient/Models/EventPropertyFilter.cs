@@ -29,13 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>The operator property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper3? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper3 Operator { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>Event properties</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EventValueType? Type { get; set; }
         /// <summary>The value property</summary>
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper3.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventValueType>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue.CreateFromDiscriminatorValue); } },
             };
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper3>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventValueType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue>("value", Value);
         }

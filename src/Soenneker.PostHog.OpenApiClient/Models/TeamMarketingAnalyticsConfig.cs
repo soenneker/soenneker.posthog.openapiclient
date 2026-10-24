@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How credit is split across touchpoints when a person saw several campaigns before converting.* `first_touch` - First Touch* `last_touch` - Last Touch* `linear` - Linear* `time_decay` - Time Decay* `position_based` - Position Based</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `first_touch` - First Touch* `last_touch` - Last Touch* `linear` - Linear* `time_decay` - Time Decay* `position_based` - Position Based</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode? AttributionMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode AttributionMode { get; set; }
-#endif
         /// <summary>How many days back a touchpoint can be credited for a conversion. Between 1 and 90.</summary>
         public int? AttributionWindowDays { get; set; }
         /// <summary>Which field to match campaigns on per integration type, campaign_name or campaign_id. Manual mappings in campaign_name_mappings still take precedence.</summary>
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attribution_mode", n => { AttributionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode.CreateFromDiscriminatorValue); } },
+                { "attribution_mode", n => { AttributionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode>(); } },
                 { "attribution_window_days", n => { AttributionWindowDays = n.GetIntValue(); } },
                 { "campaign_field_preferences", n => { CampaignFieldPreferences = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences.CreateFromDiscriminatorValue); } },
                 { "campaign_name_mappings", n => { CampaignNameMappings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings.CreateFromDiscriminatorValue); } },
@@ -108,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode>("attribution_mode", AttributionMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode>("attribution_mode", AttributionMode);
             writer.WriteIntValue("attribution_window_days", AttributionWindowDays);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences>("campaign_field_preferences", CampaignFieldPreferences);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings>("campaign_name_mappings", CampaignNameMappings);

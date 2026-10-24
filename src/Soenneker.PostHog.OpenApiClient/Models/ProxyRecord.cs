@@ -46,14 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RootRedirectUrl { get; private set; }
 #endif
-        /// <summary>Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out).* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus Status { get; private set; }
-#endif
         /// <summary>The CNAME target to add as a DNS record for your domain. Point your domain&apos;s CNAME to this value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "root_redirect_supported", n => { RootRedirectSupported = n.GetBoolValue(); } },
                 { "root_redirect_url", n => { RootRedirectUrl = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus>(); } },
                 { "target_cname", n => { TargetCname = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

@@ -8,19 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LeakedKeyReportResponseType : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnumWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnumWrapper? LeakedKeyReportResponseTypeEnumWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnumWrapper LeakedKeyReportResponseTypeEnumWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnum? LeakedKeyReportResponseTypeEnum { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseType();
-            if("LeakedKeyReportResponseTypeEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnum leakedKeyReportResponseTypeEnumValue)
             {
-                result.LeakedKeyReportResponseTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnumWrapper();
+                result.LeakedKeyReportResponseTypeEnum = leakedKeyReportResponseTypeEnumValue;
             }
             return result;
         }
@@ -51,11 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(LeakedKeyReportResponseTypeEnumWrapper != null)
-            {
-                return LeakedKeyReportResponseTypeEnumWrapper.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
@@ -68,9 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(LeakedKeyReportResponseTypeEnumWrapper != null)
+            if(LeakedKeyReportResponseTypeEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnumWrapper>(null, LeakedKeyReportResponseTypeEnumWrapper);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseTypeEnum>(null, LeakedKeyReportResponseTypeEnum);
             }
             else if(NullEnum != null)
             {

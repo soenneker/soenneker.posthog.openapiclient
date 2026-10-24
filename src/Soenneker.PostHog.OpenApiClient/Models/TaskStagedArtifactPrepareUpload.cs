@@ -48,14 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
-        /// <summary>Classification for the artifact* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment* `skill_bundle` - skill_bundle</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment* `skill_bundle` - skill_bundle</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUpload"/> and sets the default values.
         /// </summary>
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "size", n => { Size = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadType>(); } },
             };
         }
         /// <summary>
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("size", Size);
             writer.WriteStringValue("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

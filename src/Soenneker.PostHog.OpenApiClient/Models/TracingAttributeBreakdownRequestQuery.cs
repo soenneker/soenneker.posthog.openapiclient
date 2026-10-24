@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BreakdownKey { get; set; }
 #endif
-        /// <summary>Where the key lives: &quot;span&quot; for allowlisted top-level span columns, &quot;span_attribute&quot; for span-level attributes, &quot;span_resource_attribute&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType? BreakdownType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType BreakdownType { get; set; }
-#endif
         /// <summary>Optional comparison-window configuration. When omitted, only the primary window is returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,14 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get; set; }
 #endif
-        /// <summary>Order rows by span count or error count, descending. Defaults to count.* `count` - count* `error_count` - error_count</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `count` - count* `error_count` - error_count</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy? OrderBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy OrderBy { get; set; }
-#endif
         /// <summary>Filter by service names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -108,13 +96,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "breakdownKey", n => { BreakdownKey = n.GetStringValue(); } },
-                { "breakdownType", n => { BreakdownType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType.CreateFromDiscriminatorValue); } },
+                { "breakdownType", n => { BreakdownType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType>(); } },
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange.CreateFromDiscriminatorValue); } },
                 { "excludeBreakdownFilter", n => { ExcludeBreakdownFilter = n.GetBoolValue(); } },
                 { "facetSearch", n => { FacetSearch = n.GetStringValue(); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy>(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -126,13 +114,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("breakdownKey", BreakdownKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType>("breakdownType", BreakdownType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType>("breakdownType", BreakdownType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange>("dateRange", DateRange);
             writer.WriteBoolValue("excludeBreakdownFilter", ExcludeBreakdownFilter);
             writer.WriteStringValue("facetSearch", FacetSearch);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>("filterGroup", FilterGroup);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy>("orderBy", OrderBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy>("orderBy", OrderBy);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteAdditionalData(AdditionalData);
         }

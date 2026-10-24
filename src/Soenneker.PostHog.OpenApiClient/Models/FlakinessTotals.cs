@@ -26,14 +26,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotalsByRunTypeProperty ByRunType { get; set; }
 #endif
-        /// <summary>Identifiers whose `flakiness_state` is `clean`. They are listed because they carry live variants or older history, and reported here so every listed entry is reachable.</summary>
+        /// <summary>Identifiers whose `flakiness_state` is `clean`. They are listed because they carry a quarantine or older gate failures, and reported here so every listed entry is reachable.</summary>
         public int? Clean { get; set; }
         /// <summary>Identifiers with an entry in `entries`.</summary>
         public int? Listed { get; set; }
         /// <summary>The needs_decision property</summary>
         public int? NeedsDecision { get; set; }
-        /// <summary>Identifiers whose `flakiness_state` is `noisy`.</summary>
-        public int? Noisy { get; set; }
         /// <summary>The quarantined property</summary>
         public int? Quarantined { get; set; }
         /// <summary>Identifiers with a current baseline, listed or not. The denominator that says how much of the repo renders consistently.</summary>
@@ -71,7 +69,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "clean", n => { Clean = n.GetIntValue(); } },
                 { "listed", n => { Listed = n.GetIntValue(); } },
                 { "needs_decision", n => { NeedsDecision = n.GetIntValue(); } },
-                { "noisy", n => { Noisy = n.GetIntValue(); } },
                 { "quarantined", n => { Quarantined = n.GetIntValue(); } },
                 { "tracked", n => { Tracked = n.GetIntValue(); } },
                 { "unstable", n => { Unstable = n.GetIntValue(); } },
@@ -90,7 +87,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("clean", Clean);
             writer.WriteIntValue("listed", Listed);
             writer.WriteIntValue("needs_decision", NeedsDecision);
-            writer.WriteIntValue("noisy", Noisy);
             writer.WriteIntValue("quarantined", Quarantined);
             writer.WriteIntValue("tracked", Tracked);
             writer.WriteIntValue("unstable", Unstable);

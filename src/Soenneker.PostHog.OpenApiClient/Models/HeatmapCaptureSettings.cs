@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this organization&apos;s plan may capture heatmaps on every page.</summary>
         public bool? CanCaptureAllUrls { get; private set; }
-        /// <summary>Whether to capture heatmap data from every page (&apos;all&apos;) or only listed URLs (&apos;url_allowlist&apos;).* `all` - All URLs* `url_allowlist` - Only listed URLs</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `all` - All URLs* `url_allowlist` - Only listed URLs</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode? CaptureMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode CaptureMode { get; set; }
-#endif
         /// <summary>How many URLs this plan may capture, or null when the plan captures all pages.</summary>
         public int? CaptureUrlLimit { get; private set; }
         /// <summary>Whether this installation enforces the URL allow-list for heatmap capture.</summary>
@@ -62,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "can_capture_all_urls", n => { CanCaptureAllUrls = n.GetBoolValue(); } },
-                { "capture_mode", n => { CaptureMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode.CreateFromDiscriminatorValue); } },
+                { "capture_mode", n => { CaptureMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode>(); } },
                 { "capture_url_limit", n => { CaptureUrlLimit = n.GetIntValue(); } },
                 { "enforcement_enabled", n => { EnforcementEnabled = n.GetBoolValue(); } },
                 { "url_allowlist", n => { UrlAllowlist = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -75,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode>("capture_mode", CaptureMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode>("capture_mode", CaptureMode);
             writer.WriteCollectionOfPrimitiveValues<string>("url_allowlist", UrlAllowlist);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The default property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemDefault? Default { get; set; }
+        public UntypedNode? Default { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemDefault Default { get; set; }
+        public UntypedNode Default { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplating Templating { get; set; }
 #endif
-        /// <summary>* `string` - string* `number` - number* `boolean` - boolean* `dictionary` - dictionary* `choice` - choice* `json` - json* `integration` - integration* `integration_multi` - integration_multi* `integration_field` - integration_field* `email` - email* `native_email` - native_email* `posthog_assignee` - posthog_assignee* `posthog_ticket_tags` - posthog_ticket_tags* `posthog_business_hours` - posthog_business_hours* `non_failure_status_codes` - non_failure_status_codes* `customer_analytics_account_properties` - customer_analytics_account_properties* `customer_analytics_account_relationships` - customer_analytics_account_relationships* `task_model` - task_model* `task_repository` - task_repository* `task_mcp_installations` - task_mcp_installations* `signals_scout` - signals_scout* `task_skills` - task_skills</summary>
+        /// <summary>* `string` - string* `number` - number* `boolean` - boolean* `dictionary` - dictionary* `choice` - choice* `json` - json* `integration` - integration* `integration_multi` - integration_multi* `integration_field` - integration_field* `email` - email* `native_email` - native_email* `posthog_assignee` - posthog_assignee* `posthog_ticket_tags` - posthog_ticket_tags* `posthog_business_hours` - posthog_business_hours* `non_failure_status_codes` - non_failure_status_codes* `customer_analytics_account_properties` - customer_analytics_account_properties* `customer_analytics_account_relationships` - customer_analytics_account_relationships* `task_model` - task_model* `task_repository` - task_repository* `task_mcp_installations` - task_mcp_installations* `signals_scout` - signals_scout* `task_skills` - task_skills* `replay_vision_scan` - replay_vision_scan</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTypeEnum? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem"/> and sets the default values.
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemChoicesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemChoicesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "default", n => { Default = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemDefault>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemDefault.CreateFromDiscriminatorValue); } },
+                { "default", n => { Default = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "hidden", n => { Hidden = n.GetBoolValue(); } },
                 { "integration", n => { Integration = n.GetStringValue(); } },
@@ -166,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemChoicesItemProperty>("choices", Choices);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemDefault>("default", Default);
+            writer.WriteObjectValue<UntypedNode>("default", Default);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("hidden", Hidden);
             writer.WriteStringValue("integration", Integration);

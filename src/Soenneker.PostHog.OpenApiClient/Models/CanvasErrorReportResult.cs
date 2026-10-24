@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>filed: a new report row was written. duplicate: this build and error type were already reported. no_authoring_task: the canvas has no linked task to notify. skipped: thread updates are unavailable.* `filed` - filed* `duplicate` - duplicate* `no_authoring_task` - no_authoring_task* `skipped` - skipped</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `filed` - filed* `duplicate` - duplicate* `no_authoring_task` - no_authoring_task* `skipped` - skipped</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome? ReportOutcome { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome ReportOutcome { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResult"/> and sets the default values.
         /// </summary>
@@ -48,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "report_outcome", n => { ReportOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome.CreateFromDiscriminatorValue); } },
+                { "report_outcome", n => { ReportOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome>(); } },
             };
         }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome>("report_outcome", ReportOutcome);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome>("report_outcome", ReportOutcome);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

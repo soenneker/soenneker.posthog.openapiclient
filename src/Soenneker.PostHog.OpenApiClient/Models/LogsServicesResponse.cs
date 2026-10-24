@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Prefilled follow-up calls for problem services.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep>? Next { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep> Next { get; set; }
+#endif
         /// <summary>Per-service aggregates, ordered by log_count descending. Capped at 10000 services.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate> Services { get; set; }
 #endif
+        /// <summary>* `rollup` - Rollup* `rollup+raw` - Rollup Raw* `raw` - Raw</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSource? Source { get; set; }
         /// <summary>Time-bucketed counts broken down by service, for plotting volume over time. Covers only the top 25 services in this response; re-request with `serviceNames` to get sparklines for specific services.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,6 +50,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>True distinct service count for the window and filters, unaffected by the 10000-service cap on `services`. Greater than the length of `services` when the response is truncated.</summary>
         public int? TotalServices { get; set; }
+        /// <summary>Absolute UTC bounds of the window and the baseline.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow? Window { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow Window { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse"/> and sets the default values.
         /// </summary>
@@ -65,10 +83,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "next", n => { Next = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep>(global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "services", n => { Services = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSource>(); } },
                 { "sparkline", n => { Sparkline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary.CreateFromDiscriminatorValue); } },
                 { "total_services", n => { TotalServices = n.GetIntValue(); } },
+                { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,10 +99,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep>("next", Next);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>("services", Services);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSource>("source", Source);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>("sparkline", Sparkline);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary>("summary", Summary);
             writer.WriteIntValue("total_services", TotalServices);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow>("window", Window);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether PostHog received or sent the message.* `inbound` - Inbound* `outbound` - Outbound</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `inbound` - Inbound* `outbound` - Outbound</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummaryDirection? Direction { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummaryDirection Direction { get; private set; }
-#endif
         /// <summary>Sender of the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummaryDirection>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummaryDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummaryDirection>(); } },
                 { "sender", n => { Sender = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummarySender>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummarySender.CreateFromDiscriminatorValue); } },
                 { "sent_at", n => { SentAt = n.GetDateTimeOffsetValue(); } },
             };

@@ -18,22 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? ExpectedCurrentVersionId { get; set; }
         /// <summary>Idempotency key for this generation job.</summary>
         public Guid? GenerationId { get; set; }
-        /// <summary>Whether to generate from scratch or improve the current source.* `initial` - initial* `regenerate` - regenerate* `improve` - improve</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `initial` - initial* `regenerate` - regenerate* `improve` - improve</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation? GenerationOperation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation GenerationOperation { get; set; }
-#endif
-        /// <summary>AI model used to generate the widget.* `claude-haiku-4-5` - claude-haiku-4-5* `claude-sonnet-4-6` - claude-sonnet-4-6* `claude-sonnet-5` - claude-sonnet-5* `claude-opus-5` - claude-opus-5</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `claude-haiku-4-5` - claude-haiku-4-5* `claude-sonnet-4-6` - claude-sonnet-4-6* `claude-sonnet-5` - claude-sonnet-5* `claude-opus-5` - claude-opus-5</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel? Model { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel Model { get; set; }
-#endif
         /// <summary>Instructions for the generated widget. Initial and improvement instructions accept up to 20,000 characters; regeneration accepts complete instructions up to 50,000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,8 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "expected_current_version_id", n => { ExpectedCurrentVersionId = n.GetGuidValue(); } },
                 { "generation_id", n => { GenerationId = n.GetGuidValue(); } },
-                { "generation_operation", n => { GenerationOperation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation.CreateFromDiscriminatorValue); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel.CreateFromDiscriminatorValue); } },
+                { "generation_operation", n => { GenerationOperation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation>(); } },
+                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel>(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
             };
         }
@@ -83,8 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("expected_current_version_id", ExpectedCurrentVersionId);
             writer.WriteGuidValue("generation_id", GenerationId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation>("generation_operation", GenerationOperation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel>("model", Model);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation>("generation_operation", GenerationOperation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel>("model", Model);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteAdditionalData(AdditionalData);
         }

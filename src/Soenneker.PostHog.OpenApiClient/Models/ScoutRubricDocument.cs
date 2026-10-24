@@ -32,6 +32,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration Generation { get; set; }
 #endif
+        /// <summary>Governing source explicitly adopted for the saved rubric.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument? ReferenceContext { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument ReferenceContext { get; private set; }
+#endif
+        /// <summary>Generation whose governing source was adopted for the saved rubric.</summary>
+        public Guid? ReferenceGenerationId { get; private set; }
         /// <summary>Saved rubric revision. Zero means it has not been saved.</summary>
         public int? Revision { get; set; }
         /// <summary>Scout skill name.</summary>
@@ -70,6 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "config_id", n => { ConfigId = n.GetGuidValue(); } },
                 { "criteria", n => { Criteria = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "generation", n => { Generation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration.CreateFromDiscriminatorValue); } },
+                { "reference_context", n => { ReferenceContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument.CreateFromDiscriminatorValue); } },
+                { "reference_generation_id", n => { ReferenceGenerationId = n.GetGuidValue(); } },
                 { "revision", n => { Revision = n.GetIntValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
             };

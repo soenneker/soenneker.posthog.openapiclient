@@ -74,7 +74,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Interval { get; set; }
 #endif
-        /// <summary>Score for each point. Null can mean insufficient data or a valid unscored point. AI previews report model confidence only for points flagged by an anomaly verdict; all other points are null, including every point in a normal verdict.</summary>
+        /// <summary>AI detector only: the shape the model saw at the latest point, or &apos;none&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
+        /// <summary>AI detector only: the model&apos;s reason for its verdict on the latest point.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Rationale { get; set; }
+#nullable restore
+#else
+        public string Rationale { get; set; }
+#endif
+        /// <summary>Score for each point. Null can mean insufficient data or a valid unscored point. The AI detector has no score, so every point is null in an AI preview.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<double?>? Scores { get; set; }
@@ -142,6 +158,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evaluated_interval_timezone", n => { EvaluatedIntervalTimezone = n.GetStringValue(); } },
                 { "evaluation_delay_intervals", n => { EvaluationDelayIntervals = n.GetIntValue(); } },
                 { "interval", n => { Interval = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "scores", n => { Scores = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "sub_detector_scores", n => { SubDetectorScores = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_points", n => { TotalPoints = n.GetIntValue(); } },
@@ -165,6 +183,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("evaluated_interval_timezone", EvaluatedIntervalTimezone);
             writer.WriteIntValue("evaluation_delay_intervals", EvaluationDelayIntervals);
             writer.WriteStringValue("interval", Interval);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteStringValue("rationale", Rationale);
             writer.WriteCollectionOfPrimitiveValues<double?>("scores", Scores);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>("sub_detector_scores", SubDetectorScores);
             writer.WriteIntValue("total_points", TotalPoints);

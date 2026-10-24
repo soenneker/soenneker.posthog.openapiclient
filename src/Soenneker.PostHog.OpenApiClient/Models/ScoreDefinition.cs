@@ -48,14 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind Kind { get; private set; }
-#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,10 +58,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
+        /// <summary>Optional compact label for table headers and other compact views.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ShortName { get; private set; }
+#nullable restore
+#else
+        public string ShortName { get; private set; }
+#endif
+        /// <summary>Project tag names assigned to this resource.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; private set; }
+#nullable restore
+#else
+        public List<string> Tags { get; private set; }
+#endif
         /// <summary>The team property</summary>
         public int? Team { get; private set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>User who last updated the scorer or created a version.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? UpdatedBy { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic UpdatedBy { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition"/> and sets the default values.
         /// </summary>
@@ -101,10 +119,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "short_name", n => { ShortName = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "updated_by", n => { UpdatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

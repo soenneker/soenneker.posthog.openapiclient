@@ -57,14 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Prompt { get; set; }
 #endif
-        /// <summary>Placement lifecycle: &apos;pending&apos; (box drawn, no prompt yet), &apos;generating&apos; (an agent task is filling it), &apos;live&apos; (renders its component), &apos;failed&apos; (generation failed; re-prompt or remove).* `pending` - pending* `generating` - generating* `live` - live* `failed` - failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - pending* `generating` - generating* `live` - live* `failed` - failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementStatus Status { get; set; }
-#endif
         /// <summary>Component version to render: &quot;latest&quot; (the default — follows the component&apos;s published build) or a pinned source version id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "h", n => { H = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementStatus>(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
                 { "w", n => { W = n.GetIntValue(); } },
                 { "x", n => { X = n.GetIntValue(); } },
@@ -130,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("h", H);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("prompt", Prompt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementStatus>("status", Status);
             writer.WriteStringValue("version", Version);
             writer.WriteIntValue("w", W);
             writer.WriteIntValue("x", X);

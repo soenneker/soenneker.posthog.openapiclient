@@ -11,10 +11,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// Property-group filters that define when this rule matches incoming error events.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ErrorTrackingAssignmentRuleCreateRequestFilters : IAdditionalDataHolder, IParsable
+    public partial class ErrorTrackingAssignmentRuleCreateRequestFilters : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator? Type { get; set; }
         /// <summary>The values property</summary>
@@ -25,13 +23,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValueValuesItem> Values { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestFilters"/> and sets the default values.
-        /// </summary>
-        public ErrorTrackingAssignmentRuleCreateRequestFilters()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,7 +54,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>("type", Type);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValueValuesItem>("values", Values);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -44,10 +44,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseFiltersProperty? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseFiltersProperty? Filters { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseFiltersProperty Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseFiltersProperty Filters { get; private set; }
 #endif
         /// <summary>The has_encrypted_payloads property</summary>
         public bool? HasEncryptedPayloads { get; set; }
@@ -142,7 +142,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseEvaluationRuntime>("evaluation_runtime", EvaluationRuntime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseFiltersProperty>("filters", Filters);
             writer.WriteBoolValue("has_encrypted_payloads", HasEncryptedPayloads);
             writer.WriteBoolValue("has_enriched_analytics", HasEnrichedAnalytics);
             writer.WriteBoolValue("is_remote_configuration", IsRemoteConfiguration);

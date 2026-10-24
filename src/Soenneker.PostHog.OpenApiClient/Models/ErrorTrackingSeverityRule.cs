@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>Evaluation priority. Lower values run first, and the first matching rule wins.</summary>
         public int? OrderKey { get; set; }
-        /// <summary>Severity assigned to a newly created issue when this rule is the first match.* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity Severity { get; set; }
-#endif
         /// <summary>When the rule was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "order_key", n => { OrderKey = n.GetIntValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -90,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleDisabledData>("disabled_data", DisabledData);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters>("filters", Filters);
             writer.WriteIntValue("order_key", OrderKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

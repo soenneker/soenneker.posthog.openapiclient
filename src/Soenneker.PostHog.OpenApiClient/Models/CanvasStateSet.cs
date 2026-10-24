@@ -23,21 +23,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Scope to write into; the canvas must declare it in capabilities.posthog.state.* `user` - user* `shared` - shared</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `shared` - shared</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetScope Scope { get; set; }
-#endif
         /// <summary>JSON value to store (at most 64 KB serialized), or null to delete the key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetValue? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetValue Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSet"/> and sets the default values.
@@ -65,8 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetScope>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetScope.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetValue>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetValue.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetScope>(); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,8 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetScope>("scope", Scope);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetValue>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateSetScope>("scope", Scope);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

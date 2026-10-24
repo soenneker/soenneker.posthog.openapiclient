@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>The activity_at property</summary>
         public DateTimeOffset? ActivityAt { get; set; }
-        /// <summary>What the latest activity on this task was: an agent run waiting on the requester (awaiting_input), a completed run (completed), someone @-mentioning them (mention), a comment-thread reply (thread_reply), a comment on their item (owned_item_comment), a task-thread reply (message), or their creating the task (created).* `awaiting_input` - awaiting_input* `completed` - completed* `mention` - mention* `thread_reply` - thread_reply* `owned_item_comment` - owned_item_comment* `message` - message* `created` - created</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `awaiting_input` - awaiting_input* `completed` - completed* `mention` - mention* `thread_reply` - thread_reply* `owned_item_comment` - owned_item_comment* `message` - message* `created` - created</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind? ActivityKind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind ActivityKind { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The channel_id property</summary>
@@ -111,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity_at", n => { ActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "activity_kind", n => { ActivityKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind>(global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind.CreateFromDiscriminatorValue); } },
+                { "activity_kind", n => { ActivityKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind>(); } },
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "channel_name", n => { ChannelName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -134,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("activity_at", ActivityAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind>("activity_kind", ActivityKind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind>("activity_kind", ActivityKind);
             writer.WriteGuidValue("channel_id", ChannelId);
             writer.WriteStringValue("channel_name", ChannelName);
             writer.WriteGuidValue("id", Id);

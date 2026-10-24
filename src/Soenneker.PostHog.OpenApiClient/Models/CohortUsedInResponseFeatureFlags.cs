@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True when more feature flags exist beyond the truncation cap</summary>
         public bool? HasMore { get; set; }
+        /// <summary>Number of flags that are not archived and that the caller cannot view. They prevent the cohort from being deleted but never appear in results or total</summary>
+        public int? Hidden { get; set; }
         /// <summary>Feature flags referencing this cohort, capped at 100 results</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInFlag> Results { get; set; }
 #endif
-        /// <summary>Total number of feature flags referencing this cohort, before truncation</summary>
+        /// <summary>Total number of feature flags referencing this cohort that the caller can view, before truncation</summary>
         public int? Total { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags"/> and sets the default values.
@@ -53,6 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
+                { "hidden", n => { Hidden = n.GetIntValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInFlag>(global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInFlag.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };
@@ -65,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("has_more", HasMore);
+            writer.WriteIntValue("hidden", Hidden);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInFlag>("results", Results);
             writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);

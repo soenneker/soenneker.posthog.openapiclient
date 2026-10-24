@@ -65,13 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IssueName { get; set; }
 #endif
         /// <summary>The issue_severity property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3? IssueSeverity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3 IssueSeverity { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverity? IssueSeverity { get; set; }
         /// <summary>The issue_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -108,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "issue_description", n => { IssueDescription = n.GetStringValue(); } },
                 { "issue_id", n => { IssueId = n.GetStringValue(); } },
                 { "issue_name", n => { IssueName = n.GetStringValue(); } },
-                { "issue_severity", n => { IssueSeverity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3.CreateFromDiscriminatorValue); } },
+                { "issue_severity", n => { IssueSeverity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverity>(); } },
                 { "issue_status", n => { IssueStatus = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -128,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("issue_description", IssueDescription);
             writer.WriteStringValue("issue_id", IssueId);
             writer.WriteStringValue("issue_name", IssueName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3>("issue_severity", IssueSeverity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverity>("issue_severity", IssueSeverity);
             writer.WriteStringValue("issue_status", IssueStatus);
             writer.WriteIntValue("version", Version);
         }

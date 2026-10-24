@@ -24,8 +24,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The errors property</summary>
         public int? Errors { get; set; }
+        /// <summary>The max property</summary>
+        public double? Max { get; set; }
+        /// <summary>The mean property</summary>
+        public double? Mean { get; set; }
+        /// <summary>Latency spread for the box plot view. Optional so responses cached before these fields existed still parse.</summary>
+        public double? Min { get; set; }
+        /// <summary>The p25 property</summary>
+        public double? P25 { get; set; }
         /// <summary>The p50 property</summary>
         public double? P50 { get; set; }
+        /// <summary>The p75 property</summary>
+        public double? P75 { get; set; }
         /// <summary>The p95 property</summary>
         public double? P95 { get; set; }
         /// <summary>The p99 property</summary>
@@ -51,7 +61,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "calls", n => { Calls = n.GetIntValue(); } },
                 { "day", n => { Day = n.GetStringValue(); } },
                 { "errors", n => { Errors = n.GetIntValue(); } },
+                { "max", n => { Max = n.GetDoubleValue(); } },
+                { "mean", n => { Mean = n.GetDoubleValue(); } },
+                { "min", n => { Min = n.GetDoubleValue(); } },
+                { "p25", n => { P25 = n.GetDoubleValue(); } },
                 { "p50", n => { P50 = n.GetDoubleValue(); } },
+                { "p75", n => { P75 = n.GetDoubleValue(); } },
                 { "p95", n => { P95 = n.GetDoubleValue(); } },
                 { "p99", n => { P99 = n.GetDoubleValue(); } },
             };
@@ -66,7 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("calls", Calls);
             writer.WriteStringValue("day", Day);
             writer.WriteIntValue("errors", Errors);
+            writer.WriteDoubleValue("max", Max);
+            writer.WriteDoubleValue("mean", Mean);
+            writer.WriteDoubleValue("min", Min);
+            writer.WriteDoubleValue("p25", P25);
             writer.WriteDoubleValue("p50", P50);
+            writer.WriteDoubleValue("p75", P75);
             writer.WriteDoubleValue("p95", P95);
             writer.WriteDoubleValue("p99", P99);
         }

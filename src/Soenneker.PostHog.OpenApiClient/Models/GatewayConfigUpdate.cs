@@ -15,13 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Baseline preset for agents.* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateAgentDefaultPreset? AgentDefaultPreset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateAgentDefaultPreset AgentDefaultPreset { get; set; }
-#endif
         /// <summary>Whether non-admin members may register custom MCP servers.</summary>
         public bool? AllowCustomServers { get; set; }
         /// <summary>Whether non-admin members may share their available MCP connections with agents and manage agent tool policies.</summary>
@@ -29,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server&apos;s own toggle always wins.</summary>
         public bool? DefaultServersEnabled { get; set; }
         /// <summary>Baseline preset for members.* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateMemberDefaultPreset? MemberDefaultPreset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateMemberDefaultPreset MemberDefaultPreset { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdate"/> and sets the default values.
         /// </summary>
@@ -61,11 +49,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_default_preset", n => { AgentDefaultPreset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateAgentDefaultPreset>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateAgentDefaultPreset.CreateFromDiscriminatorValue); } },
+                { "agent_default_preset", n => { AgentDefaultPreset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateAgentDefaultPreset>(); } },
                 { "allow_custom_servers", n => { AllowCustomServers = n.GetBoolValue(); } },
                 { "allow_member_agent_access", n => { AllowMemberAgentAccess = n.GetBoolValue(); } },
                 { "default_servers_enabled", n => { DefaultServersEnabled = n.GetBoolValue(); } },
-                { "member_default_preset", n => { MemberDefaultPreset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateMemberDefaultPreset>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateMemberDefaultPreset.CreateFromDiscriminatorValue); } },
+                { "member_default_preset", n => { MemberDefaultPreset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateMemberDefaultPreset>(); } },
             };
         }
         /// <summary>
@@ -75,11 +63,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateAgentDefaultPreset>("agent_default_preset", AgentDefaultPreset);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateAgentDefaultPreset>("agent_default_preset", AgentDefaultPreset);
             writer.WriteBoolValue("allow_custom_servers", AllowCustomServers);
             writer.WriteBoolValue("allow_member_agent_access", AllowMemberAgentAccess);
             writer.WriteBoolValue("default_servers_enabled", DefaultServersEnabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateMemberDefaultPreset>("member_default_preset", MemberDefaultPreset);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConfigUpdateMemberDefaultPreset>("member_default_preset", MemberDefaultPreset);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

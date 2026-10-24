@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The badge property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBadge? Badge { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBadge Badge { get; set; }
+#endif
         /// <summary>The button_tile property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,10 +41,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters_overrides property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileFiltersOverrides? FiltersOverrides { get; set; }
+        public UntypedNode? FiltersOverrides { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileFiltersOverrides FiltersOverrides { get; set; }
+        public UntypedNode FiltersOverrides { get; set; }
+#endif
+        /// <summary>The group_key property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GroupKey { get; set; }
+#nullable restore
+#else
+        public string GroupKey { get; set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; set; }
@@ -51,10 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The layouts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileLayouts? Layouts { get; set; }
+        public UntypedNode? Layouts { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileLayouts Layouts { get; set; }
+        public UntypedNode Layouts { get; set; }
 #endif
         /// <summary>The show_description property</summary>
         public bool? ShowDescription { get; set; }
@@ -101,12 +117,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "badge", n => { Badge = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBadge>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBadge.CreateFromDiscriminatorValue); } },
                 { "button_tile", n => { ButtonTile = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ButtonTile>(global::Soenneker.PostHog.OpenApiClient.Models.ButtonTile.CreateFromDiscriminatorValue); } },
                 { "color", n => { Color = n.GetStringValue(); } },
-                { "filters_overrides", n => { FiltersOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileFiltersOverrides>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileFiltersOverrides.CreateFromDiscriminatorValue); } },
+                { "filters_overrides", n => { FiltersOverrides = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "group_key", n => { GroupKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "insight", n => { Insight = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Insight>(global::Soenneker.PostHog.OpenApiClient.Models.Insight.CreateFromDiscriminatorValue); } },
-                { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileLayouts.CreateFromDiscriminatorValue); } },
+                { "layouts", n => { Layouts = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "show_description", n => { ShowDescription = n.GetBoolValue(); } },
                 { "text", n => { Text = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Text>(global::Soenneker.PostHog.OpenApiClient.Models.Text.CreateFromDiscriminatorValue); } },
                 { "transparent_background", n => { TransparentBackground = n.GetBoolValue(); } },
@@ -120,12 +138,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBadge>("badge", Badge);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ButtonTile>("button_tile", ButtonTile);
             writer.WriteStringValue("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileFiltersOverrides>("filters_overrides", FiltersOverrides);
+            writer.WriteObjectValue<UntypedNode>("filters_overrides", FiltersOverrides);
+            writer.WriteStringValue("group_key", GroupKey);
             writer.WriteIntValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Insight>("insight", Insight);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileLayouts>("layouts", Layouts);
+            writer.WriteObjectValue<UntypedNode>("layouts", Layouts);
             writer.WriteBoolValue("show_description", ShowDescription);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Text>("text", Text);
             writer.WriteBoolValue("transparent_background", TransparentBackground);

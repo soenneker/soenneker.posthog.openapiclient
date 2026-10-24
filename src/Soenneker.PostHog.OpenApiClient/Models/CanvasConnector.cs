@@ -33,14 +33,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DisplayName { get; set; }
 #endif
-        /// <summary>&apos;native&apos; runs through a PostHog personal integration; &apos;mcp&apos; through an MCP store installation.* `native` - Native* `mcp` - Mcp</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `native` - Native* `mcp` - Mcp</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorKind Kind { get; set; }
-#endif
         /// <summary>Provider id to declare and call, e.g. &apos;github&apos; or &apos;mcp:mcp.calendly.com&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "connect_path", n => { ConnectPath = n.GetStringValue(); } },
                 { "connected", n => { Connected = n.GetBoolValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorKind>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorKind>(); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorTool>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorTool.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -100,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("connected", Connected);
             writer.WriteStringValue("connect_path", ConnectPath);
             writer.WriteStringValue("display_name", DisplayName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorKind>("kind", Kind);
             writer.WriteStringValue("provider", Provider);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorTool>("tools", Tools);
             writer.WriteAdditionalData(AdditionalData);

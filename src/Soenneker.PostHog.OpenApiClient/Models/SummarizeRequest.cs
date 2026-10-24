@@ -14,13 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Bound the input to a cost-conscious size instead of the full model context window. Use it when you summarize many traces at once and need only a short result such as the title.</summary>
+        public bool? CompactContext { get; set; }
         /// <summary>Data to summarize. For traces: {trace, hierarchy}. For events: {event}. Not required when using trace_id or generation_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestData? Data { get; set; }
+        public UntypedNode? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestData Data { get; set; }
+        public UntypedNode Data { get; set; }
 #endif
         /// <summary>Start of date range for ID-based lookup (e.g. &apos;-7d&apos; or &apos;2026-01-01&apos;). Defaults to -30d.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GenerationId { get; set; }
 #endif
-        /// <summary>Summary detail level: &apos;minimal&apos; for 3-5 points, &apos;detailed&apos; for 5-10 points* `minimal` - minimal* `detailed` - detailed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `minimal` - minimal* `detailed` - detailed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode? Mode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode Mode { get; set; }
-#endif
         /// <summary>LLM model to use (defaults based on provider)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,14 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Type of entity to summarize. Inferred automatically when using trace_id or generation_id.* `trace` - trace* `event` - event</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `trace` - trace* `event` - event</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestSummarizeType? SummarizeType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestSummarizeType SummarizeType { get; set; }
-#endif
         /// <summary>Trace ID to summarize. The backend fetches the trace data automatically. Requires date_from for efficient lookup.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public SummarizeRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            CompactContext = false;
             ForceRefresh = false;
         }
         /// <summary>
@@ -106,14 +97,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestData>(global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestData.CreateFromDiscriminatorValue); } },
+                { "compact_context", n => { CompactContext = n.GetBoolValue(); } },
+                { "data", n => { Data = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
                 { "force_refresh", n => { ForceRefresh = n.GetBoolValue(); } },
                 { "generation_id", n => { GenerationId = n.GetStringValue(); } },
-                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode>(global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode.CreateFromDiscriminatorValue); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode>(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "summarize_type", n => { SummarizeType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestSummarizeType>(global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestSummarizeType.CreateFromDiscriminatorValue); } },
+                { "summarize_type", n => { SummarizeType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestSummarizeType>(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
             };
         }
@@ -124,14 +116,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestData>("data", Data);
+            writer.WriteBoolValue("compact_context", CompactContext);
+            writer.WriteObjectValue<UntypedNode>("data", Data);
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
             writer.WriteBoolValue("force_refresh", ForceRefresh);
             writer.WriteStringValue("generation_id", GenerationId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode>("mode", Mode);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestSummarizeType>("summarize_type", SummarizeType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestSummarizeType>("summarize_type", SummarizeType);
             writer.WriteStringValue("trace_id", TraceId);
             writer.WriteAdditionalData(AdditionalData);
         }

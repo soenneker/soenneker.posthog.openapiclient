@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal Goal { get; set; }
 #endif
-        /// <summary>What the space is set up for.* `goal` - Goal* `feature` - Feature</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `goal` - Goal* `feature` - Feature</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteKind Kind { get; set; }
-#endif
         /// <summary>Repository the loops work in, as &apos;owner/name&apos;. Defaults to the channel&apos;s first repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "feature", n => { Feature = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteFeature>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteFeature.CreateFromDiscriminatorValue); } },
                 { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteKind>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteKind>(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
             };
         }
@@ -87,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteFeature>("feature", Feature);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal>("goal", Goal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteKind>("kind", Kind);
             writer.WriteStringValue("repository", Repository);
             writer.WriteAdditionalData(AdditionalData);
         }

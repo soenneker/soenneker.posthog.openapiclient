@@ -14,6 +14,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Model the training agent runs on, a model id from the PostHog Tasks catalogue such as &apos;claude-opus-5-5&apos;, &apos;claude-sonnet-5-5&apos; or &apos;gpt-6.1-sol&apos;. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentModel { get; set; }
+#nullable restore
+#else
+        public string AgentModel { get; set; }
+#endif
+        /// <summary>Reasoning effort for the training agent, such as &apos;low&apos;, &apos;medium&apos; or &apos;high&apos;. It must be one the model supports, and without agent_model it is checked against the default model. Null or omitted uses the autoresearch default, medium. Higher effort costs more per training run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentReasoningEffort { get; set; }
+#nullable restore
+#else
+        public string AgentReasoningEffort { get; set; }
+#endif
         /// <summary>Re-score the inference population every N days (1-365). Default: 1.</summary>
         public int? CadenceDays { get; set; }
         /// <summary>Optional free-text description.</summary>
@@ -34,8 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateInferencePopulationProperty InferencePopulation { get; set; }
 #endif
-        /// <summary>Total training iterations allowed for the autoresearch loop (1-500). Default: 50.</summary>
+        /// <summary>Deprecated: scheduled training no longer reads it. Use iterations_per_run.</summary>
         public int? IterationBudget { get; set; }
+        /// <summary>Experiments the agent may try in each training run (1-50). Each experiment costs agent time and queries, so a higher value costs more per run. Scheduled runs and Train now use it. Default: 5.</summary>
+        public int? IterationsPerRun { get; set; }
         /// <summary>Display name for the pipeline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,6 +72,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stop training if no improvement in this many consecutive iterations (at least 1). Default: 10.</summary>
         public int? PlateauIterations { get; set; }
+        /// <summary>Days between scheduled research runs once the first burst of daily runs ends: 7, 14, 30, 60 or 90. Null means only when asked: no scheduled research, so the only training cost comes from runs you start and from rescue runs for a model that cannot score. A shorter interval costs more. Default: 7.* `7` - 7* `14` - 14* `30` - 30* `60` - 60* `90` - 90</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateResearchIntervalDays? ResearchIntervalDays { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateResearchIntervalDays ResearchIntervalDays { get; set; }
+#endif
         /// <summary>Target AUC threshold (0-1). Training stops early if reached. Default: 0.75.</summary>
         public double? SuccessAuc { get; set; }
         /// <summary>Omit (or pass {&quot;type&quot;: &quot;event&quot;}) to predict target_event; pass {&quot;type&quot;: &quot;action&quot;, &quot;action_id&quot;: N} to predict a PostHog action. No other shapes are accepted.</summary>
@@ -82,6 +108,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateTrainingPopulationProperty TrainingPopulation { get; set; }
 #endif
+        /// <summary>Write the champion&apos;s score to output_person_property on each scored person at every live scoring run. Default: false. Needed to target people by score in feature flags, cohorts, workflows and insights. Prediction events, validation and segments work without it. Turning it off, or archiving or deleting the pipeline while it is on, removes the property from the people it scored.</summary>
+        public bool? WritePersonProperty { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreate"/> and sets the default values.
         /// </summary>
@@ -107,19 +135,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "agent_model", n => { AgentModel = n.GetStringValue(); } },
+                { "agent_reasoning_effort", n => { AgentReasoningEffort = n.GetStringValue(); } },
                 { "cadence_days", n => { CadenceDays = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "horizon_days", n => { HorizonDays = n.GetIntValue(); } },
                 { "inference_population", n => { InferencePopulation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateInferencePopulationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateInferencePopulationProperty.CreateFromDiscriminatorValue); } },
                 { "iteration_budget", n => { IterationBudget = n.GetIntValue(); } },
+                { "iterations_per_run", n => { IterationsPerRun = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "output_person_property", n => { OutputPersonProperty = n.GetStringValue(); } },
                 { "plateau_iterations", n => { PlateauIterations = n.GetIntValue(); } },
+                { "research_interval_days", n => { ResearchIntervalDays = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateResearchIntervalDays>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateResearchIntervalDays.CreateFromDiscriminatorValue); } },
                 { "success_auc", n => { SuccessAuc = n.GetDoubleValue(); } },
                 { "target_definition", n => { TargetDefinition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateTargetDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateTargetDefinition.CreateFromDiscriminatorValue); } },
                 { "target_event", n => { TargetEvent = n.GetStringValue(); } },
                 { "training_lookback_days", n => { TrainingLookbackDays = n.GetIntValue(); } },
                 { "training_population", n => { TrainingPopulation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateTrainingPopulationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateTrainingPopulationProperty.CreateFromDiscriminatorValue); } },
+                { "write_person_property", n => { WritePersonProperty = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -129,19 +162,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("agent_model", AgentModel);
+            writer.WriteStringValue("agent_reasoning_effort", AgentReasoningEffort);
             writer.WriteIntValue("cadence_days", CadenceDays);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("horizon_days", HorizonDays);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateInferencePopulationProperty>("inference_population", InferencePopulation);
             writer.WriteIntValue("iteration_budget", IterationBudget);
+            writer.WriteIntValue("iterations_per_run", IterationsPerRun);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("output_person_property", OutputPersonProperty);
             writer.WriteIntValue("plateau_iterations", PlateauIterations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateResearchIntervalDays>("research_interval_days", ResearchIntervalDays);
             writer.WriteDoubleValue("success_auc", SuccessAuc);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateTargetDefinition>("target_definition", TargetDefinition);
             writer.WriteStringValue("target_event", TargetEvent);
             writer.WriteIntValue("training_lookback_days", TrainingLookbackDays);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAutoresearchPipelineCreateTrainingPopulationProperty>("training_population", TrainingPopulation);
+            writer.WriteBoolValue("write_person_property", WritePersonProperty);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

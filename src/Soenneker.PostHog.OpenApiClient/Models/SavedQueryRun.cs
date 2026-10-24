@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `upstream` - Upstream* `downstream` - Downstream</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunDirection? Direction { get; set; }
         /// <summary>Rebuild the whole table instead of updating it incrementally. Has no effect on a view that is not incremental. This is how you reprocess history after changing what the query means without changing its text, or after upstream data was corrected.</summary>
         public bool? FullRefresh { get; set; }
         /// <summary>
@@ -43,6 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunDirection>(); } },
                 { "full_refresh", n => { FullRefresh = n.GetBoolValue(); } },
             };
         }
@@ -53,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunDirection>("direction", Direction);
             writer.WriteBoolValue("full_refresh", FullRefresh);
             writer.WriteAdditionalData(AdditionalData);
         }

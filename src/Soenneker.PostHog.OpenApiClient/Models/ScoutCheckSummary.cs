@@ -37,6 +37,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastOutcome { get; set; }
 #endif
+        /// <summary>Why the most recent run was `inconclusive`: `awaiting_data`, `unmeasurable`, `needs_manual_verification`, or `no_fix_to_measure`. Null on any other outcome.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LastOutcomeReason { get; set; }
+#nullable restore
+#else
+        public string LastOutcomeReason { get; set; }
+#endif
         /// <summary>When the check next runs. Provisional while it is `pending`.</summary>
         public DateTimeOffset? NextRunAt { get; set; }
         /// <summary>The report it is attached to.</summary>
@@ -97,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dispatched_run_id", n => { DispatchedRunId = n.GetGuidValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "last_outcome", n => { LastOutcome = n.GetStringValue(); } },
+                { "last_outcome_reason", n => { LastOutcomeReason = n.GetStringValue(); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },
                 { "report_id", n => { ReportId = n.GetGuidValue(); } },
                 { "run_state", n => { RunState = n.GetStringValue(); } },
@@ -117,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("dispatched_run_id", DispatchedRunId);
             writer.WriteStringValue("kind", Kind);
             writer.WriteStringValue("last_outcome", LastOutcome);
+            writer.WriteStringValue("last_outcome_reason", LastOutcomeReason);
             writer.WriteDateTimeOffsetValue("next_run_at", NextRunAt);
             writer.WriteGuidValue("report_id", ReportId);
             writer.WriteStringValue("run_state", RunState);

@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
-        /// <summary>How the run changed the page.* `added` - added* `modified` - modified* `deleted` - deleted</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `added` - added* `modified` - modified* `deleted` - deleted</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DreamFileDiffStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DreamFileDiffStatus Status { get; set; }
-#endif
         /// <summary>Whether the patch was cut off for size.</summary>
         public bool? Truncated { get; set; }
         /// <summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "patch", n => { Patch = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DreamFileDiffStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DreamFileDiffStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DreamFileDiffStatus>(); } },
                 { "truncated", n => { Truncated = n.GetBoolValue(); } },
             };
         }
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("patch", Patch);
             writer.WriteStringValue("path", Path);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DreamFileDiffStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DreamFileDiffStatus>("status", Status);
             writer.WriteBoolValue("truncated", Truncated);
             writer.WriteAdditionalData(AdditionalData);
         }

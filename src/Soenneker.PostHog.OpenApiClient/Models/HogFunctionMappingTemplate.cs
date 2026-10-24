@@ -17,28 +17,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event filters specific to this mapping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateFilters? Filters { get; set; }
+        public UntypedNode? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateFilters Filters { get; set; }
+        public UntypedNode Filters { get; set; }
 #endif
         /// <summary>Whether this mapping is enabled by default.</summary>
         public bool? IncludeByDefault { get; set; }
         /// <summary>Input values specific to this mapping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputs? Inputs { get; set; }
+        public UntypedNode? Inputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputs Inputs { get; set; }
+        public UntypedNode Inputs { get; set; }
 #endif
         /// <summary>Additional input schema fields specific to this mapping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputsSchema? InputsSchema { get; set; }
+        public UntypedNode? InputsSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputsSchema InputsSchema { get; set; }
+        public UntypedNode InputsSchema { get; set; }
 #endif
         /// <summary>Name of this mapping template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "include_by_default", n => { IncludeByDefault = n.GetBoolValue(); } },
-                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputs>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputs.CreateFromDiscriminatorValue); } },
-                { "inputs_schema", n => { InputsSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputsSchema>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputsSchema.CreateFromDiscriminatorValue); } },
+                { "inputs", n => { Inputs = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "inputs_schema", n => { InputsSchema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "use_all_events_by_default", n => { UseAllEventsByDefault = n.GetBoolValue(); } },
             };
@@ -90,10 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateFilters>("filters", Filters);
+            writer.WriteObjectValue<UntypedNode>("filters", Filters);
             writer.WriteBoolValue("include_by_default", IncludeByDefault);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputs>("inputs", Inputs);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplateInputsSchema>("inputs_schema", InputsSchema);
+            writer.WriteObjectValue<UntypedNode>("inputs", Inputs);
+            writer.WriteObjectValue<UntypedNode>("inputs_schema", InputsSchema);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("use_all_events_by_default", UseAllEventsByDefault);
             writer.WriteAdditionalData(AdditionalData);

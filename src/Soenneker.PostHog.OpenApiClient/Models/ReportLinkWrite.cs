@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How this report relates to `report_id`. `depends_on` for work that cannot land until the other report&apos;s fix does, `part_of` for one piece of a larger report, `follow_up_of` for work the other report left behind, `duplicate_of` for the same problem filed twice, and `recurrence_of` for a problem a resolved report already covered.* `depends_on` - Depends on* `part_of` - Part of* `follow_up_of` - Follow-up of* `duplicate_of` - Duplicate of* `recurrence_of` - Recurrence of</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `depends_on` - Depends on* `part_of` - Part of* `follow_up_of` - Follow-up of* `duplicate_of` - Duplicate of* `recurrence_of` - Recurrence of</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind Kind { get; set; }
-#endif
         /// <summary>Optional one-line note on why the reports are linked this way.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind>(global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind>(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
             };
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWriteKind>("kind", Kind);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteAdditionalData(AdditionalData);

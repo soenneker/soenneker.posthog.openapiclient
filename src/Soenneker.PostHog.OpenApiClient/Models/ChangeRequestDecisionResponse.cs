@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseResult? Result { get; set; }
+        public UntypedNode? Result { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseResult Result { get; set; }
+        public UntypedNode Result { get; set; }
 #endif
         /// <summary>The change request&apos;s resulting state after the vote (e.g. &apos;pending&apos;, &apos;approved&apos;, &apos;applied&apos;, &apos;rejected&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "change_request", n => { ChangeRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseChangeRequest>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseChangeRequest.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseResult.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
         }
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseChangeRequest>("change_request", ChangeRequest);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseResult>("result", Result);
+            writer.WriteObjectValue<UntypedNode>("result", Result);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

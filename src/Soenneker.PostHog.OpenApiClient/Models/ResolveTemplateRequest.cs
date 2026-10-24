@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TargetEvent { get; set; }
 #endif
-        /// <summary>Template to resolve. The templates endpoint lists each one with its description. Required.* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey? TemplateKey { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey TemplateKey { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequest"/> and sets the default values.
         /// </summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "horizon_days", n => { HorizonDays = n.GetIntValue(); } },
                 { "target_event", n => { TargetEvent = n.GetStringValue(); } },
-                { "template_key", n => { TemplateKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey>(global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey.CreateFromDiscriminatorValue); } },
+                { "template_key", n => { TemplateKey = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey>(); } },
             };
         }
         /// <summary>
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("horizon_days", HorizonDays);
             writer.WriteStringValue("target_event", TargetEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey>("template_key", TemplateKey);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey>("template_key", TemplateKey);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

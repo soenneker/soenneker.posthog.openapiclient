@@ -66,10 +66,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>HogQL or insight query this endpoint executes. Changing this auto-creates a new version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestQuery? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestQuery Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
         /// <summary>List of tag names to associate with this endpoint. Replaces any existing tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optional_breakdown_properties", n => { OptionalBreakdownProperties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -136,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_materialized", IsMaterialized);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("optional_breakdown_properties", OptionalBreakdownProperties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestQuery>("query", Query);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);

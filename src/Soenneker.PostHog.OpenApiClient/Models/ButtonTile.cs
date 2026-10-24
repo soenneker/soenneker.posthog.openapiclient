@@ -42,14 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ButtonTileLastModifiedBy LastModifiedBy { get; private set; }
 #endif
-        /// <summary>The placement property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `left` - left* `right` - right</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ButtonTilePlacement? Placement { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ButtonTilePlacement Placement { get; set; }
-#endif
         /// <summary>* `primary` - Primary* `secondary` - Secondary</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StyleEnum? Style { get; set; }
         /// <summary>The team property</summary>
@@ -100,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_modified_at", n => { LastModifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ButtonTileLastModifiedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ButtonTileLastModifiedBy.CreateFromDiscriminatorValue); } },
-                { "placement", n => { Placement = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ButtonTilePlacement>(global::Soenneker.PostHog.OpenApiClient.Models.ButtonTilePlacement.CreateFromDiscriminatorValue); } },
+                { "placement", n => { Placement = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ButtonTilePlacement>(); } },
                 { "style", n => { Style = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StyleEnum>(); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
@@ -114,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ButtonTilePlacement>("placement", Placement);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ButtonTilePlacement>("placement", Placement);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StyleEnum>("style", Style);
             writer.WriteIntValue("team", Team);
             writer.WriteStringValue("text", Text);

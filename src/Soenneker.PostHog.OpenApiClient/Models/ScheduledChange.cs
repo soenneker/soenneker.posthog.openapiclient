@@ -58,21 +58,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsRecurring { get; set; }
         /// <summary>The last_executed_at property</summary>
         public DateTimeOffset? LastExecutedAt { get; private set; }
-        /// <summary>The type of record to modify. Currently only &quot;FeatureFlag&quot; is supported.* `FeatureFlag` - feature flag</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `FeatureFlag` - feature flag</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeModelName? ModelName { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeModelName ModelName { get; set; }
-#endif
         /// <summary>The change to apply. Must include an &apos;operation&apos; key and a &apos;value&apos; key. Supported operations: &apos;update_status&apos; (value: true/false to enable/disable the flag), &apos;add_release_condition&apos; (value: object with &apos;groups&apos;, &apos;payloads&apos;, and &apos;multivariate&apos; keys), &apos;update_variants&apos; (value: object with &apos;variants&apos; and &apos;payloads&apos; keys).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangePayload? Payload { get; set; }
+        public UntypedNode? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangePayload Payload { get; set; }
+        public UntypedNode Payload { get; set; }
 #endif
         /// <summary>The ID of the record to modify (e.g. the feature flag ID).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,8 +134,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_recurring", n => { IsRecurring = n.GetBoolValue(); } },
                 { "last_executed_at", n => { LastExecutedAt = n.GetDateTimeOffsetValue(); } },
-                { "model_name", n => { ModelName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeModelName>(global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeModelName.CreateFromDiscriminatorValue); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangePayload>(global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangePayload.CreateFromDiscriminatorValue); } },
+                { "model_name", n => { ModelName = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeModelName>(); } },
+                { "payload", n => { Payload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "record_id", n => { RecordId = n.GetStringValue(); } },
                 { "recurrence_interval", n => { RecurrenceInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeRecurrenceInterval>(global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeRecurrenceInterval.CreateFromDiscriminatorValue); } },
                 { "scheduled_at", n => { ScheduledAt = n.GetDateTimeOffsetValue(); } },
@@ -160,8 +154,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cron_expression", CronExpression);
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
             writer.WriteBoolValue("is_recurring", IsRecurring);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeModelName>("model_name", ModelName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangePayload>("payload", Payload);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeModelName>("model_name", ModelName);
+            writer.WriteObjectValue<UntypedNode>("payload", Payload);
             writer.WriteStringValue("record_id", RecordId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScheduledChangeRecurrenceInterval>("recurrence_interval", RecurrenceInterval);
             writer.WriteDateTimeOffsetValue("scheduled_at", ScheduledAt);

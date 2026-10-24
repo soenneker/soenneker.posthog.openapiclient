@@ -56,14 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; set; }
         /// <summary>Payload retention deadline; cleanup is not yet enabled.</summary>
         public DateTimeOffset? PayloadExpiresAt { get; set; }
-        /// <summary>Item payload storage state.* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState? PayloadState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState PayloadState { get; set; }
-#endif
         /// <summary>Cells for explicitly selected scorer versions; empty when none selected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -114,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "experiment_id", n => { ExperimentId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "payload_expires_at", n => { PayloadExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "payload_state", n => { PayloadState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState.CreateFromDiscriminatorValue); } },
+                { "payload_state", n => { PayloadState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState>(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "trial", n => { Trial = n.GetStringValue(); } },
             };
@@ -135,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("experiment_id", ExperimentId);
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("payload_expires_at", PayloadExpiresAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState>("payload_state", PayloadState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState>("payload_state", PayloadState);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>("results", Results);
             writer.WriteStringValue("trial", Trial);
             writer.WriteAdditionalData(AdditionalData);

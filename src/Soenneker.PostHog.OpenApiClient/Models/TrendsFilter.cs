@@ -13,13 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Y-axis value formatter. Picks a human-friendly unit per value at render time without changing the underlying series values.- `numeric` (default): raw numbers, e.g. `1,234`.- `duration`: values are in seconds; rendered as friendly units per value (`45s`, `2m 12s`, `1h 4m`). Use this whenever the series is in seconds (latency, session length, time-to-event) instead of dividing in `formula` to force minutes or hours.- `duration_ms`: values are in milliseconds; rendered as friendly units (`850ms`, `1.5s`, `1m 4s`).- `percentage`: values are already in the 0-100 range; appends `%`.- `percentage_scaled`: values are a 0-1 ratio; multiplied and rendered as `%`.- `currency`: values are in the project&apos;s base currency (set in project settings, defaults to USD); rendered with that currency symbol. For values pinned to a specific currency regardless of project base (e.g. `$ai_total_cost_usd` is always USD), use `aggregationAxisPrefix` instead.- `short`: compact notation for large counts (`1.2K`, `3.4M`).</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper? AggregationAxisFormat { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper AggregationAxisFormat { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormat? AggregationAxisFormat { get; set; }
         /// <summary>Literal suffix applied to every value (e.g. ` req`). Reserve for units that `aggregationAxisFormat` cannot express. Do not use ` mins`, ` s`, ` ms`, `%` etc. — pick the matching `aggregationAxisFormat` instead so the underlying values stay numerically correct for breakdowns, formulas, and alerts. Include any leading space yourself.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,13 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string AggregationAxisPrefix { get; set; }
 #endif
         /// <summary>Render only annotations with this scope. Unset renders every scope.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2? AnnotationsScope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2 AnnotationsScope { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? AnnotationsScope { get; set; }
         /// <summary>The breakdown_histogram_bin_count property</summary>
         public double? BreakdownHistogramBinCount { get; set; }
         /// <summary>Chart rendering style overrides (line shape).</summary>
@@ -59,21 +47,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Maximum number of decimal places shown. 1 or 2 is usually right for percentages and currency.</summary>
         public double? DecimalPlaces { get; set; }
         /// <summary>detailed results table</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationTypeWrapper? DetailedResultsAggregationType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationTypeWrapper DetailedResultsAggregationType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationType? DetailedResultsAggregationType { get; set; }
         /// <summary>The display property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper4? Display { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper4 Display { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
         /// <summary>The excludeBoxPlotOutliers property</summary>
         public bool? ExcludeBoxPlotOutliers { get; set; }
         /// <summary>The formula property</summary>
@@ -119,13 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ignored. Superseded by `dateRange.daysOfWeek`, which excludes the days from the query instead of only hiding their buckets. Still accepted so existing API clients keep working.</summary>
         public bool? HideWeekends { get; set; }
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5? LegendPosition { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5 LegendPosition { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
         /// <summary>Metric display: change pill color when the metric decreased. Defaults to red.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -163,25 +133,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Show the period-over-period change pill on the Metric display.</summary>
         public bool? MetricShowChange { get; set; }
         /// <summary>Metric display: which summary the resting headline shows — the period total, the average, or the latest point. Hovering the sparkline always shows the hovered point&apos;s value. Also drives the change pill: total/average compare against the previous period when &quot;compare to previous&quot; is on; latest compares first→last of the series.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricSummaryWrapper? MetricSummary { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricSummaryWrapper MetricSummary { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricSummary? MetricSummary { get; set; }
         /// <summary>The minDecimalPlaces property</summary>
         public double? MinDecimalPlaces { get; set; }
         /// <summary>The movingAverageIntervals property</summary>
         public double? MovingAverageIntervals { get; set; }
         /// <summary>Wether result datasets are associated by their values or by their order.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper2? ResultCustomizationBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper2 ResultCustomizationBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy? ResultCustomizationBy { get; set; }
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -235,13 +193,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Pins the bottom of the y-axis; unset means automatic. Ignored in the same cases as `yAxisStartAtZero`, while it is on, and when not below `yAxisMax`.</summary>
         public double? YAxisMin { get; set; }
         /// <summary>The yAxisScaleType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleTypeWrapper? YAxisScaleType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleTypeWrapper YAxisScaleType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleType? YAxisScaleType { get; set; }
         /// <summary>Y-axis baseline. When false the axis floats to the data range instead of starting at zero. Ignored on bar displays (bars always draw from zero), on a logarithmic scale, and while showing percentages.</summary>
         public bool? YAxisStartAtZero { get; set; }
         /// <summary>
@@ -281,16 +233,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregationAxisFormat", n => { AggregationAxisFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper.CreateFromDiscriminatorValue); } },
+                { "aggregationAxisFormat", n => { AggregationAxisFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormat>(); } },
                 { "aggregationAxisPostfix", n => { AggregationAxisPostfix = n.GetStringValue(); } },
                 { "aggregationAxisPrefix", n => { AggregationAxisPrefix = n.GetStringValue(); } },
-                { "annotationsScope", n => { AnnotationsScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2.CreateFromDiscriminatorValue); } },
+                { "annotationsScope", n => { AnnotationsScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>(); } },
                 { "breakdown_histogram_bin_count", n => { BreakdownHistogramBinCount = n.GetDoubleValue(); } },
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
                 { "confidenceLevel", n => { ConfidenceLevel = n.GetDoubleValue(); } },
                 { "decimalPlaces", n => { DecimalPlaces = n.GetDoubleValue(); } },
-                { "detailedResultsAggregationType", n => { DetailedResultsAggregationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationTypeWrapper.CreateFromDiscriminatorValue); } },
-                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper4>(global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper4.CreateFromDiscriminatorValue); } },
+                { "detailedResultsAggregationType", n => { DetailedResultsAggregationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationType>(); } },
+                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); } },
                 { "excludeBoxPlotOutliers", n => { ExcludeBoxPlotOutliers = n.GetBoolValue(); } },
                 { "formula", n => { Formula = n.GetStringValue(); } },
                 { "formulaNodes", n => { FormulaNodes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -298,17 +250,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hiddenLegendIndexes", n => { HiddenLegendIndexes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "hideWeekends", n => { HideWeekends = n.GetBoolValue(); } },
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5.CreateFromDiscriminatorValue); } },
+                { "legendPosition", n => { LegendPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>(); } },
                 { "metricChangeDecreaseColor", n => { MetricChangeDecreaseColor = n.GetStringValue(); } },
                 { "metricChangeIncreaseColor", n => { MetricChangeIncreaseColor = n.GetStringValue(); } },
                 { "metricColorByDirection", n => { MetricColorByDirection = n.GetBoolValue(); } },
                 { "metricLineDecreaseColor", n => { MetricLineDecreaseColor = n.GetStringValue(); } },
                 { "metricLineIncreaseColor", n => { MetricLineIncreaseColor = n.GetStringValue(); } },
                 { "metricShowChange", n => { MetricShowChange = n.GetBoolValue(); } },
-                { "metricSummary", n => { MetricSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricSummaryWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricSummaryWrapper.CreateFromDiscriminatorValue); } },
+                { "metricSummary", n => { MetricSummary = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricSummary>(); } },
                 { "minDecimalPlaces", n => { MinDecimalPlaces = n.GetDoubleValue(); } },
                 { "movingAverageIntervals", n => { MovingAverageIntervals = n.GetDoubleValue(); } },
-                { "resultCustomizationBy", n => { ResultCustomizationBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper2.CreateFromDiscriminatorValue); } },
+                { "resultCustomizationBy", n => { ResultCustomizationBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy>(); } },
                 { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterResultCustomizations>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterResultCustomizations.CreateFromDiscriminatorValue); } },
                 { "showAlertThresholdLines", n => { ShowAlertThresholdLines = n.GetBoolValue(); } },
                 { "showAnnotations", n => { ShowAnnotations = n.GetBoolValue(); } },
@@ -326,7 +278,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "yAxisLabel", n => { YAxisLabel = n.GetStringValue(); } },
                 { "yAxisMax", n => { YAxisMax = n.GetDoubleValue(); } },
                 { "yAxisMin", n => { YAxisMin = n.GetDoubleValue(); } },
-                { "yAxisScaleType", n => { YAxisScaleType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "yAxisScaleType", n => { YAxisScaleType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleType>(); } },
                 { "yAxisStartAtZero", n => { YAxisStartAtZero = n.GetBoolValue(); } },
             };
         }
@@ -337,16 +289,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper>("aggregationAxisFormat", AggregationAxisFormat);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormat>("aggregationAxisFormat", AggregationAxisFormat);
             writer.WriteStringValue("aggregationAxisPostfix", AggregationAxisPostfix);
             writer.WriteStringValue("aggregationAxisPrefix", AggregationAxisPrefix);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeWrapper2>("annotationsScope", AnnotationsScope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>("annotationsScope", AnnotationsScope);
             writer.WriteDoubleValue("breakdown_histogram_bin_count", BreakdownHistogramBinCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
             writer.WriteDoubleValue("confidenceLevel", ConfidenceLevel);
             writer.WriteDoubleValue("decimalPlaces", DecimalPlaces);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationTypeWrapper>("detailedResultsAggregationType", DetailedResultsAggregationType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper4>("display", Display);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationType>("detailedResultsAggregationType", DetailedResultsAggregationType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("display", Display);
             writer.WriteBoolValue("excludeBoxPlotOutliers", ExcludeBoxPlotOutliers);
             writer.WriteStringValue("formula", Formula);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode>("formulaNodes", FormulaNodes);
@@ -354,17 +306,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
             writer.WriteCollectionOfPrimitiveValues<int?>("hiddenLegendIndexes", HiddenLegendIndexes);
             writer.WriteBoolValue("hideWeekends", HideWeekends);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5>("legendPosition", LegendPosition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>("legendPosition", LegendPosition);
             writer.WriteStringValue("metricChangeDecreaseColor", MetricChangeDecreaseColor);
             writer.WriteStringValue("metricChangeIncreaseColor", MetricChangeIncreaseColor);
             writer.WriteBoolValue("metricColorByDirection", MetricColorByDirection);
             writer.WriteStringValue("metricLineDecreaseColor", MetricLineDecreaseColor);
             writer.WriteStringValue("metricLineIncreaseColor", MetricLineIncreaseColor);
             writer.WriteBoolValue("metricShowChange", MetricShowChange);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricSummaryWrapper>("metricSummary", MetricSummary);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricSummary>("metricSummary", MetricSummary);
             writer.WriteDoubleValue("minDecimalPlaces", MinDecimalPlaces);
             writer.WriteDoubleValue("movingAverageIntervals", MovingAverageIntervals);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper2>("resultCustomizationBy", ResultCustomizationBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy>("resultCustomizationBy", ResultCustomizationBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterResultCustomizations>("resultCustomizations", ResultCustomizations);
             writer.WriteBoolValue("showAlertThresholdLines", ShowAlertThresholdLines);
             writer.WriteBoolValue("showAnnotations", ShowAnnotations);
@@ -382,7 +334,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("yAxisLabel", YAxisLabel);
             writer.WriteDoubleValue("yAxisMax", YAxisMax);
             writer.WriteDoubleValue("yAxisMin", YAxisMin);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleTypeWrapper>("yAxisScaleType", YAxisScaleType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleType>("yAxisScaleType", YAxisScaleType);
             writer.WriteBoolValue("yAxisStartAtZero", YAxisStartAtZero);
         }
     }

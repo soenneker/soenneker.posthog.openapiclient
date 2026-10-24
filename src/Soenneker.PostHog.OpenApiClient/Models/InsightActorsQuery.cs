@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown Breakdown { get; set; }
 #endif
         /// <summary>The compare property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper2? Compare { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper2 Compare { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Compare? Compare { get; set; }
         /// <summary>The day property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "breakdown", n => { Breakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown.CreateFromDiscriminatorValue); } },
-                { "compare", n => { Compare = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper2.CreateFromDiscriminatorValue); } },
+                { "compare", n => { Compare = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>(); } },
                 { "day", n => { Day = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay.CreateFromDiscriminatorValue); } },
                 { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetIntValue(); } },
@@ -127,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown>("breakdown", Breakdown);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper2>("compare", Compare);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>("compare", Compare);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay>("day", Day);
             writer.WriteBoolValue("includeRecordings", IncludeRecordings);
             writer.WriteIntValue("interval", Interval);

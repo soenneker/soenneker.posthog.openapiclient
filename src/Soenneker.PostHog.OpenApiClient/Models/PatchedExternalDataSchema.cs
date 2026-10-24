@@ -134,6 +134,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> PrimaryKeyColumns { get; set; }
 #endif
+        /// <summary>Columns a row filter on this schema may use, with the operators each accepts. `null` means any column in `available_columns` with any operator, which is the case for SQL sources. A list means the source can filter on these columns only; an empty list means this schema accepts no row filter.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RowFilterColumn>? RowFilterColumns { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RowFilterColumn> RowFilterColumns { get; private set; }
+#endif
         /// <summary>Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `&gt; &gt;= &lt; &lt;= = != IN &quot;NOT IN&quot;` and the value must match the column&apos;s type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `&apos;a&apos;,&apos;b&apos;`). Applied on the next sync — not retroactive to already-synced rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -183,10 +191,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The table property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty? Table { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty? Table { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty Table { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty Table { get; private set; }
 #endif
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -241,6 +249,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_full_refresh_at", n => { NextFullRefreshAt = n.GetDateTimeOffsetValue(); } },
                 { "primary_key_columns", n => { PrimaryKeyColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "row_filter_columns", n => { RowFilterColumns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RowFilterColumn>(global::Soenneker.PostHog.OpenApiClient.Models.RowFilterColumn.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "row_filters", n => { RowFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaRowFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaRowFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSource>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSource.CreateFromDiscriminatorValue); } },
@@ -274,7 +283,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncFrequency>("sync_frequency", SyncFrequency);
             writer.WriteTimeValue("sync_time_of_day", SyncTimeOfDay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncType>("sync_type", SyncType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty>("table", Table);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

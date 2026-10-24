@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>First page of result rows for display; each row is a list of cell values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? FirstPage { get; set; }
+        public List<UntypedNode>? FirstPage { get; set; }
 #nullable restore
 #else
-        public UntypedNode FirstPage { get; set; }
+        public List<UntypedNode> FirstPage { get; set; }
 #endif
         /// <summary>DuckDB objects a SQL node can SELECT from as of this run, for the schema browser. Only kernel runs (python/duckdb) report these; a hogql run never enters the kernel.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "first_page", n => { FirstPage = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "first_page", n => { FirstPage = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
                 { "frames", n => { Frames = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("columns", Columns);
             writer.WriteStringValue("error", Error);
-            writer.WriteObjectValue<UntypedNode>("first_page", FirstPage);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("first_page", FirstPage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>("frames", Frames);
             writer.WriteBoolValue("has_more", HasMore);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>("media", Media);

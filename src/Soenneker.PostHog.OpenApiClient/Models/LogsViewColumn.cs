@@ -38,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Column type. Most built-in types resolve client-side from log row fields; `pattern` and `custom` columns are computed server-side, the latter from `expression`.* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `person` - person* `session` - session* `pattern` - pattern* `message` - message* `custom` - custom</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `person` - person* `session` - session* `pattern` - pattern* `message` - message* `custom` - custom</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType Type { get; set; }
-#endif
         /// <summary>Column width in pixels (1–2000). Omitted for the default width; ignored for the flex message column.</summary>
         public int? Width { get; set; }
         /// <summary>
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expression", n => { Expression = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType>(global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType>(); } },
                 { "width", n => { Width = n.GetIntValue(); } },
             };
         }
@@ -90,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("expression", Expression);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType>("type", Type);
             writer.WriteIntValue("width", Width);
             writer.WriteAdditionalData(AdditionalData);
         }

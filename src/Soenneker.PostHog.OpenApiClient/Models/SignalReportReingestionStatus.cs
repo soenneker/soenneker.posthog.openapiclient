@@ -17,14 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Report being re-ingested.</summary>
         public Guid? ReportId { get; set; }
-        /// <summary>Whether this request started the re-ingestion or found one already running.* `reingestion_started` - reingestion_started* `already_running` - already_running</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `reingestion_started` - reingestion_started* `already_running` - already_running</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatusStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatusStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatus"/> and sets the default values.
         /// </summary>
@@ -51,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "report_id", n => { ReportId = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatusStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatusStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatusStatus>(); } },
             };
         }
         /// <summary>
@@ -62,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("report_id", ReportId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatusStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportReingestionStatusStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

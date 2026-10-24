@@ -48,9 +48,5 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         TogetherAi,
         #pragma warning restore CS1591
-        [EnumMember(Value = "zeabur")]
-        #pragma warning disable CS1591
-        Zeabur,
-        #pragma warning restore CS1591
     }
 }

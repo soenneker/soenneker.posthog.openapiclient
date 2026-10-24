@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Key-value map of person properties set via $set and $set_once operations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonListRecordProperties? Properties { get; set; }
+        public UntypedNode? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonListRecordProperties Properties { get; set; }
+        public UntypedNode Properties { get; set; }
 #endif
         /// <summary>Unique identifier (UUID) for this person.</summary>
         public Guid? Uuid { get; private set; }
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
                 { "matched_fields", n => { MatchedFields = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonSearchMatchFieldEnum>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonListRecordProperties>(global::Soenneker.PostHog.OpenApiClient.Models.PersonListRecordProperties.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
             };
         }
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonSearchMatchFieldEnum>("matched_fields", MatchedFields);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonListRecordProperties>("properties", Properties);
+            writer.WriteObjectValue<UntypedNode>("properties", Properties);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

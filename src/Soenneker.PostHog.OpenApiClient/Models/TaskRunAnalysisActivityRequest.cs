@@ -59,14 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Goal { get; set; }
 #endif
-        /// <summary>Which kind of work the agent did in this span.* `orient` - orient* `explore` - explore* `gather` - gather* `produce` - produce* `verify` - verify* `setup_env` - setup_env* `ship` - ship* `wait` - wait* `operate` - operate* `deliver` - deliver</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `orient` - orient* `explore` - explore* `gather` - gather* `produce` - produce* `verify` - verify* `setup_env` - setup_env* `ship` - ship* `wait` - wait* `operate` - operate* `deliver` - deliver</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestGoalKind? GoalKind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestGoalKind GoalKind { get; set; }
-#endif
         /// <summary>Skills, AGENTS.md files, templates, and wiki pages the agent read in the activity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,14 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Sum of the gaps longer than 4 minutes between those consecutive timestamps.</summary>
         public int? IdleSeconds { get; set; }
-        /// <summary>How the activity ended for the agent.* `worked` - worked* `failed` - failed* `abandoned` - abandoned* `unknown` - unknown</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `worked` - worked* `failed` - failed* `abandoned` - abandoned* `unknown` - unknown</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestOutcome? Outcome { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestOutcome Outcome { get; set; }
-#endif
         /// <summary>The command or step that removed the blocker, when the agent found one. Requires blocker_kind.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -131,10 +119,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evidence", n => { Evidence = n.GetStringValue(); } },
                 { "failed_calls", n => { FailedCalls = n.GetIntValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
-                { "goal_kind", n => { GoalKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestGoalKind>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestGoalKind.CreateFromDiscriminatorValue); } },
+                { "goal_kind", n => { GoalKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestGoalKind>(); } },
                 { "guidance_read", n => { GuidanceRead = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "idle_seconds", n => { IdleSeconds = n.GetIntValue(); } },
-                { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestOutcome.CreateFromDiscriminatorValue); } },
+                { "outcome", n => { Outcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestOutcome>(); } },
                 { "repair", n => { Repair = n.GetStringValue(); } },
                 { "seconds", n => { Seconds = n.GetIntValue(); } },
                 { "start_line", n => { StartLine = n.GetIntValue(); } },
@@ -155,10 +143,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("evidence", Evidence);
             writer.WriteIntValue("failed_calls", FailedCalls);
             writer.WriteStringValue("goal", Goal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestGoalKind>("goal_kind", GoalKind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestGoalKind>("goal_kind", GoalKind);
             writer.WriteCollectionOfPrimitiveValues<string>("guidance_read", GuidanceRead);
             writer.WriteIntValue("idle_seconds", IdleSeconds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestOutcome>("outcome", Outcome);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityRequestOutcome>("outcome", Outcome);
             writer.WriteStringValue("repair", Repair);
             writer.WriteIntValue("seconds", Seconds);
             writer.WriteIntValue("start_line", StartLine);

@@ -106,6 +106,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
+        /// <summary>The job&apos;s steps in run order. Empty when the source reports no steps, as for a Depot CI job.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobStep>? Steps { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobStep> Steps { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJob"/> and sets the default values.
         /// </summary>
@@ -147,6 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "runner_provider", n => { RunnerProvider = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobStep>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobStep.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -172,6 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("runner_provider", RunnerProvider);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
             writer.WriteStringValue("status", Status);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobStep>("steps", Steps);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

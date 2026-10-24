@@ -49,14 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Kind of object: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;. Pass it back as subject_type when creating a check.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectSubjectType? SubjectType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectSubjectType SubjectType { get; set; }
-#endif
         /// <summary>Column a lookback window bounds, or blank for a subject that has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "editable", n => { Editable = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "subject_type", n => { SubjectType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectSubjectType>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectSubjectType.CreateFromDiscriminatorValue); } },
+                { "subject_type", n => { SubjectType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectSubjectType>(); } },
                 { "time_column", n => { TimeColumn = n.GetStringValue(); } },
             };
         }
@@ -111,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("editable", Editable);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectSubjectType>("subject_type", SubjectType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectSubjectType>("subject_type", SubjectType);
             writer.WriteStringValue("time_column", TimeColumn);
             writer.WriteAdditionalData(AdditionalData);
         }

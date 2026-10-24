@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The colors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataColorThemeColors? Colors { get; set; }
+        public UntypedNode? Colors { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataColorThemeColors Colors { get; set; }
+        public UntypedNode Colors { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "colors", n => { Colors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataColorThemeColors>(global::Soenneker.PostHog.OpenApiClient.Models.DataColorThemeColors.CreateFromDiscriminatorValue); } },
+                { "colors", n => { Colors = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataColorThemeCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataColorThemeCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataColorThemeColors>("colors", Colors);
+            writer.WriteObjectValue<UntypedNode>("colors", Colors);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

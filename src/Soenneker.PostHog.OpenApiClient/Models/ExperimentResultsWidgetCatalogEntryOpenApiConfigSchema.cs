@@ -8,22 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas).
+    /// Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ExperimentResultsWidgetCatalogEntryOpenApiConfigSchema : IAdditionalDataHolder, IParsable
+    public partial class ExperimentResultsWidgetCatalogEntryOpenApiConfigSchema : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Experiment to show results for. Null until the user picks one in the widget settings.</summary>
         public int? ExperimentId { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
-        /// </summary>
-        public ExperimentResultsWidgetCatalogEntryOpenApiConfigSchema()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -53,7 +44,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("experimentId", ExperimentId);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

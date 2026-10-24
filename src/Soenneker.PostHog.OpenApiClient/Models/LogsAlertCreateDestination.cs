@@ -14,6 +14,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `us` - us* `eu` - eu</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationPagerdutyRegion? PagerdutyRegion { get; set; }
+        /// <summary>Integration key of a PagerDuty Events API v2 integration. Required when type=pagerduty.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PagerdutyRoutingKey { get; set; }
+#nullable restore
+#else
+        public string PagerdutyRoutingKey { get; set; }
+#endif
+        /// <summary>* `critical` - critical* `error` - error* `warning` - warning* `info` - info</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationPagerdutySeverity? PagerdutySeverity { get; set; }
         /// <summary>Slack channel ID. Required when type=slack.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Integration ID for the Slack workspace. Required when type=slack.</summary>
         public int? SlackWorkspaceId { get; set; }
-        /// <summary>Notification destination type.* `slack` - slack* `webhook` - webhook* `teams` - teams</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `slack` - slack* `webhook` - webhook* `teams` - teams* `pagerduty` - pagerduty</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType Type { get; set; }
-#endif
         /// <summary>HTTPS endpoint to post to. Required for webhook and teams.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,10 +79,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "pagerduty_region", n => { PagerdutyRegion = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationPagerdutyRegion>(); } },
+                { "pagerduty_routing_key", n => { PagerdutyRoutingKey = n.GetStringValue(); } },
+                { "pagerduty_severity", n => { PagerdutySeverity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationPagerdutySeverity>(); } },
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "slack_channel_name", n => { SlackChannelName = n.GetStringValue(); } },
                 { "slack_workspace_id", n => { SlackWorkspaceId = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType>(); } },
                 { "webhook_url", n => { WebhookUrl = n.GetStringValue(); } },
             };
         }
@@ -87,10 +96,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationPagerdutyRegion>("pagerduty_region", PagerdutyRegion);
+            writer.WriteStringValue("pagerduty_routing_key", PagerdutyRoutingKey);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationPagerdutySeverity>("pagerduty_severity", PagerdutySeverity);
             writer.WriteStringValue("slack_channel_id", SlackChannelId);
             writer.WriteStringValue("slack_channel_name", SlackChannelName);
             writer.WriteIntValue("slack_workspace_id", SlackWorkspaceId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType>("type", Type);
             writer.WriteStringValue("webhook_url", WebhookUrl);
             writer.WriteAdditionalData(AdditionalData);
         }

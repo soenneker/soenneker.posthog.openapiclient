@@ -42,14 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsApproximate { get; set; }
         /// <summary>Whether the goal could not be evaluated (e.g. deleted action)</summary>
         public bool? IsMisconfigured { get; set; }
-        /// <summary>Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind Kind { get; set; }
-#endif
         /// <summary>Count of matching conversion events in the last 30 days</summary>
         public int? Last30dCount { get; set; }
         /// <summary>Explanation when is_misconfigured is true</summary>
@@ -111,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "integrated_pct", n => { IntegratedPct = n.GetDoubleValue(); } },
                 { "is_approximate", n => { IsApproximate = n.GetBoolValue(); } },
                 { "is_misconfigured", n => { IsMisconfigured = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind>(); } },
                 { "last_30d_count", n => { Last30dCount = n.GetIntValue(); } },
                 { "misconfig_reason", n => { MisconfigReason = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -134,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("integrated_pct", IntegratedPct);
             writer.WriteBoolValue("is_approximate", IsApproximate);
             writer.WriteBoolValue("is_misconfigured", IsMisconfigured);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind>("kind", Kind);
             writer.WriteIntValue("last_30d_count", Last30dCount);
             writer.WriteStringValue("misconfig_reason", MisconfigReason);
             writer.WriteStringValue("name", Name);

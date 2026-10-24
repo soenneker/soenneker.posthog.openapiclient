@@ -20,6 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BorderColor { get; set; }
 #endif
+        /// <summary>Recalculate from returned chart marks. An absent calculation uses the fixed value.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.Calculation? Calculation { get; set; }
         /// <summary>The displayIfCrossed property</summary>
         public bool? DisplayIfCrossed { get; set; }
         /// <summary>The displayLabel property</summary>
@@ -33,13 +35,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>The position property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PositionWrapper? Position { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PositionWrapper Position { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Position? Position { get; set; }
+        /// <summary>SQL chart calculations use the primary axis, across all series or separately per series.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.Scope? Scope { get; set; }
         /// <summary>The value property</summary>
         public double? Value { get; set; }
         /// <summary>
@@ -61,10 +59,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "borderColor", n => { BorderColor = n.GetStringValue(); } },
+                { "calculation", n => { Calculation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Calculation>(); } },
                 { "displayIfCrossed", n => { DisplayIfCrossed = n.GetBoolValue(); } },
                 { "displayLabel", n => { DisplayLabel = n.GetBoolValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "position", n => { Position = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PositionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PositionWrapper.CreateFromDiscriminatorValue); } },
+                { "position", n => { Position = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Position>(); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Scope>(); } },
                 { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
@@ -76,10 +76,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("borderColor", BorderColor);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Calculation>("calculation", Calculation);
             writer.WriteBoolValue("displayIfCrossed", DisplayIfCrossed);
             writer.WriteBoolValue("displayLabel", DisplayLabel);
             writer.WriteStringValue("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PositionWrapper>("position", Position);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Position>("position", Position);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Scope>("scope", Scope);
             writer.WriteDoubleValue("value", Value);
         }
     }

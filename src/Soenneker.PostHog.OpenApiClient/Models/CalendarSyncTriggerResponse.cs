@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&apos;started&apos; (a sync run began) or &apos;already_running&apos; (a sync for this calendar was already in flight, so this was a no-op).* `started` - started* `already_running` - already_running</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `started` - started* `already_running` - already_running</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponseStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponseStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponse"/> and sets the default values.
         /// </summary>
@@ -48,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponseStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponseStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponseStatus>(); } },
             };
         }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarSyncTriggerResponseStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

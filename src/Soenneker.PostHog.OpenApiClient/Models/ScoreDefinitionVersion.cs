@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? DefinitionId { get; private set; }
         /// <summary>UUID identifying this exact immutable version.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Scorer value kind.* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionVersionKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionVersionKind Kind { get; private set; }
-#endif
         /// <summary>Immutable version number within this scorer.</summary>
         public int? Version { get; private set; }
         /// <summary>
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "definition_id", n => { DefinitionId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionVersionKind>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionVersionKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionVersionKind>(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }

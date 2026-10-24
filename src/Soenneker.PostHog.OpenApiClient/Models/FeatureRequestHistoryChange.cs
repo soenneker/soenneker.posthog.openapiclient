@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBefore Before { get; private set; }
 #endif
-        /// <summary>Request field represented by this change.* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas* `github_link` - GitHub link* `github_sync` - GitHub sync</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas* `github_link` - GitHub link* `github_sync` - GitHub sync</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField? Field { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField Field { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChange"/> and sets the default values.
         /// </summary>
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfter>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeAfter.CreateFromDiscriminatorValue); } },
                 { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBefore>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBefore.CreateFromDiscriminatorValue); } },
-                { "field", n => { Field = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField.CreateFromDiscriminatorValue); } },
+                { "field", n => { Field = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField>(); } },
             };
         }
         /// <summary>

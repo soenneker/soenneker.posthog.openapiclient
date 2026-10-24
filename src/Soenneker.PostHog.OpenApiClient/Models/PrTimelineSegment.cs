@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Segment end: the next segment&apos;s start, the merge or close, or now.</summary>
         public DateTimeOffset? EndedAt { get; set; }
-        /// <summary>What the PR waited on: draft; waiting_for_review (no approval yet, or re-review after a push); changes_requested (no push since); approved_not_enqueued (approved, with no failing or running check); review_state_unknown (reviews not synced); ci_running; red_passed_on_rerun (the failed workflows passed a re-run of the same commit); red_master_broken (the failed jobs also failed on the default branch within 12 hours); red_fixed_by_push (a later commit arrived); red_not_provable; merge_queue (every queue state collapsed); out_of_merge_queue (open PR, Trunk says failed or cancelled).* `draft` - DRAFT* `waiting_for_review` - WAITING_FOR_REVIEW* `changes_requested` - CHANGES_REQUESTED* `approved_not_enqueued` - APPROVED_NOT_ENQUEUED* `review_state_unknown` - REVIEW_STATE_UNKNOWN* `ci_running` - CI_RUNNING* `red_passed_on_rerun` - RED_PASSED_ON_RERUN* `red_master_broken` - RED_MASTER_BROKEN* `red_fixed_by_push` - RED_FIXED_BY_PUSH* `red_not_provable` - RED_NOT_PROVABLE* `merge_queue` - MERGE_QUEUE* `out_of_merge_queue` - OUT_OF_MERGE_QUEUE</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `draft` - Draft* `waiting_for_review` - Waiting For Review* `changes_requested` - Changes Requested* `approved_not_enqueued` - Approved Not Enqueued* `review_state_unknown` - Review State Unknown* `ci_running` - CI Running* `red_passed_on_rerun` - Red Passed On Rerun* `red_master_broken` - Red Master Broken* `red_fixed_by_push` - Red Fixed By Push* `red_not_provable` - Red Not Provable* `merge_queue` - Merge Queue* `out_of_merge_queue` - Out Of Merge Queue</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegmentKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegmentKind Kind { get; set; }
-#endif
         /// <summary>Segment start.</summary>
         public DateTimeOffset? StartedAt { get; set; }
         /// <summary>
@@ -52,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ended_at", n => { EndedAt = n.GetDateTimeOffsetValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegmentKind>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegmentKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegmentKind>(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("ended_at", EndedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegmentKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegmentKind>("kind", Kind);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

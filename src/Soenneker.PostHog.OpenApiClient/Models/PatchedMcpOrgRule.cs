@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Audience the rule constrains.* `everyone` - Everyone* `members` - Members* `agents` - Agents</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `everyone` - Everyone* `members` - Members* `agents` - Agents</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleAppliesTo? AppliesTo { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleAppliesTo AppliesTo { get; set; }
-#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Why this guardrail exists.</summary>
@@ -32,14 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>State the rule forces on matching tools.* `needs_approval` - Require approval* `do_not_use` - Block</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `needs_approval` - Require approval* `do_not_use` - Block</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleEffect? Effect { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleEffect Effect { get; set; }
-#endif
         /// <summary>Disabled rules are kept but not evaluated.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
@@ -87,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "applies_to", n => { AppliesTo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleAppliesTo>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleAppliesTo.CreateFromDiscriminatorValue); } },
+                { "applies_to", n => { AppliesTo = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleAppliesTo>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "effect", n => { Effect = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleEffect>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleEffect.CreateFromDiscriminatorValue); } },
+                { "effect", n => { Effect = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleEffect>(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -105,9 +93,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleAppliesTo>("applies_to", AppliesTo);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleAppliesTo>("applies_to", AppliesTo);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleEffect>("effect", Effect);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpOrgRuleEffect>("effect", Effect);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("tool_pattern", ToolPattern);

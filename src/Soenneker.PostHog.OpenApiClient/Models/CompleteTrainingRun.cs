@@ -25,13 +25,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Distillation { get; set; }
 #endif
+        /// <summary>A short title for people, at most 60 characters, on what this run learned. Use plain words, with no column names, SQL or model jargon. Longer text is cut, not rejected.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Headline { get; set; }
+#nullable restore
+#else
+        public string Headline { get; set; }
+#endif
         /// <summary>Global feature importance / directionality bundle for the champion model card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty? ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation? ModelExplanation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation ModelExplanation { get; set; }
+#endif
+        /// <summary>Short next steps for people, at most 5 items of a few words each (max 80 characters per item).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? NextSteps { get; set; }
+#nullable restore
+#else
+        public List<string> NextSteps { get; set; }
+#endif
+        /// <summary>One or two plain sentences for people on what this run learned. Max 600 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReaderSummary { get; set; }
+#nullable restore
+#else
+        public string ReaderSummary { get; set; }
 #endif
         /// <summary>What a future run should try next, given what this run learned. Stored in the run summary so the next run reads it during orientation. Keep it short and concrete; max 2000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,7 +100,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "best_iteration_id", n => { BestIterationId = n.GetGuidValue(); } },
                 { "distillation", n => { Distillation = n.GetStringValue(); } },
-                { "model_explanation", n => { ModelExplanation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty.CreateFromDiscriminatorValue); } },
+                { "headline", n => { Headline = n.GetStringValue(); } },
+                { "model_explanation", n => { ModelExplanation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation>(global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation.CreateFromDiscriminatorValue); } },
+                { "next_steps", n => { NextSteps = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "reader_summary", n => { ReaderSummary = n.GetStringValue(); } },
                 { "recommended_next", n => { RecommendedNext = n.GetStringValue(); } },
                 { "report_notebook_short_id", n => { ReportNotebookShortId = n.GetStringValue(); } },
             };
@@ -90,7 +117,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("best_iteration_id", BestIterationId);
             writer.WriteStringValue("distillation", Distillation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanationProperty>("model_explanation", ModelExplanation);
+            writer.WriteStringValue("headline", Headline);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation>("model_explanation", ModelExplanation);
+            writer.WriteCollectionOfPrimitiveValues<string>("next_steps", NextSteps);
+            writer.WriteStringValue("reader_summary", ReaderSummary);
             writer.WriteStringValue("recommended_next", RecommendedNext);
             writer.WriteStringValue("report_notebook_short_id", ReportNotebookShortId);
             writer.WriteAdditionalData(AdditionalData);

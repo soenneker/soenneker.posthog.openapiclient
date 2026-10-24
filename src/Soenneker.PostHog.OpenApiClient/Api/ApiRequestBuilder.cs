@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Billing;
 using Soenneker.PostHog.OpenApiClient.Api.Code;
-using Soenneker.PostHog.OpenApiClient.Api.Customer_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Llm_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects;
@@ -15,6 +14,7 @@ using Soenneker.PostHog.OpenApiClient.Api.User;
 using Soenneker.PostHog.OpenApiClient.Api.User_facet_settings;
 using Soenneker.PostHog.OpenApiClient.Api.User_home_settings;
 using Soenneker.PostHog.OpenApiClient.Api.Users;
+using Soenneker.PostHog.OpenApiClient.Api.Wizard;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -36,11 +36,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api
         public global::Soenneker.PostHog.OpenApiClient.Api.Code.CodeRequestBuilder Code
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Code.CodeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The customer_analytics property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.Customer_analyticsRequestBuilder Customer_analytics
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.Customer_analyticsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The llm_analytics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Llm_analyticsRequestBuilder Llm_analytics
@@ -91,6 +86,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.UsersRequestBuilder Users
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The wizard property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Wizard.WizardRequestBuilder Wizard
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Wizard.WizardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.ApiRequestBuilder"/> and sets the default values.

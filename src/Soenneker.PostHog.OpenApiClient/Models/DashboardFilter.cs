@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter BreakdownFilter { get; set; }
 #endif
+        /// <summary>Period comparison forced onto every insight that supports one. Absent/null = inherit.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
+#endif
         /// <summary>The date_from property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,12 +49,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tri-state test-account override. Null/absent = inherit; true = force on; false = force off.</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>Time granularity forced onto every insight that supports one. Absent/null = inherit.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
+        /// <summary>The metricFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2? Interval { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>? MetricFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2 Interval { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter> MetricFilters { get; set; }
+#endif
+        /// <summary>Variables that metrics tiles refer to as `$name`. Other tiles ignore them.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable>? MetricVariables { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable> MetricVariables { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,11 +93,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "breakdown_filter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter.CreateFromDiscriminatorValue); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
                 { "explicitDate", n => { ExplicitDate = n.GetBoolValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
+                { "metricFilters", n => { MetricFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "metricVariables", n => { MetricVariables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -91,11 +112,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>("breakdown_filter", BreakdownFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
             writer.WriteBoolValue("explicitDate", ExplicitDate);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>("metricFilters", MetricFilters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable>("metricVariables", MetricVariables);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>("properties", Properties);
         }
     }

@@ -50,10 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionTagsItem>? Tags { get; set; }
+        public UntypedNode? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionTagsItem> Tags { get; set; }
+        public UntypedNode Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -80,10 +80,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionWarehouseOrigin? WarehouseOrigin { get; private set; }
+        public UntypedNode? WarehouseOrigin { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionWarehouseOrigin WarehouseOrigin { get; private set; }
+        public UntypedNode WarehouseOrigin { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition"/> and sets the default values.
@@ -117,13 +117,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_seen_on_filtered_events", n => { IsSeenOnFilteredEvents = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "property_type", n => { PropertyType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionPropertyType>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionPropertyType.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionUpdatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionUpdatedBy.CreateFromDiscriminatorValue); } },
                 { "verified", n => { Verified = n.GetBoolValue(); } },
                 { "verified_at", n => { VerifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "verified_by", n => { VerifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionVerifiedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionVerifiedBy.CreateFromDiscriminatorValue); } },
-                { "warehouse_origin", n => { WarehouseOrigin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionWarehouseOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionWarehouseOrigin.CreateFromDiscriminatorValue); } },
+                { "warehouse_origin", n => { WarehouseOrigin = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -136,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("hidden", Hidden);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionPropertyType>("property_type", PropertyType);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinitionTagsItem>("tags", Tags);
+            writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteAdditionalData(AdditionalData);
         }

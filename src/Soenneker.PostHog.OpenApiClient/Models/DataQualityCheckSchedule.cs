@@ -18,14 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; private set; }
         /// <summary>Schedule identifier.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>How often the checks run.* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckScheduleInterval? Interval { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckScheduleInterval Interval { get; private set; }
-#endif
         /// <summary>Most recent visible scheduled suite execution time.</summary>
         public DateTimeOffset? LastRunAt { get; private set; }
         /// <summary>Most recent visible scheduled suite.</summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckScheduleInterval>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckScheduleInterval.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckScheduleInterval>(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
                 { "last_suite_run", n => { LastSuiteRun = n.GetGuidValue(); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },

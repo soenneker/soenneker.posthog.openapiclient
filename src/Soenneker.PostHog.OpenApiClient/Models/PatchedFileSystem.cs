@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFileSystemMeta? Meta { get; set; }
+        public UntypedNode? Meta { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFileSystemMeta Meta { get; set; }
+        public UntypedNode Meta { get; set; }
 #endif
         /// <summary>The path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "href", n => { Href = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_viewed_at", n => { LastViewedAt = n.GetDateTimeOffsetValue(); } },
-                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFileSystemMeta>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFileSystemMeta.CreateFromDiscriminatorValue); } },
+                { "meta", n => { Meta = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
                 { "shortcut", n => { Shortcut = n.GetBoolValue(); } },
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("href", Href);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFileSystemMeta>("meta", Meta);
+            writer.WriteObjectValue<UntypedNode>("meta", Meta);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("ref", Ref);
             writer.WriteBoolValue("shortcut", Shortcut);

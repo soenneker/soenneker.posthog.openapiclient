@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Attribute map the key lives in, in the group-by endpoint&apos;s vocabulary: &quot;log&quot; or &quot;resource&quot;.* `log` - log* `resource` - resource* `column` - column</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `log` - log* `resource` - resource* `column` - column</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKeySource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKeySource Source { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKeySource>(global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKeySource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKeySource>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKeySource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKeySource>("source", Source);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

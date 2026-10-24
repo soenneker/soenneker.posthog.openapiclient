@@ -25,14 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
-        /// <summary>Machine-readable refusal cause, so callers can prompt for approval instead of retrying.* `needs_approval` - needs_approval* `disabled` - disabled* `removed` - removed* `upstream_error` - upstream_error</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `needs_approval` - needs_approval* `disabled` - disabled* `removed` - removed* `upstream_error` - upstream_error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlockedReason? Reason { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlockedReason Reason { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlocked"/> and sets the default values.
         /// </summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "detail", n => { Detail = n.GetStringValue(); } },
-                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlockedReason>(global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlockedReason.CreateFromDiscriminatorValue); } },
+                { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlockedReason>(); } },
             };
         }
         /// <summary>
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("detail", Detail);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlockedReason>("reason", Reason);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlockedReason>("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

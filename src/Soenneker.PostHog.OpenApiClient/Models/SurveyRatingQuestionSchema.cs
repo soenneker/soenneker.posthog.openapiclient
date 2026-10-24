@@ -38,22 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Format for the description field.* `text` - text* `html` - html</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `html` - html* `text` - text</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType? DescriptionContentType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType DescriptionContentType { get; set; }
-#endif
-        /// <summary>Display format: &apos;number&apos; shows numeric scale, &apos;emoji&apos; shows emoji scale.* `number` - number* `emoji` - emoji</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `number` - number* `emoji` - emoji</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay? Display { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay Display { get; set; }
-#endif
         /// <summary>Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_&lt;id&gt;) stay attached; omit it for new questions and the server generates one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,6 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Whether a rating question with a scale of 10 shows NPS scoring. A missing value counts as true.</summary>
+        public bool? IsNpsQuestion { get; set; }
         /// <summary>Label for the lowest rating (e.g., &apos;Very Poor&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +72,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Rating scale can be one of 3, 5, or 7</summary>
         public int? Scale { get; set; }
+        /// <summary>Inline translations keyed by language code (for example &apos;es&apos; or &apos;pt-BR&apos;). Send back the current value when editing other question fields, or the translations are lost.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty? Translations { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty Translations { get; set; }
+#endif
         /// <summary>* `rating` - rating</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTypeEnum? Type { get; set; }
         /// <summary>Label for the highest rating (e.g., &apos;Excellent&apos;)</summary>
@@ -120,13 +118,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "branching", n => { Branching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema.CreateFromDiscriminatorValue); } },
                 { "buttonText", n => { ButtonText = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "descriptionContentType", n => { DescriptionContentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType.CreateFromDiscriminatorValue); } },
-                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay.CreateFromDiscriminatorValue); } },
+                { "descriptionContentType", n => { DescriptionContentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType>(); } },
+                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "isNpsQuestion", n => { IsNpsQuestion = n.GetBoolValue(); } },
                 { "lowerBoundLabel", n => { LowerBoundLabel = n.GetStringValue(); } },
                 { "optional", n => { Optional = n.GetBoolValue(); } },
                 { "question", n => { Question = n.GetStringValue(); } },
                 { "scale", n => { Scale = n.GetIntValue(); } },
+                { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTypeEnum>(); } },
                 { "upperBoundLabel", n => { UpperBoundLabel = n.GetStringValue(); } },
             };
@@ -141,13 +141,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>("branching", Branching);
             writer.WriteStringValue("buttonText", ButtonText);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay>("display", Display);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay>("display", Display);
             writer.WriteStringValue("id", Id);
+            writer.WriteBoolValue("isNpsQuestion", IsNpsQuestion);
             writer.WriteStringValue("lowerBoundLabel", LowerBoundLabel);
             writer.WriteBoolValue("optional", Optional);
             writer.WriteStringValue("question", Question);
             writer.WriteIntValue("scale", Scale);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTypeEnum>("type", Type);
             writer.WriteStringValue("upperBoundLabel", UpperBoundLabel);
             writer.WriteAdditionalData(AdditionalData);

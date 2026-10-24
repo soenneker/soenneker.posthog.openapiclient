@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>signaled: the task&apos;s live run received the request. new_run: a fresh agent run was started. already_queued: a fix run was already starting, so no new run was created.* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome? DispatchOutcome { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome DispatchOutcome { get; set; }
-#endif
         /// <summary>The authoring task the fix was routed to.</summary>
         public Guid? TaskId { get; set; }
         /// <summary>
@@ -50,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dispatch_outcome", n => { DispatchOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome.CreateFromDiscriminatorValue); } },
+                { "dispatch_outcome", n => { DispatchOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome>(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }
@@ -61,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome>("dispatch_outcome", DispatchOutcome);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome>("dispatch_outcome", DispatchOutcome);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteAdditionalData(AdditionalData);
         }

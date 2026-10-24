@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Seconds the server spent on the queries that materialized the matrix. Scoring runs features_sql over the whole inference population on every cadence, so a slow query here is slow there too.</summary>
+        public double? ElapsedS { get; set; }
         /// <summary>The numeric feature column names (excludes distinct_id, __label, __fold).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,6 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> FeatureCols { get; set; }
+#endif
+        /// <summary>Advice on the cost of features_sql. A hint does not block the materialization or the upload, but a champion whose features.sql cannot score today&apos;s population in time is not promoted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Hints { get; set; }
+#nullable restore
+#else
+        public List<string> Hints { get; set; }
 #endif
         /// <summary>Sandbox path to the holdout feature matrix parquet (same columns as train_features).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -45,6 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? NHoldout { get; set; }
         /// <summary>Number of rows in the training split.</summary>
         public int? NTrain { get; set; }
+        /// <summary>Rows ClickHouse read to materialize the matrix.</summary>
+        public int? RowsRead { get; set; }
         /// <summary>Sandbox path to the training feature matrix parquet (distinct_id + numeric feature columns).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,12 +98,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "elapsed_s", n => { ElapsedS = n.GetDoubleValue(); } },
                 { "feature_cols", n => { FeatureCols = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "hints", n => { Hints = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "holdout_features_path", n => { HoldoutFeaturesPath = n.GetStringValue(); } },
                 { "holdout_labels_path", n => { HoldoutLabelsPath = n.GetStringValue(); } },
                 { "n_features", n => { NFeatures = n.GetIntValue(); } },
                 { "n_holdout", n => { NHoldout = n.GetIntValue(); } },
                 { "n_train", n => { NTrain = n.GetIntValue(); } },
+                { "rows_read", n => { RowsRead = n.GetIntValue(); } },
                 { "train_features_path", n => { TrainFeaturesPath = n.GetStringValue(); } },
                 { "train_labels_path", n => { TrainLabelsPath = n.GetStringValue(); } },
             };
@@ -103,12 +118,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("elapsed_s", ElapsedS);
             writer.WriteCollectionOfPrimitiveValues<string>("feature_cols", FeatureCols);
+            writer.WriteCollectionOfPrimitiveValues<string>("hints", Hints);
             writer.WriteStringValue("holdout_features_path", HoldoutFeaturesPath);
             writer.WriteStringValue("holdout_labels_path", HoldoutLabelsPath);
             writer.WriteIntValue("n_features", NFeatures);
             writer.WriteIntValue("n_holdout", NHoldout);
             writer.WriteIntValue("n_train", NTrain);
+            writer.WriteIntValue("rows_read", RowsRead);
             writer.WriteStringValue("train_features_path", TrainFeaturesPath);
             writer.WriteStringValue("train_labels_path", TrainLabelsPath);
             writer.WriteAdditionalData(AdditionalData);

@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression Compression { get; set; }
 #endif
-        /// <summary>File format* `Parquet` - Parquet* `JSONLines` - JSONLines</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `Parquet` - Parquet* `JSONLines` - JSONLines</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat? Format { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat Format { get; set; }
-#endif
         /// <summary>Split the download into files of about this size in MiB. A file can go a little over. Set it to null or 0 to write a single file of any size.</summary>
         public int? MaxSizeMb { get; set; }
         /// <summary>
@@ -60,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression.CreateFromDiscriminatorValue); } },
-                { "format", n => { Format = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat.CreateFromDiscriminatorValue); } },
+                { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat>(); } },
                 { "max_size_mb", n => { MaxSizeMb = n.GetIntValue(); } },
             };
         }
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression>("compression", Compression);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat>("format", Format);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat>("format", Format);
             writer.WriteIntValue("max_size_mb", MaxSizeMb);
             writer.WriteAdditionalData(AdditionalData);
         }

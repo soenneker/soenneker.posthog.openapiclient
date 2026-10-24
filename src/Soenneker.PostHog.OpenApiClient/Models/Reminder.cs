@@ -78,14 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>For a one-off reminder: when it should fire (ISO 8601, future).</summary>
         public DateTimeOffset? ScheduledAt { get; set; }
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - Active* `completed` - Completed* `errored` - Errored</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReminderStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReminderStatus Status { get; private set; }
-#endif
         /// <summary>Optional ID of the project this reminder is scoped to. Required when targeting a specific resource. Must belong to the chosen organization.</summary>
         public int? Team { get; set; }
         /// <summary>IANA timezone the schedule resolves in (e.g. &apos;America/New_York&apos;). Defaults to the project timezone when a team is set, otherwise UTC.</summary>
@@ -145,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "resource_id", n => { ResourceId = n.GetStringValue(); } },
                 { "resource_type", n => { ResourceType = n.GetStringValue(); } },
                 { "scheduled_at", n => { ScheduledAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReminderStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReminderStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReminderStatus>(); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "timezone", n => { Timezone = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },

@@ -32,29 +32,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Operator for feature flag dependency evaluation.* `flag_evaluates_to` - flag_evaluates_to</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `flag_evaluates_to` - flag_evaluates_to</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperator? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperator Operator { get; set; }
-#endif
-        /// <summary>Flag property type required for flag dependency checks.* `flag` - flag</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `flag` - flag</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaType Type { get; set; }
-#endif
         /// <summary>Value to compare flag evaluation against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaValue? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaValue Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema"/> and sets the default values.
@@ -84,9 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperator>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaType.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaValue>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaValue.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaType>(); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -99,9 +87,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cohort_name", CohortName);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaType>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaValue>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaType>("type", Type);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

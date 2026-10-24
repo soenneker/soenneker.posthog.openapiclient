@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Which question the returned session set answers. &apos;fired_any&apos;: the session fired at least one event of any listed metric (an OR the recordings query itself can&apos;t express). &apos;no_metric_activity&apos;: the session fired none of them. &apos;funnel_dropoff&apos;: the session saw an exposure event but never fired the funnel metric&apos;s last step; the exposure is the funnel&apos;s implicit first step, the same as in the experiment analysis. All three are session-scoped and goal-free: they say what happened in the session, not whether it helped or hurt the metric.* `fired_any` - fired_any* `no_metric_activity` - no_metric_activity* `funnel_dropoff` - funnel_dropoff</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `fired_any` - fired_any* `no_metric_activity` - no_metric_activity* `funnel_dropoff` - funnel_dropoff</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketRequestBucket? Bucket { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketRequestBucket Bucket { get; set; }
-#endif
         /// <summary>Maximum session IDs to return, at most 100. The most recently active matching sessions win.</summary>
         public int? Limit { get; set; }
         /// <summary>Metrics the bucket is computed over. Exactly one funnel metric for &apos;funnel_dropoff&apos;. Omit for the other buckets to use every metric of the experiment that can be matched to recordings.</summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bucket", n => { Bucket = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketRequestBucket>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketRequestBucket.CreateFromDiscriminatorValue); } },
+                { "bucket", n => { Bucket = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketRequestBucket>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "metric_uuids", n => { MetricUuids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "variant", n => { Variant = n.GetStringValue(); } },
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketRequestBucket>("bucket", Bucket);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketRequestBucket>("bucket", Bucket);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfPrimitiveValues<string>("metric_uuids", MetricUuids);
             writer.WriteStringValue("variant", Variant);

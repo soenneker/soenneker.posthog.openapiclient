@@ -54,24 +54,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceId { get; set; }
 #endif
-        /// <summary>Product that emitted the signal.* `session_replay` - session_replay* `llm_analytics` - llm_analytics* `github` - github* `linear` - linear* `jira` - jira* `zendesk` - zendesk* `conversations` - conversations* `error_tracking` - error_tracking* `endpoints` - endpoints* `pganalyze` - pganalyze* `signals_scout` - signals_scout* `signals_check` - signals_check* `logs` - logs* `health_checks` - health_checks* `replay_vision` - replay_vision* `analytics` - analytics* `freshdesk` - freshdesk* `freshservice` - freshservice* `front` - front* `gorgias` - gorgias* `kustomer` - kustomer* `dixa` - dixa* `plain` - plain* `gitlab` - gitlab* `gitea` - gitea* `shortcut` - shortcut* `sentry` - sentry* `rollbar` - rollbar* `bugsnag` - bugsnag* `honeybadger` - honeybadger* `raygun` - raygun* `snyk` - snyk* `sonarqube` - sonarqube* `semgrep` - semgrep* `rapid7_insightvm` - rapid7_insightvm* `featurebase` - featurebase* `frill` - frill* `aha` - aha* `uservoice` - uservoice* `productboard` - productboard* `canny` - canny* `asknicely` - asknicely* `retently` - retently* `appfigures` - appfigures* `appfollow` - appfollow* `judgeme_reviews` - judgeme_reviews* `intercom` - intercom* `hubspot` - hubspot* `engineering_analytics` - engineering_analytics* `google_search_console` - google_search_console</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `session_replay` - session_replay* `llm_analytics` - llm_analytics* `github` - github* `linear` - linear* `jira` - jira* `zendesk` - zendesk* `conversations` - conversations* `error_tracking` - error_tracking* `endpoints` - endpoints* `pganalyze` - pganalyze* `signals_scout` - signals_scout* `signals_check` - signals_check* `logs` - logs* `health_checks` - health_checks* `replay_vision` - replay_vision* `analytics` - analytics* `freshdesk` - freshdesk* `freshservice` - freshservice* `front` - front* `gorgias` - gorgias* `kustomer` - kustomer* `dixa` - dixa* `plain` - plain* `gitlab` - gitlab* `gitea` - gitea* `shortcut` - shortcut* `sentry` - sentry* `rollbar` - rollbar* `bugsnag` - bugsnag* `honeybadger` - honeybadger* `raygun` - raygun* `datadog` - datadog* `snyk` - snyk* `sonarqube` - sonarqube* `semgrep` - semgrep* `rapid7_insightvm` - rapid7_insightvm* `featurebase` - featurebase* `frill` - frill* `aha` - aha* `uservoice` - uservoice* `productboard` - productboard* `canny` - canny* `asknicely` - asknicely* `retently` - retently* `appfigures` - appfigures* `appfollow` - appfollow* `judgeme_reviews` - judgeme_reviews* `intercom` - intercom* `hubspot` - hubspot* `engineering_analytics` - engineering_analytics* `google_search_console` - google_search_console* `pagerduty` - pagerduty* `opsgenie` - opsgenie* `incident_io` - incident_io* `firehydrant` - firehydrant* `squadcast` - squadcast* `servicenow` - servicenow* `solarwinds_service_desk` - solarwinds_service_desk* `grafana_irm` - grafana_irm* `xmatters` - xmatters* `betterstack` - betterstack* `newrelic` - newrelic* `trigger_dev` - trigger_dev* `checkly` - checkly* `roark` - roark* `monte_carlo` - monte_carlo* `bigeye` - bigeye* `aws_security_hub` - aws_security_hub* `aws_guardduty` - aws_guardduty* `aws_inspector` - aws_inspector* `microsoft_defender_cloud_apps` - microsoft_defender_cloud_apps* `clickup` - clickup* `wrike` - wrike* `trello` - trello* `bugherd` - bugherd* `dynamics365` - dynamics365* `zoho_crm` - zoho_crm* `planhat` - planhat* `trustpilot` - trustpilot* `okendo` - okendo* `sleekplan` - sleekplan* `bettermode` - bettermode* `discourse` - discourse* `mintlify` - mintlify* `langsmith` - langsmith* `sprig` - sprig* `gainsight_px` - gainsight_px* `dynatrace` - dynatrace* `statuspage` - statuspage* `cronitor` - cronitor* `instatus` - instatus* `asana` - asana* `monday` - monday* `plane` - plane* `azure_devops` - azure_devops* `helpscout` - helpscout* `decagon` - decagon* `vitally` - vitally* `usersnap` - usersnap* `typeform` - typeform* `qualtrics` - qualtrics* `surveymonkey` - surveymonkey* `formbricks` - formbricks* `survicate` - survicate* `surveysparrow` - surveysparrow* `lacework` - lacework* `orca_security` - orca_security* `tenable_vulnerability_management` - tenable_vulnerability_management* `google_play_console` - google_play_console* `azure_application_insights` - azure_application_insights* `appsignal` - appsignal* `cursor` - cursor</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct? SourceProduct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct SourceProduct { get; set; }
-#endif
-        /// <summary>Signal type within the source product.* `session_analysis_cluster` - session_analysis_cluster* `session_problem` - session_problem* `evaluation` - evaluation* `evaluation_report` - evaluation_report* `issue` - issue* `ticket` - ticket* `issue_created` - issue_created* `issue_reopened` - issue_reopened* `issue_spiking` - issue_spiking* `endpoint_execution_failed` - endpoint_execution_failed* `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded* `cross_source_issue` - cross_source_issue* `alert_state_change` - alert_state_change* `health_issue` - health_issue* `scanner_finding` - scanner_finding* `anomaly_investigation` - anomaly_investigation* `feedback` - feedback* `review` - review* `ci_flaky_check` - ci_flaky_check* `ci_broken_default_branch` - ci_broken_default_branch* `ci_duration_regression` - ci_duration_regression* `search_opportunity` - search_opportunity* `check_failed` - check_failed</summary>
+        /// <summary>* `session_analysis_cluster` - session_analysis_cluster* `session_problem` - session_problem* `evaluation` - evaluation* `evaluation_report` - evaluation_report* `issue` - issue* `ticket` - ticket* `issue_created` - issue_created* `issue_reopened` - issue_reopened* `issue_spiking` - issue_spiking* `endpoint_execution_failed` - endpoint_execution_failed* `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded* `cross_source_issue` - cross_source_issue* `alert_state_change` - alert_state_change* `health_issue` - health_issue* `scanner_finding` - scanner_finding* `anomaly_investigation` - anomaly_investigation* `feedback` - feedback* `review` - review* `ci_flaky_check` - ci_flaky_check* `ci_broken_default_branch` - ci_broken_default_branch* `ci_duration_regression` - ci_duration_regression* `search_opportunity` - search_opportunity* `check_failed` - check_failed* `incident` - incident</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType? SourceType { get; set; }
+        /// <summary>Pipeline stages with generations whose spend could not be accounted for. Cleared when accounting recovers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType? SourceType { get; set; }
+        public List<string>? SpendAccountingFailedStages { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType SourceType { get; set; }
+        public List<string> SpendAccountingFailedStages { get; private set; }
 #endif
         /// <summary>Emission timestamp.</summary>
         public DateTimeOffset? Timestamp { get; set; }
+        /// <summary>Accounted customer spend in USD cents, including fractional cents. May be partial; null for untracked signals.</summary>
+        public double? TotalSpend { get; private set; }
         /// <summary>Signal weight in [0, 1]; drives report ranking.</summary>
         public double? Weight { get; set; }
         /// <summary>
@@ -104,9 +102,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "match_metadata", n => { MatchMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata.CreateFromDiscriminatorValue); } },
                 { "signal_id", n => { SignalId = n.GetStringValue(); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
-                { "source_product", n => { SourceProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct>(global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct.CreateFromDiscriminatorValue); } },
-                { "source_type", n => { SourceType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType>(global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType.CreateFromDiscriminatorValue); } },
+                { "source_product", n => { SourceProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct>(); } },
+                { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType>(); } },
+                { "spend_accounting_failed_stages", n => { SpendAccountingFailedStages = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
+                { "total_spend", n => { TotalSpend = n.GetDoubleValue(); } },
                 { "weight", n => { Weight = n.GetDoubleValue(); } },
             };
         }
@@ -122,8 +122,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata>("match_metadata", MatchMetadata);
             writer.WriteStringValue("signal_id", SignalId);
             writer.WriteStringValue("source_id", SourceId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct>("source_product", SourceProduct);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType>("source_type", SourceType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct>("source_product", SourceProduct);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceType>("source_type", SourceType);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);
             writer.WriteDoubleValue("weight", Weight);
             writer.WriteAdditionalData(AdditionalData);

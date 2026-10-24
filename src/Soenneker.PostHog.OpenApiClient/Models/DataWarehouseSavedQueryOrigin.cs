@@ -8,19 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataWarehouseSavedQueryOrigin : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnumWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnumWrapper? DataWarehouseSavedQueryOriginEnumWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnumWrapper DataWarehouseSavedQueryOriginEnumWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnum? DataWarehouseSavedQueryOriginEnum { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOrigin();
-            if("DataWarehouseSavedQueryOriginEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnum dataWarehouseSavedQueryOriginEnumValue)
             {
-                result.DataWarehouseSavedQueryOriginEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnumWrapper();
+                result.DataWarehouseSavedQueryOriginEnum = dataWarehouseSavedQueryOriginEnumValue;
             }
             return result;
         }
@@ -51,11 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DataWarehouseSavedQueryOriginEnumWrapper != null)
-            {
-                return DataWarehouseSavedQueryOriginEnumWrapper.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
@@ -68,9 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DataWarehouseSavedQueryOriginEnumWrapper != null)
+            if(DataWarehouseSavedQueryOriginEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnumWrapper>(null, DataWarehouseSavedQueryOriginEnumWrapper);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryOriginEnum>(null, DataWarehouseSavedQueryOriginEnum);
             }
             else if(NullEnum != null)
             {

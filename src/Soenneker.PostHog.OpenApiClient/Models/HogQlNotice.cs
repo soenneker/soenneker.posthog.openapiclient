@@ -32,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The start property</summary>
         public int? Start { get; set; }
+        /// <summary>An https page with more detail about the notice. The editor links to it from the notice&apos;s hover.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; set; }
+#nullable restore
+#else
+        public string Url { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -54,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "fix", n => { Fix = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "start", n => { Start = n.GetIntValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -67,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("fix", Fix);
             writer.WriteStringValue("message", Message);
             writer.WriteIntValue("start", Start);
+            writer.WriteStringValue("url", Url);
         }
     }
 }

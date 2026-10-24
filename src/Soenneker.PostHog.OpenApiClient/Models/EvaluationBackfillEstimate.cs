@@ -18,14 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? AlreadyEvaluatedUnits { get; set; }
         /// <summary>Units that would be evaluated.</summary>
         public int? TotalUnits { get; set; }
-        /// <summary>What one unit is: a generation, a trace, or a session.* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit? Unit { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit Unit { get; set; }
-#endif
         /// <summary>Window end after clamping.</summary>
         public DateTimeOffset? WindowEnd { get; set; }
         /// <summary>Window start after clamping.</summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "already_evaluated_units", n => { AlreadyEvaluatedUnits = n.GetIntValue(); } },
                 { "total_units", n => { TotalUnits = n.GetIntValue(); } },
-                { "unit", n => { Unit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit.CreateFromDiscriminatorValue); } },
+                { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>(); } },
                 { "window_end", n => { WindowEnd = n.GetDateTimeOffsetValue(); } },
                 { "window_start", n => { WindowStart = n.GetDateTimeOffsetValue(); } },
             };
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("already_evaluated_units", AlreadyEvaluatedUnits);
             writer.WriteIntValue("total_units", TotalUnits);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>("unit", Unit);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>("unit", Unit);
             writer.WriteDateTimeOffsetValue("window_end", WindowEnd);
             writer.WriteDateTimeOffsetValue("window_start", WindowStart);
             writer.WriteAdditionalData(AdditionalData);

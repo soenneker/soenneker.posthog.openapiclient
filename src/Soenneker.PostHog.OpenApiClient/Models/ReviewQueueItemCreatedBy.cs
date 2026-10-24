@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hedgehog_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueItemCreatedByHedgehogConfig? HedgehogConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueItemCreatedByHedgehogConfig? HedgehogConfig { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueItemCreatedByHedgehogConfig HedgehogConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueItemCreatedByHedgehogConfig HedgehogConfig { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -115,7 +115,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("distinct_id", DistinctId);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("first_name", FirstName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueItemCreatedByHedgehogConfig>("hedgehog_config", HedgehogConfig);
             writer.WriteBoolValue("is_email_verified", IsEmailVerified);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicRoleAtOrganization>("role_at_organization", RoleAtOrganization);

@@ -23,22 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFinding> Findings { get; private set; }
 #endif
-        /// <summary>Overall health derived from AWS&apos;s verdicts: healthy (no findings), warning (low-impact findings), critical (high-impact findings — sending may be paused), suspended (the SES tenant&apos;s sending is paused). Reflects AWS state only; PostHog-initiated suspensions are reported separately via email_sending_suspended.* `healthy` - healthy* `warning` - warning* `critical` - critical* `suspended` - suspended</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `healthy` - healthy* `warning` - warning* `critical` - critical* `suspended` - suspended</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationHealth? Health { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationHealth Health { get; private set; }
-#endif
-        /// <summary>The tenant&apos;s aggregate sending status. REINSTATED means sending was re-enabled after a pause and AWS is re-monitoring it.* `ENABLED` - ENABLED* `REINSTATED` - REINSTATED* `DISABLED` - DISABLED</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ENABLED` - ENABLED* `REINSTATED` - REINSTATED* `DISABLED` - DISABLED</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationSendingStatus? SendingStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationSendingStatus SendingStatus { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputation"/> and sets the default values.
         /// </summary>
@@ -65,8 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "findings", n => { Findings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFinding>(global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFinding.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "health", n => { Health = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationHealth>(global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationHealth.CreateFromDiscriminatorValue); } },
-                { "sending_status", n => { SendingStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationSendingStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationSendingStatus.CreateFromDiscriminatorValue); } },
+                { "health", n => { Health = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationHealth>(); } },
+                { "sending_status", n => { SendingStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationSendingStatus>(); } },
             };
         }
         /// <summary>

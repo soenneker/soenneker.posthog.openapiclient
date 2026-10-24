@@ -46,14 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum?> Pipelines { get; set; }
 #endif
-        /// <summary>What happens to matching events: dropped, sent to the overflow lane, or ingested without person processing.* `skip_person_processing` - Skip Person Processing* `drop_event_from_ingestion` - Drop Event From Ingestion* `force_overflow_from_ingestion` - Force Overflow From Ingestion* `redirect_to_dlq` - Redirect To Dlq* `redirect_to_topic` - Redirect To Topic</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `skip_person_processing` - Skip Person Processing* `drop_event_from_ingestion` - Drop Event From Ingestion* `force_overflow_from_ingestion` - Force Overflow From Ingestion* `redirect_to_dlq` - Redirect To Dlq* `redirect_to_topic` - Redirect To Topic</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType? RestrictionType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType RestrictionType { get; set; }
-#endif
         /// <summary>Session IDs the restriction applies to. Empty means it is not filtered by session ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event_names", n => { EventNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "event_uuids", n => { EventUuids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pipelines", n => { Pipelines = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum>()?.AsList(); } },
-                { "restriction_type", n => { RestrictionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType>(global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType.CreateFromDiscriminatorValue); } },
+                { "restriction_type", n => { RestrictionType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType>(); } },
                 { "session_ids", n => { SessionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -106,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("event_names", EventNames);
             writer.WriteCollectionOfPrimitiveValues<string>("event_uuids", EventUuids);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum>("pipelines", Pipelines);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType>("restriction_type", RestrictionType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType>("restriction_type", RestrictionType);
             writer.WriteCollectionOfPrimitiveValues<string>("session_ids", SessionIds);
             writer.WriteAdditionalData(AdditionalData);
         }

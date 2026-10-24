@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>signaled: the live run received the request. new_run: a fresh run started. already_queued: an identical run was already starting. reported: a non-creator&apos;s request was filed in the task thread for the creator.* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued* `reported` - reported</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued* `reported` - reported</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome? RequestOutcome { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome RequestOutcome { get; set; }
-#endif
         /// <summary>Authoring task that received the request or report.</summary>
         public Guid? TaskId { get; set; }
         /// <summary>
@@ -50,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "request_outcome", n => { RequestOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome.CreateFromDiscriminatorValue); } },
+                { "request_outcome", n => { RequestOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome>(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }
@@ -61,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome>("request_outcome", RequestOutcome);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome>("request_outcome", RequestOutcome);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteAdditionalData(AdditionalData);
         }

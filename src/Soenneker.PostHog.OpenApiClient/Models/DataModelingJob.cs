@@ -14,8 +14,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ClickHouse CPU time in microseconds.</summary>
+        public int? CpuMicroseconds { get; private set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>The engine that ran this materialization job.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Engine { get; private set; }
+#nullable restore
+#else
+        public string Engine { get; private set; }
+#endif
         /// <summary>The error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +46,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>The last_run_at property</summary>
         public DateTimeOffset? LastRunAt { get; private set; }
+        /// <summary>Number of ClickHouse queries measured for this run.</summary>
+        public int? QueryCount { get; private set; }
+        /// <summary>Bytes read by this run, or null if it has not been measured yet.</summary>
+        public int? ReadBytes { get; private set; }
+        /// <summary>Rows read by this run, including probes and retries.</summary>
+        public int? ReadRows { get; private set; }
         /// <summary>Total rows expected to be materialized</summary>
         public int? RowsExpected { get; private set; }
         /// <summary>The rows_materialized property</summary>
@@ -48,18 +64,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode RunMode { get; private set; }
 #endif
+        /// <summary>Whether the model is soft-deleted, or null if permanently deleted.</summary>
+        public bool? SavedQueryDeleted { get; private set; }
         /// <summary>The saved_query_id property</summary>
         public Guid? SavedQueryId { get; private set; }
-        /// <summary>The status property</summary>
+        /// <summary>Model name, or null if permanently deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus? Status { get; private set; }
+        public string? SavedQueryName { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus Status { get; private set; }
+        public string SavedQueryName { get; private set; }
 #endif
+        /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `Failed` - Failed* `Running` - Running* `Skipped` - Skipped</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus? Status { get; private set; }
         /// <summary>When the job row last changed. For finished jobs this is when the run reached its terminal status.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>When usage was last measured. Null means unmeasured.</summary>
+        public DateTimeOffset? UsageUpdatedAt { get; private set; }
         /// <summary>The workflow_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,17 +123,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cpu_microseconds", n => { CpuMicroseconds = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "engine", n => { Engine = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "full_refresh_reason", n => { FullRefreshReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
+                { "query_count", n => { QueryCount = n.GetIntValue(); } },
+                { "read_bytes", n => { ReadBytes = n.GetIntValue(); } },
+                { "read_rows", n => { ReadRows = n.GetIntValue(); } },
                 { "rows_expected", n => { RowsExpected = n.GetIntValue(); } },
                 { "rows_materialized", n => { RowsMaterialized = n.GetIntValue(); } },
                 { "run_mode", n => { RunMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode>(global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode.CreateFromDiscriminatorValue); } },
+                { "saved_query_deleted", n => { SavedQueryDeleted = n.GetBoolValue(); } },
                 { "saved_query_id", n => { SavedQueryId = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus.CreateFromDiscriminatorValue); } },
+                { "saved_query_name", n => { SavedQueryName = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "usage_updated_at", n => { UsageUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
                 { "workflow_run_id", n => { WorkflowRunId = n.GetStringValue(); } },
             };

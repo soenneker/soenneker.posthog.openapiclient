@@ -160,6 +160,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Apns,
         #pragma warning restore CS1591
+        [EnumMember(Value = "apple-ads")]
+        #pragma warning disable CS1591
+        AppleAds,
+        #pragma warning restore CS1591
         [EnumMember(Value = "postgresql")]
         #pragma warning disable CS1591
         Postgresql,

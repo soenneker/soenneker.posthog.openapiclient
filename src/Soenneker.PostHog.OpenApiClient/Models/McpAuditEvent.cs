@@ -48,22 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CredentialOwner { get; private set; }
 #endif
-        /// <summary>How the gateway decided the call.* `auto` - Auto-approved* `approved` - Approved* `pending` - Awaiting approval* `blocked` - Blocked</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `auto` - Auto-approved* `approved` - Approved* `pending` - Awaiting approval* `blocked` - Blocked</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventDecision? Decision { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventDecision Decision { get; private set; }
-#endif
         /// <summary>Scope of the agent grant the call used. Blank for member calls.* `personal` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope? GrantScope { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope GrantScope { get; private set; }
-#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Gateway server name at call time (denormalized).</summary>
@@ -112,8 +100,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "actor_user", n => { ActorUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "credential_owner", n => { CredentialOwner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
-                { "decision", n => { Decision = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventDecision>(global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventDecision.CreateFromDiscriminatorValue); } },
-                { "grant_scope", n => { GrantScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope>(global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope.CreateFromDiscriminatorValue); } },
+                { "decision", n => { Decision = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventDecision>(); } },
+                { "grant_scope", n => { GrantScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "server_name", n => { ServerName = n.GetStringValue(); } },
                 { "tool_name", n => { ToolName = n.GetStringValue(); } },

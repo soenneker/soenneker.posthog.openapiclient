@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ScopeId { get; set; }
 #endif
-        /// <summary>Notification setting this rule enforces.* `data_catalog_weekly_digest` - data_catalog_weekly_digest* `discussions_mentioned` - discussions_mentioned* `error_tracking_issue_assigned` - error_tracking_issue_assigned* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled* `materialized_view_sync_failed` - materialized_view_sync_failed* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate* `organization_member_join_email_disabled` - organization_member_join_email_disabled* `pipeline_notifications_disabled` - pipeline_notifications_disabled* `project_weekly_digest_disabled` - project_weekly_digest_disabled* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `approval_requested` - approval_requested* `approval_resolved` - approval_resolved* `data_catalog_weekly_digest` - data_catalog_weekly_digest* `discussions_mentioned` - discussions_mentioned* `error_tracking_issue_assigned` - error_tracking_issue_assigned* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled* `materialized_view_sync_failed` - materialized_view_sync_failed* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate* `organization_member_join_email_disabled` - organization_member_join_email_disabled* `pipeline_notifications_disabled` - pipeline_notifications_disabled* `project_weekly_digest_disabled` - project_weekly_digest_disabled* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting? Setting { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting Setting { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock"/> and sets the default values.
         /// </summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "locked_value", n => { LockedValue = n.GetBoolValue(); } },
                 { "scope_id", n => { ScopeId = n.GetStringValue(); } },
-                { "setting", n => { Setting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting.CreateFromDiscriminatorValue); } },
+                { "setting", n => { Setting = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting>(); } },
             };
         }
         /// <summary>
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("locked_value", LockedValue);
             writer.WriteStringValue("scope_id", ScopeId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting>("setting", Setting);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting>("setting", Setting);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

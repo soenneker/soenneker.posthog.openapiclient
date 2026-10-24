@@ -8,13 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas).
+    /// Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SessionReplayListWidgetCatalogEntryOpenApiConfigSchema : IAdditionalDataHolder, IParsable
+    public partial class SessionReplayListWidgetCatalogEntryOpenApiConfigSchema : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>short_id of a session replay collection to scope the widget to its pinned recordings. Combine with savedFilterId or property filters to narrow within the collection; orderBy, orderDirection, and limit still apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,17 +48,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The widgetFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters? WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFiltersProperty? WidgetFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFiltersProperty WidgetFilters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
         /// </summary>
         public SessionReplayListWidgetCatalogEntryOpenApiConfigSchema()
         {
-            AdditionalData = new Dictionary<string, object>();
             Limit = 10;
         }
         /// <summary>
@@ -88,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderBy>(); } },
                 { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderDirection>(); } },
                 { "savedFilterId", n => { SavedFilterId = n.GetStringValue(); } },
-                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters.CreateFromDiscriminatorValue); } },
+                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFiltersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -105,8 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderBy>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderDirection>("orderDirection", OrderDirection);
             writer.WriteStringValue("savedFilterId", SavedFilterId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>("widgetFilters", WidgetFilters);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFiltersProperty>("widgetFilters", WidgetFilters);
         }
     }
 }

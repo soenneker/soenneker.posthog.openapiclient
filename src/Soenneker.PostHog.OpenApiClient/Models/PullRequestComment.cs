@@ -39,14 +39,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Body { get; private set; }
 #endif
-        /// <summary>&apos;conversation&apos; for a PR discussion comment, &apos;review&apos; for an inline code-review comment.* `conversation` - conversation* `review` - review</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `conversation` - conversation* `review` - review</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCommentCommentType? CommentType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCommentCommentType CommentType { get; private set; }
-#endif
         /// <summary>SHA of the commit the review comment was made against (review comments only).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -151,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "author", n => { Author = n.GetStringValue(); } },
                 { "author_avatar_url", n => { AuthorAvatarUrl = n.GetStringValue(); } },
                 { "body", n => { Body = n.GetStringValue(); } },
-                { "comment_type", n => { CommentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCommentCommentType>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCommentCommentType.CreateFromDiscriminatorValue); } },
+                { "comment_type", n => { CommentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCommentCommentType>(); } },
                 { "commit_id", n => { CommitId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "diff_hunk", n => { DiffHunk = n.GetStringValue(); } },

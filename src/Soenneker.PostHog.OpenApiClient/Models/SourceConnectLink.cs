@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>What the user will do on the connect page: &apos;oauth&apos; = authorize an account in their browser; &apos;credentials&apos; = enter connection details (or pick OAuth where the source offers both). Either way secrets never pass through the agent, and the result is always a stored credential id.* `oauth` - oauth* `credentials` - credentials</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `oauth` - oauth* `credentials` - credentials</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod? AuthMethod { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod AuthMethod { get; set; }
-#endif
         /// <summary>Full URL to share with the user. It opens the source&apos;s connection form in PostHog — credentials never pass through the agent or the chat.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "auth_method", n => { AuthMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod>(global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod.CreateFromDiscriminatorValue); } },
+                { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod>(); } },
                 { "connect_url", n => { ConnectUrl = n.GetStringValue(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "source_type", n => { SourceType = n.GetStringValue(); } },
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod>("auth_method", AuthMethod);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod>("auth_method", AuthMethod);
             writer.WriteStringValue("connect_url", ConnectUrl);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("source_type", SourceType);

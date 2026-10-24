@@ -47,14 +47,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty Result { get; set; }
 #endif
-        /// <summary>&apos;ok&apos; carries a result. &apos;not_connected&apos; and &apos;needs_reauth&apos; mean the viewer must connect the provider at connect_path. &apos;blocked&apos; is team policy. &apos;write_blocked&apos; is a tool that may write. &apos;needs_approval&apos; requires the viewer to approve this call in the host. &apos;upstream_error&apos; is a failure at the provider.* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `needs_approval` - Needs Approval* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `needs_approval` - Needs Approval* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus Status { get; set; }
-#endif
         /// <summary>True when the result exceeded the size cap and was cut to a preview.</summary>
         public bool? Truncated { get; set; }
         /// <summary>
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "connect_path", n => { ConnectPath = n.GetStringValue(); } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus>(); } },
                 { "truncated", n => { Truncated = n.GetBoolValue(); } },
             };
         }
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("connect_path", ConnectPath);
             writer.WriteStringValue("detail", Detail);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty>("result", Result);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus>("status", Status);
             writer.WriteBoolValue("truncated", Truncated);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -14,22 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Which audience&apos;s baseline to overwrite.* `members` - members* `agents` - agents</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `members` - members* `agents` - agents</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience? Audience { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience Audience { get; set; }
-#endif
-        /// <summary>Preset to apply.* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset? Preset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset Preset { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ApplyPreset"/> and sets the default values.
         /// </summary>
@@ -55,8 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audience", n => { Audience = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience>(global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience.CreateFromDiscriminatorValue); } },
-                { "preset", n => { Preset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset>(global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset.CreateFromDiscriminatorValue); } },
+                { "audience", n => { Audience = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience>(); } },
+                { "preset", n => { Preset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset>(); } },
             };
         }
         /// <summary>
@@ -66,8 +54,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience>("audience", Audience);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset>("preset", Preset);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience>("audience", Audience);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset>("preset", Preset);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

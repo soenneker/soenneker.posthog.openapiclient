@@ -20,14 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? Bucket { get; set; }
         /// <summary>Number of billable requests in this bucket.</summary>
         public int? RequestCount { get; set; }
-        /// <summary>Remote flag evaluation or local flag-definition request.* `remote_evaluation` - remote_evaluation* `local_evaluation` - local_evaluation</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `remote_evaluation` - remote_evaluation* `local_evaluation` - local_evaluation</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType? RequestType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType RequestType { get; set; }
-#endif
         /// <summary>SDK family parsed from the request user agent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "billing_units", n => { BillingUnits = n.GetIntValue(); } },
                 { "bucket", n => { Bucket = n.GetDateTimeOffsetValue(); } },
                 { "request_count", n => { RequestCount = n.GetIntValue(); } },
-                { "request_type", n => { RequestType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType.CreateFromDiscriminatorValue); } },
+                { "request_type", n => { RequestType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType>(); } },
                 { "sdk", n => { Sdk = n.GetStringValue(); } },
             };
         }
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("billing_units", BillingUnits);
             writer.WriteDateTimeOffsetValue("bucket", Bucket);
             writer.WriteIntValue("request_count", RequestCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType>("request_type", RequestType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType>("request_type", RequestType);
             writer.WriteStringValue("sdk", Sdk);
             writer.WriteAdditionalData(AdditionalData);
         }

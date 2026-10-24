@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The is_email_verified property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicTypeIsEmailVerified? IsEmailVerified { get; set; }
+        public UntypedNode? IsEmailVerified { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicTypeIsEmailVerified IsEmailVerified { get; set; }
+        public UntypedNode IsEmailVerified { get; set; }
 #endif
         /// <summary>The last_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "hedgehog_config", n => { HedgehogConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalHedgehogConfig>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalHedgehogConfig.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetDoubleValue(); } },
-                { "is_email_verified", n => { IsEmailVerified = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicTypeIsEmailVerified>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicTypeIsEmailVerified.CreateFromDiscriminatorValue); } },
+                { "is_email_verified", n => { IsEmailVerified = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "role_at_organization", n => { RoleAtOrganization = n.GetStringValue(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalHedgehogConfig>("hedgehog_config", HedgehogConfig);
             writer.WriteDoubleValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicTypeIsEmailVerified>("is_email_verified", IsEmailVerified);
+            writer.WriteObjectValue<UntypedNode>("is_email_verified", IsEmailVerified);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteStringValue("role_at_organization", RoleAtOrganization);
             writer.WriteStringValue("uuid", Uuid);

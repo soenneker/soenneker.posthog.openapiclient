@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Execution logs from the test invocation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationLogsItem>? Logs { get; private set; }
+        public UntypedNode? Logs { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationLogsItem> Logs { get; private set; }
+        public UntypedNode Logs { get; private set; }
 #endif
         /// <summary>When true (default), async functions like fetch() are simulated.</summary>
         public bool? MockAsyncFunctions { get; set; }
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration.CreateFromDiscriminatorValue); } },
                 { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty.CreateFromDiscriminatorValue); } },
                 { "invocation_id", n => { InvocationId = n.GetStringValue(); } },
-                { "logs", n => { Logs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationLogsItem>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationLogsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "logs", n => { Logs = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "mock_async_functions", n => { MockAsyncFunctions = n.GetBoolValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "use_draft", n => { UseDraft = n.GetBoolValue(); } },

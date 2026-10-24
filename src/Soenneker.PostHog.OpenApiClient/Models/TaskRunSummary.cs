@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of the latest run.</summary>
         public Guid? Id { get; set; }
-        /// <summary>Execution mode of the latest run.* `interactive` - interactive* `background` - background</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `interactive` - interactive* `background` - background</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode? Mode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode Mode { get; set; }
-#endif
         /// <summary>State of that pull request: open, draft, merged, closed, or unknown. Null when the latest run opened no pull request.* `open` - open* `draft` - draft* `merged` - merged* `closed` - closed* `unknown` - unknown</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "environment", n => { Environment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryEnvironment>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryEnvironment.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode.CreateFromDiscriminatorValue); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode>(); } },
                 { "pr_state", n => { PrState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryPrState>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryPrState.CreateFromDiscriminatorValue); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryStatus.CreateFromDiscriminatorValue); } },
@@ -107,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryEnvironment>("environment", Environment);
             writer.WriteGuidValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode>("mode", Mode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryPrState>("pr_state", PrState);
             writer.WriteStringValue("pr_url", PrUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryStatus>("status", Status);

@@ -47,14 +47,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PendingInput PendingInput { get; set; }
 #endif
-        /// <summary>Lifecycle stage of the wizard run.* `idle` - IDLE* `running` - RUNNING* `completed` - COMPLETED* `error` - ERROR</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `idle` - IDLE* `running` - RUNNING* `completed` - COMPLETED* `error` - ERROR</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase? RunPhase { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase RunPhase { get; set; }
-#endif
         /// <summary>Stable identifier the wizard mints for this run (format: &apos;{workflow_id}-{skill_id}-{started_at_iso}&apos;). Reposting with the same session_id upserts the existing row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -118,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty.CreateFromDiscriminatorValue); } },
                 { "handoff_text", n => { HandoffText = n.GetStringValue(); } },
                 { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.PendingInput.CreateFromDiscriminatorValue); } },
-                { "run_phase", n => { RunPhase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase.CreateFromDiscriminatorValue); } },
+                { "run_phase", n => { RunPhase = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "skill_id", n => { SkillId = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
@@ -137,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>("event_plan", EventPlan);
             writer.WriteStringValue("handoff_text", HandoffText);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>("pending_input", PendingInput);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>("run_phase", RunPhase);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>("run_phase", RunPhase);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("skill_id", SkillId);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);

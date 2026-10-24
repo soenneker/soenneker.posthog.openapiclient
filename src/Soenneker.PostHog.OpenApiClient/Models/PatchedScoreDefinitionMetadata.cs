@@ -32,6 +32,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Updated compact label. Blank uses the full name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ShortName { get; set; }
+#nullable restore
+#else
+        public string ShortName { get; set; }
+#endif
+        /// <summary>Tag names. Replaces existing tags; send [] to remove all tags. Names are trimmed and lowercased.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedScoreDefinitionMetadata"/> and sets the default values.
         /// </summary>
@@ -60,6 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "short_name", n => { ShortName = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -72,6 +90,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("archived", Archived);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("short_name", ShortName);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

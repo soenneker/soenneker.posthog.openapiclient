@@ -42,6 +42,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>Unpublished edits to a transactional template&apos;s content. Sends keep using `content`. Saving `content` publishes it and clears the draft. Set null to discard the draft.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent? DraftContent { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent DraftContent { get; set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Message category ID to file the template under. Must belong to the same project.</summary>
@@ -54,6 +62,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email&apos;s body or filled-in subject, and clicked links keep only the site address. Can change at any time.</summary>
+        public bool? Sensitive { get; set; }
+        /// <summary>Tags for organizing templates, for example by team or use case. Tags are shared with the rest of the project. Omit to keep the current tags, send an empty list to remove them all.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
+        /// <summary>The workflow that sends this template over the transactional email API. Null until the template is made transactional. Each content save writes a new version of it.</summary>
+        public Guid? TransactionalHogFlowId { get; private set; }
         /// <summary>Message channel of the template. Currently &apos;email&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,9 +114,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "draft_content", n => { DraftContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message_category", n => { MessageCategory = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "sensitive", n => { Sensitive = n.GetBoolValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "transactional_hog_flow_id", n => { TransactionalHogFlowId = n.GetGuidValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -111,8 +135,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentComposed>("content", Content);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent>("draft_content", DraftContent);
             writer.WriteGuidValue("message_category", MessageCategory);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("sensitive", Sensitive);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

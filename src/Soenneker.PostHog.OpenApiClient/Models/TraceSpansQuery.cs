@@ -55,21 +55,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The offset property</summary>
         public int? Offset { get; set; }
         /// <summary>Column to order by. Defaults to timestamp. `timestamp` paginates via keyset cursor (`after`); other columns via `offset`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumnWrapper? OrderBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumnWrapper OrderBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumn? OrderBy { get; set; }
         /// <summary>Order direction. Defaults to DESC.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper2? OrderDirection { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper2 OrderDirection { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2? OrderDirection { get; set; }
         /// <summary>Prefetch up to this many spans per trace and include them in results</summary>
         public int? PrefetchSpans { get; set; }
         /// <summary>The response property</summary>
@@ -143,8 +131,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumnWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumnWrapper.CreateFromDiscriminatorValue); } },
-                { "orderDirection", n => { OrderDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper2.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumn>(); } },
+                { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>(); } },
                 { "prefetchSpans", n => { PrefetchSpans = n.GetIntValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryResponse.CreateFromDiscriminatorValue); } },
                 { "rootSpans", n => { RootSpans = n.GetBoolValue(); } },
@@ -171,8 +159,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumnWrapper>("orderBy", OrderBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper2>("orderDirection", OrderDirection);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceOrderColumn>("orderBy", OrderBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>("orderDirection", OrderDirection);
             writer.WriteIntValue("prefetchSpans", PrefetchSpans);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryResponse>("response", Response);
             writer.WriteBoolValue("rootSpans", RootSpans);

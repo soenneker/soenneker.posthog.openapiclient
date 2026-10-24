@@ -27,32 +27,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Audience snapshot the run fanned out to, taken from the workflow&apos;s batch trigger filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobFilters? Filters { get; private set; }
+        public UntypedNode? Filters { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobFilters Filters { get; private set; }
+        public UntypedNode Filters { get; private set; }
 #endif
         /// <summary>ID of the workflow this batch run belongs to.</summary>
         public Guid? HogFlow { get; set; }
         /// <summary>ID of the batch run.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Not currently tracked — stays at its initial value. Use the workflow logs/metrics endpoints for run outcome.* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus Status { get; set; }
-#endif
         /// <summary>When the batch run was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Variable value overrides applied to this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobVariables? Variables { get; set; }
+        public UntypedNode? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobVariables Variables { get; set; }
+        public UntypedNode Variables { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJob"/> and sets the default values.
@@ -81,12 +75,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCreatedBy.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "hog_flow", n => { HogFlow = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobVariables>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobVariables.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -97,8 +91,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("hog_flow", HogFlow);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobVariables>("variables", Variables);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus>("status", Status);
+            writer.WriteObjectValue<UntypedNode>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

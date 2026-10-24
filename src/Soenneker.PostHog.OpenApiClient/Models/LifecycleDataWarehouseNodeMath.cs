@@ -8,59 +8,25 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathTypeWrapper12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathTypeWrapper12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathTypeWrapper12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper14"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathTypeWrapper12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupMathTypeWrapper12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MathWrapper11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathTypeWrapper12"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathAnyOf8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LifecycleDataWarehouseNodeMath : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathTypeWrapper12"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaseMathTypeWrapper12? BaseMathTypeWrapper12 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaseMathTypeWrapper12 BaseMathTypeWrapper12 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathTypeWrapper12"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathTypeWrapper12? CalendarHeatmapMathTypeWrapper12 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathTypeWrapper12 CalendarHeatmapMathTypeWrapper12 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathTypeWrapper12"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathTypeWrapper12? CountPerActorMathTypeWrapper12 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathTypeWrapper12 CountPerActorMathTypeWrapper12 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper14"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper14? ExperimentMetricMathTypeWrapper14 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper14 ExperimentMetricMathTypeWrapper14 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathTypeWrapper12"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathTypeWrapper12? FunnelMathTypeWrapper12 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathTypeWrapper12 FunnelMathTypeWrapper12 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupMathTypeWrapper12"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupMathTypeWrapper12? GroupMathTypeWrapper12 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupMathTypeWrapper12 GroupMathTypeWrapper12 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType? BaseMathType { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType? CalendarHeatmapMathType { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType? CountPerActorMathType { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType? ExperimentMetricMathType { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType? FunnelMathType { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType? GroupMathType { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathAnyOf8"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathAnyOf8? LifecycleDataWarehouseNodeMathAnyOf8 { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,22 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathMember1 LifecycleDataWarehouseNodeMathMember1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MathWrapper11"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathWrapper11? MathWrapper11 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathWrapper11 MathWrapper11 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathTypeWrapper12"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathTypeWrapper12? PropertyMathTypeWrapper12 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathTypeWrapper12 PropertyMathTypeWrapper12 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType? PropertyMathType { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -94,15 +46,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMath();
-            result.BaseMathTypeWrapper12 = new global::Soenneker.PostHog.OpenApiClient.Models.BaseMathTypeWrapper12();
-            result.CalendarHeatmapMathTypeWrapper12 = new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathTypeWrapper12();
-            result.CountPerActorMathTypeWrapper12 = new global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathTypeWrapper12();
-            result.ExperimentMetricMathTypeWrapper14 = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathTypeWrapper14();
-            result.FunnelMathTypeWrapper12 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathTypeWrapper12();
-            result.GroupMathTypeWrapper12 = new global::Soenneker.PostHog.OpenApiClient.Models.GroupMathTypeWrapper12();
-            result.LifecycleDataWarehouseNodeMathMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathMember1();
-            result.MathWrapper11 = new global::Soenneker.PostHog.OpenApiClient.Models.MathWrapper11();
-            result.PropertyMathTypeWrapper12 = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathTypeWrapper12();
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType baseMathTypeValue)
+            {
+                result.BaseMathType = baseMathTypeValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType calendarHeatmapMathTypeValue)
+            {
+                result.CalendarHeatmapMathType = calendarHeatmapMathTypeValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType countPerActorMathTypeValue)
+            {
+                result.CountPerActorMathType = countPerActorMathTypeValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType experimentMetricMathTypeValue)
+            {
+                result.ExperimentMetricMathType = experimentMetricMathTypeValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType funnelMathTypeValue)
+            {
+                result.FunnelMathType = funnelMathTypeValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType groupMathTypeValue)
+            {
+                result.GroupMathType = groupMathTypeValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathAnyOf8>() is global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathAnyOf8 lifecycleDataWarehouseNodeMathAnyOf8Value)
+            {
+                result.LifecycleDataWarehouseNodeMathAnyOf8 = lifecycleDataWarehouseNodeMathAnyOf8Value;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType propertyMathTypeValue)
+            {
+                result.PropertyMathType = propertyMathTypeValue;
+            }
+            else {
+                result.LifecycleDataWarehouseNodeMathMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathMember1();
+            }
             return result;
         }
         /// <summary>
@@ -111,9 +89,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BaseMathTypeWrapper12 != null || CalendarHeatmapMathTypeWrapper12 != null || CountPerActorMathTypeWrapper12 != null || ExperimentMetricMathTypeWrapper14 != null || FunnelMathTypeWrapper12 != null || GroupMathTypeWrapper12 != null || LifecycleDataWarehouseNodeMathMember1 != null || MathWrapper11 != null || PropertyMathTypeWrapper12 != null)
+            if(LifecycleDataWarehouseNodeMathMember1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BaseMathTypeWrapper12, CalendarHeatmapMathTypeWrapper12, CountPerActorMathTypeWrapper12, ExperimentMetricMathTypeWrapper14, FunnelMathTypeWrapper12, GroupMathTypeWrapper12, LifecycleDataWarehouseNodeMathMember1, MathWrapper11, PropertyMathTypeWrapper12);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(LifecycleDataWarehouseNodeMathMember1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -124,7 +102,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseMathTypeWrapper12>(null, BaseMathTypeWrapper12, CalendarHeatmapMathTypeWrapper12, CountPerActorMathTypeWrapper12, ExperimentMetricMathTypeWrapper14, FunnelMathTypeWrapper12, GroupMathTypeWrapper12, LifecycleDataWarehouseNodeMathMember1, MathWrapper11, PropertyMathTypeWrapper12);
+            if(BaseMathType != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType>(null, BaseMathType);
+            }
+            else if(CalendarHeatmapMathType != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType>(null, CalendarHeatmapMathType);
+            }
+            else if(CountPerActorMathType != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType>(null, CountPerActorMathType);
+            }
+            else if(ExperimentMetricMathType != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>(null, ExperimentMetricMathType);
+            }
+            else if(FunnelMathType != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType>(null, FunnelMathType);
+            }
+            else if(GroupMathType != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType>(null, GroupMathType);
+            }
+            else if(LifecycleDataWarehouseNodeMathAnyOf8 != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathAnyOf8>(null, LifecycleDataWarehouseNodeMathAnyOf8);
+            }
+            else if(PropertyMathType != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>(null, PropertyMathType);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeMathMember1>(null, LifecycleDataWarehouseNodeMathMember1);
+            }
         }
     }
 }

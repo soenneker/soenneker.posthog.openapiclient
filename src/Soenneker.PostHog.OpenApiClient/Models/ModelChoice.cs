@@ -39,14 +39,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Runtime that drives this model, such as &apos;claude&apos; or &apos;codex&apos;.* `claude` - claude* `codex` - codex</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `claude` - claude* `codex` - codex</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter? RuntimeAdapter { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter RuntimeAdapter { get; set; }
-#endif
         /// <summary>Reasoning efforts this model accepts, in ascending order. Empty for a model with no effort control.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cost_multiplier", n => { CostMultiplier = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter.CreateFromDiscriminatorValue); } },
+                { "runtime_adapter", n => { RuntimeAdapter = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter>(); } },
                 { "supported_efforts", n => { SupportedEfforts = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>()?.AsList(); } },
             };
         }
@@ -97,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cost_multiplier", CostMultiplier);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelChoiceRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>("supported_efforts", SupportedEfforts);
             writer.WriteAdditionalData(AdditionalData);
         }

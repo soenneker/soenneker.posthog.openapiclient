@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestFilters Filters { get; set; }
 #endif
-        /// <summary>Replacement severity. Omit to preserve the existing severity.* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestSeverity Severity { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestFilters.CreateFromDiscriminatorValue); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestSeverity>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestFilters>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSeverityRuleUpdateRequestSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

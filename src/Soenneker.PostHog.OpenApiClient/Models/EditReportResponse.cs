@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? ContentRevisionCount { get; set; }
         /// <summary>Whether your note raised the report&apos;s corroboration count instead of landing as its own entry. Only notes marked corroboration_only can collapse; free-form notes remain in the work log.</summary>
         public bool? CorroborationCollapsed { get; set; }
+        /// <summary>Which work decisions the edit replaced (`actionability`, `priority`). Empty when you set none, or re-sent the decisions the report already held.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? DecisionFieldsSet { get; set; }
+#nullable restore
+#else
+        public List<string> DecisionFieldsSet { get; set; }
+#endif
         /// <summary>How many observations this edit added to the report&apos;s evidence rail; 0 if none.</summary>
         public int? EvidenceAppended { get; set; }
         /// <summary>Whether this edit actually rewrote the report&apos;s title or summary. False for a note, a reviewer change, or a re-send of the text the report already had.</summary>
@@ -54,6 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? SuggestedPromptsSet { get; set; }
         /// <summary>Whether the edit recorded that the report&apos;s pull request should be replaced. False when you did not ask for it, when the edit changed no content, or when the report has already been rewritten too many times.</summary>
         public bool? SupersedesImplementation { get; set; }
+        /// <summary>How many tags the report now carries, or null if the edit left them as they were (the field omitted, or a re-send of what was already stored). 0 means the edit removed the report&apos;s tags.</summary>
+        public int? TagsSet { get; set; }
         /// <summary>Which presentation fields changed (e.g. `title`, `summary`); empty if only a note was appended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,6 +71,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> UpdatedFields { get; set; }
+#endif
+        /// <summary>Request fields the edit did not apply, each with the reason. Empty when every field applied.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning>? Warnings { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning> Warnings { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse"/> and sets the default values.
@@ -90,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "charts_set", n => { ChartsSet = n.GetIntValue(); } },
                 { "content_revision_count", n => { ContentRevisionCount = n.GetIntValue(); } },
                 { "corroboration_collapsed", n => { CorroborationCollapsed = n.GetBoolValue(); } },
+                { "decision_fields_set", n => { DecisionFieldsSet = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "evidence_appended", n => { EvidenceAppended = n.GetIntValue(); } },
                 { "is_content_revision", n => { IsContentRevision = n.GetBoolValue(); } },
                 { "links_appended", n => { LinksAppended = n.GetIntValue(); } },
@@ -101,7 +120,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "reviewers_set", n => { ReviewersSet = n.GetBoolValue(); } },
                 { "suggested_prompts_set", n => { SuggestedPromptsSet = n.GetIntValue(); } },
                 { "supersedes_implementation", n => { SupersedesImplementation = n.GetBoolValue(); } },
+                { "tags_set", n => { TagsSet = n.GetIntValue(); } },
                 { "updated_fields", n => { UpdatedFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning>(global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -114,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("charts_set", ChartsSet);
             writer.WriteIntValue("content_revision_count", ContentRevisionCount);
             writer.WriteBoolValue("corroboration_collapsed", CorroborationCollapsed);
+            writer.WriteCollectionOfPrimitiveValues<string>("decision_fields_set", DecisionFieldsSet);
             writer.WriteIntValue("evidence_appended", EvidenceAppended);
             writer.WriteBoolValue("is_content_revision", IsContentRevision);
             writer.WriteIntValue("links_appended", LinksAppended);
@@ -125,7 +147,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("reviewers_set", ReviewersSet);
             writer.WriteIntValue("suggested_prompts_set", SuggestedPromptsSet);
             writer.WriteBoolValue("supersedes_implementation", SupersedesImplementation);
+            writer.WriteIntValue("tags_set", TagsSet);
             writer.WriteCollectionOfPrimitiveValues<string>("updated_fields", UpdatedFields);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Current task status reported by the setup agent.* `created` - created* `running` - running* `completed` - completed* `failed` - failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `created` - created* `running` - running* `completed` - completed* `failed` - failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTaskStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTaskStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTask"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTaskStatus>(global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTaskStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTaskStatus>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTaskStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateWizardRunTaskStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

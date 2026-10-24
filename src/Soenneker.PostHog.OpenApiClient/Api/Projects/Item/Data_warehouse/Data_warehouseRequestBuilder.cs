@@ -15,6 +15,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWa
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoring;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoringTimeseries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseTrinoMonitoring;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseTrinoMonitoringTimeseries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.OnboardTeam;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Property_values;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Provision;
@@ -98,6 +100,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas.ManagedWarehouseSourceSchemasRequestBuilder ManagedWarehouseSourceSchemas
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas.ManagedWarehouseSourceSchemasRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The managedWarehouseTrinoMonitoring property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseTrinoMonitoring.ManagedWarehouseTrinoMonitoringRequestBuilder ManagedWarehouseTrinoMonitoring
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseTrinoMonitoring.ManagedWarehouseTrinoMonitoringRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The managedWarehouseTrinoMonitoringTimeseries property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseTrinoMonitoringTimeseries.ManagedWarehouseTrinoMonitoringTimeseriesRequestBuilder ManagedWarehouseTrinoMonitoringTimeseries
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseTrinoMonitoringTimeseries.ManagedWarehouseTrinoMonitoringTimeseriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The onboardTeam property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.OnboardTeam.OnboardTeamRequestBuilder OnboardTeam

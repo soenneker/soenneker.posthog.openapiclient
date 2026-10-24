@@ -108,10 +108,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The HogQL or insight query definition (JSON object with &apos;kind&apos; key).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseQuery? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseQuery Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
         /// <summary>Tag names associated with this endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -212,7 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "materialization", n => { Materialization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optional_breakdown_properties", n => { OptionalBreakdownProperties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseQuery>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ui_url", n => { UiUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -249,7 +249,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization>("materialization", Materialization);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("optional_breakdown_properties", OptionalBreakdownProperties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseQuery>("query", Query);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("ui_url", UiUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

@@ -20,14 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Fixed { get; set; }
         /// <summary>Settled threads left for the author: judged worth doing but not safe to fix unattended.</summary>
         public int? NeedsAttention { get; set; }
-        /// <summary>Where the run stands: `resolving` while threads are being settled, `stopped` when the run died partway (went quiet with no closing summary).* `resolving` - resolving* `stopped` - stopped</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `resolving` - resolving* `stopped` - stopped</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus? ResolutionStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus ResolutionStatus { get; set; }
-#endif
         /// <summary>Threads queued for this run.</summary>
         public int? Total { get; set; }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "done", n => { Done = n.GetIntValue(); } },
                 { "fixed", n => { Fixed = n.GetIntValue(); } },
                 { "needs_attention", n => { NeedsAttention = n.GetIntValue(); } },
-                { "resolution_status", n => { ResolutionStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus.CreateFromDiscriminatorValue); } },
+                { "resolution_status", n => { ResolutionStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus>(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };
         }
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("done", Done);
             writer.WriteIntValue("fixed", Fixed);
             writer.WriteIntValue("needs_attention", NeedsAttention);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus>("resolution_status", ResolutionStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus>("resolution_status", ResolutionStatus);
             writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);
         }

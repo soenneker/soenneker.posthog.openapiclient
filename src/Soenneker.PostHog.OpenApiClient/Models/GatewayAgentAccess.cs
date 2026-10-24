@@ -41,24 +41,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&apos;personal&apos; lets the agent use this connection only when working for the member who shared it. &apos;team&apos; lets it use the connection for the whole project&apos;s agent runs.* `personal` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - Personal* `team` - Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope Scope { get; set; }
-#endif
         /// <summary>Service account granted access.</summary>
         public Guid? ServiceAccountId { get; set; }
-        /// <summary>active, or paused (all access off).* `active` - Active* `paused` - Paused</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - Active* `paused` - Paused</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus Status { get; set; }
-#endif
         /// <summary>The member whose connection the agent uses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,9 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "handle", n => { Handle = n.GetStringValue(); } },
                 { "last_active_at", n => { LastActiveAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope>(); } },
                 { "service_account_id", n => { ServiceAccountId = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus>(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser.CreateFromDiscriminatorValue); } },
             };
         }
@@ -113,9 +101,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("handle", Handle);
             writer.WriteDateTimeOffsetValue("last_active_at", LastActiveAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope>("scope", Scope);
             writer.WriteGuidValue("service_account_id", ServiceAccountId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -69,21 +69,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Search { get; set; }
 #endif
         /// <summary>Aggregate column used to order tools. Defaults to total_calls.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper? SortColumn { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper SortColumn { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn? SortColumn { get; set; }
         /// <summary>Sort direction. Defaults to DESC.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper? SortDirection { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper SortDirection { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection? SortDirection { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -122,8 +110,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "search", n => { Search = n.GetStringValue(); } },
-                { "sortColumn", n => { SortColumn = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper.CreateFromDiscriminatorValue); } },
-                { "sortDirection", n => { SortDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper.CreateFromDiscriminatorValue); } },
+                { "sortColumn", n => { SortColumn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn>(); } },
+                { "sortDirection", n => { SortDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection>(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -145,8 +133,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse>("response", Response);
             writer.WriteStringValue("search", Search);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper>("sortColumn", SortColumn);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper>("sortDirection", SortDirection);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn>("sortColumn", SortColumn);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection>("sortDirection", SortDirection);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
         }

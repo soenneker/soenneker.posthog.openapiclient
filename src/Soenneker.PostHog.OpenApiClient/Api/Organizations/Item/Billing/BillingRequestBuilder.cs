@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Features;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Forecast;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Invoices;
@@ -19,16 +18,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\organizations\{-id}\billing
+    /// Builds and executes requests for operations under \api\organizations\{id}\billing
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BillingRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The alerts property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Alerts.AlertsRequestBuilder Alerts
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Alerts.AlertsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The features property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.Features.FeaturesRequestBuilder Features
         {
@@ -79,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BillingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/billing", pathParameters)
+        public BillingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/billing", pathParameters)
         {
         }
         /// <summary>
@@ -87,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BillingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/billing", rawUrl)
+        public BillingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/billing", rawUrl)
         {
         }
     }

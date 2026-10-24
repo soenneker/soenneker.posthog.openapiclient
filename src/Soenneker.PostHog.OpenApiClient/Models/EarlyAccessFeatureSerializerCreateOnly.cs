@@ -80,19 +80,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Arbitrary JSON metadata associated with this feature.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyPayload? Payload { get; set; }
+        public UntypedNode? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyPayload Payload { get; set; }
+        public UntypedNode Payload { get; set; }
 #endif
-        /// <summary>Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage? Stage { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage Stage { get; set; }
-#endif
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -136,8 +130,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "feature_flag_id", n => { FeatureFlagId = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyPayload>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyPayload.CreateFromDiscriminatorValue); } },
-                { "stage", n => { Stage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "stage", n => { Stage = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage>(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
@@ -153,8 +147,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyDocumentationUrl>("documentation_url", DocumentationUrl);
             writer.WriteIntValue("feature_flag_id", FeatureFlagId);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyPayload>("payload", Payload);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage>("stage", Stage);
+            writer.WriteObjectValue<UntypedNode>("payload", Payload);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage>("stage", Stage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

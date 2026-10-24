@@ -32,6 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Minutes between scheduled checks. Applies when recurrence_unit is null.</summary>
         public int? CheckIntervalMinutes { get; private set; }
+        /// <summary>* `ok` - OK* `errored` - Errored* `broken` - Broken</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationCheckStatus? CheckStatus { get; private set; }
         /// <summary>Number of checks in a row that failed to evaluate.</summary>
         public int? ConsecutiveFailures { get; private set; }
         /// <summary>Minimum minutes between notifications for the same alert.</summary>
@@ -44,6 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; private set; }
         /// <summary>Number of recent checks considered when deciding to fire.</summary>
         public int? EvaluationPeriods { get; private set; }
+        /// <summary>How the alert splits its results into instances.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationGrouping? Grouping { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationGrouping Grouping { get; private set; }
+#endif
         /// <summary>Unique identifier of the alert configuration.</summary>
         public Guid? Id { get; private set; }
         /// <summary>ID of the legacy source configuration this row was backfilled from. Null for alerts created on the platform.</summary>
@@ -58,6 +68,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the next check is due. Null when no check is scheduled.</summary>
         public DateTimeOffset? NextCheckAt { get; private set; }
+        /// <summary>New groups the last successful check could not track because the alert already held grouping.max_instances instances. 0 when every group fit.</summary>
+        public int? OverflowedGroups { get; private set; }
+        /// <summary>Whether the last successful check cut its results before counting overflowed_groups. When true, more groups than overflowed_groups may be untracked.</summary>
+        public bool? OverflowIsLowerBound { get; private set; }
+        /// <summary>* `source` - Source* `platform` - Platform</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationOwner? Owner { get; private set; }
         /// <summary>Calendar unit the alert recurs on. Null means it recurs on check_interval_minutes.* `day` - Day* `week` - Week* `month` - Month</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,36 +90,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; private set; }
 #endif
-        /// <summary>Source-specific query settings. The shape depends on source_kind.</summary>
+        /// <summary>Time until which every instance&apos;s notifications are muted. Null when not muted. An instance&apos;s own snooze_until mutes one group, and the later of the two holds.</summary>
+        public DateTimeOffset? SnoozeUntil { get; private set; }
+        /// <summary>Source-specific settings. The shape depends on source_kind. The bound the alert is evaluated against is under the condition key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty? SourceConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty? SourceConfig { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty SourceConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty SourceConfig { get; private set; }
 #endif
-        /// <summary>Product whose data the alert evaluates.* `logs` - Logs</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `logs` - Logs* `insight` - Insight</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind? SourceKind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind SourceKind { get; private set; }
-#endif
-        /// <summary>Count the evaluated value is compared against.</summary>
-        public int? ThresholdCount { get; private set; }
-        /// <summary>Comparison operator applied between the value and threshold_count.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ThresholdOperator { get; private set; }
-#nullable restore
-#else
-        public string ThresholdOperator { get; private set; }
-#endif
         /// <summary>When the configuration was last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>Length of the evaluated time window, in minutes.</summary>
-        public int? WindowMinutes { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfiguration"/> and sets the default values.
         /// </summary>
@@ -132,24 +132,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "alerts", n => { Alerts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "anchor_time", n => { AnchorTime = n.GetStringValue(); } },
                 { "check_interval_minutes", n => { CheckIntervalMinutes = n.GetIntValue(); } },
+                { "check_status", n => { CheckStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationCheckStatus>(); } },
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
                 { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
+                { "grouping", n => { Grouping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationGrouping>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationGrouping.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "legacy_configuration_id", n => { LegacyConfigurationId = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
+                { "overflow_is_lower_bound", n => { OverflowIsLowerBound = n.GetBoolValue(); } },
+                { "overflowed_groups", n => { OverflowedGroups = n.GetIntValue(); } },
+                { "owner", n => { Owner = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationOwner>(); } },
                 { "recurrence_unit", n => { RecurrenceUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit.CreateFromDiscriminatorValue); } },
                 { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
                 { "source_config", n => { SourceConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty.CreateFromDiscriminatorValue); } },
-                { "source_kind", n => { SourceKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind.CreateFromDiscriminatorValue); } },
-                { "threshold_count", n => { ThresholdCount = n.GetIntValue(); } },
-                { "threshold_operator", n => { ThresholdOperator = n.GetStringValue(); } },
+                { "source_kind", n => { SourceKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "window_minutes", n => { WindowMinutes = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -159,7 +162,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty>("source_config", SourceConfig);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -19,13 +19,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Manually entered estimate of users exposed to the experiment per day. Only used in manual mode.</summary>
         public double? ManualExposureRate { get; set; }
         /// <summary>Metric type the manual baseline value refers to. Only used in manual mode.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricTypeWrapper? ManualMetricType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricTypeWrapper ManualMetricType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType? ManualMetricType { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -47,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "conversionRateInputType", n => { ConversionRateInputType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRateInputType>(); } },
                 { "manualBaselineValue", n => { ManualBaselineValue = n.GetDoubleValue(); } },
                 { "manualExposureRate", n => { ManualExposureRate = n.GetDoubleValue(); } },
-                { "manualMetricType", n => { ManualMetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "manualMetricType", n => { ManualMetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType>(); } },
             };
         }
         /// <summary>
@@ -60,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRateInputType>("conversionRateInputType", ConversionRateInputType);
             writer.WriteDoubleValue("manualBaselineValue", ManualBaselineValue);
             writer.WriteDoubleValue("manualExposureRate", ManualExposureRate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricTypeWrapper>("manualMetricType", ManualMetricType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType>("manualMetricType", ManualMetricType);
         }
     }
 }

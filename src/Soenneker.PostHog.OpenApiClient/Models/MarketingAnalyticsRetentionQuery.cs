@@ -15,13 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Groups aggregation - not used in Web Analytics but required for type compatibility</summary>
         public int? AggregationGroupTypeIndex { get; set; }
         /// <summary>Cohort dimension, read off each person&apos;s first session. Defaults to channel.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper3? BreakdownBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper3 BreakdownBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown? BreakdownBy { get; set; }
         /// <summary>Breakdown values kept before the rest roll into &apos;Other&apos;. Defaults to 20.</summary>
         public int? BreakdownLimit { get; set; }
         /// <summary>Include the previous acquisition period in summary mode. Defaults to false.</summary>
@@ -75,13 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQueryResponse Response { get; set; }
 #endif
         /// <summary>Period for both the cohort rows and the return columns. Defaults to week.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionIntervalWrapper? RetentionInterval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionIntervalWrapper RetentionInterval { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval? RetentionInterval { get; set; }
         /// <summary>Return session-based 7/30-day metrics instead of the cohort matrix. Defaults to false.</summary>
         public bool? Summary { get; set; }
         /// <summary>The tags property</summary>
@@ -117,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
-                { "breakdownBy", n => { BreakdownBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper3.CreateFromDiscriminatorValue); } },
+                { "breakdownBy", n => { BreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown>(); } },
                 { "breakdownLimit", n => { BreakdownLimit = n.GetIntValue(); } },
                 { "comparePreviousPeriod", n => { ComparePreviousPeriod = n.GetBoolValue(); } },
                 { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
@@ -132,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "onlyNewUsers", n => { OnlyNewUsers = n.GetBoolValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQueryResponse.CreateFromDiscriminatorValue); } },
-                { "retentionInterval", n => { RetentionInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionIntervalWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionIntervalWrapper.CreateFromDiscriminatorValue); } },
+                { "retentionInterval", n => { RetentionInterval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval>(); } },
                 { "summary", n => { Summary = n.GetBoolValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "totalIntervals", n => { TotalIntervals = n.GetIntValue(); } },
@@ -148,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper3>("breakdownBy", BreakdownBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown>("breakdownBy", BreakdownBy);
             writer.WriteIntValue("breakdownLimit", BreakdownLimit);
             writer.WriteBoolValue("comparePreviousPeriod", ComparePreviousPeriod);
             writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
@@ -163,7 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("onlyNewUsers", OnlyNewUsers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionIntervalWrapper>("retentionInterval", RetentionInterval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval>("retentionInterval", RetentionInterval);
             writer.WriteBoolValue("summary", Summary);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteIntValue("totalIntervals", TotalIntervals);

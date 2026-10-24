@@ -57,18 +57,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPersonProperty? Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPersonProperty? Person { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPersonProperty Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPersonProperty Person { get; private set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPropertiesProperty? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPropertiesProperty? Properties { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPropertiesProperty Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPropertiesProperty Properties { get; private set; }
 #endif
         /// <summary>The timestamp property</summary>
         public DateTimeOffset? Timestamp { get; private set; }
@@ -114,8 +114,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPersonProperty>("person", Person);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseEventPropertiesProperty>("properties", Properties);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

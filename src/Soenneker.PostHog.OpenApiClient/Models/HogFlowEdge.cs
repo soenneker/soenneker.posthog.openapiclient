@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string To { get; set; }
 #endif
-        /// <summary>continue: fall-through (sequential or the no-match path of conditional_branch). branch: requires &apos;index&apos; matching config.conditions[index].* `continue` - continue* `branch` - branch</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `continue` - continue* `branch` - branch</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge"/> and sets the default values.
         /// </summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "from", n => { From = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "to", n => { To = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType>(); } },
             };
         }
         /// <summary>
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("from", From);
             writer.WriteIntValue("index", Index);
             writer.WriteStringValue("to", To);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

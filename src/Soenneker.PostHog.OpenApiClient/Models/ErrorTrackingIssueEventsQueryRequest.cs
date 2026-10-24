@@ -48,14 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Offset { get; set; }
         /// <summary>When true, include only stack frames marked in_app. Defaults to true.</summary>
         public bool? OnlyAppFrames { get; set; }
-        /// <summary>Timestamp sort direction. Defaults to DESC.* `ASC` - ASC* `DESC` - DESC</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ASC` - ASC* `DESC` - DESC</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection? OrderDirection { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection OrderDirection { get; set; }
-#endif
         /// <summary>Search exception types, exception values, and current URL among sampled events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "onlyAppFrames", n => { OnlyAppFrames = n.GetBoolValue(); } },
-                { "orderDirection", n => { OrderDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection.CreateFromDiscriminatorValue); } },
+                { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection>(); } },
                 { "searchQuery", n => { SearchQuery = n.GetStringValue(); } },
             };
         }
@@ -120,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("offset", Offset);
             writer.WriteBoolValue("onlyAppFrames", OnlyAppFrames);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection>("orderDirection", OrderDirection);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection>("orderDirection", OrderDirection);
             writer.WriteStringValue("searchQuery", SearchQuery);
             writer.WriteAdditionalData(AdditionalData);
         }

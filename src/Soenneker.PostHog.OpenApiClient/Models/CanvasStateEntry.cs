@@ -23,23 +23,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>user: private to the viewer who wrote it. shared: one value per canvas, visible to every viewer.* `user` - user* `shared` - shared</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `shared` - shared</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope Scope { get; set; }
-#endif
         /// <summary>When the entry was last written.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The stored JSON value. Omitted from a key inventory.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryValue? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryValue Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry"/> and sets the default values.
@@ -67,9 +61,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryValue>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryValue.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -80,9 +74,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope>("scope", Scope);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryValue>("value", Value);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

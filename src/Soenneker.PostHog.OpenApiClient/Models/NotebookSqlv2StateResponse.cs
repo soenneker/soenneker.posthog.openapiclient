@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Legacy rich-text notebooks only: the raw ProseMirror document. Omitted for markdown notebooks — their document is the `markdown` field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseContent? Content { get; set; }
+        public UntypedNode? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseContent Content { get; set; }
+        public UntypedNode Content { get; set; }
 #endif
         /// <summary>The notebook&apos;s kernel runtime state and compute config.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cells", n => { Cells = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellState>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellState.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseContent>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseContent.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "kernel", n => { Kernel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseKernel>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseKernel.CreateFromDiscriminatorValue); } },
                 { "markdown", n => { Markdown = n.GetStringValue(); } },
                 { "notebook_id", n => { NotebookId = n.GetStringValue(); } },
@@ -115,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellState>("cells", Cells);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseContent>("content", Content);
+            writer.WriteObjectValue<UntypedNode>("content", Content);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseKernel>("kernel", Kernel);
             writer.WriteStringValue("markdown", Markdown);
             writer.WriteStringValue("notebook_id", NotebookId);

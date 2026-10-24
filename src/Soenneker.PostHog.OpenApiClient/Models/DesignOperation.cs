@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>add_content only. A content block {type, values: {...}}; omit id and values._meta — they&apos;re assigned server-side. type is one of text, heading, button, image, divider, html, etc.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationContent? Content { get; set; }
+        public UntypedNode? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationContent Content { get; set; }
+        public UntypedNode Content { get; set; }
 #endif
         /// <summary>Target node id. Required for update_content/column/row, remove_content, remove_row, move_content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,29 +40,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>add_*/move_content only. 0-based insert position; omit to append to the end.</summary>
         public int? Index { get; set; }
-        /// <summary>Design edit. update_content {id, patch}: deep-merge patch into the content block&apos;s fields (a null leaf deletes that key) — the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row.* `update_content` - update_content* `update_column` - update_column* `update_row` - update_row* `update_body` - update_body* `add_content` - add_content* `remove_content` - remove_content* `move_content` - move_content* `add_row` - add_row* `remove_row` - remove_row</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `update_content` - update_content* `update_column` - update_column* `update_row` - update_row* `update_body` - update_body* `add_content` - add_content* `remove_content` - remove_content* `move_content` - move_content* `add_row` - add_row* `remove_row` - remove_row</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp? Op { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp Op { get; set; }
-#endif
         /// <summary>update_* only. Partial fields deep-merged into the existing node; a null leaf deletes that key. e.g. {values: {text: &apos;&lt;p&gt;Hi&lt;/p&gt;&apos;}} changes only the block&apos;s text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationPatch? Patch { get; set; }
+        public UntypedNode? Patch { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationPatch Patch { get; set; }
+        public UntypedNode Patch { get; set; }
 #endif
         /// <summary>add_row only. A full row {cells, columns: [{contents: [...], values}], values}; ids and Unlayer numbering are assigned server-side for the row and everything nested in it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationRow? Row { get; set; }
+        public UntypedNode? Row { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationRow Row { get; set; }
+        public UntypedNode Row { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation"/> and sets the default values.
@@ -90,12 +84,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "column_id", n => { ColumnId = n.GetStringValue(); } },
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationContent>(global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationContent.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "op", n => { Op = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp>(global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp.CreateFromDiscriminatorValue); } },
-                { "patch", n => { Patch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationPatch>(global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationPatch.CreateFromDiscriminatorValue); } },
-                { "row", n => { Row = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationRow>(global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationRow.CreateFromDiscriminatorValue); } },
+                { "op", n => { Op = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp>(); } },
+                { "patch", n => { Patch = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "row", n => { Row = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -106,12 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("column_id", ColumnId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationContent>("content", Content);
+            writer.WriteObjectValue<UntypedNode>("content", Content);
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("index", Index);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp>("op", Op);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationPatch>("patch", Patch);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationRow>("row", Row);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp>("op", Op);
+            writer.WriteObjectValue<UntypedNode>("patch", Patch);
+            writer.WriteObjectValue<UntypedNode>("row", Row);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

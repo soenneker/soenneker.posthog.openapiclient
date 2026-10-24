@@ -31,8 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>When Track Rules ignored the account. Null means the account is tracked.</summary>
-        public DateTimeOffset? IgnoredAt { get; private set; }
+        /// <summary>When the account was ignored, set by Track Rules or by hand. Null means the account is tracked.</summary>
+        public DateTimeOffset? IgnoredAt { get; set; }
         /// <summary>Human-readable name of the account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -123,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("churned_at", ChurnedAt);
             writer.WriteStringValue("external_id", ExternalId);
+            writer.WriteDateTimeOffsetValue("ignored_at", IgnoredAt);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountSlackSummaryCadence>("slack_summary_cadence", SlackSummaryCadence);

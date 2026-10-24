@@ -8,13 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas).
+    /// Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchema : IAdditionalDataHolder, IParsable
+    public partial class ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchema : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Filter by assignee ({type: user|role, id}). Omit for any assignee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Maximum number of issues to return.</summary>
         public int? Limit { get; set; }
         /// <summary>Issue ranking column.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy? OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy? OrderBy { get; set; }
         /// <summary>Sort direction for orderBy.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection? OrderDirection { get; set; }
         /// <summary>Issue status filter.</summary>
@@ -44,18 +42,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The widgetFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters? WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFiltersProperty? WidgetFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFiltersProperty WidgetFilters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
         /// </summary>
         public ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchema()
         {
-            AdditionalData = new Dictionary<string, object>();
             Limit = 10;
+            OrderBy = global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy.Occurrences;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -79,10 +77,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>(); } },
+                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy>(); } },
                 { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>(); } },
-                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters.CreateFromDiscriminatorValue); } },
+                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFiltersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -96,11 +94,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>("orderBy", OrderBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>("orderDirection", OrderDirection);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>("widgetFilters", WidgetFilters);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFiltersProperty>("widgetFilters", WidgetFilters);
         }
     }
 }

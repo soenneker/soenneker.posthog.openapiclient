@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Source-specific query settings. The shape depends on source_kind.
+    /// Source-specific settings. The shape depends on source_kind. The bound the alert is evaluated against is under the condition key.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PlatformAlertConfigurationSourceConfigProperty : IAdditionalDataHolder, IParsable

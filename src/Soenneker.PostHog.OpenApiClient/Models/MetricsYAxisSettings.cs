@@ -17,13 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Pins the bottom of the axis; unset means automatic. Ignored while `startAtZero` is on.</summary>
         public double? Min { get; set; }
         /// <summary>The scale property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScaleWrapper? Scale { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScaleWrapper Scale { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScale? Scale { get; set; }
         /// <summary>When false the axis floats to the data range instead of starting at zero. Ignored on a logarithmic scale, and on the bar display, where a bar&apos;s length encodes magnitude from zero.</summary>
         public bool? StartAtZero { get; set; }
         /// <summary>
@@ -53,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "max", n => { Max = n.GetDoubleValue(); } },
                 { "min", n => { Min = n.GetDoubleValue(); } },
-                { "scale", n => { Scale = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScaleWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScaleWrapper.CreateFromDiscriminatorValue); } },
+                { "scale", n => { Scale = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScale>(); } },
                 { "startAtZero", n => { StartAtZero = n.GetBoolValue(); } },
             };
         }
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("max", Max);
             writer.WriteDoubleValue("min", Min);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScaleWrapper>("scale", Scale);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScale>("scale", Scale);
             writer.WriteBoolValue("startAtZero", StartAtZero);
         }
     }

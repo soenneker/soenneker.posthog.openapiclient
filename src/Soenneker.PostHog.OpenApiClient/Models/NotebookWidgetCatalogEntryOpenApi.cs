@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas).</summary>
+        /// <summary>Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApiConfigSchema? ConfigSchema { get; private set; }

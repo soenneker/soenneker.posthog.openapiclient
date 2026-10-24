@@ -8,23 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// HogQL modifiers to use when the query runs. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. For example, set convertToProjectTimezone to false to export timestamps in UTC instead of the project timezone.
+    /// HogQL modifiers to use when the query runs, as an object keyed by modifier name, for example {&quot;convertToProjectTimezone&quot;: true}. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. If neither sets convertToProjectTimezone, it defaults to false, so timestamps are exported in UTC. Set it to true to export timestamps in the project timezone instead. Unknown modifier names are rejected. On update, the object replaces the modifiers stored on the export, so include every modifier to keep, or send null to remove them all.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class FileDownloadHogQlRequestHogqlModifiers : IAdditionalDataHolder, IParsable
+    public partial class FileDownloadHogQlRequestHogqlModifiers : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The bounceRateDurationSeconds property</summary>
         public double? BounceRateDurationSeconds { get; set; }
         /// <summary>The bounceRatePageViewMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper? BounceRatePageViewMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper BounceRatePageViewMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewMode? BounceRatePageViewMode { get; set; }
         /// <summary>The convertToProjectTimezone property</summary>
         public bool? ConvertToProjectTimezone { get; set; }
         /// <summary>Do not treat a missing user agent as automation on cookieless events. Positive bot signals and custom project rules still apply. Resolved server-side; not intended to be set by clients.</summary>
@@ -66,85 +58,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The formatCsvAllowDoubleQuotes property</summary>
         public bool? FormatCsvAllowDoubleQuotes { get; set; }
         /// <summary>The inCohortVia property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper? InCohortVia { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper InCohortVia { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.InCohortVia? InCohortVia { get; set; }
         /// <summary>The inlineCohortCalculation property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper? InlineCohortCalculation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper InlineCohortCalculation { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculation? InlineCohortCalculation { get; set; }
         /// <summary>The materializationMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationModeWrapper? MaterializationMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationModeWrapper MaterializationMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationMode? MaterializationMode { get; set; }
         /// <summary>The materializedColumnsOptimizationMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationModeWrapper? MaterializedColumnsOptimizationMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationModeWrapper MaterializedColumnsOptimizationMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationMode? MaterializedColumnsOptimizationMode { get; set; }
         /// <summary>Merge sibling aggregating LEFT JOINs over federated Postgres tables into one UNION ALL join, so their scans overlap</summary>
         public bool? MergeFederatedAggregateJoins { get; set; }
+        /// <summary>Replace negated person-property filters in the WHERE of an `events` query (such as `email not_icontains`) with `person_id NOT IN (SELECT id FROM persons WHERE &lt;the filters fail&gt;)`, so the query no longer joins every person. Applies only when every filtered person property has a materialized column, nothing else in the query reads that persons join, and the join would be a LEFT JOIN.</summary>
+        public bool? NegatedPersonFiltersNotIn { get; set; }
         /// <summary>The optimizeJoinedFilters property</summary>
         public bool? OptimizeJoinedFilters { get; set; }
         /// <summary>The optimizeProjections property</summary>
         public bool? OptimizeProjections { get; set; }
         /// <summary>HogQL parser backend; absent → `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper? ParserMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper ParserMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ParserMode? ParserMode { get; set; }
         /// <summary>Push an `id IN (SELECT person_id FROM &lt;left table&gt; WHERE …)` predicate into the joined persons subquery, so the latest-version lookup only reads persons that the outer query&apos;s left-table filters can reach. Applies only to a persons join from the query&apos;s own FROM table.</summary>
         public bool? PersonIdPushdown { get; set; }
         /// <summary>The personsArgMaxVersion property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper? PersonsArgMaxVersion { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper PersonsArgMaxVersion { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersion? PersonsArgMaxVersion { get; set; }
         /// <summary>The personsJoinMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper? PersonsJoinMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper PersonsJoinMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinMode? PersonsJoinMode { get; set; }
         /// <summary>The personsOnEventsMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper? PersonsOnEventsMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper PersonsOnEventsMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsMode? PersonsOnEventsMode { get; set; }
         /// <summary>The propertyGroupsMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsModeWrapper? PropertyGroupsMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsModeWrapper PropertyGroupsMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsMode? PropertyGroupsMode { get; set; }
         /// <summary>The pushDownPredicates property</summary>
         public bool? PushDownPredicates { get; set; }
         /// <summary>The s3TableUseInvalidColumns property</summary>
@@ -154,27 +94,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Pre-filter raw_sessions aggregation by `session_id_v7 IN (cheap pre-aggregation that only materializes the columns referenced by the outer-WHERE session predicate)`. Useful when the breakdown/SELECT pulls in many session columns (e.g. `$channel_type`) but the filter only references one (e.g. `$entry_current_url`).</summary>
         public bool? SessionPropertyPreAggregation { get; set; }
         /// <summary>The sessionsV2JoinMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinModeWrapper? SessionsV2JoinMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinModeWrapper SessionsV2JoinMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinMode? SessionsV2JoinMode { get; set; }
         /// <summary>The sessionTableVersion property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersionWrapper? SessionTableVersion { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersionWrapper SessionTableVersion { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersion? SessionTableVersion { get; set; }
+        /// <summary>Padding, in minutes, on each side of the event time range when it filters the sessions table by session start. Defaults to 3 days. It can only narrow the range: values above the default are ignored. Lower it only for a query that keeps just the sessions that start inside its own time range.</summary>
+        public int? SessionTimestampBufferMinutes { get; set; }
         /// <summary>The timings property</summary>
         public bool? Timings { get; set; }
         /// <summary>Remove provably redundant casts and nullability wrappers (e.g. `toString(String)`, `assumeNotNull(non_nullable)`, dead `ifNull` fallbacks) using inferred expression types</summary>
         public bool? TypeAwareCastSimplification { get; set; }
         /// <summary>The useMaterializedViews property</summary>
         public bool? UseMaterializedViews { get; set; }
+        /// <summary>Read this query from the native events cluster and native JSON events table (`true`), or keep its existing connection (`false` or unset). This is an internal rollout switch for eligible projects. PostHog staff manage eligibility through instance settings. Each query must opt in; project defaults cannot enable it. Only synchronous HogQLQuery SQL comparisons are supported.</summary>
+        public bool? UseNewEventsCluster { get; set; }
         /// <summary>Read events from the native JSON events table (`true`) or the legacy events table (`false`). When unset, the project&apos;s stored value applies, then the `CLICKHOUSE_HOGQL_USE_NEW_EVENTS_SCHEMA` instance settings. This is an internal rollout switch. PostHog staff set the project value in Django admin and the project settings API ignores it.</summary>
         public bool? UseNewEventsSchema { get; set; }
         /// <summary>The usePreaggregatedIntermediateResults property</summary>
@@ -185,13 +117,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? UseWebAnalyticsPreAggregatedTables { get; set; }
         /// <summary>Serve filters on the stored session-entry attribution properties (`$channel_type`, `$entry_utm_*`, `$entry_referring_domain`) by recomputing the value from the session&apos;s first pageview. Resolved server-side; not intended to be set by clients.</summary>
         public bool? WebAnalyticsFirstPageviewFilters { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequestHogqlModifiers"/> and sets the default values.
-        /// </summary>
-        public FileDownloadHogQlRequestHogqlModifiers()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -211,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "bounceRateDurationSeconds", n => { BounceRateDurationSeconds = n.GetDoubleValue(); } },
-                { "bounceRatePageViewMode", n => { BounceRatePageViewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper.CreateFromDiscriminatorValue); } },
+                { "bounceRatePageViewMode", n => { BounceRatePageViewMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewMode>(); } },
                 { "convertToProjectTimezone", n => { ConvertToProjectTimezone = n.GetBoolValue(); } },
                 { "cookielessTrafficIsRegular", n => { CookielessTrafficIsRegular = n.GetBoolValue(); } },
                 { "customBotDefinitions", n => { CustomBotDefinitions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule>(global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -220,28 +145,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "debug", n => { Debug = n.GetBoolValue(); } },
                 { "forceClickhouseDataSkippingIndexes", n => { ForceClickhouseDataSkippingIndexes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "formatCsvAllowDoubleQuotes", n => { FormatCsvAllowDoubleQuotes = n.GetBoolValue(); } },
-                { "inCohortVia", n => { InCohortVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper.CreateFromDiscriminatorValue); } },
-                { "inlineCohortCalculation", n => { InlineCohortCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper.CreateFromDiscriminatorValue); } },
-                { "materializationMode", n => { MaterializationMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MaterializationModeWrapper.CreateFromDiscriminatorValue); } },
-                { "materializedColumnsOptimizationMode", n => { MaterializedColumnsOptimizationMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationModeWrapper.CreateFromDiscriminatorValue); } },
+                { "inCohortVia", n => { InCohortVia = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InCohortVia>(); } },
+                { "inlineCohortCalculation", n => { InlineCohortCalculation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculation>(); } },
+                { "materializationMode", n => { MaterializationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationMode>(); } },
+                { "materializedColumnsOptimizationMode", n => { MaterializedColumnsOptimizationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationMode>(); } },
                 { "mergeFederatedAggregateJoins", n => { MergeFederatedAggregateJoins = n.GetBoolValue(); } },
+                { "negatedPersonFiltersNotIn", n => { NegatedPersonFiltersNotIn = n.GetBoolValue(); } },
                 { "optimizeJoinedFilters", n => { OptimizeJoinedFilters = n.GetBoolValue(); } },
                 { "optimizeProjections", n => { OptimizeProjections = n.GetBoolValue(); } },
-                { "parserMode", n => { ParserMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper.CreateFromDiscriminatorValue); } },
+                { "parserMode", n => { ParserMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ParserMode>(); } },
                 { "personIdPushdown", n => { PersonIdPushdown = n.GetBoolValue(); } },
-                { "personsArgMaxVersion", n => { PersonsArgMaxVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper.CreateFromDiscriminatorValue); } },
-                { "personsJoinMode", n => { PersonsJoinMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper.CreateFromDiscriminatorValue); } },
-                { "personsOnEventsMode", n => { PersonsOnEventsMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper.CreateFromDiscriminatorValue); } },
-                { "propertyGroupsMode", n => { PropertyGroupsMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsModeWrapper.CreateFromDiscriminatorValue); } },
+                { "personsArgMaxVersion", n => { PersonsArgMaxVersion = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersion>(); } },
+                { "personsJoinMode", n => { PersonsJoinMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinMode>(); } },
+                { "personsOnEventsMode", n => { PersonsOnEventsMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsMode>(); } },
+                { "propertyGroupsMode", n => { PropertyGroupsMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsMode>(); } },
                 { "pushDownPredicates", n => { PushDownPredicates = n.GetBoolValue(); } },
                 { "s3TableUseInvalidColumns", n => { S3TableUseInvalidColumns = n.GetBoolValue(); } },
                 { "sessionIdPushdown", n => { SessionIdPushdown = n.GetBoolValue(); } },
                 { "sessionPropertyPreAggregation", n => { SessionPropertyPreAggregation = n.GetBoolValue(); } },
-                { "sessionTableVersion", n => { SessionTableVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersionWrapper.CreateFromDiscriminatorValue); } },
-                { "sessionsV2JoinMode", n => { SessionsV2JoinMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinModeWrapper.CreateFromDiscriminatorValue); } },
+                { "sessionTableVersion", n => { SessionTableVersion = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersion>(); } },
+                { "sessionTimestampBufferMinutes", n => { SessionTimestampBufferMinutes = n.GetIntValue(); } },
+                { "sessionsV2JoinMode", n => { SessionsV2JoinMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinMode>(); } },
                 { "timings", n => { Timings = n.GetBoolValue(); } },
                 { "typeAwareCastSimplification", n => { TypeAwareCastSimplification = n.GetBoolValue(); } },
                 { "useMaterializedViews", n => { UseMaterializedViews = n.GetBoolValue(); } },
+                { "useNewEventsCluster", n => { UseNewEventsCluster = n.GetBoolValue(); } },
                 { "useNewEventsSchema", n => { UseNewEventsSchema = n.GetBoolValue(); } },
                 { "usePreaggregatedIntermediateResults", n => { UsePreaggregatedIntermediateResults = n.GetBoolValue(); } },
                 { "usePreaggregatedTableTransforms", n => { UsePreaggregatedTableTransforms = n.GetBoolValue(); } },
@@ -257,7 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("bounceRateDurationSeconds", BounceRateDurationSeconds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper>("bounceRatePageViewMode", BounceRatePageViewMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewMode>("bounceRatePageViewMode", BounceRatePageViewMode);
             writer.WriteBoolValue("convertToProjectTimezone", ConvertToProjectTimezone);
             writer.WriteBoolValue("cookielessTrafficIsRegular", CookielessTrafficIsRegular);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule>("customBotDefinitions", CustomBotDefinitions);
@@ -266,34 +194,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("debug", Debug);
             writer.WriteCollectionOfPrimitiveValues<string>("forceClickhouseDataSkippingIndexes", ForceClickhouseDataSkippingIndexes);
             writer.WriteBoolValue("formatCsvAllowDoubleQuotes", FormatCsvAllowDoubleQuotes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper>("inCohortVia", InCohortVia);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper>("inlineCohortCalculation", InlineCohortCalculation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationModeWrapper>("materializationMode", MaterializationMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationModeWrapper>("materializedColumnsOptimizationMode", MaterializedColumnsOptimizationMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InCohortVia>("inCohortVia", InCohortVia);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculation>("inlineCohortCalculation", InlineCohortCalculation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationMode>("materializationMode", MaterializationMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationMode>("materializedColumnsOptimizationMode", MaterializedColumnsOptimizationMode);
             writer.WriteBoolValue("mergeFederatedAggregateJoins", MergeFederatedAggregateJoins);
+            writer.WriteBoolValue("negatedPersonFiltersNotIn", NegatedPersonFiltersNotIn);
             writer.WriteBoolValue("optimizeJoinedFilters", OptimizeJoinedFilters);
             writer.WriteBoolValue("optimizeProjections", OptimizeProjections);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ParserModeWrapper>("parserMode", ParserMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ParserMode>("parserMode", ParserMode);
             writer.WriteBoolValue("personIdPushdown", PersonIdPushdown);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersionWrapper>("personsArgMaxVersion", PersonsArgMaxVersion);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinModeWrapper>("personsJoinMode", PersonsJoinMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsModeWrapper>("personsOnEventsMode", PersonsOnEventsMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsModeWrapper>("propertyGroupsMode", PropertyGroupsMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsArgMaxVersion>("personsArgMaxVersion", PersonsArgMaxVersion);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsJoinMode>("personsJoinMode", PersonsJoinMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsOnEventsMode>("personsOnEventsMode", PersonsOnEventsMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsMode>("propertyGroupsMode", PropertyGroupsMode);
             writer.WriteBoolValue("pushDownPredicates", PushDownPredicates);
             writer.WriteBoolValue("s3TableUseInvalidColumns", S3TableUseInvalidColumns);
             writer.WriteBoolValue("sessionIdPushdown", SessionIdPushdown);
             writer.WriteBoolValue("sessionPropertyPreAggregation", SessionPropertyPreAggregation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinModeWrapper>("sessionsV2JoinMode", SessionsV2JoinMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersionWrapper>("sessionTableVersion", SessionTableVersion);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinMode>("sessionsV2JoinMode", SessionsV2JoinMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersion>("sessionTableVersion", SessionTableVersion);
+            writer.WriteIntValue("sessionTimestampBufferMinutes", SessionTimestampBufferMinutes);
             writer.WriteBoolValue("timings", Timings);
             writer.WriteBoolValue("typeAwareCastSimplification", TypeAwareCastSimplification);
             writer.WriteBoolValue("useMaterializedViews", UseMaterializedViews);
+            writer.WriteBoolValue("useNewEventsCluster", UseNewEventsCluster);
             writer.WriteBoolValue("useNewEventsSchema", UseNewEventsSchema);
             writer.WriteBoolValue("usePreaggregatedIntermediateResults", UsePreaggregatedIntermediateResults);
             writer.WriteBoolValue("usePreaggregatedTableTransforms", UsePreaggregatedTableTransforms);
             writer.WriteBoolValue("useWebAnalyticsPreAggregatedTables", UseWebAnalyticsPreAggregatedTables);
             writer.WriteBoolValue("webAnalyticsFirstPageviewFilters", WebAnalyticsFirstPageviewFilters);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

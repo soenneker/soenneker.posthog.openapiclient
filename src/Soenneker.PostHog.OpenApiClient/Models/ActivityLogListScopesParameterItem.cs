@@ -3,13 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `Cohort` - Cohort* `FeatureFlag` - FeatureFlag* `Person` - Person* `Group` - Group* `Insight` - Insight* `Plugin` - Plugin* `PluginConfig` - PluginConfig* `HogFunction` - HogFunction* `HogFlow` - HogFlow* `DataManagement` - DataManagement* `EventDefinition` - EventDefinition* `PropertyDefinition` - PropertyDefinition* `Notebook` - Notebook* `GeneratedWidget` - GeneratedWidget* `Canvas` - Canvas* `Endpoint` - Endpoint* `EndpointVersion` - EndpointVersion* `Dashboard` - Dashboard* `Replay` - Replay* `Experiment` - Experiment* `ExperimentHoldout` - ExperimentHoldout* `ExperimentSavedMetric` - ExperimentSavedMetric* `Survey` - Survey* `EarlyAccessFeature` - EarlyAccessFeature* `SessionRecordingPlaylist` - SessionRecordingPlaylist* `ReplayScanner` - ReplayScanner* `VisionAlertConfiguration` - VisionAlertConfiguration* `Comment` - Comment* `Team` - Team* `Project` - Project* `ErrorTrackingIssue` - ErrorTrackingIssue* `DataWarehouseExpression` - DataWarehouseExpression* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery* `LegalDocument` - LegalDocument* `Organization` - Organization* `OrganizationDomain` - OrganizationDomain* `IdentityProviderConfig` - IdentityProviderConfig* `OrganizationMembership` - OrganizationMembership* `Role` - Role* `UserGroup` - UserGroup* `BatchExport` - BatchExport* `BatchImport` - BatchImport* `ExportedAsset` - ExportedAsset* `Integration` - Integration* `Annotation` - Annotation* `Tag` - Tag* `TaggedItem` - TaggedItem* `Subscription` - Subscription* `PersonalAPIKey` - PersonalAPIKey* `ProjectSecretAPIKey` - ProjectSecretAPIKey* `OAuthApplication` - OAuthApplication* `User` - User* `Action` - Action* `AccountView` - AccountView* `AlertConfiguration` - AlertConfiguration* `Threshold` - Threshold* `AlertSubscription` - AlertSubscription* `ExternalDataSource` - ExternalDataSource* `ExternalDataSchema` - ExternalDataSchema* `Evaluation` - Evaluation* `EvaluationDirectory` - EvaluationDirectory* `LLMPrompt` - LLMPrompt* `LLMPromptLabel` - LLMPromptLabel* `LLMTrace` - LLMTrace* `AIGatewayCredit` - AIGatewayCredit* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset* `CustomerProfileConfig` - CustomerProfileConfig* `Log` - Log* `LogsAlertConfiguration` - LogsAlertConfiguration* `LogsExclusionRule` - LogsExclusionRule* `LogsRetentionRule` - LogsRetentionRule* `TracesRetentionRule` - TracesRetentionRule* `DashboardWidget` - DashboardWidget* `ProductTour` - ProductTour* `Ticket` - Ticket* `InstanceSetting` - InstanceSetting* `SignalReport` - SignalReport* `SignalScoutConfig` - SignalScoutConfig* `SignalTeamConfig` - SignalTeamConfig* `StreamlitApp` - StreamlitApp* `Metric` - Metric* `TableCertification` - TableCertification* `DataQualityCheck` - DataQualityCheck* `DataQualityCheckSchedule` - DataQualityCheckSchedule* `Billing` - Billing* `Loop` - Loop* `StamphogRepoConfig` - StamphogRepoConfig</summary>
+    /// <summary>* `Cohort` - Cohort* `CrossProjectDashboard` - CrossProjectDashboard* `DevGatewayToken` - DevGatewayToken* `FeatureFlag` - FeatureFlag* `Person` - Person* `Group` - Group* `Insight` - Insight* `Plugin` - Plugin* `PluginConfig` - PluginConfig* `HogFunction` - HogFunction* `HogFlow` - HogFlow* `DataManagement` - DataManagement* `EventDefinition` - EventDefinition* `PropertyDefinition` - PropertyDefinition* `Notebook` - Notebook* `GeneratedWidget` - GeneratedWidget* `Canvas` - Canvas* `Endpoint` - Endpoint* `EndpointVersion` - EndpointVersion* `Dashboard` - Dashboard* `Replay` - Replay* `Experiment` - Experiment* `ExperimentHoldout` - ExperimentHoldout* `ExperimentSavedMetric` - ExperimentSavedMetric* `Survey` - Survey* `EarlyAccessFeature` - EarlyAccessFeature* `SessionRecordingPlaylist` - SessionRecordingPlaylist* `ReplayScanner` - ReplayScanner* `VisionAlertConfiguration` - VisionAlertConfiguration* `Comment` - Comment* `Team` - Team* `Project` - Project* `ErrorTrackingIssue` - ErrorTrackingIssue* `DataWarehouseExpression` - DataWarehouseExpression* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery* `LegalDocument` - LegalDocument* `Organization` - Organization* `OrganizationDomain` - OrganizationDomain* `IdentityProviderConfig` - IdentityProviderConfig* `OrganizationMembership` - OrganizationMembership* `Role` - Role* `UserGroup` - UserGroup* `BatchExport` - BatchExport* `BatchImport` - BatchImport* `ExportedAsset` - ExportedAsset* `Integration` - Integration* `Annotation` - Annotation* `Tag` - Tag* `TaggedItem` - TaggedItem* `Subscription` - Subscription* `PersonalAPIKey` - PersonalAPIKey* `ProjectSecretAPIKey` - ProjectSecretAPIKey* `OAuthApplication` - OAuthApplication* `User` - User* `Action` - Action* `AccountView` - AccountView* `AlertConfiguration` - AlertConfiguration* `Threshold` - Threshold* `AlertSubscription` - AlertSubscription* `ExternalDataSource` - ExternalDataSource* `ExternalDataSchema` - ExternalDataSchema* `Evaluation` - Evaluation* `EvaluationDirectory` - EvaluationDirectory* `LLMPrompt` - LLMPrompt* `LLMPromptLabel` - LLMPromptLabel* `LLMSkill` - LLMSkill* `LLMTrace` - LLMTrace* `AIGatewayCredit` - AIGatewayCredit* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset* `CustomerProfileConfig` - CustomerProfileConfig* `Log` - Log* `LogsAlertConfiguration` - LogsAlertConfiguration* `PlatformAlertConfiguration` - PlatformAlertConfiguration* `LogsExclusionRule` - LogsExclusionRule* `LogsRetentionRule` - LogsRetentionRule* `TracesRetentionRule` - TracesRetentionRule* `DashboardWidget` - DashboardWidget* `ProductTour` - ProductTour* `Ticket` - Ticket* `KnowledgeSource` - KnowledgeSource* `KnowledgeLibrary` - KnowledgeLibrary* `InstanceSetting` - InstanceSetting* `SignalReport` - SignalReport* `SignalScoutConfig` - SignalScoutConfig* `SignalTeamConfig` - SignalTeamConfig* `StreamlitApp` - StreamlitApp* `Metric` - Metric* `TableCertification` - TableCertification* `DataQualityCheck` - DataQualityCheck* `DataQualityCheckSchedule` - DataQualityCheckSchedule* `WarehouseSuggestion` - WarehouseSuggestion* `AccessControl` - AccessControl* `DataWarehouseTable` - DataWarehouseTable* `DataWarehouseJoin` - DataWarehouseJoin* `Billing` - Billing* `Loop` - Loop* `StamphogRepoConfig` - StamphogRepoConfig* `ReviewRepository` - ReviewRepository* `ReviewProjectSettings` - ReviewProjectSettings* `ReviewInstallationClaim` - ReviewInstallationClaim</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ActivityLogListScopesParameterItem
     {
         [EnumMember(Value = "Cohort")]
         #pragma warning disable CS1591
         Cohort,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CrossProjectDashboard")]
+        #pragma warning disable CS1591
+        CrossProjectDashboard,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DevGatewayToken")]
+        #pragma warning disable CS1591
+        DevGatewayToken,
         #pragma warning restore CS1591
         [EnumMember(Value = "FeatureFlag")]
         #pragma warning disable CS1591
@@ -259,6 +267,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         LlmPromptLabel,
         #pragma warning restore CS1591
+        [EnumMember(Value = "LLMSkill")]
+        #pragma warning disable CS1591
+        LlmSkill,
+        #pragma warning restore CS1591
         [EnumMember(Value = "LLMTrace")]
         #pragma warning disable CS1591
         LlmTrace,
@@ -283,6 +295,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         LogsAlertConfiguration,
         #pragma warning restore CS1591
+        [EnumMember(Value = "PlatformAlertConfiguration")]
+        #pragma warning disable CS1591
+        PlatformAlertConfiguration,
+        #pragma warning restore CS1591
         [EnumMember(Value = "LogsExclusionRule")]
         #pragma warning disable CS1591
         LogsExclusionRule,
@@ -306,6 +322,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "Ticket")]
         #pragma warning disable CS1591
         Ticket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KnowledgeSource")]
+        #pragma warning disable CS1591
+        KnowledgeSource,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KnowledgeLibrary")]
+        #pragma warning disable CS1591
+        KnowledgeLibrary,
         #pragma warning restore CS1591
         [EnumMember(Value = "InstanceSetting")]
         #pragma warning disable CS1591
@@ -343,6 +367,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         DataQualityCheckSchedule,
         #pragma warning restore CS1591
+        [EnumMember(Value = "WarehouseSuggestion")]
+        #pragma warning disable CS1591
+        WarehouseSuggestion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AccessControl")]
+        #pragma warning disable CS1591
+        AccessControl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DataWarehouseTable")]
+        #pragma warning disable CS1591
+        DataWarehouseTable,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DataWarehouseJoin")]
+        #pragma warning disable CS1591
+        DataWarehouseJoin,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Billing")]
         #pragma warning disable CS1591
         Billing,
@@ -354,6 +394,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "StamphogRepoConfig")]
         #pragma warning disable CS1591
         StamphogRepoConfig,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReviewRepository")]
+        #pragma warning disable CS1591
+        ReviewRepository,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReviewProjectSettings")]
+        #pragma warning disable CS1591
+        ReviewProjectSettings,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReviewInstallationClaim")]
+        #pragma warning disable CS1591
+        ReviewInstallationClaim,
         #pragma warning restore CS1591
     }
 }

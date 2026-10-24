@@ -43,22 +43,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters Filters { get; set; }
 #endif
-        /// <summary>Named tile density preset. Use tight, condensed, standard, relaxed, or wide.* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing? GridSpacing { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing GridSpacing { get; set; }
-#endif
-        /// <summary>How tiles rearrange after a move or resize. vertical stacks tiles upward, horizontal stacks tiles to the left, and stable preserves positions while moving colliding tiles.* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
+        /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction? LayoutCompaction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty? Groups { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction LayoutCompaction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty Groups { get; set; }
 #endif
+        /// <summary>Deprecated: use groups. Titles for tile groups, keyed by group_key. A write replaces all titles and keeps the other group settings. Send an empty object or null to clear titles. Do not send it with groups.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty? GroupTitles { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty GroupTitles { get; set; }
+#endif
+        /// <summary>* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction? LayoutCompaction { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,14 +80,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> QuickFilterIds { get; set; }
-#endif
-        /// <summary>Who can edit this dashboard.* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel? RestrictionLevel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel RestrictionLevel { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -142,12 +138,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "delete_insights", n => { DeleteInsights = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters.CreateFromDiscriminatorValue); } },
-                { "grid_spacing", n => { GridSpacing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing.CreateFromDiscriminatorValue); } },
-                { "layout_compaction", n => { LayoutCompaction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction.CreateFromDiscriminatorValue); } },
+                { "grid_spacing", n => { GridSpacing = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>(); } },
+                { "group_titles", n => { GroupTitles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty.CreateFromDiscriminatorValue); } },
+                { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty.CreateFromDiscriminatorValue); } },
+                { "layout_compaction", n => { LayoutCompaction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "quick_filter_ids", n => { QuickFilterIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "restriction_level", n => { RestrictionLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tiles", n => { Tiles = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "use_dashboard", n => { UseDashboard = n.GetIntValue(); } },
@@ -166,12 +163,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("delete_insights", DeleteInsights);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>("grid_spacing", GridSpacing);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>("layout_compaction", LayoutCompaction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>("grid_spacing", GridSpacing);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty>("groups", Groups);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty>("group_titles", GroupTitles);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>("layout_compaction", LayoutCompaction);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteCollectionOfPrimitiveValues<string>("quick_filter_ids", QuickFilterIds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel>("restriction_level", RestrictionLevel);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>("tiles", Tiles);
             writer.WriteIntValue("use_dashboard", UseDashboard);

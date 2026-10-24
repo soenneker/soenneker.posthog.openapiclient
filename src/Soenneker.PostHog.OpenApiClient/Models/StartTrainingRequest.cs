@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Override the pipeline iteration budget for this training run.</summary>
+        /// <summary>Iterations for this training run. Defaults to the pipeline&apos;s iterations_per_run.</summary>
         public int? IterationBudget { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StartTrainingRequest"/> and sets the default values.

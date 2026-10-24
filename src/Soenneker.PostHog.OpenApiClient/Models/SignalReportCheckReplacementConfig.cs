@@ -11,10 +11,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// Metric threshold configuration, including a bounded query and comparison.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SignalReportCheckReplacementConfig : IAdditionalDataHolder, IParsable
+    public partial class SignalReportCheckReplacementConfig : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The value observed when the check was written, recorded on each result for context.</summary>
         public double? BaselineValue { get; set; }
         /// <summary>What the measured value must satisfy to pass.</summary>
@@ -35,13 +33,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>How to draw this measurement; copied from a referenced metric.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind? MetricKind { get; set; }
+        /// <summary>Optional Monitoring measurement definition, available only with the organization&apos;s Monitoring rollout. Measurements cover Monitoring start through the observation time. Omit for existing whole-window checks.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig? Monitoring { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig Monitoring { get; set; }
+#endif
         /// <summary>Live InsightVizNode wrapping one TrendsQuery: supplied by the caller, or copied from the named metric when the check is created. `dateRange.date_from` must be a relative window such as `-13d`, and `date_to` must be empty, so the check measures the days before each run rather than the days before it was written. The query must produce exactly one output series: use one event or action series, or combine up to ten of them with exactly one formula. Use no breakdown and no compare mode. A `trendsFilter.display` of `Metric` turns compare mode on, so `metricShowChange` is switched off for you unless `metricSummary` is `latest`, which keeps compare mode off already.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty Query { get; set; }
 #endif
         /// <summary>Optional value suffix.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,13 +59,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>How to format measured values; copied from a referenced metric.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat? ValueFormat { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfig"/> and sets the default values.
-        /// </summary>
-        public SignalReportCheckReplacementConfig()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -82,7 +81,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>(global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison.CreateFromDiscriminatorValue); } },
                 { "metric_id", n => { MetricId = n.GetStringValue(); } },
                 { "metric_kind", n => { MetricKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery.CreateFromDiscriminatorValue); } },
+                { "monitoring", n => { Monitoring = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig>(global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty.CreateFromDiscriminatorValue); } },
                 { "unit", n => { Unit = n.GetStringValue(); } },
                 { "value_format", n => { ValueFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>(); } },
             };
@@ -98,10 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>("comparison", Comparison);
             writer.WriteStringValue("metric_id", MetricId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>("metric_kind", MetricKind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckReplacementConfigQuery>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig>("monitoring", Monitoring);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>("query", Query);
             writer.WriteStringValue("unit", Unit);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>("value_format", ValueFormat);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -8,164 +8,99 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Widget-specific configuration JSON for this widget type.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DashboardWidgetConfigComposed : IAdditionalDataHolder, IParsable
+    public partial class DashboardWidgetConfigComposed : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Filter by assignee ({type: user|role, id}). Omit for any assignee.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetAssigneeFilter? Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1? DashboardWidgetConfigComposedMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetAssigneeFilter Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1 DashboardWidgetConfigComposedMember1 { get; set; }
 #endif
-        /// <summary>Only show tickets assigned to these users or roles. &apos;me&apos; means the requesting user and &apos;unassigned&apos; means tickets without an assignment. Empty shows all assignees.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem>? Assignees { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10? DashboardWidgetConfigComposedMember10 { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem> Assignees { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10 DashboardWidgetConfigComposedMember10 { get; set; }
 #endif
-        /// <summary>Ticket channel filter.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel? Channel { get; set; }
-        /// <summary>short_id of a session replay collection to scope the widget to its pinned recordings. Combine with savedFilterId or property filters to narrow within the collection; orderBy, orderDirection, and limit still apply.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CollectionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11? DashboardWidgetConfigComposedMember11 { get; set; }
 #nullable restore
 #else
-        public string CollectionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11 DashboardWidgetConfigComposedMember11 { get; set; }
 #endif
-        /// <summary>Filter by creator (user id). Omit for any creator.</summary>
-        public int? CreatedBy { get; set; }
-        /// <summary>The dateRange property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2? DashboardWidgetConfigComposedMember2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2 DashboardWidgetConfigComposedMember2 { get; set; }
 #endif
-        /// <summary>Limit the feed to a single event name. Omit or null for all events.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3? DashboardWidgetConfigComposedMember3 { get; set; }
 #nullable restore
 #else
-        public string EventName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3 DashboardWidgetConfigComposedMember3 { get; set; }
 #endif
-        /// <summary>Experiment to show results for. Null until the user picks one in the widget settings.</summary>
-        public int? ExperimentId { get; set; }
-        /// <summary>The filterTestAccounts property</summary>
-        public bool? FilterTestAccounts { get; set; }
-        /// <summary>Maximum number of events to return.</summary>
-        public int? Limit { get; set; }
-        /// <summary>Source notebook short ID.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NotebookShortId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4? DashboardWidgetConfigComposedMember4 { get; set; }
 #nullable restore
 #else
-        public string NotebookShortId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4 DashboardWidgetConfigComposedMember4 { get; set; }
 #endif
-        /// <summary>Issue ranking column.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy? OrderBy { get; set; }
-        /// <summary>Sort direction for orderBy.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection? OrderDirection { get; set; }
-        /// <summary>Only show tickets with these priorities. Empty shows all priorities.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?>? Priorities { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5? DashboardWidgetConfigComposedMember5 { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?> Priorities { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5 DashboardWidgetConfigComposedMember5 { get; set; }
 #endif
-        /// <summary>Event and person property filters, matching Activity &gt; Explore events.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter>? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6? DashboardWidgetConfigComposedMember6 { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter> Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6 DashboardWidgetConfigComposedMember6 { get; set; }
 #endif
-        /// <summary>short_id of a saved session replay filter to refine the recordings shown. When set, the saved filter owns the date range and property filters; only orderBy, orderDirection, and limit still apply. Combine with collectionId to filter within a collection.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SavedFilterId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7? DashboardWidgetConfigComposedMember7 { get; set; }
 #nullable restore
 #else
-        public string SavedFilterId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7 DashboardWidgetConfigComposedMember7 { get; set; }
 #endif
-        /// <summary>short_id of a saved logs view to use as the source. When set, the saved view owns the date range, severity, service, and property filters; only orderBy and limit still apply.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SavedViewId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8? DashboardWidgetConfigComposedMember8 { get; set; }
 #nullable restore
 #else
-        public string SavedViewId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8 DashboardWidgetConfigComposedMember8 { get; set; }
 #endif
-        /// <summary>Search requester name or email, ticket subject, message text, or ticket number.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Search { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9? DashboardWidgetConfigComposedMember9 { get; set; }
 #nullable restore
 #else
-        public string Search { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9 DashboardWidgetConfigComposedMember9 { get; set; }
 #endif
-        /// <summary>Only show logs from these services. Empty shows all services.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? ServiceNames { get; set; }
-#nullable restore
-#else
-        public List<string> ServiceNames { get; set; }
-#endif
-        /// <summary>Only show logs at these severity levels. Empty shows all levels.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigSeverityLevelsItem?>? SeverityLevels { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigSeverityLevelsItem?> SeverityLevels { get; set; }
-#endif
-        /// <summary>Immutable notebook widget snapshot. Add one from a notebook widget&apos;s menu.</summary>
-        public Guid? SnapshotId { get; set; }
-        /// <summary>Issue status filter.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus? Status { get; set; }
-        /// <summary>Survey to show performance stats and recent responses for. Null until the user picks one.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SurveyId { get; set; }
-#nullable restore
-#else
-        public string SurveyId { get; set; }
-#endif
-        /// <summary>Render log timestamps in UTC or in each viewer&apos;s local timezone.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone? Timezone { get; set; }
-        /// <summary>The widgetFilters property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty? WidgetFilters { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty WidgetFilters { get; set; }
-#endif
-        /// <summary>Wrap long log lines instead of truncating them to a single row.</summary>
-        public bool? WrapLines { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposed"/> and sets the default values.
-        /// </summary>
-        public DashboardWidgetConfigComposed()
-        {
-            AdditionalData = new Dictionary<string, object>();
-            Limit = 25;
-            WrapLines = false;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -174,7 +109,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposed();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposed();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -182,35 +119,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(DashboardWidgetConfigComposedMember1 != null)
             {
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetAssigneeFilter>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetAssigneeFilter.CreateFromDiscriminatorValue); } },
-                { "assignees", n => { Assignees = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "channel", n => { Channel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel>(); } },
-                { "collectionId", n => { CollectionId = n.GetStringValue(); } },
-                { "createdBy", n => { CreatedBy = n.GetIntValue(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange.CreateFromDiscriminatorValue); } },
-                { "eventName", n => { EventName = n.GetStringValue(); } },
-                { "experimentId", n => { ExperimentId = n.GetIntValue(); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
-                { "notebookShortId", n => { NotebookShortId = n.GetStringValue(); } },
-                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>(); } },
-                { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>(); } },
-                { "priorities", n => { Priorities = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>()?.AsList(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "savedFilterId", n => { SavedFilterId = n.GetStringValue(); } },
-                { "savedViewId", n => { SavedViewId = n.GetStringValue(); } },
-                { "search", n => { Search = n.GetStringValue(); } },
-                { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigSeverityLevelsItem>()?.AsList(); } },
-                { "snapshotId", n => { SnapshotId = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>(); } },
-                { "surveyId", n => { SurveyId = n.GetStringValue(); } },
-                { "timezone", n => { Timezone = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>(); } },
-                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty.CreateFromDiscriminatorValue); } },
-                { "wrapLines", n => { WrapLines = n.GetBoolValue(); } },
-            };
+                return DashboardWidgetConfigComposedMember1.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember10 != null)
+            {
+                return DashboardWidgetConfigComposedMember10.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember11 != null)
+            {
+                return DashboardWidgetConfigComposedMember11.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember2 != null)
+            {
+                return DashboardWidgetConfigComposedMember2.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember3 != null)
+            {
+                return DashboardWidgetConfigComposedMember3.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember4 != null)
+            {
+                return DashboardWidgetConfigComposedMember4.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember5 != null)
+            {
+                return DashboardWidgetConfigComposedMember5.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember6 != null)
+            {
+                return DashboardWidgetConfigComposedMember6.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember7 != null)
+            {
+                return DashboardWidgetConfigComposedMember7.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember8 != null)
+            {
+                return DashboardWidgetConfigComposedMember8.GetFieldDeserializers();
+            }
+            else if(DashboardWidgetConfigComposedMember9 != null)
+            {
+                return DashboardWidgetConfigComposedMember9.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -219,33 +172,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetAssigneeFilter>("assignee", Assignee);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem>("assignees", Assignees);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel>("channel", Channel);
-            writer.WriteStringValue("collectionId", CollectionId);
-            writer.WriteIntValue("createdBy", CreatedBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>("dateRange", DateRange);
-            writer.WriteStringValue("eventName", EventName);
-            writer.WriteIntValue("experimentId", ExperimentId);
-            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteIntValue("limit", Limit);
-            writer.WriteStringValue("notebookShortId", NotebookShortId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>("orderBy", OrderBy);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>("orderDirection", OrderDirection);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>("priorities", Priorities);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter>("properties", Properties);
-            writer.WriteStringValue("savedFilterId", SavedFilterId);
-            writer.WriteStringValue("savedViewId", SavedViewId);
-            writer.WriteStringValue("search", Search);
-            writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigSeverityLevelsItem>("severityLevels", SeverityLevels);
-            writer.WriteGuidValue("snapshotId", SnapshotId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>("status", Status);
-            writer.WriteStringValue("surveyId", SurveyId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>("timezone", Timezone);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty>("widgetFilters", WidgetFilters);
-            writer.WriteBoolValue("wrapLines", WrapLines);
-            writer.WriteAdditionalData(AdditionalData);
+            if(DashboardWidgetConfigComposedMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1>(null, DashboardWidgetConfigComposedMember1);
+            }
+            else if(DashboardWidgetConfigComposedMember10 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10>(null, DashboardWidgetConfigComposedMember10);
+            }
+            else if(DashboardWidgetConfigComposedMember11 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11>(null, DashboardWidgetConfigComposedMember11);
+            }
+            else if(DashboardWidgetConfigComposedMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2>(null, DashboardWidgetConfigComposedMember2);
+            }
+            else if(DashboardWidgetConfigComposedMember3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3>(null, DashboardWidgetConfigComposedMember3);
+            }
+            else if(DashboardWidgetConfigComposedMember4 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4>(null, DashboardWidgetConfigComposedMember4);
+            }
+            else if(DashboardWidgetConfigComposedMember5 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5>(null, DashboardWidgetConfigComposedMember5);
+            }
+            else if(DashboardWidgetConfigComposedMember6 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6>(null, DashboardWidgetConfigComposedMember6);
+            }
+            else if(DashboardWidgetConfigComposedMember7 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7>(null, DashboardWidgetConfigComposedMember7);
+            }
+            else if(DashboardWidgetConfigComposedMember8 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8>(null, DashboardWidgetConfigComposedMember8);
+            }
+            else if(DashboardWidgetConfigComposedMember9 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9>(null, DashboardWidgetConfigComposedMember9);
+            }
         }
     }
 }

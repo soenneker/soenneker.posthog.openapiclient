@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<int?> DailySoftCounts { get; set; }
 #endif
-        /// <summary>An urgency ladder, where each rung asks for a different fix. `broken` fails nearly every run, so its baseline is wrong and quarantining it only hides that. `unstable` fails some runs and not others, the classic flake. `at_risk` never fails, but its worst absorbed diff is already touching the threshold, so the next unrelated change turns it red. `noisy` renders variants and absorbs them with room to spare. `clean` matched its baseline on every run in the window.* `broken` - broken* `unstable` - unstable* `at_risk` - at_risk* `noisy` - noisy* `clean` - clean</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `broken` - broken* `unstable` - unstable* `at_risk` - at_risk* `clean` - clean</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState? FlakinessState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState FlakinessState { get; set; }
-#endif
         /// <summary>Default-branch runs in the last 7 days where this snapshot failed the gate, so somebody could not merge until it was resolved. Counts every result that is not `unchanged`: a diff over a threshold, a baseline that was never committed or was dropped, and a baseline whose story no longer renders.</summary>
         public int? HardCount { get; set; }
         /// <summary>`hard_count` over `window_runs`. The denominator counts every run of this run type, so a snapshot that only started rendering partway through the window reads lower than it is.</summary>
@@ -149,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "browser", n => { Browser = n.GetStringValue(); } },
                 { "daily_hard_counts", n => { DailyHardCounts = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "daily_soft_counts", n => { DailySoftCounts = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "flakiness_state", n => { FlakinessState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState>(global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState.CreateFromDiscriminatorValue); } },
+                { "flakiness_state", n => { FlakinessState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState>(); } },
                 { "hard_count", n => { HardCount = n.GetIntValue(); } },
                 { "hard_rate", n => { HardRate = n.GetDoubleValue(); } },
                 { "headroom", n => { Headroom = n.GetDoubleValue(); } },
@@ -183,7 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("browser", Browser);
             writer.WriteCollectionOfPrimitiveValues<int?>("daily_hard_counts", DailyHardCounts);
             writer.WriteCollectionOfPrimitiveValues<int?>("daily_soft_counts", DailySoftCounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState>("flakiness_state", FlakinessState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState>("flakiness_state", FlakinessState);
             writer.WriteIntValue("hard_count", HardCount);
             writer.WriteDoubleValue("hard_rate", HardRate);
             writer.WriteDoubleValue("headroom", Headroom);

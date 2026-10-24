@@ -12,6 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class CohortPropertyFilter : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Set by the feature flag API when the cohort is deleted or does not exist.</summary>
+        public bool? CohortDeleted { get; set; }
+        /// <summary>Set by the feature flag API when the cohort does not exist, so it cannot be restored.</summary>
+        public bool? CohortMissing { get; set; }
         /// <summary>The cohort_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -21,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string CohortName { get; set; }
 #endif
         /// <summary>The key property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IdKey? Key { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilterKey? Key { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,15 +35,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>The operator property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2 Operator { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilterType? Type { get; set; }
         /// <summary>The value property</summary>
         public int? Value { get; set; }
         /// <summary>
@@ -60,11 +58,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cohort_deleted", n => { CohortDeleted = n.GetBoolValue(); } },
+                { "cohort_missing", n => { CohortMissing = n.GetBoolValue(); } },
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
-                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IdKey>(); } },
+                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilterKey>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortType>(); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilterType>(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
             };
         }
@@ -75,11 +75,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("cohort_deleted", CohortDeleted);
+            writer.WriteBoolValue("cohort_missing", CohortMissing);
             writer.WriteStringValue("cohort_name", CohortName);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IdKey>("key", Key);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilterKey>("key", Key);
             writer.WriteStringValue("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilterType>("type", Type);
             writer.WriteIntValue("value", Value);
         }
     }

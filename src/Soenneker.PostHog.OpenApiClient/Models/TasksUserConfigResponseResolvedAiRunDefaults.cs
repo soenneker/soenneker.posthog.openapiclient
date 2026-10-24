@@ -47,14 +47,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RuntimeAdapter { get; set; }
 #endif
-        /// <summary>Preference level that supplied the default: the caller&apos;s own per-project preference (&apos;user&apos;), the project default (&apos;team&apos;), or &apos;none&apos;.* `user` - user* `team` - team* `none` - none</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `team` - team* `none` - none</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource Source { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults"/> and sets the default values.
         /// </summary>
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "reasoning_effort", n => { ReasoningEffort = n.GetStringValue(); } },
                 { "runtime", n => { Runtime = n.GetStringValue(); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource>(global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource>(); } },
             };
         }
         /// <summary>
@@ -98,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reasoning_effort", ReasoningEffort);
             writer.WriteStringValue("runtime", Runtime);
             writer.WriteStringValue("runtime_adapter", RuntimeAdapter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TasksResolvedAiRunDefaultsSource>("source", Source);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

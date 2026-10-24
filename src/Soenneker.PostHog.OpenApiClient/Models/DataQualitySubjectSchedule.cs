@@ -19,28 +19,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; private set; }
         /// <summary>Schedule identifier.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>How often the checks run.* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleInterval? Interval { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleInterval Interval { get; private set; }
-#endif
         /// <summary>Most recent visible scheduled suite execution time.</summary>
         public DateTimeOffset? LastRunAt { get; private set; }
         /// <summary>Most recent visible scheduled suite.</summary>
         public Guid? LastSuiteRun { get; private set; }
         /// <summary>Next scheduled execution time, if enabled.</summary>
         public DateTimeOffset? NextRunAt { get; private set; }
-        /// <summary>&apos;metric&apos; or &apos;posthog_table&apos;.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleSubjectType? SubjectType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleSubjectType SubjectType { get; private set; }
-#endif
         /// <summary>Id of the metric or PostHog table.</summary>
         public Guid? SubjectUuid { get; private set; }
         /// <summary>
@@ -70,11 +58,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleInterval>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleInterval.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleInterval>(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
                 { "last_suite_run", n => { LastSuiteRun = n.GetGuidValue(); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },
-                { "subject_type", n => { SubjectType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleSubjectType>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleSubjectType.CreateFromDiscriminatorValue); } },
+                { "subject_type", n => { SubjectType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectScheduleSubjectType>(); } },
                 { "subject_uuid", n => { SubjectUuid = n.GetGuidValue(); } },
             };
         }

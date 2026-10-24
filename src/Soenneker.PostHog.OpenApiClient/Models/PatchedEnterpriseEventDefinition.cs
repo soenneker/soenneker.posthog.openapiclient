@@ -90,10 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionTagsItem>? Tags { get; set; }
+        public UntypedNode? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionTagsItem> Tags { get; set; }
+        public UntypedNode Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -161,7 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "owner", n => { Owner = n.GetIntValue(); } },
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "primary_property", n => { PrimaryProperty = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionUpdatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionUpdatedBy.CreateFromDiscriminatorValue); } },
                 { "verified", n => { Verified = n.GetBoolValue(); } },
@@ -184,7 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("owner", Owner);
             writer.WriteBoolValue("post_to_slack", PostToSlack);
             writer.WriteStringValue("primary_property", PrimaryProperty);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionTagsItem>("tags", Tags);
+            writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteAdditionalData(AdditionalData);
         }

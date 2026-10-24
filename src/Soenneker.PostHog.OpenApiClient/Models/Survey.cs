@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The appearance property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance? Appearance { get; set; }
+        public UntypedNode? Appearance { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance Appearance { get; set; }
+        public UntypedNode Appearance { get; set; }
 #endif
         /// <summary>The archived property</summary>
         public bool? Archived { get; set; }
@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conditions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty? Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty? Conditions { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty Conditions { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -80,10 +80,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The form_content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyFormContent? FormContent { get; set; }
+        public UntypedNode? FormContent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyFormContent FormContent { get; set; }
+        public UntypedNode FormContent { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -130,18 +130,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>        The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice.        Basic (open-ended question)        - `id`: The question ID        - `type`: `open`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `branching`: Branching logic for the question. See branching types below for details.        Link (a question with a link)        - `id`: The question ID        - `type`: `link`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `link`: The URL associated with the question.        - `branching`: Branching logic for the question. See branching types below for details.        Rating (a question with a rating scale)        - `id`: The question ID        - `type`: `rating`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `display`: Display style of the rating (`number` or `emoji`).        - `scale`: The scale of the rating (`number`).        - `lowerBoundLabel`: Label for the lower bound of the scale.        - `upperBoundLabel`: Label for the upper bound of the scale.        - `isNpsQuestion`: Whether the question is an NPS rating.        - `branching`: Branching logic for the question. See branching types below for details.        Multiple choice        - `id`: The question ID        - `type`: `single_choice` or `multiple_choice`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `choices`: An array of choices for the question.        - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`).        - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`).        - `branching`: Branching logic for the question. See branching types below for details.        Branching logic can be one of the following types:        Next question: Proceeds to the next question        ```json        {            &quot;type&quot;: &quot;next_question&quot;        }        ```        End: Ends the survey, optionally displaying a confirmation message.        ```json        {            &quot;type&quot;: &quot;end&quot;        }        ```        Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types.        ```json        {            &quot;type&quot;: &quot;response_based&quot;,            &quot;responseValues&quot;: {                &quot;responseKey&quot;: &quot;value&quot;            }        }        ```        Specific question: Proceeds to a specific question by index.        ```json        {            &quot;type&quot;: &quot;specific_question&quot;,            &quot;index&quot;: 2        }        ```        Translations: Each question can include inline translations.        - `translations`: Object mapping language codes to translated fields.        - Language codes: Canonical BCP-47-ish strings (e.g., &quot;es&quot;, &quot;es-MX&quot;, &quot;zh-CN&quot;). Aliases like &quot;english&quot; or &quot;default&quot; are rejected. The survey&apos;s `base_language` (default &quot;en&quot;) declares the language of the untranslated text and cannot also appear as a translation key.        - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link`        Example with translations:        ```json        {            &quot;id&quot;: &quot;uuid&quot;,            &quot;type&quot;: &quot;rating&quot;,            &quot;question&quot;: &quot;How satisfied are you?&quot;,            &quot;lowerBoundLabel&quot;: &quot;Not satisfied&quot;,            &quot;upperBoundLabel&quot;: &quot;Very satisfied&quot;,            &quot;translations&quot;: {                &quot;es&quot;: {                    &quot;question&quot;: &quot;¿Qué tan satisfecho estás?&quot;,                    &quot;lowerBoundLabel&quot;: &quot;No satisfecho&quot;,                    &quot;upperBoundLabel&quot;: &quot;Muy satisfecho&quot;                },                &quot;fr&quot;: {                    &quot;question&quot;: &quot;Dans quelle mesure êtes-vous satisfait?&quot;                }            }        }        ```        </summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestions? Questions { get; set; }
+        public UntypedNode? Questions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestions Questions { get; set; }
+        public UntypedNode Questions { get; set; }
 #endif
         /// <summary>The response_sampling_daily_limits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingDailyLimits? ResponseSamplingDailyLimits { get; set; }
+        public UntypedNode? ResponseSamplingDailyLimits { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingDailyLimits ResponseSamplingDailyLimits { get; set; }
+        public UntypedNode ResponseSamplingDailyLimits { get; set; }
 #endif
         /// <summary>The response_sampling_interval property</summary>
         public int? ResponseSamplingInterval { get; set; }
@@ -188,10 +188,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The translations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyTranslations? Translations { get; set; }
+        public UntypedNode? Translations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyTranslations Translations { get; set; }
+        public UntypedNode Translations { get; set; }
 #endif
         /// <summary>* `popover` - popover* `widget` - widget* `external_survey` - external survey* `api` - api</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyTypeEnum? Type { get; set; }
@@ -228,7 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "appearance", n => { Appearance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance.CreateFromDiscriminatorValue); } },
+                { "appearance", n => { Appearance = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "base_language", n => { BaseLanguage = n.GetStringValue(); } },
                 { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty.CreateFromDiscriminatorValue); } },
@@ -241,7 +241,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enable_partial_responses", n => { EnablePartialResponses = n.GetBoolValue(); } },
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
                 { "feature_flag_keys", n => { FeatureFlagKeys = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SurveyFeatureFlagKeysItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyFeatureFlagKeysItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "form_content", n => { FormContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyFormContent>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyFormContent.CreateFromDiscriminatorValue); } },
+                { "form_content", n => { FormContent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal_targeting_flag", n => { InternalTargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyInternalTargetingFlag>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyInternalTargetingFlag.CreateFromDiscriminatorValue); } },
                 { "iteration_count", n => { IterationCount = n.GetIntValue(); } },
@@ -251,8 +251,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "linked_flag_id", n => { LinkedFlagId = n.GetIntValue(); } },
                 { "linked_insight_id", n => { LinkedInsightId = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "questions", n => { Questions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestions>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestions.CreateFromDiscriminatorValue); } },
-                { "response_sampling_daily_limits", n => { ResponseSamplingDailyLimits = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingDailyLimits>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingDailyLimits.CreateFromDiscriminatorValue); } },
+                { "questions", n => { Questions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "response_sampling_daily_limits", n => { ResponseSamplingDailyLimits = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "response_sampling_interval", n => { ResponseSamplingInterval = n.GetIntValue(); } },
                 { "response_sampling_interval_type", n => { ResponseSamplingIntervalType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingIntervalType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingIntervalType.CreateFromDiscriminatorValue); } },
                 { "response_sampling_limit", n => { ResponseSamplingLimit = n.GetIntValue(); } },
@@ -262,7 +262,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySearchMatchType.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "targeting_flag", n => { TargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyTargetingFlag>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyTargetingFlag.CreateFromDiscriminatorValue); } },
-                { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyTranslations>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyTranslations.CreateFromDiscriminatorValue); } },
+                { "translations", n => { Translations = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyTypeEnum>(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -274,25 +274,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance>("appearance", Appearance);
+            writer.WriteObjectValue<UntypedNode>("appearance", Appearance);
             writer.WriteBoolValue("archived", Archived);
             writer.WriteStringValue("base_language", BaseLanguage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty>("conditions", Conditions);
             writer.WriteIntValue("current_iteration", CurrentIteration);
             writer.WriteDateTimeOffsetValue("current_iteration_start_date", CurrentIterationStartDate);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enable_iframe_embedding", EnableIframeEmbedding);
             writer.WriteBoolValue("enable_partial_responses", EnablePartialResponses);
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyFormContent>("form_content", FormContent);
+            writer.WriteObjectValue<UntypedNode>("form_content", FormContent);
             writer.WriteIntValue("iteration_count", IterationCount);
             writer.WriteIntValue("iteration_frequency_days", IterationFrequencyDays);
             writer.WriteCollectionOfPrimitiveValues<DateTimeOffset?>("iteration_start_dates", IterationStartDates);
             writer.WriteIntValue("linked_flag_id", LinkedFlagId);
             writer.WriteIntValue("linked_insight_id", LinkedInsightId);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestions>("questions", Questions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingDailyLimits>("response_sampling_daily_limits", ResponseSamplingDailyLimits);
+            writer.WriteObjectValue<UntypedNode>("questions", Questions);
+            writer.WriteObjectValue<UntypedNode>("response_sampling_daily_limits", ResponseSamplingDailyLimits);
             writer.WriteIntValue("response_sampling_interval", ResponseSamplingInterval);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseSamplingIntervalType>("response_sampling_interval_type", ResponseSamplingIntervalType);
             writer.WriteIntValue("response_sampling_limit", ResponseSamplingLimit);
@@ -300,7 +299,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("responses_limit", ResponsesLimit);
             writer.WriteStringValue("schedule", Schedule);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyTranslations>("translations", Translations);
+            writer.WriteObjectValue<UntypedNode>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyTypeEnum>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

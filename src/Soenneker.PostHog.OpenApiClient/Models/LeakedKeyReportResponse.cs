@@ -14,9 +14,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether a matching PostHog key or token was found and revoked.</summary>
+        /// <summary>Whether a matching PostHog key or token was found. It was revoked, or, for team_secret_token, its project admins were told to rotate it.</summary>
         public bool? Found { get; set; }
-        /// <summary>The type of key that was found and revoked, or null if no match was found.* `personal_api_key` - personal_api_key* `project_secret_api_key` - project_secret_api_key* `oauth_access_token` - oauth_access_token* `oauth_refresh_token` - oauth_refresh_token</summary>
+        /// <summary>The type of key that was found and revoked, or null if no match was found. team_secret_token means the string is a legacy feature flags secure API key: its migrated project secret API key row was removed, but the legacy key itself cannot be auto-rotated, so project admins are emailed to rotate it.* `personal_api_key` - personal_api_key* `project_secret_api_key` - project_secret_api_key* `team_secret_token` - team_secret_token* `oauth_access_token` - oauth_access_token* `oauth_refresh_token` - oauth_refresh_token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponseType? Type { get; set; }

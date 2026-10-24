@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query node to render. `kind` must be `InsightVizNode` (an ad-hoc product analytics chart), `DataVisualizationNode` (a SQL series — a `HogQLQuery` source plus a `display`), or `SavedInsightNode` (an existing insight by `shortId`). Pin the window to absolute dates where the node supports it, so the reader sees the data you wrote about rather than whatever a relative range resolves to when they open the report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportChartQuery? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportChartQuery Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
         /// <summary>How much height the chart gets: `small` for a single number or a short series, `medium` for an ordinary graph, `large` when there are rows or a grid to read (retention, paths, a wide breakdown). Leave it out unless the default looks wrong — the inbox sizes a chart from its query, and two charts referenced from the same paragraph sit side by side.* `small` - small* `medium` - medium* `large` - large</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "caption", n => { Caption = n.GetStringValue(); } },
                 { "chart_id", n => { ChartId = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportChartQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChartQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "size", n => { Size = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportChartSize>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChartSize.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("caption", Caption);
             writer.WriteStringValue("chart_id", ChartId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportChartQuery>("query", Query);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportChartSize>("size", Size);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);

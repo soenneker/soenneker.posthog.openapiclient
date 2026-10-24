@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ErrorCode { get; set; }
 #endif
-        /// <summary>New terminal status for the Wizard run.* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequestStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequestStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error_code", n => { ErrorCode = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequestStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequestStatus>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error_code", ErrorCode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequestStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWizardRunStatusUpdateRequestStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The values property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleConditionValuesItem>? Values { get; set; }
+        public UntypedNode? Values { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleConditionValuesItem> Values { get; set; }
+        public UntypedNode Values { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleCondition"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "field", n => { Field = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleField>(global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleField.CreateFromDiscriminatorValue); } },
                 { "operator", n => { Operator = n.GetStringValue(); } },
-                { "values", n => { Values = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleConditionValuesItem>(global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleConditionValuesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "values", n => { Values = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleField>("field", Field);
             writer.WriteStringValue("operator", Operator);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleConditionValuesItem>("values", Values);
+            writer.WriteObjectValue<UntypedNode>("values", Values);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

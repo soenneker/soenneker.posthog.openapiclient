@@ -32,22 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Semantic version comparison operator.* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator Operator { get; set; }
-#endif
-        /// <summary>Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group&apos;s properties.* `cohort` - cohort* `person` - person* `group` - group</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType Type { get; set; }
-#endif
         /// <summary>Semantic version string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,8 +72,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType>(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -99,8 +87,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cohort_name", CohortName);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType>("type", Type);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

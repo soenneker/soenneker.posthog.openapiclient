@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ArtifactUrl { get; private set; }
 #endif
-        /// <summary>Build lifecycle state. A failed build never replaces the last-known-good artifact.* `queued` - queued* `building` - building* `ready` - ready* `failed` - failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `queued` - queued* `building` - building* `ready` - ready* `failed` - failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus? BuildStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus BuildStatus { get; set; }
-#endif
         /// <summary>When the build was queued.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>Structured diagnostics recorded by the build (errors explain a failed status).</summary>
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "artifact_url", n => { ArtifactUrl = n.GetStringValue(); } },
-                { "build_status", n => { BuildStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus.CreateFromDiscriminatorValue); } },
+                { "build_status", n => { BuildStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "diagnostics", n => { Diagnostics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
@@ -109,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus>("build_status", BuildStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus>("build_status", BuildStatus);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>("diagnostics", Diagnostics);
             writer.WriteDateTimeOffsetValue("finished_at", FinishedAt);

@@ -40,24 +40,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? ItemId { get; set; }
         /// <summary>Payload retention deadline; cleanup is not yet enabled.</summary>
         public DateTimeOffset? PayloadExpiresAt { get; set; }
-        /// <summary>Result payload storage state.* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellPayloadState? PayloadState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellPayloadState PayloadState { get; set; }
-#endif
         /// <summary>Exact scorer-version UUID in the item page&apos;s scorer_versions list.</summary>
         public Guid? ScorerVersionId { get; set; }
-        /// <summary>Evaluation outcome.* `ok` - OK* `error` - Error* `skipped` - Skipped* `not_applicable` - Not applicable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - OK* `error` - Error* `skipped` - Skipped* `not_applicable` - Not applicable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellStatus Status { get; set; }
-#endif
         /// <summary>Typed score for ok outcomes; null for other outcomes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,9 +86,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "item_id", n => { ItemId = n.GetGuidValue(); } },
                 { "payload_expires_at", n => { PayloadExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "payload_state", n => { PayloadState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellPayloadState>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellPayloadState.CreateFromDiscriminatorValue); } },
+                { "payload_state", n => { PayloadState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellPayloadState>(); } },
                 { "scorer_version_id", n => { ScorerVersionId = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellStatus>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellStatus>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellValue>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -118,9 +106,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteGuidValue("item_id", ItemId);
             writer.WriteDateTimeOffsetValue("payload_expires_at", PayloadExpiresAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellPayloadState>("payload_state", PayloadState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellPayloadState>("payload_state", PayloadState);
             writer.WriteGuidValue("scorer_version_id", ScorerVersionId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCellValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The target project&apos;s response body, passed through.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardResponseData? Data { get; set; }
+        public UntypedNode? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardResponseData Data { get; set; }
+        public UntypedNode Data { get; set; }
 #endif
         /// <summary>HTTP status the target project returned.</summary>
         public int? Status { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardResponseData>(global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardResponseData.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetIntValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardResponseData>("data", Data);
+            writer.WriteObjectValue<UntypedNode>("data", Data);
             writer.WriteIntValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

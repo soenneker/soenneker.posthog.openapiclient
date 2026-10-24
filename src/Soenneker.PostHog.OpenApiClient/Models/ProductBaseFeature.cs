@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The images property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductBaseFeatureImages? Images { get; set; }
+        public UntypedNode? Images { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductBaseFeatureImages Images { get; set; }
+        public UntypedNode Images { get; set; }
 #endif
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "category", n => { Category = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "icon_key", n => { IconKey = n.GetStringValue(); } },
-                { "images", n => { Images = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBaseFeatureImages>(global::Soenneker.PostHog.OpenApiClient.Models.ProductBaseFeatureImages.CreateFromDiscriminatorValue); } },
+                { "images", n => { Images = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("category", Category);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("icon_key", IconKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBaseFeatureImages>("images", Images);
+            writer.WriteObjectValue<UntypedNode>("images", Images);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("type", Type);

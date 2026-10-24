@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Claim { get; set; }
 #endif
-        /// <summary>Whether the source is one of the site&apos;s pages or a competitor&apos;s own page.* `site` - site* `competitor` - competitor</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `site` - site* `competitor` - competitor</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntryKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntryKind Kind { get; set; }
-#endif
         /// <summary>Short quote from the source page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "claim", n => { Claim = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntryKind>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntryKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntryKind>(); } },
                 { "quote", n => { Quote = n.GetStringValue(); } },
                 { "source_url", n => { SourceUrl = n.GetStringValue(); } },
             };
@@ -85,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("claim", Claim);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntryKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntryKind>("kind", Kind);
             writer.WriteStringValue("quote", Quote);
             writer.WriteStringValue("source_url", SourceUrl);
             writer.WriteAdditionalData(AdditionalData);

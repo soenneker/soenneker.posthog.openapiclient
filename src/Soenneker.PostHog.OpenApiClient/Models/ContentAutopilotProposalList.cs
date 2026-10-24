@@ -34,22 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The lifecycle_status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `generating` - Generating* `ready_for_review` - Ready for review* `rejected` - Rejected* `exported` - Exported* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListLifecycleStatus? LifecycleStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListLifecycleStatus LifecycleStatus { get; private set; }
-#endif
-        /// <summary>The proposal_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `new_content` - New content* `page_improvement` - Page improvement</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListProposalType? ProposalType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListProposalType ProposalType { get; private set; }
-#endif
         /// <summary>The run_id property</summary>
         public Guid? RunId { get; private set; }
         /// <summary>The target_query property</summary>
@@ -59,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string TargetQuery { get; private set; }
+#endif
+        /// <summary>Existing or intended public URL.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TargetUrl { get; private set; }
+#nullable restore
+#else
+        public string TargetUrl { get; private set; }
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,10 +103,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "file_path", n => { FilePath = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "lifecycle_status", n => { LifecycleStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListLifecycleStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListLifecycleStatus.CreateFromDiscriminatorValue); } },
-                { "proposal_type", n => { ProposalType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListProposalType>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListProposalType.CreateFromDiscriminatorValue); } },
+                { "lifecycle_status", n => { LifecycleStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListLifecycleStatus>(); } },
+                { "proposal_type", n => { ProposalType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListProposalType>(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
                 { "target_query", n => { TargetQuery = n.GetStringValue(); } },
+                { "target_url", n => { TargetUrl = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "validation_report", n => { ValidationReport = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport.CreateFromDiscriminatorValue); } },

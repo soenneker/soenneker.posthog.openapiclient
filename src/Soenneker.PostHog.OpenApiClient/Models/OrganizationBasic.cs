@@ -33,14 +33,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? LogoMediaId { get; private set; }
         /// <summary>The members_can_use_personal_api_keys property</summary>
         public bool? MembersCanUsePersonalApiKeys { get; set; }
-        /// <summary>The membership_level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasicMembershipLevel? MembershipLevel { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasicMembershipLevel MembershipLevel { get; private set; }
-#endif
+        /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
+        public int? MembershipLevel { get; private set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
                 { "logo_media_id", n => { LogoMediaId = n.GetGuidValue(); } },
                 { "members_can_use_personal_api_keys", n => { MembersCanUsePersonalApiKeys = n.GetBoolValue(); } },
-                { "membership_level", n => { MembershipLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasicMembershipLevel>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasicMembershipLevel.CreateFromDiscriminatorValue); } },
+                { "membership_level", n => { MembershipLevel = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
             };

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Wire shape for the project profile returned by `signals-scout-harness-project-profile-list`.Read this once at the start of a run (after `skill-get`) to orient on the team. Cacheis per-team with a soft TTL (`PROFILE_TTL`); the response always reflects either thelatest cached profile or a freshly-built one if the cache was stale or the caller passed`force_refresh=true`.`summary` leads the response and `payload` trails it: the inventory runs to tens ofkilobytes, so a client that truncates a long tool result would otherwise cut off the emitgate the scout has to read before doing any work.
+    /// Wire shape for the project profile returned by `signals-scout-harness-project-profile-list`.Read this once at the start of a run (after `skill-get`) to orient on the team. Cacheis per-team with a soft TTL (`PROFILE_TTL`). The internal scout token gets a freshprofile, built on a stale cache or `force_refresh=true`. Other callers get the neweststored profile, with `stale=true` when it is past `expires_at`.`summary` leads the response and `payload` trails it: the inventory runs to tens ofkilobytes, so a client that truncates a long tool result would otherwise cut off the emitgate the scout has to read before doing any work.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfile : IAdditionalDataHolder, IParsable
@@ -55,6 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceVersion { get; set; }
 #endif
+        /// <summary>True when the profile is past `expires_at`. Only read-only callers get a stale profile. Read `computed_at` to see how old it is, and verify a detail live when its age matters.</summary>
+        public bool? Stale { get; set; }
         /// <summary>Compact envelope repeating the emit gate and the inbox report counts from `payload.inventory`. Declared first so it survives a truncated response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed.CreateFromDiscriminatorValue); } },
                 { "profile_id", n => { ProfileId = n.GetStringValue(); } },
                 { "source_version", n => { SourceVersion = n.GetStringValue(); } },
+                { "stale", n => { Stale = n.GetBoolValue(); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryComposed.CreateFromDiscriminatorValue); } },
             };
         }
@@ -108,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed>("payload", Payload);
             writer.WriteStringValue("profile_id", ProfileId);
             writer.WriteStringValue("source_version", SourceVersion);
+            writer.WriteBoolValue("stale", Stale);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryComposed>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }

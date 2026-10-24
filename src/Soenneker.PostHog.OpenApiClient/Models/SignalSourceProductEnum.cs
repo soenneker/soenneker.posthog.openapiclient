@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `signals_check` - Report check* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console</summary>
+    /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `signals_check` - Report check* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `datadog` - Datadog* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console* `pagerduty` - PagerDuty* `opsgenie` - Opsgenie* `incident_io` - incident.io* `firehydrant` - FireHydrant* `squadcast` - Squadcast* `servicenow` - ServiceNow* `solarwinds_service_desk` - SolarWinds Service Desk* `grafana_irm` - Grafana IRM* `xmatters` - xMatters* `betterstack` - Better Stack* `newrelic` - New Relic* `trigger_dev` - Trigger.dev* `checkly` - Checkly* `roark` - Roark* `monte_carlo` - Monte Carlo* `bigeye` - Bigeye* `aws_security_hub` - AWS Security Hub* `aws_guardduty` - AWS GuardDuty* `aws_inspector` - AWS Inspector* `microsoft_defender_cloud_apps` - Microsoft Defender for Cloud Apps* `clickup` - ClickUp* `wrike` - Wrike* `trello` - Trello* `bugherd` - BugHerd* `dynamics365` - Dynamics 365* `zoho_crm` - Zoho CRM* `planhat` - Planhat* `trustpilot` - Trustpilot* `okendo` - Okendo* `sleekplan` - Sleekplan* `bettermode` - Bettermode* `discourse` - Discourse* `mintlify` - Mintlify* `langsmith` - LangSmith* `sprig` - Sprig* `gainsight_px` - Gainsight PX* `dynatrace` - Dynatrace* `statuspage` - Statuspage* `cronitor` - Cronitor* `instatus` - Instatus* `asana` - Asana* `monday` - monday.com* `plane` - Plane* `azure_devops` - Azure DevOps* `helpscout` - Help Scout* `decagon` - Decagon* `vitally` - Vitally* `usersnap` - Usersnap* `typeform` - Typeform* `qualtrics` - Qualtrics* `surveymonkey` - SurveyMonkey* `formbricks` - Formbricks* `survicate` - Survicate* `surveysparrow` - SurveySparrow* `lacework` - Lacework* `orca_security` - Orca Security* `tenable_vulnerability_management` - Tenable Vulnerability Management* `google_play_console` - Google Play Console* `azure_application_insights` - Azure Application Insights* `appsignal` - AppSignal* `cursor` - Cursor</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalSourceProductEnum
     {
@@ -131,6 +131,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Raygun,
         #pragma warning restore CS1591
+        [EnumMember(Value = "datadog")]
+        #pragma warning disable CS1591
+        Datadog,
+        #pragma warning restore CS1591
         [EnumMember(Value = "snyk")]
         #pragma warning disable CS1591
         Snyk,
@@ -206,6 +210,250 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "google_search_console")]
         #pragma warning disable CS1591
         GoogleSearchConsole,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pagerduty")]
+        #pragma warning disable CS1591
+        Pagerduty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "opsgenie")]
+        #pragma warning disable CS1591
+        Opsgenie,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "incident_io")]
+        #pragma warning disable CS1591
+        IncidentIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "firehydrant")]
+        #pragma warning disable CS1591
+        Firehydrant,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "squadcast")]
+        #pragma warning disable CS1591
+        Squadcast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "servicenow")]
+        #pragma warning disable CS1591
+        Servicenow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "solarwinds_service_desk")]
+        #pragma warning disable CS1591
+        SolarwindsServiceDesk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "grafana_irm")]
+        #pragma warning disable CS1591
+        GrafanaIrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "xmatters")]
+        #pragma warning disable CS1591
+        Xmatters,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "betterstack")]
+        #pragma warning disable CS1591
+        Betterstack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "newrelic")]
+        #pragma warning disable CS1591
+        Newrelic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "trigger_dev")]
+        #pragma warning disable CS1591
+        TriggerDev,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "checkly")]
+        #pragma warning disable CS1591
+        Checkly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "roark")]
+        #pragma warning disable CS1591
+        Roark,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "monte_carlo")]
+        #pragma warning disable CS1591
+        MonteCarlo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "bigeye")]
+        #pragma warning disable CS1591
+        Bigeye,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "aws_security_hub")]
+        #pragma warning disable CS1591
+        AwsSecurityHub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "aws_guardduty")]
+        #pragma warning disable CS1591
+        AwsGuardduty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "aws_inspector")]
+        #pragma warning disable CS1591
+        AwsInspector,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "microsoft_defender_cloud_apps")]
+        #pragma warning disable CS1591
+        MicrosoftDefenderCloudApps,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "clickup")]
+        #pragma warning disable CS1591
+        Clickup,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "wrike")]
+        #pragma warning disable CS1591
+        Wrike,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "trello")]
+        #pragma warning disable CS1591
+        Trello,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "bugherd")]
+        #pragma warning disable CS1591
+        Bugherd,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "dynamics365")]
+        #pragma warning disable CS1591
+        Dynamics365,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "zoho_crm")]
+        #pragma warning disable CS1591
+        ZohoCrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "planhat")]
+        #pragma warning disable CS1591
+        Planhat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "trustpilot")]
+        #pragma warning disable CS1591
+        Trustpilot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "okendo")]
+        #pragma warning disable CS1591
+        Okendo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sleekplan")]
+        #pragma warning disable CS1591
+        Sleekplan,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "bettermode")]
+        #pragma warning disable CS1591
+        Bettermode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "discourse")]
+        #pragma warning disable CS1591
+        Discourse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "mintlify")]
+        #pragma warning disable CS1591
+        Mintlify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "langsmith")]
+        #pragma warning disable CS1591
+        Langsmith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sprig")]
+        #pragma warning disable CS1591
+        Sprig,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "gainsight_px")]
+        #pragma warning disable CS1591
+        GainsightPx,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "dynatrace")]
+        #pragma warning disable CS1591
+        Dynatrace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "statuspage")]
+        #pragma warning disable CS1591
+        Statuspage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "cronitor")]
+        #pragma warning disable CS1591
+        Cronitor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "instatus")]
+        #pragma warning disable CS1591
+        Instatus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "asana")]
+        #pragma warning disable CS1591
+        Asana,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "monday")]
+        #pragma warning disable CS1591
+        Monday,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "plane")]
+        #pragma warning disable CS1591
+        Plane,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "azure_devops")]
+        #pragma warning disable CS1591
+        AzureDevops,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "helpscout")]
+        #pragma warning disable CS1591
+        Helpscout,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "decagon")]
+        #pragma warning disable CS1591
+        Decagon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "vitally")]
+        #pragma warning disable CS1591
+        Vitally,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "usersnap")]
+        #pragma warning disable CS1591
+        Usersnap,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "typeform")]
+        #pragma warning disable CS1591
+        Typeform,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "qualtrics")]
+        #pragma warning disable CS1591
+        Qualtrics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "surveymonkey")]
+        #pragma warning disable CS1591
+        Surveymonkey,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "formbricks")]
+        #pragma warning disable CS1591
+        Formbricks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "survicate")]
+        #pragma warning disable CS1591
+        Survicate,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "surveysparrow")]
+        #pragma warning disable CS1591
+        Surveysparrow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "lacework")]
+        #pragma warning disable CS1591
+        Lacework,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "orca_security")]
+        #pragma warning disable CS1591
+        OrcaSecurity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "tenable_vulnerability_management")]
+        #pragma warning disable CS1591
+        TenableVulnerabilityManagement,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "google_play_console")]
+        #pragma warning disable CS1591
+        GooglePlayConsole,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "azure_application_insights")]
+        #pragma warning disable CS1591
+        AzureApplicationInsights,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "appsignal")]
+        #pragma warning disable CS1591
+        Appsignal,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "cursor")]
+        #pragma warning disable CS1591
+        Cursor,
         #pragma warning restore CS1591
     }
 }

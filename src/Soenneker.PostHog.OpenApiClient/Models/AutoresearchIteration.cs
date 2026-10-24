@@ -26,6 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>Short title for this experiment, for people.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Headline { get; set; }
+#nullable restore
+#else
+        public string Headline { get; set; }
+#endif
         /// <summary>The holdout_score property</summary>
         public double? HoldoutScore { get; set; }
         /// <summary>The id property</summary>
@@ -62,6 +70,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>* `kept` - Kept* `discarded` - Discarded* `crashed` - Crashed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIterationStatusEnum? Status { get; set; }
+        /// <summary>Plain-language sentence on what this experiment tried and what happened, for people.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Summary { get; set; }
+#nullable restore
+#else
+        public string Summary { get; set; }
+#endif
         /// <summary>The training_run property</summary>
         public Guid? TrainingRun { get; set; }
         /// <summary>The train_score property</summary>
@@ -94,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "agent_confidence", n => { AgentConfidence = n.GetDoubleValue(); } },
                 { "agent_description", n => { AgentDescription = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "headline", n => { Headline = n.GetStringValue(); } },
                 { "holdout_score", n => { HoldoutScore = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "iteration_number", n => { IterationNumber = n.GetIntValue(); } },
@@ -103,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "recipe_hash", n => { RecipeHash = n.GetStringValue(); } },
                 { "recipe_snapshot", n => { RecipeSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIterationRecipeSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIterationRecipeSnapshot.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIterationStatusEnum>(); } },
+                { "summary", n => { Summary = n.GetStringValue(); } },
                 { "train_score", n => { TrainScore = n.GetDoubleValue(); } },
                 { "training_run", n => { TrainingRun = n.GetGuidValue(); } },
             };
@@ -116,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("agent_confidence", AgentConfidence);
             writer.WriteStringValue("agent_description", AgentDescription);
+            writer.WriteStringValue("headline", Headline);
             writer.WriteDoubleValue("holdout_score", HoldoutScore);
             writer.WriteIntValue("iteration_number", IterationNumber);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIterationModelSpec>("model_spec", ModelSpec);
@@ -124,6 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("recipe_hash", RecipeHash);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIterationRecipeSnapshot>("recipe_snapshot", RecipeSnapshot);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIterationStatusEnum>("status", Status);
+            writer.WriteStringValue("summary", Summary);
             writer.WriteGuidValue("training_run", TrainingRun);
             writer.WriteDoubleValue("train_score", TrainScore);
             writer.WriteAdditionalData(AdditionalData);

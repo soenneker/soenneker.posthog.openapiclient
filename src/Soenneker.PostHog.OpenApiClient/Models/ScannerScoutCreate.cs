@@ -55,12 +55,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Make this the experiment scanner&apos;s variant analysis scout: its runs record a structured comparison of the variants, which the scanner&apos;s variants readout shows. Experiment scanners only.</summary>
+        public bool? VariantAnalysis { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreate"/> and sets the default values.
         /// </summary>
         public ScannerScoutCreate()
         {
             AdditionalData = new Dictionary<string, object>();
+            VariantAnalysis = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -85,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "variant_analysis", n => { VariantAnalysis = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -99,6 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("variant_analysis", VariantAnalysis);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

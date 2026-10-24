@@ -34,40 +34,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Type of visibility gap.* `ai_visibility_gap` - AI visibility gap</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ai_visibility_gap` - AI visibility gap</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityKind Kind { get; private set; }
-#endif
         /// <summary>When the citation data was last read.</summary>
         public DateTimeOffset? LastRefreshedAt { get; private set; }
         /// <summary>Site profile this opportunity belongs to.</summary>
         public Guid? ProfileId { get; private set; }
         /// <summary>Latest proposal drafted for this opportunity.</summary>
         public Guid? ProposalId { get; private set; }
-        /// <summary>`page_improvement` when the engines cited a site page for the prompt. Otherwise `new_content`, and drafting decides between a new page and an existing one.* `new_content` - New content* `page_improvement` - Page improvement</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `new_content` - New content* `page_improvement` - Page improvement</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityRecommendedType? RecommendedType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityRecommendedType RecommendedType { get; private set; }
-#endif
         /// <summary>Latest run that drafted this opportunity.</summary>
         public Guid? RunId { get; private set; }
         /// <summary>Priority from 0 to 1. Higher means a clearer, more consistent gap.</summary>
         public double? Score { get; private set; }
-        /// <summary>Where the opportunity is in the drafting workflow.* `new` - New* `dismissed` - Dismissed* `queued` - Queued* `drafted` - Drafted</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `new` - New* `dismissed` - Dismissed* `queued` - Queued* `drafted` - Drafted</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityStatus Status { get; private set; }
-#endif
         /// <summary>Site page the engines cited for the prompt, to improve. Empty when no page was cited.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,14 +97,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "gap", n => { Gap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityGap>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityGap.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityKind>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityKind>(); } },
                 { "last_refreshed_at", n => { LastRefreshedAt = n.GetDateTimeOffsetValue(); } },
                 { "profile_id", n => { ProfileId = n.GetGuidValue(); } },
                 { "proposal_id", n => { ProposalId = n.GetGuidValue(); } },
-                { "recommended_type", n => { RecommendedType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityRecommendedType>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityRecommendedType.CreateFromDiscriminatorValue); } },
+                { "recommended_type", n => { RecommendedType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityRecommendedType>(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotOpportunityStatus>(); } },
                 { "target_url", n => { TargetUrl = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

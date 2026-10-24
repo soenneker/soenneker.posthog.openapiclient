@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter> Filters { get; set; }
 #endif
-        /// <summary>Bucket size; auto-picked from the range when omitted</summary>
+        /// <summary>Bucket size; auto-picked from the range when omitted. A dashboard variable reference such as `$window` pins the interval to its single duration value (15s, 30s, 1m, 5m, 15m, 30m, 1h, 6h, 1d, 1w). Variable intervals that exceed 500 buckets require a larger value or shorter date range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Interval { get; set; }
@@ -47,13 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string MetricName { get; set; }
 #endif
         /// <summary>Pins the OTel type, as on a MetricsQuery clause: one name can exist as more than one type, and the heatmap must grid only the distribution series.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper? MetricType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper MetricType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType? MetricType { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +80,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Unit { get; set; }
 #endif
+        /// <summary>Values of the dashboard variables that the filters or interval refer to as `$name`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryVariablesProperty? Variables { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryVariablesProperty Variables { get; set; }
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
         /// <summary>
@@ -111,11 +113,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "interval", n => { Interval = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryKind>(); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
-                { "metricType", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "metricType", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryResponse.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "unit", n => { Unit = n.GetStringValue(); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryVariablesProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -131,11 +134,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryKind>("kind", Kind);
             writer.WriteStringValue("metricName", MetricName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelTypeWrapper>("metricType", MetricType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType>("metricType", MetricType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteStringValue("unit", Unit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQueryVariablesProperty>("variables", Variables);
             writer.WriteDoubleValue("version", Version);
         }
     }

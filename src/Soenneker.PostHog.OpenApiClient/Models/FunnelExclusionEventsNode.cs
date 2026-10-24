@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnelToStep property</summary>
         public int? FunnelToStep { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The math property</summary>
@@ -55,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The math_group_type_index property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper11? MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMathGroupTypeIndex? MathGroupTypeIndex { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper11 MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMathGroupTypeIndex MathGroupTypeIndex { get; set; }
 #endif
         /// <summary>The math_hogql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -153,10 +153,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "funnelFromStep", n => { FunnelFromStep = n.GetIntValue(); } },
                 { "funnelToStep", n => { FunnelToStep = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMath>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMath.CreateFromDiscriminatorValue); } },
-                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper11>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper11.CreateFromDiscriminatorValue); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMathGroupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMathGroupTypeIndex.CreateFromDiscriminatorValue); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
                 { "math_multiplier", n => { MathMultiplier = n.GetDoubleValue(); } },
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
@@ -182,10 +182,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeFixedPropertiesItem>("fixedProperties", FixedProperties);
             writer.WriteIntValue("funnelFromStep", FunnelFromStep);
             writer.WriteIntValue("funnelToStep", FunnelToStep);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMath>("math", Math);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper11>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionEventsNodeMathGroupTypeIndex>("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
             writer.WriteDoubleValue("math_multiplier", MathMultiplier);
             writer.WriteStringValue("math_property", MathProperty);

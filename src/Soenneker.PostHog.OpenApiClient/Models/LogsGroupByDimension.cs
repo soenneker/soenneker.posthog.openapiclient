@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The key this dimension groups by — an attribute key (e.g. &quot;session_id&quot;, &quot;service.name&quot;) or, when source is &quot;column&quot;, one of the top-level log fields: &quot;severity_level&quot;, &quot;trace_id&quot;, &quot;span_id&quot;.</summary>
+        /// <summary>The key this dimension groups by — an attribute key (e.g. &quot;session_id&quot;, &quot;service.name&quot;) or, when source is &quot;column&quot;, one of the top-level log fields: &quot;severity_level&quot;, &quot;service_name&quot;, &quot;trace_id&quot;, &quot;span_id&quot;, &quot;pattern&quot; (the masked message template).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Key { get; set; }
@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Where this dimension&apos;s key lives: &quot;log&quot; for log-level attributes, &quot;resource&quot; for resource-level attributes, &quot;column&quot; for top-level log fields.* `log` - log* `resource` - resource* `column` - column</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `log` - log* `resource` - resource* `column` - column</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimensionSource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimensionSource Source { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimensionSource>(global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimensionSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimensionSource>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimensionSource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimensionSource>("source", Source);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

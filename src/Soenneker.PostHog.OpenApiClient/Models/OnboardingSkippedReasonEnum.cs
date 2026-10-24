@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `delegated` - Delegated to teammate* `later` - Skipped for later* `other` - Other* `provisioned` - Account provisioned by a partner</summary>
+    /// <summary>* `delegated` - Delegated to teammate* `later` - Skipped for later* `other` - Other* `provisioned` - Account provisioned by a partner* `connector` - Signed up through an OAuth connector</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OnboardingSkippedReasonEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "provisioned")]
         #pragma warning disable CS1591
         Provisioned,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "connector")]
+        #pragma warning disable CS1591
+        Connector,
         #pragma warning restore CS1591
     }
 }

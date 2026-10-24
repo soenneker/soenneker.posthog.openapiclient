@@ -13,13 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3? LegendPosition { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3 LegendPosition { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
         /// <summary>The showLegend property</summary>
         public bool? ShowLegend { get; set; }
         /// <summary>Append per-band percentage to each value label (e.g. `580 (42%)`). Requires `showValuesOnSeries` — on its own it has no visible effect.</summary>
@@ -62,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3.CreateFromDiscriminatorValue); } },
+                { "legendPosition", n => { LegendPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>(); } },
                 { "showLegend", n => { ShowLegend = n.GetBoolValue(); } },
                 { "showPercentagesOnSeries", n => { ShowPercentagesOnSeries = n.GetBoolValue(); } },
                 { "showValuesOnSeries", n => { ShowValuesOnSeries = n.GetBoolValue(); } },
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3>("legendPosition", LegendPosition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>("legendPosition", LegendPosition);
             writer.WriteBoolValue("showLegend", ShowLegend);
             writer.WriteBoolValue("showPercentagesOnSeries", ShowPercentagesOnSeries);
             writer.WriteBoolValue("showValuesOnSeries", ShowValuesOnSeries);

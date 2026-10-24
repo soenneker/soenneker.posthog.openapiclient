@@ -47,14 +47,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OldString { get; set; }
 #endif
-        /// <summary>What to do. &apos;str_replace&apos; replaces old_string with new_string inside the file: the default for changing an existing file. &apos;write&apos; sets the file&apos;s complete content (new files, full rewrites). &apos;delete&apos; removes the file. &apos;rename&apos; moves it to new_path. When omitted, it follows the fields sent: old_string or new_string means &apos;str_replace&apos;, new_path means &apos;rename&apos;, non-null content means &apos;write&apos;, and content null means &apos;delete&apos;. An operation with none of these fields is rejected.* `write` - Write* `delete` - Delete* `rename` - Rename* `str_replace` - Str Replace</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `write` - Write* `delete` - Delete* `rename` - Rename* `str_replace` - Str Replace</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp? Op { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp Op { get; set; }
-#endif
         /// <summary>Project-relative path of the file to edit (e.g. &quot;src/canvas.tsx&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "new_path", n => { NewPath = n.GetStringValue(); } },
                 { "new_string", n => { NewString = n.GetStringValue(); } },
                 { "old_string", n => { OldString = n.GetStringValue(); } },
-                { "op", n => { Op = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp.CreateFromDiscriminatorValue); } },
+                { "op", n => { Op = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp>(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "replace_all", n => { ReplaceAll = n.GetBoolValue(); } },
             };
@@ -111,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("new_path", NewPath);
             writer.WriteStringValue("new_string", NewString);
             writer.WriteStringValue("old_string", OldString);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp>("op", Op);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp>("op", Op);
             writer.WriteStringValue("path", Path);
             writer.WriteBoolValue("replace_all", ReplaceAll);
             writer.WriteAdditionalData(AdditionalData);

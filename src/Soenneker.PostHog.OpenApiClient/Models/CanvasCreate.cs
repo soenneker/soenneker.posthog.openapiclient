@@ -25,14 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>What to create: &apos;freeform&apos; (a standalone app), &apos;component&apos; (a reusable widget for grids — its published project must declare a `component` placement contract), or &apos;grid&apos; (a composition of components, edited through the layout endpoints).* `freeform` - freeform* `grid` - grid* `component` - component</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `freeform` - freeform* `grid` - grid* `component` - component</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreateKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreateKind Kind { get; set; }
-#endif
         /// <summary>Display name for the canvas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreateKind>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreateKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreateKind>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
             };
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("channel_id", ChannelId);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreateKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreateKind>("kind", Kind);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteAdditionalData(AdditionalData);

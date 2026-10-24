@@ -12,14 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ErrorTrackingIssueBulkRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Which mutation to apply to every listed issue.* `set_status` - set_status* `assign` - assign</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `set_status` - set_status* `assign` - assign</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestAction? Action { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestAction Action { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Assignment target. Required when action is assign; null unassigns.</summary>
@@ -38,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> Ids { get; set; }
 #endif
-        /// <summary>Status to set. Required when action is set_status.* `active` - active* `resolved` - resolved* `suppressed` - suppressed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - active* `resolved` - resolved* `suppressed` - suppressed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequest"/> and sets the default values.
         /// </summary>
@@ -71,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "action", n => { Action = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestAction>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestAction.CreateFromDiscriminatorValue); } },
+                { "action", n => { Action = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestAction>(); } },
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeWrite>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeWrite.CreateFromDiscriminatorValue); } },
                 { "ids", n => { Ids = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestStatus>(); } },
             };
         }
         /// <summary>
@@ -84,10 +72,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestAction>("action", Action);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestAction>("action", Action);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssigneeWrite>("assignee", Assignee);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("ids", Ids);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBulkRequestStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

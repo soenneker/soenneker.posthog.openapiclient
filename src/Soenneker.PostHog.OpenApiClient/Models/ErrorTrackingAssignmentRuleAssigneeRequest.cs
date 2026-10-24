@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestId Id { get; set; }
 #endif
-        /// <summary>Assignee type. Use `user` for a user ID or `role` for a role UUID.* `user` - user* `role` - role</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `role` - role</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestId>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestId.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestType>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestType>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestId>("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssigneeRequestType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

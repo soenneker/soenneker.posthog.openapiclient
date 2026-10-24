@@ -57,29 +57,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators</summary>
         public bool? Negation { get; set; }
         /// <summary>Count comparison for performed_event_multiple, defaults to exact</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper Operator { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>Count threshold for performed_event_multiple</summary>
         public int? OperatorValue { get; set; }
         /// <summary>The time_interval property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitTypeWrapper? TimeInterval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitTypeWrapper TimeInterval { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitType? TimeInterval { get; set; }
         /// <summary>Relative time window size, paired with time_interval</summary>
         public int? TimeValue { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralType? Type { get; set; }
+        /// <summary>Person performed (or didn&apos;t perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralPropertyFilterType? Type { get; set; }
         /// <summary>The value property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralPropertyFilterValue? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InlineBehavioralType? Value { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -105,12 +93,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "negation", n => { Negation = n.GetBoolValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
                 { "operator_value", n => { OperatorValue = n.GetIntValue(); } },
-                { "time_interval", n => { TimeInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "time_interval", n => { TimeInterval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitType>(); } },
                 { "time_value", n => { TimeValue = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralType>(); } },
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralPropertyFilterValue>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralPropertyFilterType>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineBehavioralType>(); } },
             };
         }
         /// <summary>
@@ -127,12 +115,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
             writer.WriteBoolValue("negation", Negation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
             writer.WriteIntValue("operator_value", OperatorValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitTypeWrapper>("time_interval", TimeInterval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeUnitType>("time_interval", TimeInterval);
             writer.WriteIntValue("time_value", TimeValue);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralType>("type", Type);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralPropertyFilterValue>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralPropertyFilterType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineBehavioralType>("value", Value);
         }
     }
 }

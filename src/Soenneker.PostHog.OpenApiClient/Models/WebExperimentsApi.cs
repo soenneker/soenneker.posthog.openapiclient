@@ -38,10 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Variants for the web experiment. Example:        {            &quot;control&quot;: {                &quot;transforms&quot;: [                    {                        &quot;text&quot;: &quot;Here comes Superman!&quot;,                        &quot;html&quot;: &quot;&quot;,                        &quot;selector&quot;: &quot;#page &gt; #body &gt; .header h1&quot;                    }                ],                &quot;conditions&quot;: &quot;None&quot;,                &quot;rollout_percentage&quot;: 50            },        }</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsApiVariants? Variants { get; set; }
+        public UntypedNode? Variants { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsApiVariants Variants { get; set; }
+        public UntypedNode Variants { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsApi"/> and sets the default values.
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "feature_flag_key", n => { FeatureFlagKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "variants", n => { Variants = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsApiVariants>(global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsApiVariants.CreateFromDiscriminatorValue); } },
+                { "variants", n => { Variants = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsApiVariants>("variants", Variants);
+            writer.WriteObjectValue<UntypedNode>("variants", Variants);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -46,14 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation Remediation { get; set; }
 #endif
-        /// <summary>passed: ok. warned: degraded but not blocking. failed: blocking. skipped: not run for this state.* `passed` - passed* `warned` - warned* `failed` - failed* `skipped` - skipped</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `passed` - passed* `warned` - warned* `failed` - failed* `skipped` - skipped</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResult"/> and sets the default values.
         /// </summary>
@@ -83,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "remediation", n => { Remediation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus>(); } },
             };
         }
         /// <summary>
@@ -97,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation>("remediation", Remediation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

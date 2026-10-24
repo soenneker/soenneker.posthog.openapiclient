@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>One-based line containing the match when the result came from a body or bundled file.</summary>
         public int? Line { get; set; }
-        /// <summary>Skill field that matched the search query.* `name` - name* `description` - description* `body` - body* `file_path` - file_path* `file_content` - file_content</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `name` - name* `description` - description* `body` - body* `file_path` - file_path* `file_content` - file_content</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField? MatchedField { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField MatchedField { get; set; }
-#endif
         /// <summary>Skill-relative file path for body or bundled-file matches. Omitted for name and description matches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "excerpt", n => { Excerpt = n.GetStringValue(); } },
                 { "line", n => { Line = n.GetIntValue(); } },
-                { "matched_field", n => { MatchedField = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField.CreateFromDiscriminatorValue); } },
+                { "matched_field", n => { MatchedField = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField>(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
             };
         }
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("excerpt", Excerpt);
             writer.WriteIntValue("line", Line);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField>("matched_field", MatchedField);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField>("matched_field", MatchedField);
             writer.WriteStringValue("path", Path);
             writer.WriteAdditionalData(AdditionalData);
         }

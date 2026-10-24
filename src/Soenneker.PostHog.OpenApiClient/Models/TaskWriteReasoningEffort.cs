@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper7"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskWriteReasoningEffort : IComposedTypeWrapper, IParsable
@@ -21,14 +21,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper7"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper7? ReasoningEffortEnumWrapper7 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper7 ReasoningEffortEnumWrapper7 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum? ReasoningEffortEnum { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteReasoningEffort();
-            if("ReasoningEffortEnumWrapper7".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum reasoningEffortEnumValue)
             {
-                result.ReasoningEffortEnumWrapper7 = new global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper7();
+                result.ReasoningEffortEnum = reasoningEffortEnumValue;
             }
             return result;
         }
@@ -54,10 +48,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
-            }
-            else if(ReasoningEffortEnumWrapper7 != null)
-            {
-                return ReasoningEffortEnumWrapper7.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,9 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
             }
-            else if(ReasoningEffortEnumWrapper7 != null)
+            else if(ReasoningEffortEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper7>(null, ReasoningEffortEnumWrapper7);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>(null, ReasoningEffortEnum);
             }
         }
     }

@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShare> Groups { get; set; }
 #endif
-        /// <summary>Times the merge queue removed the pull request. Null without queue data.</summary>
+        /// <summary>Merge queue attempts where at least one workflow run failed. A failed check the queue does not require leaves the pull request in the queue, so this is an upper bound on the times the queue removed it. Null when the pull request never entered the merge queue.</summary>
         public int? KickoutCount { get; set; }
         /// <summary>Red stretches where the same job failed on the default branch within 12 hours.</summary>
         public int? MasterRedCount { get; set; }

@@ -46,14 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts Layouts { get; set; }
 #endif
-        /// <summary>Tile type. Use image for a body with exactly one Markdown image. Defaults to text.* `text` - text* `image` - image</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `text` - text* `image` - image</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest"/> and sets the default values.
         /// </summary>
@@ -83,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "color", n => { Color = n.GetStringValue(); } },
                 { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType>(global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType>(); } },
             };
         }
         /// <summary>
@@ -97,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("color", Color);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts>("layouts", Layouts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

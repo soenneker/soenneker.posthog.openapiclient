@@ -44,28 +44,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Scanner-type-specific configuration at run time (prompt, tags, scale, etc.).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get; set; }
 #endif
-        /// <summary>Scanner type (monitor, classifier, scorer, summarizer, experiment) at run time.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType? ScannerType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType ScannerType { get; set; }
-#endif
         /// <summary>The `ReplayScanner.scanner_version` value at the moment the workflow ran.</summary>
         public int? ScannerVersion { get; set; }
-        /// <summary>How a monitor `yes` was re-checked at run time: `off` (one pass, the default), `shadow` (second draw recorded only), or `enforce` (the `yes` stands only when the second draw agrees).</summary>
+        /// <summary>Experiment scanners with balanced sampling: the 0..1 rate each watched variant was sampled at by the tick that dispatched this scan. Null otherwise, so even per-variant counts can be read against the rates that produced them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VerifyPositives { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty? VariantSamplingRates { get; set; }
 #nullable restore
 #else
-        public string VerifyPositives { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty VariantSamplingRates { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot"/> and sets the default values.
@@ -96,10 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
-                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig.CreateFromDiscriminatorValue); } },
-                { "scanner_type", n => { ScannerType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType.CreateFromDiscriminatorValue); } },
+                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "scanner_type", n => { ScannerType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType>(); } },
                 { "scanner_version", n => { ScannerVersion = n.GetIntValue(); } },
-                { "verify_positives", n => { VerifyPositives = n.GetStringValue(); } },
+                { "variant_sampling_rates", n => { VariantSamplingRates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -113,10 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("provider", Provider);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerConfig>("scanner_config", ScannerConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType>("scanner_type", ScannerType);
+            writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType>("scanner_type", ScannerType);
             writer.WriteIntValue("scanner_version", ScannerVersion);
-            writer.WriteStringValue("verify_positives", VerifyPositives);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty>("variant_sampling_rates", VariantSamplingRates);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

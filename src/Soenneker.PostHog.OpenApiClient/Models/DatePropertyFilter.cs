@@ -23,22 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Date comparison operator.* `is_date_exact` - is_date_exact* `is_date_before` - is_date_before* `is_date_after` - is_date_after</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `is_date_exact` - is_date_exact* `is_date_before` - is_date_before* `is_date_after` - is_date_after</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterOperator? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterOperator Operator { get; set; }
-#endif
-        /// <summary>Property type (event, person, session, etc.).* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `person_metadata` - person_metadata* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `metric_attribute` - metric_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `account_custom_property` - account_custom_property* `flag` - flag* `workflow_variable` - workflow_variable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `person_metadata` - person_metadata* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `metric_attribute` - metric_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `account_custom_property` - account_custom_property* `flag` - flag* `workflow_variable` - workflow_variable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterType Type { get; set; }
-#endif
         /// <summary>Date or datetime string in ISO 8601 format (e.g. &apos;2024-01-15&apos; or &apos;2024-01-15T10:30:00Z&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,8 +61,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterOperator>(global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterOperator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterType>(global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterType.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterType>(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -86,8 +74,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatePropertyFilterType>("type", Type);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

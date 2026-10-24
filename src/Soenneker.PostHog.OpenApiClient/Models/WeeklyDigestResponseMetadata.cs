@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How to read the headline numbers. &apos;ok&apos;: the headline has pageviews or sessions in the period. &apos;no_web_sessions&apos;: the headline is zero, but the project has sessions in the period. None of them contain a $pageview or $screen event from a non-test account. Query the sessions table directly to count them. &apos;no_sessions&apos;: the project has no sessions in the period. &apos;unknown&apos;: the headline is zero, and the check for other sessions in the period failed. Query the sessions table directly to count them.* `ok` - OK* `no_web_sessions` - No web sessions* `no_sessions` - No sessions* `unknown` - Unknown</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - OK* `no_web_sessions` - No web sessions* `no_sessions` - No sessions* `unknown` - Unknown</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DigestMetadataDataStatus? DataStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DigestMetadataDataStatus DataStatus { get; set; }
-#endif
         /// <summary>Start of the current period, in the project timezone.</summary>
         public DateTimeOffset? DateFrom { get; set; }
         /// <summary>End of the current period, in the project timezone.</summary>
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data_status", n => { DataStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestMetadataDataStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DigestMetadataDataStatus.CreateFromDiscriminatorValue); } },
+                { "data_status", n => { DataStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestMetadataDataStatus>(); } },
                 { "date_from", n => { DateFrom = n.GetDateTimeOffsetValue(); } },
                 { "date_to", n => { DateTo = n.GetDateTimeOffsetValue(); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
@@ -85,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestMetadataDataStatus>("data_status", DataStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestMetadataDataStatus>("data_status", DataStatus);
             writer.WriteDateTimeOffsetValue("date_from", DateFrom);
             writer.WriteDateTimeOffsetValue("date_to", DateTo);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);

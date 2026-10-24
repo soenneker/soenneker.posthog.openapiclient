@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Previous { get; set; }
 #endif
-        /// <summary>Count of this run&apos;s snapshots that match the other filters and whose identifier is currently quarantined. Excluded from results unless include_quarantined=true is passed.</summary>
+        /// <summary>Count of this run&apos;s snapshots that match the other filters and whose identifier is quarantined now. Excluded from results unless include_quarantined=true is passed. This can differ from the run&apos;s own counts, which use the quarantines at gating time.</summary>
         public int? QuarantinedCount { get; set; }
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

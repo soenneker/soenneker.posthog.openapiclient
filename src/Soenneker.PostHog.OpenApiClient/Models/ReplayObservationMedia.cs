@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// One thumbnail or clip illustrating an observation.
+    /// One frame illustrating an observation.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReplayObservationMedia : IAdditionalDataHolder, IParsable
@@ -17,28 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Export asset holding the bytes; fetch it from the export content endpoint.</summary>
         public int? AssetId { get; private set; }
-        /// <summary>One sentence saying what the clip shows. Null for thumbnails.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Description { get; private set; }
-#nullable restore
-#else
-        public string Description { get; private set; }
-#endif
         /// <summary>Id of this media entry.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>`thumbnail` for the single frame that illustrates the observation, `chapter` for the frame of one summary chapter, `clip` for a short video.* `thumbnail` - Thumbnail* `clip` - Clip* `chapter` - Chapter</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `thumbnail` - Thumbnail* `chapter` - Chapter</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind Kind { get; private set; }
-#endif
         /// <summary>Order among media of the same kind. For a `chapter` frame, the index into `model_output.chapters`.</summary>
         public int? Position { get; private set; }
-        /// <summary>Where a clip ends in the analysis video, in milliseconds. Null for thumbnails.</summary>
-        public int? VideoEndMs { get; private set; }
         /// <summary>Where this media starts in the analysis video, in milliseconds.</summary>
         public int? VideoStartMs { get; private set; }
         /// <summary>
@@ -67,11 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "asset_id", n => { AssetId = n.GetIntValue(); } },
-                { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMediaKind>(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
-                { "video_end_ms", n => { VideoEndMs = n.GetIntValue(); } },
                 { "video_start_ms", n => { VideoStartMs = n.GetIntValue(); } },
             };
         }

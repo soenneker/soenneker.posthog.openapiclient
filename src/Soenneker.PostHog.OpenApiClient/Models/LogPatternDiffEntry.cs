@@ -18,13 +18,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? BaselineEstimatedCount { get; set; }
         /// <summary>Share of the baseline sample this pattern represented (0-100). Null when absent from the baseline.</summary>
         public double? BaselineVolumeSharePct { get; set; }
-        /// <summary>&quot;new&quot;: appears only in the current window and clears the novelty floor (at least ~1% volume share, or any error/fatal occurrences). &quot;rate_shift&quot;: present in both windows with the per-second rate changed by at least 2x either way, backed by enough samples on both sides to trust the estimates. &quot;gone&quot;: cleared the floor in the baseline but absent from the current window. &quot;unchanged&quot; means &quot;no confident claim&quot;, not &quot;provably identical&quot; — sampled mining cannot prove a below-floor template is genuinely new or gone.* `new` - new* `rate_shift` - rate_shift* `gone` - gone* `unchanged` - unchanged</summary>
+        /// <summary>* `new` - new* `rate_shift` - rate_shift* `gone` - gone* `unchanged` - unchanged</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification? Classification { get; set; }
+        /// <summary>Earliest 5-minute bucket (UTC) with this pattern, up to 14 days back. Null on body mining.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification? Classification { get; set; }
+        public string? FirstSeenEver { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification Classification { get; set; }
+        public string FirstSeenEver { get; set; }
+#endif
+        /// <summary>The template with variable parts masked.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MaskedExample { get; set; }
+#nullable restore
+#else
+        public string MaskedExample { get; set; }
 #endif
         /// <summary>The mined pattern with full stats. Taken from the current window, or from the baseline window for &quot;gone&quot; entries. When template wobble split one message across several near-identical templates, this is the highest-volume representative and the entry&apos;s classification reflects their combined counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -36,6 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Current-window rate divided by baseline rate, both normalized per second so windows of different lengths compare fairly. 4.0 means 4x faster now; 0.25 means quartered. Null when the pattern is missing from either window.</summary>
         public double? RateRatio { get; set; }
+        /// <summary>Up to 4 services with this pattern.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Services { get; set; }
+#nullable restore
+#else
+        public List<string> Services { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry"/> and sets the default values.
         /// </summary>
@@ -63,9 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "baseline_estimated_count", n => { BaselineEstimatedCount = n.GetIntValue(); } },
                 { "baseline_volume_share_pct", n => { BaselineVolumeSharePct = n.GetDoubleValue(); } },
-                { "classification", n => { Classification = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification>(global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification.CreateFromDiscriminatorValue); } },
+                { "classification", n => { Classification = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification>(); } },
+                { "first_seen_ever", n => { FirstSeenEver = n.GetStringValue(); } },
+                { "masked_example", n => { MaskedExample = n.GetStringValue(); } },
                 { "pattern", n => { Pattern = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern>(global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern.CreateFromDiscriminatorValue); } },
                 { "rate_ratio", n => { RateRatio = n.GetDoubleValue(); } },
+                { "services", n => { Services = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -77,9 +98,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("baseline_estimated_count", BaselineEstimatedCount);
             writer.WriteDoubleValue("baseline_volume_share_pct", BaselineVolumeSharePct);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification>("classification", Classification);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification>("classification", Classification);
+            writer.WriteStringValue("first_seen_ever", FirstSeenEver);
+            writer.WriteStringValue("masked_example", MaskedExample);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern>("pattern", Pattern);
             writer.WriteDoubleValue("rate_ratio", RateRatio);
+            writer.WriteCollectionOfPrimitiveValues<string>("services", Services);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

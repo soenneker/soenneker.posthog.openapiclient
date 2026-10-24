@@ -79,10 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The form_content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaFormContent? FormContent { get; set; }
+        public UntypedNode? FormContent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaFormContent FormContent { get; set; }
+        public UntypedNode FormContent { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -139,10 +139,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response_sampling_daily_limits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingDailyLimits? ResponseSamplingDailyLimits { get; set; }
+        public UntypedNode? ResponseSamplingDailyLimits { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingDailyLimits ResponseSamplingDailyLimits { get; set; }
+        public UntypedNode ResponseSamplingDailyLimits { get; set; }
 #endif
         /// <summary>The response_sampling_interval property</summary>
         public int? ResponseSamplingInterval { get; set; }
@@ -191,19 +191,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The translations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations? Translations { get; set; }
+        public UntypedNode? Translations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations Translations { get; set; }
+        public UntypedNode Translations { get; set; }
 #endif
-        /// <summary>Survey type.* `popover` - popover* `widget` - widget* `external_survey` - external survey* `api` - api</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `popover` - popover* `widget` - widget* `external_survey` - external survey* `api` - api</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchema"/> and sets the default values.
         /// </summary>
@@ -242,7 +236,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enable_iframe_embedding", n => { EnableIframeEmbedding = n.GetBoolValue(); } },
                 { "enable_partial_responses", n => { EnablePartialResponses = n.GetBoolValue(); } },
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
-                { "form_content", n => { FormContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaFormContent>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaFormContent.CreateFromDiscriminatorValue); } },
+                { "form_content", n => { FormContent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal_targeting_flag", n => { InternalTargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaInternalTargetingFlag>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaInternalTargetingFlag.CreateFromDiscriminatorValue); } },
                 { "iteration_count", n => { IterationCount = n.GetIntValue(); } },
@@ -254,7 +248,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "questions", n => { Questions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "remove_targeting_flag", n => { RemoveTargetingFlag = n.GetBoolValue(); } },
-                { "response_sampling_daily_limits", n => { ResponseSamplingDailyLimits = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingDailyLimits>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingDailyLimits.CreateFromDiscriminatorValue); } },
+                { "response_sampling_daily_limits", n => { ResponseSamplingDailyLimits = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "response_sampling_interval", n => { ResponseSamplingInterval = n.GetIntValue(); } },
                 { "response_sampling_interval_type", n => { ResponseSamplingIntervalType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType.CreateFromDiscriminatorValue); } },
                 { "response_sampling_limit", n => { ResponseSamplingLimit = n.GetIntValue(); } },
@@ -265,8 +259,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "targeting_flag", n => { TargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlag>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlag.CreateFromDiscriminatorValue); } },
                 { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema.CreateFromDiscriminatorValue); } },
                 { "targeting_flag_id", n => { TargetingFlagId = n.GetIntValue(); } },
-                { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType.CreateFromDiscriminatorValue); } },
+                { "translations", n => { Translations = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType>(); } },
             };
         }
         /// <summary>
@@ -287,7 +281,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enable_iframe_embedding", EnableIframeEmbedding);
             writer.WriteBoolValue("enable_partial_responses", EnablePartialResponses);
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaFormContent>("form_content", FormContent);
+            writer.WriteObjectValue<UntypedNode>("form_content", FormContent);
             writer.WriteIntValue("iteration_count", IterationCount);
             writer.WriteIntValue("iteration_frequency_days", IterationFrequencyDays);
             writer.WriteCollectionOfPrimitiveValues<DateTimeOffset?>("iteration_start_dates", IterationStartDates);
@@ -296,7 +290,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema>("questions", Questions);
             writer.WriteBoolValue("remove_targeting_flag", RemoveTargetingFlag);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingDailyLimits>("response_sampling_daily_limits", ResponseSamplingDailyLimits);
+            writer.WriteObjectValue<UntypedNode>("response_sampling_daily_limits", ResponseSamplingDailyLimits);
             writer.WriteIntValue("response_sampling_interval", ResponseSamplingInterval);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType>("response_sampling_interval_type", ResponseSamplingIntervalType);
             writer.WriteIntValue("response_sampling_limit", ResponseSamplingLimit);
@@ -306,8 +300,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>("targeting_flag_filters", TargetingFlagFilters);
             writer.WriteIntValue("targeting_flag_id", TargetingFlagId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations>("translations", Translations);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType>("type", Type);
+            writer.WriteObjectValue<UntypedNode>("translations", Translations);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
+        /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, source_suggestion, suggested_reviewers. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment, source_suggestion) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ArtefactType { get; set; }
@@ -28,10 +28,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The artefact payload as a JSON object or array; shape depends on artefact_type and is validated against its schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent? Content { get; set; }
+        public UntypedNode? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent Content { get; set; }
+        public UntypedNode Content { get; set; }
+#endif
+        /// <summary>Report reviewer_assignment.state read before selection began. Required when reviewer corrections are enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers? ExpectedReviewers { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers ExpectedReviewers { get; set; }
+#endif
+        /// <summary>* `selected` - Selected* `no_suitable_owner` - No suitable owner* `lookup_failed` - Lookup failed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome? ReviewerOutcome { get; set; }
+        /// <summary>Reason the reviewer lookup failed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReviewerRetryReason { get; set; }
+#nullable restore
+#else
+        public string ReviewerRetryReason { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreate"/> and sets the default values.
@@ -60,7 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "artefact_type", n => { ArtefactType = n.GetStringValue(); } },
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "expected_reviewers", n => { ExpectedReviewers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers.CreateFromDiscriminatorValue); } },
+                { "reviewer_outcome", n => { ReviewerOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome>(); } },
+                { "reviewer_retry_reason", n => { ReviewerRetryReason = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -72,7 +93,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("artefact_type", ArtefactType);
             writer.WriteGuidValue("claim_id", ClaimId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent>("content", Content);
+            writer.WriteObjectValue<UntypedNode>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers>("expected_reviewers", ExpectedReviewers);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome>("reviewer_outcome", ReviewerOutcome);
+            writer.WriteStringValue("reviewer_retry_reason", ReviewerRetryReason);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

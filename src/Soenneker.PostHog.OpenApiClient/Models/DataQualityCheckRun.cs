@@ -14,13 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>True when the run audited a refresh that was staged but not yet published, under the materialization gate.</summary>
+        public bool? AuditedStagedRefresh { get; private set; }
         /// <summary>Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not &apos;same as the check has now&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckConfigProperty? CheckConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckConfigProperty? CheckConfig { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckConfigProperty CheckConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckConfigProperty CheckConfig { get; private set; }
 #endif
         /// <summary>Name the check carries now, so a run can be told from the others in its suite. Null when the check is unnamed, has been hard deleted, or is out of your reach today -- describe the run by check_type and column_name instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckSeverity CheckSeverity { get; private set; }
 #endif
-        /// <summary>Which assertion this run made.* `not_null` - not_null* `unique` - unique* `accepted_values` - accepted_values* `relationships` - relationships* `row_count` - row_count* `freshness` - freshness* `custom_sql` - custom_sql</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_null` - not_null* `unique` - unique* `accepted_values` - accepted_values* `relationships` - relationships* `row_count` - row_count* `freshness` - freshness* `custom_sql` - custom_sql</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckType? CheckType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckType CheckType { get; private set; }
-#endif
         /// <summary>The column_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ColumnName { get; private set; }
 #endif
-        /// <summary>The HogQL that ran. Re-run it to see the offending rows.</summary>
+        /// <summary>HogQL selecting the failing rows. Re-run it to see them. For a run that audited a staged refresh it inlines the view&apos;s definition, so it reads the source tables rather than the published table. Empty when there is nothing to replay: retention cleared it, or a staged run could not build its replay query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CompiledQuery { get; private set; }
@@ -102,14 +98,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubjectName { get; private set; }
 #endif
-        /// <summary>The subject_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunSubjectType? SubjectType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunSubjectType SubjectType { get; private set; }
-#endif
         /// <summary>The subject_uuid property</summary>
         public Guid? SubjectUuid { get; private set; }
         /// <summary>The suite_run property</summary>
@@ -139,10 +129,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "audited_staged_refresh", n => { AuditedStagedRefresh = n.GetBoolValue(); } },
                 { "check_config", n => { CheckConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckConfigProperty.CreateFromDiscriminatorValue); } },
                 { "check_name", n => { CheckName = n.GetStringValue(); } },
                 { "check_severity", n => { CheckSeverity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckSeverity.CreateFromDiscriminatorValue); } },
-                { "check_type", n => { CheckType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckType>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckType.CreateFromDiscriminatorValue); } },
+                { "check_type", n => { CheckType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckType>(); } },
                 { "column_name", n => { ColumnName = n.GetStringValue(); } },
                 { "compiled_query", n => { CompiledQuery = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -156,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "subject_name", n => { SubjectName = n.GetStringValue(); } },
-                { "subject_type", n => { SubjectType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunSubjectType>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunSubjectType.CreateFromDiscriminatorValue); } },
+                { "subject_type", n => { SubjectType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunSubjectType>(); } },
                 { "subject_uuid", n => { SubjectUuid = n.GetGuidValue(); } },
                 { "suite_run", n => { SuiteRun = n.GetGuidValue(); } },
             };
@@ -168,7 +159,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckRunCheckConfigProperty>("check_config", CheckConfig);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

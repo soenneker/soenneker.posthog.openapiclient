@@ -52,14 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>False when reviews aren&apos;t synced: the approval medians are then null.</summary>
         public bool? ReviewDataAvailable { get; set; }
-        /// <summary>How the teams were picked from the author&apos;s teams that own code: pull_request (the pr_number asked the team to review); review_requests (the team the author&apos;s pull requests asked to review most often in the window, with ties kept); only_team (the author is in one team); all_teams (no review request points at one team); no_team (no team, or no membership data).* `pull_request` - PULL_REQUEST* `review_requests` - REVIEW_REQUESTS* `only_team` - ONLY_TEAM* `all_teams` - ALL_TEAMS* `no_team` - NO_TEAM</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pull_request` - Pull Request* `review_requests` - Review Requests* `only_team` - Only Team* `all_teams` - All Teams* `no_team` - No Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis? TeamBasis { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis TeamBasis { get; set; }
-#endif
         /// <summary>The author&apos;s teams that team_basis picked, sorted by slug. Empty for no_team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ready_data_available", n => { ReadyDataAvailable = n.GetBoolValue(); } },
                 { "repo_medians", n => { RepoMedians = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians>(global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians.CreateFromDiscriminatorValue); } },
                 { "review_data_available", n => { ReviewDataAvailable = n.GetBoolValue(); } },
-                { "team_basis", n => { TeamBasis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis>(global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis.CreateFromDiscriminatorValue); } },
+                { "team_basis", n => { TeamBasis = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis>(); } },
                 { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians>(global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -118,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("ready_data_available", ReadyDataAvailable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians>("repo_medians", RepoMedians);
             writer.WriteBoolValue("review_data_available", ReviewDataAvailable);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis>("team_basis", TeamBasis);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis>("team_basis", TeamBasis);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians>("teams", Teams);
             writer.WriteAdditionalData(AdditionalData);
         }

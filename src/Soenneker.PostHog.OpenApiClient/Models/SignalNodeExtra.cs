@@ -14,13 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class SignalNodeExtra : IAdditionalDataHolder, IParsable
     {
         /// <summary>The action property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraAction? Action { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraAction Action { get; set; }
-#endif
         /// <summary>The added property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,6 +32,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string AdminAssigneeId { get; set; }
+#endif
+        /// <summary>The affected_entities property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? AffectedEntities { get; set; }
+#nullable restore
+#else
+        public List<string> AffectedEntities { get; set; }
+#endif
+        /// <summary>The affected_users property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AffectedUsers { get; set; }
+#nullable restore
+#else
+        public string AffectedUsers { get; set; }
 #endif
         /// <summary>The alert_check_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,7 +73,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AlertName { get; set; }
 #endif
-        /// <summary>The applicationUrl property</summary>
+        /// <summary>The alert_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AlertType { get; set; }
+#nullable restore
+#else
+        public string AlertType { get; set; }
+#endif
+        /// <summary>The alert_url property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AlertUrl { get; set; }
+#nullable restore
+#else
+        public string AlertUrl { get; set; }
+#endif
+        /// <summary>The application_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ApplicationUrl { get; set; }
@@ -78,6 +104,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string AppVersion { get; set; }
+#endif
+        /// <summary>The asset_uuid property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AssetUuid { get; set; }
+#nullable restore
+#else
+        public string AssetUuid { get; set; }
 #endif
         /// <summary>The assignee property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -109,6 +143,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BaselineP95Seconds { get; set; }
         /// <summary>The baseline_value property</summary>
         public double? BaselineValue { get; set; }
+        /// <summary>The board_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BoardId { get; set; }
+#nullable restore
+#else
+        public string BoardId { get; set; }
+#endif
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -119,6 +161,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The breakdown_limit property</summary>
         public int? BreakdownLimit { get; set; }
+        /// <summary>The bugs_found property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BugsFound { get; set; }
+#nullable restore
+#else
+        public string BugsFound { get; set; }
+#endif
+        /// <summary>The case_number property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CaseNumber { get; set; }
+#nullable restore
+#else
+        public string CaseNumber { get; set; }
+#endif
+        /// <summary>The case_origin property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CaseOrigin { get; set; }
+#nullable restore
+#else
+        public string CaseOrigin { get; set; }
+#endif
+        /// <summary>The case_reason property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CaseReason { get; set; }
+#nullable restore
+#else
+        public string CaseReason { get; set; }
+#endif
+        /// <summary>The casetypecode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Casetypecode { get; set; }
+#nullable restore
+#else
+        public string Casetypecode { get; set; }
+#endif
         /// <summary>The category property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -126,6 +208,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Category { get; set; }
+#endif
+        /// <summary>The category_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CategoryId { get; set; }
+#nullable restore
+#else
+        public string CategoryId { get; set; }
 #endif
         /// <summary>The category_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -177,6 +267,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The clicks property</summary>
         public int? Clicks { get; set; }
+        /// <summary>The code_location property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CodeLocation { get; set; }
+#nullable restore
+#else
+        public string CodeLocation { get; set; }
+#endif
+        /// <summary>The collected_at property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CollectedAt { get; set; }
+#nullable restore
+#else
+        public string CollectedAt { get; set; }
+#endif
+        /// <summary>The commit_sha property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CommitSha { get; set; }
+#nullable restore
+#else
+        public string CommitSha { get; set; }
+#endif
+        /// <summary>The completed property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Completed { get; set; }
+#nullable restore
+#else
+        public string Completed { get; set; }
+#endif
+        /// <summary>The completed_time property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CompletedTime { get; set; }
+#nullable restore
+#else
+        public string CompletedTime { get; set; }
+#endif
+        /// <summary>The compliance_status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ComplianceStatus { get; set; }
+#nullable restore
+#else
+        public string ComplianceStatus { get; set; }
+#endif
         /// <summary>The component property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -184,6 +322,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Component { get; set; }
+#endif
+        /// <summary>The components property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Components { get; set; }
+#nullable restore
+#else
+        public List<string> Components { get; set; }
 #endif
         /// <summary>The conclusive_run_count property</summary>
         public int? ConclusiveRunCount { get; set; }
@@ -193,6 +339,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? Confidence { get; set; }
         /// <summary>The consecutive_failures property</summary>
         public int? ConsecutiveFailures { get; set; }
+        /// <summary>The content_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ContentType { get; set; }
+#nullable restore
+#else
+        public string ContentType { get; set; }
+#endif
         /// <summary>The context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -200,6 +354,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Context { get; set; }
+#endif
+        /// <summary>The count property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Count { get; set; }
+#nullable restore
+#else
+        public string Count { get; set; }
 #endif
         /// <summary>The created property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -210,14 +372,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Created { get; set; }
 #endif
         /// <summary>The created_at property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Created_at { get; set; }
-#nullable restore
-#else
-        public string Created_at { get; set; }
-#endif
-        /// <summary>The createdAt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedAt { get; set; }
@@ -233,7 +387,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Createdate { get; set; }
 #endif
-        /// <summary>The createdDate property</summary>
+        /// <summary>The created_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedDate { get; set; }
@@ -249,7 +403,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreatedDatetime { get; set; }
 #endif
-        /// <summary>The creationDate property</summary>
+        /// <summary>The createdon property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Createdon { get; set; }
+#nullable restore
+#else
+        public string Createdon { get; set; }
+#endif
+        /// <summary>The created_time property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedTime { get; set; }
+#nullable restore
+#else
+        public string CreatedTime { get; set; }
+#endif
+        /// <summary>The creation_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreationDate { get; set; }
@@ -257,12 +427,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreationDate { get; set; }
 #endif
+        /// <summary>The csat_rating property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CsatRating { get; set; }
+#nullable restore
+#else
+        public string CsatRating { get; set; }
+#endif
         /// <summary>The ctr property</summary>
         public double? Ctr { get; set; }
+        /// <summary>The current_milestone property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CurrentMilestone { get; set; }
+#nullable restore
+#else
+        public string CurrentMilestone { get; set; }
+#endif
         /// <summary>The current_p50_seconds property</summary>
         public double? CurrentP50Seconds { get; set; }
         /// <summary>The current_p95_seconds property</summary>
         public double? CurrentP95Seconds { get; set; }
+        /// <summary>The current_status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CurrentStatus { get; set; }
+#nullable restore
+#else
+        public string CurrentStatus { get; set; }
+#endif
         /// <summary>The cvss_v3_score property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -287,6 +481,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Date { get; set; }
 #endif
+        /// <summary>The date_created property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DateCreated { get; set; }
+#nullable restore
+#else
+        public string DateCreated { get; set; }
+#endif
         /// <summary>The dedupe_keys property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -303,7 +505,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DetectorType { get; set; }
 #endif
-        /// <summary>The displayUrl property</summary>
+        /// <summary>The display_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayId { get; set; }
+#nullable restore
+#else
+        public string DisplayId { get; set; }
+#endif
+        /// <summary>The display_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DisplayUrl { get; set; }
@@ -353,6 +563,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EndTime { get; set; }
 #endif
+        /// <summary>The engagement_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EngagementId { get; set; }
+#nullable restore
+#else
+        public string EngagementId { get; set; }
+#endif
         /// <summary>The environment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -369,6 +587,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ErrorClass { get; set; }
 #endif
+        /// <summary>The error_hash property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ErrorHash { get; set; }
+#nullable restore
+#else
+        public string ErrorHash { get; set; }
+#endif
         /// <summary>The error_message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -376,6 +602,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string ErrorMessage { get; set; }
+#endif
+        /// <summary>The error_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ErrorType { get; set; }
+#nullable restore
+#else
+        public string ErrorType { get; set; }
 #endif
         /// <summary>The evaluation_description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -401,6 +635,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EvaluationName { get; set; }
 #endif
+        /// <summary>The event_count property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EventCount { get; set; }
+#nullable restore
+#else
+        public string EventCount { get; set; }
+#endif
         /// <summary>The event_history property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -417,6 +659,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry> Evidence { get; set; }
 #endif
+        /// <summary>The exception_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExceptionType { get; set; }
+#nullable restore
+#else
+        public string ExceptionType { get; set; }
+#endif
         /// <summary>The explanation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -425,17 +675,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Explanation { get; set; }
 #endif
-        /// <summary>The exported_asset_id property</summary>
-        public int? ExportedAssetId { get; set; }
-        /// <summary>The failed_attempt property</summary>
-        public int? FailedAttempt { get; set; }
-        /// <summary>The feedbackTopics property</summary>
+        /// <summary>The exploit_available property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem>? FeedbackTopics { get; set; }
+        public string? ExploitAvailable { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem> FeedbackTopics { get; set; }
+        public string ExploitAvailable { get; set; }
+#endif
+        /// <summary>The exported_asset_id property</summary>
+        public int? ExportedAssetId { get; set; }
+        /// <summary>The external_url property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExternalUrl { get; set; }
+#nullable restore
+#else
+        public string ExternalUrl { get; set; }
+#endif
+        /// <summary>The failed_attempt property</summary>
+        public int? FailedAttempt { get; set; }
+        /// <summary>The feedback_number property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FeedbackNumber { get; set; }
+#nullable restore
+#else
+        public string FeedbackNumber { get; set; }
+#endif
+        /// <summary>The feedback_topics property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? FeedbackTopics { get; set; }
+#nullable restore
+#else
+        public UntypedNode FeedbackTopics { get; set; }
+#endif
+        /// <summary>The file_path property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FilePath { get; set; }
+#nullable restore
+#else
+        public string FilePath { get; set; }
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -461,15 +743,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Fingerprint { get; set; }
 #endif
-        /// <summary>The first_seen property</summary>
+        /// <summary>The finished property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? First_seen { get; set; }
+        public string? Finished { get; set; }
 #nullable restore
 #else
-        public string First_seen { get; set; }
+        public string Finished { get; set; }
 #endif
-        /// <summary>The firstSeen property</summary>
+        /// <summary>The first_found property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstFound { get; set; }
+#nullable restore
+#else
+        public string FirstFound { get; set; }
+#endif
+        /// <summary>The first_observed_at property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstObservedAt { get; set; }
+#nullable restore
+#else
+        public string FirstObservedAt { get; set; }
+#endif
+        /// <summary>The first_seen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstSeen { get; set; }
@@ -477,8 +775,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FirstSeen { get; set; }
 #endif
+        /// <summary>The first_version property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstVersion { get; set; }
+#nullable restore
+#else
+        public string FirstVersion { get; set; }
+#endif
+        /// <summary>The fix_available property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FixAvailable { get; set; }
+#nullable restore
+#else
+        public string FixAvailable { get; set; }
+#endif
         /// <summary>The flaky_count property</summary>
         public int? FlakyCount { get; set; }
+        /// <summary>The form_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FormId { get; set; }
+#nullable restore
+#else
+        public string FormId { get; set; }
+#endif
         /// <summary>The framework property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -487,6 +809,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Framework { get; set; }
 #endif
+        /// <summary>The function_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FunctionName { get; set; }
+#nullable restore
+#else
+        public string FunctionName { get; set; }
+#endif
+        /// <summary>The group property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Group { get; set; }
+#nullable restore
+#else
+        public string Group { get; set; }
+#endif
+        /// <summary>The group_labels property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraGroupLabelsProperty? GroupLabels { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraGroupLabelsProperty GroupLabels { get; set; }
+#endif
         /// <summary>The head_sha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -494,6 +840,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string HeadSha { get; set; }
+#endif
+        /// <summary>The helpful property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Helpful { get; set; }
+#nullable restore
+#else
+        public string Helpful { get; set; }
 #endif
         /// <summary>The hs_pipeline_stage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -559,8 +913,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketImage> Images { get; set; }
 #endif
+        /// <summary>The impact property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Impact { get; set; }
+#nullable restore
+#else
+        public string Impact { get; set; }
+#endif
+        /// <summary>The impact_level property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ImpactLevel { get; set; }
+#nullable restore
+#else
+        public string ImpactLevel { get; set; }
+#endif
         /// <summary>The impressions property</summary>
         public int? Impressions { get; set; }
+        /// <summary>The incident_identifier property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IncidentIdentifier { get; set; }
+#nullable restore
+#else
+        public string IncidentIdentifier { get; set; }
+#endif
+        /// <summary>The incident_url property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IncidentUrl { get; set; }
+#nullable restore
+#else
+        public string IncidentUrl { get; set; }
+#endif
         /// <summary>The insight_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -585,6 +971,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsightShortId { get; set; }
 #endif
+        /// <summary>The internet_exposure property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InternetExposure { get; set; }
+#nullable restore
+#else
+        public string InternetExposure { get; set; }
+#endif
+        /// <summary>The is_crash property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IsCrash { get; set; }
+#nullable restore
+#else
+        public string IsCrash { get; set; }
+#endif
+        /// <summary>The is_recommended property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IsRecommended { get; set; }
+#nullable restore
+#else
+        public string IsRecommended { get; set; }
+#endif
         /// <summary>The issue_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -592,6 +1002,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string IssueId { get; set; }
+#endif
+        /// <summary>The issue_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssueType { get; set; }
+#nullable restore
+#else
+        public string IssueType { get; set; }
+#endif
+        /// <summary>The issue_url property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssueUrl { get; set; }
+#nullable restore
+#else
+        public string IssueUrl { get; set; }
 #endif
         /// <summary>The job_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -625,7 +1051,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Labels { get; set; }
 #endif
-        /// <summary>The lastOccurredAt property</summary>
+        /// <summary>The language property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Language { get; set; }
+#nullable restore
+#else
+        public string Language { get; set; }
+#endif
+        /// <summary>The last_occurred_at property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastOccurredAt { get; set; }
@@ -641,6 +1075,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastOccurrenceTimestamp { get; set; }
 #endif
+        /// <summary>The last_report_time property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LastReportTime { get; set; }
+#nullable restore
+#else
+        public string LastReportTime { get; set; }
+#endif
         /// <summary>The last_seen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -648,6 +1090,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string LastSeen { get; set; }
+#endif
+        /// <summary>The last_version property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LastVersion { get; set; }
+#nullable restore
+#else
+        public string LastVersion { get; set; }
 #endif
         /// <summary>The latest_conclusion property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -685,6 +1135,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string McpTraceId { get; set; }
 #endif
+        /// <summary>The mode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Mode { get; set; }
+#nullable restore
+#else
+        public string Mode { get; set; }
+#endif
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -692,6 +1150,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Model { get; set; }
+#endif
+        /// <summary>The monitor_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MonitorId { get; set; }
+#nullable restore
+#else
+        public string MonitorId { get; set; }
+#endif
+        /// <summary>The monitor_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MonitorType { get; set; }
+#nullable restore
+#else
+        public string MonitorType { get; set; }
+#endif
+        /// <summary>The namespace property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Namespace { get; set; }
+#nullable restore
+#else
+        public string Namespace { get; set; }
 #endif
         /// <summary>The notebook_short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -713,6 +1195,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The observed_value property</summary>
         public double? ObservedValue { get; set; }
+        /// <summary>The occurrence_count property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OccurrenceCount { get; set; }
+#nullable restore
+#else
+        public string OccurrenceCount { get; set; }
+#endif
+        /// <summary>The occurrences property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Occurrences { get; set; }
+#nullable restore
+#else
+        public string Occurrences { get; set; }
+#endif
+        /// <summary>The opened_time_seconds property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OpenedTimeSeconds { get; set; }
+#nullable restore
+#else
+        public string OpenedTimeSeconds { get; set; }
+#endif
+        /// <summary>The orca_score property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OrcaScore { get; set; }
+#nullable restore
+#else
+        public string OrcaScore { get; set; }
+#endif
         /// <summary>The page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -723,6 +1237,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The passed_attempt property</summary>
         public int? PassedAttempt { get; set; }
+        /// <summary>The path property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Path { get; set; }
+#nullable restore
+#else
+        public string Path { get; set; }
+#endif
         /// <summary>The payload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -757,6 +1279,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Permalink { get; set; }
 #endif
+        /// <summary>The platform property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Platform { get; set; }
+#nullable restore
+#else
+        public string Platform { get; set; }
+#endif
+        /// <summary>The plugin_cvss3_base_score property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PluginCvss3BaseScore { get; set; }
+#nullable restore
+#else
+        public string PluginCvss3BaseScore { get; set; }
+#endif
+        /// <summary>The plugin_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PluginId { get; set; }
+#nullable restore
+#else
+        public string PluginId { get; set; }
+#endif
+        /// <summary>The port_number property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PortNumber { get; set; }
+#nullable restore
+#else
+        public string PortNumber { get; set; }
+#endif
         /// <summary>The position property</summary>
         public double? Position { get; set; }
         /// <summary>The priority property</summary>
@@ -767,6 +1321,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Priority { get; set; }
 #endif
+        /// <summary>The prioritycode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Prioritycode { get; set; }
+#nullable restore
+#else
+        public string Prioritycode { get; set; }
+#endif
         /// <summary>The priority_label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -775,14 +1337,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PriorityLabel { get; set; }
 #endif
-        /// <summary>The problem_type property</summary>
+        /// <summary>The pr_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType? ProblemType { get; set; }
+        public string? PrNumber { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType ProblemType { get; set; }
+        public string PrNumber { get; set; }
 #endif
+        /// <summary>The problem_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProblemId { get; set; }
+#nullable restore
+#else
+        public string ProblemId { get; set; }
+#endif
+        /// <summary>The problem_type property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType? ProblemType { get; set; }
         /// <summary>The product property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -790,6 +1362,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Product { get; set; }
+#endif
+        /// <summary>The product_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProductName { get; set; }
+#nullable restore
+#else
+        public string ProductName { get; set; }
 #endif
         /// <summary>The product_title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -807,6 +1387,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ProjectId { get; set; }
 #endif
+        /// <summary>The projects property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Projects { get; set; }
+#nullable restore
+#else
+        public List<string> Projects { get; set; }
+#endif
+        /// <summary>The protocol property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Protocol { get; set; }
+#nullable restore
+#else
+        public string Protocol { get; set; }
+#endif
         /// <summary>The provider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -814,6 +1410,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Provider { get; set; }
+#endif
+        /// <summary>The publication_status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PublicationStatus { get; set; }
+#nullable restore
+#else
+        public string PublicationStatus { get; set; }
+#endif
+        /// <summary>The public_link property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PublicLink { get; set; }
+#nullable restore
+#else
+        public string PublicLink { get; set; }
 #endif
         /// <summary>The published property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -847,13 +1459,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rating { get; set; }
 #endif
-        /// <summary>The ratingCategory property</summary>
+        /// <summary>The rating_category property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RatingCategory { get; set; }
 #nullable restore
 #else
         public string RatingCategory { get; set; }
+#endif
+        /// <summary>The recorded_date property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RecordedDate { get; set; }
+#nullable restore
+#else
+        public string RecordedDate { get; set; }
 #endif
         /// <summary>The recording_active_seconds property</summary>
         public double? RecordingActiveSeconds { get; set; }
@@ -875,6 +1495,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RecordingStartTime { get; set; }
 #endif
+        /// <summary>The record_state property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RecordState { get; set; }
+#nullable restore
+#else
+        public string RecordState { get; set; }
+#endif
         /// <summary>The references property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -882,6 +1510,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PgAnalyzeIssueReference> References { get; set; }
+#endif
+        /// <summary>The region property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Region { get; set; }
+#nullable restore
+#else
+        public string Region { get; set; }
+#endif
+        /// <summary>The repo property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Repo { get; set; }
+#nullable restore
+#else
+        public string Repo { get; set; }
 #endif
         /// <summary>The repo_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -899,6 +1543,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RepoOwner { get; set; }
 #endif
+        /// <summary>The report_count property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReportCount { get; set; }
+#nullable restore
+#else
+        public string ReportCount { get; set; }
+#endif
         /// <summary>The report_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -915,6 +1567,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportRunId { get; set; }
 #endif
+        /// <summary>The resolution_status_value property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResolutionStatusValue { get; set; }
+#nullable restore
+#else
+        public string ResolutionStatusValue { get; set; }
+#endif
         /// <summary>The resolved property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -923,8 +1583,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Resolved { get; set; }
 #endif
+        /// <summary>The resource_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResourceName { get; set; }
+#nullable restore
+#else
+        public string ResourceName { get; set; }
+#endif
+        /// <summary>The resource_subtype property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResourceSubtype { get; set; }
+#nullable restore
+#else
+        public string ResourceSubtype { get; set; }
+#endif
+        /// <summary>The response_status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResponseStatus { get; set; }
+#nullable restore
+#else
+        public string ResponseStatus { get; set; }
+#endif
         /// <summary>The result_count property</summary>
         public int? ResultCount { get; set; }
+        /// <summary>The risk_level property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RiskLevel { get; set; }
+#nullable restore
+#else
+        public string RiskLevel { get; set; }
+#endif
+        /// <summary>The role_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RoleName { get; set; }
+#nullable restore
+#else
+        public string RoleName { get; set; }
+#endif
+        /// <summary>The root_cause_entity property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RootCauseEntity { get; set; }
+#nullable restore
+#else
+        public string RootCauseEntity { get; set; }
+#endif
         /// <summary>The rule property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -999,6 +1707,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SegmentTitle { get; set; }
 #endif
+        /// <summary>The sequence_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SequenceId { get; set; }
+#nullable restore
+#else
+        public string SequenceId { get; set; }
+#endif
         /// <summary>The server_human_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1014,6 +1730,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string ServerName { get; set; }
+#endif
+        /// <summary>The service property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Service { get; set; }
+#nullable restore
+#else
+        public string Service { get; set; }
 #endif
         /// <summary>The session_active_seconds property</summary>
         public double? SessionActiveSeconds { get; set; }
@@ -1051,13 +1775,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Severity { get; set; }
 #endif
-        /// <summary>The shortId property</summary>
+        /// <summary>The severitycode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Severitycode { get; set; }
+#nullable restore
+#else
+        public string Severitycode { get; set; }
+#endif
+        /// <summary>The severity_label property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SeverityLabel { get; set; }
+#nullable restore
+#else
+        public string SeverityLabel { get; set; }
+#endif
+        /// <summary>The severity_level property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SeverityLevel { get; set; }
+#nullable restore
+#else
+        public string SeverityLevel { get; set; }
+#endif
+        /// <summary>The severity_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SeverityName { get; set; }
+#nullable restore
+#else
+        public string SeverityName { get; set; }
+#endif
+        /// <summary>The severity_value property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SeverityValue { get; set; }
+#nullable restore
+#else
+        public string SeverityValue { get; set; }
+#endif
+        /// <summary>The short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ShortId { get; set; }
 #nullable restore
 #else
         public string ShortId { get; set; }
+#endif
+        /// <summary>The shortlink property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Shortlink { get; set; }
+#nullable restore
+#else
+        public string Shortlink { get; set; }
 #endif
         /// <summary>The skill_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1069,6 +1841,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The skill_version property</summary>
         public int? SkillVersion { get; set; }
+        /// <summary>The source property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Source { get; set; }
+#nullable restore
+#else
+        public string Source { get; set; }
+#endif
         /// <summary>The stars property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1076,6 +1856,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Stars { get; set; }
+#endif
+        /// <summary>The started property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Started { get; set; }
+#nullable restore
+#else
+        public string Started { get; set; }
+#endif
+        /// <summary>The started_at property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StartedAt { get; set; }
+#nullable restore
+#else
+        public string StartedAt { get; set; }
 #endif
         /// <summary>The start_time property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1117,6 +1913,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
+        /// <summary>The statuscode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Statuscode { get; set; }
+#nullable restore
+#else
+        public string Statuscode { get; set; }
+#endif
+        /// <summary>The status_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StatusName { get; set; }
+#nullable restore
+#else
+        public string StatusName { get; set; }
+#endif
+        /// <summary>The status_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StatusType { get; set; }
+#nullable restore
+#else
+        public string StatusType { get; set; }
+#endif
         /// <summary>The store property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1133,6 +1953,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StoryType { get; set; }
 #endif
+        /// <summary>The submitted_at property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SubmittedAt { get; set; }
+#nullable restore
+#else
+        public string SubmittedAt { get; set; }
+#endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1141,6 +1969,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
+        /// <summary>The survey_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SurveyId { get; set; }
+#nullable restore
+#else
+        public string SurveyId { get; set; }
+#endif
         /// <summary>The synced_at property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1148,6 +1984,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string SyncedAt { get; set; }
+#endif
+        /// <summary>The sys_created_on property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SysCreatedOn { get; set; }
+#nullable restore
+#else
+        public string SysCreatedOn { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1181,6 +2025,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TaskId { get; set; }
 #endif
+        /// <summary>The task_identifier property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TaskIdentifier { get; set; }
+#nullable restore
+#else
+        public string TaskIdentifier { get; set; }
+#endif
         /// <summary>The task_run_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1208,15 +2060,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The threshold_count property</summary>
         public int? ThresholdCount { get; set; }
         /// <summary>The threshold_operator property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator? ThresholdOperator { get; set; }
+        /// <summary>The ticket_number property</summary>
+        public int? Ticket_number { get; set; }
+        /// <summary>The ticketnumber property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator? ThresholdOperator { get; set; }
+        public string? Ticketnumber { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator ThresholdOperator { get; set; }
+        public string Ticketnumber { get; set; }
 #endif
-        /// <summary>The ticket_number property</summary>
-        public int? TicketNumber { get; set; }
         /// <summary>The time_range property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1224,6 +2078,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange TimeRange { get; set; }
+#endif
+        /// <summary>The timestamp property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Timestamp { get; set; }
+#nullable restore
+#else
+        public string Timestamp { get; set; }
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1233,13 +2095,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>The topic_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TopicId { get; set; }
+#nullable restore
+#else
+        public string TopicId { get; set; }
+#endif
         /// <summary>The topics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem>? Topics { get; set; }
+        public UntypedNode? Topics { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem> Topics { get; set; }
+        public UntypedNode Topics { get; set; }
+#endif
+        /// <summary>The total_up property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TotalUp { get; set; }
+#nullable restore
+#else
+        public string TotalUp { get; set; }
 #endif
         /// <summary>The trace_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1289,6 +2167,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Upvotes { get; set; }
 #endif
+        /// <summary>The urgency property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Urgency { get; set; }
+#nullable restore
+#else
+        public string Urgency { get; set; }
+#endif
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1297,14 +2183,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>The verdict property</summary>
+        /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict? Verdict { get; set; }
+        public string? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict Verdict { get; set; }
+        public string Value { get; set; }
 #endif
+        /// <summary>* `true_positive` - true_positive* `false_positive` - false_positive* `inconclusive` - inconclusive</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict? Verdict { get; set; }
         /// <summary>The verified property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1324,14 +2212,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The vote_count property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Vote_count { get; set; }
-#nullable restore
-#else
-        public string Vote_count { get; set; }
-#endif
-        /// <summary>The voteCount property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public string? VoteCount { get; set; }
 #nullable restore
 #else
@@ -1349,8 +2229,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? WindowDays { get; set; }
         /// <summary>The window_hours property</summary>
         public int? WindowHours { get; set; }
+        /// <summary>The window_impacted_users property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WindowImpactedUsers { get; set; }
+#nullable restore
+#else
+        public string WindowImpactedUsers { get; set; }
+#endif
         /// <summary>The window_minutes property</summary>
         public int? WindowMinutes { get; set; }
+        /// <summary>The window_total_count property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WindowTotalCount { get; set; }
+#nullable restore
+#else
+        public string WindowTotalCount { get; set; }
+#endif
         /// <summary>The workflow_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1374,6 +2270,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string WorkflowStatus { get; set; }
+#endif
+        /// <summary>The work_item_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkItemType { get; set; }
+#nullable restore
+#else
+        public string WorkItemType { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeExtra"/> and sets the default values.
@@ -1400,23 +2304,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "action", n => { Action = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraAction>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraAction.CreateFromDiscriminatorValue); } },
+                { "action", n => { Action = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraAction>(); } },
                 { "added", n => { Added = n.GetStringValue(); } },
                 { "admin_assignee_id", n => { AdminAssigneeId = n.GetStringValue(); } },
+                { "affected_entities", n => { AffectedEntities = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "affected_users", n => { AffectedUsers = n.GetStringValue(); } },
                 { "alert_check_id", n => { AlertCheckId = n.GetStringValue(); } },
                 { "alert_id", n => { AlertId = n.GetStringValue(); } },
                 { "alert_name", n => { AlertName = n.GetStringValue(); } },
+                { "alert_type", n => { AlertType = n.GetStringValue(); } },
+                { "alert_url", n => { AlertUrl = n.GetStringValue(); } },
                 { "app_version", n => { AppVersion = n.GetStringValue(); } },
-                { "applicationUrl", n => { ApplicationUrl = n.GetStringValue(); } },
+                { "application_url", n => { ApplicationUrl = n.GetStringValue(); } },
+                { "asset_uuid", n => { AssetUuid = n.GetStringValue(); } },
                 { "assignee", n => { Assignee = n.GetStringValue(); } },
                 { "author_association", n => { AuthorAssociation = n.GetStringValue(); } },
                 { "author_login", n => { AuthorLogin = n.GetStringValue(); } },
                 { "baseline_p50_seconds", n => { BaselineP50Seconds = n.GetDoubleValue(); } },
                 { "baseline_p95_seconds", n => { BaselineP95Seconds = n.GetDoubleValue(); } },
                 { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
+                { "board_id", n => { BoardId = n.GetStringValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "breakdown_limit", n => { BreakdownLimit = n.GetIntValue(); } },
+                { "bugs_found", n => { BugsFound = n.GetStringValue(); } },
+                { "case_number", n => { CaseNumber = n.GetStringValue(); } },
+                { "case_origin", n => { CaseOrigin = n.GetStringValue(); } },
+                { "case_reason", n => { CaseReason = n.GetStringValue(); } },
+                { "casetypecode", n => { Casetypecode = n.GetStringValue(); } },
                 { "category", n => { Category = n.GetStringValue(); } },
+                { "category_id", n => { CategoryId = n.GetStringValue(); } },
                 { "category_name", n => { CategoryName = n.GetStringValue(); } },
                 { "channel", n => { Channel = n.GetStringValue(); } },
                 { "channel_detail", n => { ChannelDetail = n.GetStringValue(); } },
@@ -1424,52 +2340,87 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "check_id", n => { CheckId = n.GetStringValue(); } },
                 { "check_title", n => { CheckTitle = n.GetStringValue(); } },
                 { "clicks", n => { Clicks = n.GetIntValue(); } },
+                { "code_location", n => { CodeLocation = n.GetStringValue(); } },
+                { "collected_at", n => { CollectedAt = n.GetStringValue(); } },
+                { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
+                { "completed", n => { Completed = n.GetStringValue(); } },
+                { "completed_time", n => { CompletedTime = n.GetStringValue(); } },
+                { "compliance_status", n => { ComplianceStatus = n.GetStringValue(); } },
                 { "component", n => { Component = n.GetStringValue(); } },
+                { "components", n => { Components = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "conclusive_run_count", n => { ConclusiveRunCount = n.GetIntValue(); } },
                 { "conclusive_success_rate", n => { ConclusiveSuccessRate = n.GetDoubleValue(); } },
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
+                { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "context", n => { Context = n.GetStringValue(); } },
+                { "count", n => { Count = n.GetStringValue(); } },
                 { "created", n => { Created = n.GetStringValue(); } },
-                { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
-                { "createdDate", n => { CreatedDate = n.GetStringValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
+                { "created_date", n => { CreatedDate = n.GetStringValue(); } },
                 { "created_datetime", n => { CreatedDatetime = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetStringValue(); } },
                 { "createdate", n => { Createdate = n.GetStringValue(); } },
-                { "creationDate", n => { CreationDate = n.GetStringValue(); } },
+                { "createdon", n => { Createdon = n.GetStringValue(); } },
+                { "creation_date", n => { CreationDate = n.GetStringValue(); } },
+                { "csat_rating", n => { CsatRating = n.GetStringValue(); } },
                 { "ctr", n => { Ctr = n.GetDoubleValue(); } },
+                { "current_milestone", n => { CurrentMilestone = n.GetStringValue(); } },
                 { "current_p50_seconds", n => { CurrentP50Seconds = n.GetDoubleValue(); } },
                 { "current_p95_seconds", n => { CurrentP95Seconds = n.GetDoubleValue(); } },
+                { "current_status", n => { CurrentStatus = n.GetStringValue(); } },
                 { "cvss_v3_score", n => { CvssV3Score = n.GetStringValue(); } },
                 { "database_id", n => { DatabaseId = n.GetStringValue(); } },
                 { "date", n => { Date = n.GetStringValue(); } },
+                { "date_created", n => { DateCreated = n.GetStringValue(); } },
                 { "dedupe_keys", n => { DedupeKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "detector_type", n => { DetectorType = n.GetStringValue(); } },
-                { "displayUrl", n => { DisplayUrl = n.GetStringValue(); } },
+                { "display_id", n => { DisplayId = n.GetStringValue(); } },
+                { "display_url", n => { DisplayUrl = n.GetStringValue(); } },
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "effective_severity_level", n => { EffectiveSeverityLevel = n.GetStringValue(); } },
                 { "email_subject", n => { EmailSubject = n.GetStringValue(); } },
                 { "end_time", n => { EndTime = n.GetStringValue(); } },
                 { "endpoint_name", n => { EndpointName = n.GetStringValue(); } },
                 { "endpoint_version", n => { EndpointVersion = n.GetIntValue(); } },
+                { "engagement_id", n => { EngagementId = n.GetStringValue(); } },
                 { "environment", n => { Environment = n.GetStringValue(); } },
                 { "error_class", n => { ErrorClass = n.GetStringValue(); } },
+                { "error_hash", n => { ErrorHash = n.GetStringValue(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
+                { "error_type", n => { ErrorType = n.GetStringValue(); } },
                 { "evaluation_description", n => { EvaluationDescription = n.GetStringValue(); } },
                 { "evaluation_id", n => { EvaluationId = n.GetStringValue(); } },
                 { "evaluation_name", n => { EvaluationName = n.GetStringValue(); } },
+                { "event_count", n => { EventCount = n.GetStringValue(); } },
                 { "event_history", n => { EventHistory = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry>(global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry>(global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "exception_type", n => { ExceptionType = n.GetStringValue(); } },
                 { "explanation", n => { Explanation = n.GetStringValue(); } },
+                { "exploit_available", n => { ExploitAvailable = n.GetStringValue(); } },
                 { "exported_asset_id", n => { ExportedAssetId = n.GetIntValue(); } },
+                { "external_url", n => { ExternalUrl = n.GetStringValue(); } },
                 { "failed_attempt", n => { FailedAttempt = n.GetIntValue(); } },
-                { "feedbackTopics", n => { FeedbackTopics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem>(global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "feedback_number", n => { FeedbackNumber = n.GetStringValue(); } },
+                { "feedback_topics", n => { FeedbackTopics = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "file_path", n => { FilePath = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "finding_id", n => { FindingId = n.GetStringValue(); } },
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
-                { "firstSeen", n => { FirstSeen = n.GetStringValue(); } },
+                { "finished", n => { Finished = n.GetStringValue(); } },
+                { "first_found", n => { FirstFound = n.GetStringValue(); } },
+                { "first_observed_at", n => { FirstObservedAt = n.GetStringValue(); } },
+                { "first_seen", n => { FirstSeen = n.GetStringValue(); } },
+                { "first_version", n => { FirstVersion = n.GetStringValue(); } },
+                { "fix_available", n => { FixAvailable = n.GetStringValue(); } },
                 { "flaky_count", n => { FlakyCount = n.GetIntValue(); } },
+                { "form_id", n => { FormId = n.GetStringValue(); } },
                 { "framework", n => { Framework = n.GetStringValue(); } },
+                { "function_name", n => { FunctionName = n.GetStringValue(); } },
+                { "group", n => { Group = n.GetStringValue(); } },
+                { "group_labels", n => { GroupLabels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraGroupLabelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraGroupLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
+                { "helpful", n => { Helpful = n.GetStringValue(); } },
                 { "hs_pipeline_stage", n => { HsPipelineStage = n.GetStringValue(); } },
                 { "hs_ticket_category", n => { HsTicketCategory = n.GetStringValue(); } },
                 { "hs_ticket_priority", n => { HsTicketPriority = n.GetStringValue(); } },
@@ -1478,60 +2429,105 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "iid", n => { Iid = n.GetStringValue(); } },
                 { "images", n => { Images = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketImage>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketImage.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "impact", n => { Impact = n.GetStringValue(); } },
+                { "impact_level", n => { ImpactLevel = n.GetStringValue(); } },
                 { "impressions", n => { Impressions = n.GetIntValue(); } },
+                { "incident_identifier", n => { IncidentIdentifier = n.GetStringValue(); } },
+                { "incident_url", n => { IncidentUrl = n.GetStringValue(); } },
                 { "insight_id", n => { InsightId = n.GetStringValue(); } },
                 { "insight_name", n => { InsightName = n.GetStringValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
+                { "internet_exposure", n => { InternetExposure = n.GetStringValue(); } },
+                { "is_crash", n => { IsCrash = n.GetStringValue(); } },
+                { "is_recommended", n => { IsRecommended = n.GetStringValue(); } },
                 { "issue_id", n => { IssueId = n.GetStringValue(); } },
+                { "issue_type", n => { IssueType = n.GetStringValue(); } },
+                { "issue_url", n => { IssueUrl = n.GetStringValue(); } },
                 { "job_name", n => { JobName = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "labels", n => { Labels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "lastOccurredAt", n => { LastOccurredAt = n.GetStringValue(); } },
+                { "language", n => { Language = n.GetStringValue(); } },
+                { "last_occurred_at", n => { LastOccurredAt = n.GetStringValue(); } },
                 { "last_occurrence_timestamp", n => { LastOccurrenceTimestamp = n.GetStringValue(); } },
+                { "last_report_time", n => { LastReportTime = n.GetStringValue(); } },
                 { "last_seen", n => { LastSeen = n.GetStringValue(); } },
+                { "last_version", n => { LastVersion = n.GetStringValue(); } },
                 { "latest_conclusion", n => { LatestConclusion = n.GetStringValue(); } },
                 { "level", n => { Level = n.GetStringValue(); } },
                 { "link", n => { Link = n.GetStringValue(); } },
                 { "locked", n => { Locked = n.GetBoolValue(); } },
                 { "materialized", n => { Materialized = n.GetBoolValue(); } },
                 { "mcp_trace_id", n => { McpTraceId = n.GetStringValue(); } },
+                { "mode", n => { Mode = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "monitor_id", n => { MonitorId = n.GetStringValue(); } },
+                { "monitor_type", n => { MonitorType = n.GetStringValue(); } },
+                { "namespace", n => { Namespace = n.GetStringValue(); } },
                 { "notebook_short_id", n => { NotebookShortId = n.GetStringValue(); } },
                 { "number", n => { Number = n.GetIntValue(); } },
                 { "observation_id", n => { ObservationId = n.GetStringValue(); } },
                 { "observed_value", n => { ObservedValue = n.GetDoubleValue(); } },
+                { "occurrence_count", n => { OccurrenceCount = n.GetStringValue(); } },
+                { "occurrences", n => { Occurrences = n.GetStringValue(); } },
+                { "opened_time_seconds", n => { OpenedTimeSeconds = n.GetStringValue(); } },
+                { "orca_score", n => { OrcaScore = n.GetStringValue(); } },
                 { "page", n => { Page = n.GetStringValue(); } },
                 { "passed_attempt", n => { PassedAttempt = n.GetIntValue(); } },
+                { "path", n => { Path = n.GetStringValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthCheckSignalExtraPayloadProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HealthCheckSignalExtraPayloadProperty.CreateFromDiscriminatorValue); } },
                 { "pct_increase", n => { PctIncrease = n.GetDoubleValue(); } },
                 { "period_end", n => { PeriodEnd = n.GetStringValue(); } },
                 { "period_start", n => { PeriodStart = n.GetStringValue(); } },
                 { "permalink", n => { Permalink = n.GetStringValue(); } },
+                { "platform", n => { Platform = n.GetStringValue(); } },
+                { "plugin_cvss3_base_score", n => { PluginCvss3BaseScore = n.GetStringValue(); } },
+                { "plugin_id", n => { PluginId = n.GetStringValue(); } },
+                { "port_number", n => { PortNumber = n.GetStringValue(); } },
                 { "position", n => { Position = n.GetDoubleValue(); } },
+                { "pr_number", n => { PrNumber = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetStringValue(); } },
                 { "priority_label", n => { PriorityLabel = n.GetStringValue(); } },
-                { "problem_type", n => { ProblemType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType>(global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType.CreateFromDiscriminatorValue); } },
+                { "prioritycode", n => { Prioritycode = n.GetStringValue(); } },
+                { "problem_id", n => { ProblemId = n.GetStringValue(); } },
+                { "problem_type", n => { ProblemType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType>(); } },
                 { "product", n => { Product = n.GetStringValue(); } },
+                { "product_name", n => { ProductName = n.GetStringValue(); } },
                 { "product_title", n => { ProductTitle = n.GetStringValue(); } },
                 { "project_id", n => { ProjectId = n.GetStringValue(); } },
+                { "projects", n => { Projects = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "protocol", n => { Protocol = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
+                { "public_link", n => { PublicLink = n.GetStringValue(); } },
+                { "publication_status", n => { PublicationStatus = n.GetStringValue(); } },
                 { "published", n => { Published = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "question_type", n => { QuestionType = n.GetStringValue(); } },
                 { "rating", n => { Rating = n.GetStringValue(); } },
-                { "ratingCategory", n => { RatingCategory = n.GetStringValue(); } },
+                { "rating_category", n => { RatingCategory = n.GetStringValue(); } },
+                { "record_state", n => { RecordState = n.GetStringValue(); } },
+                { "recorded_date", n => { RecordedDate = n.GetStringValue(); } },
                 { "recording_active_seconds", n => { RecordingActiveSeconds = n.GetDoubleValue(); } },
                 { "recording_duration", n => { RecordingDuration = n.GetDoubleValue(); } },
                 { "recording_end_time", n => { RecordingEndTime = n.GetStringValue(); } },
                 { "recording_start_time", n => { RecordingStartTime = n.GetStringValue(); } },
                 { "references", n => { References = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PgAnalyzeIssueReference>(global::Soenneker.PostHog.OpenApiClient.Models.PgAnalyzeIssueReference.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "region", n => { Region = n.GetStringValue(); } },
+                { "repo", n => { Repo = n.GetStringValue(); } },
                 { "repo_name", n => { RepoName = n.GetStringValue(); } },
                 { "repo_owner", n => { RepoOwner = n.GetStringValue(); } },
+                { "report_count", n => { ReportCount = n.GetStringValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
                 { "report_run_id", n => { ReportRunId = n.GetStringValue(); } },
+                { "resolution_status_value", n => { ResolutionStatusValue = n.GetStringValue(); } },
                 { "resolved", n => { Resolved = n.GetStringValue(); } },
+                { "resource_name", n => { ResourceName = n.GetStringValue(); } },
+                { "resource_subtype", n => { ResourceSubtype = n.GetStringValue(); } },
+                { "response_status", n => { ResponseStatus = n.GetStringValue(); } },
                 { "result_count", n => { ResultCount = n.GetIntValue(); } },
+                { "risk_level", n => { RiskLevel = n.GetStringValue(); } },
+                { "role_name", n => { RoleName = n.GetStringValue(); } },
+                { "root_cause_entity", n => { RootCauseEntity = n.GetStringValue(); } },
                 { "rule", n => { Rule = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetIntValue(); } },
                 { "saved_query_id", n => { SavedQueryId = n.GetStringValue(); } },
@@ -1542,61 +2538,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "scout_run_id", n => { ScoutRunId = n.GetStringValue(); } },
                 { "segment", n => { Segment = n.GetStringValue(); } },
                 { "segment_title", n => { SegmentTitle = n.GetStringValue(); } },
+                { "sequence_id", n => { SequenceId = n.GetStringValue(); } },
                 { "server_human_id", n => { ServerHumanId = n.GetStringValue(); } },
                 { "server_name", n => { ServerName = n.GetStringValue(); } },
+                { "service", n => { Service = n.GetStringValue(); } },
                 { "session_active_seconds", n => { SessionActiveSeconds = n.GetDoubleValue(); } },
                 { "session_duration", n => { SessionDuration = n.GetDoubleValue(); } },
                 { "session_end_time", n => { SessionEndTime = n.GetStringValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "session_start_time", n => { SessionStartTime = n.GetStringValue(); } },
                 { "severity", n => { Severity = n.GetStringValue(); } },
-                { "shortId", n => { ShortId = n.GetStringValue(); } },
+                { "severity_label", n => { SeverityLabel = n.GetStringValue(); } },
+                { "severity_level", n => { SeverityLevel = n.GetStringValue(); } },
+                { "severity_name", n => { SeverityName = n.GetStringValue(); } },
+                { "severity_value", n => { SeverityValue = n.GetStringValue(); } },
+                { "severitycode", n => { Severitycode = n.GetStringValue(); } },
+                { "short_id", n => { ShortId = n.GetStringValue(); } },
+                { "shortlink", n => { Shortlink = n.GetStringValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "skill_version", n => { SkillVersion = n.GetIntValue(); } },
+                { "source", n => { Source = n.GetStringValue(); } },
                 { "stars", n => { Stars = n.GetStringValue(); } },
                 { "start_time", n => { StartTime = n.GetStringValue(); } },
+                { "started", n => { Started = n.GetStringValue(); } },
+                { "started_at", n => { StartedAt = n.GetStringValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "state_name", n => { StateName = n.GetStringValue(); } },
                 { "state_type", n => { StateType = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "status_name", n => { StatusName = n.GetStringValue(); } },
+                { "status_type", n => { StatusType = n.GetStringValue(); } },
+                { "statuscode", n => { Statuscode = n.GetStringValue(); } },
                 { "store", n => { Store = n.GetStringValue(); } },
                 { "story_type", n => { StoryType = n.GetStringValue(); } },
+                { "submitted_at", n => { SubmittedAt = n.GetStringValue(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
+                { "survey_id", n => { SurveyId = n.GetStringValue(); } },
                 { "synced_at", n => { SyncedAt = n.GetStringValue(); } },
+                { "sys_created_on", n => { SysCreatedOn = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "target_event_id", n => { TargetEventId = n.GetStringValue(); } },
                 { "target_event_type", n => { TargetEventType = n.GetStringValue(); } },
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
+                { "task_identifier", n => { TaskIdentifier = n.GetStringValue(); } },
                 { "task_run_id", n => { TaskRunId = n.GetStringValue(); } },
                 { "team_name", n => { TeamName = n.GetStringValue(); } },
                 { "threshold", n => { Threshold = n.GetStringValue(); } },
                 { "threshold_count", n => { ThresholdCount = n.GetIntValue(); } },
-                { "threshold_operator", n => { ThresholdOperator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator.CreateFromDiscriminatorValue); } },
-                { "ticket_number", n => { TicketNumber = n.GetIntValue(); } },
+                { "threshold_operator", n => { ThresholdOperator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>(); } },
+                { "ticketnumber", n => { Ticketnumber = n.GetStringValue(); } },
                 { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange.CreateFromDiscriminatorValue); } },
+                { "timestamp", n => { Timestamp = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "topics", n => { Topics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem>(global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "topic_id", n => { TopicId = n.GetStringValue(); } },
+                { "topics", n => { Topics = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "total_up", n => { TotalUp = n.GetStringValue(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
                 { "triggered_dates", n => { TriggeredDates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated", n => { Updated = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "upvotes", n => { Upvotes = n.GetStringValue(); } },
+                { "urgency", n => { Urgency = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "verdict", n => { Verdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict>(global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetStringValue(); } },
+                { "verdict", n => { Verdict = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict>(); } },
                 { "verified", n => { Verified = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
-                { "voteCount", n => { VoteCount = n.GetStringValue(); } },
+                { "vote_count", n => { VoteCount = n.GetStringValue(); } },
                 { "votes", n => { Votes = n.GetStringValue(); } },
                 { "window_days", n => { WindowDays = n.GetIntValue(); } },
                 { "window_hours", n => { WindowHours = n.GetIntValue(); } },
+                { "window_impacted_users", n => { WindowImpactedUsers = n.GetStringValue(); } },
                 { "window_minutes", n => { WindowMinutes = n.GetIntValue(); } },
+                { "window_total_count", n => { WindowTotalCount = n.GetStringValue(); } },
+                { "work_item_type", n => { WorkItemType = n.GetStringValue(); } },
                 { "workflow_name", n => { WorkflowName = n.GetStringValue(); } },
                 { "workflow_state_id", n => { WorkflowStateId = n.GetStringValue(); } },
                 { "workflow_status", n => { WorkflowStatus = n.GetStringValue(); } },
-                { "created_at", n => { Created_at = n.GetStringValue(); } },
-                { "first_seen", n => { First_seen = n.GetStringValue(); } },
-                { "vote_count", n => { Vote_count = n.GetStringValue(); } },
+                { "ticket_number", n => { Ticket_number = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -1606,23 +2626,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraAction>("action", Action);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraAction>("action", Action);
             writer.WriteStringValue("added", Added);
             writer.WriteStringValue("admin_assignee_id", AdminAssigneeId);
+            writer.WriteCollectionOfPrimitiveValues<string>("affected_entities", AffectedEntities);
+            writer.WriteStringValue("affected_users", AffectedUsers);
             writer.WriteStringValue("alert_check_id", AlertCheckId);
             writer.WriteStringValue("alert_id", AlertId);
             writer.WriteStringValue("alert_name", AlertName);
-            writer.WriteStringValue("applicationUrl", ApplicationUrl);
+            writer.WriteStringValue("alert_type", AlertType);
+            writer.WriteStringValue("alert_url", AlertUrl);
+            writer.WriteStringValue("application_url", ApplicationUrl);
             writer.WriteStringValue("app_version", AppVersion);
+            writer.WriteStringValue("asset_uuid", AssetUuid);
             writer.WriteStringValue("assignee", Assignee);
             writer.WriteStringValue("author_association", AuthorAssociation);
             writer.WriteStringValue("author_login", AuthorLogin);
             writer.WriteDoubleValue("baseline_p50_seconds", BaselineP50Seconds);
             writer.WriteDoubleValue("baseline_p95_seconds", BaselineP95Seconds);
             writer.WriteDoubleValue("baseline_value", BaselineValue);
+            writer.WriteStringValue("board_id", BoardId);
             writer.WriteStringValue("branch", Branch);
             writer.WriteIntValue("breakdown_limit", BreakdownLimit);
+            writer.WriteStringValue("bugs_found", BugsFound);
+            writer.WriteStringValue("case_number", CaseNumber);
+            writer.WriteStringValue("case_origin", CaseOrigin);
+            writer.WriteStringValue("case_reason", CaseReason);
+            writer.WriteStringValue("casetypecode", Casetypecode);
             writer.WriteStringValue("category", Category);
+            writer.WriteStringValue("category_id", CategoryId);
             writer.WriteStringValue("category_name", CategoryName);
             writer.WriteStringValue("channel", Channel);
             writer.WriteStringValue("channel_detail", ChannelDetail);
@@ -1630,54 +2662,87 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("check_id", CheckId);
             writer.WriteStringValue("check_title", CheckTitle);
             writer.WriteIntValue("clicks", Clicks);
+            writer.WriteStringValue("code_location", CodeLocation);
+            writer.WriteStringValue("collected_at", CollectedAt);
+            writer.WriteStringValue("commit_sha", CommitSha);
+            writer.WriteStringValue("completed", Completed);
+            writer.WriteStringValue("completed_time", CompletedTime);
+            writer.WriteStringValue("compliance_status", ComplianceStatus);
             writer.WriteStringValue("component", Component);
+            writer.WriteCollectionOfPrimitiveValues<string>("components", Components);
             writer.WriteIntValue("conclusive_run_count", ConclusiveRunCount);
             writer.WriteDoubleValue("conclusive_success_rate", ConclusiveSuccessRate);
             writer.WriteDoubleValue("confidence", Confidence);
             writer.WriteIntValue("consecutive_failures", ConsecutiveFailures);
+            writer.WriteStringValue("content_type", ContentType);
             writer.WriteStringValue("context", Context);
+            writer.WriteStringValue("count", Count);
             writer.WriteStringValue("created", Created);
-            writer.WriteStringValue("created_at", Created_at);
-            writer.WriteStringValue("createdAt", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("createdate", Createdate);
-            writer.WriteStringValue("createdDate", CreatedDate);
+            writer.WriteStringValue("created_date", CreatedDate);
             writer.WriteStringValue("created_datetime", CreatedDatetime);
-            writer.WriteStringValue("creationDate", CreationDate);
+            writer.WriteStringValue("createdon", Createdon);
+            writer.WriteStringValue("created_time", CreatedTime);
+            writer.WriteStringValue("creation_date", CreationDate);
+            writer.WriteStringValue("csat_rating", CsatRating);
             writer.WriteDoubleValue("ctr", Ctr);
+            writer.WriteStringValue("current_milestone", CurrentMilestone);
             writer.WriteDoubleValue("current_p50_seconds", CurrentP50Seconds);
             writer.WriteDoubleValue("current_p95_seconds", CurrentP95Seconds);
+            writer.WriteStringValue("current_status", CurrentStatus);
             writer.WriteStringValue("cvss_v3_score", CvssV3Score);
             writer.WriteStringValue("database_id", DatabaseId);
             writer.WriteStringValue("date", Date);
+            writer.WriteStringValue("date_created", DateCreated);
             writer.WriteCollectionOfPrimitiveValues<string>("dedupe_keys", DedupeKeys);
             writer.WriteStringValue("detector_type", DetectorType);
-            writer.WriteStringValue("displayUrl", DisplayUrl);
+            writer.WriteStringValue("display_id", DisplayId);
+            writer.WriteStringValue("display_url", DisplayUrl);
             writer.WriteStringValue("distinct_id", DistinctId);
             writer.WriteStringValue("effective_severity_level", EffectiveSeverityLevel);
             writer.WriteStringValue("email_subject", EmailSubject);
             writer.WriteStringValue("endpoint_name", EndpointName);
             writer.WriteIntValue("endpoint_version", EndpointVersion);
             writer.WriteStringValue("end_time", EndTime);
+            writer.WriteStringValue("engagement_id", EngagementId);
             writer.WriteStringValue("environment", Environment);
             writer.WriteStringValue("error_class", ErrorClass);
+            writer.WriteStringValue("error_hash", ErrorHash);
             writer.WriteStringValue("error_message", ErrorMessage);
+            writer.WriteStringValue("error_type", ErrorType);
             writer.WriteStringValue("evaluation_description", EvaluationDescription);
             writer.WriteStringValue("evaluation_id", EvaluationId);
             writer.WriteStringValue("evaluation_name", EvaluationName);
+            writer.WriteStringValue("event_count", EventCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry>("event_history", EventHistory);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutEvidenceEntry>("evidence", Evidence);
+            writer.WriteStringValue("exception_type", ExceptionType);
             writer.WriteStringValue("explanation", Explanation);
+            writer.WriteStringValue("exploit_available", ExploitAvailable);
             writer.WriteIntValue("exported_asset_id", ExportedAssetId);
+            writer.WriteStringValue("external_url", ExternalUrl);
             writer.WriteIntValue("failed_attempt", FailedAttempt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentlyFeedbackSignalExtraFeedbackTopicsItem>("feedbackTopics", FeedbackTopics);
+            writer.WriteStringValue("feedback_number", FeedbackNumber);
+            writer.WriteObjectValue<UntypedNode>("feedback_topics", FeedbackTopics);
+            writer.WriteStringValue("file_path", FilePath);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraFiltersProperty>("filters", Filters);
             writer.WriteStringValue("finding_id", FindingId);
             writer.WriteStringValue("fingerprint", Fingerprint);
-            writer.WriteStringValue("first_seen", First_seen);
-            writer.WriteStringValue("firstSeen", FirstSeen);
+            writer.WriteStringValue("finished", Finished);
+            writer.WriteStringValue("first_found", FirstFound);
+            writer.WriteStringValue("first_observed_at", FirstObservedAt);
+            writer.WriteStringValue("first_seen", FirstSeen);
+            writer.WriteStringValue("first_version", FirstVersion);
+            writer.WriteStringValue("fix_available", FixAvailable);
             writer.WriteIntValue("flaky_count", FlakyCount);
+            writer.WriteStringValue("form_id", FormId);
             writer.WriteStringValue("framework", Framework);
+            writer.WriteStringValue("function_name", FunctionName);
+            writer.WriteStringValue("group", Group);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraGroupLabelsProperty>("group_labels", GroupLabels);
             writer.WriteStringValue("head_sha", HeadSha);
+            writer.WriteStringValue("helpful", Helpful);
             writer.WriteStringValue("hs_pipeline_stage", HsPipelineStage);
             writer.WriteStringValue("hs_ticket_category", HsTicketCategory);
             writer.WriteStringValue("hs_ticket_priority", HsTicketPriority);
@@ -1686,60 +2751,105 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteStringValue("iid", Iid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketImage>("images", Images);
+            writer.WriteStringValue("impact", Impact);
+            writer.WriteStringValue("impact_level", ImpactLevel);
             writer.WriteIntValue("impressions", Impressions);
+            writer.WriteStringValue("incident_identifier", IncidentIdentifier);
+            writer.WriteStringValue("incident_url", IncidentUrl);
             writer.WriteStringValue("insight_id", InsightId);
             writer.WriteStringValue("insight_name", InsightName);
             writer.WriteStringValue("insight_short_id", InsightShortId);
+            writer.WriteStringValue("internet_exposure", InternetExposure);
+            writer.WriteStringValue("is_crash", IsCrash);
+            writer.WriteStringValue("is_recommended", IsRecommended);
             writer.WriteStringValue("issue_id", IssueId);
+            writer.WriteStringValue("issue_type", IssueType);
+            writer.WriteStringValue("issue_url", IssueUrl);
             writer.WriteStringValue("job_name", JobName);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("kind", Kind);
             writer.WriteCollectionOfPrimitiveValues<string>("labels", Labels);
-            writer.WriteStringValue("lastOccurredAt", LastOccurredAt);
+            writer.WriteStringValue("language", Language);
+            writer.WriteStringValue("last_occurred_at", LastOccurredAt);
             writer.WriteStringValue("last_occurrence_timestamp", LastOccurrenceTimestamp);
+            writer.WriteStringValue("last_report_time", LastReportTime);
             writer.WriteStringValue("last_seen", LastSeen);
+            writer.WriteStringValue("last_version", LastVersion);
             writer.WriteStringValue("latest_conclusion", LatestConclusion);
             writer.WriteStringValue("level", Level);
             writer.WriteStringValue("link", Link);
             writer.WriteBoolValue("locked", Locked);
             writer.WriteBoolValue("materialized", Materialized);
             writer.WriteStringValue("mcp_trace_id", McpTraceId);
+            writer.WriteStringValue("mode", Mode);
             writer.WriteStringValue("model", Model);
+            writer.WriteStringValue("monitor_id", MonitorId);
+            writer.WriteStringValue("monitor_type", MonitorType);
+            writer.WriteStringValue("namespace", Namespace);
             writer.WriteStringValue("notebook_short_id", NotebookShortId);
             writer.WriteIntValue("number", Number);
             writer.WriteStringValue("observation_id", ObservationId);
             writer.WriteDoubleValue("observed_value", ObservedValue);
+            writer.WriteStringValue("occurrence_count", OccurrenceCount);
+            writer.WriteStringValue("occurrences", Occurrences);
+            writer.WriteStringValue("opened_time_seconds", OpenedTimeSeconds);
+            writer.WriteStringValue("orca_score", OrcaScore);
             writer.WriteStringValue("page", Page);
             writer.WriteIntValue("passed_attempt", PassedAttempt);
+            writer.WriteStringValue("path", Path);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthCheckSignalExtraPayloadProperty>("payload", Payload);
             writer.WriteDoubleValue("pct_increase", PctIncrease);
             writer.WriteStringValue("period_end", PeriodEnd);
             writer.WriteStringValue("period_start", PeriodStart);
             writer.WriteStringValue("permalink", Permalink);
+            writer.WriteStringValue("platform", Platform);
+            writer.WriteStringValue("plugin_cvss3_base_score", PluginCvss3BaseScore);
+            writer.WriteStringValue("plugin_id", PluginId);
+            writer.WriteStringValue("port_number", PortNumber);
             writer.WriteDoubleValue("position", Position);
             writer.WriteStringValue("priority", Priority);
+            writer.WriteStringValue("prioritycode", Prioritycode);
             writer.WriteStringValue("priority_label", PriorityLabel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType>("problem_type", ProblemType);
+            writer.WriteStringValue("pr_number", PrNumber);
+            writer.WriteStringValue("problem_id", ProblemId);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemSignalExtraProblemType>("problem_type", ProblemType);
             writer.WriteStringValue("product", Product);
+            writer.WriteStringValue("product_name", ProductName);
             writer.WriteStringValue("product_title", ProductTitle);
             writer.WriteStringValue("project_id", ProjectId);
+            writer.WriteCollectionOfPrimitiveValues<string>("projects", Projects);
+            writer.WriteStringValue("protocol", Protocol);
             writer.WriteStringValue("provider", Provider);
+            writer.WriteStringValue("publication_status", PublicationStatus);
+            writer.WriteStringValue("public_link", PublicLink);
             writer.WriteStringValue("published", Published);
             writer.WriteStringValue("query", Query);
             writer.WriteStringValue("question_type", QuestionType);
             writer.WriteStringValue("rating", Rating);
-            writer.WriteStringValue("ratingCategory", RatingCategory);
+            writer.WriteStringValue("rating_category", RatingCategory);
+            writer.WriteStringValue("recorded_date", RecordedDate);
             writer.WriteDoubleValue("recording_active_seconds", RecordingActiveSeconds);
             writer.WriteDoubleValue("recording_duration", RecordingDuration);
             writer.WriteStringValue("recording_end_time", RecordingEndTime);
             writer.WriteStringValue("recording_start_time", RecordingStartTime);
+            writer.WriteStringValue("record_state", RecordState);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PgAnalyzeIssueReference>("references", References);
+            writer.WriteStringValue("region", Region);
+            writer.WriteStringValue("repo", Repo);
             writer.WriteStringValue("repo_name", RepoName);
             writer.WriteStringValue("repo_owner", RepoOwner);
+            writer.WriteStringValue("report_count", ReportCount);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteStringValue("report_run_id", ReportRunId);
+            writer.WriteStringValue("resolution_status_value", ResolutionStatusValue);
             writer.WriteStringValue("resolved", Resolved);
+            writer.WriteStringValue("resource_name", ResourceName);
+            writer.WriteStringValue("resource_subtype", ResourceSubtype);
+            writer.WriteStringValue("response_status", ResponseStatus);
             writer.WriteIntValue("result_count", ResultCount);
+            writer.WriteStringValue("risk_level", RiskLevel);
+            writer.WriteStringValue("role_name", RoleName);
+            writer.WriteStringValue("root_cause_entity", RootCauseEntity);
             writer.WriteStringValue("rule", Rule);
             writer.WriteIntValue("run_id", RunId);
             writer.WriteStringValue("saved_query_id", SavedQueryId);
@@ -1750,59 +2860,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("scout_run_id", ScoutRunId);
             writer.WriteStringValue("segment", Segment);
             writer.WriteStringValue("segment_title", SegmentTitle);
+            writer.WriteStringValue("sequence_id", SequenceId);
             writer.WriteStringValue("server_human_id", ServerHumanId);
             writer.WriteStringValue("server_name", ServerName);
+            writer.WriteStringValue("service", Service);
             writer.WriteDoubleValue("session_active_seconds", SessionActiveSeconds);
             writer.WriteDoubleValue("session_duration", SessionDuration);
             writer.WriteStringValue("session_end_time", SessionEndTime);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("session_start_time", SessionStartTime);
             writer.WriteStringValue("severity", Severity);
-            writer.WriteStringValue("shortId", ShortId);
+            writer.WriteStringValue("severitycode", Severitycode);
+            writer.WriteStringValue("severity_label", SeverityLabel);
+            writer.WriteStringValue("severity_level", SeverityLevel);
+            writer.WriteStringValue("severity_name", SeverityName);
+            writer.WriteStringValue("severity_value", SeverityValue);
+            writer.WriteStringValue("short_id", ShortId);
+            writer.WriteStringValue("shortlink", Shortlink);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteIntValue("skill_version", SkillVersion);
+            writer.WriteStringValue("source", Source);
             writer.WriteStringValue("stars", Stars);
+            writer.WriteStringValue("started", Started);
+            writer.WriteStringValue("started_at", StartedAt);
             writer.WriteStringValue("start_time", StartTime);
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("state_name", StateName);
             writer.WriteStringValue("state_type", StateType);
             writer.WriteStringValue("status", Status);
+            writer.WriteStringValue("statuscode", Statuscode);
+            writer.WriteStringValue("status_name", StatusName);
+            writer.WriteStringValue("status_type", StatusType);
             writer.WriteStringValue("store", Store);
             writer.WriteStringValue("story_type", StoryType);
+            writer.WriteStringValue("submitted_at", SubmittedAt);
             writer.WriteStringValue("summary", Summary);
+            writer.WriteStringValue("survey_id", SurveyId);
             writer.WriteStringValue("synced_at", SyncedAt);
+            writer.WriteStringValue("sys_created_on", SysCreatedOn);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("target_event_id", TargetEventId);
             writer.WriteStringValue("target_event_type", TargetEventType);
             writer.WriteStringValue("task_id", TaskId);
+            writer.WriteStringValue("task_identifier", TaskIdentifier);
             writer.WriteStringValue("task_run_id", TaskRunId);
             writer.WriteStringValue("team_name", TeamName);
             writer.WriteStringValue("threshold", Threshold);
             writer.WriteIntValue("threshold_count", ThresholdCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>("threshold_operator", ThresholdOperator);
-            writer.WriteIntValue("ticket_number", TicketNumber);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>("threshold_operator", ThresholdOperator);
+            writer.WriteIntValue("ticket_number", Ticket_number);
+            writer.WriteStringValue("ticketnumber", Ticketnumber);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange>("time_range", TimeRange);
+            writer.WriteStringValue("timestamp", Timestamp);
             writer.WriteStringValue("title", Title);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem>("topics", Topics);
+            writer.WriteStringValue("topic_id", TopicId);
+            writer.WriteObjectValue<UntypedNode>("topics", Topics);
+            writer.WriteStringValue("total_up", TotalUp);
             writer.WriteStringValue("trace_id", TraceId);
             writer.WriteCollectionOfPrimitiveValues<string>("triggered_dates", TriggeredDates);
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("updated", Updated);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteStringValue("upvotes", Upvotes);
+            writer.WriteStringValue("urgency", Urgency);
             writer.WriteStringValue("url", Url);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict>("verdict", Verdict);
+            writer.WriteStringValue("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraVerdict>("verdict", Verdict);
             writer.WriteStringValue("verified", Verified);
             writer.WriteStringValue("version", Version);
-            writer.WriteStringValue("vote_count", Vote_count);
-            writer.WriteStringValue("voteCount", VoteCount);
+            writer.WriteStringValue("vote_count", VoteCount);
             writer.WriteStringValue("votes", Votes);
             writer.WriteIntValue("window_days", WindowDays);
             writer.WriteIntValue("window_hours", WindowHours);
+            writer.WriteStringValue("window_impacted_users", WindowImpactedUsers);
             writer.WriteIntValue("window_minutes", WindowMinutes);
+            writer.WriteStringValue("window_total_count", WindowTotalCount);
             writer.WriteStringValue("workflow_name", WorkflowName);
             writer.WriteStringValue("workflow_state_id", WorkflowStateId);
             writer.WriteStringValue("workflow_status", WorkflowStatus);
+            writer.WriteStringValue("work_item_type", WorkItemType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

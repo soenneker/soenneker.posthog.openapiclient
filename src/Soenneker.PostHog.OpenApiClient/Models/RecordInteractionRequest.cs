@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Which interaction counter to increment: &apos;data&apos; (slicing/filtering the dashboard) or &apos;recording&apos; (opening a session recording).* `data` - data* `recording` - recording</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `data` - data* `recording` - recording</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind? InteractionKind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind InteractionKind { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequest"/> and sets the default values.
         /// </summary>
@@ -47,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "interaction_kind", n => { InteractionKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind>(global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind.CreateFromDiscriminatorValue); } },
+                { "interaction_kind", n => { InteractionKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind>(); } },
             };
         }
         /// <summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind>("interaction_kind", InteractionKind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind>("interaction_kind", InteractionKind);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

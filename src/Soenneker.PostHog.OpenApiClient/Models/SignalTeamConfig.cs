@@ -44,6 +44,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? GithubIssueWritebackEnabled { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Project-level instructions for agents implementing signal reports. Other agent roles do not receive them. Blank uses project instructions only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ImplementationInstructions { get; set; }
+#nullable restore
+#else
+        public string ImplementationInstructions { get; set; }
+#endif
         /// <summary>Where in the tracker the issues land. Required keys depend on the integration kind: github -&gt; {repository}; linear -&gt; {team_id}; jira -&gt; {project_key}; gitlab needs none, because its integration is already bound to one project. An optional &apos;label&apos; is applied to created GitHub issues.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? PullRequestLabelEnabled { get; set; }
         /// <summary>How many reports first became visible in the inbox during the current project-timezone day. This is the count the daily report limit compares against.</summary>
         public int? ReportsGeneratedToday { get; private set; }
+        /// <summary>Project-level instructions for the dedicated signal report research stage. Other agent roles do not receive them. Blank uses project instructions only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResearchInstructions { get; set; }
+#nullable restore
+#else
+        public string ResearchInstructions { get; set; }
+#endif
+        /// <summary>Project-level instructions added to every scout run, alongside project instructions and the scout&apos;s own brief. Blank uses project instructions only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScoutInstructions { get; set; }
+#nullable restore
+#else
+        public string ScoutInstructions { get; set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -104,12 +128,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "default_slack_notification_channel", n => { DefaultSlackNotificationChannel = n.GetStringValue(); } },
                 { "github_issue_writeback_enabled", n => { GithubIssueWritebackEnabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "implementation_instructions", n => { ImplementationInstructions = n.GetStringValue(); } },
                 { "issue_tracking_config", n => { IssueTrackingConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty.CreateFromDiscriminatorValue); } },
                 { "issue_tracking_integration", n => { IssueTrackingIntegration = n.GetIntValue(); } },
                 { "max_reports_per_day", n => { MaxReportsPerDay = n.GetIntValue(); } },
                 { "pull_request_label", n => { PullRequestLabel = n.GetStringValue(); } },
                 { "pull_request_label_enabled", n => { PullRequestLabelEnabled = n.GetBoolValue(); } },
                 { "reports_generated_today", n => { ReportsGeneratedToday = n.GetIntValue(); } },
+                { "research_instructions", n => { ResearchInstructions = n.GetStringValue(); } },
+                { "scout_instructions", n => { ScoutInstructions = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -126,11 +153,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("default_open_pull_request_ready", DefaultOpenPullRequestReady);
             writer.WriteStringValue("default_slack_notification_channel", DefaultSlackNotificationChannel);
             writer.WriteBoolValue("github_issue_writeback_enabled", GithubIssueWritebackEnabled);
+            writer.WriteStringValue("implementation_instructions", ImplementationInstructions);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty>("issue_tracking_config", IssueTrackingConfig);
             writer.WriteIntValue("issue_tracking_integration", IssueTrackingIntegration);
             writer.WriteIntValue("max_reports_per_day", MaxReportsPerDay);
             writer.WriteStringValue("pull_request_label", PullRequestLabel);
             writer.WriteBoolValue("pull_request_label_enabled", PullRequestLabelEnabled);
+            writer.WriteStringValue("research_instructions", ResearchInstructions);
+            writer.WriteStringValue("scout_instructions", ScoutInstructions);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

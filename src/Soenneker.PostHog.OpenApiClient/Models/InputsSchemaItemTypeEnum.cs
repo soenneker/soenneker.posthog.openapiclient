@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `string` - string* `number` - number* `boolean` - boolean* `dictionary` - dictionary* `choice` - choice* `json` - json* `integration` - integration* `integration_multi` - integration_multi* `integration_field` - integration_field* `email` - email* `native_email` - native_email* `posthog_assignee` - posthog_assignee* `posthog_ticket_tags` - posthog_ticket_tags* `posthog_business_hours` - posthog_business_hours* `non_failure_status_codes` - non_failure_status_codes* `customer_analytics_account_properties` - customer_analytics_account_properties* `customer_analytics_account_relationships` - customer_analytics_account_relationships* `task_model` - task_model* `task_repository` - task_repository* `task_mcp_installations` - task_mcp_installations* `signals_scout` - signals_scout* `task_skills` - task_skills</summary>
+    /// <summary>* `string` - string* `number` - number* `boolean` - boolean* `dictionary` - dictionary* `choice` - choice* `json` - json* `integration` - integration* `integration_multi` - integration_multi* `integration_field` - integration_field* `email` - email* `native_email` - native_email* `posthog_assignee` - posthog_assignee* `posthog_ticket_tags` - posthog_ticket_tags* `posthog_business_hours` - posthog_business_hours* `non_failure_status_codes` - non_failure_status_codes* `customer_analytics_account_properties` - customer_analytics_account_properties* `customer_analytics_account_relationships` - customer_analytics_account_relationships* `task_model` - task_model* `task_repository` - task_repository* `task_mcp_installations` - task_mcp_installations* `signals_scout` - signals_scout* `task_skills` - task_skills* `replay_vision_scan` - replay_vision_scan</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum InputsSchemaItemTypeEnum
     {
@@ -94,6 +94,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "task_skills")]
         #pragma warning disable CS1591
         TaskSkills,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "replay_vision_scan")]
+        #pragma warning disable CS1591
+        ReplayVisionScan,
         #pragma warning restore CS1591
     }
 }

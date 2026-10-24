@@ -41,24 +41,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Omit the per-log attributes and resource_attributes maps from results to keep payloads compact. Defaults to false.</summary>
         public bool? ExcludeAttributes { get; set; }
-        /// <summary>Property filters for the query.</summary>
+        /// <summary>Property filters for the query. Pass a list of filters, which are all combined with AND, or a filter group object with nested AND/OR groups.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>? FilterGroup { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyFilterGroup? FilterGroup { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2> FilterGroup { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyFilterGroup FilterGroup { get; set; }
 #endif
         /// <summary>Max results (1-1000).</summary>
         public int? Limit { get; set; }
-        /// <summary>Order results by timestamp.* `latest` - latest* `earliest` - earliest</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `latest` - latest* `earliest` - earliest</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyOrderBy? OrderBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyOrderBy OrderBy { get; set; }
-#endif
         /// <summary>Scope results to one person (UUID or numeric ID). Expanded server-side to the person&apos;s distinct IDs and matched against the team&apos;s configured distinct-id log attribute keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -130,9 +124,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "customColumns", n => { CustomColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyDateRange.CreateFromDiscriminatorValue); } },
                 { "excludeAttributes", n => { ExcludeAttributes = n.GetBoolValue(); } },
-                { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyFilterGroup>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyFilterGroup.CreateFromDiscriminatorValue); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyOrderBy.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyOrderBy>(); } },
                 { "personId", n => { PersonId = n.GetStringValue(); } },
                 { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -151,9 +145,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("customColumns", CustomColumns);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyDateRange>("dateRange", DateRange);
             writer.WriteBoolValue("excludeAttributes", ExcludeAttributes);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>("filterGroup", FilterGroup);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyFilterGroup>("filterGroup", FilterGroup);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyOrderBy>("orderBy", OrderBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyOrderBy>("orderBy", OrderBy);
             writer.WriteStringValue("personId", PersonId);
             writer.WriteStringValue("searchTerm", SearchTerm);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);

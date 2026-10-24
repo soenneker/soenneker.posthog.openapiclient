@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Cohort,
         #pragma warning restore CS1591
+        [EnumMember(Value = "CrossProjectDashboard")]
+        #pragma warning disable CS1591
+        CrossProjectDashboard,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DevGatewayToken")]
+        #pragma warning disable CS1591
+        DevGatewayToken,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FeatureFlag")]
         #pragma warning disable CS1591
         FeatureFlag,
@@ -260,6 +268,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         LlmPromptLabel,
         #pragma warning restore CS1591
+        [EnumMember(Value = "LLMSkill")]
+        #pragma warning disable CS1591
+        LlmSkill,
+        #pragma warning restore CS1591
         [EnumMember(Value = "LLMTrace")]
         #pragma warning disable CS1591
         LlmTrace,
@@ -284,6 +296,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         LogsAlertConfiguration,
         #pragma warning restore CS1591
+        [EnumMember(Value = "PlatformAlertConfiguration")]
+        #pragma warning disable CS1591
+        PlatformAlertConfiguration,
+        #pragma warning restore CS1591
         [EnumMember(Value = "LogsExclusionRule")]
         #pragma warning disable CS1591
         LogsExclusionRule,
@@ -307,6 +323,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "Ticket")]
         #pragma warning disable CS1591
         Ticket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KnowledgeSource")]
+        #pragma warning disable CS1591
+        KnowledgeSource,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KnowledgeLibrary")]
+        #pragma warning disable CS1591
+        KnowledgeLibrary,
         #pragma warning restore CS1591
         [EnumMember(Value = "InstanceSetting")]
         #pragma warning disable CS1591
@@ -344,6 +368,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         DataQualityCheckSchedule,
         #pragma warning restore CS1591
+        [EnumMember(Value = "WarehouseSuggestion")]
+        #pragma warning disable CS1591
+        WarehouseSuggestion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AccessControl")]
+        #pragma warning disable CS1591
+        AccessControl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DataWarehouseTable")]
+        #pragma warning disable CS1591
+        DataWarehouseTable,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DataWarehouseJoin")]
+        #pragma warning disable CS1591
+        DataWarehouseJoin,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Billing")]
         #pragma warning disable CS1591
         Billing,
@@ -355,6 +395,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "StamphogRepoConfig")]
         #pragma warning disable CS1591
         StamphogRepoConfig,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReviewRepository")]
+        #pragma warning disable CS1591
+        ReviewRepository,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReviewProjectSettings")]
+        #pragma warning disable CS1591
+        ReviewProjectSettings,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReviewInstallationClaim")]
+        #pragma warning disable CS1591
+        ReviewInstallationClaim,
         #pragma warning restore CS1591
     }
 }

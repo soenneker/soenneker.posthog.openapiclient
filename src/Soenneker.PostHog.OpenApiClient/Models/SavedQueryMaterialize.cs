@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How often to refresh the materialized table, defaulting to daily. Rejected with a 400 when it falls outside what the query&apos;s lineage allows: no more often than its sources deliver new data, and no less often than a downstream view or endpoint needs.* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency? SyncFrequency { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency SyncFrequency { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterialize"/> and sets the default values.
         /// </summary>
@@ -48,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "sync_frequency", n => { SyncFrequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency>(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency.CreateFromDiscriminatorValue); } },
+                { "sync_frequency", n => { SyncFrequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency>(); } },
             };
         }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency>("sync_frequency", SyncFrequency);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency>("sync_frequency", SyncFrequency);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

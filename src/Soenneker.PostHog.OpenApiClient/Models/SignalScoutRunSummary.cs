@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FailureReason { get; set; }
 #endif
-        /// <summary>Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), `github_guidance` (whether the run got the GitHub evidence section), and `business_knowledge_maintained` (whether the run got the business-knowledge section: the product flag is on and the team&apos;s knowledge base looks maintained) — the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), `network_access` (`full` when the scout&apos;s config lifted the trusted-domain network restriction for this run), `write_scopes` (the extra write access the run&apos;s token carried, when the scout was granted any), and `triggered_by` (`manual` or `workflow` when the run was fired off-schedule; absent means the run came from the coordinator&apos;s schedule). The nested `derived` object is the harness&apos;s own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, and `has_self_validation`. Use `derived` to answer &apos;what kind of run was this?&apos; instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else&apos;s report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed.</summary>
+        /// <summary>Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), `github_guidance` (whether the run got the GitHub evidence section), and `business_knowledge_maintained` (whether the run got the business-knowledge section: the product flag is on and the team&apos;s knowledge base looks maintained) — the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), `network_access` (`full` when the scout&apos;s config lifted the trusted-domain network restriction for this run), `write_scopes` (the extra write access the run&apos;s token carried, when the scout was granted any), and `triggered_by` (`manual` or `workflow` when the run was fired off-schedule; absent means the run came from the coordinator&apos;s schedule). The nested `derived` object is the harness&apos;s own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, `has_self_validation`, `has_structured_output`, and `has_not_in_use_closeout` (the run wrote a `not-in-use:` scratchpad entry and produced no report, finding, or structured output). Use `derived` to answer &apos;what kind of run was this?&apos; instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else&apos;s report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadata? Metadata { get; set; }
@@ -107,14 +107,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StartedAt { get; set; }
 #endif
-        /// <summary>Status from the linked TaskRun.* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryStatus Status { get; set; }
-#endif
         /// <summary>One-paragraph close-out the scout wrote at end-of-run. Empty string for runs that errored before close-out. The dedupe key for non-emitting runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,6 +141,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TaskUrl { get; set; }
 #endif
+        /// <summary>Accounted customer spend in USD cents, including fractional cents. May be partial; null for untracked runs.</summary>
+        public double? TotalSpend { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummary"/> and sets the default values.
         /// </summary>
@@ -185,11 +181,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "skill_version", n => { SkillVersion = n.GetIntValue(); } },
                 { "started_at", n => { StartedAt = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryStatus>(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
                 { "task_run_id", n => { TaskRunId = n.GetStringValue(); } },
                 { "task_url", n => { TaskUrl = n.GetStringValue(); } },
+                { "total_spend", n => { TotalSpend = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -212,7 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteIntValue("skill_version", SkillVersion);
             writer.WriteStringValue("started_at", StartedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryStatus>("status", Status);
             writer.WriteStringValue("summary", Summary);
             writer.WriteStringValue("task_id", TaskId);
             writer.WriteStringValue("task_run_id", TaskRunId);

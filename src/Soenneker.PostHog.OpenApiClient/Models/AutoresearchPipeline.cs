@@ -14,12 +14,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Model the training agent runs on, as set on this pipeline. Null uses the autoresearch default.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentModel { get; private set; }
+#nullable restore
+#else
+        public string AgentModel { get; private set; }
+#endif
+        /// <summary>Reasoning effort for the training agent, as set on this pipeline. Null uses the autoresearch default.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentReasoningEffort { get; private set; }
+#nullable restore
+#else
+        public string AgentReasoningEffort { get; private set; }
+#endif
         /// <summary>Re-score the inference population every N days.</summary>
         public int? CadenceDays { get; set; }
         /// <summary>Offline holdout AUC of the current champion model (predictive accuracy on held-out training data).</summary>
         public double? ChampionHoldoutAuc { get; private set; }
+        /// <summary>True while the current champion model has no realized AUC yet. Null when the pipeline has no champion.</summary>
+        public bool? ChampionIsPreliminary { get; private set; }
+        /// <summary>Lift in the top 10% of scores for the current champion model, from its latest validated prediction date. 2.0 means the top 10% converts at twice the average rate.</summary>
+        public double? ChampionLiftAt10 { get; private set; }
         /// <summary>Realized online AUC of the current champion model, computed from mature predictions against actual outcomes.</summary>
         public double? ChampionRealizedAuc { get; private set; }
+        /// <summary>Realized AUC of the current champion on its newest 14 validated prediction dates, oldest first.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRealizedAucPoint>? ChampionRealizedAucTrend { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRealizedAucPoint> ChampionRealizedAucTrend { get; private set; }
+#endif
+        /// <summary>Best-so-far holdout AUC per iteration of the training run that produced the current champion, oldest first. Iterations before the first holdout score are left out. Empty when the pipeline has no champion.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingTrendPoint>? ChampionTrainingTrend { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingTrendPoint> ChampionTrainingTrend { get; private set; }
+#endif
+        /// <summary>Score coverage and score age from the newest live champion run that measured them. Null before the first such run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage? Coverage { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage Coverage { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
@@ -38,6 +82,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>Model the next training run uses: agent_model, or the autoresearch default when that is null.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EffectiveAgentModel { get; private set; }
+#nullable restore
+#else
+        public string EffectiveAgentModel { get; private set; }
+#endif
+        /// <summary>Reasoning effort the next training run uses: agent_reasoning_effort, or the autoresearch default when that is null. Null when the model has no effort setting.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EffectiveAgentReasoningEffort { get; private set; }
+#nullable restore
+#else
+        public string EffectiveAgentReasoningEffort { get; private set; }
+#endif
+        /// <summary>Experiments (iterations) recorded across every training run.</summary>
+        public int? ExperimentCount { get; private set; }
+        /// <summary>When online validation can first check the current champion against real outcomes: its earliest prediction date plus the horizon plus the ingestion grace. Null before the champion&apos;s first scoring run, and once a validation has checked it.</summary>
+        public DateTimeOffset? FirstCheckExpectedAt { get; private set; }
         /// <summary>Prediction horizon in days. The model predicts whether the target event occurs within this window.</summary>
         public int? HorizonDays { get; set; }
         /// <summary>Unique UUID of this pipeline.</summary>
@@ -50,12 +114,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineInferencePopulationProperty InferencePopulation { get; set; }
 #endif
-        /// <summary>Total training iterations allowed for the autoresearch loop.</summary>
+        /// <summary>Deprecated: scheduled training no longer reads it. Use iterations_per_run.</summary>
         public int? IterationBudget { get; set; }
-        /// <summary>Iterations remaining in the current budget.</summary>
+        /// <summary>Deprecated: scheduled training no longer reads or spends it.</summary>
         public int? IterationBudgetRemaining { get; private set; }
+        /// <summary>Experiments the agent may try in each training run (1-50). Each experiment costs agent time and queries, so a higher value costs more per run. Scheduled runs and Train now use it.</summary>
+        public int? IterationsPerRun { get; private set; }
         /// <summary>Timestamp of the most recent completed inference run.</summary>
         public DateTimeOffset? LastScoredAt { get; private set; }
+        /// <summary>People the newest completed live run of the current champion scored at or above likely_threshold. Null before such a run, and for runs that did not record it.</summary>
+        public int? LikelyCount { get; private set; }
+        /// <summary>The Likely cut point that likely_count used, as it was when that run scored. It is the fixed cut point until enough predictions are checked. Null when likely_count is null.</summary>
+        public double? LikelyThreshold { get; private set; }
+        /// <summary>Progress of the pending or running training run. Null when no run is live.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun? LiveTrainingRun { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun LiveTrainingRun { get; private set; }
+#endif
         /// <summary>Display name for the pipeline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +142,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Start of the UTC day from which the daily sweep can start the next scheduled research run. Null when research_interval_days is null.</summary>
+        public DateTimeOffset? NextResearchAt { get; private set; }
         /// <summary>Person property name that stores the daily prediction score, e.g. &apos;predicted_p_pageview&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,16 +152,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OutputPersonProperty { get; set; }
 #endif
+        /// <summary>People scored by the most recent completed inference run. Null before the first scoring run.</summary>
+        public int? PeopleScored { get; private set; }
         /// <summary>Stop training if no AUC improvement is seen in this many consecutive iterations.</summary>
         public int? PlateauIterations { get; set; }
-        /// <summary>Pipeline lifecycle status: draft, bootstrapping, running, converged, paused, or archived.* `draft` - Draft* `bootstrapping` - Bootstrapping* `running` - Running* `converged` - Converged* `paused` - Paused* `archived` - Archived</summary>
+        /// <summary>Days between scheduled research runs once the first burst of daily runs ends: 7, 14, 30, 60 or 90. Null means only when asked: no scheduled research, so the only training cost comes from runs you start and from rescue runs for a model that cannot score. A shorter interval costs more.* `7` - 7* `14` - 14* `30` - 30* `60` - 60* `90` - 90</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineStatus? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineResearchIntervalDays? ResearchIntervalDays { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineStatus Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineResearchIntervalDays ResearchIntervalDays { get; private set; }
 #endif
+        /// <summary>* `draft` - Draft* `bootstrapping` - Bootstrapping* `running` - Running* `converged` - Converged* `paused` - Paused* `archived` - Archived</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineStatus? Status { get; private set; }
         /// <summary>Target AUC threshold. Training stops early if this score is reached.</summary>
         public double? SuccessAuc { get; set; }
         /// <summary>Resolved target definition: {&quot;type&quot;: &quot;event&quot;} or {&quot;type&quot;: &quot;action&quot;, &quot;action_id&quot;: N}.</summary>
@@ -102,6 +186,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>How far back to look for training examples. Larger windows give more data but may include stale behavior.</summary>
         public int? TrainingLookbackDays { get; set; }
+        /// <summary>* `explore` - Explore* `maintain` - Maintain</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTrainingPhase? TrainingPhase { get; private set; }
         /// <summary>Population used for training. Defines which users can appear as training examples.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,8 +196,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTrainingPopulationProperty TrainingPopulation { get; set; }
 #endif
+        /// <summary>Training runs started for this pipeline.</summary>
+        public int? TrainingRunCount { get; private set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>Whether live scoring writes the champion&apos;s score to output_person_property on each scored person. Feature flags, cohorts, workflows and insights that target people by score need it on.</summary>
+        public bool? WritePersonProperty { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipeline"/> and sets the default values.
         /// </summary>
@@ -137,28 +227,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "agent_model", n => { AgentModel = n.GetStringValue(); } },
+                { "agent_reasoning_effort", n => { AgentReasoningEffort = n.GetStringValue(); } },
                 { "cadence_days", n => { CadenceDays = n.GetIntValue(); } },
                 { "champion_holdout_auc", n => { ChampionHoldoutAuc = n.GetDoubleValue(); } },
+                { "champion_is_preliminary", n => { ChampionIsPreliminary = n.GetBoolValue(); } },
+                { "champion_lift_at_10", n => { ChampionLiftAt10 = n.GetDoubleValue(); } },
                 { "champion_realized_auc", n => { ChampionRealizedAuc = n.GetDoubleValue(); } },
+                { "champion_realized_auc_trend", n => { ChampionRealizedAucTrend = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRealizedAucPoint>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRealizedAucPoint.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "champion_training_trend", n => { ChampionTrainingTrend = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingTrendPoint>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingTrendPoint.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "effective_agent_model", n => { EffectiveAgentModel = n.GetStringValue(); } },
+                { "effective_agent_reasoning_effort", n => { EffectiveAgentReasoningEffort = n.GetStringValue(); } },
+                { "experiment_count", n => { ExperimentCount = n.GetIntValue(); } },
+                { "first_check_expected_at", n => { FirstCheckExpectedAt = n.GetDateTimeOffsetValue(); } },
                 { "horizon_days", n => { HorizonDays = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "inference_population", n => { InferencePopulation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineInferencePopulationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineInferencePopulationProperty.CreateFromDiscriminatorValue); } },
                 { "iteration_budget", n => { IterationBudget = n.GetIntValue(); } },
                 { "iteration_budget_remaining", n => { IterationBudgetRemaining = n.GetIntValue(); } },
+                { "iterations_per_run", n => { IterationsPerRun = n.GetIntValue(); } },
                 { "last_scored_at", n => { LastScoredAt = n.GetDateTimeOffsetValue(); } },
+                { "likely_count", n => { LikelyCount = n.GetIntValue(); } },
+                { "likely_threshold", n => { LikelyThreshold = n.GetDoubleValue(); } },
+                { "live_training_run", n => { LiveTrainingRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "next_research_at", n => { NextResearchAt = n.GetDateTimeOffsetValue(); } },
                 { "output_person_property", n => { OutputPersonProperty = n.GetStringValue(); } },
+                { "people_scored", n => { PeopleScored = n.GetIntValue(); } },
                 { "plateau_iterations", n => { PlateauIterations = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineStatus.CreateFromDiscriminatorValue); } },
+                { "research_interval_days", n => { ResearchIntervalDays = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineResearchIntervalDays>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineResearchIntervalDays.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineStatus>(); } },
                 { "success_auc", n => { SuccessAuc = n.GetDoubleValue(); } },
                 { "target_definition", n => { TargetDefinition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTargetDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTargetDefinition.CreateFromDiscriminatorValue); } },
                 { "target_event", n => { TargetEvent = n.GetStringValue(); } },
                 { "training_lookback_days", n => { TrainingLookbackDays = n.GetIntValue(); } },
+                { "training_phase", n => { TrainingPhase = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTrainingPhase>(); } },
                 { "training_population", n => { TrainingPopulation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTrainingPopulationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTrainingPopulationProperty.CreateFromDiscriminatorValue); } },
+                { "training_run_count", n => { TrainingRunCount = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "write_person_property", n => { WritePersonProperty = n.GetBoolValue(); } },
             };
         }
         /// <summary>

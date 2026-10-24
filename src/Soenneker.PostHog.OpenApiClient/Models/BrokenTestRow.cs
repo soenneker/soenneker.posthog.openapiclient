@@ -74,14 +74,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repo { get; set; }
 #endif
-        /// <summary>The classifier&apos;s verdict on how this failure is behaving right now: &apos;breaking_master&apos; (failing on trunk, latest trunk run still red), &apos;blocking_merge_queue&apos; (stopped a merge on a commit that already passed the PR&apos;s own CI, trunk still green), &apos;novel_burst&apos; (new within a day and spreading across branches, not on trunk yet), &apos;potentially_resolved&apos; (hit trunk but trunk is green again), &apos;flaky&apos; (sporadic across branches over more than a day), or &apos;pr_only&apos; (confined to one branch: one PR&apos;s own problem).* `breaking_master` - BREAKING_MASTER* `blocking_merge_queue` - BLOCKING_MERGE_QUEUE* `novel_burst` - NOVEL_BURST* `potentially_resolved` - POTENTIALLY_RESOLVED* `flaky` - FLAKY* `pr_only` - PR_ONLY</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `breaking_master` - Breaking Master* `blocking_merge_queue` - Blocking Merge Queue* `novel_burst` - Novel Burst* `potentially_resolved` - Potentially Resolved* `flaky` - Flaky* `pr_only` - PR Only</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState State { get; set; }
-#endif
         /// <summary>The pytest node id from the CI &apos;FAILED &lt;id&gt;&apos; line: the failing test.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -135,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "master_hits", n => { MasterHits = n.GetIntValue(); } },
                 { "occurrences", n => { Occurrences = n.GetIntValue(); } },
                 { "repo", n => { Repo = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState>(global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState>(); } },
                 { "test_id", n => { TestId = n.GetStringValue(); } },
                 { "trend_24h", n => { Trend24h = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
             };
@@ -159,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("master_hits", MasterHits);
             writer.WriteIntValue("occurrences", Occurrences);
             writer.WriteStringValue("repo", Repo);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState>("state", State);
             writer.WriteStringValue("test_id", TestId);
             writer.WriteCollectionOfPrimitiveValues<int?>("trend_24h", Trend24h);
             writer.WriteAdditionalData(AdditionalData);

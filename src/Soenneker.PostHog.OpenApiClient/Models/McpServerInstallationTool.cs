@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Effective state after applying the team ceiling.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolApprovalState? ApprovalState { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolApprovalState ApprovalState { get; private set; }
-#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Policy layer that decided the effective state.</summary>
@@ -53,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The input_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolInputSchema? InputSchema { get; private set; }
+        public UntypedNode? InputSchema { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolInputSchema InputSchema { get; private set; }
+        public UntypedNode InputSchema { get; private set; }
 #endif
         /// <summary>The last_seen_at property</summary>
         public DateTimeOffset? LastSeenAt { get; private set; }
@@ -107,13 +101,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "approval_state", n => { ApprovalState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolApprovalState>(global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolApprovalState.CreateFromDiscriminatorValue); } },
+                { "approval_state", n => { ApprovalState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolApprovalState>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "decided_by", n => { DecidedBy = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "input_schema", n => { InputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolInputSchema>(global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationToolInputSchema.CreateFromDiscriminatorValue); } },
+                { "input_schema", n => { InputSchema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
                 { "locked", n => { Locked = n.GetBoolValue(); } },
                 { "removed_at", n => { RemovedAt = n.GetDateTimeOffsetValue(); } },

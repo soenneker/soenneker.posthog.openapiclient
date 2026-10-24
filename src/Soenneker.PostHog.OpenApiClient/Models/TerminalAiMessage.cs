@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContent Content { get; set; }
 #endif
         /// <summary>Author of this conversation message.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageRole? Role { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageRole Role { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessage"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContent>(global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContent.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageRole>(global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageRole.CreateFromDiscriminatorValue); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageRole>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContent>("content", Content);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageRole>("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

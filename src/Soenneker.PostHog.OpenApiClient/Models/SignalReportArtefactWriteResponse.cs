@@ -20,10 +20,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The artefact payload, parsed from storage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteResponseContent? Content { get; private set; }
+        public UntypedNode? Content { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteResponseContent Content { get; private set; }
+        public UntypedNode Content { get; private set; }
 #endif
         /// <summary>When the artefact was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteResponseContent>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteResponseContent.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "report_id", n => { ReportId = n.GetGuidValue(); } },

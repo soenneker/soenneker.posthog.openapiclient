@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecodeItem>? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecodeItem> Bytecode { get; set; }
+        public UntypedNode Bytecode { get; set; }
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "conditionHash", n => { ConditionHash = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IdKey>(); } },
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecodeItem>("bytecode", Bytecode);
+            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
             writer.WriteStringValue("bytecode_error", BytecodeError);
             writer.WriteStringValue("conditionHash", ConditionHash);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IdKey>("key", Key);

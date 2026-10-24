@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Settings for this destination: target database, schema or dataset, bucket and prefix, file format. Credentials are not stored here. They live on the linked integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationConfig? Config { get; set; }
+        public UntypedNode? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationConfig Config { get; set; }
+        public UntypedNode Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -32,6 +32,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Integration { get; set; }
         /// <summary>Whether this is the managed PostHog warehouse destination.</summary>
         public bool? IsPosthogWarehouse { get; private set; }
+        /// <summary>The last delivery error, safe to show to the user. Null if no delivery has failed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LatestError { get; private set; }
+#nullable restore
+#else
+        public string LatestError { get; private set; }
+#endif
+        /// <summary>When the last delivery error occurred.</summary>
+        public DateTimeOffset? LatestErrorAt { get; private set; }
         /// <summary>Human-readable name shown when picking destinations for a source or table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,6 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>* `healthy` - Healthy* `failing` - Failing* `paused` - Paused</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationStatus? Status { get; private set; }
         /// <summary>Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table&apos;s override, and — for the PostHog warehouse — sources that write there by default because nothing else was configured.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,14 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource> SyncedSources { get; private set; }
 #endif
-        /// <summary>Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here.* `PostHogWarehouse` - PostHog warehouse* `Redshift` - Redshift* `Snowflake` - Snowflake* `BigQuery` - BigQuery* `Postgres` - Postgres* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `S3` - S3</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `PostHogWarehouse` - PostHog warehouse* `Redshift` - Redshift* `Snowflake` - Snowflake* `BigQuery` - BigQuery* `Postgres` - Postgres* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `S3` - S3</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationType Type { get; set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -83,15 +89,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "integration", n => { Integration = n.GetIntValue(); } },
                 { "is_posthog_warehouse", n => { IsPosthogWarehouse = n.GetBoolValue(); } },
+                { "latest_error", n => { LatestError = n.GetStringValue(); } },
+                { "latest_error_at", n => { LatestErrorAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationStatus>(); } },
                 { "synced_sources", n => { SyncedSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource>(global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationType>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -102,10 +111,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationConfig>("config", Config);
+            writer.WriteObjectValue<UntypedNode>("config", Config);
             writer.WriteIntValue("integration", Integration);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataDestinationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

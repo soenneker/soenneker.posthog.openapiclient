@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness> Readiness { get; set; }
 #endif
+        /// <summary>Time of the latest seven-day source scan, including cached scans. Null if no scan time is available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceScannedAt { get; private set; }
+#nullable restore
+#else
+        public string SourceScannedAt { get; private set; }
+#endif
         /// <summary>Ranked suggestions, most important first</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,6 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "degraded", n => { Degraded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "readiness", n => { Readiness = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness>(global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "source_scanned_at", n => { SourceScannedAt = n.GetStringValue(); } },
                 { "suggestions", n => { Suggestions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion>(global::Soenneker.PostHog.OpenApiClient.Models.Suggestion.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "truncated", n => { Truncated = n.GetBoolValue(); } },

@@ -8,20 +8,18 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas).
+    /// Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema : IAdditionalDataHolder, IParsable
+    public partial class ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Only show tickets assigned to these users or roles. &apos;me&apos; means the requesting user and &apos;unassigned&apos; means tickets without an assignment. Empty shows all assignees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem>? Assignees { get; set; }
+        public List<string>? Assignees { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem> Assignees { get; set; }
+        public List<string> Assignees { get; set; }
 #endif
         /// <summary>Ticket channel filter.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel? Channel { get; set; }
@@ -58,7 +56,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema()
         {
-            AdditionalData = new Dictionary<string, object>();
             Limit = 10;
         }
         /// <summary>
@@ -79,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignees", n => { Assignees = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "assignees", n => { Assignees = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "channel", n => { Channel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "priorities", n => { Priorities = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>()?.AsList(); } },
@@ -95,14 +92,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigAssigneesItem>("assignees", Assignees);
+            writer.WriteCollectionOfPrimitiveValues<string>("assignees", Assignees);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel>("channel", Channel);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>("priorities", Priorities);
             writer.WriteStringValue("savedViewId", SavedViewId);
             writer.WriteStringValue("search", Search);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigStatus>("status", Status);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerAuthType AuthType { get; private set; }
 #endif
-        /// <summary>The category property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `business` - Business Operations* `data` - Data &amp; Analytics* `design` - Design &amp; Content* `dev` - Developer Tools &amp; APIs* `infra` - Infrastructure* `productivity` - Productivity &amp; Collaboration</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCategory? Category { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCategory Category { get; private set; }
-#endif
         /// <summary>Members with a connection to this server. Only project admins receive this list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -168,7 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "agents", n => { Agents = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccess>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccess.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "auth_type", n => { AuthType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerAuthType>(global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerAuthType.CreateFromDiscriminatorValue); } },
-                { "category", n => { Category = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCategory>(global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCategory.CreateFromDiscriminatorValue); } },
+                { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCategory>(); } },
                 { "connections", n => { Connections = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConnection>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayConnection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },

@@ -20,7 +20,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{projectId}\notebooks\{notebook-id}\widgets\{nodeId}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\notebooks\{notebookId}\widgets\{nodeId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithNodeItemRequestBuilder : BaseRequestBuilder
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widge
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNodeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/widgets/{nodeId}", pathParameters)
+        public WithNodeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebookId}/widgets/{nodeId}", pathParameters)
         {
         }
         /// <summary>
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widge
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNodeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/widgets/{nodeId}", rawUrl)
+        public WithNodeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebookId}/widgets/{nodeId}", rawUrl)
         {
         }
     }

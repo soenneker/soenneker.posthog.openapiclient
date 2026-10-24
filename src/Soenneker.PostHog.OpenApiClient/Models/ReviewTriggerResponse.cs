@@ -14,7 +14,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Run lifecycle marker: &apos;started&apos; when the review was queued, &apos;already_reviewed&apos; when the pull request&apos;s current commit already has a published review in the requested mode, &apos;joined_running_review&apos; when a review was already in flight and the request joined its queue. A requested Full review waits for an active Flash review.</summary>
+        /// <summary>The pull request&apos;s head commit when the request was accepted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? HeadSha { get; set; }
+#nullable restore
+#else
+        public string HeadSha { get; set; }
+#endif
+        /// <summary>The pull request number.</summary>
+        public int? PrNumber { get; set; }
+        /// <summary>Id of the pull request&apos;s existing review, for `review-hog-reviews-get`. Null on the pull request&apos;s first run, which creates the review later.</summary>
+        public Guid? ReportId { get; set; }
+        /// <summary>The pull request&apos;s repository as &apos;owner/repo&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Repository { get; set; }
+#nullable restore
+#else
+        public string Repository { get; set; }
+#endif
+        /// <summary>Server time when the request was accepted.</summary>
+        public DateTimeOffset? RequestedAt { get; set; }
+        /// <summary>Why the resolution stage does not run: &apos;run_mode_excludes_resolve&apos; (&apos;review_only&apos; and &apos;flash&apos; never resolve), &apos;owner_not_opted_in&apos; (the pull request owner has not turned on resolving comments), &apos;already_reviewed&apos; (no run starts). Null when it runs.* `run_mode_excludes_resolve` - The run mode never resolves comments* `owner_not_opted_in` - The pull request owner has not opted in to resolution* `already_reviewed` - No run starts, because the head already has a review in this mode</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseResolveSkipReason? ResolveSkipReason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseResolveSkipReason ResolveSkipReason { get; set; }
+#endif
+        /// <summary>Whether this request plans to run the resolution stage, which can push fix commits to the pull request. It is the plan at request time: a request queued behind a running turn on the same head can be skipped as already published. `review-hog-reviews-pr-status` reports what actually ran.</summary>
+        public bool? ResolveWillRun { get; set; }
+        /// <summary>The review this request runs: &apos;full&apos; (Deep) or &apos;flash&apos; (Standard). Null for &apos;resolve_only&apos;, which runs no review.* `full` - Deep* `flash` - Standard</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseReviewMode? ReviewMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseReviewMode ReviewMode { get; set; }
+#endif
+        /// <summary>Run lifecycle marker: &apos;started&apos; when the review was queued, &apos;already_reviewed&apos; when the pull request&apos;s current commit already has a published review in the requested mode, &apos;joined_running_review&apos; when a review was already running and the request was queued on that pull request&apos;s run, to start after the running turn. A requested Deep review waits for an active Standard review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -55,6 +95,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "head_sha", n => { HeadSha = n.GetStringValue(); } },
+                { "pr_number", n => { PrNumber = n.GetIntValue(); } },
+                { "report_id", n => { ReportId = n.GetGuidValue(); } },
+                { "repository", n => { Repository = n.GetStringValue(); } },
+                { "requested_at", n => { RequestedAt = n.GetDateTimeOffsetValue(); } },
+                { "resolve_skip_reason", n => { ResolveSkipReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseResolveSkipReason>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseResolveSkipReason.CreateFromDiscriminatorValue); } },
+                { "resolve_will_run", n => { ResolveWillRun = n.GetBoolValue(); } },
+                { "review_mode", n => { ReviewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseReviewMode>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseReviewMode.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
             };
@@ -66,6 +114,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("head_sha", HeadSha);
+            writer.WriteIntValue("pr_number", PrNumber);
+            writer.WriteGuidValue("report_id", ReportId);
+            writer.WriteStringValue("repository", Repository);
+            writer.WriteDateTimeOffsetValue("requested_at", RequestedAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseResolveSkipReason>("resolve_skip_reason", ResolveSkipReason);
+            writer.WriteBoolValue("resolve_will_run", ResolveWillRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponseReviewMode>("review_mode", ReviewMode);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("workflow_id", WorkflowId);
             writer.WriteAdditionalData(AdditionalData);

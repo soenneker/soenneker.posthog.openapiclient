@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EventName { get; set; }
 #endif
+        /// <summary>OpenTelemetry instrumentation scope name. Empty when not set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InstrumentationScope { get; set; }
+#nullable restore
+#else
+        public string InstrumentationScope { get; set; }
+#endif
         /// <summary>ClickHouse alias for severity_text. Redundant; prefer severity_text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,6 +54,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Level { get; set; }
 #endif
+        /// <summary>Latest timestamp up to which ingestion is known to be complete. The same on every row. Logs newer than it can still arrive.</summary>
+        public DateTimeOffset? LiveLogsCheckpoint { get; set; }
         /// <summary>ISO 8601 timestamp the log pipeline observed the event (may differ from `timestamp`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,6 +71,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty ResourceAttributes { get; set; }
+#endif
+        /// <summary>Hash of the resource attributes. Logs from the same pod or host share it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResourceFingerprint { get; set; }
+#nullable restore
+#else
+        public string ResourceFingerprint { get; set; }
 #endif
         /// <summary>Log severity as a numeric code. Redundant with severity_text; kept for OpenTelemetry compatibility.</summary>
         public int? SeverityNumber { get; set; }
@@ -88,8 +106,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Timestamp { get; set; }
 #endif
-        /// <summary>OpenTelemetry trace flags.</summary>
-        public int? TraceFlags { get; set; }
         /// <summary>Trace ID. Returns &quot;00000000000000000000000000000000&quot; when not set (padding, not null).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -134,14 +150,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "event_name", n => { EventName = n.GetStringValue(); } },
+                { "instrumentation_scope", n => { InstrumentationScope = n.GetStringValue(); } },
                 { "level", n => { Level = n.GetStringValue(); } },
+                { "live_logs_checkpoint", n => { LiveLogsCheckpoint = n.GetDateTimeOffsetValue(); } },
                 { "observed_timestamp", n => { ObservedTimestamp = n.GetStringValue(); } },
                 { "resource_attributes", n => { ResourceAttributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty.CreateFromDiscriminatorValue); } },
+                { "resource_fingerprint", n => { ResourceFingerprint = n.GetStringValue(); } },
                 { "severity_number", n => { SeverityNumber = n.GetIntValue(); } },
                 { "severity_text", n => { SeverityText = n.GetStringValue(); } },
                 { "span_id", n => { SpanId = n.GetStringValue(); } },
                 { "timestamp", n => { Timestamp = n.GetStringValue(); } },
-                { "trace_flags", n => { TraceFlags = n.GetIntValue(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
             };
@@ -156,14 +174,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty>("attributes", Attributes);
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("event_name", EventName);
+            writer.WriteStringValue("instrumentation_scope", InstrumentationScope);
             writer.WriteStringValue("level", Level);
+            writer.WriteDateTimeOffsetValue("live_logs_checkpoint", LiveLogsCheckpoint);
             writer.WriteStringValue("observed_timestamp", ObservedTimestamp);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty>("resource_attributes", ResourceAttributes);
+            writer.WriteStringValue("resource_fingerprint", ResourceFingerprint);
             writer.WriteIntValue("severity_number", SeverityNumber);
             writer.WriteStringValue("severity_text", SeverityText);
             writer.WriteStringValue("span_id", SpanId);
             writer.WriteStringValue("timestamp", Timestamp);
-            writer.WriteIntValue("trace_flags", TraceFlags);
             writer.WriteStringValue("trace_id", TraceId);
             writer.WriteStringValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);

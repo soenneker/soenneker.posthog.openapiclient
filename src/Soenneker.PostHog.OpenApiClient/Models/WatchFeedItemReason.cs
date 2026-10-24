@@ -17,14 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The decision model&apos;s 0-1 judgment that the session is worth watching, for `jev_watchable`.</summary>
         public double? JevProbability { get; set; }
-        /// <summary>Highest-priority rule the observation satisfied: `signal_emitted` (it pushed a signal), `unusual_verdict` (a monitor answer that is the minority for that scanner this window), `verdict_yes` (a monitor hit, when the window is too thin to know which answer is unusual), `outlier_score` (far from the scanner&apos;s window average), `rare_tag` (a tag uncommon for the scanner this window), `novel_summary` (a summary that reads unlike the scanner&apos;s other sessions this window), `notable` (the scan itself judged the session worth watching), `friction` (the scan describes errors, retries, or dead ends), `jev_watchable` (the decision model judged the session worth watching; teams on the Jev ranker experiment only), `unviewed_recent` (new to you), `recent` (nothing special, newest available).* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `jev_watchable` - Jev Watchable* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `jev_watchable` - Jev Watchable* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind Kind { get; set; }
-#endif
         /// <summary>The scan&apos;s own 0-1 judgment of how much a team would benefit from watching, for `notable`.</summary>
         public double? Notability { get; set; }
         /// <summary>The scan&apos;s own sentence naming why the session is worth watching. Present on the `notable` and `jev_watchable` reason kinds when the scan itself found the session notable, and preferred over copy derived from the reason kind. Absent on observations scanned before notability shipped.</summary>
@@ -75,6 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Share (0-1) of the scanner&apos;s window observations with this answer, for `unusual_verdict`.</summary>
         public double? VerdictShare { get; set; }
+        /// <summary>* `visible_error` - Error on screen* `silent_failure` - Action silently failed* `unresponsive` - Clicks went nowhere* `slow_or_stuck` - Slow or stuck* `blocked` - Blocked* `cant_find` - Couldn&apos;t find it* `confused` - Confused* `workaround` - Took a workaround* `abandoned` - Gave up* `churn_signal` - Churn signal* `success` - Worked well</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchReason? WatchReason { get; set; }
         /// <summary>The scanner&apos;s mean score in the window, for `outlier_score`.</summary>
         public double? WindowMean { get; set; }
         /// <summary>
@@ -103,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "jev_probability", n => { JevProbability = n.GetDoubleValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>(global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>(); } },
                 { "notability", n => { Notability = n.GetDoubleValue(); } },
                 { "notability_reason", n => { NotabilityReason = n.GetStringValue(); } },
                 { "problem_types", n => { ProblemTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -114,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "tag_share", n => { TagShare = n.GetDoubleValue(); } },
                 { "verdict", n => { Verdict = n.GetStringValue(); } },
                 { "verdict_share", n => { VerdictShare = n.GetDoubleValue(); } },
+                { "watch_reason", n => { WatchReason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchReason>(); } },
                 { "window_mean", n => { WindowMean = n.GetDoubleValue(); } },
             };
         }
@@ -125,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("jev_probability", JevProbability);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>("kind", Kind);
             writer.WriteDoubleValue("notability", Notability);
             writer.WriteStringValue("notability_reason", NotabilityReason);
             writer.WriteCollectionOfPrimitiveValues<string>("problem_types", ProblemTypes);
@@ -136,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("tag_share", TagShare);
             writer.WriteStringValue("verdict", Verdict);
             writer.WriteDoubleValue("verdict_share", VerdictShare);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchReason>("watch_reason", WatchReason);
             writer.WriteDoubleValue("window_mean", WindowMean);
             writer.WriteAdditionalData(AdditionalData);
         }

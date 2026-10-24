@@ -78,14 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestPriority RequestPriority { get; private set; }
 #endif
-        /// <summary>Current customer-facing lifecycle status.* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus? RequestStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus RequestStatus { get; private set; }
-#endif
         /// <summary>Customer-facing request title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -139,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_archived", n => { IsArchived = n.GetBoolValue(); } },
                 { "product_areas", n => { ProductAreas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "request_priority", n => { RequestPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestPriority>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestPriority.CreateFromDiscriminatorValue); } },
-                { "request_status", n => { RequestStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus.CreateFromDiscriminatorValue); } },
+                { "request_status", n => { RequestStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetIntValue(); } },

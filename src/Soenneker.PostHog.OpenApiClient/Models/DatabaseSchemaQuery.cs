@@ -20,6 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConnectionId { get; set; }
 #endif
+        /// <summary>Select the native managed Trino catalog instead of the default PostHog catalog.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget? ExecutionTarget { get; set; }
         /// <summary>When false, skip serializing each table&apos;s fields (`fields` comes back empty). Defaults to true.</summary>
         public bool? IncludeFields { get; set; }
         /// <summary>The kind property</summary>
@@ -77,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "connectionId", n => { ConnectionId = n.GetStringValue(); } },
+                { "executionTarget", n => { ExecutionTarget = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>(); } },
                 { "includeFields", n => { IncludeFields = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -94,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("connectionId", ConnectionId);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>("executionTarget", ExecutionTarget);
             writer.WriteBoolValue("includeFields", IncludeFields);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);

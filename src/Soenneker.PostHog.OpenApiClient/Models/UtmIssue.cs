@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Field { get; set; }
 #endif
-        /// <summary>Which kind of UTM problem this campaign has* `not_linked` - not_linked* `name_collision` - name_collision* `no_tagged_events` - no_tagged_events* `unknown_source` - unknown_source* `missing_source` - missing_source</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_linked` - not_linked* `name_collision` - name_collision* `no_tagged_events` - no_tagged_events* `unknown_source` - unknown_source* `missing_source` - missing_source</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind Kind { get; set; }
-#endif
         /// <summary>The orphaned utm_campaign value that looks like a typo of this campaign, when one was found confidently. Set only alongside add_campaign_name_mapping; empty otherwise, including when several candidates tie and picking one could misattribute spend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Pageviews that matched this campaign but carried no utm_source, on any issue kind</summary>
         public int? MissingSourceCount { get; set; }
-        /// <summary>Issue severity level* `error` - error* `warning` - warning</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `error` - error* `warning` - warning</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity Severity { get; set; }
-#endif
         /// <summary>Other integrations whose campaigns share this campaign&apos;s name (name_collision only)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -107,11 +95,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "alternative_sources", n => { AlternativeSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource>(global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "field", n => { Field = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind>(global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind>(); } },
                 { "mapping_candidate", n => { MappingCandidate = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "missing_source_count", n => { MissingSourceCount = n.GetIntValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity>(); } },
                 { "shared_with_integrations", n => { SharedWithIntegrations = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "suggested_actions", n => { SuggestedActions = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum>()?.AsList(); } },
             };
@@ -125,11 +113,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource>("alternative_sources", AlternativeSources);
             writer.WriteStringValue("field", Field);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind>("kind", Kind);
             writer.WriteStringValue("mapping_candidate", MappingCandidate);
             writer.WriteStringValue("message", Message);
             writer.WriteIntValue("missing_source_count", MissingSourceCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity>("severity", Severity);
             writer.WriteCollectionOfPrimitiveValues<string>("shared_with_integrations", SharedWithIntegrations);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum>("suggested_actions", SuggestedActions);
             writer.WriteAdditionalData(AdditionalData);

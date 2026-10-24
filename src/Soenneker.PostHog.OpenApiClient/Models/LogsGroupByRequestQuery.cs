@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2> FilterGroup { get; set; }
 #endif
-        /// <summary>The key to group logs by — an attribute key (e.g. &quot;session_id&quot;, &quot;service.name&quot;) or, when groupBySource is &quot;column&quot;, one of the top-level log fields: &quot;severity_level&quot;, &quot;trace_id&quot;, &quot;span_id&quot;. Ignored when groupBys is provided.</summary>
+        /// <summary>The key to group logs by — an attribute key (e.g. &quot;session_id&quot;, &quot;service.name&quot;) or, when groupBySource is &quot;column&quot;, one of the top-level log fields: &quot;severity_level&quot;, &quot;service_name&quot;, &quot;trace_id&quot;, &quot;span_id&quot;, &quot;pattern&quot;. Ignored when groupBys is provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GroupBy { get; set; }
@@ -47,24 +47,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension> GroupBys { get; set; }
 #endif
-        /// <summary>Where the grouping key lives: &quot;log&quot; for log-level attributes, &quot;resource&quot; for resource-level attributes, &quot;column&quot; for top-level log fields. Ignored when groupBys is provided.* `log` - log* `resource` - resource* `column` - column</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `log` - log* `resource` - resource* `column` - column</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource? GroupBySource { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource GroupBySource { get; set; }
-#endif
         /// <summary>Maximum number of groups to return (top-N by orderGroupsBy). Defaults to 100.</summary>
         public int? Limit { get; set; }
-        /// <summary>Aggregate to rank groups by (descending): &quot;log_count&quot; for the noisiest groups, &quot;error_count&quot; for the most failing, &quot;last_seen&quot; for the most recent.* `log_count` - log_count* `error_count` - error_count* `last_seen` - last_seen</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `log_count` - log_count* `error_count` - error_count* `last_seen` - last_seen</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy? OrderGroupsBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy OrderGroupsBy { get; set; }
-#endif
         /// <summary>Scope grouping to one person (UUID or numeric ID). Expanded server-side to the person&apos;s distinct IDs and matched against the team&apos;s configured distinct-id log attribute keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -134,10 +122,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "groupBy", n => { GroupBy = n.GetStringValue(); } },
-                { "groupBySource", n => { GroupBySource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource>(global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource.CreateFromDiscriminatorValue); } },
+                { "groupBySource", n => { GroupBySource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource>(); } },
                 { "groupBys", n => { GroupBys = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension>(global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "orderGroupsBy", n => { OrderGroupsBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy>(global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy.CreateFromDiscriminatorValue); } },
+                { "orderGroupsBy", n => { OrderGroupsBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy>(); } },
                 { "personId", n => { PersonId = n.GetStringValue(); } },
                 { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -156,9 +144,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>("filterGroup", FilterGroup);
             writer.WriteStringValue("groupBy", GroupBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension>("groupBys", GroupBys);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource>("groupBySource", GroupBySource);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource>("groupBySource", GroupBySource);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy>("orderGroupsBy", OrderGroupsBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy>("orderGroupsBy", OrderGroupsBy);
             writer.WriteStringValue("personId", PersonId);
             writer.WriteStringValue("searchTerm", SearchTerm);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);

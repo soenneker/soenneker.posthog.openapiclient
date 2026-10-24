@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event used as the activity signal (DAU/WAU/MAU).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent? ActivityEvent { get; set; }
+        public UntypedNode? ActivityEvent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent ActivityEvent { get; set; }
+        public UntypedNode ActivityEvent { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -35,34 +35,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event used to count payments on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent? PaymentEvent { get; set; }
+        public UntypedNode? PaymentEvent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent PaymentEvent { get; set; }
+        public UntypedNode PaymentEvent { get; set; }
 #endif
         /// <summary>Event used to count signups on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent? SignupEvent { get; set; }
+        public UntypedNode? SignupEvent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent SignupEvent { get; set; }
+        public UntypedNode SignupEvent { get; set; }
 #endif
         /// <summary>Event used to count signup pageviews on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent? SignupPageviewEvent { get; set; }
+        public UntypedNode? SignupPageviewEvent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent SignupPageviewEvent { get; set; }
+        public UntypedNode SignupPageviewEvent { get; set; }
 #endif
         /// <summary>Event used to count subscriptions on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSubscriptionEvent? SubscriptionEvent { get; set; }
+        public UntypedNode? SubscriptionEvent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSubscriptionEvent SubscriptionEvent { get; set; }
+        public UntypedNode SubscriptionEvent { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig"/> and sets the default values.
@@ -90,12 +90,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account_group_type_index", n => { AccountGroupTypeIndex = n.GetIntValue(); } },
-                { "activity_event", n => { ActivityEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent.CreateFromDiscriminatorValue); } },
+                { "activity_event", n => { ActivityEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "default_pinned_properties", n => { DefaultPinnedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "payment_event", n => { PaymentEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent.CreateFromDiscriminatorValue); } },
-                { "signup_event", n => { SignupEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent.CreateFromDiscriminatorValue); } },
-                { "signup_pageview_event", n => { SignupPageviewEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent.CreateFromDiscriminatorValue); } },
-                { "subscription_event", n => { SubscriptionEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSubscriptionEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSubscriptionEvent.CreateFromDiscriminatorValue); } },
+                { "payment_event", n => { PaymentEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "signup_event", n => { SignupEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "signup_pageview_event", n => { SignupPageviewEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "subscription_event", n => { SubscriptionEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -106,12 +106,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("account_group_type_index", AccountGroupTypeIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigActivityEvent>("activity_event", ActivityEvent);
+            writer.WriteObjectValue<UntypedNode>("activity_event", ActivityEvent);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>("default_pinned_properties", DefaultPinnedProperties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigPaymentEvent>("payment_event", PaymentEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupEvent>("signup_event", SignupEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSignupPageviewEvent>("signup_pageview_event", SignupPageviewEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfigSubscriptionEvent>("subscription_event", SubscriptionEvent);
+            writer.WriteObjectValue<UntypedNode>("payment_event", PaymentEvent);
+            writer.WriteObjectValue<UntypedNode>("signup_event", SignupEvent);
+            writer.WriteObjectValue<UntypedNode>("signup_pageview_event", SignupPageviewEvent);
+            writer.WriteObjectValue<UntypedNode>("subscription_event", SubscriptionEvent);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

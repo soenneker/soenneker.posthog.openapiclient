@@ -25,22 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Issue { get; set; }
 #endif
-        /// <summary>&apos;run&apos; (the test still executes but cannot fail the suite) or &apos;skip&apos; (not run at all). Defaults to &apos;run&apos;.* `run` - RUN* `skip` - SKIP</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `run` - Run* `skip` - Skip</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode? Mode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode Mode { get; set; }
-#endif
-        /// <summary>What to do: &apos;quarantine&apos; (add or replace an entry and file a tracking issue), &apos;extend&apos; (re-stamp an existing entry&apos;s expiry, reusing its issue), or &apos;remove&apos; (delete the entry). All three open a pull request.* `quarantine` - QUARANTINE* `extend` - EXTEND* `remove` - REMOVE</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `quarantine` - Quarantine* `extend` - Extend* `remove` - Remove</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation? Operation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation Operation { get; set; }
-#endif
         /// <summary>GitHub team or user handle responsible for the fix, e.g. &apos;@PostHog/team-x&apos;. Required for quarantine and extend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repo { get; set; }
 #endif
-        /// <summary>Test runner the selector targets: &apos;pytest&apos;, &apos;jest&apos;, or &apos;playwright&apos;. Existing entries and Jest file extensions are inferred for older clients that omit it; other selectors default to &apos;pytest&apos;.* `pytest` - PYTEST* `jest` - JEST* `playwright` - PLAYWRIGHT</summary>
+        /// <summary>Test runner the selector targets: &apos;pytest&apos;, &apos;jest&apos;, or &apos;playwright&apos;. Existing entries and Jest file extensions are inferred for older clients that omit it; other selectors default to &apos;pytest&apos;.* `pytest` - Pytest* `jest` - Jest* `playwright` - Playwright</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestRunner? Runner { get; set; }
@@ -108,8 +96,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "expires", n => { Expires = n.GetDateValue(); } },
                 { "issue", n => { Issue = n.GetStringValue(); } },
-                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode.CreateFromDiscriminatorValue); } },
-                { "operation", n => { Operation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation.CreateFromDiscriminatorValue); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode>(); } },
+                { "operation", n => { Operation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation>(); } },
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "repo", n => { Repo = n.GetStringValue(); } },
@@ -126,8 +114,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateValue("expires", Expires);
             writer.WriteStringValue("issue", Issue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode>("mode", Mode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation>("operation", Operation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation>("operation", Operation);
             writer.WriteStringValue("owner", Owner);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("repo", Repo);

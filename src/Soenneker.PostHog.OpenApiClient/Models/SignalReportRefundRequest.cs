@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Note { get; set; }
 #endif
-        /// <summary>Why this PR is being refunded. One of: pr_incorrect (the PR doesn&apos;t address what the report promised), pr_not_useful (technically fine but not worth paying for), duplicate (covers work already charged elsewhere), other. Required — refund reviews key on it.* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason? Reason { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason Reason { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "note", n => { Note = n.GetStringValue(); } },
-                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason.CreateFromDiscriminatorValue); } },
+                { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("note", Note);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason>("reason", Reason);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason>("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

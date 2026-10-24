@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects
     public partial class ProjectsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">Project ID of the project you&apos;re trying to access. To find the ID of the project, make a call to /api/projects/.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.WithProjectItemRequestBuilder"/></returns>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.WithProjectItemRequestBuilder this[string position]
         {

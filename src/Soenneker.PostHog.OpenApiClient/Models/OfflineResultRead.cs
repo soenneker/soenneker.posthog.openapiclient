@@ -40,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? ItemId { get; set; }
         /// <summary>Payload retention deadline; cleanup is not yet enabled.</summary>
         public DateTimeOffset? PayloadExpiresAt { get; set; }
-        /// <summary>Result payload storage state.* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState? PayloadState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState PayloadState { get; set; }
-#endif
         /// <summary>Pinned scorer version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer Scorer { get; set; }
 #endif
-        /// <summary>Evaluation outcome.* `ok` - OK* `error` - Error* `skipped` - Skipped* `not_applicable` - Not applicable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - OK* `error` - Error* `skipped` - Skipped* `not_applicable` - Not applicable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus Status { get; set; }
-#endif
         /// <summary>Typed score for ok outcomes; null for other outcomes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,9 +92,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "item_id", n => { ItemId = n.GetGuidValue(); } },
                 { "payload_expires_at", n => { PayloadExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "payload_state", n => { PayloadState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState.CreateFromDiscriminatorValue); } },
+                { "payload_state", n => { PayloadState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState>(); } },
                 { "scorer", n => { Scorer = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -124,9 +112,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteGuidValue("item_id", ItemId);
             writer.WriteDateTimeOffsetValue("payload_expires_at", PayloadExpiresAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState>("payload_state", PayloadState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState>("payload_state", PayloadState);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer>("scorer", Scorer);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

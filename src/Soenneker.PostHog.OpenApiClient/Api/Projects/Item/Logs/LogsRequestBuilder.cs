@@ -14,6 +14,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.GroupBy;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Impact;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Natural_language_query;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns_diff;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Query;
@@ -94,6 +95,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules.Metric_rulesRequestBuilder Metric_rules
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules.Metric_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The natural_language_query property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Natural_language_query.Natural_language_queryRequestBuilder Natural_language_query
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Natural_language_query.Natural_language_queryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The patterns property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns.PatternsRequestBuilder Patterns

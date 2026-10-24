@@ -45,10 +45,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem();
-            result.MarketingAnalyticsActionConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal();
-            result.MarketingAnalyticsEventConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal();
-            result.MarketingAnalyticsWarehouseConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal();
+            if("ActionsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.MarketingAnalyticsActionConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal();
+            }
+            else if("EventsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.MarketingAnalyticsEventConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal();
+            }
+            else if("DataWarehouseNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.MarketingAnalyticsWarehouseConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal();
+            }
             return result;
         }
         /// <summary>
@@ -57,9 +67,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(MarketingAnalyticsActionConversionGoal != null || MarketingAnalyticsEventConversionGoal != null || MarketingAnalyticsWarehouseConversionGoal != null)
+            if(MarketingAnalyticsActionConversionGoal != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(MarketingAnalyticsActionConversionGoal, MarketingAnalyticsEventConversionGoal, MarketingAnalyticsWarehouseConversionGoal);
+                return MarketingAnalyticsActionConversionGoal.GetFieldDeserializers();
+            }
+            else if(MarketingAnalyticsEventConversionGoal != null)
+            {
+                return MarketingAnalyticsEventConversionGoal.GetFieldDeserializers();
+            }
+            else if(MarketingAnalyticsWarehouseConversionGoal != null)
+            {
+                return MarketingAnalyticsWarehouseConversionGoal.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -70,7 +88,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal>(null, MarketingAnalyticsActionConversionGoal, MarketingAnalyticsEventConversionGoal, MarketingAnalyticsWarehouseConversionGoal);
+            if(MarketingAnalyticsActionConversionGoal != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal>(null, MarketingAnalyticsActionConversionGoal);
+            }
+            else if(MarketingAnalyticsEventConversionGoal != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal>(null, MarketingAnalyticsEventConversionGoal);
+            }
+            else if(MarketingAnalyticsWarehouseConversionGoal != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal>(null, MarketingAnalyticsWarehouseConversionGoal);
+            }
         }
     }
 }

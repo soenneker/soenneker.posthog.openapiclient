@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the message was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Whether PostHog received or sent the message.* `inbound` - Inbound* `outbound` - Outbound</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `inbound` - Inbound* `outbound` - Outbound</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountSupportTicketMessageDirection? Direction { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountSupportTicketMessageDirection Direction { get; private set; }
-#endif
         /// <summary>UUID of the support ticket message.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Whether the message is an internal note hidden from the customer.</summary>
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "author_name", n => { AuthorName = n.GetStringValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountSupportTicketMessageDirection>(global::Soenneker.PostHog.OpenApiClient.Models.AccountSupportTicketMessageDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountSupportTicketMessageDirection>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_private", n => { IsPrivate = n.GetBoolValue(); } },
             };

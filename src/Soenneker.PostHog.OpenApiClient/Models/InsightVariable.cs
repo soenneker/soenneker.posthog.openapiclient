@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Default value used when a query references this variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue? DefaultValue { get; set; }
+        public UntypedNode? DefaultValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue DefaultValue { get; set; }
+        public UntypedNode DefaultValue { get; set; }
 #endif
         /// <summary>UUID of the SQL variable.</summary>
         public Guid? Id { get; private set; }
@@ -46,21 +46,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Variable type. Controls how the value is rendered and substituted in HogQL.* `String` - String* `Number` - Number* `Boolean` - Boolean* `List` - List* `Date` - Date</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `String` - String* `Number` - Number* `Boolean` - Boolean* `List` - List* `Date` - Date</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType Type { get; set; }
-#endif
         /// <summary>Allowed values for List variables. Null for other variable types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues? Values { get; set; }
+        public UntypedNode? Values { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues Values { get; set; }
+        public UntypedNode Values { get; set; }
 #endif
         /// <summary>HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -106,12 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "code_name", n => { CodeName = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
-                { "default_value", n => { DefaultValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue.CreateFromDiscriminatorValue); } },
+                { "default_value", n => { DefaultValue = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_multi", n => { IsMulti = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType.CreateFromDiscriminatorValue); } },
-                { "values", n => { Values = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType>(); } },
+                { "values", n => { Values = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "values_query", n => { ValuesQuery = n.GetStringValue(); } },
                 { "values_query_connection_id", n => { ValuesQueryConnectionId = n.GetStringValue(); } },
             };
@@ -123,11 +117,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue>("default_value", DefaultValue);
+            writer.WriteObjectValue<UntypedNode>("default_value", DefaultValue);
             writer.WriteBoolValue("is_multi", IsMulti);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues>("values", Values);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType>("type", Type);
+            writer.WriteObjectValue<UntypedNode>("values", Values);
             writer.WriteStringValue("values_query", ValuesQuery);
             writer.WriteStringValue("values_query_connection_id", ValuesQueryConnectionId);
             writer.WriteAdditionalData(AdditionalData);

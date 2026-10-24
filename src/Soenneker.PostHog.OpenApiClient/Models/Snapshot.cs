@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Identifier { get; set; }
 #endif
-        /// <summary>The is_quarantined property</summary>
+        /// <summary>Whether a quarantine covered this snapshot when the run was last gated, so its diff did not block the pull request. It keeps that value after the quarantine ends or a new one starts.</summary>
         public bool? IsQuarantined { get; set; }
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

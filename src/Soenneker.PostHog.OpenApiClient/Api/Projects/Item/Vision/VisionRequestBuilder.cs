@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Quota;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Requests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners;
 using System.Collections.Generic;
 using System.IO;
@@ -32,6 +33,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Quota.QuotaRequestBuilder Quota
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Quota.QuotaRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The requests property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Requests.RequestsRequestBuilder Requests
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Requests.RequestsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scanners property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.ScannersRequestBuilder Scanners

@@ -50,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SlackMessageTs { get; private set; }
 #endif
-        /// <summary>Per-channel delivery status: pending, sent, or failed.* `pending` - Pending* `sent` - Sent* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `sent` - Sent* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementDeliveryStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementDeliveryStatus Status { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementDelivery"/> and sets the default values.
         /// </summary>
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "slack_channel_name", n => { SlackChannelName = n.GetStringValue(); } },
                 { "slack_message_ts", n => { SlackMessageTs = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementDeliveryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementDeliveryStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementDeliveryStatus>(); } },
             };
         }
         /// <summary>

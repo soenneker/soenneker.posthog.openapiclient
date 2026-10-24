@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker Blocker { get; set; }
 #endif
-        /// <summary>A `sync_frequency` value.* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence? Cadence { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence Cadence { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOption"/> and sets the default values.
         /// </summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "allowed", n => { Allowed = n.GetBoolValue(); } },
                 { "blocked_by", n => { BlockedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy.CreateFromDiscriminatorValue); } },
                 { "blocker", n => { Blocker = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker.CreateFromDiscriminatorValue); } },
-                { "cadence", n => { Cadence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence.CreateFromDiscriminatorValue); } },
+                { "cadence", n => { Cadence = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>(); } },
             };
         }
         /// <summary>
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("allowed", Allowed);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy>("blocked_by", BlockedBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>("blocker", Blocker);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>("cadence", Cadence);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>("cadence", Cadence);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

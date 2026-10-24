@@ -31,13 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperator Operator { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemType Type { get; set; }
-#endif
         /// <summary>Value of your filter. For example `test@example.com` or `https://example.com/test/`. Can be an array for an OR query, like `[&quot;test@example.com&quot;,&quot;ok@example.com&quot;]`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperator>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemType>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemType>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemValue>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

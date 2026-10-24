@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of emails this workflow sends per period.</summary>
         public int? Count { get; set; }
-        /// <summary>Window the count applies to. Sends over the limit are delayed until capacity frees up, not dropped.* `minute` - minute* `hour` - hour</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `minute` - minute* `hour` - hour</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitPeriod? Period { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitPeriod Period { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit"/> and sets the default values.
         /// </summary>
@@ -50,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
-                { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitPeriod.CreateFromDiscriminatorValue); } },
+                { "period", n => { Period = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitPeriod>(); } },
             };
         }
         /// <summary>
@@ -61,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitPeriod>("period", Period);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitPeriod>("period", Period);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

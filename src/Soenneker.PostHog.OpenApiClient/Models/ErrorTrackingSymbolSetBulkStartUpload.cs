@@ -42,6 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload> SymbolSets { get; set; }
 #endif
+        /// <summary>Optional ID used to correlate upload analytics across start and finish requests.</summary>
+        public Guid? UploadAttemptId { get; set; }
+        /// <summary>Optional ID shared by every batch in one CLI upload run, including release-ID retries.</summary>
+        public Guid? UploadRunId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUpload"/> and sets the default values.
         /// </summary>
@@ -74,6 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "release_id", n => { ReleaseId = n.GetStringValue(); } },
                 { "skip_on_conflict", n => { SkipOnConflict = n.GetBoolValue(); } },
                 { "symbol_sets", n => { SymbolSets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "upload_attempt_id", n => { UploadAttemptId = n.GetGuidValue(); } },
+                { "upload_run_id", n => { UploadRunId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -88,6 +94,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("release_id", ReleaseId);
             writer.WriteBoolValue("skip_on_conflict", SkipOnConflict);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>("symbol_sets", SymbolSets);
+            writer.WriteGuidValue("upload_attempt_id", UploadAttemptId);
+            writer.WriteGuidValue("upload_run_id", UploadRunId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

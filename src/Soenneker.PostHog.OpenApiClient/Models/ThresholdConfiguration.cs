@@ -11,10 +11,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ThresholdConfiguration : IAdditionalDataHolder, IParsable
+    public partial class ThresholdConfiguration : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The bounds property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,13 +23,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether bounds are compared as absolute values or as percentage change from the previous interval.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdType? Type { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ThresholdConfiguration"/> and sets the default values.
-        /// </summary>
-        public ThresholdConfiguration()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,7 +54,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds>("bounds", Bounds);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdType>("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

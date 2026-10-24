@@ -34,14 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LatestVersion { get; set; }
 #endif
-        /// <summary>SDK identifier, e.g. &apos;web&apos;, &apos;posthog-python&apos;, &apos;posthog-node&apos;, &apos;posthog-ios&apos;.* `web` - web* `posthog-ios` - posthog-ios* `posthog-android` - posthog-android* `posthog-java` - posthog-java* `posthog-server` - posthog-server* `posthog-node` - posthog-node* `posthog-python` - posthog-python* `posthog-php` - posthog-php* `posthog-ruby` - posthog-ruby* `posthog-go` - posthog-go* `posthog-flutter` - posthog-flutter* `posthog-react-native` - posthog-react-native* `posthog-kmp` - posthog-kmp* `posthog-dotnet` - posthog-dotnet* `posthog-elixir` - posthog-elixir* `posthog-unity` - posthog-unity* `posthog-node-mcp` - posthog-node-mcp* `posthog-python-mcp` - posthog-python-mcp* `posthog-edge` - posthog-edge* `posthog-convex` - posthog-convex* `posthog-rails` - posthog-rails* `posthog-aspnetcore` - posthog-aspnetcore</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `web` - web* `posthog-ios` - posthog-ios* `posthog-android` - posthog-android* `posthog-java` - posthog-java* `posthog-server` - posthog-server* `posthog-node` - posthog-node* `posthog-python` - posthog-python* `posthog-php` - posthog-php* `posthog-ruby` - posthog-ruby* `posthog-go` - posthog-go* `posthog-flutter` - posthog-flutter* `posthog-react-native` - posthog-react-native* `posthog-kmp` - posthog-kmp* `posthog-dotnet` - posthog-dotnet* `posthog-elixir` - posthog-elixir* `posthog-unity` - posthog-unity* `posthog-node-mcp` - posthog-node-mcp* `posthog-python-mcp` - posthog-python-mcp* `posthog-edge` - posthog-edge* `posthog-convex` - posthog-convex* `posthog-rails` - posthog-rails* `posthog-aspnetcore` - posthog-aspnetcore</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib? Lib { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib Lib { get; set; }
-#endif
         /// <summary>True when this SDK must be replaced by a supported successor rather than upgraded in place.</summary>
         public bool? MigrationRequired { get; set; }
         /// <summary>True if this SDK needs attention (is_outdated OR is_old).</summary>
@@ -78,14 +72,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment> Releases { get; set; }
 #endif
-        /// <summary>UI severity badge — &apos;none&apos; when healthy, &apos;warning&apos; when outdated, &apos;danger&apos; when the majority of team SDKs are outdated.* `none` - none* `warning` - warning* `danger` - danger</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `warning` - warning* `danger` - danger</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity Severity { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment"/> and sets the default values.
         /// </summary>
@@ -115,14 +103,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_old", n => { IsOld = n.GetBoolValue(); } },
                 { "is_outdated", n => { IsOutdated = n.GetBoolValue(); } },
                 { "latest_version", n => { LatestVersion = n.GetStringValue(); } },
-                { "lib", n => { Lib = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib>(global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib.CreateFromDiscriminatorValue); } },
+                { "lib", n => { Lib = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib>(); } },
                 { "migration_required", n => { MigrationRequired = n.GetBoolValue(); } },
                 { "needs_updating", n => { NeedsUpdating = n.GetBoolValue(); } },
                 { "outdated_traffic_alerts", n => { OutdatedTrafficAlerts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert>(global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "readable_name", n => { ReadableName = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "releases", n => { Releases = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment>(global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity>(); } },
             };
         }
         /// <summary>
@@ -136,14 +124,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_old", IsOld);
             writer.WriteBoolValue("is_outdated", IsOutdated);
             writer.WriteStringValue("latest_version", LatestVersion);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib>("lib", Lib);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib>("lib", Lib);
             writer.WriteBoolValue("migration_required", MigrationRequired);
             writer.WriteBoolValue("needs_updating", NeedsUpdating);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert>("outdated_traffic_alerts", OutdatedTrafficAlerts);
             writer.WriteStringValue("readable_name", ReadableName);
             writer.WriteStringValue("reason", Reason);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment>("releases", Releases);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

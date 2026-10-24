@@ -136,14 +136,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Scope { get; set; }
 #endif
-        /// <summary>What the read covers: &apos;author&apos; (one GitHub login), &apos;github_team&apos; (the members of one GitHub team, through the team membership table), or &apos;pull_request&apos; (one pull request).* `author` - AUTHOR* `github_team` - GITHUB_TEAM* `pull_request` - PULL_REQUEST</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `author` - Author* `github_team` - GitHub Team* `pull_request` - Pull Request</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind? ScopeKind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind ScopeKind { get; set; }
-#endif
         /// <summary>Billable minutes summed over the merged PRs in scope. Null when the jobs table isn&apos;t synced.</summary>
         public double? TotalBillableMinutes { get; set; }
         /// <summary>Estimated CI cost summed over the merged PRs in scope. Null when nothing was costable.</summary>
@@ -195,7 +189,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ready_data_available", n => { ReadyDataAvailable = n.GetBoolValue(); } },
                 { "review_data_available", n => { ReviewDataAvailable = n.GetBoolValue(); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
-                { "scope_kind", n => { ScopeKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind>(global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind.CreateFromDiscriminatorValue); } },
+                { "scope_kind", n => { ScopeKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind>(); } },
                 { "total_billable_minutes", n => { TotalBillableMinutes = n.GetDoubleValue(); } },
                 { "total_cost_usd", n => { TotalCostUsd = n.GetDoubleValue(); } },
             };
@@ -229,7 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("ready_data_available", ReadyDataAvailable);
             writer.WriteBoolValue("review_data_available", ReviewDataAvailable);
             writer.WriteStringValue("scope", Scope);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind>("scope_kind", ScopeKind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind>("scope_kind", ScopeKind);
             writer.WriteDoubleValue("total_billable_minutes", TotalBillableMinutes);
             writer.WriteDoubleValue("total_cost_usd", TotalCostUsd);
             writer.WriteAdditionalData(AdditionalData);

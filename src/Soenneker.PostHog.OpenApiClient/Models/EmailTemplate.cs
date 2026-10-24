@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesign Design { get; set; }
 #endif
+        /// <summary>The sender a transactional template sends from. A template made transactional without one gets the sender it was made transactional with.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateFrom? From { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateFrom From { get; set; }
+#endif
         /// <summary>Rendered email body — derived from the design at save time. The visual editor&apos;s save path supplies it directly; omit it otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,7 +38,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Html { get; set; }
 #endif
-        /// <summary>Email subject line. Supports Liquid templating. Required for email-type templates.</summary>
+        /// <summary>Preview text that most inboxes show after the subject. Supports Liquid templating.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Preheader { get; set; }
+#nullable restore
+#else
+        public string Preheader { get; set; }
+#endif
+        /// <summary>Reply-to address for a transactional template. Separate several addresses with commas. Supports Liquid templating. Leave empty to use the sender&apos;s default reply-to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReplyTo { get; set; }
+#nullable restore
+#else
+        public string ReplyTo { get; set; }
+#endif
+        /// <summary>Email subject line. Supports Liquid templating. Required in `content` for email-type templates. A `draft_content` may leave it blank until it is published.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Subject { get; set; }
@@ -72,7 +96,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "design", n => { Design = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesign>(global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesign.CreateFromDiscriminatorValue); } },
+                { "from", n => { From = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateFrom>(global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateFrom.CreateFromDiscriminatorValue); } },
                 { "html", n => { Html = n.GetStringValue(); } },
+                { "preheader", n => { Preheader = n.GetStringValue(); } },
+                { "replyTo", n => { ReplyTo = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
@@ -85,7 +112,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesign>("design", Design);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateFrom>("from", From);
             writer.WriteStringValue("html", Html);
+            writer.WriteStringValue("preheader", Preheader);
+            writer.WriteStringValue("replyTo", ReplyTo);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("text", Text);
             writer.WriteAdditionalData(AdditionalData);

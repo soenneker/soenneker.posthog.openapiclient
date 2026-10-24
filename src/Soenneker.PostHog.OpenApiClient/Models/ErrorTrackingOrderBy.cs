@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>Field to sort results by.</summary>
+    /// <summary>Issue ranking column.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ErrorTrackingOrderBy
     {
@@ -26,6 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "sessions")]
         #pragma warning disable CS1591
         Sessions,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "severity")]
+        #pragma warning disable CS1591
+        Severity,
         #pragma warning restore CS1591
     }
 }

@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Pipeline this suggestion targets.</summary>
         public Guid? Pipeline { get; set; }
-        /// <summary>&apos;try_next&apos; instructs the agent to act on this before other iterations; &apos;consider&apos; is advisory.* `try_next` - Try next* `consider` - Consider</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `try_next` - Try next* `consider` - Consider</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionPriority? Priority { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionPriority Priority { get; set; }
-#endif
         /// <summary>Free-text hypothesis or direction for the agent to explore.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,22 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Prompt { get; set; }
 #endif
-        /// <summary>&apos;user&apos; for human-submitted suggestions; &apos;agent&apos; for agent-generated hypotheses.* `user` - User* `agent` - Agent</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - User* `agent` - Agent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionSource? Source { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionSource Source { get; private set; }
-#endif
-        /// <summary>Lifecycle status: &apos;queued&apos; (awaiting pickup), &apos;picked_up&apos; (agent is applying as a constraint), &apos;acted_on&apos; (agent spawned iterations), &apos;dismissed&apos; (agent rejected with rationale).* `queued` - Queued* `picked_up` - Picked up* `acted_on` - Acted on* `dismissed` - Dismissed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `queued` - Queued* `picked_up` - Picked up* `acted_on` - Acted on* `dismissed` - Dismissed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionStatus Status { get; private set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -109,10 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "linked_iteration_ids", n => { LinkedIterationIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "pipeline", n => { Pipeline = n.GetGuidValue(); } },
-                { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionPriority>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionPriority.CreateFromDiscriminatorValue); } },
+                { "priority", n => { Priority = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionPriority>(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionSource>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionSource.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionStatus.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionSource>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -124,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("pipeline", Pipeline);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionPriority>("priority", Priority);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionPriority>("priority", Priority);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -7,21 +7,38 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// PUT body for replacing a `suggested_reviewers` artefact&apos;s content.Only `suggested_reviewers` artefacts may be modified via this endpoint;the viewset enforces the type check before validation runs.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class SignalReportArtefactWrite : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
+        /// <summary>* `add` - Add* `remove` - Remove* `replace` - Replace* `confirm` - Confirm</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Full replacement list of reviewers. Empty list clears the artefact. At most 10 entries.</summary>
+        /// <summary>People to add, remove, or keep in a replacement. Send an empty list for confirmation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? Content { get; set; }
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> Content { get; set; }
+#endif
+        /// <summary>State from the last read. Required for replacement and confirmation when corrections are enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers? ExpectedReviewers { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers ExpectedReviewers { get; set; }
+#endif
+        /// <summary>Explicit add or remove targets. When supplied, content is only a fallback for older servers.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? Targets { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> Targets { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWrite"/> and sets the default values.
@@ -48,7 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "action", n => { Action = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction>(); } },
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "expected_reviewers", n => { ExpectedReviewers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers.CreateFromDiscriminatorValue); } },
+                { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,7 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction>("action", Action);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers>("expected_reviewers", ExpectedReviewers);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>("targets", Targets);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

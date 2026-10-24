@@ -13,13 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper? Method { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper Method { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MethodObject? Method { get; set; }
         /// <summary>Number of neighbors to consider (default: 5)</summary>
         public int? NNeighbors { get; set; }
         /// <summary>Preprocessing transforms applied before detection</summary>
@@ -54,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper.CreateFromDiscriminatorValue); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodObject>(); } },
                 { "n_neighbors", n => { NNeighbors = n.GetIntValue(); } },
                 { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
@@ -69,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>("method", Method);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodObject>("method", Method);
             writer.WriteIntValue("n_neighbors", NNeighbors);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
             writer.WriteDoubleValue("threshold", Threshold);

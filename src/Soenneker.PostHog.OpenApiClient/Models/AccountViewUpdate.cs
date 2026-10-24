@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Version returned by the last read.</summary>
         public int? Version { get; set; }
-        /// <summary>New visibility. Only the creator or a project admin can change it.* `private` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `private` - Personal* `team` - Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility? Visibility { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility Visibility { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdate"/> and sets the default values.
         /// </summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateContent>(global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateContent.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
-                { "visibility", n => { Visibility = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility>(global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility.CreateFromDiscriminatorValue); } },
+                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility>(); } },
             };
         }
         /// <summary>
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateContent>("content", Content);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("version", Version);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility>("visibility", Visibility);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewUpdateVisibility>("visibility", Visibility);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

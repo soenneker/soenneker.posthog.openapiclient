@@ -53,14 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>How many exposed people a variant needs before it can be compared at all. Below it a variant&apos;s cards would be noise whatever the evidence bar allows.</summary>
         public int? MinVariantPersons { get; set; }
-        /// <summary>How the experiment handles someone who saw more than one variant, followed here so the cards split their people the same way the analysis does.* `exclude` - exclude* `first_seen` - first_seen</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `exclude` - exclude* `first_seen` - first_seen</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling? MultipleVariantHandling { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling MultipleVariantHandling { get; set; }
-#endif
         /// <summary>People who saw more than one variant and were left out of every card. Always 0 when the experiment attributes such users to the variant they saw first.</summary>
         public int? MultipleVariantPersons { get; set; }
         /// <summary>True when more people were exposed than one comparison covers, so the most recently exposed were used and people exposed before date_from were left out. Every variant is still covered over the same stretch of enrollment. Named for the session ceiling it used to report; the name is kept for existing readers.</summary>
@@ -112,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "max_card_recordings", n => { MaxCardRecordings = n.GetIntValue(); } },
                 { "metric_events", n => { MetricEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "min_variant_persons", n => { MinVariantPersons = n.GetIntValue(); } },
-                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling.CreateFromDiscriminatorValue); } },
+                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling>(); } },
                 { "multiple_variant_persons", n => { MultipleVariantPersons = n.GetIntValue(); } },
                 { "sessions_truncated", n => { SessionsTruncated = n.GetBoolValue(); } },
                 { "too_early", n => { TooEarly = n.GetBoolValue(); } },
@@ -137,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_card_recordings", MaxCardRecordings);
             writer.WriteCollectionOfPrimitiveValues<string>("metric_events", MetricEvents);
             writer.WriteIntValue("min_variant_persons", MinVariantPersons);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
             writer.WriteIntValue("multiple_variant_persons", MultipleVariantPersons);
             writer.WriteBoolValue("sessions_truncated", SessionsTruncated);
             writer.WriteBoolValue("too_early", TooEarly);

@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>State to apply for this scope.* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntryPolicyState? PolicyState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntryPolicyState PolicyState { get; set; }
-#endif
         /// <summary>Tool to set the policy for, up to 200 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "policy_state", n => { PolicyState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntryPolicyState>(global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntryPolicyState.CreateFromDiscriminatorValue); } },
+                { "policy_state", n => { PolicyState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntryPolicyState>(); } },
                 { "tool_name", n => { ToolName = n.GetStringValue(); } },
             };
         }
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntryPolicyState>("policy_state", PolicyState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntryPolicyState>("policy_state", PolicyState);
             writer.WriteStringValue("tool_name", ToolName);
             writer.WriteAdditionalData(AdditionalData);
         }

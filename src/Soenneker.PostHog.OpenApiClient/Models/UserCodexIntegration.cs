@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PlanType { get; set; }
 #endif
-        /// <summary>`connected` when cloud runs can use the account; `reauth_required` when OpenAI rejected the refresh token and the user must log in and connect again; `not_connected` when no account is connected.* `connected` - Connected* `reauth_required` - Reauth Required* `not_connected` - Not Connected</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `connected` - Connected* `reauth_required` - Reauth Required* `not_connected` - Not Connected</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegrationStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegrationStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegration"/> and sets the default values.
         /// </summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "connected_at", n => { ConnectedAt = n.GetDateTimeOffsetValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "plan_type", n => { PlanType = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegrationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegrationStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegrationStatus>(); } },
             };
         }
         /// <summary>
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("connected_at", ConnectedAt);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("plan_type", PlanType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegrationStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserCodexIntegrationStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

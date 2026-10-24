@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
-        /// <summary>Category of fix. dns: customer must change DNS records. config: customer must adjust their server config (e.g. allow port 80). wait: no action — the system will resolve on its own. retry: hit Retry.* `dns` - dns* `config` - config* `wait` - wait* `retry` - retry</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `dns` - dns* `config` - config* `wait` - wait* `retry` - retry</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediationType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediationType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation"/> and sets the default values.
         /// </summary>
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "records", n => { Records = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticDnsRecord>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticDnsRecord.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediationType>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediationType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediationType>(); } },
             };
         }
         /// <summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticDnsRecord>("records", Records);
             writer.WriteStringValue("summary", Summary);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediationType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

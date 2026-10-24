@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&apos;web&apos;, &apos;mobile&apos;, &apos;server&apos;, or &apos;other&apos;.* `web` - Web* `mobile` - Mobile* `server` - Server* `other` - Other</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `web` - Web* `mobile` - Mobile* `server` - Server* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivityCategory? Category { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivityCategory Category { get; set; }
-#endif
         /// <summary>Distinct ids that sent those events.</summary>
         public int? DistinctIds { get; set; }
         /// <summary>Events this SDK sent in the window, of any kind.</summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "category", n => { Category = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivityCategory>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivityCategory.CreateFromDiscriminatorValue); } },
+                { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivityCategory>(); } },
                 { "distinct_ids", n => { DistinctIds = n.GetIntValue(); } },
                 { "events", n => { Events = n.GetIntValue(); } },
                 { "lib", n => { Lib = n.GetStringValue(); } },
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivityCategory>("category", Category);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivityCategory>("category", Category);
             writer.WriteIntValue("distinct_ids", DistinctIds);
             writer.WriteIntValue("events", Events);
             writer.WriteStringValue("lib", Lib);

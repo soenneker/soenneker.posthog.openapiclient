@@ -2,7 +2,10 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Config;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Inbox_summary;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Processing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout;
@@ -19,10 +22,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The activity_summary property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary.Activity_summaryRequestBuilder Activity_summary
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary.Activity_summaryRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The config property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Config.ConfigRequestBuilder Config
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Config.ConfigRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The inbox_summary property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Inbox_summary.Inbox_summaryRequestBuilder Inbox_summary
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Inbox_summary.Inbox_summaryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The onboarding property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.OnboardingRequestBuilder Onboarding
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.OnboardingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The processing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Processing.ProcessingRequestBuilder Processing

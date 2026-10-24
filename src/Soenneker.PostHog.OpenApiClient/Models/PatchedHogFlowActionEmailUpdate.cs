@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Partial email fields deep-merged into the step&apos;s email (a null leaf deletes the key): subject, preheader, text, to, from, replyTo, cc, bcc. The sender is from: {integrationId, email?, name?}, where email and name are optional templated overrides resolved per invocation; the address must resolve to the selected sender&apos;s verified domain or the send fails. The design is edited via operations, and html is always re-rendered from it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowActionEmailUpdateEmailPatch? EmailPatch { get; set; }
+        public UntypedNode? EmailPatch { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowActionEmailUpdateEmailPatch EmailPatch { get; set; }
+        public UntypedNode EmailPatch { get; set; }
 #endif
         /// <summary>Ordered design edits applied atomically to this step&apos;s email design - the same operations as the email template patch. The result is re-rendered to HTML server-side, so the sent email always matches the patched design.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_updated_at", n => { BaseUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "email_patch", n => { EmailPatch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowActionEmailUpdateEmailPatch>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowActionEmailUpdateEmailPatch.CreateFromDiscriminatorValue); } },
+                { "email_patch", n => { EmailPatch = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "operations", n => { Operations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation>(global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("base_updated_at", BaseUpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowActionEmailUpdateEmailPatch>("email_patch", EmailPatch);
+            writer.WriteObjectValue<UntypedNode>("email_patch", EmailPatch);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation>("operations", Operations);
             writer.WriteAdditionalData(AdditionalData);
         }

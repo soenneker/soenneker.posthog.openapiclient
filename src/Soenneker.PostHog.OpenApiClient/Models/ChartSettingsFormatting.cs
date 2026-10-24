@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Prefix { get; set; }
 #endif
         /// <summary>The style property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StyleWrapper? Style { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StyleWrapper Style { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Style? Style { get; set; }
         /// <summary>The suffix property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "decimalPlaces", n => { DecimalPlaces = n.GetDoubleValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
-                { "style", n => { Style = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StyleWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.StyleWrapper.CreateFromDiscriminatorValue); } },
+                { "style", n => { Style = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Style>(); } },
                 { "suffix", n => { Suffix = n.GetStringValue(); } },
             };
         }
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("decimalPlaces", DecimalPlaces);
             writer.WriteStringValue("prefix", Prefix);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StyleWrapper>("style", Style);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Style>("style", Style);
             writer.WriteStringValue("suffix", Suffix);
         }
     }

@@ -22,22 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Comparison operator. &apos;regex&apos;/&apos;not_regex&apos; use RE2 syntax. Negative operators also match rows that lack the key entirely, mirroring Prometheus negative matchers.* `eq` - eq* `neq` - neq* `regex` - regex* `not_regex` - not_regex</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `eq` - eq* `neq` - neq* `regex` - regex* `not_regex` - not_regex</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp? Op { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp Op { get; set; }
-#endif
-        /// <summary>Where the attribute lives: &apos;resource&apos; = per-target resource attributes (k8s.pod.name, service.version), &apos;attribute&apos; = per-datapoint attributes (http.method, path), &apos;auto&apos; = resource first with per-datapoint fallback. Use &apos;auto&apos; unless you know the exact scope.* `resource` - resource* `attribute` - attribute* `auto` - auto</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `resource` - resource* `attribute` - attribute* `auto` - auto</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope Scope { get; set; }
-#endif
         /// <summary>Value to compare against. For regex operators this is the pattern.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,8 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "op", n => { Op = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp>(global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp.CreateFromDiscriminatorValue); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope>(global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope.CreateFromDiscriminatorValue); } },
+                { "op", n => { Op = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp>(); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope>(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -85,8 +73,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp>("op", Op);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp>("op", Op);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope>("scope", Scope);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

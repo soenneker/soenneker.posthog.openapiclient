@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The red segment cause.* `draft` - DRAFT* `waiting_for_review` - WAITING_FOR_REVIEW* `changes_requested` - CHANGES_REQUESTED* `approved_not_enqueued` - APPROVED_NOT_ENQUEUED* `review_state_unknown` - REVIEW_STATE_UNKNOWN* `ci_running` - CI_RUNNING* `red_passed_on_rerun` - RED_PASSED_ON_RERUN* `red_master_broken` - RED_MASTER_BROKEN* `red_fixed_by_push` - RED_FIXED_BY_PUSH* `red_not_provable` - RED_NOT_PROVABLE* `merge_queue` - MERGE_QUEUE* `out_of_merge_queue` - OUT_OF_MERGE_QUEUE</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `draft` - Draft* `waiting_for_review` - Waiting For Review* `changes_requested` - Changes Requested* `approved_not_enqueued` - Approved Not Enqueued* `review_state_unknown` - Review State Unknown* `ci_running` - CI Running* `red_passed_on_rerun` - Red Passed On Rerun* `red_master_broken` - Red Master Broken* `red_fixed_by_push` - Red Fixed By Push* `red_not_provable` - Red Not Provable* `merge_queue` - Merge Queue* `out_of_merge_queue` - Out Of Merge Queue</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind Kind { get; set; }
-#endif
         /// <summary>Average seconds per merged pull request attributed to this cause.</summary>
         public double? SecondsPerMergedPr { get; set; }
         /// <summary>
@@ -49,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind>(); } },
                 { "seconds_per_merged_pr", n => { SecondsPerMergedPr = n.GetDoubleValue(); } },
             };
         }
@@ -60,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind>("kind", Kind);
             writer.WriteDoubleValue("seconds_per_merged_pr", SecondsPerMergedPr);
             writer.WriteAdditionalData(AdditionalData);
         }

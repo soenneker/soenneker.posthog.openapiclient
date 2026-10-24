@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The query definition for this insight. The `kind` field determines the query type:- `InsightVizNode` — product analytics (trends, funnels, retention, paths, stickiness, lifecycle)- `DataVisualizationNode` — SQL insights using HogQL- `DataTableNode` — raw data tables- `HogQuery` — Hog language queries
+    /// The query definition for this insight. The `kind` field determines the query type:- `InsightVizNode` — product analytics (trends, funnels, retention, paths, stickiness, lifecycle)- `DataVisualizationNode` — SQL insights using HogQL- `BIVisualizationNode` — business intelligence worksheets with a HogQL source- `DataTableNode` — raw data tables- `HogQuery` — Hog language queries
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InsightQuerySchema : IAdditionalDataHolder, IParsable
@@ -41,6 +41,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Columns { get; set; }
 #endif
+        /// <summary>The config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig Config { get; set; }
+#endif
         /// <summary>Context for the table, used by components like ColumnConfigurator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,13 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> DefaultColumns { get; set; }
 #endif
         /// <summary>The display property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper? Display { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper Display { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
         /// <summary>Query is embedded inside another bordered component</summary>
         public bool? Embedded { get; set; }
         /// <summary>Can expand row to show raw event data (default: true)</summary>
@@ -256,10 +258,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "chartSettings", n => { ChartSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings.CreateFromDiscriminatorValue); } },
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiConfig>(global::Soenneker.PostHog.OpenApiClient.Models.BiConfig.CreateFromDiscriminatorValue); } },
                 { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext.CreateFromDiscriminatorValue); } },
                 { "contextKey", n => { ContextKey = n.GetStringValue(); } },
                 { "defaultColumns", n => { DefaultColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); } },
                 { "embedded", n => { Embedded = n.GetBoolValue(); } },
                 { "expandable", n => { Expandable = n.GetBoolValue(); } },
                 { "full", n => { Full = n.GetBoolValue(); } },
@@ -320,10 +323,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>("chartSettings", ChartSettings);
             writer.WriteStringValue("code", Code);
             writer.WriteCollectionOfPrimitiveValues<string>("columns", Columns);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiConfig>("config", Config);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext>("context", Context);
             writer.WriteStringValue("contextKey", ContextKey);
             writer.WriteCollectionOfPrimitiveValues<string>("defaultColumns", DefaultColumns);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper>("display", Display);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("display", Display);
             writer.WriteBoolValue("embedded", Embedded);
             writer.WriteBoolValue("expandable", Expandable);
             writer.WriteBoolValue("full", Full);

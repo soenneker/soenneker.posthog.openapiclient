@@ -20,14 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? P90Seconds { get; set; }
         /// <summary>PRs behind this leg&apos;s figures: those with an observed gate run. A PR that skipped the merge queue has no gate legs, so read a median against this count, not merged_pr_count.</summary>
         public int? PrCount { get; set; }
-        /// <summary>Which leg this is: &apos;open_to_gate&apos; (created_at to the PR&apos;s first merge-queue gate run starting) or &apos;gate_to_merge&apos; (that gate run to merged_at). The post-merge leg is the DORA endpoint&apos;s median_merge_to_deploy_seconds.* `open_to_gate` - OPEN_TO_GATE* `gate_to_merge` - GATE_TO_MERGE</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `open_to_gate` - Open To Gate* `gate_to_merge` - Gate To Merge</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTimingStage? Stage { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTimingStage Stage { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTiming"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "median_seconds", n => { MedianSeconds = n.GetDoubleValue(); } },
                 { "p90_seconds", n => { P90Seconds = n.GetDoubleValue(); } },
                 { "pr_count", n => { PrCount = n.GetIntValue(); } },
-                { "stage", n => { Stage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTimingStage>(global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTimingStage.CreateFromDiscriminatorValue); } },
+                { "stage", n => { Stage = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTimingStage>(); } },
             };
         }
         /// <summary>
@@ -69,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("median_seconds", MedianSeconds);
             writer.WriteDoubleValue("p90_seconds", P90Seconds);
             writer.WriteIntValue("pr_count", PrCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTimingStage>("stage", Stage);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStageTimingStage>("stage", Stage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DateTo { get; set; }
 #endif
-        /// <summary>Override the bucket interval. Rejected for HogQLQuery metrics.* `second` - second* `minute` - minute* `hour` - hour* `day` - day* `week` - week* `month` - month* `quarter` - quarter* `year` - year</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `second` - second* `minute` - minute* `hour` - hour* `day` - day* `week` - week* `month` - month* `quarter` - quarter* `year` - year</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunRequestInterval? Interval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunRequestInterval Interval { get; set; }
-#endif
         /// <summary>Client-supplied id to correlate or cancel the run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunRequestInterval>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunRequestInterval.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunRequestInterval>(); } },
                 { "query_id", n => { QueryId = n.GetStringValue(); } },
             };
         }
@@ -87,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunRequestInterval>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricRunRequestInterval>("interval", Interval);
             writer.WriteStringValue("query_id", QueryId);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Details { get; set; }
 #endif
-        /// <summary>Severity of this potential security issue.* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityFindingSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityFindingSeverity Severity { get; set; }
-#endif
         /// <summary>Short description of the potential security issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "details", n => { Details = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityFindingSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityFindingSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityFindingSeverity>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("details", Details);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityFindingSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityFindingSeverity>("severity", Severity);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

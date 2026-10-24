@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Integration ID of the Slack workspace to post in. List them with the integrations endpoint.</summary>
         public int? SlackWorkspaceId { get; set; }
-        /// <summary>Destination type. Slack is the only type this endpoint creates.* `slack` - slack</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `slack` - slack</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestination"/> and sets the default values.
         /// </summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "slack_channel_name", n => { SlackChannelName = n.GetStringValue(); } },
                 { "slack_workspace_id", n => { SlackWorkspaceId = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType>(); } },
             };
         }
         /// <summary>
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("slack_channel_id", SlackChannelId);
             writer.WriteStringValue("slack_channel_name", SlackChannelName);
             writer.WriteIntValue("slack_workspace_id", SlackWorkspaceId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

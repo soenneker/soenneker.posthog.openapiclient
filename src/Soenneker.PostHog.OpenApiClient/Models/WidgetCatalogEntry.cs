@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetCatalogEntryOpenApi"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasAppWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetCatalogEntryOpenApi"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WidgetCatalogEntry : IComposedTypeWrapper, IParsable
@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApi ActivityEventsListWidgetCatalogEntryOpenApi { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasAppWidgetCatalogEntryOpenApi"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasAppWidgetCatalogEntryOpenApi? CanvasAppWidgetCatalogEntryOpenApi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasAppWidgetCatalogEntryOpenApi CanvasAppWidgetCatalogEntryOpenApi { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApi"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,6 +69,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetCatalogEntryOpenApi LogsListWidgetCatalogEntryOpenApi { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetCatalogEntryOpenApi"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetCatalogEntryOpenApi? MetricsTableWidgetCatalogEntryOpenApi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetCatalogEntryOpenApi MetricsTableWidgetCatalogEntryOpenApi { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApi"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,39 +111,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("widget_type")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntry();
-            if("ActivityEventsListWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("activity_events_list".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ActivityEventsListWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApi();
             }
-            else if("ConversationsRecentTicketsWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("canvas_app".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CanvasAppWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.CanvasAppWidgetCatalogEntryOpenApi();
+            }
+            else if("conversations_recent_tickets".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ConversationsRecentTicketsWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApi();
             }
-            else if("ErrorTrackingListWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("error_tracking_list".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ErrorTrackingListWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApi();
             }
-            else if("ExperimentResultsWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("experiment_results".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentResultsWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetCatalogEntryOpenApi();
             }
-            else if("ExperimentsListWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("experiments_list".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentsListWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetCatalogEntryOpenApi();
             }
-            else if("LogsListWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("logs_list".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.LogsListWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetCatalogEntryOpenApi();
             }
-            else if("NotebookWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("metrics_table".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.MetricsTableWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetCatalogEntryOpenApi();
+            }
+            else if("notebook_widget".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.NotebookWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApi();
             }
-            else if("SessionReplayListWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("session_replay_list".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.SessionReplayListWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApi();
             }
-            else if("SurveyResultsWidgetCatalogEntryOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("survey_results".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.SurveyResultsWidgetCatalogEntryOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetCatalogEntryOpenApi();
             }
@@ -142,6 +166,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ActivityEventsListWidgetCatalogEntryOpenApi != null)
             {
                 return ActivityEventsListWidgetCatalogEntryOpenApi.GetFieldDeserializers();
+            }
+            else if(CanvasAppWidgetCatalogEntryOpenApi != null)
+            {
+                return CanvasAppWidgetCatalogEntryOpenApi.GetFieldDeserializers();
             }
             else if(ConversationsRecentTicketsWidgetCatalogEntryOpenApi != null)
             {
@@ -162,6 +190,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(LogsListWidgetCatalogEntryOpenApi != null)
             {
                 return LogsListWidgetCatalogEntryOpenApi.GetFieldDeserializers();
+            }
+            else if(MetricsTableWidgetCatalogEntryOpenApi != null)
+            {
+                return MetricsTableWidgetCatalogEntryOpenApi.GetFieldDeserializers();
             }
             else if(NotebookWidgetCatalogEntryOpenApi != null)
             {
@@ -188,6 +220,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApi>(null, ActivityEventsListWidgetCatalogEntryOpenApi);
             }
+            else if(CanvasAppWidgetCatalogEntryOpenApi != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasAppWidgetCatalogEntryOpenApi>(null, CanvasAppWidgetCatalogEntryOpenApi);
+            }
             else if(ConversationsRecentTicketsWidgetCatalogEntryOpenApi != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApi>(null, ConversationsRecentTicketsWidgetCatalogEntryOpenApi);
@@ -207,6 +243,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(LogsListWidgetCatalogEntryOpenApi != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetCatalogEntryOpenApi>(null, LogsListWidgetCatalogEntryOpenApi);
+            }
+            else if(MetricsTableWidgetCatalogEntryOpenApi != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetCatalogEntryOpenApi>(null, MetricsTableWidgetCatalogEntryOpenApi);
             }
             else if(NotebookWidgetCatalogEntryOpenApi != null)
             {

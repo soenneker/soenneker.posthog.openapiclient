@@ -8,43 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember2"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember3"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OfflineExperimentItemPayloadInputInput : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch2? OfflineExperimentItemPayloadInputInputBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch2 OfflineExperimentItemPayloadInputInputBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch3? OfflineExperimentItemPayloadInputInputBranch3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch3 OfflineExperimentItemPayloadInputInputBranch3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch4? OfflineExperimentItemPayloadInputInputBranch4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch4 OfflineExperimentItemPayloadInputInputBranch4 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch5? OfflineExperimentItemPayloadInputInputBranch5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch5 OfflineExperimentItemPayloadInputInputBranch5 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
+        /// <summary>Composed type representation for type <see cref="double"/></summary>
+        public double? Double { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,6 +33,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember2 OfflineExperimentItemPayloadInputInputMember2 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember3? OfflineExperimentItemPayloadInputInputMember3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember3 OfflineExperimentItemPayloadInputInputMember3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -71,21 +59,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput();
-            if("OfflineExperimentItemPayloadInputInputBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetBoolValue() is bool booleanValue)
             {
-                result.OfflineExperimentItemPayloadInputInputBranch2 = new global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch2();
+                result.Boolean = booleanValue;
             }
-            else if("OfflineExperimentItemPayloadInputInputBranch3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetDoubleValue() is double doubleValue)
             {
-                result.OfflineExperimentItemPayloadInputInputBranch3 = new global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch3();
+                result.Double = doubleValue;
             }
-            else if("OfflineExperimentItemPayloadInputInputBranch4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetStringValue() is string stringValue)
             {
-                result.OfflineExperimentItemPayloadInputInputBranch4 = new global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch4();
-            }
-            else if("OfflineExperimentItemPayloadInputInputBranch5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.OfflineExperimentItemPayloadInputInputBranch5 = new global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch5();
+                result.String = stringValue;
             }
             return result;
         }
@@ -95,29 +79,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(OfflineExperimentItemPayloadInputInputBranch2 != null)
-            {
-                return OfflineExperimentItemPayloadInputInputBranch2.GetFieldDeserializers();
-            }
-            else if(OfflineExperimentItemPayloadInputInputBranch3 != null)
-            {
-                return OfflineExperimentItemPayloadInputInputBranch3.GetFieldDeserializers();
-            }
-            else if(OfflineExperimentItemPayloadInputInputBranch4 != null)
-            {
-                return OfflineExperimentItemPayloadInputInputBranch4.GetFieldDeserializers();
-            }
-            else if(OfflineExperimentItemPayloadInputInputBranch5 != null)
-            {
-                return OfflineExperimentItemPayloadInputInputBranch5.GetFieldDeserializers();
-            }
-            else if(OfflineExperimentItemPayloadInputInputMember1 != null)
+            if(OfflineExperimentItemPayloadInputInputMember1 != null)
             {
                 return OfflineExperimentItemPayloadInputInputMember1.GetFieldDeserializers();
             }
             else if(OfflineExperimentItemPayloadInputInputMember2 != null)
             {
                 return OfflineExperimentItemPayloadInputInputMember2.GetFieldDeserializers();
+            }
+            else if(OfflineExperimentItemPayloadInputInputMember3 != null)
+            {
+                return OfflineExperimentItemPayloadInputInputMember3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -128,29 +100,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(OfflineExperimentItemPayloadInputInputBranch2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch2>(null, OfflineExperimentItemPayloadInputInputBranch2);
-            }
-            else if(OfflineExperimentItemPayloadInputInputBranch3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch3>(null, OfflineExperimentItemPayloadInputInputBranch3);
-            }
-            else if(OfflineExperimentItemPayloadInputInputBranch4 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch4>(null, OfflineExperimentItemPayloadInputInputBranch4);
-            }
-            else if(OfflineExperimentItemPayloadInputInputBranch5 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputBranch5>(null, OfflineExperimentItemPayloadInputInputBranch5);
-            }
-            else if(OfflineExperimentItemPayloadInputInputMember1 != null)
+            if(OfflineExperimentItemPayloadInputInputMember1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember1>(null, OfflineExperimentItemPayloadInputInputMember1);
             }
             else if(OfflineExperimentItemPayloadInputInputMember2 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember2>(null, OfflineExperimentItemPayloadInputInputMember2);
+            }
+            else if(OfflineExperimentItemPayloadInputInputMember3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInputMember3>(null, OfflineExperimentItemPayloadInputInputMember3);
+            }
+            else if(Boolean != null)
+            {
+                writer.WriteBoolValue(null, Boolean);
+            }
+            else if(Double != null)
+            {
+                writer.WriteDoubleValue(null, Double);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

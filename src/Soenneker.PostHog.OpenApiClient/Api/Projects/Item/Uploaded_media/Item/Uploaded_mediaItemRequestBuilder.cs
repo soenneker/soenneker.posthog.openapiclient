@@ -20,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item.Complete_upload.Complete_uploadRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The EmptyPathSegment property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item.Uploaded_mediaItemRequestBuilder"/> and sets the default values.
         /// </summary>

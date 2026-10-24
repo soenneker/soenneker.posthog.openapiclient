@@ -8,22 +8,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The rating left on the report: &apos;positive&apos; (thumbs up) or &apos;negative&apos; (thumbs down).* `positive` - positive* `negative` - negative
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackSentimentEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SignalReportFeedbackRequestSentiment : IAdditionalDataHolder, IParsable
+    public partial class SignalReportFeedbackRequestSentiment : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `positive` - positive* `negative` - negative</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SentimentEnum? Value { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackRequestSentiment"/> and sets the default values.
-        /// </summary>
-        public SignalReportFeedbackRequestSentiment()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackSentimentEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackSentimentEnum? SignalReportFeedbackSentimentEnum { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -32,7 +31,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackRequestSentiment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackRequestSentiment();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackRequestSentiment();
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackSentimentEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackSentimentEnum signalReportFeedbackSentimentEnumValue)
+            {
+                result.SignalReportFeedbackSentimentEnum = signalReportFeedbackSentimentEnumValue;
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,10 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(NullEnum != null)
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SentimentEnum>(); } },
-            };
+                return NullEnum.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -52,8 +58,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SentimentEnum>("value", Value);
-            writer.WriteAdditionalData(AdditionalData);
+            if(NullEnum != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+            }
+            else if(SignalReportFeedbackSentimentEnum != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackSentimentEnum>(null, SignalReportFeedbackSentimentEnum);
+            }
         }
     }
 }

@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Scorer kind. This cannot be changed after creation.* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind Kind { get; set; }
-#endif
         /// <summary>Human-readable scorer name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +41,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Optional compact label. Blank uses the full name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ShortName { get; set; }
+#nullable restore
+#else
+        public string ShortName { get; set; }
+#endif
+        /// <summary>Tag names. Replaces existing tags; send [] to remove all tags. Names are trimmed and lowercased.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate"/> and sets the default values.
@@ -77,8 +87,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "short_name", n => { ShortName = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -91,8 +103,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("archived", Archived);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig>("config", Config);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind>("kind", Kind);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("short_name", ShortName);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

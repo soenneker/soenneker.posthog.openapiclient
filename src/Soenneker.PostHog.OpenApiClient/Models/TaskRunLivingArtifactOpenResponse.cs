@@ -12,24 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class TaskRunLivingArtifactOpenResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Adapter that currently stores or edits the artifact.* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `slack_file` - slack_file* `document_connector` - document_connector* `github_pr` - github_pr</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `slack_file` - slack_file* `document_connector` - document_connector* `github_pr` - github_pr</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseAdapter? Adapter { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseAdapter Adapter { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Artifact format or delivery surface, such as document, spreadsheet, slack_canvas, file, or slack_message.* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `document` - document* `spreadsheet` - spreadsheet* `dashboard` - dashboard* `file` - file* `github_pr` - github_pr</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `document` - document* `spreadsheet` - spreadsheet* `dashboard` - dashboard* `file` - file* `github_pr` - github_pr</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseArtifactType? ArtifactType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseArtifactType ArtifactType { get; set; }
-#endif
         /// <summary>Current artifact content when the adapter can read it directly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,18 +47,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Adapter-specific location, such as S3 key or Slack canvas id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseLocation? Location { get; set; }
+        public UntypedNode? Location { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseLocation Location { get; set; }
+        public UntypedNode Location { get; set; }
 #endif
         /// <summary>Adapter-specific metadata for external storage and source tracking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseMetadata? Metadata { get; set; }
+        public UntypedNode? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseMetadata Metadata { get; set; }
+        public UntypedNode Metadata { get; set; }
 #endif
         /// <summary>Human-readable artifact name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,14 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RunId { get; set; }
 #endif
-        /// <summary>Current registry status for the artifact.* `active` - active* `failed` - failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - active* `failed` - failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseStatus Status { get; set; }
-#endif
         /// <summary>Task id this living artifact belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,17 +129,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adapter", n => { Adapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseAdapter.CreateFromDiscriminatorValue); } },
-                { "artifact_type", n => { ArtifactType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseArtifactType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseArtifactType.CreateFromDiscriminatorValue); } },
+                { "adapter", n => { Adapter = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseAdapter>(); } },
+                { "artifact_type", n => { ArtifactType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseArtifactType>(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "current_version", n => { CurrentVersion = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "location", n => { Location = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseLocation>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseLocation.CreateFromDiscriminatorValue); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseMetadata.CreateFromDiscriminatorValue); } },
+                { "location", n => { Location = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseStatus>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseStatus>(); } },
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
@@ -171,17 +153,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseAdapter>("adapter", Adapter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseArtifactType>("artifact_type", ArtifactType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseAdapter>("adapter", Adapter);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseArtifactType>("artifact_type", ArtifactType);
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteIntValue("current_version", CurrentVersion);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseLocation>("location", Location);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<UntypedNode>("location", Location);
+            writer.WriteObjectValue<UntypedNode>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("run_id", RunId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactOpenResponseStatus>("status", Status);
             writer.WriteStringValue("task_id", TaskId);
             writer.WriteIntValue("team_id", TeamId);
             writer.WriteStringValue("updated_at", UpdatedAt);

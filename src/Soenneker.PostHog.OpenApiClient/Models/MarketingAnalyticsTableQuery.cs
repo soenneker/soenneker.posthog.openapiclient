@@ -51,13 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal DraftConversionGoal { get; set; }
 #endif
         /// <summary>Drill-down hierarchy level: channel, source, or campaign (default)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevelWrapper2? DrillDownLevel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevelWrapper2 DrillDownLevel { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevel? DrillDownLevel { get; set; }
         /// <summary>Filter test accounts</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The includeRevenue property</summary>
@@ -71,13 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter IntegrationFilter { get; set; }
 #endif
         /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14? Interval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14 Interval { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryKind? Kind { get; set; }
         /// <summary>Number of rows to return</summary>
@@ -171,11 +159,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "doPathCleaning", n => { DoPathCleaning = n.GetBoolValue(); } },
                 { "draftConversionGoal", n => { DraftConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal.CreateFromDiscriminatorValue); } },
-                { "drillDownLevel", n => { DrillDownLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevelWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevelWrapper2.CreateFromDiscriminatorValue); } },
+                { "drillDownLevel", n => { DrillDownLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevel>(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "integrationFilter", n => { IntegrationFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter.CreateFromDiscriminatorValue); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -205,11 +193,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteBoolValue("doPathCleaning", DoPathCleaning);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal>("draftConversionGoal", DraftConversionGoal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevelWrapper2>("drillDownLevel", DrillDownLevel);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevel>("drillDownLevel", DrillDownLevel);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>("integrationFilter", IntegrationFilter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);

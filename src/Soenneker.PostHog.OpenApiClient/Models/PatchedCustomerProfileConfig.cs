@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigContent? Content { get; set; }
+        public UntypedNode? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigContent Content { get; set; }
+        public UntypedNode Content { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The sidebar property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigSidebar? Sidebar { get; set; }
+        public UntypedNode? Sidebar { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigSidebar Sidebar { get; set; }
+        public UntypedNode Sidebar { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -63,11 +63,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigContent>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigContent.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfigScopeEnum>(); } },
-                { "sidebar", n => { Sidebar = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigSidebar>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigSidebar.CreateFromDiscriminatorValue); } },
+                { "sidebar", n => { Sidebar = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -78,9 +78,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigContent>("content", Content);
+            writer.WriteObjectValue<UntypedNode>("content", Content);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfigScopeEnum>("scope", Scope);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerProfileConfigSidebar>("sidebar", Sidebar);
+            writer.WriteObjectValue<UntypedNode>("sidebar", Sidebar);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

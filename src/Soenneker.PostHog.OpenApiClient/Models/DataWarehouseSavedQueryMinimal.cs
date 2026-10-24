@@ -105,6 +105,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalStatus Status { get; private set; }
 #endif
+        /// <summary>Engines this query&apos;s materialization is suspended for after repeated failures. Suspended engines are skipped by scheduled runs until the query is resumed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalSuspendedProperty? Suspended { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalSuspendedProperty Suspended { get; private set; }
+#endif
         /// <summary>The sync_frequency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -164,6 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalOrigin.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalStatus.CreateFromDiscriminatorValue); } },
+                { "suspended", n => { Suspended = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalSuspendedProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryMinimalSuspendedProperty.CreateFromDiscriminatorValue); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetStringValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };

@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DocsUrl { get; set; }
 #endif
-        /// <summary>Identifier of the check. Stable across statuses, so a surface can key its own copy off it.* `sessions` - sessions* `tool_calls` - tool_calls* `user_identity` - user_identity* `trace_structure` - trace_structure</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `sessions` - sessions* `tool_calls` - tool_calls* `user_identity` - user_identity* `trace_structure` - trace_structure</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckKey? Key { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckKey Key { get; set; }
-#endif
         /// <summary>Counts this check was graded from, over the same window. Which counts appear depends on the check.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatsProperty Stats { get; set; }
 #endif
-        /// <summary>How the check graded: &apos;ok&apos; when the instrumentation is present, &apos;warning&apos; when it is absent, &apos;pending&apos; when the project has too little traffic to judge, and &apos;dismissed&apos; when someone on the team marked the check as not applicable.* `ok` - ok* `warning` - warning* `pending` - pending* `dismissed` - dismissed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - ok* `warning` - warning* `pending` - pending* `dismissed` - dismissed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatus Status { get; set; }
-#endif
         /// <summary>Short label for the check, the same for every status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,9 +77,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "docs_url", n => { DocsUrl = n.GetStringValue(); } },
-                { "key", n => { Key = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckKey>(global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckKey.CreateFromDiscriminatorValue); } },
+                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckKey>(); } },
                 { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatsProperty.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatus>(global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatus>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -104,9 +92,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("detail", Detail);
             writer.WriteStringValue("docs_url", DocsUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckKey>("key", Key);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckKey>("key", Key);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatsProperty>("stats", Stats);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckStatus>("status", Status);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

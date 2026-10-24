@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>ID of the EmailChannel to send from.</summary>
+        /// <summary>ID of the support email channel to send from. Omit it to send from the team&apos;s default support channel.</summary>
         public Guid? EmailConfigId { get; set; }
         /// <summary>Email subject line.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>TipTap rich content JSON for formatted messages.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent? RichContent { get; set; }
+        public UntypedNode? RichContent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent RichContent { get; set; }
+        public UntypedNode RichContent { get; set; }
 #endif
         /// <summary>Tags to apply to the new ticket, e.g. to mark its source. Each is normalized (lowercased, trimmed). Up to 100.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "recipient_distinct_id", n => { RecipientDistinctId = n.GetStringValue(); } },
                 { "recipient_email", n => { RecipientEmail = n.GetStringValue(); } },
-                { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent.CreateFromDiscriminatorValue); } },
+                { "rich_content", n => { RichContent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("recipient_distinct_id", RecipientDistinctId);
             writer.WriteStringValue("recipient_email", RecipientEmail);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent>("rich_content", RichContent);
+            writer.WriteObjectValue<UntypedNode>("rich_content", RichContent);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

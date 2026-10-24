@@ -8,19 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper36"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnum"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SurveySerializerCreateUpdateOnlyResponseSamplingIntervalType : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper36"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper36? BlankEnumWrapper36 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper36 BlankEnumWrapper36 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -29,14 +21,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper3"/></summary>
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper3? SurveySamplingIntervalTypeEnumWrapper3 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper3 SurveySamplingIntervalTypeEnumWrapper3 { get; set; }
+        public string String { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnum? SurveySamplingIntervalTypeEnum { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -47,13 +41,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlyResponseSamplingIntervalType();
-            if("BlankEnumWrapper36".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnum surveySamplingIntervalTypeEnumValue)
             {
-                result.BlankEnumWrapper36 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper36();
+                result.SurveySamplingIntervalTypeEnum = surveySamplingIntervalTypeEnumValue;
             }
-            else if("SurveySamplingIntervalTypeEnumWrapper3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetStringValue() is string stringValue)
             {
-                result.SurveySamplingIntervalTypeEnumWrapper3 = new global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper3();
+                result.String = stringValue;
             }
             return result;
         }
@@ -63,17 +57,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BlankEnumWrapper36 != null)
-            {
-                return BlankEnumWrapper36.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
-            }
-            else if(SurveySamplingIntervalTypeEnumWrapper3 != null)
-            {
-                return SurveySamplingIntervalTypeEnumWrapper3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -84,17 +70,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BlankEnumWrapper36 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper36>(null, BlankEnumWrapper36);
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
             }
-            else if(SurveySamplingIntervalTypeEnumWrapper3 != null)
+            else if(SurveySamplingIntervalTypeEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper3>(null, SurveySamplingIntervalTypeEnumWrapper3);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnum>(null, SurveySamplingIntervalTypeEnum);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

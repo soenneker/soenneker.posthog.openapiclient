@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string DefinitionId { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RelationshipKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipFilterKind? Kind { get; set; }
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipOperator? Operator { get; set; }
         /// <summary>The userIds property</summary>
@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "definitionId", n => { DefinitionId = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RelationshipKind>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipFilterKind>(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipOperator>(); } },
                 { "userIds", n => { UserIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
             };
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("definitionId", DefinitionId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RelationshipKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipFilterKind>("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipOperator>("operator", Operator);
             writer.WriteCollectionOfPrimitiveValues<int?>("userIds", UserIds);
         }

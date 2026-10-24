@@ -52,14 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? RequestedAt { get; set; }
         /// <summary>When an org owner approved the request.</summary>
         public DateTimeOffset? ResolvedAt { get; set; }
-        /// <summary>`pending` while waiting on an org owner&apos;s approval, `approved` once the installation webhook confirms it, `unidentified` when the requesting GitHub account could not be resolved. Approval can&apos;t be detected for an unidentified request, so the user has to start the connect flow again.* `pending` - Pending* `approved` - Approved* `unidentified` - Unidentified</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `approved` - Approved* `unidentified` - Unidentified</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItem"/> and sets the default values.
         /// </summary>
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "requested_at", n => { RequestedAt = n.GetDateTimeOffsetValue(); } },
                 { "resolved_at", n => { ResolvedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus>(); } },
             };
         }
         /// <summary>
@@ -109,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteDateTimeOffsetValue("requested_at", RequestedAt);
             writer.WriteDateTimeOffsetValue("resolved_at", ResolvedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

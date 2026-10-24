@@ -15,26 +15,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem>? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem> Bytecode { get; set; }
+        public UntypedNode Bytecode { get; set; }
 #endif
         /// <summary>The coloredBytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem>? ColoredBytecode { get; set; }
+        public UntypedNode? ColoredBytecode { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem> ColoredBytecode { get; set; }
+        public UntypedNode ColoredBytecode { get; set; }
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults? Results { get; set; }
+        public UntypedNode? Results { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults Results { get; set; }
+        public UntypedNode Results { get; set; }
 #endif
         /// <summary>The stdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,9 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "coloredBytecode", n => { ColoredBytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "coloredBytecode", n => { ColoredBytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "stdout", n => { Stdout = n.GetStringValue(); } },
             };
         }
@@ -75,9 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem>("bytecode", Bytecode);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem>("coloredBytecode", ColoredBytecode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults>("results", Results);
+            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
+            writer.WriteObjectValue<UntypedNode>("coloredBytecode", ColoredBytecode);
+            writer.WriteObjectValue<UntypedNode>("results", Results);
             writer.WriteStringValue("stdout", Stdout);
         }
     }

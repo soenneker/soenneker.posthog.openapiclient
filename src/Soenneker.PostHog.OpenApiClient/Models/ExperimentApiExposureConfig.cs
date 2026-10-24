@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Action ID. Required when kind is &apos;ActionsNode&apos;.</summary>
         public int? Id { get; set; }
         /// <summary>Defaults to &apos;ExperimentEventExposureConfig&apos; when omitted. Pass &apos;ActionsNode&apos; for an action-based exposure.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Kind2Wrapper? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Kind2Wrapper Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Kind2? Kind { get; set; }
         /// <summary>Property filters (event, person, and other supported types). Pass an empty array if no filters needed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind2Wrapper>(global::Soenneker.PostHog.OpenApiClient.Models.Kind2Wrapper.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind2>(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfigPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfigPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("event", Event);
             writer.WriteIntValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind2Wrapper>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind2>("kind", Kind);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfigPropertiesItem>("properties", Properties);
         }
     }

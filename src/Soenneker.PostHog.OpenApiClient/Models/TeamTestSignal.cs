@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Nodeid { get; set; }
 #endif
-        /// <summary>Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pytest` - Pytest* `jest` - Jest</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? Runner { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner Runner { get; set; }
-#endif
         /// <summary>Runnable pytest or Jest selector; exact for newly emitted spans.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
                 { "nodeid", n => { Nodeid = n.GetStringValue(); } },
-                { "runner", n => { Runner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner>(global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner.CreateFromDiscriminatorValue); } },
+                { "runner", n => { Runner = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner>(); } },
                 { "selector", n => { Selector = n.GetStringValue(); } },
                 { "signal_count", n => { SignalCount = n.GetIntValue(); } },
                 { "signal_count_prior", n => { SignalCountPrior = n.GetIntValue(); } },
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
             writer.WriteStringValue("nodeid", Nodeid);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner>("runner", Runner);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner>("runner", Runner);
             writer.WriteStringValue("selector", Selector);
             writer.WriteIntValue("signal_count", SignalCount);
             writer.WriteIntValue("signal_count_prior", SignalCountPrior);

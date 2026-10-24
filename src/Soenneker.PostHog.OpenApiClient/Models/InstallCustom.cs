@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How far the automatic agent grants for this connection reach. &apos;personal&apos; (the default) lets PostHog agents use it only on runs for you; &apos;team&apos; lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.* `personal` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - Personal* `team` - Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope? AgentScope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope AgentScope { get; set; }
-#endif
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The install_source property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `posthog` - posthog* `posthog-code` - posthog-code</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource? InstallSource { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource InstallSource { get; set; }
-#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,14 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReturnPath { get; set; }
 #endif
-        /// <summary>&apos;personal&apos; is per-user; &apos;shared&apos; makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.* `personal` - personal* `shared` - shared</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - personal* `shared` - shared</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope Scope { get; set; }
-#endif
         /// <summary>Whether the server starts enabled for the whole team. Non-default values are admin-only.</summary>
         public bool? TeamEnabled { get; set; }
         /// <summary>The url property</summary>
@@ -132,17 +114,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_scope", n => { AgentScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope>(global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope.CreateFromDiscriminatorValue); } },
+                { "agent_scope", n => { AgentScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope>(); } },
                 { "api_key", n => { ApiKey = n.GetStringValue(); } },
                 { "auth_type", n => { AuthType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAuthTypeEnum>(); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "install_source", n => { InstallSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource>(global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource.CreateFromDiscriminatorValue); } },
+                { "install_source", n => { InstallSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "posthog_code_callback_url", n => { PosthogCodeCallbackUrl = n.GetStringValue(); } },
                 { "return_path", n => { ReturnPath = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope>(global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope>(); } },
                 { "team_enabled", n => { TeamEnabled = n.GetBoolValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -154,17 +136,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope>("agent_scope", AgentScope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope>("agent_scope", AgentScope);
             writer.WriteStringValue("api_key", ApiKey);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAuthTypeEnum>("auth_type", AuthType);
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource>("install_source", InstallSource);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource>("install_source", InstallSource);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("posthog_code_callback_url", PosthogCodeCallbackUrl);
             writer.WriteStringValue("return_path", ReturnPath);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope>("scope", Scope);
             writer.WriteBoolValue("team_enabled", TeamEnabled);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

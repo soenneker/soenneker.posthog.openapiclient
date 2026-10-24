@@ -26,14 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `check` - Check* `reset` - Reset* `enable` - Enable* `disable` - Disable* `snooze` - Snooze* `unsnooze` - Unsnooze* `threshold_change` - Threshold change</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertEventKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertEventKind Kind { get; private set; }
-#endif
         /// <summary>The metric_value property</summary>
         public double? MetricValue { get; private set; }
         /// <summary>The state_after property</summary>
@@ -82,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertEventKind>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertEventKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertEventKind>(); } },
                 { "metric_value", n => { MetricValue = n.GetDoubleValue(); } },
                 { "state_after", n => { StateAfter = n.GetStringValue(); } },
                 { "state_before", n => { StateBefore = n.GetStringValue(); } },

@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>confirmed_flake: one commit both failed and passed the test (a re-run attempt went green, or an in-job retry recovered it), so it is provably nondeterministic. quarantined: a tolerated failure was recorded while it was masked. suspected_regression: only failures were recorded, which is absence of proof, not proof that it is a real break.* `confirmed_flake` - CONFIRMED_FLAKE* `suspected_regression` - SUSPECTED_REGRESSION* `quarantined` - QUARANTINED</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `confirmed_flake` - Confirmed Flake* `suspected_regression` - Suspected Regression* `quarantined` - Quarantined</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification? Classification { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification Classification { get; set; }
-#endif
         /// <summary>Distinct pull requests among the failed runs. Failures on master or unattributed branches carry no PR number and are excluded here (still in failed_run_count).</summary>
         public int? FailedPrCount { get; set; }
         /// <summary>Distinct CI runs whose recorded outcome was failed or error. A run counts once however many matrix legs it failed in.</summary>
@@ -40,14 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Runs where the test recorded a tolerated failure while quarantined: already masked in CI, still failing.</summary>
         public int? QuarantinedFailedRunCount { get; set; }
-        /// <summary>Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pytest` - Pytest* `jest` - Jest</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner? Runner { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner Runner { get; set; }
-#endif
         /// <summary>Runs where one commit both failed and passed the test: a &apos;Re-run failed jobs&apos; attempt went green on the same commit, or an in-job pytest retry (tests hand-marked @pytest.mark.flaky(reruns=N)) recovered it. A pass in a different run is a different commit and never counts.</summary>
         public int? SameCommitRecoveryRunCount { get; set; }
         /// <summary>Runnable pytest or Jest selector. Exact when the CI reporter emitted it; older pytest spans use a best-effort reconstruction from the nodeid.</summary>
@@ -83,14 +71,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "classification", n => { Classification = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification>(global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification.CreateFromDiscriminatorValue); } },
+                { "classification", n => { Classification = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification>(); } },
                 { "failed_pr_count", n => { FailedPrCount = n.GetIntValue(); } },
                 { "failed_run_count", n => { FailedRunCount = n.GetIntValue(); } },
                 { "last_signal_at", n => { LastSignalAt = n.GetDateTimeOffsetValue(); } },
                 { "master_failed_run_count", n => { MasterFailedRunCount = n.GetIntValue(); } },
                 { "nodeid", n => { Nodeid = n.GetStringValue(); } },
                 { "quarantined_failed_run_count", n => { QuarantinedFailedRunCount = n.GetIntValue(); } },
-                { "runner", n => { Runner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner>(global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner.CreateFromDiscriminatorValue); } },
+                { "runner", n => { Runner = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner>(); } },
                 { "same_commit_recovery_run_count", n => { SameCommitRecoveryRunCount = n.GetIntValue(); } },
                 { "selector", n => { Selector = n.GetStringValue(); } },
             };
@@ -102,14 +90,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification>("classification", Classification);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification>("classification", Classification);
             writer.WriteIntValue("failed_pr_count", FailedPrCount);
             writer.WriteIntValue("failed_run_count", FailedRunCount);
             writer.WriteDateTimeOffsetValue("last_signal_at", LastSignalAt);
             writer.WriteIntValue("master_failed_run_count", MasterFailedRunCount);
             writer.WriteStringValue("nodeid", Nodeid);
             writer.WriteIntValue("quarantined_failed_run_count", QuarantinedFailedRunCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner>("runner", Runner);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner>("runner", Runner);
             writer.WriteIntValue("same_commit_recovery_run_count", SameCommitRecoveryRunCount);
             writer.WriteStringValue("selector", Selector);
             writer.WriteAdditionalData(AdditionalData);

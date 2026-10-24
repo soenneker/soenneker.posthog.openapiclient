@@ -26,14 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrUrl { get; set; }
 #endif
-        /// <summary>Status of the task&apos;s latest run.* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus? RunStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus RunStatus { get; set; }
-#endif
         /// <summary>ID of the flag-cleanup Desktop task.</summary>
         public Guid? TaskId { get; set; }
         /// <summary>
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "can_view_task", n => { CanViewTask = n.GetBoolValue(); } },
                 { "is_terminal", n => { IsTerminal = n.GetBoolValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "run_status", n => { RunStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus.CreateFromDiscriminatorValue); } },
+                { "run_status", n => { RunStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus>(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("can_view_task", CanViewTask);
             writer.WriteBoolValue("is_terminal", IsTerminal);
             writer.WriteStringValue("pr_url", PrUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus>("run_status", RunStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus>("run_status", RunStatus);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteAdditionalData(AdditionalData);
         }

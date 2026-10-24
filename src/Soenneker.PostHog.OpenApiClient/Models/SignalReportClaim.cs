@@ -36,6 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Release { get; set; }
         /// <summary>Explicitly end another actor&apos;s claim and take ownership.</summary>
         public bool? Takeover { get; set; }
+        /// <summary>With takeover, the claim the caller expects to replace. The takeover is rejected when a different claim is active, so a takeover based on a stale read cannot replace a newer claim.</summary>
+        public Guid? TakeoverClaimId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportClaim"/> and sets the default values.
         /// </summary>
@@ -68,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pull_requests", n => { PullRequests = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "release", n => { Release = n.GetBoolValue(); } },
                 { "takeover", n => { Takeover = n.GetBoolValue(); } },
+                { "takeover_claim_id", n => { TakeoverClaimId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -82,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("pull_requests", PullRequests);
             writer.WriteBoolValue("release", Release);
             writer.WriteBoolValue("takeover", Takeover);
+            writer.WriteGuidValue("takeover_claim_id", TakeoverClaimId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

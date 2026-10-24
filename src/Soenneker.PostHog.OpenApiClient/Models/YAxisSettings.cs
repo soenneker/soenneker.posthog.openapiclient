@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>The scale property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScaleWrapper? Scale { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScaleWrapper Scale { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Scale? Scale { get; set; }
         /// <summary>The showGridLines property</summary>
         public bool? ShowGridLines { get; set; }
         /// <summary>The showTicks property</summary>
@@ -53,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "scale", n => { Scale = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScaleWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ScaleWrapper.CreateFromDiscriminatorValue); } },
+                { "scale", n => { Scale = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Scale>(); } },
                 { "showGridLines", n => { ShowGridLines = n.GetBoolValue(); } },
                 { "showTicks", n => { ShowTicks = n.GetBoolValue(); } },
                 { "startAtZero", n => { StartAtZero = n.GetBoolValue(); } },
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScaleWrapper>("scale", Scale);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Scale>("scale", Scale);
             writer.WriteBoolValue("showGridLines", ShowGridLines);
             writer.WriteBoolValue("showTicks", ShowTicks);
             writer.WriteBoolValue("startAtZero", StartAtZero);

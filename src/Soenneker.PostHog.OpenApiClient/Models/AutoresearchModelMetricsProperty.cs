@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Extended metrics bundle: Brier score, precision/recall at thresholds, lift@k, base rate, row counts.
+    /// Extended metrics bundle. Holds the holdout AUC from training, and under &apos;realized&apos; the newest validated date&apos;s online metrics: realized AUC, Brier score, calibration error and bins, lift@k, average precision, confusion counts at top 10%, top 20% and Likely, base rate, and row counts.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AutoresearchModelMetricsProperty : IAdditionalDataHolder, IParsable

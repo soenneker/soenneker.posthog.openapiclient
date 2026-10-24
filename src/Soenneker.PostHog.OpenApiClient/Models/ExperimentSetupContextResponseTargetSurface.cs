@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface Data { get; set; }
 #endif
-        /// <summary>&apos;ok&apos; when data holds the section. &apos;skipped&apos; when an input the section needs was not passed. &apos;timed_out&apos; when the query was too expensive to finish. &apos;error&apos; when the read failed. Every status other than &apos;ok&apos; leaves data null, and the other sections are still valid.* `ok` - Ok* `skipped` - Skipped* `timed_out` - Timed Out* `error` - Error</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - Ok* `skipped` - Skipped* `timed_out` - Timed Out* `error` - Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurfaceSectionStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurfaceSectionStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTargetSurface"/> and sets the default values.
         /// </summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurfaceSectionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurfaceSectionStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurfaceSectionStatus>(); } },
             };
         }
         /// <summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurfaceSectionStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurfaceSectionStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,13 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Stable PostHog agent identifier.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountAgentKey? AgentKey { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountAgentKey AgentKey { get; private set; }
-#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The description property</summary>
@@ -68,14 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer> Servers { get; private set; }
 #endif
-        /// <summary>active, or paused (all MCP access off).* `active` - Active* `paused` - Paused</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - Active* `paused` - Paused</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountStatus Status { get; private set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -103,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_key", n => { AgentKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountAgentKey>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountAgentKey.CreateFromDiscriminatorValue); } },
+                { "agent_key", n => { AgentKey = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountAgentKey>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "handle", n => { Handle = n.GetStringValue(); } },
@@ -112,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "server_ids", n => { ServerIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "servers", n => { Servers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountStatus>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string NodeId { get; set; }
 #endif
-        /// <summary>Execution kind. &apos;hogql&apos; is a SQL node — pushed to ClickHouse, or rerouted to the sandbox&apos;s DuckDB when it references a local frame; &apos;python&apos; runs the code in the sandbox kernel, materializing referenced upstream nodes as pandas frames first.* `hogql` - hogql* `python` - python</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `hogql` - hogql* `python` - python</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType? NodeType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType NodeType { get; set; }
-#endif
         /// <summary>Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "connection_id", n => { ConnectionId = n.GetGuidValue(); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
-                { "node_type", n => { NodeType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType.CreateFromDiscriminatorValue); } },
+                { "node_type", n => { NodeType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType>(); } },
                 { "output_name", n => { OutputName = n.GetStringValue(); } },
                 { "refs", n => { Refs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty.CreateFromDiscriminatorValue); } },
                 { "reuse_results", n => { ReuseResults = n.GetBoolValue(); } },
@@ -116,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("code", Code);
             writer.WriteGuidValue("connection_id", ConnectionId);
             writer.WriteStringValue("node_id", NodeId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType>("node_type", NodeType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType>("node_type", NodeType);
             writer.WriteStringValue("output_name", OutputName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty>("refs", Refs);
             writer.WriteBoolValue("reuse_results", ReuseResults);

@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
+        /// <summary>Machine-readable name of the leaf failure for MCP analytics, such as a ClickHouse error name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ErrorCode { get; set; }
+#nullable restore
+#else
+        public string ErrorCode { get; set; }
+#endif
         /// <summary>Failure category for MCP analytics.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType? ErrorType { get; set; }
         /// <summary>Structured tool output for native widgets.</summary>
@@ -60,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
+                { "error_code", n => { ErrorCode = n.GetStringValue(); } },
                 { "error_type", n => { ErrorType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType>(); } },
                 { "structured_content", n => { StructuredContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseStructuredContentProperty>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseStructuredContentProperty.CreateFromDiscriminatorValue); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
@@ -73,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
+            writer.WriteStringValue("error_code", ErrorCode);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType>("error_type", ErrorType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseStructuredContentProperty>("structured_content", StructuredContent);
             writer.WriteBoolValue("success", Success);

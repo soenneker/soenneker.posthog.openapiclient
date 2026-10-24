@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Clause { get; set; }
 #endif
+        /// <summary>Bucket upper edges a histogram_quantile series was estimated from. The true quantile can be anywhere between two edges. Null for other aggregations.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<double?>? HistogramBounds { get; set; }
+#nullable restore
+#else
+        public List<double?> HistogramBounds { get; set; }
+#endif
         /// <summary>Label values identifying this series. Empty for an ungrouped query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,6 +54,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryPoint> Points { get; set; }
+#endif
+        /// <summary>UCUM unit of the returned values, e.g. &quot;By&quot;, &quot;ms&quot;, &quot;{request}/s&quot;. It is the ingested unit, except that a count of series has no unit and a rate is per second (&quot;ms/s&quot;, or &quot;1/s&quot; for a counter without a unit). Null when the values have no unit, when merged series disagree on the unit, and for formula results.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Unit { get; set; }
+#nullable restore
+#else
+        public string Unit { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportSeries"/> and sets the default values.
@@ -73,9 +89,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "clause", n => { Clause = n.GetStringValue(); } },
+                { "histogram_bounds", n => { HistogramBounds = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportSeriesLabels>(global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportSeriesLabels.CreateFromDiscriminatorValue); } },
                 { "metric_name", n => { MetricName = n.GetStringValue(); } },
                 { "points", n => { Points = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryPoint>(global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryPoint.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "unit", n => { Unit = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -86,9 +104,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("clause", Clause);
+            writer.WriteCollectionOfPrimitiveValues<double?>("histogram_bounds", HistogramBounds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportSeriesLabels>("labels", Labels);
             writer.WriteStringValue("metric_name", MetricName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryPoint>("points", Points);
+            writer.WriteStringValue("unit", Unit);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

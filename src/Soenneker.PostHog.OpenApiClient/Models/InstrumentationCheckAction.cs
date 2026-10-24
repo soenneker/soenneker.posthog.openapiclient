@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Key of the check to dismiss or restore.* `sessions` - sessions* `tool_calls` - tool_calls* `user_identity` - user_identity* `trace_structure` - trace_structure</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `sessions` - sessions* `tool_calls` - tool_calls* `user_identity` - user_identity* `trace_structure` - trace_structure</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck? Check { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck Check { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckAction"/> and sets the default values.
         /// </summary>
@@ -47,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "check", n => { Check = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck>(global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck.CreateFromDiscriminatorValue); } },
+                { "check", n => { Check = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck>(); } },
             };
         }
         /// <summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck>("check", Check);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck>("check", Check);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

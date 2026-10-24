@@ -12,24 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class TaskRunLivingArtifactCreateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Optional preferred external storage or delivery adapter. Slack adapters deliver into the mapped Slack thread; omitted Slack-run documents use Slack canvas, omitted Slack-run files and spreadsheets use Slack file upload, and document_connector uses a connected external document provider.* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `slack_file` - slack_file* `document_connector` - document_connector* `github_pr` - github_pr</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `slack_file` - slack_file* `document_connector` - document_connector* `github_pr` - github_pr</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestAdapter? Adapter { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestAdapter Adapter { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Artifact format or delivery surface to create, such as document, spreadsheet, slack_canvas, or file.* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `document` - document* `spreadsheet` - spreadsheet* `dashboard` - dashboard* `file` - file* `github_pr` - github_pr</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `document` - document* `spreadsheet` - spreadsheet* `dashboard` - dashboard* `file` - file* `github_pr` - github_pr</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestArtifactType? ArtifactType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestArtifactType ArtifactType { get; set; }
-#endif
         /// <summary>Markdown or text content for the initial artifact version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,8 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adapter", n => { Adapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestAdapter.CreateFromDiscriminatorValue); } },
-                { "artifact_type", n => { ArtifactType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestArtifactType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestArtifactType.CreateFromDiscriminatorValue); } },
+                { "adapter", n => { Adapter = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestAdapter>(); } },
+                { "artifact_type", n => { ArtifactType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestArtifactType>(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "content_base64", n => { ContentBase64 = n.GetStringValue(); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
@@ -129,8 +117,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestAdapter>("adapter", Adapter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestArtifactType>("artifact_type", ArtifactType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestAdapter>("adapter", Adapter);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactCreateRequestArtifactType>("artifact_type", ArtifactType);
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("content_base64", ContentBase64);
             writer.WriteStringValue("content_type", ContentType);

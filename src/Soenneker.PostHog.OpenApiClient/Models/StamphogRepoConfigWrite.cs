@@ -35,14 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>When reviews run: &apos;all&apos; reviews every pull request (the default); &apos;label&apos; reviews only pull requests carrying the trigger label, mirroring the Action&apos;s opt-in flow.* `all` - all* `label` - label</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `all` - All pull requests* `label` - Labeled pull requests</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode? ReviewMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode ReviewMode { get; set; }
-#endif
         /// <summary>Pull request label that triggers a review when review_mode is &apos;label&apos;. Defaults to &apos;stamphog&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "review_mode", n => { ReviewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode>(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode.CreateFromDiscriminatorValue); } },
+                { "review_mode", n => { ReviewMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode>(); } },
                 { "trigger_label", n => { TriggerLabel = n.GetStringValue(); } },
             };
         }
@@ -95,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("provider", Provider);
             writer.WriteStringValue("repository", Repository);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode>("review_mode", ReviewMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode>("review_mode", ReviewMode);
             writer.WriteStringValue("trigger_label", TriggerLabel);
             writer.WriteAdditionalData(AdditionalData);
         }

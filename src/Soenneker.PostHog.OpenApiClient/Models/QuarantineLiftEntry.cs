@@ -90,14 +90,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Run the lift was requested from. Null after that run is deleted.</summary>
         public Guid? SourceRunId { get; set; }
-        /// <summary>`pending` waits for the merge and a matching default-branch run. `applied` lifted the quarantine. `cancelled` was withdrawn, or the pull request closed without merging into the run&apos;s branch. `superseded` means the quarantine ended some other way, or another request lifted it.* `pending` - pending* `applied` - applied* `cancelled` - cancelled* `superseded` - superseded</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - pending* `applied` - applied* `cancelled` - cancelled* `superseded` - superseded</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryState State { get; set; }
-#endif
         /// <summary>When the request last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -139,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "source_run_id", n => { SourceRunId = n.GetGuidValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryState>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryState>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -164,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("run_type", RunType);
             writer.WriteStringValue("source", Source);
             writer.WriteGuidValue("source_run_id", SourceRunId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryState>("state", State);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -27,6 +27,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>First server acceptance time.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>User who submitted the experiment, or null for service credentials.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+#endif
         /// <summary>Durable dataset identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,14 +111,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Caller-supplied execution time.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>Upload lifecycle state.* `uploading` - Uploading* `completed` - Completed* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `uploading` - Uploading* `completed` - Completed* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadStatus Status { get; set; }
-#endif
         /// <summary>Durable suite identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -118,6 +120,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string SuiteKey { get; set; }
+#endif
+        /// <summary>Project tag names assigned to this experiment.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
 #endif
         /// <summary>Results visible to this caller; unavailable without scorer-read scope.</summary>
         public int? VisibleResultCount { get; set; }
@@ -153,6 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "accepted_item_count", n => { AcceptedItemCount = n.GetIntValue(); } },
                 { "application_version", n => { ApplicationVersion = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "dataset_identifier", n => { DatasetIdentifier = n.GetStringValue(); } },
                 { "dataset_revision_id", n => { DatasetRevisionId = n.GetGuidValue(); } },
                 { "dataset_revision_identifier", n => { DatasetRevisionIdentifier = n.GetStringValue(); } },
@@ -167,8 +178,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "result_count_scope", n => { ResultCountScope = n.GetStringValue(); } },
                 { "run_source", n => { RunSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadRunSource>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadRunSource.CreateFromDiscriminatorValue); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadStatus>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadStatus>(); } },
                 { "suite_key", n => { SuiteKey = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "visible_result_count", n => { VisibleResultCount = n.GetIntValue(); } },
                 { "visible_scorer_definition_count", n => { VisibleScorerDefinitionCount = n.GetIntValue(); } },
                 { "visible_scorer_version_count", n => { VisibleScorerVersionCount = n.GetIntValue(); } },
@@ -198,8 +210,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("result_count_scope", ResultCountScope);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadRunSource>("run_source", RunSource);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentReadStatus>("status", Status);
             writer.WriteStringValue("suite_key", SuiteKey);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteIntValue("visible_result_count", VisibleResultCount);
             writer.WriteIntValue("visible_scorer_definition_count", VisibleScorerDefinitionCount);
             writer.WriteIntValue("visible_scorer_version_count", VisibleScorerVersionCount);

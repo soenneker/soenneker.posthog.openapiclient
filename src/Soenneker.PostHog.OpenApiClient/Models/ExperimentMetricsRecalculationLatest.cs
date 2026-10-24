@@ -40,18 +40,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Terminal failure per metric_uuid: {step, message, error_type, retriable, timestamp}. retriable is true when a transient error exhausted its attempts, so a heal_latest_run or manual_retry can succeed; false when the metric config, the data, or a resource limit must change first</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricErrors? MetricErrors { get; private set; }
+        public UntypedNode? MetricErrors { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricErrors MetricErrors { get; private set; }
+        public UntypedNode MetricErrors { get; private set; }
 #endif
         /// <summary>Transient retry state per metric_uuid: {attempt, max_attempts, error_type, message, next_retry_at}. message is a user-safe description of the error that triggered the retry. Present only while a metric is between failed attempts; cleared when it succeeds or fails terminally, so treat entries for metrics that already have a result as stale.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricRetries? MetricRetries { get; private set; }
+        public UntypedNode? MetricRetries { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricRetries MetricRetries { get; private set; }
+        public UntypedNode MetricRetries { get; private set; }
 #endif
         /// <summary>Upper time bound the metrics in this run were calculated against (the data freshness cutoff). Shared by every metric in the run; null until processing starts</summary>
         public DateTimeOffset? QueryTo { get; private set; }
@@ -63,26 +63,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResult> Results { get; private set; }
 #endif
-        /// <summary>Where these results came from: &apos;recalculation&apos; for a real metrics-recalculation run, &apos;timeseries_fallback&apos; for a cold-start placeholder built from the latest daily timeseries data.* `recalculation` - recalculation* `timeseries_fallback` - timeseries_fallback</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `recalculation` - recalculation* `timeseries_fallback` - timeseries_fallback</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestResultSource? ResultSource { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestResultSource ResultSource { get; private set; }
-#endif
         /// <summary>Rows read by the run&apos;s metric queries so far, both finished and currently running. Cumulative and roughly monotonic across the run; the primary live progress signal</summary>
         public int? RowsRead { get; set; }
         /// <summary>When processing started</summary>
         public DateTimeOffset? StartedAt { get; private set; }
-        /// <summary>Current status of the recalculation job* `pending` - Pending* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestStatus Status { get; private set; }
-#endif
         /// <summary>Total number of metrics to recalculate</summary>
         public int? TotalMetrics { get; private set; }
         /// <summary>
@@ -118,14 +106,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
                 { "failed_metrics", n => { FailedMetrics = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "metric_errors", n => { MetricErrors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricErrors>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricErrors.CreateFromDiscriminatorValue); } },
-                { "metric_retries", n => { MetricRetries = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricRetries>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestMetricRetries.CreateFromDiscriminatorValue); } },
+                { "metric_errors", n => { MetricErrors = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "metric_retries", n => { MetricRetries = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "query_to", n => { QueryTo = n.GetDateTimeOffsetValue(); } },
-                { "result_source", n => { ResultSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestResultSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestResultSource.CreateFromDiscriminatorValue); } },
+                { "result_source", n => { ResultSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestResultSource>(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResult>(global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "rows_read", n => { RowsRead = n.GetIntValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestStatus>(); } },
                 { "total_metrics", n => { TotalMetrics = n.GetIntValue(); } },
             };
         }

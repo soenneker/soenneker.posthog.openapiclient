@@ -25,14 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Horizon after which the check retires unrun. Defaults to 30 days after the last scheduled run, or the 90-day horizon if that comes first.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
-        /// <summary>How the check is evaluated.* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `metric_threshold` - Metric Threshold* `agent` - Agent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind Kind { get; set; }
-#endif
         /// <summary>When to first evaluate the check. Must be in the future and within 90 days. Defaults to 7 days from now.</summary>
         public DateTimeOffset? NextRunAt { get; set; }
         /// <summary>Why the check is worth running.</summary>
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig>(global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig.CreateFromDiscriminatorValue); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind>(global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind>(); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "report_id", n => { ReportId = n.GetGuidValue(); } },
@@ -102,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig>("config", Config);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestKind>("kind", Kind);
             writer.WriteDateTimeOffsetValue("next_run_at", NextRunAt);
             writer.WriteStringValue("rationale", Rationale);
             writer.WriteGuidValue("report_id", ReportId);

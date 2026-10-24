@@ -73,13 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Field to sort results by.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy? OrderBy { get; set; }
         /// <summary>Sort direction.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper? OrderDirection { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper OrderDirection { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2? OrderDirection { get; set; }
         /// <summary>Pending fingerprint issue state updates UNIONed into the fingerprint issue state subquery. The backend caps the list at 50 entries; extras are dropped silently.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -172,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy>(); } },
-                { "orderDirection", n => { OrderDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper>(global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper.CreateFromDiscriminatorValue); } },
+                { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>(); } },
                 { "pendingFingerprintIssueStateUpdates", n => { PendingFingerprintIssueStateUpdates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "personId", n => { PersonId = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryResponse.CreateFromDiscriminatorValue); } },
@@ -207,7 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy>("orderBy", OrderBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2Wrapper>("orderDirection", OrderDirection);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>("orderDirection", OrderDirection);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate>("pendingFingerprintIssueStateUpdates", PendingFingerprintIssueStateUpdates);
             writer.WriteStringValue("personId", PersonId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryResponse>("response", Response);

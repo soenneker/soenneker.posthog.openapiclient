@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEvent> Events { get; set; }
 #endif
-        /// <summary>Always &apos;partial&apos;: CI events only; reviews and comments are not yet available.* `precise` - PRECISE* `coarse` - COARSE* `partial` - PARTIAL</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `precise` - Precise* `coarse` - Coarse* `partial` - Partial</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality? MetricQuality { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality MetricQuality { get; set; }
-#endif
         /// <summary>The pull request header.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEvent>(global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEvent.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "metric_quality", n => { MetricQuality = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality>(global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality.CreateFromDiscriminatorValue); } },
+                { "metric_quality", n => { MetricQuality = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality>(); } },
                 { "pull_request", n => { PullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecyclePullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.PrLifecyclePullRequest.CreateFromDiscriminatorValue); } },
             };
         }
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEvent>("events", Events);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality>("metric_quality", MetricQuality);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleMetricQuality>("metric_quality", MetricQuality);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecyclePullRequest>("pull_request", PullRequest);
             writer.WriteAdditionalData(AdditionalData);
         }

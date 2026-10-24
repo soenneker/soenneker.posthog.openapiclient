@@ -11,10 +11,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// Optional reasoning, error message, and metadata, up to 256 KiB and 32 JSON levels.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ResultSubmissionPayload : IAdditionalDataHolder, IParsable
+    public partial class ResultSubmissionPayload : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The error_message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,10 +24,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayloadMetadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInputMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayloadMetadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInputMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The reasoning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,13 +37,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reasoning { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayload"/> and sets the default values.
-        /// </summary>
-        public ResultSubmissionPayload()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -65,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayloadMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayloadMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInputMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInputMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
             };
         }
@@ -77,9 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error_message", ErrorMessage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayloadMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInputMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("reasoning", Reasoning);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

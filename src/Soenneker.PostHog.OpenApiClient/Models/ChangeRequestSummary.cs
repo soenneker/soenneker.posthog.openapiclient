@@ -17,14 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>ID of the approval change request. Use it to link to the change request in the UI.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Current approval state: &apos;pending&apos; (awaiting approval), &apos;approved&apos; (awaiting application), &apos;applied&apos;, &apos;rejected&apos;, &apos;expired&apos;, or &apos;failed&apos;.* `pending` - Pending* `approved` - Approved (awaiting application)* `applied` - Applied* `rejected` - Rejected* `expired` - Expired* `failed` - Failed to apply</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `approved` - Approved (awaiting application)* `applied` - Applied* `rejected` - Rejected* `expired` - Expired* `failed` - Failed to apply</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummaryState? State { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummaryState State { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummary"/> and sets the default values.
         /// </summary>
@@ -51,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummaryState>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummaryState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummaryState>(); } },
             };
         }
         /// <summary>

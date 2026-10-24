@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Email { get; private set; }
 #endif
-        /// <summary>Whether the participant belongs to the PostHog organization or the customer.* `internal` - Internal* `customer` - Customer</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `internal` - Internal* `customer` - Customer</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind Kind { get; private set; }
-#endif
         /// <summary>UUID of the matched PostHog person for a customer participant, when available.</summary>
         public Guid? PersonId { get; private set; }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind>(global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind>(); } },
                 { "person_id", n => { PersonId = n.GetGuidValue(); } },
             };
         }

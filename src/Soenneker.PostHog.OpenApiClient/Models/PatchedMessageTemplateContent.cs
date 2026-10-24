@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate Email { get; set; }
 #endif
-        /// <summary>Templating language for the email content. Always &apos;liquid&apos; — Liquid tags pass through verbatim.* `liquid` - liquid</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `liquid` - liquid</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating? Templating { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating Templating { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedMessageTemplateContent"/> and sets the default values.
         /// </summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "email", n => { Email = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate.CreateFromDiscriminatorValue); } },
-                { "templating", n => { Templating = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating.CreateFromDiscriminatorValue); } },
+                { "templating", n => { Templating = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>(); } },
             };
         }
         /// <summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate>("email", Email);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>("templating", Templating);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>("templating", Templating);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -20,10 +20,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The billing_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageBillingContext? BillingContext { get; set; }
+        public UntypedNode? BillingContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageBillingContext BillingContext { get; set; }
+        public UntypedNode BillingContext { get; set; }
 #endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,10 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The resume_payload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageResumePayload? ResumePayload { get; set; }
+        public UntypedNode? ResumePayload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageResumePayload ResumePayload { get; set; }
+        public UntypedNode ResumePayload { get; set; }
 #endif
         /// <summary>The session_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,10 +66,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The ui_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageUiContext? UiContext { get; set; }
+        public UntypedNode? UiContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageUiContext UiContext { get; set; }
+        public UntypedNode UiContext { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Message"/> and sets the default values.
@@ -98,15 +98,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent_mode", n => { AgentMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AgentModeEnum>(); } },
-                { "billing_context", n => { BillingContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageBillingContext>(global::Soenneker.PostHog.OpenApiClient.Models.MessageBillingContext.CreateFromDiscriminatorValue); } },
+                { "billing_context", n => { BillingContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "contextual_tools", n => { ContextualTools = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty.CreateFromDiscriminatorValue); } },
                 { "conversation", n => { Conversation = n.GetGuidValue(); } },
                 { "is_sandbox", n => { IsSandbox = n.GetBoolValue(); } },
-                { "resume_payload", n => { ResumePayload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageResumePayload>(global::Soenneker.PostHog.OpenApiClient.Models.MessageResumePayload.CreateFromDiscriminatorValue); } },
+                { "resume_payload", n => { ResumePayload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "trace_id", n => { TraceId = n.GetGuidValue(); } },
-                { "ui_context", n => { UiContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageUiContext>(global::Soenneker.PostHog.OpenApiClient.Models.MessageUiContext.CreateFromDiscriminatorValue); } },
+                { "ui_context", n => { UiContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -117,15 +117,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AgentModeEnum>("agent_mode", AgentMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageBillingContext>("billing_context", BillingContext);
+            writer.WriteObjectValue<UntypedNode>("billing_context", BillingContext);
             writer.WriteStringValue("content", Content);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty>("contextual_tools", ContextualTools);
             writer.WriteGuidValue("conversation", Conversation);
             writer.WriteBoolValue("is_sandbox", IsSandbox);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageResumePayload>("resume_payload", ResumePayload);
+            writer.WriteObjectValue<UntypedNode>("resume_payload", ResumePayload);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteGuidValue("trace_id", TraceId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageUiContext>("ui_context", UiContext);
+            writer.WriteObjectValue<UntypedNode>("ui_context", UiContext);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

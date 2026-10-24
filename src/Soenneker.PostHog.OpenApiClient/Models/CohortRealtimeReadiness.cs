@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the cohort became targetable by feature flags. Null unless the state is `ready`.</summary>
         public DateTimeOffset? ReadyAt { get; set; }
-        /// <summary>Whether feature flags can target this cohort now. `ready`: they can, and they see membership changes within about a minute. `building` / `rebuilding`: PostHog is preparing the cohort from past events, and flags cannot target it yet. `needs_attention`: the cohort qualifies but nothing is preparing it. `daily`: its criteria are not supported in realtime, so its membership only comes from the once-a-day calculation. `person_properties`: it matches on person properties, which flags read directly, so they can always target it. `static`: it is a fixed list of people.* `static` - Static* `person_properties` - Person properties* `daily` - Daily* `building` - Building* `rebuilding` - Rebuilding* `ready` - Ready* `needs_attention` - Needs attention</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `static` - Static* `person_properties` - Person properties* `daily` - Daily* `building` - Building* `rebuilding` - Rebuilding* `ready` - Ready* `needs_attention` - Needs attention</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState State { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness"/> and sets the default values.
         /// </summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "build", n => { Build = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild>(global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild.CreateFromDiscriminatorValue); } },
                 { "ready_at", n => { ReadyAt = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState>(global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState>(); } },
             };
         }
         /// <summary>
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild>("build", Build);
             writer.WriteDateTimeOffsetValue("ready_at", ReadyAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

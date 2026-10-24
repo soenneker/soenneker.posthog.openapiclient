@@ -2,8 +2,10 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Briefing;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Candidates;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Excerpt_choice;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Pulse_pins;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Reports;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -16,15 +18,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TodayRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The briefing property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Briefing.BriefingRequestBuilder Briefing
+        /// <summary>The excerpt_choice property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Excerpt_choice.Excerpt_choiceRequestBuilder Excerpt_choice
         {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Briefing.BriefingRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Excerpt_choice.Excerpt_choiceRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The candidates property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Candidates.CandidatesRequestBuilder Candidates
+        /// <summary>The highlights property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.HighlightsRequestBuilder Highlights
         {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Candidates.CandidatesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.HighlightsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pulse_pins property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Pulse_pins.Pulse_pinsRequestBuilder Pulse_pins
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Pulse_pins.Pulse_pinsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Reports.ReportsRequestBuilder Reports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Reports.ReportsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.TodayRequestBuilder"/> and sets the default values.

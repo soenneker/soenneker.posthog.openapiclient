@@ -17,13 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether one person converting repeatedly counts once or every time. Null follows the goal&apos;s own math: unique-users goals count each person once, count-based goals count every conversion. Set explicitly to override. Counting every conversion makes the rate columns exceed 100%, since a person can convert more times than they visited.</summary>
         public bool? AllowMultipleConversionsPerVisitor { get; set; }
         /// <summary>Row dimension. Defaults to channel.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper2? BreakdownBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper2 BreakdownBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown? BreakdownBy { get; set; }
         /// <summary>The conversionGoal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,13 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The includeRevenue property</summary>
         public bool? IncludeRevenue { get; set; }
         /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13? Interval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13 Interval { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryKind? Kind { get; set; }
         /// <summary>Number of rows to return</summary>
@@ -142,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
                 { "allowMultipleConversionsPerVisitor", n => { AllowMultipleConversionsPerVisitor = n.GetBoolValue(); } },
-                { "breakdownBy", n => { BreakdownBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper2.CreateFromDiscriminatorValue); } },
+                { "breakdownBy", n => { BreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown>(); } },
                 { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryConversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryConversionGoal.CreateFromDiscriminatorValue); } },
                 { "conversionGoalId", n => { ConversionGoalId = n.GetStringValue(); } },
                 { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
@@ -152,7 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "excludeUnattributed", n => { ExcludeUnattributed = n.GetBoolValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "lookbackWindowDays", n => { LookbackWindowDays = n.GetIntValue(); } },
@@ -176,7 +164,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
             writer.WriteBoolValue("allowMultipleConversionsPerVisitor", AllowMultipleConversionsPerVisitor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdownWrapper2>("breakdownBy", BreakdownBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown>("breakdownBy", BreakdownBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryConversionGoal>("conversionGoal", ConversionGoal);
             writer.WriteStringValue("conversionGoalId", ConversionGoalId);
             writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
@@ -186,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("excludeUnattributed", ExcludeUnattributed);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("lookbackWindowDays", LookbackWindowDays);

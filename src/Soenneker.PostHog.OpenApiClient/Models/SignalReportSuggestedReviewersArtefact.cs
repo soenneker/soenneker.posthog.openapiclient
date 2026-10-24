@@ -22,13 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string ActorAgent { get; private set; }
 #endif
         /// <summary>Actor kind. Legacy rows without attribution are returned as system.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactActorKind? ActorKind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactActorKind ActorKind { get; private set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Work claim that produced this artefact.</summary>
@@ -57,14 +51,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? PullRequestId { get; private set; }
         /// <summary>Internal task the artefact is attributed to. Null for user, external agent, and system writes.</summary>
         public Guid? TaskId { get; private set; }
-        /// <summary>Always `suggested_reviewers` on this path.* `suggested_reviewers` - suggested_reviewers</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `suggested_reviewers` - suggested_reviewers</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactType? Type { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactType Type { get; private set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -93,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actor_agent", n => { ActorAgent = n.GetStringValue(); } },
-                { "actor_kind", n => { ActorKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactActorKind>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactActorKind.CreateFromDiscriminatorValue); } },
+                { "actor_kind", n => { ActorKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactActorKind>(); } },
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryRead>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryRead.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -101,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "pull_request_id", n => { PullRequestId = n.GetGuidValue(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactType>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuggestedReviewersArtefactType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

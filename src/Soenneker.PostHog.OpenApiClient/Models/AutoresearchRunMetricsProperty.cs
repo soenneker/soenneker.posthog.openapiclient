@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Run metrics: rows scored, score distribution summary, validation AUC, etc.
+    /// Run metrics: score distribution summary, validation AUC, etc. An inference run records &apos;rows_eligible&apos;, the users in the inference population. When it is larger than rows_scored, the run scored a rolling part of the population: users never scored first, then users whose last score was oldest.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AutoresearchRunMetricsProperty : IAdditionalDataHolder, IParsable

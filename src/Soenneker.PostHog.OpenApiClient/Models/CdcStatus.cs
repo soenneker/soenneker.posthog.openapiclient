@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? LagCriticalThresholdMb { get; set; }
         /// <summary>Lag in MB above which the UI warns.</summary>
         public int? LagWarningThresholdMb { get; set; }
-        /// <summary>Who owns the slot and publication: PostHog or the customer.* `posthog` - posthog* `self_managed` - self_managed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `posthog` - posthog* `self_managed` - self_managed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode? ManagementMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode ManagementMode { get; set; }
-#endif
         /// <summary>Whether the publication exists on the source, when the source was reachable.</summary>
         public bool? PublicationExists { get; set; }
         /// <summary>Publication PostHog reads changes from. Empty when unset.</summary>
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "lag_bytes", n => { LagBytes = n.GetIntValue(); } },
                 { "lag_critical_threshold_mb", n => { LagCriticalThresholdMb = n.GetIntValue(); } },
                 { "lag_warning_threshold_mb", n => { LagWarningThresholdMb = n.GetIntValue(); } },
-                { "management_mode", n => { ManagementMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode>(global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode.CreateFromDiscriminatorValue); } },
+                { "management_mode", n => { ManagementMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode>(); } },
                 { "publication_exists", n => { PublicationExists = n.GetBoolValue(); } },
                 { "publication_name", n => { PublicationName = n.GetStringValue(); } },
                 { "published_tables", n => { PublishedTables = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -109,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("lag_bytes", LagBytes);
             writer.WriteIntValue("lag_critical_threshold_mb", LagCriticalThresholdMb);
             writer.WriteIntValue("lag_warning_threshold_mb", LagWarningThresholdMb);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode>("management_mode", ManagementMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode>("management_mode", ManagementMode);
             writer.WriteBoolValue("publication_exists", PublicationExists);
             writer.WriteStringValue("publication_name", PublicationName);
             writer.WriteCollectionOfPrimitiveValues<string>("published_tables", PublishedTables);

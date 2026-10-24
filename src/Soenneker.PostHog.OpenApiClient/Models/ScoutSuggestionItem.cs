@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The producer&apos;s confidence.* `low` - low* `medium` - medium* `high` - high</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `low` - low* `medium` - medium* `high` - high</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemConfidence? Confidence { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemConfidence Confidence { get; set; }
-#endif
         /// <summary>Custom only: the one-line description the scout would be created with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,14 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>`canonical`: enable a PostHog-authored scout that exists but is off. `custom`: create a drafted scout.* `canonical` - canonical* `custom` - custom</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `canonical` - canonical* `custom` - custom</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemKind Kind { get; set; }
-#endif
         /// <summary>Suggested schedule and emit posture.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,12 +101,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "confidence", n => { Confidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemConfidence>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemConfidence.CreateFromDiscriminatorValue); } },
+                { "confidence", n => { Confidence = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemConfidence>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "draft_body", n => { DraftBody = n.GetStringValue(); } },
                 { "gap", n => { Gap = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemKind>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemKind>(); } },
                 { "proposed_config", n => { ProposedConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemProposedConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemProposedConfig.CreateFromDiscriminatorValue); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -132,12 +120,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemConfidence>("confidence", Confidence);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemConfidence>("confidence", Confidence);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("draft_body", DraftBody);
             writer.WriteBoolValue("gap", Gap);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemProposedConfig>("proposed_config", ProposedConfig);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteStringValue("title", Title);

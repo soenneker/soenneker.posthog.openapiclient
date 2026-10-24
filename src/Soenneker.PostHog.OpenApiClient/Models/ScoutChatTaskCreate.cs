@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Which scout chat to start: `author_scout` (guided scout authoring), `fleet_overview` (health of the scout fleet), or `recent_signals` (walk through recently emitted signals). The prompt template is owned server-side.* `author_scout` - author_scout* `fleet_overview` - fleet_overview* `recent_signals` - recent_signals</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `author_scout` - author_scout* `fleet_overview` - fleet_overview* `recent_signals` - recent_signals</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType? ChatType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType ChatType { get; set; }
-#endif
         /// <summary>Optional id of a suggestion from this project&apos;s scout suggestion batch. The chat then opens on that draft instead of scanning from scratch. `author_scout` only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "chat_type", n => { ChatType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType.CreateFromDiscriminatorValue); } },
+                { "chat_type", n => { ChatType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>(); } },
                 { "suggestion_id", n => { SuggestionId = n.GetStringValue(); } },
                 { "user_prompt", n => { UserPrompt = n.GetStringValue(); } },
             };
@@ -75,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>("chat_type", ChatType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>("chat_type", ChatType);
             writer.WriteStringValue("suggestion_id", SuggestionId);
             writer.WriteStringValue("user_prompt", UserPrompt);
             writer.WriteAdditionalData(AdditionalData);

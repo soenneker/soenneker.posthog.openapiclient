@@ -8,7 +8,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Clustering
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_reports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.ModelsRequests;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Offline_evaluations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Parser_recipes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Provider_key_validations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Provider_keys;
@@ -60,11 +59,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.ModelsRequests.ModelsRequestBuilder Models
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The offline_evaluations property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Offline_evaluations.Offline_evaluationsRequestBuilder Offline_evaluations
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Offline_evaluations.Offline_evaluationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The parser_recipes property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Parser_recipes.Parser_recipesRequestBuilder Parser_recipes

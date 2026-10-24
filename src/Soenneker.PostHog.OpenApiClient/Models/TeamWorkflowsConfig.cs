@@ -16,14 +16,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_*) alongside the existing workflow metrics.</summary>
         public bool? CaptureWorkflowsEngagementEvents { get; set; }
-        /// <summary>Recipient-consent enforcement for open/click tracking on marketing workflow emails. &apos;off&apos;: no enforcement, tracking follows each email step&apos;s own setting. &apos;opt_out&apos;: track by default but not recipients who have opted out. &apos;opt_in&apos;: only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement.* `off` - Off* `opt_out` - Opt Out* `opt_in` - Opt In</summary>
+        /// <summary>ID of the verified email integration that new broadcasts and workflow email steps use as their sender. Null means no default. Set automatically when the project&apos;s first email sender is verified, and cleared when that integration is deleted.</summary>
+        public int? DefaultEmailIntegrationId { get; set; }
+        /// <summary>* `off` - Off* `opt_out` - Opt Out* `opt_in` - Opt In</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode? EmailTrackingConsentMode { get; set; }
+        /// <summary>Default UTM values that new email steps and broadcasts copy. An empty value keeps the built-in default for that tag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode? EmailTrackingConsentMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailUtmParams? EmailUtmParams { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode EmailTrackingConsentMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailUtmParams EmailUtmParams { get; set; }
 #endif
+        /// <summary>Whether new email steps and broadcasts start with UTM tags on their links. Each email can still change it. Existing emails keep their current values.</summary>
+        public bool? EmailUtmTagsEnabled { get; set; }
+        /// <summary>Most marketing messages one person can get in the window, across all workflows. Set this together with marketing_frequency_cap_window_days. Set both to null to turn the cap off.</summary>
+        public int? MarketingFrequencyCapMaxMessages { get; set; }
+        /// <summary>Length of the rolling frequency cap window in days. Set this together with marketing_frequency_cap_max_messages. Set both to null to turn the cap off.</summary>
+        public int? MarketingFrequencyCapWindowDays { get; set; }
+        /// <summary>How many Replay Vision scans one workflow can request in a rolling 24 hours. Null uses the default of 100; zero pauses scans for every workflow in the project. Support raises the limit above 500.</summary>
+        public int? ReplayVisionScanRateLimitPerDay { get; set; }
+        /// <summary>How many Replay Vision scans all workflows in the project request together in a rolling 24 hours. Null uses the default of 500; zero pauses scans for the project. Support raises the limit above 2500.</summary>
+        public int? ReplayVisionScanTeamRateLimitPerDay { get; set; }
         /// <summary>How many AI tasks one workflow can create in a rolling 24 hours. Null uses the default of 100; zero pauses task creation for every workflow in the project. Support raises the limit above 500.</summary>
         public int? WorkflowTaskRateLimitPerDay { get; set; }
         /// <summary>How many AI tasks all workflows in the project can create together in a rolling 24 hours. Null uses the default of 500; zero pauses task creation for the project. Support raises the limit above 2500.</summary>
@@ -54,7 +68,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "capture_workflows_engagement_events", n => { CaptureWorkflowsEngagementEvents = n.GetBoolValue(); } },
-                { "email_tracking_consent_mode", n => { EmailTrackingConsentMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode>(global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode.CreateFromDiscriminatorValue); } },
+                { "default_email_integration_id", n => { DefaultEmailIntegrationId = n.GetIntValue(); } },
+                { "email_tracking_consent_mode", n => { EmailTrackingConsentMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode>(); } },
+                { "email_utm_params", n => { EmailUtmParams = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailUtmParams>(global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailUtmParams.CreateFromDiscriminatorValue); } },
+                { "email_utm_tags_enabled", n => { EmailUtmTagsEnabled = n.GetBoolValue(); } },
+                { "marketing_frequency_cap_max_messages", n => { MarketingFrequencyCapMaxMessages = n.GetIntValue(); } },
+                { "marketing_frequency_cap_window_days", n => { MarketingFrequencyCapWindowDays = n.GetIntValue(); } },
+                { "replay_vision_scan_rate_limit_per_day", n => { ReplayVisionScanRateLimitPerDay = n.GetIntValue(); } },
+                { "replay_vision_scan_team_rate_limit_per_day", n => { ReplayVisionScanTeamRateLimitPerDay = n.GetIntValue(); } },
                 { "workflow_task_rate_limit_per_day", n => { WorkflowTaskRateLimitPerDay = n.GetIntValue(); } },
                 { "workflow_task_team_rate_limit_per_day", n => { WorkflowTaskTeamRateLimitPerDay = n.GetIntValue(); } },
             };
@@ -67,7 +88,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("capture_workflows_engagement_events", CaptureWorkflowsEngagementEvents);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode>("email_tracking_consent_mode", EmailTrackingConsentMode);
+            writer.WriteIntValue("default_email_integration_id", DefaultEmailIntegrationId);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode>("email_tracking_consent_mode", EmailTrackingConsentMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailUtmParams>("email_utm_params", EmailUtmParams);
+            writer.WriteBoolValue("email_utm_tags_enabled", EmailUtmTagsEnabled);
+            writer.WriteIntValue("marketing_frequency_cap_max_messages", MarketingFrequencyCapMaxMessages);
+            writer.WriteIntValue("marketing_frequency_cap_window_days", MarketingFrequencyCapWindowDays);
+            writer.WriteIntValue("replay_vision_scan_rate_limit_per_day", ReplayVisionScanRateLimitPerDay);
+            writer.WriteIntValue("replay_vision_scan_team_rate_limit_per_day", ReplayVisionScanTeamRateLimitPerDay);
             writer.WriteIntValue("workflow_task_rate_limit_per_day", WorkflowTaskRateLimitPerDay);
             writer.WriteIntValue("workflow_task_team_rate_limit_per_day", WorkflowTaskTeamRateLimitPerDay);
             writer.WriteAdditionalData(AdditionalData);

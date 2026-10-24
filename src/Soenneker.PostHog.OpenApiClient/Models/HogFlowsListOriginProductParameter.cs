@@ -16,5 +16,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Loops,
         #pragma warning restore CS1591
+        [EnumMember(Value = "transactional_emails")]
+        #pragma warning disable CS1591
+        TransactionalEmails,
+        #pragma warning restore CS1591
     }
 }

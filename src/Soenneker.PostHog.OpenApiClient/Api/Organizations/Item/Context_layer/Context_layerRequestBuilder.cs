@@ -19,7 +19,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\organizations\{-id}\context_layer
+    /// Builds and executes requests for operations under \api\organizations\{id}\context_layer
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Context_layerRequestBuilder : BaseRequestBuilder
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Context_layerRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/context_layer", pathParameters)
+        public Context_layerRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/context_layer", pathParameters)
         {
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Context_layerRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/context_layer", rawUrl)
+        public Context_layerRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/context_layer", rawUrl)
         {
         }
     }

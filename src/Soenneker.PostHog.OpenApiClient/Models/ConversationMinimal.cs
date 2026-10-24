@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SlackWorkspaceDomain { get; private set; }
 #endif
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `idle` - Idle* `in_progress` - In progress* `canceling` - Canceling</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalStatus Status { get; private set; }
-#endif
         /// <summary>The task property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,14 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic Topic { get; private set; }
 #endif
-        /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `assistant` - Assistant* `tool_call` - Tool call* `deep_research` - Deep research* `slack` - Slack</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalType? Type { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalType Type { get; private set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The user property</summary>
@@ -116,11 +104,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_internal", n => { IsInternal = n.GetBoolValue(); } },
                 { "slack_thread_key", n => { SlackThreadKey = n.GetStringValue(); } },
                 { "slack_workspace_domain", n => { SlackWorkspaceDomain = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalStatus>(); } },
                 { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "topic", n => { Topic = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalType>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalUser>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalUser.CreateFromDiscriminatorValue); } },
             };

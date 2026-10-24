@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Agent scope target. Required when scope_type is agent.</summary>
         public Guid? ScopeServiceAccountId { get; set; }
-        /// <summary>Which scope to resolve: the team default, one member, or one agent.* `team` - Team default* `member` - Member* `agent` - Agent</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `team` - Team default* `member` - Member* `agent` - Agent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType? ScopeType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType ScopeType { get; set; }
-#endif
         /// <summary>Member scope target. Defaults to the requesting user.</summary>
         public int? ScopeUserId { get; set; }
         /// <summary>
@@ -61,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "policies", n => { Policies = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry>(global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scope_service_account_id", n => { ScopeServiceAccountId = n.GetGuidValue(); } },
-                { "scope_type", n => { ScopeType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType.CreateFromDiscriminatorValue); } },
+                { "scope_type", n => { ScopeType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType>(); } },
                 { "scope_user_id", n => { ScopeUserId = n.GetIntValue(); } },
             };
         }
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry>("policies", Policies);
             writer.WriteGuidValue("scope_service_account_id", ScopeServiceAccountId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType>("scope_type", ScopeType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType>("scope_type", ScopeType);
             writer.WriteIntValue("scope_user_id", ScopeUserId);
             writer.WriteAdditionalData(AdditionalData);
         }

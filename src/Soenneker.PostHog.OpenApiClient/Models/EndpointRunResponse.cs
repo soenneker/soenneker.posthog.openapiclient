@@ -40,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Query result rows. Each row is a list of values matching the columns order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem>? Results { get; set; }
+        public UntypedNode? Results { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem> Results { get; set; }
+        public UntypedNode Results { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse"/> and sets the default values.
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "execution_id", n => { ExecutionId = n.GetGuidValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("execution_id", ExecutionId);
             writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("name", Name);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem>("results", Results);
+            writer.WriteObjectValue<UntypedNode>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

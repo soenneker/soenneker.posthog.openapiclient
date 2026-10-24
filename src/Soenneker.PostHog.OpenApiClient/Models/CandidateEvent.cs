@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>List of [utm_source, count] pairs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TopUtmSources { get; set; }
+        public List<UntypedNode>? TopUtmSources { get; set; }
 #nullable restore
 #else
-        public UntypedNode TopUtmSources { get; set; }
+        public List<UntypedNode> TopUtmSources { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CandidateEvent"/> and sets the default values.
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pct_with_utm_source", n => { PctWithUtmSource = n.GetDoubleValue(); } },
                 { "suggestion_reason", n => { SuggestionReason = n.GetStringValue(); } },
                 { "suggestion_score", n => { SuggestionScore = n.GetDoubleValue(); } },
-                { "top_utm_sources", n => { TopUtmSources = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "top_utm_sources", n => { TopUtmSources = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("pct_with_utm_source", PctWithUtmSource);
             writer.WriteStringValue("suggestion_reason", SuggestionReason);
             writer.WriteDoubleValue("suggestion_score", SuggestionScore);
-            writer.WriteObjectValue<UntypedNode>("top_utm_sources", TopUtmSources);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("top_utm_sources", TopUtmSources);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

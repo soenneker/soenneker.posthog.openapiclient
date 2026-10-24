@@ -43,14 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestRepo Repo { get; set; }
 #endif
-        /// <summary>Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `open` - Open* `closed` - Closed* `merged` - Merged</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState State { get; set; }
-#endif
         /// <summary>Pull request title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "merged_at", n => { MergedAt = n.GetDateTimeOffsetValue(); } },
                 { "number", n => { Number = n.GetIntValue(); } },
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestRepo>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestRepo.CreateFromDiscriminatorValue); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -111,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("merged_at", MergedAt);
             writer.WriteIntValue("number", Number);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestRepo>("repo", Repo);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState>("state", State);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

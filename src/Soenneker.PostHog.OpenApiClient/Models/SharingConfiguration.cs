@@ -27,15 +27,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
+        /// <summary>Whether the project has configured access controls for shared content or its underlying data.</summary>
+        public bool? HasRelevantAccessControls { get; private set; }
         /// <summary>The password_required property</summary>
         public bool? PasswordRequired { get; set; }
         /// <summary>The settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings? Settings { get; set; }
+        public UntypedNode? Settings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings Settings { get; set; }
+        public UntypedNode Settings { get; set; }
 #endif
         /// <summary>The share_passwords property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,8 +83,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "has_relevant_access_controls", n => { HasRelevantAccessControls = n.GetBoolValue(); } },
                 { "password_required", n => { PasswordRequired = n.GetBoolValue(); } },
-                { "settings", n => { Settings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings>(global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings.CreateFromDiscriminatorValue); } },
+                { "settings", n => { Settings = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "share_passwords", n => { SharePasswords = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SharePassword>(global::Soenneker.PostHog.OpenApiClient.Models.SharePassword.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -96,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteBoolValue("password_required", PasswordRequired);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings>("settings", Settings);
+            writer.WriteObjectValue<UntypedNode>("settings", Settings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

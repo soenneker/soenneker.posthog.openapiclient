@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Excerpt { get; set; }
 #endif
-        /// <summary>path is a file name match. readme is a short excerpt of the repository README.* `path` - Path* `readme` - Readme</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `path` - Path* `readme` - Readme</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RepositorySearchHitKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepositorySearchHitKind Kind { get; set; }
-#endif
         /// <summary>File path. Empty for a README hit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "excerpt", n => { Excerpt = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositorySearchHitKind>(global::Soenneker.PostHog.OpenApiClient.Models.RepositorySearchHitKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositorySearchHitKind>(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "repo", n => { Repo = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -94,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("excerpt", Excerpt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositorySearchHitKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositorySearchHitKind>("kind", Kind);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("repo", Repo);
             writer.WriteStringValue("url", Url);

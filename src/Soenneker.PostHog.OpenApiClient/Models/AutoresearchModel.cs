@@ -33,9 +33,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? HoldoutScore { get; set; }
         /// <summary>Unique UUID of this model version.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>True if this model is in the pipeline&apos;s shadow set: the champion, the previous champion, and up to 3 recent fitted challengers with distinct recipes.</summary>
+        public bool? InShadowSet { get; private set; }
         /// <summary>True if this model has not yet been validated against realized online outcomes.</summary>
         public bool? IsPreliminary { get; set; }
-        /// <summary>Extended metrics bundle: Brier score, precision/recall at thresholds, lift@k, base rate, row counts.</summary>
+        /// <summary>Extended metrics bundle. Holds the holdout AUC from training, and under &apos;realized&apos; the newest validated date&apos;s online metrics: realized AUC, Brier score, calibration error and bins, lift@k, average precision, confusion counts at top 10%, top 20% and Likely, base rate, and row counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty? Metrics { get; set; }
@@ -46,10 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Global feature importance and directionality. Used to explain top drivers on the model card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanationProperty? ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation? ModelExplanation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanationProperty ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation ModelExplanation { get; set; }
 #endif
         /// <summary>Portable recipe artifact. Feature SQL, transforms, model class, params, and metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,14 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RecipeHash { get; private set; }
 #endif
-        /// <summary>Model role: &apos;champion&apos; (active scoring model), &apos;challenger&apos; (shadow model), or &apos;archived&apos;.* `champion` - Champion* `challenger` - Challenger* `archived` - Archived</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `champion` - Champion* `challenger` - Challenger* `archived` - Archived</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole? Role { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole Role { get; set; }
-#endif
         /// <summary>Training run that produced this model. Read that run&apos;s artifact bundle to reuse the champion&apos;s train.py and features.sql as a starting point. Null for legacy models.</summary>
         public Guid? SourceTrainingRun { get; private set; }
         /// <summary>End of the training data window (exclusive).</summary>
@@ -120,15 +116,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "holdout_score", n => { HoldoutScore = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "in_shadow_set", n => { InShadowSet = n.GetBoolValue(); } },
                 { "is_preliminary", n => { IsPreliminary = n.GetBoolValue(); } },
                 { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty.CreateFromDiscriminatorValue); } },
-                { "model_explanation", n => { ModelExplanation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanationProperty.CreateFromDiscriminatorValue); } },
+                { "model_explanation", n => { ModelExplanation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation.CreateFromDiscriminatorValue); } },
                 { "model_recipe", n => { ModelRecipe = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty.CreateFromDiscriminatorValue); } },
                 { "pipeline", n => { Pipeline = n.GetGuidValue(); } },
                 { "promoted_at", n => { PromotedAt = n.GetDateTimeOffsetValue(); } },
                 { "realized_score", n => { RealizedScore = n.GetDoubleValue(); } },
                 { "recipe_hash", n => { RecipeHash = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole.CreateFromDiscriminatorValue); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole>(); } },
                 { "source_training_run", n => { SourceTrainingRun = n.GetGuidValue(); } },
                 { "trained_on_end", n => { TrainedOnEnd = n.GetDateValue(); } },
                 { "trained_on_start", n => { TrainedOnStart = n.GetDateValue(); } },
@@ -148,12 +145,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("holdout_score", HoldoutScore);
             writer.WriteBoolValue("is_preliminary", IsPreliminary);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty>("metrics", Metrics);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanationProperty>("model_explanation", ModelExplanation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation>("model_explanation", ModelExplanation);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty>("model_recipe", ModelRecipe);
             writer.WriteGuidValue("pipeline", Pipeline);
             writer.WriteDateTimeOffsetValue("promoted_at", PromotedAt);
             writer.WriteDoubleValue("realized_score", RealizedScore);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole>("role", Role);
             writer.WriteDateValue("trained_on_end", TrainedOnEnd);
             writer.WriteDateValue("trained_on_start", TrainedOnStart);
             writer.WriteAdditionalData(AdditionalData);

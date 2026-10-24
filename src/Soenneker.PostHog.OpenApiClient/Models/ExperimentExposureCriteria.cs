@@ -31,13 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filterTestAccounts property</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The multiple_variant_handling property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper3? MultipleVariantHandling { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper3 MultipleVariantHandling { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling? MultipleVariantHandling { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "activation_config", n => { ActivationConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteriaActivationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteriaActivationConfig.CreateFromDiscriminatorValue); } },
                 { "exposure_config", n => { ExposureConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteriaExposureConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteriaExposureConfig.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper3.CreateFromDiscriminatorValue); } },
+                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>(); } },
             };
         }
         /// <summary>
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteriaActivationConfig>("activation_config", ActivationConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteriaExposureConfig>("exposure_config", ExposureConfig);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper3>("multiple_variant_handling", MultipleVariantHandling);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
         }
     }
 }

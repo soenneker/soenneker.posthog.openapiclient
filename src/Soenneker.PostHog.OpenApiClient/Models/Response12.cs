@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The columns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem>? Columns { get; set; }
+        public UntypedNode? Columns { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem> Columns { get; set; }
+        public UntypedNode Columns { get; set; }
 #endif
         /// <summary>ISO timestamp of the oldest precompute window backing this result — surfaced as &quot;data as of X&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -111,10 +111,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The types property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Response12TypesItem>? Types { get; set; }
+        public UntypedNode? Types { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Response12TypesItem> Types { get; set; }
+        public UntypedNode Types { get; set; }
 #endif
         /// <summary>Connector-synced data warehouse sources referenced by this query, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem>(global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "columns", n => { Columns = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "dataComputedAt", n => { DataComputedAt = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
@@ -165,7 +165,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "samplingRate", n => { SamplingRate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SamplingRate>(global::Soenneker.PostHog.OpenApiClient.Models.SamplingRate.CreateFromDiscriminatorValue); } },
                 { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "types", n => { Types = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12TypesItem>(global::Soenneker.PostHog.OpenApiClient.Models.Response12TypesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "types", n => { Types = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "used_data_warehouse_sources", n => { UsedDataWarehouseSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12WarningsItem>(global::Soenneker.PostHog.OpenApiClient.Models.Response12WarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -177,7 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12ColumnsItem>("columns", Columns);
+            writer.WriteObjectValue<UntypedNode>("columns", Columns);
             writer.WriteStringValue("dataComputedAt", DataComputedAt);
             writer.WriteStringValue("error", Error);
             writer.WriteBoolValue("hasMore", HasMore);
@@ -192,7 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("results", Results);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SamplingRate>("samplingRate", SamplingRate);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12TypesItem>("types", Types);
+            writer.WriteObjectValue<UntypedNode>("types", Types);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>("used_data_warehouse_sources", UsedDataWarehouseSources);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Response12WarningsItem>("warnings", Warnings);
         }

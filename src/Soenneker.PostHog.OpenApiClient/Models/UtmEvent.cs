@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How utm_campaign matched: none, auto (direct name/id), or mapped (manual mapping)* `none` - none* `auto` - auto* `mapped` - mapped</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `auto` - auto* `mapped` - mapped</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch? CampaignMatch { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch CampaignMatch { get; set; }
-#endif
         /// <summary>Number of pageview events with this UTM combination</summary>
         public int? EventCount { get; set; }
         /// <summary>Name of the matched campaign, if any</summary>
@@ -32,14 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MatchedCampaign { get; set; }
 #endif
-        /// <summary>How utm_source matched: none, auto (default source), or mapped (custom mapping)* `none` - none* `auto` - auto* `mapped` - mapped</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `auto` - auto* `mapped` - mapped</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch? SourceMatch { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch SourceMatch { get; set; }
-#endif
         /// <summary>UTM campaign value from pageview events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "campaign_match", n => { CampaignMatch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch>(global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch.CreateFromDiscriminatorValue); } },
+                { "campaign_match", n => { CampaignMatch = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch>(); } },
                 { "event_count", n => { EventCount = n.GetIntValue(); } },
                 { "matched_campaign", n => { MatchedCampaign = n.GetStringValue(); } },
-                { "source_match", n => { SourceMatch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch>(global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch.CreateFromDiscriminatorValue); } },
+                { "source_match", n => { SourceMatch = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch>(); } },
                 { "utm_campaign", n => { UtmCampaign = n.GetStringValue(); } },
                 { "utm_source", n => { UtmSource = n.GetStringValue(); } },
             };
@@ -96,10 +84,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch>("campaign_match", CampaignMatch);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch>("campaign_match", CampaignMatch);
             writer.WriteIntValue("event_count", EventCount);
             writer.WriteStringValue("matched_campaign", MatchedCampaign);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch>("source_match", SourceMatch);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch>("source_match", SourceMatch);
             writer.WriteStringValue("utm_campaign", UtmCampaign);
             writer.WriteStringValue("utm_source", UtmSource);
             writer.WriteAdditionalData(AdditionalData);

@@ -71,27 +71,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem();
-            if("AccountsTableAccountFieldColumn".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("account_field".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AccountsTableAccountFieldColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn();
             }
-            else if("AccountsTableCustomPropertyColumn".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("custom_property".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AccountsTableCustomPropertyColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn();
             }
-            else if("AccountsTableCustomPropertyHistoryColumn".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("custom_property_history".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AccountsTableCustomPropertyHistoryColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyHistoryColumn();
             }
-            else if("AccountsTableNoteCountColumn".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("note_count".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AccountsTableNoteCountColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn();
             }
-            else if("AccountsTableRelationshipColumn".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("relationship".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AccountsTableRelationshipColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn();
             }
-            else if("AccountsTableTagsColumn".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("tags".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AccountsTableTagsColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn();
             }

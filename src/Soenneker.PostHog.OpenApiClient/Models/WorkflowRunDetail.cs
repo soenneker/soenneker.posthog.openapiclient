@@ -34,6 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Wall-clock duration in seconds; null until the run completes.</summary>
         public int? DurationSeconds { get; set; }
+        /// <summary>Event that triggered the run, such as &apos;push&apos;, &apos;pull_request&apos; or &apos;schedule&apos;. Null when unknown, as for a Depot CI run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Event { get; set; }
+#nullable restore
+#else
+        public string Event { get; set; }
+#endif
         /// <summary>Git branch the run was triggered on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,6 +102,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the run was last updated (its finish time once completed), or null when unstarted.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>GitHub&apos;s numeric id of the workflow. It stays the same when the workflow is renamed, so use it to follow one workflow over time. Null for a Depot CI run, and for a run whose source does not carry the id.</summary>
+        public int? WorkflowId { get; set; }
         /// <summary>CI workflow name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -131,6 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "commit_pr_number", n => { CommitPrNumber = n.GetIntValue(); } },
                 { "conclusion", n => { Conclusion = n.GetStringValue(); } },
                 { "duration_seconds", n => { DurationSeconds = n.GetIntValue(); } },
+                { "event", n => { Event = n.GetStringValue(); } },
                 { "head_branch", n => { HeadBranch = n.GetStringValue(); } },
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -143,6 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "run_started_at", n => { RunStartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "workflow_id", n => { WorkflowId = n.GetIntValue(); } },
                 { "workflow_name", n => { WorkflowName = n.GetStringValue(); } },
             };
         }
@@ -157,6 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("commit_pr_number", CommitPrNumber);
             writer.WriteStringValue("conclusion", Conclusion);
             writer.WriteIntValue("duration_seconds", DurationSeconds);
+            writer.WriteStringValue("event", Event);
             writer.WriteStringValue("head_branch", HeadBranch);
             writer.WriteStringValue("head_sha", HeadSha);
             writer.WriteIntValue("id", Id);
@@ -169,6 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("run_started_at", RunStartedAt);
             writer.WriteStringValue("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            writer.WriteIntValue("workflow_id", WorkflowId);
             writer.WriteStringValue("workflow_name", WorkflowName);
             writer.WriteAdditionalData(AdditionalData);
         }

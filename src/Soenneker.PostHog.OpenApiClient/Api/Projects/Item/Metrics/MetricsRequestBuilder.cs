@@ -5,14 +5,16 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attribute_values;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Dashboard_imports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Error_spikes;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Explain;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Has_metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Names;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Overview;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Samples;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Suggested_dashboards;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Values;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Variable_options;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -40,15 +42,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize.CharacterizeRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The dashboard_imports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Dashboard_imports.Dashboard_importsRequestBuilder Dashboard_imports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Dashboard_imports.Dashboard_importsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The error_spikes property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Error_spikes.Error_spikesRequestBuilder Error_spikes
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Error_spikes.Error_spikesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The explain property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Explain.ExplainRequestBuilder Explain
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Explain.ExplainRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The has_metrics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Has_metrics.Has_metricsRequestBuilder Has_metrics
@@ -75,10 +77,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Samples.SamplesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The suggested_dashboards property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Suggested_dashboards.Suggested_dashboardsRequestBuilder Suggested_dashboards
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Suggested_dashboards.Suggested_dashboardsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The values property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Values.ValuesRequestBuilder Values
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Values.ValuesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The variable_options property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Variable_options.Variable_optionsRequestBuilder Variable_options
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Variable_options.Variable_optionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.MetricsRequestBuilder"/> and sets the default values.

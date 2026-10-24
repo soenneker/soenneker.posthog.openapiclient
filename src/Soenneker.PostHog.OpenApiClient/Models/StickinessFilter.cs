@@ -21,21 +21,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get; set; }
 #endif
         /// <summary>The computedAs property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper? ComputedAs { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper ComputedAs { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationMode? ComputedAs { get; set; }
         /// <summary>The display property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3? Display { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3 Display { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
         /// <summary>The hiddenLegendIndexes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<int?> HiddenLegendIndexes { get; set; }
 #endif
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4? LegendPosition { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4 LegendPosition { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
         /// <summary>Whether result datasets are associated by their values or by their order.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper? ResultCustomizationBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper ResultCustomizationBy { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy? ResultCustomizationBy { get; set; }
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,11 +77,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
-                { "computedAs", n => { ComputedAs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper.CreateFromDiscriminatorValue); } },
-                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3.CreateFromDiscriminatorValue); } },
+                { "computedAs", n => { ComputedAs = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationMode>(); } },
+                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); } },
                 { "hiddenLegendIndexes", n => { HiddenLegendIndexes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4.CreateFromDiscriminatorValue); } },
-                { "resultCustomizationBy", n => { ResultCustomizationBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper.CreateFromDiscriminatorValue); } },
+                { "legendPosition", n => { LegendPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>(); } },
+                { "resultCustomizationBy", n => { ResultCustomizationBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy>(); } },
                 { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations.CreateFromDiscriminatorValue); } },
                 { "showLegend", n => { ShowLegend = n.GetBoolValue(); } },
                 { "showMultipleYAxes", n => { ShowMultipleYAxes = n.GetBoolValue(); } },
@@ -121,11 +97,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper>("computedAs", ComputedAs);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3>("display", Display);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationMode>("computedAs", ComputedAs);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("display", Display);
             writer.WriteCollectionOfPrimitiveValues<int?>("hiddenLegendIndexes", HiddenLegendIndexes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4>("legendPosition", LegendPosition);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper>("resultCustomizationBy", ResultCustomizationBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>("legendPosition", LegendPosition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy>("resultCustomizationBy", ResultCustomizationBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations>("resultCustomizations", ResultCustomizations);
             writer.WriteBoolValue("showLegend", ShowLegend);
             writer.WriteBoolValue("showMultipleYAxes", ShowMultipleYAxes);

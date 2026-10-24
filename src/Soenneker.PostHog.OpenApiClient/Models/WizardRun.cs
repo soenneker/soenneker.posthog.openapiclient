@@ -28,14 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreatedById { get; private set; }
         /// <summary>Cloud execution deadline, or null for local runs.</summary>
         public DateTimeOffset? DeadlineAt { get; private set; }
-        /// <summary>Where the setup agent runs.* `local` - local* `cloud` - cloud</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `local` - local* `cloud` - cloud</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunEnvironment? Environment { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunEnvironment Environment { get; private set; }
-#endif
         /// <summary>Machine-readable failure reason, or null if the run has not failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,14 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When execution started, or null while queued.</summary>
         public DateTimeOffset? StartedAt { get; private set; }
-        /// <summary>Current lifecycle status of the Wizard run.* `created` - created* `running` - running* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `created` - created* `running` - running* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunStatus Status { get; private set; }
-#endif
         /// <summary>Project that owns the Wizard run.</summary>
         public int? TeamId { get; private set; }
         /// <summary>When the run last changed.</summary>
@@ -123,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreator>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreator.CreateFromDiscriminatorValue); } },
                 { "created_by_id", n => { CreatedById = n.GetIntValue(); } },
                 { "deadline_at", n => { DeadlineAt = n.GetDateTimeOffsetValue(); } },
-                { "environment", n => { Environment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunEnvironment>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunEnvironment.CreateFromDiscriminatorValue); } },
+                { "environment", n => { Environment = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunEnvironment>(); } },
                 { "error_code", n => { ErrorCode = n.GetStringValue(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
@@ -131,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "program", n => { Program = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunProgram>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunProgram.CreateFromDiscriminatorValue); } },
                 { "stage", n => { Stage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunStage>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunStage.CreateFromDiscriminatorValue); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunStatus>(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "workspace", n => { Workspace = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspace>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspace.CreateFromDiscriminatorValue); } },

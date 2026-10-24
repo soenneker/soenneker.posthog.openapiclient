@@ -49,14 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the team is on a Pro plan (drives the upgrade-prompt copy)</summary>
         public bool? IsPro { get; set; }
-        /// <summary>Which usage limit was hit on a rate_limited error: &apos;burst&apos; (daily) or &apos;sustained&apos; (monthly)* `burst` - burst* `sustained` - sustained</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `burst` - burst* `sustained` - sustained</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType? LimitType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType LimitType { get; set; }
-#endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
         /// <summary>Artifact ids that could not be resolved for the run</summary>
@@ -67,14 +61,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> MissingArtifactIds { get; set; }
 #endif
-        /// <summary>Why PostHog Desktop access was denied, when applicable.* `startup_plan` - startup_plan* `prepaid_credits` - prepaid_credits</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `startup_plan` - startup_plan* `prepaid_credits` - prepaid_credits</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason? Reason { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason Reason { get; set; }
-#endif
         /// <summary>ISO 8601 timestamp when the hit usage limit resets, when known</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -129,9 +117,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "is_pro", n => { IsPro = n.GetBoolValue(); } },
-                { "limit_type", n => { LimitType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType.CreateFromDiscriminatorValue); } },
+                { "limit_type", n => { LimitType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType>(); } },
                 { "missing_artifact_ids", n => { MissingArtifactIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason.CreateFromDiscriminatorValue); } },
+                { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason>(); } },
                 { "reset_at", n => { ResetAt = n.GetStringValue(); } },
                 { "retry_token", n => { RetryToken = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
@@ -149,9 +137,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("detail", Detail);
             writer.WriteStringValue("error", Error);
             writer.WriteBoolValue("is_pro", IsPro);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType>("limit_type", LimitType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType>("limit_type", LimitType);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_artifact_ids", MissingArtifactIds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason>("reason", Reason);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason>("reason", Reason);
             writer.WriteStringValue("reset_at", ResetAt);
             writer.WriteStringValue("retry_token", RetryToken);
             writer.WriteStringValue("type", Type);

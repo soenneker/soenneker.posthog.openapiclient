@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? BackfillsCommittedCredits { get; private set; }
         /// <summary>Credits the organization may spend per billing period (1 credit = $0.01). 0 is a hard block: no observation can start. Null when billing has synced the product with no spend limit: uncapped.</summary>
         public int? CreditLimit { get; private set; }
-        /// <summary>Credits held by in-flight observations and running prompt tests across every project in the organization. Released without charge when the work fails, settled into `credits_settled` when it succeeds.</summary>
+        /// <summary>Credits held by in-flight observations across every project in the organization. Released without charge when the work fails, settled into `credits_settled` when it succeeds.</summary>
         public int? CreditsReserved { get; private set; }
         /// <summary>Credits posted to the receipt ledger by succeeded observations and finished prompt-test sessions this period, across every project in the organization. Deleting an observation never refunds these.</summary>
         public int? CreditsSettled { get; private set; }

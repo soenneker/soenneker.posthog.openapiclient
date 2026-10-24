@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Clause { get; set; }
 #endif
+        /// <summary>Bucket upper edges a histogram quantile series was estimated from. The true quantile can be anywhere between two edges.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<double?>? HistogramBounds { get; set; }
+#nullable restore
+#else
+        public List<double?> HistogramBounds { get; set; }
+#endif
         /// <summary>Label values identifying this series; empty for an ungrouped query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint> Points { get; set; }
 #endif
-        /// <summary>UCUM unit of the metric as ingested, e.g. &quot;By&quot;, &quot;ms&quot;, &quot;1&quot;. Empty when the SDK did not set one.</summary>
+        /// <summary>UCUM unit of the returned values, e.g. &quot;By&quot;, &quot;ms&quot;, &quot;1/s&quot;. It is the ingested unit, except that a count of series has no unit and a rate is per second. Empty when the values have no unit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Unit { get; set; }
@@ -71,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "clause", n => { Clause = n.GetStringValue(); } },
+                { "histogramBounds", n => { HistogramBounds = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
                 { "points", n => { Points = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -85,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("clause", Clause);
+            writer.WriteCollectionOfPrimitiveValues<double?>("histogramBounds", HistogramBounds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty>("labels", Labels);
             writer.WriteStringValue("metricName", MetricName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>("points", Points);

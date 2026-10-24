@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rationale { get; set; }
 #endif
-        /// <summary>Primary grounding: observed=a category this scanner already emitted on recordings; product=the org&apos;s events/screens; prompt=the scanner&apos;s stated goal.* `observed` - observed* `product` - product* `prompt` - prompt</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `observed` - observed* `product` - product* `prompt` - prompt</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource Source { get; set; }
-#endif
         /// <summary>Suggested tag to add to the vocabulary, normalized to lowercase.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource>(global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource>(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
             };
         }
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("rationale", Rationale);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource>("source", Source);
             writer.WriteStringValue("tag", Tag);
             writer.WriteAdditionalData(AdditionalData);
         }

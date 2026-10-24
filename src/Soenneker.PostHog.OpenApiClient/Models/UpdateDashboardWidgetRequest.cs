@@ -7,84 +7,48 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetUpdateRequestOpenApi"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetUpdateRequestOpenApi"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UpdateDashboardWidgetRequest : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class UpdateDashboardWidgetRequest : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetUpdateRequestOpenApi"/></summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Widget configuration as a JSON object. Its keys depend on widget_type: read that type&apos;s config_schema from dashboard-widget-catalog-list. The API validates the config and returns a 400 that names each invalid field. Each top-level key you send replaces the stored value, and keys you leave out stay as they are. Omit config to leave it unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetUpdateRequestOpenApi? ActivityEventsListWidgetUpdateRequestOpenApi { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetUpdateRequestOpenApi ActivityEventsListWidgetUpdateRequestOpenApi { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestConfigProperty Config { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetUpdateRequestOpenApi"/></summary>
+        /// <summary>New markdown description for the widget. Omit to leave unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetUpdateRequestOpenApi? ConversationsRecentTicketsWidgetUpdateRequestOpenApi { get; set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetUpdateRequestOpenApi ConversationsRecentTicketsWidgetUpdateRequestOpenApi { get; set; }
+        public string Description { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetUpdateRequestOpenApi"/></summary>
+        /// <summary>New display name for the widget. Empty string or null clears it; omit to leave unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetUpdateRequestOpenApi? ErrorTrackingListWidgetUpdateRequestOpenApi { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetUpdateRequestOpenApi ErrorTrackingListWidgetUpdateRequestOpenApi { get; set; }
+        public string Name { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetUpdateRequestOpenApi"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetUpdateRequestOpenApi? ExperimentResultsWidgetUpdateRequestOpenApi { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetUpdateRequestOpenApi ExperimentResultsWidgetUpdateRequestOpenApi { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetUpdateRequestOpenApi"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetUpdateRequestOpenApi? ExperimentsListWidgetUpdateRequestOpenApi { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetUpdateRequestOpenApi ExperimentsListWidgetUpdateRequestOpenApi { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetUpdateRequestOpenApi"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetUpdateRequestOpenApi? LogsListWidgetUpdateRequestOpenApi { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetUpdateRequestOpenApi LogsListWidgetUpdateRequestOpenApi { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetUpdateRequestOpenApi"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetUpdateRequestOpenApi? NotebookWidgetUpdateRequestOpenApi { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetUpdateRequestOpenApi NotebookWidgetUpdateRequestOpenApi { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetUpdateRequestOpenApi"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetUpdateRequestOpenApi? SessionReplayListWidgetUpdateRequestOpenApi { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetUpdateRequestOpenApi SessionReplayListWidgetUpdateRequestOpenApi { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetUpdateRequestOpenApi"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetUpdateRequestOpenApi? SurveyResultsWidgetUpdateRequestOpenApi { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetUpdateRequestOpenApi SurveyResultsWidgetUpdateRequestOpenApi { get; set; }
-#endif
+        /// <summary>ID of the widget tile to update. Use dashboard-get to look up widget tile IDs.</summary>
+        public int? TileId { get; set; }
+        /// <summary>* `activity_events_list` - Activity Events List* `canvas_app` - Canvas App* `conversations_recent_tickets` - Conversations Recent Tickets* `error_tracking_list` - Error Tracking List* `experiment_results` - Experiment Results* `experiments_list` - Experiments List* `logs_list` - Logs List* `metrics_table` - Metrics Table* `notebook_widget` - Notebook Widget* `session_replay_list` - Session Replay List* `survey_results` - Survey Results</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestWidgetType? WidgetType { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequest"/> and sets the default values.
+        /// </summary>
+        public UpdateDashboardWidgetRequest()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -93,45 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("widget_type")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequest();
-            if("ActivityEventsListWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ActivityEventsListWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetUpdateRequestOpenApi();
-            }
-            else if("ConversationsRecentTicketsWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ConversationsRecentTicketsWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetUpdateRequestOpenApi();
-            }
-            else if("ErrorTrackingListWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ErrorTrackingListWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetUpdateRequestOpenApi();
-            }
-            else if("ExperimentResultsWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ExperimentResultsWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetUpdateRequestOpenApi();
-            }
-            else if("ExperimentsListWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ExperimentsListWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetUpdateRequestOpenApi();
-            }
-            else if("LogsListWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.LogsListWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetUpdateRequestOpenApi();
-            }
-            else if("NotebookWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.NotebookWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetUpdateRequestOpenApi();
-            }
-            else if("SessionReplayListWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.SessionReplayListWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetUpdateRequestOpenApi();
-            }
-            else if("SurveyResultsWidgetUpdateRequestOpenApi".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.SurveyResultsWidgetUpdateRequestOpenApi = new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetUpdateRequestOpenApi();
-            }
-            return result;
+            return new global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -139,43 +65,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ActivityEventsListWidgetUpdateRequestOpenApi != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return ActivityEventsListWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(ConversationsRecentTicketsWidgetUpdateRequestOpenApi != null)
-            {
-                return ConversationsRecentTicketsWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(ErrorTrackingListWidgetUpdateRequestOpenApi != null)
-            {
-                return ErrorTrackingListWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(ExperimentResultsWidgetUpdateRequestOpenApi != null)
-            {
-                return ExperimentResultsWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(ExperimentsListWidgetUpdateRequestOpenApi != null)
-            {
-                return ExperimentsListWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(LogsListWidgetUpdateRequestOpenApi != null)
-            {
-                return LogsListWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(NotebookWidgetUpdateRequestOpenApi != null)
-            {
-                return NotebookWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(SessionReplayListWidgetUpdateRequestOpenApi != null)
-            {
-                return SessionReplayListWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            else if(SurveyResultsWidgetUpdateRequestOpenApi != null)
-            {
-                return SurveyResultsWidgetUpdateRequestOpenApi.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestConfigProperty.CreateFromDiscriminatorValue); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "tile_id", n => { TileId = n.GetIntValue(); } },
+                { "widget_type", n => { WidgetType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestWidgetType>(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -184,42 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ActivityEventsListWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetUpdateRequestOpenApi>(null, ActivityEventsListWidgetUpdateRequestOpenApi);
-            }
-            else if(ConversationsRecentTicketsWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetUpdateRequestOpenApi>(null, ConversationsRecentTicketsWidgetUpdateRequestOpenApi);
-            }
-            else if(ErrorTrackingListWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetUpdateRequestOpenApi>(null, ErrorTrackingListWidgetUpdateRequestOpenApi);
-            }
-            else if(ExperimentResultsWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentResultsWidgetUpdateRequestOpenApi>(null, ExperimentResultsWidgetUpdateRequestOpenApi);
-            }
-            else if(ExperimentsListWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetUpdateRequestOpenApi>(null, ExperimentsListWidgetUpdateRequestOpenApi);
-            }
-            else if(LogsListWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetUpdateRequestOpenApi>(null, LogsListWidgetUpdateRequestOpenApi);
-            }
-            else if(NotebookWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetUpdateRequestOpenApi>(null, NotebookWidgetUpdateRequestOpenApi);
-            }
-            else if(SessionReplayListWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetUpdateRequestOpenApi>(null, SessionReplayListWidgetUpdateRequestOpenApi);
-            }
-            else if(SurveyResultsWidgetUpdateRequestOpenApi != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetUpdateRequestOpenApi>(null, SurveyResultsWidgetUpdateRequestOpenApi);
-            }
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestConfigProperty>("config", Config);
+            writer.WriteStringValue("description", Description);
+            writer.WriteStringValue("name", Name);
+            writer.WriteIntValue("tile_id", TileId);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateDashboardWidgetRequestWidgetType>("widget_type", WidgetType);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The breakdown_value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownValue? BreakdownValue { get; set; }
+        public UntypedNode? BreakdownValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownValue BreakdownValue { get; set; }
+        public UntypedNode BreakdownValue { get; set; }
 #endif
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "breakdown_type", n => { BreakdownType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownType>(global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownType.CreateFromDiscriminatorValue); } },
-                { "breakdown_value", n => { BreakdownValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownValue>(global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownValue.CreateFromDiscriminatorValue); } },
+                { "breakdown_value", n => { BreakdownValue = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "data", n => { Data = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "dates", n => { Dates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownType>("breakdown_type", BreakdownType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingTimeSeriesPointBreakdownValue>("breakdown_value", BreakdownValue);
+            writer.WriteObjectValue<UntypedNode>("breakdown_value", BreakdownValue);
             writer.WriteCollectionOfPrimitiveValues<double?>("data", Data);
             writer.WriteCollectionOfPrimitiveValues<string>("dates", Dates);
             writer.WriteIntValue("id", Id);

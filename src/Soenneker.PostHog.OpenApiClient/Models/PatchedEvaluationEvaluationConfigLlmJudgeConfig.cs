@@ -12,6 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class PatchedEvaluationEvaluationConfigLlmJudgeConfig : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Judge method. Omit to keep the saved method; null restores automatic routing.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationConfigLlmJudgeConfigJudgeMethod? JudgeMethod { get; set; }
         /// <summary>Evaluation criteria for the LLM judge. Describe what makes a good vs bad response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,6 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "judge_method", n => { JudgeMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationConfigLlmJudgeConfigJudgeMethod>(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
             };
         }
@@ -48,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationConfigLlmJudgeConfigJudgeMethod>("judge_method", JudgeMethod);
             writer.WriteStringValue("prompt", Prompt);
         }
     }

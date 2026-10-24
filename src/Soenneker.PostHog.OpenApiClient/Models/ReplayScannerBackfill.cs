@@ -40,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? InFlightCount { get; private set; }
         /// <summary>Candidates the walk stepped over because this scanner had already tried them. Counted at creation but never dispatched, so progress and remaining spend both have to account for them.</summary>
         public int? SkippedCount { get; private set; }
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `running` - Running* `paused_quota` - Paused (quota)* `completed` - Completed* `cancelled` - Cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfillStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfillStatus Status { get; private set; }
-#endif
         /// <summary>Observations from this backfill that succeeded.</summary>
         public int? SucceededCount { get; private set; }
         /// <summary>Unobserved candidates enumerated at creation; the ceiling is total_count x credits_per_observation.</summary>
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "in_flight_count", n => { InFlightCount = n.GetIntValue(); } },
                 { "ineligible_count", n => { IneligibleCount = n.GetIntValue(); } },
                 { "skipped_count", n => { SkippedCount = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfillStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfillStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfillStatus>(); } },
                 { "succeeded_count", n => { SucceededCount = n.GetIntValue(); } },
                 { "total_count", n => { TotalCount = n.GetIntValue(); } },
                 { "window_end", n => { WindowEnd = n.GetDateTimeOffsetValue(); } },

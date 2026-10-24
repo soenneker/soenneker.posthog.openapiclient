@@ -48,10 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The `RecordingsQuery` recording filters this version ran with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerQuery? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerQuery Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
         /// <summary>The session-coverage pre-filter this version ran with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,10 +66,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The full type-specific config this version ran with (prompt plus, depending on scanner type, allow_inconclusive, tags, scale, or length), taken from the observation run snapshots.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerScannerConfig? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerScannerConfig ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get; set; }
 #endif
         /// <summary>The scanner type this version ran as.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -116,10 +116,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "sampling_mode", n => { SamplingMode = n.GetStringValue(); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
-                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerScannerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerScannerConfig.CreateFromDiscriminatorValue); } },
+                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "scanner_type", n => { ScannerType = n.GetStringValue(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
                 { "up", n => { Up = n.GetIntValue(); } },
@@ -139,10 +139,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteStringValue("provider", Provider);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerQuery>("query", Query);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
             writer.WriteStringValue("sampling_mode", SamplingMode);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarkerScannerConfig>("scanner_config", ScannerConfig);
+            writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
             writer.WriteStringValue("scanner_type", ScannerType);
             writer.WriteIntValue("total", Total);
             writer.WriteIntValue("up", Up);

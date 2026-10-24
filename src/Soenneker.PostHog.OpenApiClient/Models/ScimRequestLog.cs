@@ -31,18 +31,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The request_body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestBody? RequestBody { get; private set; }
+        public UntypedNode? RequestBody { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestBody RequestBody { get; private set; }
+        public UntypedNode RequestBody { get; private set; }
 #endif
         /// <summary>The request_headers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestHeaders? RequestHeaders { get; private set; }
+        public UntypedNode? RequestHeaders { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestHeaders RequestHeaders { get; private set; }
+        public UntypedNode RequestHeaders { get; private set; }
 #endif
         /// <summary>The request_method property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response_body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogResponseBody? ResponseBody { get; private set; }
+        public UntypedNode? ResponseBody { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogResponseBody ResponseBody { get; private set; }
+        public UntypedNode ResponseBody { get; private set; }
 #endif
         /// <summary>The response_status property</summary>
         public int? ResponseStatus { get; private set; }
@@ -99,11 +99,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "duration_ms", n => { DurationMs = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "identity_provider", n => { IdentityProvider = n.GetStringValue(); } },
-                { "request_body", n => { RequestBody = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestBody>(global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestBody.CreateFromDiscriminatorValue); } },
-                { "request_headers", n => { RequestHeaders = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestHeaders>(global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogRequestHeaders.CreateFromDiscriminatorValue); } },
+                { "request_body", n => { RequestBody = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "request_headers", n => { RequestHeaders = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "request_method", n => { RequestMethod = n.GetStringValue(); } },
                 { "request_path", n => { RequestPath = n.GetStringValue(); } },
-                { "response_body", n => { ResponseBody = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogResponseBody>(global::Soenneker.PostHog.OpenApiClient.Models.ScimRequestLogResponseBody.CreateFromDiscriminatorValue); } },
+                { "response_body", n => { ResponseBody = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "response_status", n => { ResponseStatus = n.GetIntValue(); } },
             };
         }

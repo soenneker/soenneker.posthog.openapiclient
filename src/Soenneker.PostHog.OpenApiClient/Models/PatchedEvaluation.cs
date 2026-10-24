@@ -55,14 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationConfig EvaluationConfig { get; set; }
 #endif
-        /// <summary>&apos;llm_judge&apos; uses an LLM to score outputs against a prompt; &apos;hog&apos; runs deterministic Hog code; &apos;sentiment&apos; classifies user-message sentiment (trained on English, so use &apos;llm_judge&apos; for multilingual agents).* `llm_judge` - LLM as a judge* `hog` - Hog* `sentiment` - Sentiment analysis</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `llm_judge` - LLM as a judge* `hog` - Hog* `sentiment` - Sentiment analysis</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationType? EvaluationType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationType EvaluationType { get; set; }
-#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.</summary>
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For &apos;numeric&apos;: only min/max/step, allows_na, and passing_rule {operator: &apos;gte&apos;|&apos;lte&apos;, threshold}. For &apos;categorical&apos;: options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For &apos;sentiment&apos;: {}.</summary>
+        /// <summary>Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For boolean decision-model judges, decision_threshold is a probability from 0 to 1 (default 0.5). For &apos;numeric&apos;: only min/max/step, allows_na, and passing_rule {operator: &apos;gte&apos;|&apos;lte&apos;, threshold}. For &apos;categorical&apos;: options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For &apos;sentiment&apos;: {}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig? OutputConfig { get; set; }
@@ -89,22 +83,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig OutputConfig { get; set; }
 #endif
-        /// <summary>Output format: &apos;boolean&apos;, &apos;numeric&apos; for a finite score, &apos;categorical&apos; for category keys, or &apos;sentiment&apos; for sentiment analysis.* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical* `sentiment` - Sentiment</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical* `sentiment` - Sentiment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType? OutputType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType OutputType { get; set; }
-#endif
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - Active* `paused` - Paused* `error` - Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationStatus Status { get; private set; }
-#endif
         /// <summary>The status_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,15 +103,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StatusReasonDetail { get; private set; }
 #endif
-        /// <summary>What the evaluation runs on. &apos;generation&apos; evaluates each matching $ai_generation event individually. &apos;trace&apos; evaluates the whole trace once and &apos;session&apos; the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A &apos;session&apos; evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config&apos;s settle strategy.* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTarget? Target { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTarget Target { get; set; }
-#endif
-        /// <summary>Target-specific config. For &apos;trace&apos; and &apos;session&apos; targets: a settle config discriminated on `strategy`, either &apos;fixed_window&apos; {window_seconds} or &apos;inactivity&apos; {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for &apos;generation&apos;.</summary>
+        /// <summary>Target-specific config. Send {} or omit it for &apos;generation&apos;. For &apos;trace&apos; and &apos;session&apos; targets: a settle config, either &apos;fixed_window&apos; {window_seconds} or &apos;inactivity&apos; {quiet_period_seconds, max_age_seconds}. Omit `strategy` to use the target&apos;s default. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig? TargetConfig { get; set; }
@@ -180,16 +156,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "directory_id", n => { DirectoryId = n.GetGuidValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_config", n => { EvaluationConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationConfig.CreateFromDiscriminatorValue); } },
-                { "evaluation_type", n => { EvaluationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationType.CreateFromDiscriminatorValue); } },
+                { "evaluation_type", n => { EvaluationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationType>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig.CreateFromDiscriminatorValue); } },
-                { "output_type", n => { OutputType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationStatus.CreateFromDiscriminatorValue); } },
+                { "output_type", n => { OutputType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationStatus>(); } },
                 { "status_reason", n => { StatusReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationStatusReason>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationStatusReason.CreateFromDiscriminatorValue); } },
                 { "status_reason_detail", n => { StatusReasonDetail = n.GetStringValue(); } },
-                { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTarget>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTarget.CreateFromDiscriminatorValue); } },
+                { "target", n => { Target = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTarget>(); } },
                 { "target_config", n => { TargetConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
@@ -208,12 +184,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("directory_id", DirectoryId);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationConfig>("evaluation_config", EvaluationConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationType>("evaluation_type", EvaluationType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationEvaluationType>("evaluation_type", EvaluationType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration>("model_configuration", ModelConfiguration);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig>("output_config", OutputConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType>("output_type", OutputType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTarget>("target", Target);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputType>("output_type", OutputType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTarget>("target", Target);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig>("target_config", TargetConfig);
             writer.WriteAdditionalData(AdditionalData);
         }

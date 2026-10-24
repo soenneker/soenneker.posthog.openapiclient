@@ -96,14 +96,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>One-based version number.</summary>
         public int? Version { get; set; }
-        /// <summary>Action that created this version.* `initial` - initial* `regenerate` - regenerate* `improve` - improve* `revert` - revert</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `initial` - initial* `regenerate` - regenerate* `improve` - improve* `revert` - revert</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation? VersionOperation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation VersionOperation { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersion"/> and sets the default values.
         /// </summary>
@@ -143,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "prompt_delta", n => { PromptDelta = n.GetStringValue(); } },
                 { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
-                { "version_operation", n => { VersionOperation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation.CreateFromDiscriminatorValue); } },
+                { "version_operation", n => { VersionOperation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation>(); } },
             };
         }
         /// <summary>
@@ -167,7 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("prompt_delta", PromptDelta);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>("security_review", SecurityReview);
             writer.WriteIntValue("version", Version);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation>("version_operation", VersionOperation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation>("version_operation", VersionOperation);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

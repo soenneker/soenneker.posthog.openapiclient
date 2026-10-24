@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Unique identifier for this submission.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Whether this submission is general feedback or a missing capability report.* `feedback` - Feedback* `missing_capability` - Missing capability</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `feedback` - Feedback* `missing_capability` - Missing capability</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpAnalyticsSubmissionKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAnalyticsSubmissionKind Kind { get; private set; }
-#endif
         /// <summary>MCP client name captured alongside the submission when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -141,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAnalyticsSubmissionKind>(global::Soenneker.PostHog.OpenApiClient.Models.McpAnalyticsSubmissionKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAnalyticsSubmissionKind>(); } },
                 { "mcp_client_name", n => { McpClientName = n.GetStringValue(); } },
                 { "mcp_client_version", n => { McpClientVersion = n.GetStringValue(); } },
                 { "mcp_protocol_version", n => { McpProtocolVersion = n.GetStringValue(); } },

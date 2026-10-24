@@ -37,22 +37,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Issue { get; set; }
 #endif
-        /// <summary>Expiry classification: &apos;active&apos; (&gt;7 days left), &apos;expiring_soon&apos; (0-7 days left), &apos;in_grace&apos; (expired up to 7 days ago), &apos;overdue&apos; (expired beyond the grace period).* `active` - ACTIVE* `expiring_soon` - EXPIRING_SOON* `in_grace` - IN_GRACE* `overdue` - OVERDUE</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - Active* `expiring_soon` - Expiring Soon* `in_grace` - In Grace* `overdue` - Overdue</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle? Lifecycle { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle Lifecycle { get; set; }
-#endif
-        /// <summary>&apos;run&apos; (the test still executes but cannot fail the suite) or &apos;skip&apos; (not run at all).* `run` - RUN* `skip` - SKIP</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `run` - Run* `skip` - Skip</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode? Mode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode Mode { get; set; }
-#endif
         /// <summary>GitHub team or user handle responsible for the fix.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,14 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Runner { get; set; }
 #endif
-        /// <summary>What the selector covers: &apos;test&apos; (contains &apos;::&apos;), &apos;file&apos;, &apos;directory&apos;, or &apos;product&apos;.* `product` - PRODUCT* `file` - FILE* `directory` - DIRECTORY* `test` - TEST</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `product` - Product* `file` - File* `directory` - Directory* `test` - Test</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind? SelectorKind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind SelectorKind { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntry"/> and sets the default values.
         /// </summary>
@@ -115,12 +97,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expires", n => { Expires = n.GetDateValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "issue", n => { Issue = n.GetStringValue(); } },
-                { "lifecycle", n => { Lifecycle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle.CreateFromDiscriminatorValue); } },
-                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode.CreateFromDiscriminatorValue); } },
+                { "lifecycle", n => { Lifecycle = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle>(); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode>(); } },
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "runner", n => { Runner = n.GetStringValue(); } },
-                { "selector_kind", n => { SelectorKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind.CreateFromDiscriminatorValue); } },
+                { "selector_kind", n => { SelectorKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind>(); } },
             };
         }
         /// <summary>
@@ -135,12 +117,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateValue("expires", Expires);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("issue", Issue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle>("lifecycle", Lifecycle);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle>("lifecycle", Lifecycle);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode>("mode", Mode);
             writer.WriteStringValue("owner", Owner);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("runner", Runner);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind>("selector_kind", SelectorKind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind>("selector_kind", SelectorKind);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

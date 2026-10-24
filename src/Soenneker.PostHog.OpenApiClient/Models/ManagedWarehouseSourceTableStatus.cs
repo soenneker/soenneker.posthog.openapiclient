@@ -28,14 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastAppliedAt { get; set; }
         /// <summary>When PostHog most recently completed the upstream source import.</summary>
         public DateTimeOffset? LastSyncedAt { get; set; }
-        /// <summary>User-facing warehouse readiness state for this table.* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState? ReadinessState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState ReadinessState { get; set; }
-#endif
         /// <summary>Imported source schema identifier.</summary>
         public Guid? SchemaId { get; set; }
         /// <summary>Imported source connection identifier.</summary>
@@ -111,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "last_applied_at", n => { LastAppliedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
-                { "readiness_state", n => { ReadinessState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState.CreateFromDiscriminatorValue); } },
+                { "readiness_state", n => { ReadinessState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState>(); } },
                 { "schema_id", n => { SchemaId = n.GetGuidValue(); } },
                 { "source_id", n => { SourceId = n.GetGuidValue(); } },
                 { "source_name", n => { SourceName = n.GetStringValue(); } },
@@ -133,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("detail", Detail);
             writer.WriteDateTimeOffsetValue("last_applied_at", LastAppliedAt);
             writer.WriteDateTimeOffsetValue("last_synced_at", LastSyncedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState>("readiness_state", ReadinessState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState>("readiness_state", ReadinessState);
             writer.WriteGuidValue("schema_id", SchemaId);
             writer.WriteGuidValue("source_id", SourceId);
             writer.WriteStringValue("source_name", SourceName);

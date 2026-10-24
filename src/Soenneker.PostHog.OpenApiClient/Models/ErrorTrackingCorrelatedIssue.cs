@@ -91,13 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.Population Population { get; set; }
 #endif
         /// <summary>The severity property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper Severity { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverity? Severity { get; set; }
         /// <summary>The status property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus? Status { get; set; }
         /// <summary>
@@ -130,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "odds_ratio", n => { OddsRatio = n.GetDoubleValue(); } },
                 { "population", n => { Population = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Population>(global::Soenneker.PostHog.OpenApiClient.Models.Population.CreateFromDiscriminatorValue); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverity>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus>(); } },
             };
         }
@@ -153,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("odds_ratio", OddsRatio);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Population>("population", Population);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverity>("severity", Severity);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus>("status", Status);
         }
     }

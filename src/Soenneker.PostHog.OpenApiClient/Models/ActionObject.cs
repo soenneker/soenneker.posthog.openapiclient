@@ -98,10 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionTagsItem>? Tags { get; set; }
+        public UntypedNode? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionTagsItem> Tags { get; set; }
+        public UntypedNode Tags { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
@@ -155,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "slack_message_format", n => { SlackMessageFormat = n.GetStringValue(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson>(global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.ActionTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -176,7 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("post_to_slack", PostToSlack);
             writer.WriteStringValue("slack_message_format", SlackMessageFormat);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson>("steps", Steps);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionTagsItem>("tags", Tags);
+            writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

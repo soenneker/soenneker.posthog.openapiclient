@@ -21,21 +21,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption?> Accessories { get; set; }
 #endif
         /// <summary>The color property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOptionWrapper? Color { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOptionWrapper Color { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOption? Color { get; set; }
         /// <summary>The skin property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOptionWrapper? Skin { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOptionWrapper Skin { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOption? Skin { get; set; }
         /// <summary>The use_as_profile property</summary>
         public bool? UseAsProfile { get; set; }
         /// <summary>
@@ -57,8 +45,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "accessories", n => { Accessories = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption>()?.AsList(); } },
-                { "color", n => { Color = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOptionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOptionWrapper.CreateFromDiscriminatorValue); } },
-                { "skin", n => { Skin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOptionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOptionWrapper.CreateFromDiscriminatorValue); } },
+                { "color", n => { Color = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOption>(); } },
+                { "skin", n => { Skin = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOption>(); } },
                 { "use_as_profile", n => { UseAsProfile = n.GetBoolValue(); } },
             };
         }
@@ -70,8 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption>("accessories", Accessories);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOptionWrapper>("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOptionWrapper>("skin", Skin);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOption>("color", Color);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOption>("skin", Skin);
             writer.WriteBoolValue("use_as_profile", UseAsProfile);
         }
     }

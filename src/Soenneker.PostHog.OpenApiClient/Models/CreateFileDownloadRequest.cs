@@ -59,15 +59,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.FileDownloadEventsRequest = new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadEventsRequest();
             }
-            else if("FileDownloadHogQlRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("hogql".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.FileDownloadHogQlRequest = new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest();
             }
-            else if("FileDownloadPersonsRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("persons".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.FileDownloadPersonsRequest = new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequest();
             }
-            else if("FileDownloadSessionsRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("sessions".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.FileDownloadSessionsRequest = new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadSessionsRequest();
             }

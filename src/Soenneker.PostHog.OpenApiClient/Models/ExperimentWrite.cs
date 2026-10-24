@@ -104,13 +104,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFilters? Filters { get; set; }
+        public UntypedNode? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFilters Filters { get; set; }
+        public UntypedNode Filters { get; set; }
 #endif
         /// <summary>ID of the Desktop task opened to remove the experiment&apos;s feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.</summary>
         public Guid? FlagCleanupTaskId { get; private set; }
+        /// <summary>Always null. Read the health findings from `GET /api/projects/{project_id}/experiments/{id}/health/`: problems in this experiment&apos;s configuration and its feature flag that keep it from producing trustworthy results, each with a fix.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealth? Health { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealth Health { get; private set; }
+#endif
         /// <summary>The holdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -210,26 +218,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>IDs of shared saved metrics to attach to this experiment. Each item has &apos;id&apos; (saved metric ID) and &apos;metadata&apos; with &apos;type&apos; (primary or secondary).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSavedMetricsIdsItem>? SavedMetricsIds { get; set; }
+        public UntypedNode? SavedMetricsIds { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSavedMetricsIdsItem> SavedMetricsIds { get; set; }
+        public UntypedNode SavedMetricsIds { get; set; }
 #endif
         /// <summary>The scheduling_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSchedulingConfig? SchedulingConfig { get; set; }
+        public UntypedNode? SchedulingConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSchedulingConfig SchedulingConfig { get; set; }
+        public UntypedNode SchedulingConfig { get; set; }
 #endif
         /// <summary>The secondary_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSecondaryMetrics? SecondaryMetrics { get; set; }
+        public UntypedNode? SecondaryMetrics { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSecondaryMetrics SecondaryMetrics { get; set; }
+        public UntypedNode SecondaryMetrics { get; set; }
 #endif
         /// <summary>Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -244,19 +252,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The stats_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig? StatsConfig { get; set; }
+        public UntypedNode? StatsConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig StatsConfig { get; set; }
+        public UntypedNode StatsConfig { get; set; }
 #endif
         /// <summary>Experiment lifecycle state: &apos;draft&apos; (not yet launched), &apos;running&apos; (launched with active feature flag), &apos;paused&apos; (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), &apos;exposure_frozen&apos; (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag&apos;s release groups, not stored), &apos;stopped&apos; (ended).</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus Status { get; private set; }
-#endif
         /// <summary>Organizational tags for this experiment (up to 100, 255 characters each).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -331,8 +333,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "exposure_criteria", n => { ExposureCriteria = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria.CreateFromDiscriminatorValue); } },
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFeatureFlag.CreateFromDiscriminatorValue); } },
                 { "feature_flag_key", n => { FeatureFlagKey = n.GetStringValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "flag_cleanup_task_id", n => { FlagCleanupTaskId = n.GetGuidValue(); } },
+                { "health", n => { Health = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealth>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealth.CreateFromDiscriminatorValue); } },
                 { "holdout", n => { Holdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteHoldout>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteHoldout.CreateFromDiscriminatorValue); } },
                 { "holdout_id", n => { HoldoutId = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -348,13 +351,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "resolved_exposure_event", n => { ResolvedExposureEvent = n.GetStringValue(); } },
                 { "running_time_calculation", n => { RunningTimeCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation.CreateFromDiscriminatorValue); } },
                 { "saved_metrics", n => { SavedMetrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "saved_metrics_ids", n => { SavedMetricsIds = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSavedMetricsIdsItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSavedMetricsIdsItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "scheduling_config", n => { SchedulingConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSchedulingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSchedulingConfig.CreateFromDiscriminatorValue); } },
-                { "secondary_metrics", n => { SecondaryMetrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSecondaryMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSecondaryMetrics.CreateFromDiscriminatorValue); } },
+                { "saved_metrics_ids", n => { SavedMetricsIds = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "scheduling_config", n => { SchedulingConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "secondary_metrics", n => { SecondaryMetrics = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "secondary_metrics_ordered_uuids", n => { SecondaryMetricsOrderedUuids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                { "stats_config", n => { StatsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus.CreateFromDiscriminatorValue); } },
+                { "stats_config", n => { StatsConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatus>(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteType>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteType.CreateFromDiscriminatorValue); } },
                 { "update_feature_flag_params", n => { UpdateFeatureFlagParams = n.GetBoolValue(); } },
@@ -382,7 +385,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria>("exposure_criteria", ExposureCriteria);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFeatureFlag>("feature_flag", FeatureFlag);
             writer.WriteStringValue("feature_flag_key", FeatureFlagKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteFilters>("filters", Filters);
+            writer.WriteObjectValue<UntypedNode>("filters", Filters);
             writer.WriteIntValue("holdout_id", HoldoutId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>("metrics", Metrics);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>("metrics_secondary", MetricsSecondary);
@@ -393,12 +396,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("primary_metrics_ordered_uuids", PrimaryMetricsOrderedUuids);
             writer.WriteStringValue("repository", Repository);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>("running_time_calculation", RunningTimeCalculation);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSavedMetricsIdsItem>("saved_metrics_ids", SavedMetricsIds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSchedulingConfig>("scheduling_config", SchedulingConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteSecondaryMetrics>("secondary_metrics", SecondaryMetrics);
+            writer.WriteObjectValue<UntypedNode>("saved_metrics_ids", SavedMetricsIds);
+            writer.WriteObjectValue<UntypedNode>("scheduling_config", SchedulingConfig);
+            writer.WriteObjectValue<UntypedNode>("secondary_metrics", SecondaryMetrics);
             writer.WriteCollectionOfPrimitiveValues<string>("secondary_metrics_ordered_uuids", SecondaryMetricsOrderedUuids);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteStatsConfig>("stats_config", StatsConfig);
+            writer.WriteObjectValue<UntypedNode>("stats_config", StatsConfig);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWriteType>("type", Type);
             writer.WriteBoolValue("update_feature_flag_params", UpdateFeatureFlagParams);

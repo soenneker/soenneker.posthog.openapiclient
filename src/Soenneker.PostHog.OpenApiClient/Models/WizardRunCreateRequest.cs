@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Where the setup agent runs.* `local` - local* `cloud` - cloud</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `local` - local* `cloud` - cloud</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment? Environment { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment Environment { get; set; }
-#endif
         /// <summary>Unique key that makes cloud run creation safe to retry.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "environment", n => { Environment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment.CreateFromDiscriminatorValue); } },
+                { "environment", n => { Environment = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment>(); } },
                 { "idempotency_key", n => { IdempotencyKey = n.GetStringValue(); } },
                 { "program_id", n => { ProgramId = n.GetStringValue(); } },
                 { "wizard_version", n => { WizardVersion = n.GetStringValue(); } },
@@ -93,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment>("environment", Environment);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment>("environment", Environment);
             writer.WriteStringValue("idempotency_key", IdempotencyKey);
             writer.WriteStringValue("program_id", ProgramId);
             writer.WriteStringValue("wizard_version", WizardVersion);

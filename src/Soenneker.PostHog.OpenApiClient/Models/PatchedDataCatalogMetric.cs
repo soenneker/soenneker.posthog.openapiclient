@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>Whether a human (&apos;user&apos;) or an agent (&apos;ai_generated&apos;) authored this metric.* `user` - user* `ai_generated` - ai_generated</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `ai_generated` - ai_generated</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedSource? CreatedSource { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedSource CreatedSource { get; set; }
-#endif
         /// <summary>Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DefinitionKind { get; private set; }
 #endif
-        /// <summary>What the metric means and what it serves, in 1-3 short sentences: the business meaning plus any load-bearing inclusions/exclusions or grain. Never narrate or restate the query - the definition carries the mechanics; put rationale for query choices in &apos;reasoning&apos;.</summary>
+        /// <summary>What the number is, in 1-2 short sentences under 300 characters: its meaning and grain plus any inclusion or exclusion that changes it. Leave out source tables or views, lineage, column lists, and comparisons with other metrics. Never narrate the query - the definition carries the mechanics; put the query&apos;s design decisions in &apos;reasoning&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -106,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Owner { get; private set; }
 #endif
-        /// <summary>AI author&apos;s reasoning, surfaced as review context.</summary>
+        /// <summary>Why the definition is shaped this way, in 1-3 short sentences. Name the main design decisions and trade-offs: the source table or view, a filter or exclusion, the grain, an approximation. Leave out the use case, who asked, run results, validation figures, and edit history.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reasoning { get; set; }
@@ -117,10 +111,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tables the definition directly references, extracted at write time for the catalog&apos;s denied-table filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricReferencedTableNames? ReferencedTableNames { get; private set; }
+        public UntypedNode? ReferencedTableNames { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricReferencedTableNames ReferencedTableNames { get; private set; }
+        public UntypedNode ReferencedTableNames { get; private set; }
 #endif
         /// <summary>Create the metric from this insight&apos;s query (snapshotted server-side). Set to null to unlink. Mutually exclusive with definition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -179,7 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedBy.CreateFromDiscriminatorValue); } },
-                { "created_source", n => { CreatedSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedSource>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedSource.CreateFromDiscriminatorValue); } },
+                { "created_source", n => { CreatedSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedSource>(); } },
                 { "definition", n => { Definition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricDefinitionProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricDefinitionProperty.CreateFromDiscriminatorValue); } },
                 { "definition_kind", n => { DefinitionKind = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -190,7 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
-                { "referenced_table_names", n => { ReferencedTableNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricReferencedTableNames>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricReferencedTableNames.CreateFromDiscriminatorValue); } },
+                { "referenced_table_names", n => { ReferencedTableNames = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "source_insight_short_id", n => { SourceInsightShortId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "unit", n => { Unit = n.GetStringValue(); } },
@@ -206,7 +200,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("ai_model", AiModel);
             writer.WriteDoubleValue("confidence", Confidence);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedSource>("created_source", CreatedSource);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricCreatedSource>("created_source", CreatedSource);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataCatalogMetricDefinitionProperty>("definition", Definition);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("display_name", DisplayName);

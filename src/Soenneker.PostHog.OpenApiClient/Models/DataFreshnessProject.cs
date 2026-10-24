@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>`live` if data of any kind arrived within `quiet_after_days`, `stale` if none did, `never` if the project has never ingested anything at all.* `never` - never* `live` - live* `stale` - stale</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `never` - never* `live` - live* `stale` - stale</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness? Freshness { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness Freshness { get; set; }
-#endif
         /// <summary>When data of any kind last reached the project, or null if nothing arrived within the lookback window.</summary>
         public DateTimeOffset? LastDataAt { get; set; }
         /// <summary>Per-source breakdown, most recently active first.</summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "freshness", n => { Freshness = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness>(global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness.CreateFromDiscriminatorValue); } },
+                { "freshness", n => { Freshness = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness>(); } },
                 { "last_data_at", n => { LastDataAt = n.GetDateTimeOffsetValue(); } },
                 { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource>(global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness>("freshness", Freshness);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness>("freshness", Freshness);
             writer.WriteDateTimeOffsetValue("last_data_at", LastDataAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource>("sources", Sources);
             writer.WriteIntValue("team_id", TeamId);

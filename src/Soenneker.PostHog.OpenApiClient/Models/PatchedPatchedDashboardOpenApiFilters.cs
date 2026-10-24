@@ -31,6 +31,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DateTo { get; set; }
 #endif
+        /// <summary>Dashboard-level property filters applied to every tile (PostHog property filter group).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? Properties { get; set; }
+#nullable restore
+#else
+        public UntypedNode Properties { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters"/> and sets the default values.
         /// </summary>
@@ -58,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
+                { "properties", n => { Properties = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
+            writer.WriteObjectValue<UntypedNode>("properties", Properties);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

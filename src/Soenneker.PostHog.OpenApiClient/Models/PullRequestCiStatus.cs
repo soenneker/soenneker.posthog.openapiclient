@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Rollup of the pull request&apos;s checks on its head commit: &apos;passing&apos; (nothing failed), &apos;failing&apos;, &apos;pending&apos; (checks are still running), or &apos;none&apos; (the head commit has no checks).* `passing` - Passing* `failing` - Failing* `pending` - Pending* `none` - No checks</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `passing` - Passing* `failing` - Failing* `pending` - Pending* `none` - No checks</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusCiStatus? CiStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusCiStatus CiStatus { get; private set; }
-#endif
         /// <summary>Report whose implementation pull request this status describes.</summary>
         public Guid? ReportId { get; private set; }
         /// <summary>
@@ -50,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ci_status", n => { CiStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusCiStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusCiStatus.CreateFromDiscriminatorValue); } },
+                { "ci_status", n => { CiStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusCiStatus>(); } },
                 { "report_id", n => { ReportId = n.GetGuidValue(); } },
             };
         }

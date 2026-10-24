@@ -8,13 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas).
+    /// Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ExperimentsListWidgetCatalogEntryOpenApiConfigSchema : IAdditionalDataHolder, IParsable
+    public partial class ExperimentsListWidgetCatalogEntryOpenApiConfigSchema : IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Filter by creator (user id). Omit for any creator.</summary>
         public int? CreatedBy { get; set; }
         /// <summary>Maximum number of experiments to return.</summary>
@@ -30,7 +28,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentsListWidgetCatalogEntryOpenApiConfigSchema()
         {
-            AdditionalData = new Dictionary<string, object>();
             Limit = 10;
         }
         /// <summary>
@@ -70,7 +67,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetConfigOrderBy>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetConfigOrderDirection>("orderDirection", OrderDirection);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListWidgetConfigStatus>("status", Status);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

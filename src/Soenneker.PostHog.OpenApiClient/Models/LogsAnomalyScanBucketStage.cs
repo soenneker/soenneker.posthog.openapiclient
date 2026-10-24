@@ -8,19 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsAnomalyScanBucketStage : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnumWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnumWrapper? LogsAnomalyBaselineStageEnumWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnumWrapper LogsAnomalyBaselineStageEnumWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnum? LogsAnomalyBaselineStageEnum { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketStage();
-            if("LogsAnomalyBaselineStageEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnum logsAnomalyBaselineStageEnumValue)
             {
-                result.LogsAnomalyBaselineStageEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnumWrapper();
+                result.LogsAnomalyBaselineStageEnum = logsAnomalyBaselineStageEnumValue;
             }
             return result;
         }
@@ -51,11 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(LogsAnomalyBaselineStageEnumWrapper != null)
-            {
-                return LogsAnomalyBaselineStageEnumWrapper.GetFieldDeserializers();
-            }
-            else if(NullEnum != null)
+            if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
@@ -68,9 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(LogsAnomalyBaselineStageEnumWrapper != null)
+            if(LogsAnomalyBaselineStageEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnumWrapper>(null, LogsAnomalyBaselineStageEnumWrapper);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyBaselineStageEnum>(null, LogsAnomalyBaselineStageEnum);
             }
             else if(NullEnum != null)
             {

@@ -41,14 +41,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound Floor { get; set; }
 #endif
-        /// <summary>What governs this view&apos;s cadence. &apos;tiered&apos; is the only mode where `options` is meaningful and `sync_frequency` is writable per view. &apos;managed_viewset&apos; means PostHog owns the view, and &apos;no_node&apos; means the view has no data modeling node to store a cadence on.* `tiered` - tiered* `managed_viewset` - managed_viewset* `no_node` - no_node</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `tiered` - tiered* `managed_viewset` - managed_viewset* `no_node` - no_node</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode? FrequencyMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode FrequencyMode { get; set; }
-#endif
         /// <summary>Every cadence a picker may show, coarsest-last, each marked allowed or blocked with its cause. Empty outside &apos;tiered&apos; mode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "best_effort_sources_withheld", n => { BestEffortSourcesWithheld = n.GetBoolValue(); } },
                 { "ceiling", n => { Ceiling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound.CreateFromDiscriminatorValue); } },
                 { "floor", n => { Floor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound.CreateFromDiscriminatorValue); } },
-                { "frequency_mode", n => { FrequencyMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode.CreateFromDiscriminatorValue); } },
+                { "frequency_mode", n => { FrequencyMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode>(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOption>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOption.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("best_effort_sources_withheld", BestEffortSourcesWithheld);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>("ceiling", Ceiling);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>("floor", Floor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode>("frequency_mode", FrequencyMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode>("frequency_mode", FrequencyMode);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOption>("options", Options);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -23,22 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation> Citations { get; set; }
 #endif
-        /// <summary>Evaluation target analyzed by this report run. Legacy runs without this field targeted generations.* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget? EvaluationTarget { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget EvaluationTarget { get; set; }
-#endif
-        /// <summary>Whether report generation completed or metrics were temporarily unavailable. Legacy runs without this field completed normally.* `completed` - completed* `metrics_unavailable` - metrics_unavailable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `completed` - completed* `metrics_unavailable` - metrics_unavailable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus? GenerationStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus GenerationStatus { get; set; }
-#endif
         /// <summary>Structured metrics for completed reports, or null when metrics were temporarily unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,8 +77,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "evaluation_target", n => { EvaluationTarget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget.CreateFromDiscriminatorValue); } },
-                { "generation_status", n => { GenerationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus.CreateFromDiscriminatorValue); } },
+                { "evaluation_target", n => { EvaluationTarget = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>(); } },
+                { "generation_status", n => { GenerationStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>(); } },
                 { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics.CreateFromDiscriminatorValue); } },
                 { "sections", n => { Sections = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -104,8 +92,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation>("citations", Citations);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>("evaluation_target", EvaluationTarget);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>("generation_status", GenerationStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>("evaluation_target", EvaluationTarget);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>("generation_status", GenerationStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>("metrics", Metrics);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection>("sections", Sections);
             writer.WriteStringValue("title", Title);

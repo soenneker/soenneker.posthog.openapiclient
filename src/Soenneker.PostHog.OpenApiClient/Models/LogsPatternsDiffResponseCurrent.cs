@@ -53,14 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Sampled { get; set; }
         /// <summary>Log rows fed to the miner for this window (sample size).</summary>
         public int? ScannedCount { get; set; }
-        /// <summary>Whether counts come from stored-pattern aggregation or body masking and Drain3 mining.* `stored_patterns` - stored_patterns* `body_mining` - body_mining</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `stored_patterns` - stored_patterns* `body_mining` - body_mining</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource Source { get; set; }
-#endif
         /// <summary>Total log rows matching the filters in this window.</summary>
         public int? TotalCount { get; set; }
         /// <summary>
@@ -98,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sample_coverage_pct", n => { SampleCoveragePct = n.GetDoubleValue(); } },
                 { "sampled", n => { Sampled = n.GetBoolValue(); } },
                 { "scanned_count", n => { ScannedCount = n.GetIntValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource>(); } },
                 { "total_count", n => { TotalCount = n.GetIntValue(); } },
             };
         }
@@ -119,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("sample_coverage_pct", SampleCoveragePct);
             writer.WriteBoolValue("sampled", Sampled);
             writer.WriteIntValue("scanned_count", ScannedCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource>("source", Source);
             writer.WriteIntValue("total_count", TotalCount);
             writer.WriteAdditionalData(AdditionalData);
         }

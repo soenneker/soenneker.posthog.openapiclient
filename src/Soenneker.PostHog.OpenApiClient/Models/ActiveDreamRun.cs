@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The current task-run state for the active dream.* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRunRunStatus? RunStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRunRunStatus RunStatus { get; set; }
-#endif
         /// <summary>When the active dream task was created.</summary>
         public DateTimeOffset? StartedAt { get; set; }
         /// <summary>
@@ -50,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "run_status", n => { RunStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRunRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRunRunStatus.CreateFromDiscriminatorValue); } },
+                { "run_status", n => { RunStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRunRunStatus>(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -61,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRunRunStatus>("run_status", RunStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRunRunStatus>("run_status", RunStatus);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

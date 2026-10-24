@@ -34,14 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Render mode: &apos;screenshot&apos; (renders the page headlessly, default), &apos;iframe&apos;, or &apos;recording&apos;. Only &apos;screenshot&apos; generates image bytes.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType Type { get; set; }
-#endif
         /// <summary>Exact page URL to render and overlay heatmap data on. Wildcards are not allowed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "data_url", n => { DataUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestDataUrl>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestDataUrl.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "widths", n => { Widths = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
             };
@@ -103,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestDataUrl>("data_url", DataUrl);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType>("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteCollectionOfPrimitiveValues<int?>("widths", Widths);
             writer.WriteAdditionalData(AdditionalData);

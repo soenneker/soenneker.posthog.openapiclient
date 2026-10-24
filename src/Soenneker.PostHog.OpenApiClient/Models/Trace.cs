@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The createdAt property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The defaultNodeId property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DefaultNodeId { get; set; }
+#nullable restore
+#else
+        public string DefaultNodeId { get; set; }
+#endif
         /// <summary>The errorCount property</summary>
         public int? ErrorCount { get; set; }
         /// <summary>The hasError property</summary>
@@ -35,6 +43,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>The nodeIdsByAlias property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty? NodeIdsByAlias { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty NodeIdsByAlias { get; set; }
 #endif
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,10 +128,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "defaultNodeId", n => { DefaultNodeId = n.GetStringValue(); } },
                 { "errorCount", n => { ErrorCount = n.GetIntValue(); } },
                 { "hasError", n => { HasError = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "nodeIdsByAlias", n => { NodeIdsByAlias = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty.CreateFromDiscriminatorValue); } },
                 { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePerson>(global::Soenneker.PostHog.OpenApiClient.Models.TracePerson.CreateFromDiscriminatorValue); } },
                 { "sessionId", n => { SessionId = n.GetStringValue(); } },
                 { "threadNodeIds", n => { ThreadNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -133,10 +151,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
+            writer.WriteStringValue("defaultNodeId", DefaultNodeId);
             writer.WriteIntValue("errorCount", ErrorCount);
             writer.WriteBoolValue("hasError", HasError);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty>("nodeIdsByAlias", NodeIdsByAlias);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePerson>("person", Person);
             writer.WriteStringValue("sessionId", SessionId);
             writer.WriteCollectionOfPrimitiveValues<string>("threadNodeIds", ThreadNodeIds);

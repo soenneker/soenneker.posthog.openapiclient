@@ -17,26 +17,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>List of [event_name, count] pairs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ByEvent { get; set; }
+        public List<UntypedNode>? ByEvent { get; set; }
 #nullable restore
 #else
-        public UntypedNode ByEvent { get; set; }
+        public List<UntypedNode> ByEvent { get; set; }
 #endif
         /// <summary>List of [integration, count] pairs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ByMatchedIntegration { get; set; }
+        public List<UntypedNode>? ByMatchedIntegration { get; set; }
 #nullable restore
 #else
-        public UntypedNode ByMatchedIntegration { get; set; }
+        public List<UntypedNode> ByMatchedIntegration { get; set; }
 #endif
         /// <summary>List of [utm_source, count] pairs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ByUtmSource { get; set; }
+        public List<UntypedNode>? ByUtmSource { get; set; }
 #nullable restore
 #else
-        public UntypedNode ByUtmSource { get; set; }
+        public List<UntypedNode> ByUtmSource { get; set; }
 #endif
         /// <summary>conversion_goal_id of the explained goal</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -60,14 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Events whose utm_source matched a known integration. Null for DataWarehouseNode.</summary>
         public int? IntegratedCount { get; set; }
-        /// <summary>Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind Kind { get; set; }
-#endif
         /// <summary>Total non-integrated events (without + unmatched). Null for DataWarehouseNode.</summary>
         public int? NonIntegratedCount { get; set; }
         /// <summary>Caveats about the breakdown (sampling, attribution, etc.)</summary>
@@ -121,15 +115,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by_event", n => { ByEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "by_matched_integration", n => { ByMatchedIntegration = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "by_utm_source", n => { ByUtmSource = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "by_event", n => { ByEvent = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
+                { "by_matched_integration", n => { ByMatchedIntegration = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
+                { "by_utm_source", n => { ByUtmSource = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
                 { "conversion_goal_id", n => { ConversionGoalId = n.GetStringValue(); } },
                 { "events_with_unmatched_utm_source", n => { EventsWithUnmatchedUtmSource = n.GetIntValue(); } },
                 { "events_without_utm_source", n => { EventsWithoutUtmSource = n.GetIntValue(); } },
                 { "goal_name", n => { GoalName = n.GetStringValue(); } },
                 { "integrated_count", n => { IntegratedCount = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind>(global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind>(); } },
                 { "non_integrated_count", n => { NonIntegratedCount = n.GetIntValue(); } },
                 { "notes", n => { Notes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed>(global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed.CreateFromDiscriminatorValue); } },
@@ -144,15 +138,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("by_event", ByEvent);
-            writer.WriteObjectValue<UntypedNode>("by_matched_integration", ByMatchedIntegration);
-            writer.WriteObjectValue<UntypedNode>("by_utm_source", ByUtmSource);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("by_event", ByEvent);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("by_matched_integration", ByMatchedIntegration);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("by_utm_source", ByUtmSource);
             writer.WriteStringValue("conversion_goal_id", ConversionGoalId);
             writer.WriteIntValue("events_without_utm_source", EventsWithoutUtmSource);
             writer.WriteIntValue("events_with_unmatched_utm_source", EventsWithUnmatchedUtmSource);
             writer.WriteStringValue("goal_name", GoalName);
             writer.WriteIntValue("integrated_count", IntegratedCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind>("kind", Kind);
             writer.WriteIntValue("non_integrated_count", NonIntegratedCount);
             writer.WriteCollectionOfPrimitiveValues<string>("notes", Notes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed>("period", Period);

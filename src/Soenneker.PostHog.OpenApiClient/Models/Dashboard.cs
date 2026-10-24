@@ -13,14 +13,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Dashboard : IAdditionalDataHolder, IParsable
     {
-        /// <summary>The access_control_version property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AccessControlVersion { get; private set; }
-#nullable restore
-#else
-        public string AccessControlVersion { get; private set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Colors pinned to specific breakdown values across the dashboard&apos;s tiles. A list of entries, not an object keyed by breakdown value. Send an empty list to clear them.</summary>
@@ -49,14 +41,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreateInFolder { get; set; }
 #endif
-        /// <summary>The creation_mode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `default` - Default* `template` - Template* `duplicate` - Duplicate* `unlisted` - Unlisted (product-embedded)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCreationMode? CreationMode { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCreationMode CreationMode { get; private set; }
-#endif
         /// <summary>Dashboard display settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,22 +65,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The effective_privilege_level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectivePrivilegeLevel? EffectivePrivilegeLevel { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectivePrivilegeLevel EffectivePrivilegeLevel { get; private set; }
-#endif
-        /// <summary>The effective_restriction_level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectiveRestrictionLevel? EffectiveRestrictionLevel { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectiveRestrictionLevel EffectiveRestrictionLevel { get; private set; }
-#endif
         /// <summary>Id of this dashboard&apos;s file system entry, or null when it has none. Together with `file_system_path` this is everything a caller needs to move the dashboard between folders, so a list page does not have to look the entry up separately.</summary>
         public Guid? FileSystemId { get; private set; }
         /// <summary>Full path of this dashboard&apos;s file system entry, e.g. &apos;Unfiled/Dashboards/Revenue&apos;. Unlike `folder` this keeps the dashboard&apos;s own name as the last segment, which is what a move needs in order to compute the destination path. Null when it has no entry.</summary>
@@ -108,10 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty? Filters { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty Filters { get; private set; }
 #endif
         /// <summary>Path of the project-tree folder this dashboard is filed under in the file system, e.g. &apos;Unfiled/Dashboards&apos;. An empty string means the project root; null means the dashboard has no file system entry. The dashboard&apos;s own name is not part of the path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -121,32 +91,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Folder { get; private set; }
 #endif
-        /// <summary>Named tile density preset. Use tight, condensed, standard, relaxed, or wide.* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
+        /// <summary>* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing? GridSpacing { get; set; }
+        /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing? GridSpacing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty? Groups { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing GridSpacing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty Groups { get; set; }
+#endif
+        /// <summary>Deprecated: use groups. Titles for tile groups, keyed by group_key. A write replaces all titles and keeps the other group settings. Send an empty object or null to clear titles. Do not send it with groups.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty? GroupTitles { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty GroupTitles { get; set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The is_shared property</summary>
         public bool? IsShared { get; private set; }
         /// <summary>The last_accessed_at property</summary>
-        public DateTimeOffset? LastAccessedAt { get; set; }
+        public DateTimeOffset? LastAccessedAt { get; private set; }
         /// <summary>The last_refresh property</summary>
         public DateTimeOffset? LastRefresh { get; set; }
         /// <summary>The last_viewed_at property</summary>
         public DateTimeOffset? LastViewedAt { get; private set; }
-        /// <summary>How tiles rearrange after a move or resize. vertical stacks tiles upward, horizontal stacks tiles to the left, and stable preserves positions while moving colliding tiles.* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardLayoutCompaction? LayoutCompaction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardLayoutCompaction LayoutCompaction { get; set; }
-#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -158,18 +132,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The persisted_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty? PersistedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty? PersistedFilters { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty PersistedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty PersistedFilters { get; private set; }
 #endif
         /// <summary>The persisted_variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty? PersistedVariables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty? PersistedVariables { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty PersistedVariables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty PersistedVariables { get; private set; }
 #endif
         /// <summary>The pinned property</summary>
         public bool? Pinned { get; set; }
@@ -181,15 +155,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> QuickFilterIds { get; set; }
 #endif
-        /// <summary>* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
-        public int? RestrictionLevel { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTagsItem>? Tags { get; set; }
+        public UntypedNode? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTagsItem> Tags { get; set; }
+        public UntypedNode Tags { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
@@ -222,10 +194,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty? Variables { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty Variables { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Dashboard"/> and sets the default values.
@@ -253,37 +225,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "access_control_version", n => { AccessControlVersion = n.GetStringValue(); } },
                 { "breakdown_colors", n => { BreakdownColors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCreatedBy.CreateFromDiscriminatorValue); } },
-                { "creation_mode", n => { CreationMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCreationMode>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCreationMode.CreateFromDiscriminatorValue); } },
+                { "creation_mode", n => { CreationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCreationMode>(); } },
                 { "customization", n => { Customization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposed>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposed.CreateFromDiscriminatorValue); } },
                 { "data_color_theme_id", n => { DataColorThemeId = n.GetIntValue(); } },
                 { "delete_insights", n => { DeleteInsights = n.GetBoolValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "effective_privilege_level", n => { EffectivePrivilegeLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectivePrivilegeLevel>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectivePrivilegeLevel.CreateFromDiscriminatorValue); } },
-                { "effective_restriction_level", n => { EffectiveRestrictionLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectiveRestrictionLevel>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardEffectiveRestrictionLevel.CreateFromDiscriminatorValue); } },
                 { "file_system_id", n => { FileSystemId = n.GetGuidValue(); } },
                 { "file_system_path", n => { FileSystemPath = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "folder", n => { Folder = n.GetStringValue(); } },
-                { "grid_spacing", n => { GridSpacing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing.CreateFromDiscriminatorValue); } },
+                { "grid_spacing", n => { GridSpacing = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing>(); } },
+                { "group_titles", n => { GroupTitles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty.CreateFromDiscriminatorValue); } },
+                { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_shared", n => { IsShared = n.GetBoolValue(); } },
                 { "last_accessed_at", n => { LastAccessedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_refresh", n => { LastRefresh = n.GetDateTimeOffsetValue(); } },
                 { "last_viewed_at", n => { LastViewedAt = n.GetDateTimeOffsetValue(); } },
-                { "layout_compaction", n => { LayoutCompaction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardLayoutCompaction>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardLayoutCompaction.CreateFromDiscriminatorValue); } },
+                { "layout_compaction", n => { LayoutCompaction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardLayoutCompaction>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "persisted_filters", n => { PersistedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "persisted_variables", n => { PersistedVariables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty.CreateFromDiscriminatorValue); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "quick_filter_ids", n => { QuickFilterIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "restriction_level", n => { RestrictionLevel = n.GetIntValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "tiles", n => { Tiles = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTilesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTilesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "use_dashboard", n => { UseDashboard = n.GetIntValue(); } },
@@ -305,21 +275,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("delete_insights", DeleteInsights);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing>("grid_spacing", GridSpacing);
-            writer.WriteDateTimeOffsetValue("last_accessed_at", LastAccessedAt);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing>("grid_spacing", GridSpacing);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty>("groups", Groups);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty>("group_titles", GroupTitles);
             writer.WriteDateTimeOffsetValue("last_refresh", LastRefresh);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardLayoutCompaction>("layout_compaction", LayoutCompaction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardLayoutCompaction>("layout_compaction", LayoutCompaction);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty>("persisted_filters", PersistedFilters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty>("persisted_variables", PersistedVariables);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteCollectionOfPrimitiveValues<string>("quick_filter_ids", QuickFilterIds);
-            writer.WriteIntValue("restriction_level", RestrictionLevel);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTagsItem>("tags", Tags);
+            writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteIntValue("use_dashboard", UseDashboard);
             writer.WriteStringValue("use_template", UseTemplate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

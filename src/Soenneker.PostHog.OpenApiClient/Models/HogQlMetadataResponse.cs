@@ -37,13 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage> IndexUsage { get; set; }
 #endif
         /// <summary>The isUsingIndices property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper? IsUsingIndices { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper IsUsingIndices { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage? IsUsingIndices { get; set; }
         /// <summary>The isValid property</summary>
         public bool? IsValid { get; set; }
         /// <summary>The notices property</summary>
@@ -53,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Notices { get; set; }
+#endif
+        /// <summary>Best-effort output schema, without executing the query. Only included when includeOutputTypes is requested and inference succeeds.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn>? OutputColumns { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn> OutputColumns { get; set; }
 #endif
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -99,9 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ch_table_names", n => { ChTableNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "errors", n => { Errors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "index_usage", n => { IndexUsage = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>(global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "isUsingIndices", n => { IsUsingIndices = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper.CreateFromDiscriminatorValue); } },
+                { "isUsingIndices", n => { IsUsingIndices = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage>(); } },
                 { "isValid", n => { IsValid = n.GetBoolValue(); } },
                 { "notices", n => { Notices = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "output_columns", n => { OutputColumns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "table_names", n => { TableNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -117,9 +120,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("ch_table_names", ChTableNames);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("errors", Errors);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>("index_usage", IndexUsage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper>("isUsingIndices", IsUsingIndices);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage>("isUsingIndices", IsUsingIndices);
             writer.WriteBoolValue("isValid", IsValid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("notices", Notices);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn>("output_columns", OutputColumns);
             writer.WriteStringValue("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("table_names", TableNames);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("warnings", Warnings);

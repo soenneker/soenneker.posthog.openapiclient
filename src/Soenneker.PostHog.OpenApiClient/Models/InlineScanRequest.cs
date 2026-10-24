@@ -8,22 +8,18 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Body of POST /vision/scanners/inline_scan/ - a prompt plus the sessions to point it at.
+    /// Body of POST /vision/scanners/inline_scan/ - a prompt or built-in scan plus the sessions to point it at.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InlineScanRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Model to scan with. Determines what each observation costs in credits.* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `summarize_recording` - Summarize recording</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestBuiltIn? BuiltIn { get; set; }
+        /// <summary>* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestModel? Model { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestModel Model { get; set; }
-#endif
-        /// <summary>What to look for in these sessions, in plain language. The same instruction a saved scanner carries.</summary>
+        /// <summary>What to look for in these sessions, in plain language. The same instruction a saved scanner carries. Required unless `built_in` is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Prompt { get; set; }
@@ -34,19 +30,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Type-specific configuration beyond the prompt: `tags` for a classifier, `scale` for a scorer, optional `length` for a summarizer. Omit it for a monitor. `prompt` belongs in the `prompt` field and is rejected here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerConfig? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerConfig ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get; set; }
 #endif
-        /// <summary>What the scan produces. Defaults to monitor, an open-ended observation against the prompt. Use `summarizer` to get PostHog&apos;s own AI summary of a recording. An inline scan is keyed by its whole config, so the Summarize button in the replay player shares this scan only when the prompt and `scanner_config` match the ones it sends.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType? ScannerType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType ScannerType { get; set; }
-#endif
         /// <summary>Session recording IDs to scan, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,10 +70,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestModel>(global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestModel.CreateFromDiscriminatorValue); } },
+                { "built_in", n => { BuiltIn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestBuiltIn>(); } },
+                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestModel>(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerConfig.CreateFromDiscriminatorValue); } },
-                { "scanner_type", n => { ScannerType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType>(global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType.CreateFromDiscriminatorValue); } },
+                { "scanner_config", n => { ScannerConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "scanner_type", n => { ScannerType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType>(); } },
                 { "session_ids", n => { SessionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -94,10 +85,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestModel>("model", Model);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestBuiltIn>("built_in", BuiltIn);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestModel>("model", Model);
             writer.WriteStringValue("prompt", Prompt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerConfig>("scanner_config", ScannerConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType>("scanner_type", ScannerType);
+            writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanRequestScannerType>("scanner_type", ScannerType);
             writer.WriteCollectionOfPrimitiveValues<string>("session_ids", SessionIds);
             writer.WriteAdditionalData(AdditionalData);
         }

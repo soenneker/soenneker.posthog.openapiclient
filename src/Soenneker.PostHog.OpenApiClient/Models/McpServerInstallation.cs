@@ -76,14 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ProxyUrl { get; private set; }
 #endif
-        /// <summary>The scope property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - Personal* `shared` - Shared</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationScope? Scope { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationScope Scope { get; private set; }
-#endif
         /// <summary>The template_id property</summary>
         public Guid? TemplateId { get; private set; }
         /// <summary>Number of live (non-removed) tools exposed by this installation.</summary>
@@ -136,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "needs_reauth", n => { NeedsReauth = n.GetBoolValue(); } },
                 { "pending_oauth", n => { PendingOauth = n.GetBoolValue(); } },
                 { "proxy_url", n => { ProxyUrl = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationScope>(global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationScope>(); } },
                 { "template_id", n => { TemplateId = n.GetGuidValue(); } },
                 { "tool_count", n => { ToolCount = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

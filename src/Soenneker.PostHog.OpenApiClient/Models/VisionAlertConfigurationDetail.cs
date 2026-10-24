@@ -40,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertDestinationConfig> Destinations { get; private set; }
 #endif
-        /// <summary>Metric alerts only: whether the alert fires at or above, or at or below, the threshold.* `above` - At or above* `below` - At or below</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `above` - At or above* `below` - At or below</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection? Direction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection Direction { get; set; }
-#endif
         /// <summary>Whether the alert is active. Disabling a metric alert resets its state to not_firing.</summary>
         public bool? Enabled { get; set; }
         /// <summary>Metric alerts only: total check periods in the sliding evaluation window (M in N-of-M).</summary>
@@ -56,26 +50,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? FirstEnabledAt { get; private set; }
         /// <summary>Unique identifier for this alert.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>&apos;metric&apos; fires when a metric crosses a threshold over a rolling window; &apos;match&apos; fires on every observation that matches the selection. Immutable after creation.* `metric` - Metric* `match` - Match</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `metric` - Metric* `match` - Match</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind Kind { get; set; }
-#endif
         /// <summary>When the alert was last evaluated. Server-managed.</summary>
         public DateTimeOffset? LastCheckedAt { get; private set; }
         /// <summary>When the last notification was sent. Server-managed.</summary>
         public DateTimeOffset? LastNotifiedAt { get; private set; }
-        /// <summary>Metric alerts only: what to measure over the window. &apos;avg_score&apos; requires a scorer scanner.* `count` - Count matching observations* `avg_score` - Average score</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `count` - Count matching observations* `avg_score` - Average score</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric? Metric { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric Metric { get; set; }
-#endif
         /// <summary>Human-readable name for this alert. Defaults to &apos;Untitled alert&apos; on create when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -106,14 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.</summary>
         public DateTimeOffset? SnoozeUntil { get; set; }
-        /// <summary>Current lifecycle state. Always not_firing for match alerts. Server-managed.* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailState? State { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailState State { get; private set; }
-#endif
         /// <summary>Metric alerts only: the threshold value. Required for metric alerts, must be omitted for match alerts.</summary>
         public double? Threshold { get; set; }
         /// <summary>When the alert was last modified.</summary>
@@ -154,22 +130,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "destinations", n => { Destinations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertDestinationConfig.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection>(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
                 { "first_enabled_at", n => { FirstEnabledAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind>(); } },
                 { "last_checked_at", n => { LastCheckedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_notified_at", n => { LastNotifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric.CreateFromDiscriminatorValue); } },
+                { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
                 { "scanner_id", n => { ScannerId = n.GetGuidValue(); } },
                 { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "selection", n => { Selection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection.CreateFromDiscriminatorValue); } },
                 { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailState>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailState>(); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "window_days", n => { WindowDays = n.GetIntValue(); } },
@@ -185,11 +161,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("check_interval_minutes", CheckIntervalMinutes);
             writer.WriteIntValue("cooldown_minutes", CooldownMinutes);
             writer.WriteIntValue("datapoints_to_alarm", DatapointsToAlarm);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection>("direction", Direction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection>("direction", Direction);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric>("metric", Metric);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric>("metric", Metric);
             writer.WriteStringValue("name", Name);
             writer.WriteGuidValue("scanner_id", ScannerId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);

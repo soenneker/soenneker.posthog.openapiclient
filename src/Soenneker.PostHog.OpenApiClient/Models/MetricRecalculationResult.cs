@@ -34,19 +34,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The computed metric result (ExperimentQueryResponse shape); null when status is pending or failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultResult? Result { get; private set; }
+        public UntypedNode? Result { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultResult Result { get; private set; }
+        public UntypedNode Result { get; private set; }
 #endif
-        /// <summary>Status of this metric&apos;s calculation in the run* `pending` - pending* `completed` - completed* `failed` - failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - pending* `completed` - completed* `failed` - failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultStatus Status { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResult"/> and sets the default values.
         /// </summary>
@@ -74,8 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "metric_uuid", n => { MetricUuid = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultResult>(global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultResult.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultStatus>(global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultStatus.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResultStatus>(); } },
             };
         }
         /// <summary>

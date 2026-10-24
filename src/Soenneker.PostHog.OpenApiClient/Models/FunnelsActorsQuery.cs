@@ -13,13 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>When the source funnel has compare-to-previous enabled, scopes the actors to a single period. The runner resolves `&apos;previous&apos;` to the shifted date range; `&apos;current&apos;` (or unset) uses the source&apos;s own date range.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper? Compare { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper Compare { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Compare? Compare { get; set; }
         /// <summary>Index of the step for which we want to get the timestamp for, per person. Positive for converted persons, negative for dropped of persons.</summary>
         public int? FunnelStep { get; set; }
         /// <summary>The breakdown value for which to get persons for. This is an array for person and event properties, a string for groups and an integer for cohorts.</summary>
@@ -96,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "compare", n => { Compare = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper.CreateFromDiscriminatorValue); } },
+                { "compare", n => { Compare = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>(); } },
                 { "funnelStep", n => { FunnelStep = n.GetIntValue(); } },
                 { "funnelStepBreakdown", n => { FunnelStepBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQueryFunnelStepBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQueryFunnelStepBreakdown.CreateFromDiscriminatorValue); } },
                 { "funnelTrendsDropOff", n => { FunnelTrendsDropOff = n.GetBoolValue(); } },
@@ -117,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareWrapper>("compare", Compare);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>("compare", Compare);
             writer.WriteIntValue("funnelStep", FunnelStep);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQueryFunnelStepBreakdown>("funnelStepBreakdown", FunnelStepBreakdown);
             writer.WriteBoolValue("funnelTrendsDropOff", FunnelTrendsDropOff);

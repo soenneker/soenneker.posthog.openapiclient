@@ -41,13 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Fix { get; set; }
 #endif
         /// <summary>Where the change goes. Absent means the query itself.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper? FixLocation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper FixLocation { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocation? FixLocation { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind? Kind { get; set; }
         /// <summary>Shown to the person: what happened and what to do.</summary>
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cause", n => { Cause = n.GetStringValue(); } },
                 { "evidence", n => { Evidence = n.GetStringValue(); } },
                 { "fix", n => { Fix = n.GetStringValue(); } },
-                { "fix_location", n => { FixLocation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper.CreateFromDiscriminatorValue); } },
+                { "fix_location", n => { FixLocation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocation>(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind>(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
             };
@@ -98,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cause", Cause);
             writer.WriteStringValue("evidence", Evidence);
             writer.WriteStringValue("fix", Fix);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocationWrapper>("fix_location", FixLocation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocation>("fix_location", FixLocation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind>("kind", Kind);
             writer.WriteStringValue("message", Message);
         }

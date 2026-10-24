@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Detail { get; set; }
 #endif
-        /// <summary>Rolled-up readiness state for imported sources.* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourcesStatusReadinessState? ReadinessState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourcesStatusReadinessState ReadinessState { get; set; }
-#endif
         /// <summary>Per-source rollup of copy and register workflow statuses for configured warehouse source imports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "detail", n => { Detail = n.GetStringValue(); } },
-                { "readiness_state", n => { ReadinessState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourcesStatusReadinessState>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourcesStatusReadinessState.CreateFromDiscriminatorValue); } },
+                { "readiness_state", n => { ReadinessState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourcesStatusReadinessState>(); } },
                 { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummary.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("detail", Detail);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourcesStatusReadinessState>("readiness_state", ReadinessState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourcesStatusReadinessState>("readiness_state", ReadinessState);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummary>("sources", Sources);
             writer.WriteAdditionalData(AdditionalData);
         }

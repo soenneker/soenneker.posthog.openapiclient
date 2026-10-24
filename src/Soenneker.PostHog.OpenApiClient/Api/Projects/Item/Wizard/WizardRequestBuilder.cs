@@ -2,8 +2,10 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Installs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Registry;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Scans;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WizardRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The installs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Installs.InstallsRequestBuilder Installs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Installs.InstallsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The registry property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Registry.RegistryRequestBuilder Registry
         {
@@ -26,6 +33,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.RunsRequestBuilder Runs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The scans property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Scans.ScansRequestBuilder Scans
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Scans.ScansRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The sessions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.SessionsRequestBuilder Sessions

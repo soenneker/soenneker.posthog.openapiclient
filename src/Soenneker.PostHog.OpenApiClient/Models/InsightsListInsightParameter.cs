@@ -8,6 +8,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public enum InsightsListInsightParameter
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "BI")]
+        #pragma warning disable CS1591
+        Bi,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FUNNELS")]
         #pragma warning disable CS1591
         Funnels,

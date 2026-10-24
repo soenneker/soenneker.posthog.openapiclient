@@ -17,19 +17,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan — never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsOpsItem>? Ops { get; set; }
+        public UntypedNode? Ops { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsOpsItem> Ops { get; set; }
+        public UntypedNode Ops { get; set; }
 #endif
-        /// <summary>Where the request came from, recorded in the activity log* `setup_tab` - setup_tab* `apply_all_safe` - apply_all_safe* `mcp` - mcp</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `setup_tab` - setup_tab* `apply_all_safe` - apply_all_safe* `mcp` - mcp</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsSource? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsSource Source { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOps"/> and sets the default values.
         /// </summary>
@@ -55,8 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ops", n => { Ops = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsOpsItem>(global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsOpsItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsSource>(global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsSource.CreateFromDiscriminatorValue); } },
+                { "ops", n => { Ops = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsSource>(); } },
             };
         }
         /// <summary>
@@ -66,8 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsOpsItem>("ops", Ops);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsSource>("source", Source);
+            writer.WriteObjectValue<UntypedNode>("ops", Ops);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsSource>("source", Source);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

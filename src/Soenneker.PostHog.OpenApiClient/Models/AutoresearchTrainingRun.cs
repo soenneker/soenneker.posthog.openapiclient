@@ -14,6 +14,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Model the training agent ran on. Null for older runs and runs with no task.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentModel { get; private set; }
+#nullable restore
+#else
+        public string AgentModel { get; private set; }
+#endif
+        /// <summary>Display name of agent_model, e.g. &apos;Claude Opus 5.5&apos;. Null when agent_model is null.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentModelLabel { get; private set; }
+#nullable restore
+#else
+        public string AgentModelLabel { get; private set; }
+#endif
+        /// <summary>Reasoning effort the training agent ran at. Null for older runs, runs with no task, and models with no effort setting.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentReasoningEffort { get; private set; }
+#nullable restore
+#else
+        public string AgentReasoningEffort { get; private set; }
+#endif
+        /// <summary>Runtime that drove the training agent, &apos;claude&apos; or &apos;codex&apos;. Null for older runs and runs with no task.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AgentRuntimeAdapter { get; private set; }
+#nullable restore
+#else
+        public string AgentRuntimeAdapter { get; private set; }
+#endif
         /// <summary>Best holdout AUC achieved across all iterations in this run.</summary>
         public double? BestHoldoutScore { get; private set; }
         /// <summary>Timestamp when the training run completed or failed.</summary>
@@ -27,6 +59,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Error { get; private set; }
+#endif
+        /// <summary>Short title for this run, for people. Null if not written.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Headline { get; private set; }
+#nullable restore
+#else
+        public string Headline { get; private set; }
 #endif
         /// <summary>Unique UUID of this training run.</summary>
         public Guid? Id { get; private set; }
@@ -42,18 +82,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrail> Iterations { get; private set; }
 #endif
-        /// <summary>Pipeline this training run belongs to.</summary>
-        public Guid? Pipeline { get; set; }
-        /// <summary>Timestamp when the training run started.</summary>
-        public DateTimeOffset? StartedAt { get; private set; }
-        /// <summary>Run status: pending, running, completed, or failed.* `pending` - Pending* `running` - Running* `completed` - Completed* `failed` - Failed</summary>
+        /// <summary>Why the run started: explore (the first burst of daily runs), scheduled (the research interval), rescue (the champion cannot score) or manual (a person or an agent asked). Null for older runs.* `explore` - Explore* `scheduled` - Scheduled* `rescue` - Rescue* `manual` - Manual</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunStatus? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunKickoffReason? KickoffReason { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunStatus Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunKickoffReason KickoffReason { get; private set; }
 #endif
+        /// <summary>Short plain-language next steps for people, at most 5. Null if not written.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? NextSteps { get; private set; }
+#nullable restore
+#else
+        public List<string> NextSteps { get; private set; }
+#endif
+        /// <summary>Pipeline this training run belongs to.</summary>
+        public Guid? Pipeline { get; set; }
+        /// <summary>One or two plain sentences on what this run learned, for people. Null if not written.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReaderSummary { get; private set; }
+#nullable restore
+#else
+        public string ReaderSummary { get; private set; }
+#endif
+        /// <summary>Timestamp when the training run started.</summary>
+        public DateTimeOffset? StartedAt { get; private set; }
+        /// <summary>* `pending` - Pending* `running` - Running* `completed` - Completed* `failed` - Failed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunStatus? Status { get; private set; }
         /// <summary>Distilled cross-run learning summary written on completion. Null until the run completes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,17 +157,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "agent_model", n => { AgentModel = n.GetStringValue(); } },
+                { "agent_model_label", n => { AgentModelLabel = n.GetStringValue(); } },
+                { "agent_reasoning_effort", n => { AgentReasoningEffort = n.GetStringValue(); } },
+                { "agent_runtime_adapter", n => { AgentRuntimeAdapter = n.GetStringValue(); } },
                 { "best_holdout_score", n => { BestHoldoutScore = n.GetDoubleValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
+                { "headline", n => { Headline = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "iteration_budget", n => { IterationBudget = n.GetIntValue(); } },
                 { "iteration_count", n => { IterationCount = n.GetIntValue(); } },
                 { "iterations", n => { Iterations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrail>(global::Soenneker.PostHog.OpenApiClient.Models.IterationTrail.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "kickoff_reason", n => { KickoffReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunKickoffReason>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunKickoffReason.CreateFromDiscriminatorValue); } },
+                { "next_steps", n => { NextSteps = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pipeline", n => { Pipeline = n.GetGuidValue(); } },
+                { "reader_summary", n => { ReaderSummary = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunStatus>(); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary.CreateFromDiscriminatorValue); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
                 { "task_run_id", n => { TaskRunId = n.GetGuidValue(); } },

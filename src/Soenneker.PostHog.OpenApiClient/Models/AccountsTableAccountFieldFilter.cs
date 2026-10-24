@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The field property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountField? Field { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountFieldKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldFilterKind? Kind { get; set; }
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldOperator? Operator { get; set; }
         /// <summary>The values property</summary>
@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "field", n => { Field = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountField>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountFieldKind>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldFilterKind>(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldOperator>(); } },
                 { "values", n => { Values = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountField>("field", Field);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountFieldKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldFilterKind>("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldOperator>("operator", Operator);
             writer.WriteCollectionOfPrimitiveValues<string>("values", Values);
         }

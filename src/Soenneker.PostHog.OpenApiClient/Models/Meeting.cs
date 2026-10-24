@@ -27,6 +27,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>UUID of the meeting.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether the meeting belongs to a recurring series. Account meeting lists include all past occurrences and only the next upcoming, non-canceled occurrence of each series.</summary>
+        public bool? IsRecurring { get; private set; }
         /// <summary>Email address of the meeting organizer; may be empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
                 { "gong_url", n => { GongUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_recurring", n => { IsRecurring = n.GetBoolValue(); } },
                 { "organizer_email", n => { OrganizerEmail = n.GetStringValue(); } },
                 { "participants", n => { Participants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MeetingParticipant>(global::Soenneker.PostHog.OpenApiClient.Models.MeetingParticipant.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },

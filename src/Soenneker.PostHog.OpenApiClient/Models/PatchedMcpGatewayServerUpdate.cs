@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Catalog category used for filter chips.* `business` - Business Operations* `data` - Data &amp; Analytics* `design` - Design &amp; Content* `dev` - Developer Tools &amp; APIs* `infra` - Infrastructure* `productivity` - Productivity &amp; Collaboration</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `business` - Business Operations* `data` - Data &amp; Analytics* `design` - Design &amp; Content* `dev` - Developer Tools &amp; APIs* `infra` - Infrastructure* `productivity` - Productivity &amp; Collaboration</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpGatewayServerUpdateCategory? Category { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpGatewayServerUpdateCategory Category { get; set; }
-#endif
         /// <summary>Short description shown on server cards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "category", n => { Category = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpGatewayServerUpdateCategory>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpGatewayServerUpdateCategory.CreateFromDiscriminatorValue); } },
+                { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpGatewayServerUpdateCategory>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "is_team_enabled", n => { IsTeamEnabled = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpGatewayServerUpdateCategory>("category", Category);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMcpGatewayServerUpdateCategory>("category", Category);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("is_team_enabled", IsTeamEnabled);
             writer.WriteStringValue("name", Name);

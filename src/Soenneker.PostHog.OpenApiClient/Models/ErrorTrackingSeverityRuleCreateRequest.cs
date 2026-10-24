@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Evaluation priority. Lower values run first. Defaults to 0.</summary>
         public int? OrderKey { get; set; }
-        /// <summary>Severity assigned when this rule is the first match.* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestSeverity Severity { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequest"/> and sets the default values.
         /// </summary>
@@ -60,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestFilters.CreateFromDiscriminatorValue); } },
                 { "order_key", n => { OrderKey = n.GetIntValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestSeverity>(); } },
             };
         }
         /// <summary>
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestFilters>("filters", Filters);
             writer.WriteIntValue("order_key", OrderKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleCreateRequestSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

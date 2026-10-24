@@ -12,10 +12,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class QueryResponseAlternative35 : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Whether this result counted a repeat converter&apos;s every conversion, after resolving the query&apos;s null against the goal&apos;s math. The rate columns are a true share only when this is false, so the table reads it to label them.</summary>
-        public bool? AllowsMultipleConversionsPerVisitor { get; set; }
-        /// <summary>The team&apos;s configured attribution window, for the tooltips.</summary>
-        public int? AttributionWindowDays { get; set; }
         /// <summary>Query error. Returned only if &apos;explain&apos; or `modifiers.debug` is true. Throws an error otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -24,10 +20,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
-        /// <summary>The hasMore property</summary>
-        public bool? HasMore { get; set; }
-        /// <summary>Whether the goal is revenue-bearing, which gates the value columns.</summary>
-        public bool? HasValue { get; set; }
         /// <summary>Generated HogQL query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,15 +28,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Hogql { get; set; }
 #endif
-        /// <summary>The limit property</summary>
-        public int? Limit { get; set; }
-        /// <summary>Model order for the column groups.</summary>
+        /// <summary>The interval property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval? Interval { get; set; }
+        /// <summary>Column count. Every row&apos;s values array has this length.</summary>
+        public int? IntervalCount { get; set; }
+        /// <summary>Column headers, e.g. [&apos;Week 0&apos;, &apos;Week 1&apos;, ...].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AttributionMode?>? Models { get; set; }
+        public List<string>? Labels { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AttributionMode?> Models { get; set; }
+        public List<string> Labels { get; set; }
 #endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -54,8 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
-        /// <summary>The offset property</summary>
-        public int? Offset { get; set; }
+        /// <summary>How many breakdown values were folded into &apos;Other&apos;, so the table can say so.</summary>
+        public int? OtherBreakdownCount { get; set; }
         /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,10 +77,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow>? Results { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow> Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow> Results { get; set; }
+#endif
+        /// <summary>Only populated in summary mode. Rates use the corresponding eligible population.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow>? Summary { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow> Summary { get; set; }
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,10 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> Timings { get; set; }
 #endif
-        /// <summary>Total conversions in range, so the footer can say &quot;N of M&quot;.</summary>
-        public int? TotalConversions { get; set; }
-        /// <summary>Conversions with no touchpoint in the window. Reported in the footer, not in any row.</summary>
-        public int? UnattributedConversions { get; set; }
+        /// <summary>Distinct persons acquired across every cohort and breakdown value.</summary>
+        public int? TotalCohortSize { get; set; }
+        /// <summary>Older cohorts dropped to bound the matrix. Non-zero means the table covers less than the date range the filter bar shows, so the table has to say so.</summary>
+        public int? TruncatedCohorts { get; set; }
         /// <summary>Connector-synced data warehouse sources referenced by this query, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -134,23 +136,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "allowsMultipleConversionsPerVisitor", n => { AllowsMultipleConversionsPerVisitor = n.GetBoolValue(); } },
-                { "attributionWindowDays", n => { AttributionWindowDays = n.GetIntValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "hasMore", n => { HasMore = n.GetBoolValue(); } },
-                { "hasValue", n => { HasValue = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
-                { "models", n => { Models = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.AttributionMode>()?.AsList(); } },
+                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval>(); } },
+                { "intervalCount", n => { IntervalCount = n.GetIntValue(); } },
+                { "labels", n => { Labels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "otherBreakdownCount", n => { OtherBreakdownCount = n.GetIntValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "summary", n => { Summary = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "totalConversions", n => { TotalConversions = n.GetIntValue(); } },
-                { "unattributedConversions", n => { UnattributedConversions = n.GetIntValue(); } },
+                { "totalCohortSize", n => { TotalCohortSize = n.GetIntValue(); } },
+                { "truncatedCohorts", n => { TruncatedCohorts = n.GetIntValue(); } },
                 { "used_data_warehouse_sources", n => { UsedDataWarehouseSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative35WarningsItem>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative35WarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -162,23 +162,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("allowsMultipleConversionsPerVisitor", AllowsMultipleConversionsPerVisitor);
-            writer.WriteIntValue("attributionWindowDays", AttributionWindowDays);
             writer.WriteStringValue("error", Error);
-            writer.WriteBoolValue("hasMore", HasMore);
-            writer.WriteBoolValue("hasValue", HasValue);
             writer.WriteStringValue("hogql", Hogql);
-            writer.WriteIntValue("limit", Limit);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.AttributionMode>("models", Models);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval>("interval", Interval);
+            writer.WriteIntValue("intervalCount", IntervalCount);
+            writer.WriteCollectionOfPrimitiveValues<string>("labels", Labels);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
-            writer.WriteIntValue("offset", Offset);
+            writer.WriteIntValue("otherBreakdownCount", OtherBreakdownCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_compare_date_range", ResolvedCompareDateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow>("summary", Summary);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
-            writer.WriteIntValue("totalConversions", TotalConversions);
-            writer.WriteIntValue("unattributedConversions", UnattributedConversions);
+            writer.WriteIntValue("totalCohortSize", TotalCohortSize);
+            writer.WriteIntValue("truncatedCohorts", TruncatedCohorts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>("used_data_warehouse_sources", UsedDataWarehouseSources);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative35WarningsItem>("warnings", Warnings);
         }

@@ -79,14 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>Agent protocol and harness used for this task&apos;s runs.* `acp` - ACP* `pi` - Pi</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `acp` - ACP* `pi` - Pi</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskRuntime? Runtime { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskRuntime Runtime { get; private set; }
-#endif
         /// <summary>The signal_report property</summary>
         public Guid? SignalReport { get; set; }
         /// <summary>The slug property</summary>
@@ -150,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "latest_run", n => { LatestRun = n.GetGuidValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "runtime", n => { Runtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskRuntime.CreateFromDiscriminatorValue); } },
+                { "runtime", n => { Runtime = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskRuntime>(); } },
                 { "signal_report", n => { SignalReport = n.GetGuidValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "task_number", n => { TaskNumber = n.GetIntValue(); } },

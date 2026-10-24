@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DisplayName { get; set; }
 #endif
-        /// <summary>Template identifier, e.g. &apos;likely_active_soon&apos;. Pass to autoresearch-resolve-template-create.* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TemplateInfoKey? Key { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TemplateInfoKey Key { get; set; }
-#endif
         /// <summary>Usage guidance and implementation notes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "default_horizon_days", n => { DefaultHorizonDays = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
-                { "key", n => { Key = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TemplateInfoKey>(global::Soenneker.PostHog.OpenApiClient.Models.TemplateInfoKey.CreateFromDiscriminatorValue); } },
+                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TemplateInfoKey>(); } },
                 { "notes", n => { Notes = n.GetStringValue(); } },
                 { "requires_activity_resolution", n => { RequiresActivityResolution = n.GetBoolValue(); } },
                 { "requires_user_event", n => { RequiresUserEvent = n.GetBoolValue(); } },
@@ -96,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("default_horizon_days", DefaultHorizonDays);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("display_name", DisplayName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TemplateInfoKey>("key", Key);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TemplateInfoKey>("key", Key);
             writer.WriteStringValue("notes", Notes);
             writer.WriteBoolValue("requires_activity_resolution", RequiresActivityResolution);
             writer.WriteBoolValue("requires_user_event", RequiresUserEvent);

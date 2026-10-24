@@ -15,10 +15,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Service rows per status.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts? StatusCounts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts StatusCounts { get; set; }
+#endif
         /// <summary>Number of top services included in the volume_share aggregate (up to 5).</summary>
         public int? TopServicesCount { get; set; }
         /// <summary>Combined volume share (percent) of the top services by log_count.</summary>
         public double? TopServicesVolumeSharePct { get; set; }
+        /// <summary>True when more services matched than `services` holds.</summary>
+        public bool? Truncated { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary"/> and sets the default values.
         /// </summary>
@@ -44,8 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "status_counts", n => { StatusCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts.CreateFromDiscriminatorValue); } },
                 { "top_services_count", n => { TopServicesCount = n.GetIntValue(); } },
                 { "top_services_volume_share_pct", n => { TopServicesVolumeSharePct = n.GetDoubleValue(); } },
+                { "truncated", n => { Truncated = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -55,8 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts>("status_counts", StatusCounts);
             writer.WriteIntValue("top_services_count", TopServicesCount);
             writer.WriteDoubleValue("top_services_volume_share_pct", TopServicesVolumeSharePct);
+            writer.WriteBoolValue("truncated", Truncated);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

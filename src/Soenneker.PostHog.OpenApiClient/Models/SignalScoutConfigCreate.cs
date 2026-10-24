@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Exact MCP tool names selected for this scout, excluding its built-in run context tools. Null means no tool restriction; an empty list selects no additional tools. Write access is derived from selected write tools. Clearing to null preserves the last write scopes. Send this field or tool_preset, never both. Requires the scouts-tool-access feature flag.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? AllowedMcpTools { get; set; }
+#nullable restore
+#else
+        public List<string> AllowedMcpTools { get; set; }
+#endif
         /// <summary>Exempt this scout from the inactivity pause, which otherwise switches off a scout that goes a fortnight without surfacing anything anyone engages with. Set it on watchdog scouts whose value is staying quiet. Defaults to false.</summary>
         public bool? AutoPauseExempt { get; set; }
         /// <summary>Name shown wherever people identify this scout, written however you want it — spaces, capitalization, and acronyms are kept as typed, and two scouts may share one. It does not change the scout&apos;s skill name, which stays its identity, so renaming a scout keeps its schedule, run history, notes, memory, and links. At most 200 characters; blank means the scout has no name of its own and is labelled from its skill name instead.</summary>
@@ -29,6 +37,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Emit { get; set; }
         /// <summary>Whether this scout runs on its schedule. Defaults to true.</summary>
         public bool? Enabled { get; set; }
+        /// <summary>Opt-in guard on this scout&apos;s lifecycle. Off by default, so anyone with scout write access may pause, resume, switch the scout to dry run, or delete it. On, only the person the scout&apos;s runs act as or a project admin may do any of those, or change this flag. Use it on a scout whose output people depend on: `signal_scout:write` is a project-wide scope held by people and by unattended agents alike, and a resume has to pass the project&apos;s enabled-scout maximum that a pause does not, so a bulk pause is not undone in one step. The lock never stops an automatic pause, such as the inactivity sweep or the repeated-failure breaker.</summary>
+        public bool? LifecycleLocked { get; set; }
         /// <summary>MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,14 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>What the scout&apos;s sandbox can reach over the network while it runs. Defaults to `trusted`, the platform&apos;s trusted-domain allowlist (PostHog, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.* `trusted` - Trusted domains only* `full` - Full</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `trusted` - Trusted domains only* `full` - Full</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateNetworkAccess? NetworkAccess { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateNetworkAccess NetworkAccess { get; set; }
-#endif
         /// <summary>Destinations that receive each finding or report this scout emits. Empty by default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +64,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateOutputDestinations OutputDestinations { get; set; }
+#endif
+        /// <summary>Optional HogQL `SELECT` a scheduled run evaluates before it starts. When it returns no rows, or one row with one false value (`false`, `0`, null or empty), the run is skipped: no sandbox, no model call, and no run row. Any other result starts the run, and the scout reads the rows. A query error also starts the run. Use `{since}` (the start of the last run that ran, or when the scout was created) and `{now}` to look only at what is new, e.g. `SELECT count() FROM events WHERE event = &apos;$exception&apos; AND timestamp &gt; {since}`. To run at least once a week however quiet it is, add `OR {since} &lt; {now} - INTERVAL 7 DAY` to the condition. Only scheduled runs evaluate it: a manual or workflow run always starts. `{interval_minutes}` is the gap between two scheduled runs, so a backstop can follow the schedule: `{since} &lt; {now} - toIntervalMinute(greatest(1440, 2 * {interval_minutes}))` runs at least daily and never more often than every two intervals. The query stops after 10 seconds and reads at most 50 rows. Try a query with `scout-config-precheck-test` before you save it. Null or blank uses the default pre-check the scout&apos;s skill ships, if any. To turn every pre-check off, set `precheck_disabled`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PrecheckQuery { get; set; }
+#nullable restore
+#else
+        public string PrecheckQuery { get; set; }
 #endif
         /// <summary>GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project&apos;s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout&apos;s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project&apos;s GitHub connection. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,7 +115,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
-        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
+        /// <summary>* `read_only` - Read only* `support_notes` - Support notes</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateToolPreset? ToolPreset { get; set; }
+        /// <summary>Write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `canvas:write`, `customer_task:write`, `dashboard:write`, `experiment:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `notebook:write`, `replay_scanner:write`, `ticket:write`, `warehouse_table:write`, `warehouse_view:write`. A new scout starts with `notebook:write` when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. `ticket:write` lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? WriteScopes { get; set; }
@@ -136,20 +150,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "allowed_mcp_tools", n => { AllowedMcpTools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "auto_pause_exempt", n => { AutoPauseExempt = n.GetBoolValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "emit", n => { Emit = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "lifecycle_locked", n => { LifecycleLocked = n.GetBoolValue(); } },
                 { "mcp_gateway_server_ids", n => { McpGatewayServerIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "network_access", n => { NetworkAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateNetworkAccess>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateNetworkAccess.CreateFromDiscriminatorValue); } },
+                { "network_access", n => { NetworkAccess = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateNetworkAccess>(); } },
                 { "output_destinations", n => { OutputDestinations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateOutputDestinations>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateOutputDestinations.CreateFromDiscriminatorValue); } },
+                { "precheck_query", n => { PrecheckQuery = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "tool_preset", n => { ToolPreset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateToolPreset>(); } },
                 { "write_scopes", n => { WriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -160,20 +178,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("allowed_mcp_tools", AllowedMcpTools);
             writer.WriteBoolValue("auto_pause_exempt", AutoPauseExempt);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteBoolValue("emit", Emit);
             writer.WriteBoolValue("enabled", Enabled);
+            writer.WriteBoolValue("lifecycle_locked", LifecycleLocked);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("mcp_gateway_server_ids", McpGatewayServerIds);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateNetworkAccess>("network_access", NetworkAccess);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateNetworkAccess>("network_access", NetworkAccess);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateOutputDestinations>("output_destinations", OutputDestinations);
+            writer.WriteStringValue("precheck_query", PrecheckQuery);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("run_cron_schedule", RunCronSchedule);
             writer.WriteIntValue("run_interval_minutes", RunIntervalMinutes);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateToolPreset>("tool_preset", ToolPreset);
             writer.WriteCollectionOfPrimitiveValues<string>("write_scopes", WriteScopes);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -69,8 +69,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? ExpiresAt { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>The intent property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? Intent { get; private set; }
+#nullable restore
+#else
+        public UntypedNode Intent { get; private set; }
+#endif
+        /// <summary>The intent_display property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? IntentDisplay { get; private set; }
+#nullable restore
+#else
+        public UntypedNode IntentDisplay { get; private set; }
+#endif
         /// <summary>Check if current user is the requester.</summary>
         public bool? IsRequester { get; private set; }
+        /// <summary>The policy_snapshot property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? PolicySnapshot { get; private set; }
+#nullable restore
+#else
+        public UntypedNode PolicySnapshot { get; private set; }
+#endif
         /// <summary>The resource_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,14 +111,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ResourceType { get; private set; }
 #endif
-        /// <summary>The state property</summary>
+        /// <summary>The result_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState? State { get; private set; }
+        public UntypedNode? ResultData { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState State { get; private set; }
+        public UntypedNode ResultData { get; private set; }
 #endif
+        /// <summary>* `pending` - Pending* `approved` - Approved (awaiting application)* `applied` - Applied* `rejected` - Rejected* `expired` - Expired* `failed` - Failed to apply</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState? State { get; private set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Get the current user&apos;s approval decision if they have voted.</summary>
@@ -107,14 +133,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The validated_at property</summary>
         public DateTimeOffset? ValidatedAt { get; private set; }
-        /// <summary>The validation_status property</summary>
+        /// <summary>The validation_errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus? ValidationStatus { get; private set; }
+        public UntypedNode? ValidationErrors { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus ValidationStatus { get; private set; }
+        public UntypedNode ValidationErrors { get; private set; }
 #endif
+        /// <summary>* `valid` - Valid* `invalid` - Invalid* `stale` - Stale (resource changed)</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus? ValidationStatus { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseChangeRequest"/> and sets the default values.
         /// </summary>
@@ -152,14 +180,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestCreatedBy.CreateFromDiscriminatorValue); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "intent", n => { Intent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "intent_display", n => { IntentDisplay = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "is_requester", n => { IsRequester = n.GetBoolValue(); } },
+                { "policy_snapshot", n => { PolicySnapshot = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "resource_id", n => { ResourceId = n.GetStringValue(); } },
                 { "resource_type", n => { ResourceType = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState.CreateFromDiscriminatorValue); } },
+                { "result_data", n => { ResultData = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_decision", n => { UserDecision = n.GetStringValue(); } },
                 { "validated_at", n => { ValidatedAt = n.GetDateTimeOffsetValue(); } },
-                { "validation_status", n => { ValidationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus.CreateFromDiscriminatorValue); } },
+                { "validation_errors", n => { ValidationErrors = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "validation_status", n => { ValidationStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus>(); } },
             };
         }
         /// <summary>

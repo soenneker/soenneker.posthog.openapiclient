@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The branching property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema? Branching { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema Branching { get; set; }
+#endif
         /// <summary>Custom button label.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Format for the description field.* `text` - text* `html` - html</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `html` - html* `text` - text</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaDescriptionContentType? DescriptionContentType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaDescriptionContentType DescriptionContentType { get; set; }
-#endif
         /// <summary>Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_&lt;id&gt;) stay attached; omit it for new questions and the server generates one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,6 +65,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Question { get; set; }
+#endif
+        /// <summary>Inline translations keyed by language code (for example &apos;es&apos; or &apos;pt-BR&apos;). Send back the current value when editing other question fields, or the translations are lost.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTranslationsProperty? Translations { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTranslationsProperty Translations { get; set; }
 #endif
         /// <summary>* `link` - link</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTypeEnum? Type { get; set; }
@@ -91,13 +101,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "branching", n => { Branching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema.CreateFromDiscriminatorValue); } },
                 { "buttonText", n => { ButtonText = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "descriptionContentType", n => { DescriptionContentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaDescriptionContentType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaDescriptionContentType.CreateFromDiscriminatorValue); } },
+                { "descriptionContentType", n => { DescriptionContentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaDescriptionContentType>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "link", n => { Link = n.GetStringValue(); } },
                 { "optional", n => { Optional = n.GetBoolValue(); } },
                 { "question", n => { Question = n.GetStringValue(); } },
+                { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTranslationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTranslationsProperty.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTypeEnum>(); } },
             };
         }
@@ -108,13 +120,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>("branching", Branching);
             writer.WriteStringValue("buttonText", ButtonText);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("link", Link);
             writer.WriteBoolValue("optional", Optional);
             writer.WriteStringValue("question", Question);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTranslationsProperty>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchemaTypeEnum>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

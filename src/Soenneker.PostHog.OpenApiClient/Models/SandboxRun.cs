@@ -50,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSource> Sources { get; set; }
 #endif
-        /// <summary>running while the agent works. completed carries reply and sources. failed and cancelled carry error.* `running` - Running* `completed` - Completed* `failed` - Failed* `cancelled` - Cancelled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `running` - Running* `completed` - Completed* `failed` - Failed* `cancelled` - Cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxRunStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxRunStatus Status { get; set; }
-#endif
         /// <summary>Sandbox task id.</summary>
         public Guid? TaskId { get; set; }
         /// <summary>
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
                 { "searches", n => { Searches = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearch>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearch.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSource>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxSource.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxRunStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxRunStatus>(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }
@@ -108,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("run_id", RunId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearch>("searches", Searches);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSource>("sources", Sources);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxRunStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxRunStatus>("status", Status);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteAdditionalData(AdditionalData);
         }

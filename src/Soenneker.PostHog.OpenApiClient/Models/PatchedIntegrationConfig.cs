@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigConfig? Config { get; set; }
+        public UntypedNode? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigConfig Config { get; set; }
+        public UntypedNode Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigInstallationStatus InstallationStatus { get; private set; }
 #endif
-        /// <summary>* `anthropic` - Anthropic* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `helpscout` - Helpscout* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `twitter-ads` - Twitter Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel* `youtube-analytics` - Youtube Analytics</summary>
+        /// <summary>* `anthropic` - Anthropic* `apple-ads` - Apple Ads* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `helpscout` - Helpscout* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `twitter-ads` - Twitter Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel* `youtube-analytics` - Youtube Analytics</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationKindEnum? Kind { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfig"/> and sets the default values.
@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigCreatedBy.CreateFromDiscriminatorValue); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigConfig>("config", Config);
+            writer.WriteObjectValue<UntypedNode>("config", Config);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationKindEnum>("kind", Kind);
             writer.WriteAdditionalData(AdditionalData);
         }

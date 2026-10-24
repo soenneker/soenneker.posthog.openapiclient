@@ -32,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Previous { get; set; }
 #endif
+        /// <summary>The ranker that ordered the page when sort=recommended: priority, or open, action or fix for that outcome of the served ranking model. Null for every other sort. Each row&apos;s inbox_merge_key belongs to this ranker.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Ranker { get; set; }
+#nullable restore
+#else
+        public string Ranker { get; set; }
+#endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "next", n => { Next = n.GetStringValue(); } },
                 { "previous", n => { Previous = n.GetStringValue(); } },
+                { "ranker", n => { Ranker = n.GetStringValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportList>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportList.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("count", Count);
             writer.WriteStringValue("next", Next);
             writer.WriteStringValue("previous", Previous);
+            writer.WriteStringValue("ranker", Ranker);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportList>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }

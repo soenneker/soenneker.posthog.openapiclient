@@ -24,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When this status snapshot was generated.</summary>
         public DateTimeOffset? GeneratedAt { get; set; }
-        /// <summary>Highest-priority readiness state across all warehouse datasets.* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState? OverallReadinessState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState OverallReadinessState { get; set; }
-#endif
         /// <summary>Persons backfill readiness.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "events", n => { Events = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents.CreateFromDiscriminatorValue); } },
                 { "generated_at", n => { GeneratedAt = n.GetDateTimeOffsetValue(); } },
-                { "overall_readiness_state", n => { OverallReadinessState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState.CreateFromDiscriminatorValue); } },
+                { "overall_readiness_state", n => { OverallReadinessState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState>(); } },
                 { "persons", n => { Persons = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons.CreateFromDiscriminatorValue); } },
                 { "sources", n => { Sources = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources.CreateFromDiscriminatorValue); } },
             };
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents>("events", Events);
             writer.WriteDateTimeOffsetValue("generated_at", GeneratedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState>("overall_readiness_state", OverallReadinessState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState>("overall_readiness_state", OverallReadinessState);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons>("persons", Persons);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources>("sources", Sources);
             writer.WriteAdditionalData(AdditionalData);

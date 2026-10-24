@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How far the retirement has got: `announced` while the scout still runs, `retired` once its sunset has passed. A retired scout is paused and does not run again.* `announced` - announced* `retired` - retired</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `announced` - announced* `retired` - retired</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecationPhase? Phase { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecationPhase Phase { get; set; }
-#endif
         /// <summary>Why PostHog is retiring the scout, written to be shown to a person as-is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "phase", n => { Phase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecationPhase>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecationPhase.CreateFromDiscriminatorValue); } },
+                { "phase", n => { Phase = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecationPhase>(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "sunset_at", n => { SunsetAt = n.GetDateTimeOffsetValue(); } },
                 { "superseded_by", n => { SupersededBy = n.GetStringValue(); } },
@@ -79,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecationPhase>("phase", Phase);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecationPhase>("phase", Phase);
             writer.WriteStringValue("reason", Reason);
             writer.WriteDateTimeOffsetValue("sunset_at", SunsetAt);
             writer.WriteStringValue("superseded_by", SupersededBy);

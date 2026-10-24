@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Exact immutable scorer-version UUID.</summary>
         public Guid? Id { get; set; }
-        /// <summary>Scorer value kind.* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionReadKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionReadKind Kind { get; set; }
-#endif
         /// <summary>Current scorer display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,6 +45,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Current compact label. Blank uses the full name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ShortName { get; set; }
+#nullable restore
+#else
+        public string ShortName { get; set; }
 #endif
         /// <summary>Version number within the definition.</summary>
         public int? Version { get; set; }
@@ -84,8 +86,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "definition_id", n => { DefinitionId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionReadKind>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionReadKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionReadKind>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "short_name", n => { ShortName = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -101,8 +104,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("definition_id", DefinitionId);
             writer.WriteStringValue("description", Description);
             writer.WriteGuidValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionReadKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionReadKind>("kind", Kind);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("short_name", ShortName);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

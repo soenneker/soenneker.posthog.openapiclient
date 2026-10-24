@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of matching logs in this group at severity &quot;error&quot; or &quot;fatal&quot;.</summary>
         public int? ErrorCount { get; set; }
+        /// <summary>ISO 8601 timestamp of the earliest matching log in this group.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstSeen { get; set; }
+#nullable restore
+#else
+        public string FirstSeen { get; set; }
+#endif
         /// <summary>ISO 8601 timestamp of the most recent matching log in this group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error_count", n => { ErrorCount = n.GetIntValue(); } },
+                { "first_seen", n => { FirstSeen = n.GetStringValue(); } },
                 { "last_seen", n => { LastSeen = n.GetStringValue(); } },
                 { "log_count", n => { LogCount = n.GetIntValue(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
@@ -82,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("error_count", ErrorCount);
+            writer.WriteStringValue("first_seen", FirstSeen);
             writer.WriteStringValue("last_seen", LastSeen);
             writer.WriteIntValue("log_count", LogCount);
             writer.WriteStringValue("value", Value);

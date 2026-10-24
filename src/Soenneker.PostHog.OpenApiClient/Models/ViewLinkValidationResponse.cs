@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Distinct source and joining key pairs from the joined result, at most 5.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Results { get; set; }
+        public List<UntypedNode>? Results { get; set; }
 #nullable restore
 #else
-        public UntypedNode Results { get; set; }
+        public List<UntypedNode> Results { get; set; }
 #endif
         /// <summary>Number of sampled source rows checked for a join match, at most 10000. Null when the match-rate query failed.</summary>
         public int? TotalRows { get; set; }
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "match_rate", n => { MatchRate = n.GetDoubleValue(); } },
                 { "matched_rows", n => { MatchedRows = n.GetIntValue(); } },
                 { "msg", n => { Msg = n.GetStringValue(); } },
-                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
                 { "total_rows", n => { TotalRows = n.GetIntValue(); } },
             };
         }
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("matched_rows", MatchedRows);
             writer.WriteDoubleValue("match_rate", MatchRate);
             writer.WriteStringValue("msg", Msg);
-            writer.WriteObjectValue<UntypedNode>("results", Results);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("results", Results);
             writer.WriteIntValue("total_rows", TotalRows);
             writer.WriteAdditionalData(AdditionalData);
         }

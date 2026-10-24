@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The available_product_features property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem>? AvailableProductFeatures { get; private set; }
+        public UntypedNode? AvailableProductFeatures { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem> AvailableProductFeatures { get; private set; }
+        public UntypedNode AvailableProductFeatures { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -72,6 +72,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? LogoMediaId { get; set; }
         /// <summary>The member_count property</summary>
         public int? MemberCount { get; private set; }
+        /// <summary>Notice shown in a banner to every member of the organization. Set to null to remove it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice? MemberNotice { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice MemberNotice { get; set; }
+#endif
         /// <summary>When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects.</summary>
         public bool? MembersCanCreateProjects { get; set; }
         /// <summary>The members_can_invite property</summary>
@@ -80,21 +88,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? MembersCanSeeOrgMembers { get; set; }
         /// <summary>The members_can_use_personal_api_keys property</summary>
         public bool? MembersCanUsePersonalApiKeys { get; set; }
-        /// <summary>The membership_level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel? MembershipLevel { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel MembershipLevel { get; private set; }
-#endif
+        /// <summary>When the requesting user joined this organization. Null if the user is not a member.</summary>
+        public DateTimeOffset? MembershipJoinedAt { get; private set; }
+        /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
+        public int? MembershipLevel { get; private set; }
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty? Metadata { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty Metadata { get; private set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,14 +108,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The plugins_access_level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel? PluginsAccessLevel { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel PluginsAccessLevel { get; private set; }
-#endif
+        /// <summary>* `0` - none* `3` - config* `6` - install* `9` - root</summary>
+        public int? PluginsAccessLevel { get; private set; }
         /// <summary>The projects property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -133,10 +131,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The teams property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty>? Teams { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamBasic>? Teams { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty> Teams { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamBasic> Teams { get; private set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -168,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allow_publicly_shared_resources", n => { AllowPubliclySharedResources = n.GetBoolValue(); } },
-                { "available_product_features", n => { AvailableProductFeatures = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "available_product_features", n => { AvailableProductFeatures = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "customer_id", n => { CustomerId = n.GetStringValue(); } },
                 { "default_anonymize_ips", n => { DefaultAnonymizeIps = n.GetBoolValue(); } },
@@ -187,18 +185,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
                 { "logo_media_id", n => { LogoMediaId = n.GetGuidValue(); } },
                 { "member_count", n => { MemberCount = n.GetIntValue(); } },
+                { "member_notice", n => { MemberNotice = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice.CreateFromDiscriminatorValue); } },
                 { "members_can_create_projects", n => { MembersCanCreateProjects = n.GetBoolValue(); } },
                 { "members_can_invite", n => { MembersCanInvite = n.GetBoolValue(); } },
                 { "members_can_see_org_members", n => { MembersCanSeeOrgMembers = n.GetBoolValue(); } },
                 { "members_can_use_personal_api_keys", n => { MembersCanUsePersonalApiKeys = n.GetBoolValue(); } },
-                { "membership_level", n => { MembershipLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel.CreateFromDiscriminatorValue); } },
+                { "membership_joined_at", n => { MembershipJoinedAt = n.GetDateTimeOffsetValue(); } },
+                { "membership_level", n => { MembershipLevel = n.GetIntValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "plugins_access_level", n => { PluginsAccessLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel.CreateFromDiscriminatorValue); } },
+                { "plugins_access_level", n => { PluginsAccessLevel = n.GetIntValue(); } },
                 { "projects", n => { Projects = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationProjectsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationProjectsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "read_only_mcp_access", n => { ReadOnlyMcpAccess = n.GetBoolValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
-                { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamBasic>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamBasic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "uses_most_specific_access_resolution", n => { UsesMostSpecificAccessResolution = n.GetBoolValue(); } },
             };
@@ -218,11 +218,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_ai_data_processing_approved", IsAiDataProcessingApproved);
             writer.WriteBoolValue("is_ai_training_opted_in", IsAiTrainingOptedIn);
             writer.WriteGuidValue("logo_media_id", LogoMediaId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice>("member_notice", MemberNotice);
             writer.WriteBoolValue("members_can_create_projects", MembersCanCreateProjects);
             writer.WriteBoolValue("members_can_invite", MembersCanInvite);
             writer.WriteBoolValue("members_can_see_org_members", MembersCanSeeOrgMembers);
             writer.WriteBoolValue("members_can_use_personal_api_keys", MembersCanUsePersonalApiKeys);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("read_only_mcp_access", ReadOnlyMcpAccess);
             writer.WriteAdditionalData(AdditionalData);

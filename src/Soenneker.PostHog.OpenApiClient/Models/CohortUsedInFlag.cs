@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>True when the flag is archived. Every flag that is not archived prevents the cohort from being deleted, enabled or not</summary>
+        public bool? Archived { get; set; }
         /// <summary>Feature flag database ID</summary>
         public int? Id { get; set; }
         /// <summary>Feature flag key (URL slug)</summary>
@@ -57,6 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -69,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("archived", Archived);
             writer.WriteIntValue("id", Id);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);

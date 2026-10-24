@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How often the digest is sent.* `weekdays` - Weekdays* `every_day` - Every day</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `weekdays` - Weekdays* `every_day` - Every day</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskDigestPreferencesUpdateCadence? Cadence { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDigestPreferencesUpdateCadence Cadence { get; set; }
-#endif
         /// <summary>Whether the task digest email is sent to this user.</summary>
         public bool? Enabled { get; set; }
         /// <summary>Time of day to send the digest, as HH:MM in the project timezone.</summary>
@@ -53,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cadence", n => { Cadence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDigestPreferencesUpdateCadence>(global::Soenneker.PostHog.OpenApiClient.Models.TaskDigestPreferencesUpdateCadence.CreateFromDiscriminatorValue); } },
+                { "cadence", n => { Cadence = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDigestPreferencesUpdateCadence>(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "send_time", n => { SendTime = n.GetTimeValue(); } },
             };
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDigestPreferencesUpdateCadence>("cadence", Cadence);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDigestPreferencesUpdateCadence>("cadence", Cadence);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteTimeValue("send_time", SendTime);
             writer.WriteAdditionalData(AdditionalData);

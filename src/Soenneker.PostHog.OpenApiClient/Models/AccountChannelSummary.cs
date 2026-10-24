@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Cadence the summarized period belongs to (daily, weekly, or monthly).* `daily` - daily* `weekly` - weekly* `monthly` - monthly</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `daily` - daily* `weekly` - weekly* `monthly` - monthly</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountChannelSummaryCadence? Cadence { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountChannelSummaryCadence Cadence { get; private set; }
-#endif
         /// <summary>Markdown summary citing the original Slack messages with permalinks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cadence", n => { Cadence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountChannelSummaryCadence>(global::Soenneker.PostHog.OpenApiClient.Models.AccountChannelSummaryCadence.CreateFromDiscriminatorValue); } },
+                { "cadence", n => { Cadence = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountChannelSummaryCadence>(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "generated_at", n => { GeneratedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

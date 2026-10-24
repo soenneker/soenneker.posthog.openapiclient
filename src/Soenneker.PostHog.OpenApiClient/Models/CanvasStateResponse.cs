@@ -25,7 +25,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry> Entries { get; set; }
 #endif
-        /// <summary>Next entry offset, or null when complete.</summary>
+        /// <summary>Cursor for the next page, or null when complete. Pass it as cursor.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NextCursor { get; set; }
+#nullable restore
+#else
+        public string NextCursor { get; set; }
+#endif
+        /// <summary>Next entry offset, or null when complete. Null when the request used a cursor.</summary>
         public int? NextOffset { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateResponse"/> and sets the default values.
@@ -54,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "complete", n => { Complete = n.GetBoolValue(); } },
                 { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "next_cursor", n => { NextCursor = n.GetStringValue(); } },
                 { "next_offset", n => { NextOffset = n.GetIntValue(); } },
             };
         }
@@ -66,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("complete", Complete);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntry>("entries", Entries);
+            writer.WriteStringValue("next_cursor", NextCursor);
             writer.WriteIntValue("next_offset", NextOffset);
             writer.WriteAdditionalData(AdditionalData);
         }

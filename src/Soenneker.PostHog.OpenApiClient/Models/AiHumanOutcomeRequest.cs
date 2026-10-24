@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MessageId { get; set; }
 #endif
-        /// <summary>used when the human inserts the draft as-is; edited after they change it in the composer.* `used` - used* `edited` - edited</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `used` - used* `edited` - edited</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequestOutcome? Outcome { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequestOutcome Outcome { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequest"/> and sets the default values.
         /// </summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
-                { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequestOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequestOutcome.CreateFromDiscriminatorValue); } },
+                { "outcome", n => { Outcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequestOutcome>(); } },
             };
         }
         /// <summary>
@@ -68,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("message_id", MessageId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequestOutcome>("outcome", Outcome);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequestOutcome>("outcome", Outcome);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

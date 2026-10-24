@@ -76,14 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Action that created this version.* `initial` - initial* `regenerate` - regenerate* `improve` - improve* `revert` - revert</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `initial` - initial* `regenerate` - regenerate* `improve` - improve* `revert` - revert</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation? Operation { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation Operation { get; set; }
-#endif
         /// <summary>Automated source review for this version, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -137,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "input_contract", n => { InputContract = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "operation", n => { Operation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation>(global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation.CreateFromDiscriminatorValue); } },
+                { "operation", n => { Operation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation>(); } },
                 { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
@@ -160,7 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>("input_contract", InputContract);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation>("operation", Operation);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation>("operation", Operation);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>("security_review", SecurityReview);
             writer.WriteStringValue("title", Title);
             writer.WriteIntValue("version", Version);

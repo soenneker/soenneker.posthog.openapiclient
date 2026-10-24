@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrUrl { get; set; }
 #endif
-        /// <summary>What to run on the pull request. &apos;review&apos; (default) reviews it and, when the requesting user&apos;s resolve_comments setting is on, chains the resolution stage; &apos;review_only&apos; reviews without resolving regardless of that setting; &apos;resolve_only&apos; skips the review and only runs the resolution stage on the PR&apos;s existing unresolved review threads; &apos;flash&apos; uses a lower-cost model for the review passes and validation, and never resolves comments.* `review` - review* `review_only` - review_only* `resolve_only` - resolve_only* `flash` - flash</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `review` - Review* `review_only` - Review only* `resolve_only` - Resolve only* `flash` - Standard</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode? RunMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode RunMode { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "run_mode", n => { RunMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode.CreateFromDiscriminatorValue); } },
+                { "run_mode", n => { RunMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("pr_url", PrUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode>("run_mode", RunMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode>("run_mode", RunMode);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -28,5 +28,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Ghost,
         #pragma warning restore CS1591
+        [EnumMember(Value = "pig")]
+        #pragma warning disable CS1591
+        Pig,
+        #pragma warning restore CS1591
     }
 }

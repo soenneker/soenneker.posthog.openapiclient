@@ -41,13 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The precomputation_mode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper? PrecomputationMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper PrecomputationMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationMode? PrecomputationMode { get; set; }
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric.CreateFromDiscriminatorValue); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "precomputation_mode", n => { PrecomputationMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper.CreateFromDiscriminatorValue); } },
+                { "precomputation_mode", n => { PrecomputationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationMode>(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -107,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric>("metric", Metric);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper>("precomputation_mode", PrecomputationMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationMode>("precomputation_mode", PrecomputationMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);

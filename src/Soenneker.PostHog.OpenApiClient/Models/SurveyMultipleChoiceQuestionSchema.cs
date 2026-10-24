@@ -38,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Format for the description field.* `text` - text* `html` - html</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `html` - html* `text` - text</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType? DescriptionContentType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType DescriptionContentType { get; set; }
-#endif
         /// <summary>Whether the final option should be an open-text choice (for example, &apos;Other&apos;).</summary>
         public bool? HasOpenChoice { get; set; }
         /// <summary>Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_&lt;id&gt;) stay attached; omit it for new questions and the server generates one.</summary>
@@ -68,6 +62,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether to randomize the order of choices for each respondent.</summary>
         public bool? ShuffleOptions { get; set; }
+        /// <summary>Inline translations keyed by language code (for example &apos;es&apos; or &apos;pt-BR&apos;). Send back the current value when editing other question fields, or the translations are lost.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty? Translations { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty Translations { get; set; }
+#endif
         /// <summary>* `multiple_choice` - multiple_choice</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTypeEnum? Type { get; set; }
         /// <summary>
@@ -98,12 +100,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "buttonText", n => { ButtonText = n.GetStringValue(); } },
                 { "choices", n => { Choices = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "descriptionContentType", n => { DescriptionContentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType.CreateFromDiscriminatorValue); } },
+                { "descriptionContentType", n => { DescriptionContentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType>(); } },
                 { "hasOpenChoice", n => { HasOpenChoice = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "optional", n => { Optional = n.GetBoolValue(); } },
                 { "question", n => { Question = n.GetStringValue(); } },
                 { "shuffleOptions", n => { ShuffleOptions = n.GetBoolValue(); } },
+                { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTypeEnum>(); } },
             };
         }
@@ -117,12 +120,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("buttonText", ButtonText);
             writer.WriteCollectionOfPrimitiveValues<string>("choices", Choices);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);
             writer.WriteBoolValue("hasOpenChoice", HasOpenChoice);
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("optional", Optional);
             writer.WriteStringValue("question", Question);
             writer.WriteBoolValue("shuffleOptions", ShuffleOptions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTypeEnum>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

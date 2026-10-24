@@ -25,6 +25,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AgentDescription { get; set; }
 #endif
+        /// <summary>A short title for people, at most 60 characters, on what this experiment tried. Use plain words, with no column names, SQL or model jargon. Longer text is cut, not rejected.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Headline { get; set; }
+#nullable restore
+#else
+        public string Headline { get; set; }
+#endif
         /// <summary>Held-out AUC for this iteration (0-1). Used to pick the champion at completion.</summary>
         public double? HoldoutScore { get; set; }
         /// <summary>Zero-based index of this iteration within the run. Re-sending the same number updates that iteration (idempotent).</summary>
@@ -47,13 +55,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationRecipeSnapshot RecipeSnapshot { get; set; }
 #endif
-        /// <summary>&apos;kept&apos; if this iteration improved on the best score, &apos;discarded&apos; otherwise, &apos;crashed&apos; on failure.* `kept` - kept* `discarded` - discarded* `crashed` - crashed</summary>
+        /// <summary>* `kept` - kept* `discarded` - discarded* `crashed` - crashed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus? Status { get; set; }
+        /// <summary>One plain sentence for people on what this experiment tried and what happened. Max 300 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus? Status { get; set; }
+        public string? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus Status { get; set; }
+        public string Summary { get; set; }
 #endif
         /// <summary>Training-set AUC for this iteration (0-1).</summary>
         public double? TrainScore { get; set; }
@@ -84,12 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "agent_confidence", n => { AgentConfidence = n.GetDoubleValue(); } },
                 { "agent_description", n => { AgentDescription = n.GetStringValue(); } },
+                { "headline", n => { Headline = n.GetStringValue(); } },
                 { "holdout_score", n => { HoldoutScore = n.GetDoubleValue(); } },
                 { "iteration_number", n => { IterationNumber = n.GetIntValue(); } },
                 { "model_spec", n => { ModelSpec = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationModelSpec>(global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationModelSpec.CreateFromDiscriminatorValue); } },
                 { "parent_suggestion", n => { ParentSuggestion = n.GetGuidValue(); } },
                 { "recipe_snapshot", n => { RecipeSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationRecipeSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationRecipeSnapshot.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus>(); } },
+                { "summary", n => { Summary = n.GetStringValue(); } },
                 { "train_score", n => { TrainScore = n.GetDoubleValue(); } },
             };
         }
@@ -102,12 +114,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("agent_confidence", AgentConfidence);
             writer.WriteStringValue("agent_description", AgentDescription);
+            writer.WriteStringValue("headline", Headline);
             writer.WriteDoubleValue("holdout_score", HoldoutScore);
             writer.WriteIntValue("iteration_number", IterationNumber);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationModelSpec>("model_spec", ModelSpec);
             writer.WriteGuidValue("parent_suggestion", ParentSuggestion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationRecipeSnapshot>("recipe_snapshot", RecipeSnapshot);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordIterationStatus>("status", Status);
+            writer.WriteStringValue("summary", Summary);
             writer.WriteDoubleValue("train_score", TrainScore);
             writer.WriteAdditionalData(AdditionalData);
         }

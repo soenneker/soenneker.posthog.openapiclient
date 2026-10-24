@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Encrypted environment variables (write-only, never returned in responses).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteEnvironmentVariables? EnvironmentVariables { get; set; }
+        public UntypedNode? EnvironmentVariables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteEnvironmentVariables EnvironmentVariables { get; set; }
+        public UntypedNode EnvironmentVariables { get; set; }
 #endif
         /// <summary>Whether to include default trusted domains (GitHub, npm, PyPI).</summary>
         public bool? IncludeDefaultDomains { get; set; }
@@ -43,14 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Network access policy: trusted (default allowlist), full (unrestricted), or custom.* `trusted` - Trusted* `full` - Full* `custom` - Custom</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `trusted` - Trusted* `full` - Full* `custom` - Custom</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel? NetworkAccessLevel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel NetworkAccessLevel { get; set; }
-#endif
         /// <summary>If true, only the creator can see this environment; otherwise the whole team can.</summary>
         public bool? Private { get; set; }
         /// <summary>Repositories this environment applies to (format: org/repo).</summary>
@@ -90,10 +84,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
-                { "environment_variables", n => { EnvironmentVariables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteEnvironmentVariables>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteEnvironmentVariables.CreateFromDiscriminatorValue); } },
+                { "environment_variables", n => { EnvironmentVariables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "include_default_domains", n => { IncludeDefaultDomains = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "network_access_level", n => { NetworkAccessLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel.CreateFromDiscriminatorValue); } },
+                { "network_access_level", n => { NetworkAccessLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel>(); } },
                 { "private", n => { Private = n.GetBoolValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -107,10 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteGuidValue("custom_image_id", CustomImageId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteEnvironmentVariables>("environment_variables", EnvironmentVariables);
+            writer.WriteObjectValue<UntypedNode>("environment_variables", EnvironmentVariables);
             writer.WriteBoolValue("include_default_domains", IncludeDefaultDomains);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel>("network_access_level", NetworkAccessLevel);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel>("network_access_level", NetworkAccessLevel);
             writer.WriteBoolValue("private", Private);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteAdditionalData(AdditionalData);

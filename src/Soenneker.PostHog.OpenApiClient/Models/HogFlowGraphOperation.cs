@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>add_action only. A full action node {id, name, type, config, ...}; same shape as in actions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationAction? Action { get; set; }
+        public UntypedNode? Action { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationAction Action { get; set; }
+        public UntypedNode Action { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -46,21 +46,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Graph edit. update_action {id, patch}: deep-merge patch into the action&apos;s fields (a null leaf deletes that key) — the surgical path for tweaking one config value. add_action {action, edges?}: append a full action node, optionally wiring its edges in the same op. remove_action {id}: delete a node and reconnect its incoming edges to its first outgoer. add_edge {edge} / remove_edge {edge}: add or delete one edge. replace_action_edges {id, edges}: replace this action&apos;s outgoing edges with the given set (use when adding/removing branch conditions); incoming edges are left intact.* `update_action` - update_action* `add_action` - add_action* `remove_action` - remove_action* `add_edge` - add_edge* `remove_edge` - remove_edge* `replace_action_edges` - replace_action_edges</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `update_action` - update_action* `add_action` - add_action* `remove_action` - remove_action* `add_edge` - add_edge* `remove_edge` - remove_edge* `replace_action_edges` - replace_action_edges</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp? Op { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp Op { get; set; }
-#endif
         /// <summary>update_action only. Partial action fields, deep-merged into the existing action; a null leaf deletes that key. e.g. {config: {inputs: {subject: {value: &apos;Hi&apos;}}}} changes only that input.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationPatch? Patch { get; set; }
+        public UntypedNode? Patch { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationPatch Patch { get; set; }
+        public UntypedNode Patch { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperation"/> and sets the default values.
@@ -87,12 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "action", n => { Action = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationAction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationAction.CreateFromDiscriminatorValue); } },
+                { "action", n => { Action = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "edge", n => { Edge = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationEdge>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationEdge.CreateFromDiscriminatorValue); } },
                 { "edges", n => { Edges = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "op", n => { Op = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp.CreateFromDiscriminatorValue); } },
-                { "patch", n => { Patch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationPatch>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationPatch.CreateFromDiscriminatorValue); } },
+                { "op", n => { Op = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp>(); } },
+                { "patch", n => { Patch = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,12 +96,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationAction>("action", Action);
+            writer.WriteObjectValue<UntypedNode>("action", Action);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationEdge>("edge", Edge);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>("edges", Edges);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp>("op", Op);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationPatch>("patch", Patch);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp>("op", Op);
+            writer.WriteObjectValue<UntypedNode>("patch", Patch);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

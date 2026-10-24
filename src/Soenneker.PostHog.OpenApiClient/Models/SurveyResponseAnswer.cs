@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Resolved answer. String for open/rating/single_choice/link questions, list of strings for multiple_choice questions. Already decoded from the raw $survey_response_&lt;id&gt; property so callers don&apos;t need to parse it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswerAnswer? Answer { get; set; }
+        public UntypedNode? Answer { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswerAnswer Answer { get; set; }
+        public UntypedNode Answer { get; set; }
 #endif
         /// <summary>UUID of the survey question this answer belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "answer", n => { Answer = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswerAnswer>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswerAnswer.CreateFromDiscriminatorValue); } },
+                { "answer", n => { Answer = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "question_id", n => { QuestionId = n.GetStringValue(); } },
                 { "question_index", n => { QuestionIndex = n.GetIntValue(); } },
                 { "question_text", n => { QuestionText = n.GetStringValue(); } },
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswerAnswer>("answer", Answer);
+            writer.WriteObjectValue<UntypedNode>("answer", Answer);
             writer.WriteStringValue("question_id", QuestionId);
             writer.WriteIntValue("question_index", QuestionIndex);
             writer.WriteStringValue("question_text", QuestionText);

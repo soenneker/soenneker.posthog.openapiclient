@@ -49,14 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? GenerationTaskId { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>What the canvas is: &apos;freeform&apos; (a standalone app), &apos;component&apos; (a reusable widget grids place), or &apos;grid&apos; (a composition of components).* `freeform` - freeform* `grid` - grid* `component` - component</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `freeform` - freeform* `grid` - grid* `component` - component</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind? Kind { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind Kind { get; private set; }
-#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -122,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "generation_task_id", n => { GenerationTaskId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "pinned_at", n => { PinnedAt = n.GetDateTimeOffsetValue(); } },

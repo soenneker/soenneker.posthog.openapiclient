@@ -26,23 +26,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Validated scanner output. Shape depends on `scanner_snapshot.scanner_type`; always carries `confidence` and `scanner_type`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerResultModelOutput? ModelOutput { get; set; }
+        public UntypedNode? ModelOutput { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerResultModelOutput ModelOutput { get; set; }
+        public UntypedNode ModelOutput { get; set; }
 #endif
         /// <summary>Experiment scanners only: the scanned session&apos;s duration in seconds.</summary>
         public double? SessionDurationS { get; set; }
         /// <summary>Number of PostHog Signals emitted from this observation.</summary>
         public int? SignalsCount { get; set; }
-        /// <summary>Extra draws taken to verify a monitor `yes` verdict. Null when the scan did not verify one.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VerificationRecord? Verification { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VerificationRecord Verification { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult"/> and sets the default values.
         /// </summary>
@@ -69,10 +61,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "experiment_variant", n => { ExperimentVariant = n.GetStringValue(); } },
-                { "model_output", n => { ModelOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerResultModelOutput>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerResultModelOutput.CreateFromDiscriminatorValue); } },
+                { "model_output", n => { ModelOutput = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "session_duration_s", n => { SessionDurationS = n.GetDoubleValue(); } },
                 { "signals_count", n => { SignalsCount = n.GetIntValue(); } },
-                { "verification", n => { Verification = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VerificationRecord>(global::Soenneker.PostHog.OpenApiClient.Models.VerificationRecord.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -83,10 +74,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("experiment_variant", ExperimentVariant);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerResultModelOutput>("model_output", ModelOutput);
+            writer.WriteObjectValue<UntypedNode>("model_output", ModelOutput);
             writer.WriteDoubleValue("session_duration_s", SessionDurationS);
             writer.WriteIntValue("signals_count", SignalsCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VerificationRecord>("verification", Verification);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

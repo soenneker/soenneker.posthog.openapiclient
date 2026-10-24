@@ -8,43 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember2"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember3"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DatasetItemsPartialUpdateRequestExpectedOutput : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch2? DatasetItemsPartialUpdateRequestExpectedOutputBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch2 DatasetItemsPartialUpdateRequestExpectedOutputBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch3? DatasetItemsPartialUpdateRequestExpectedOutputBranch3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch3 DatasetItemsPartialUpdateRequestExpectedOutputBranch3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch4? DatasetItemsPartialUpdateRequestExpectedOutputBranch4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch4 DatasetItemsPartialUpdateRequestExpectedOutputBranch4 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch5? DatasetItemsPartialUpdateRequestExpectedOutputBranch5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch5 DatasetItemsPartialUpdateRequestExpectedOutputBranch5 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,6 +31,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember2 DatasetItemsPartialUpdateRequestExpectedOutputMember2 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember3? DatasetItemsPartialUpdateRequestExpectedOutputMember3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember3 DatasetItemsPartialUpdateRequestExpectedOutputMember3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="double"/></summary>
+        public double? Double { get; set; }
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -71,21 +59,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput();
-            if("DatasetItemsPartialUpdateRequestExpectedOutputBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetBoolValue() is bool booleanValue)
             {
-                result.DatasetItemsPartialUpdateRequestExpectedOutputBranch2 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch2();
+                result.Boolean = booleanValue;
             }
-            else if("DatasetItemsPartialUpdateRequestExpectedOutputBranch3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetDoubleValue() is double doubleValue)
             {
-                result.DatasetItemsPartialUpdateRequestExpectedOutputBranch3 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch3();
+                result.Double = doubleValue;
             }
-            else if("DatasetItemsPartialUpdateRequestExpectedOutputBranch4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetStringValue() is string stringValue)
             {
-                result.DatasetItemsPartialUpdateRequestExpectedOutputBranch4 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch4();
-            }
-            else if("DatasetItemsPartialUpdateRequestExpectedOutputBranch5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DatasetItemsPartialUpdateRequestExpectedOutputBranch5 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch5();
+                result.String = stringValue;
             }
             return result;
         }
@@ -95,29 +79,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DatasetItemsPartialUpdateRequestExpectedOutputBranch2 != null)
-            {
-                return DatasetItemsPartialUpdateRequestExpectedOutputBranch2.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputBranch3 != null)
-            {
-                return DatasetItemsPartialUpdateRequestExpectedOutputBranch3.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputBranch4 != null)
-            {
-                return DatasetItemsPartialUpdateRequestExpectedOutputBranch4.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputBranch5 != null)
-            {
-                return DatasetItemsPartialUpdateRequestExpectedOutputBranch5.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputMember1 != null)
+            if(DatasetItemsPartialUpdateRequestExpectedOutputMember1 != null)
             {
                 return DatasetItemsPartialUpdateRequestExpectedOutputMember1.GetFieldDeserializers();
             }
             else if(DatasetItemsPartialUpdateRequestExpectedOutputMember2 != null)
             {
                 return DatasetItemsPartialUpdateRequestExpectedOutputMember2.GetFieldDeserializers();
+            }
+            else if(DatasetItemsPartialUpdateRequestExpectedOutputMember3 != null)
+            {
+                return DatasetItemsPartialUpdateRequestExpectedOutputMember3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -128,29 +100,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DatasetItemsPartialUpdateRequestExpectedOutputBranch2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch2>(null, DatasetItemsPartialUpdateRequestExpectedOutputBranch2);
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputBranch3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch3>(null, DatasetItemsPartialUpdateRequestExpectedOutputBranch3);
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputBranch4 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch4>(null, DatasetItemsPartialUpdateRequestExpectedOutputBranch4);
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputBranch5 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputBranch5>(null, DatasetItemsPartialUpdateRequestExpectedOutputBranch5);
-            }
-            else if(DatasetItemsPartialUpdateRequestExpectedOutputMember1 != null)
+            if(DatasetItemsPartialUpdateRequestExpectedOutputMember1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember1>(null, DatasetItemsPartialUpdateRequestExpectedOutputMember1);
             }
             else if(DatasetItemsPartialUpdateRequestExpectedOutputMember2 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember2>(null, DatasetItemsPartialUpdateRequestExpectedOutputMember2);
+            }
+            else if(DatasetItemsPartialUpdateRequestExpectedOutputMember3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutputMember3>(null, DatasetItemsPartialUpdateRequestExpectedOutputMember3);
+            }
+            else if(Boolean != null)
+            {
+                writer.WriteBoolValue(null, Boolean);
+            }
+            else if(Double != null)
+            {
+                writer.WriteDoubleValue(null, Double);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

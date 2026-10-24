@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeAttrs Attrs { get; set; }
 #endif
-        /// <summary>Markdown notebook node type.* `ph-markdown-notebook` - ph-markdown-notebook</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ph-markdown-notebook` - ph-markdown-notebook</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNode"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attrs", n => { Attrs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeAttrs>(global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeAttrs.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeType>(global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeType>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeAttrs>("attrs", Attrs);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewMarkdownNodeType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

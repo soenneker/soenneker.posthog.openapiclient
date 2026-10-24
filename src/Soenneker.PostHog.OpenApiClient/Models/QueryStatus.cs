@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? EndTime { get; set; }
         /// <summary>If the query failed, this will be set to true. More information can be found in the error_message field.</summary>
         public bool? Error { get; set; }
-        /// <summary>Stable machine-readable code for the error (the DRF exception code), when known.</summary>
+        /// <summary>Stable machine-readable code for the error, when known: the DRF exception code, the ClickHouse error name, the HogQL error code, or `unhandled_&lt;exception class&gt;` for a failure that no handler classified.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorCode { get; set; }
@@ -91,10 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults? Results { get; set; }
+        public UntypedNode? Results { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults Results { get; set; }
+        public UntypedNode Results { get; set; }
 #endif
         /// <summary>When was query execution task enqueued.</summary>
         public DateTimeOffset? StartTime { get; set; }
@@ -152,7 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "query_async", n => { QueryAsync = n.GetBoolValue(); } },
                 { "query_progress", n => { QueryProgress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress.CreateFromDiscriminatorValue); } },
                 { "query_scan", n => { QueryScan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary>(global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
@@ -182,7 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("query_async", QueryAsync);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>("query_progress", QueryProgress);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary>("query_scan", QueryScan);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults>("results", Results);
+            writer.WriteObjectValue<UntypedNode>("results", Results);
             writer.WriteDateTimeOffsetValue("start_time", StartTime);
             writer.WriteStringValue("task_id", TaskId);
             writer.WriteIntValue("team_id", TeamId);

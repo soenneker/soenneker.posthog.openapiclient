@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Replacement task status.* `open` - Open* `in_progress` - In progress* `completed` - Completed* `canceled` - Canceled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `open` - Open* `in_progress` - In progress* `completed` - Completed* `canceled` - Canceled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdateStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdateStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdate"/> and sets the default values.
         /// </summary>
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "due_at", n => { DueAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdateStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdateStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdateStatus>(); } },
             };
         }
         /// <summary>
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("due_at", DueAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdateStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomerTaskUpdateStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

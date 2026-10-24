@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The FunnelsQuery (JSON object with kind `FunnelsQuery`) that reproduces the segment&apos;s displayed unique-actor count exactly. Wrap it in an InsightVizNode to open it as a funnel insight.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelResponseFunnelsQuery? FunnelsQuery { get; set; }
+        public UntypedNode? FunnelsQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelResponseFunnelsQuery FunnelsQuery { get; set; }
+        public UntypedNode FunnelsQuery { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelResponseFunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelResponseFunnelsQuery.CreateFromDiscriminatorValue); } },
+                { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2SegmentToFunnelResponseFunnelsQuery>("funnels_query", FunnelsQuery);
+            writer.WriteObjectValue<UntypedNode>("funnels_query", FunnelsQuery);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

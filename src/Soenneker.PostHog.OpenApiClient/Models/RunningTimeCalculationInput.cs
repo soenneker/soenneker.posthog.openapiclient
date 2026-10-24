@@ -27,14 +27,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BaselineValue { get; set; }
         /// <summary>Expected exposures per day. When provided, the response includes the recommended running time.</summary>
         public double? ExposureRatePerDay { get; set; }
-        /// <summary>Metric type to size for. &apos;funnel&apos; for conversion rates, &apos;mean_count&apos; for event counts per user, &apos;mean_sum_or_avg&apos; for summed property values per user, &apos;ratio&apos; and &apos;retention&apos; for ratio-style metrics (both require baseline_stats or an explicit variance).* `funnel` - funnel* `mean_count` - mean_count* `mean_sum_or_avg` - mean_sum_or_avg* `ratio` - ratio* `retention` - retention</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `funnel` - funnel* `mean_count` - mean_count* `mean_sum_or_avg` - mean_sum_or_avg* `ratio` - ratio* `retention` - retention</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType? MetricType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType MetricType { get; set; }
-#endif
         /// <summary>Smallest relative change to detect, as a percentage (e.g. 5 means a 5% lift). Must be &gt; 0.</summary>
         public double? MinimumDetectableEffect { get; set; }
         /// <summary>Total number of variants including control (default 2).</summary>
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "baseline_stats", n => { BaselineStats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats.CreateFromDiscriminatorValue); } },
                 { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
                 { "exposure_rate_per_day", n => { ExposureRatePerDay = n.GetDoubleValue(); } },
-                { "metric_type", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType.CreateFromDiscriminatorValue); } },
+                { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>(); } },
                 { "minimum_detectable_effect", n => { MinimumDetectableEffect = n.GetDoubleValue(); } },
                 { "number_of_variants", n => { NumberOfVariants = n.GetIntValue(); } },
                 { "variance", n => { Variance = n.GetDoubleValue(); } },
@@ -86,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats>("baseline_stats", BaselineStats);
             writer.WriteDoubleValue("baseline_value", BaselineValue);
             writer.WriteDoubleValue("exposure_rate_per_day", ExposureRatePerDay);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>("metric_type", MetricType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>("metric_type", MetricType);
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
             writer.WriteIntValue("number_of_variants", NumberOfVariants);
             writer.WriteDoubleValue("variance", Variance);

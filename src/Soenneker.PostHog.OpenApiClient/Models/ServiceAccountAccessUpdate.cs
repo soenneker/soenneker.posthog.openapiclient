@@ -28,14 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry> Policies { get; set; }
 #endif
-        /// <summary>Applies to the caller&apos;s own share, and only alongside enabled=true. &apos;personal&apos; lets the agent use the connection when it works for the caller. &apos;team&apos; lets it use the connection for the whole project&apos;s agent runs, including runs nobody started. It never lets another person use the connection. Defaults to personal, so re-sharing without this field resets the caller&apos;s share to personal.* `personal` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - Personal* `team` - Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdateScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdateScope Scope { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdate"/> and sets the default values.
         /// </summary>
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "gateway_server_id", n => { GatewayServerId = n.GetGuidValue(); } },
                 { "policies", n => { Policies = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry>(global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdateScope>(global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdateScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdateScope>(); } },
             };
         }
         /// <summary>
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteGuidValue("gateway_server_id", GatewayServerId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry>("policies", Policies);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdateScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceAccountAccessUpdateScope>("scope", Scope);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

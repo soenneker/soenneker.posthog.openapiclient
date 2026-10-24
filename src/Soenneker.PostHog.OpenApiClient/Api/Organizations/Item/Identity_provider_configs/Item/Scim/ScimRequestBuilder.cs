@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Item.Scim
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\organizations\{-id}\identity_provider_configs\{id}\scim
+    /// Builds and executes requests for operations under \api\organizations\{id}\identity_provider_configs\{id2}\scim
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScimRequestBuilder : BaseRequestBuilder
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provid
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScimRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/identity_provider_configs/{id}/scim", pathParameters)
+        public ScimRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/identity_provider_configs/{id2}/scim", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provid
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScimRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/identity_provider_configs/{id}/scim", rawUrl)
+        public ScimRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/identity_provider_configs/{id2}/scim", rawUrl)
         {
         }
     }

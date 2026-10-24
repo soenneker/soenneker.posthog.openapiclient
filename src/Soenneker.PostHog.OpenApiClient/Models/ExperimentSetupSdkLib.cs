@@ -18,14 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? AnonymousShare { get; set; }
         /// <summary>Multivariate flag calls this SDK sent in the window.</summary>
         public int? Calls { get; set; }
-        /// <summary>&apos;web&apos; for the JavaScript web SDK, &apos;mobile&apos;, &apos;server&apos;, or &apos;other&apos; for libraries not classified.* `web` - Web* `mobile` - Mobile* `server` - Server* `other` - Other</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `web` - Web* `mobile` - Mobile* `server` - Server* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory? Category { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory Category { get; set; }
-#endif
         /// <summary>Share of calls that carry a $device_id. 0 when this SDK never sends one, as server SDKs don&apos;t.</summary>
         public double? DeviceIdShare { get; set; }
         /// <summary>Distinct ids that sent those calls.</summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "anonymous_share", n => { AnonymousShare = n.GetDoubleValue(); } },
                 { "calls", n => { Calls = n.GetIntValue(); } },
-                { "category", n => { Category = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory.CreateFromDiscriminatorValue); } },
+                { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory>(); } },
                 { "device_id_share", n => { DeviceIdShare = n.GetDoubleValue(); } },
                 { "distinct_ids", n => { DistinctIds = n.GetIntValue(); } },
                 { "lib", n => { Lib = n.GetStringValue(); } },
@@ -83,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("anonymous_share", AnonymousShare);
             writer.WriteIntValue("calls", Calls);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory>("category", Category);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory>("category", Category);
             writer.WriteDoubleValue("device_id_share", DeviceIdShare);
             writer.WriteIntValue("distinct_ids", DistinctIds);
             writer.WriteStringValue("lib", Lib);

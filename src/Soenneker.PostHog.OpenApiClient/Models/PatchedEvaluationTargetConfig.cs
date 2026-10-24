@@ -8,27 +8,19 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfig"/>
+    /// Target-specific config. Send {} or omit it for &apos;generation&apos;. For &apos;trace&apos; and &apos;session&apos; targets: a settle config, either &apos;fixed_window&apos; {window_seconds} or &apos;inactivity&apos; {quiet_period_seconds, max_age_seconds}. Omit `strategy` to use the target&apos;s default. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchedEvaluationTargetConfig : IComposedTypeWrapper, IParsable
+    public partial class PatchedEvaluationTargetConfig : IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfig? PatchedEvaluationTargetConfigFixedWindowSettleConfig { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfig PatchedEvaluationTargetConfigFixedWindowSettleConfig { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfig? PatchedEvaluationTargetConfigInactivitySettleConfig { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfig PatchedEvaluationTargetConfigInactivitySettleConfig { get; set; }
-#endif
+        /// <summary>inactivity only. Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for &apos;trace&apos;, 60–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
+        public int? MaxAgeSeconds { get; set; }
+        /// <summary>inactivity only. Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for &apos;trace&apos;, 10–86400 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
+        public int? QuietPeriodSeconds { get; set; }
+        /// <summary>&apos;fixed_window&apos; waits a fixed window after the first matching generation, then evaluates. &apos;inactivity&apos; evaluates once the unit has had no new activity for the quiet period. Omit it to use the target&apos;s default: &apos;fixed_window&apos; for &apos;trace&apos;, &apos;inactivity&apos; for &apos;session&apos;.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigStrategy? Strategy { get; set; }
+        /// <summary>fixed_window only. Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for &apos;trace&apos;, 10–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
+        public int? WindowSeconds { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -37,17 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("strategy")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig();
-            if("PatchedEvaluationTargetConfigFixedWindowSettleConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.PatchedEvaluationTargetConfigFixedWindowSettleConfig = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfig();
-            }
-            else if("PatchedEvaluationTargetConfigInactivitySettleConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.PatchedEvaluationTargetConfigInactivitySettleConfig = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfig();
-            }
-            return result;
+            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,15 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(PatchedEvaluationTargetConfigFixedWindowSettleConfig != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return PatchedEvaluationTargetConfigFixedWindowSettleConfig.GetFieldDeserializers();
-            }
-            else if(PatchedEvaluationTargetConfigInactivitySettleConfig != null)
-            {
-                return PatchedEvaluationTargetConfigInactivitySettleConfig.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "max_age_seconds", n => { MaxAgeSeconds = n.GetIntValue(); } },
+                { "quiet_period_seconds", n => { QuietPeriodSeconds = n.GetIntValue(); } },
+                { "strategy", n => { Strategy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigStrategy>(); } },
+                { "window_seconds", n => { WindowSeconds = n.GetIntValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -72,14 +52,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(PatchedEvaluationTargetConfigFixedWindowSettleConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfig>(null, PatchedEvaluationTargetConfigFixedWindowSettleConfig);
-            }
-            else if(PatchedEvaluationTargetConfigInactivitySettleConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfig>(null, PatchedEvaluationTargetConfigInactivitySettleConfig);
-            }
+            writer.WriteIntValue("max_age_seconds", MaxAgeSeconds);
+            writer.WriteIntValue("quiet_period_seconds", QuietPeriodSeconds);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigStrategy>("strategy", Strategy);
+            writer.WriteIntValue("window_seconds", WindowSeconds);
         }
     }
 }

@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>LLM provider to use for this tagger.* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `openai_compatible` - OpenAI-compatible</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `openai_compatible` - OpenAI-compatible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider? Provider { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider Provider { get; set; }
-#endif
         /// <summary>Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit/null when no provider key should be pinned.</summary>
         public Guid? ProviderKeyId { get; set; }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider.CreateFromDiscriminatorValue); } },
+                { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider>(); } },
                 { "provider_key_id", n => { ProviderKeyId = n.GetGuidValue(); } },
             };
         }
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider>("provider", Provider);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWriteProvider>("provider", Provider);
             writer.WriteGuidValue("provider_key_id", ProviderKeyId);
             writer.WriteAdditionalData(AdditionalData);
         }

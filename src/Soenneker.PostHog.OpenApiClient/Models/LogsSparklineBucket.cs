@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Sum of uncompressed bytes for the bucket.</summary>
         public int? BytesUncompressed { get; set; }
-        /// <summary>The count property</summary>
+        /// <summary>Number of log entries in the bucket.</summary>
         public int? Count { get; set; }
         /// <summary>Service name when sparklineBreakdownBy=&quot;service&quot;. Present only for service-broken-down sparklines.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

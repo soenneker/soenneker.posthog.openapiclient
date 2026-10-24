@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Revision { get; set; }
 #endif
-        /// <summary>Scope of this value.* `user` - user* `shared` - shared</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `shared` - shared</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateValueResponseScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateValueResponseScope Scope { get; set; }
-#endif
         /// <summary>Character length of the complete JSON text.</summary>
         public int? TotalLength { get; set; }
         /// <summary>A chunk of JSON text. Join all chunks in order, then parse the complete JSON.</summary>
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "next_offset", n => { NextOffset = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "revision", n => { Revision = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateValueResponseScope>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateValueResponseScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateValueResponseScope>(); } },
                 { "total_length", n => { TotalLength = n.GetIntValue(); } },
                 { "value_json", n => { ValueJson = n.GetStringValue(); } },
             };
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("next_offset", NextOffset);
             writer.WriteIntValue("offset", Offset);
             writer.WriteStringValue("revision", Revision);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateValueResponseScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateValueResponseScope>("scope", Scope);
             writer.WriteIntValue("total_length", TotalLength);
             writer.WriteStringValue("value_json", ValueJson);
             writer.WriteAdditionalData(AdditionalData);

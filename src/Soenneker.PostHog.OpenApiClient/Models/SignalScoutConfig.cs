@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Exact MCP tool names selected for this scout, excluding its built-in run context tools. Null means no tool restriction; an empty list selects no additional tools. Write access is derived from selected write tools. Clearing to null preserves the last write scopes. Send this field or tool_preset, never both. Requires the scouts-tool-access feature flag.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? AllowedMcpTools { get; private set; }
+#nullable restore
+#else
+        public List<string> AllowedMcpTools { get; private set; }
+#endif
         /// <summary>Whether this scout is exempt from the inactivity sweep, meaning both the `ignored` pause and the `no_output` quiet warning. Set it on watchdog scouts whose value is staying quiet. Only ever set explicitly: re-enabling a swept scout instead grants a fresh grace window before the sweep may judge it again.</summary>
         public bool? AutoPauseExempt { get; private set; }
         /// <summary>How many of this scout&apos;s runs have failed in a row. Back to 0 after a successful run or any config edit. At the failure limit the scout pauses itself (`status` becomes `paused_by_system` with `pause_reason` `repeated_failures`) and retries about once a day; a successful retry resumes it, and so does setting `enabled=true`.</summary>
@@ -45,22 +53,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DisplayName { get; set; }
 #endif
+        /// <summary>The pre-check query the next scheduled run uses: `precheck_query`, or the default the scout&apos;s skill ships. Null when no pre-check runs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EffectivePrecheckQuery { get; private set; }
+#nullable restore
+#else
+        public string EffectivePrecheckQuery { get; private set; }
+#endif
         /// <summary>Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing.</summary>
         public bool? Emit { get; private set; }
         /// <summary>Whether this scout runs on its schedule. Disabled scouts are skipped by the coordinator. Derived from `status`: true for `active` and `pending_pause`, false for the paused statuses.</summary>
         public bool? Enabled { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>When the coordinator last dispatched this scout. Null if it has never run.</summary>
-        public DateTimeOffset? LastRunAt { get; private set; }
-        /// <summary>Who controls this scout now. `team`: a person set it up or has changed it. `background`: PostHog runs it in the background and no person has edited it yet. Any edit through this API changes `background` to `team`.* `team` - Team* `background` - Background</summary>
+        /// <summary>When a scheduled run last evaluated this scout&apos;s pre-check. A skipped run writes no run row, so this stays recent while `last_run_at` ages. Null if no pre-check has run.</summary>
+        public DateTimeOffset? LastPrecheckAt { get; private set; }
+        /// <summary>The outcome of the latest scheduled pre-check: `run` (the query found something new), `skip` (nothing new, so the run did not start), or `error` (the query failed and the run started). Null if no pre-check has run.* `run` - Run* `skip` - Skip* `error` - Error</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy? ManagedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigLastPrecheckOutcome? LastPrecheckOutcome { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy ManagedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigLastPrecheckOutcome LastPrecheckOutcome { get; private set; }
 #endif
+        /// <summary>How many rows the latest scheduled pre-check returned, at most 50. Null if no pre-check has run.</summary>
+        public int? LastPrecheckRowCount { get; private set; }
+        /// <summary>When the coordinator last dispatched this scout. Null if it has never run.</summary>
+        public DateTimeOffset? LastRunAt { get; private set; }
+        /// <summary>Opt-in guard on this scout&apos;s lifecycle. Off by default, so anyone with scout write access may pause, resume, switch the scout to dry run, or delete it. On, only the person the scout&apos;s runs act as or a project admin may do any of those, or change this flag. Use it on a scout whose output people depend on: `signal_scout:write` is a project-wide scope held by people and by unattended agents alike, and a resume has to pass the project&apos;s enabled-scout maximum that a pause does not, so a bulk pause is not undone in one step. The lock never stops an automatic pause, such as the inactivity sweep or the repeated-failure breaker.</summary>
+        public bool? LifecycleLocked { get; private set; }
+        /// <summary>* `team` - Team* `background` - Background</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy? ManagedBy { get; private set; }
         /// <summary>MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,14 +101,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; private set; }
 #endif
-        /// <summary>What the scout&apos;s sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform&apos;s trusted-domain allowlist (PostHog, GitHub, common package registries). `full` lets the scout reach any site, for skills that read external sources such as documentation or papers.* `trusted` - Trusted domains only* `full` - Full</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `trusted` - Trusted domains only* `full` - Full</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess? NetworkAccess { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess NetworkAccess { get; private set; }
-#endif
         /// <summary>Destinations that receive each finding or report this scout emits. Empty when none is configured.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,6 +127,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason PauseReason { get; private set; }
 #endif
+        /// <summary>True turns off the pre-check, both `precheck_query` and the default the skill ships, so every scheduled run starts. False (the default) uses `precheck_query`, or the skill default when that is null.</summary>
+        public bool? PrecheckDisabled { get; private set; }
+        /// <summary>Optional HogQL `SELECT` a scheduled run evaluates before it starts. When it returns no rows, or one row with one false value (`false`, `0`, null or empty), the run is skipped: no sandbox, no model call, and no run row. Any other result starts the run, and the scout reads the rows. A query error also starts the run. Use `{since}` (the start of the last run that ran, or when the scout was created) and `{now}` to look only at what is new, e.g. `SELECT count() FROM events WHERE event = &apos;$exception&apos; AND timestamp &gt; {since}`. To run at least once a week however quiet it is, add `OR {since} &lt; {now} - INTERVAL 7 DAY` to the condition. Only scheduled runs evaluate it: a manual or workflow run always starts. `{interval_minutes}` is the gap between two scheduled runs, so a backstop can follow the schedule: `{since} &lt; {now} - toIntervalMinute(greatest(1440, 2 * {interval_minutes}))` runs at least daily and never more often than every two intervals. The query stops after 10 seconds and reads at most 50 rows. Try a query with `scout-config-precheck-test` before you save it. Null or blank uses the default pre-check the scout&apos;s skill ships, if any. To turn every pre-check off, set `precheck_disabled`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PrecheckQuery { get; private set; }
+#nullable restore
+#else
+        public string PrecheckQuery { get; private set; }
+#endif
+        /// <summary>Where `effective_precheck_query` comes from: `config` (this scout&apos;s `precheck_query`), `skill_default` (the default its skill ships), or `off` (no pre-check runs).</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPrecheckQuerySource? PrecheckQuerySource { get; private set; }
         /// <summary>GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project&apos;s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout&apos;s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project&apos;s GitHub connection. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,22 +157,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Minutes between runs (30–43200). The scout runs once this interval has elapsed since its last run.</summary>
         public int? RunIntervalMinutes { get; private set; }
-        /// <summary>Where this scout came from: `canonical` for a scout PostHog ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `canonical` - canonical* `custom` - custom</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin? ScoutOrigin { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin ScoutOrigin { get; private set; }
-#endif
         /// <summary>What this scout is to the harness: `specialist` for one that watches a product surface, or `operational` for one PostHog ships to watch the self-driving system itself. An operational scout is exempt from the inactivity sweep and from the enabled-scout cap, and is not a scout a project should delete. Always `specialist` for a custom scout.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole? ScoutRole { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole ScoutRole { get; private set; }
-#endif
         /// <summary>The skill this config controls as a scout. Set at creation, not editable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -167,14 +185,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceProduct { get; private set; }
 #endif
-        /// <summary>Lifecycle status. `active`: runs on its schedule. `pending_pause`: still running, but flagged by the system to pause soon unless something changes (any config edit clears it). `paused_by_system`: paused automatically, see `pause_reason`; set `enabled=true` to resume. `paused_by_user`: switched off by a person and never resumed automatically.* `active` - Active* `pending_pause` - Pending pause* `paused_by_system` - Paused by system* `paused_by_user` - Paused by user</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `active` - Active* `pending_pause` - Pending pause* `paused_by_system` - Paused by system* `paused_by_user` - Paused by user</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus Status { get; private set; }
-#endif
         /// <summary>When `status` last changed. For `pending_pause` this is when the warning was issued (an `ignored` warning pauses about a week later unless someone engages with the scout&apos;s reports — opening one counts; a `no_output` warning only flags the scout); for the paused statuses it is when the scout was paused. Null if the status never changed.</summary>
         public DateTimeOffset? StatusChangedAt { get; private set; }
         /// <summary>Who last moved `status`, when a person did it through this API. Null for a system transition such as an automatic pause, for a row whose status never changed, and for a caller that may not read member identities. Pair it with `status` to say who turned a scout off, instead of only when it went off.</summary>
@@ -188,10 +200,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;verdict&quot;: {&quot;enum&quot;: [&quot;good&quot;, &quot;bad&quot;, &quot;unsure&quot;]}, &quot;reason&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;verdict&quot;, &quot;reason&quot;]}`). The root must be `&quot;type&quot;: &quot;object&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty? StructuredOutputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty? StructuredOutputSchema { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty StructuredOutputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty StructuredOutputSchema { get; private set; }
 #endif
         /// <summary>Free-form labels for grouping the fleet, e.g. `[&quot;revenue&quot;, &quot;on-call&quot;]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -201,9 +213,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
+        /// <summary>Preset used to select the saved tool list, custom for an explicit list, or null when unrestricted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ToolPreset { get; private set; }
+#nullable restore
+#else
+        public string ToolPreset { get; private set; }
+#endif
         /// <summary>When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it — the coordinator stamps `last_run_at` with a direct write — so this reads as when the scout was last tuned rather than when it last ran.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
+        /// <summary>Write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `canvas:write`, `customer_task:write`, `dashboard:write`, `experiment:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `notebook:write`, `replay_scanner:write`, `ticket:write`, `warehouse_table:write`, `warehouse_view:write`. A new scout starts with `notebook:write` when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. `ticket:write` lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? WriteScopes { get; private set; }
@@ -236,36 +256,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "allowed_mcp_tools", n => { AllowedMcpTools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "auto_pause_exempt", n => { AutoPauseExempt = n.GetBoolValue(); } },
                 { "consecutive_failure_count", n => { ConsecutiveFailureCount = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "deprecation", n => { Deprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
+                { "effective_precheck_query", n => { EffectivePrecheckQuery = n.GetStringValue(); } },
                 { "emit", n => { Emit = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "last_precheck_at", n => { LastPrecheckAt = n.GetDateTimeOffsetValue(); } },
+                { "last_precheck_outcome", n => { LastPrecheckOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigLastPrecheckOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigLastPrecheckOutcome.CreateFromDiscriminatorValue); } },
+                { "last_precheck_row_count", n => { LastPrecheckRowCount = n.GetIntValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
-                { "managed_by", n => { ManagedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy.CreateFromDiscriminatorValue); } },
+                { "lifecycle_locked", n => { LifecycleLocked = n.GetBoolValue(); } },
+                { "managed_by", n => { ManagedBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigManagedBy>(); } },
                 { "mcp_gateway_server_ids", n => { McpGatewayServerIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "network_access", n => { NetworkAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess.CreateFromDiscriminatorValue); } },
+                { "network_access", n => { NetworkAccess = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess>(); } },
                 { "output_destinations", n => { OutputDestinations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigOutputDestinations>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigOutputDestinations.CreateFromDiscriminatorValue); } },
                 { "owners", n => { Owners = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pause_reason", n => { PauseReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason.CreateFromDiscriminatorValue); } },
+                { "precheck_disabled", n => { PrecheckDisabled = n.GetBoolValue(); } },
+                { "precheck_query", n => { PrecheckQuery = n.GetStringValue(); } },
+                { "precheck_query_source", n => { PrecheckQuerySource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPrecheckQuerySource>(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
-                { "scout_origin", n => { ScoutOrigin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin.CreateFromDiscriminatorValue); } },
-                { "scout_role", n => { ScoutRole = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole.CreateFromDiscriminatorValue); } },
+                { "scout_origin", n => { ScoutOrigin = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin>(); } },
+                { "scout_role", n => { ScoutRole = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutRole>(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
                 { "source_product", n => { SourceProduct = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus>(); } },
                 { "status_changed_at", n => { StatusChangedAt = n.GetDateTimeOffsetValue(); } },
                 { "status_changed_by", n => { StatusChangedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "tool_preset", n => { ToolPreset = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "write_scopes", n => { WriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -279,7 +309,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How far the automatic agent grants for this connection reach. &apos;personal&apos; (the default) lets PostHog agents use it only on runs for you; &apos;team&apos; lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.* `personal` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - Personal* `team` - Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope? AgentScope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope AgentScope { get; set; }
-#endif
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,14 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ApiKey { get; set; }
 #endif
-        /// <summary>The install_source property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `posthog` - posthog* `posthog-code` - posthog-code</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource? InstallSource { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource InstallSource { get; set; }
-#endif
         /// <summary>The posthog_code_callback_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,14 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReturnPath { get; set; }
 #endif
-        /// <summary>&apos;personal&apos; is per-user; &apos;shared&apos; makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.* `personal` - personal* `shared` - shared</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - personal* `shared` - shared</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope Scope { get; set; }
-#endif
         /// <summary>Whether the server starts enabled for the whole team. Non-default values are admin-only.</summary>
         public bool? TeamEnabled { get; set; }
         /// <summary>The template_id property</summary>
@@ -92,12 +74,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_scope", n => { AgentScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope>(global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope.CreateFromDiscriminatorValue); } },
+                { "agent_scope", n => { AgentScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope>(); } },
                 { "api_key", n => { ApiKey = n.GetStringValue(); } },
-                { "install_source", n => { InstallSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource>(global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource.CreateFromDiscriminatorValue); } },
+                { "install_source", n => { InstallSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource>(); } },
                 { "posthog_code_callback_url", n => { PosthogCodeCallbackUrl = n.GetStringValue(); } },
                 { "return_path", n => { ReturnPath = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope>(global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope>(); } },
                 { "team_enabled", n => { TeamEnabled = n.GetBoolValue(); } },
                 { "template_id", n => { TemplateId = n.GetGuidValue(); } },
             };
@@ -109,12 +91,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope>("agent_scope", AgentScope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope>("agent_scope", AgentScope);
             writer.WriteStringValue("api_key", ApiKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource>("install_source", InstallSource);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource>("install_source", InstallSource);
             writer.WriteStringValue("posthog_code_callback_url", PosthogCodeCallbackUrl);
             writer.WriteStringValue("return_path", ReturnPath);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope>("scope", Scope);
             writer.WriteBoolValue("team_enabled", TeamEnabled);
             writer.WriteGuidValue("template_id", TemplateId);
             writer.WriteAdditionalData(AdditionalData);

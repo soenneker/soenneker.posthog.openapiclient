@@ -15,9 +15,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>When true, a cloud run that changes code always opens a draft pull request.</summary>
+        /// <summary>When true, a cloud run that changes code always opens a draft pull request. Null when you never set it.</summary>
         public bool? AutoPublishCloudRuns { get; set; }
-        /// <summary>When true, new tasks start in plan mode: the agent makes a plan and waits for approval.</summary>
+        /// <summary>The cloud target new tasks start on, as `environment:&lt;sandbox environment id&gt;` or `image:&lt;custom image id&gt;`. Null means the default sandbox. Clients fall back to the default sandbox when the target no longer exists.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DefaultCloudTarget { get; set; }
+#nullable restore
+#else
+        public string DefaultCloudTarget { get; set; }
+#endif
+        /// <summary>When true, new tasks start in plan mode: the agent makes a plan and waits for approval. Null when you never set it.</summary>
         public bool? StartInPlanMode { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults"/> and sets the default values.
@@ -45,6 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "auto_publish_cloud_runs", n => { AutoPublishCloudRuns = n.GetBoolValue(); } },
+                { "default_cloud_target", n => { DefaultCloudTarget = n.GetStringValue(); } },
                 { "start_in_plan_mode", n => { StartInPlanMode = n.GetBoolValue(); } },
             };
         }
@@ -56,6 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("auto_publish_cloud_runs", AutoPublishCloudRuns);
+            writer.WriteStringValue("default_cloud_target", DefaultCloudTarget);
             writer.WriteBoolValue("start_in_plan_mode", StartInPlanMode);
             writer.WriteAdditionalData(AdditionalData);
         }

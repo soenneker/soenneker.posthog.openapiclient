@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AgentMode { get; private set; }
 #endif
-        /// <summary>Runtime that owns this conversation. &apos;langgraph&apos; conversations return their messages in the `messages` field. &apos;sandbox&apos; conversations return an empty `messages` array and load history from the products/tasks logs endpoint; a conversation copied into a task carries its legacy thread in that task&apos;s import run. Only a conversion that predates the copy still returns its legacy thread in `messages`.* `langgraph` - LangGraph* `sandbox` - Sandbox</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `langgraph` - LangGraph* `sandbox` - Sandbox</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime? AgentRuntime { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime AgentRuntime { get; private set; }
-#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The has_unsupported_content property</summary>
@@ -72,14 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SlackWorkspaceDomain { get; private set; }
 #endif
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `idle` - Idle* `in_progress` - In progress* `canceling` - Canceling</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus Status { get; private set; }
-#endif
         /// <summary>The task property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,14 +92,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic Topic { get; private set; }
 #endif
-        /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `assistant` - Assistant* `tool_call` - Tool call* `deep_research` - Deep research* `slack` - Slack</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationType? Type { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationType Type { get; private set; }
-#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The user property</summary>
@@ -148,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent_mode", n => { AgentMode = n.GetStringValue(); } },
-                { "agent_runtime", n => { AgentRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime.CreateFromDiscriminatorValue); } },
+                { "agent_runtime", n => { AgentRuntime = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "has_unsupported_content", n => { HasUnsupportedContent = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -158,11 +140,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pending_approvals", n => { PendingApprovals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "slack_thread_key", n => { SlackThreadKey = n.GetStringValue(); } },
                 { "slack_workspace_domain", n => { SlackWorkspaceDomain = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus>(); } },
                 { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "topic", n => { Topic = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationType>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser.CreateFromDiscriminatorValue); } },
             };

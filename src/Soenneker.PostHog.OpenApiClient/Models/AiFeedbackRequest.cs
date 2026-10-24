@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MessageId { get; set; }
 #endif
-        /// <summary>Reviewer rating: good or bad.* `good` - good* `bad` - bad</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `good` - good* `bad` - bad</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating? Rating { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating Rating { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequest"/> and sets the default values.
         /// </summary>
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "feedback_text", n => { FeedbackText = n.GetStringValue(); } },
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
-                { "rating", n => { Rating = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating>(global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating.CreateFromDiscriminatorValue); } },
+                { "rating", n => { Rating = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating>(); } },
             };
         }
         /// <summary>
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("feedback_text", FeedbackText);
             writer.WriteStringValue("message_id", MessageId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating>("rating", Rating);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating>("rating", Rating);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

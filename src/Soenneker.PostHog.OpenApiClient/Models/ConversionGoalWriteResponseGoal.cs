@@ -8,204 +8,35 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Wrapper for OpenAPI schema generation - one goal, in any of the three node shapes.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ConversionGoalWriteResponseGoal : IAdditionalDataHolder, IParsable
+    public partial class ConversionGoalWriteResponseGoal : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The conversion_goal_id property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConversionGoalId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1? ConversionGoalWriteResponseGoalMember1 { get; set; }
 #nullable restore
 #else
-        public string ConversionGoalId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1 ConversionGoalWriteResponseGoalMember1 { get; set; }
 #endif
-        /// <summary>The conversion_goal_name property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConversionGoalName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2? ConversionGoalWriteResponseGoalMember2 { get; set; }
 #nullable restore
 #else
-        public string ConversionGoalName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2 ConversionGoalWriteResponseGoalMember2 { get; set; }
 #endif
-        /// <summary>Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal&apos;s conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false.</summary>
-        public bool? CountsAsCustomer { get; set; }
-        /// <summary>Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false.</summary>
-        public bool? CountsAsRevenue { get; set; }
-        /// <summary>The custom_name property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3? ConversionGoalWriteResponseGoalMember3 { get; set; }
 #nullable restore
 #else
-        public string CustomName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3 ConversionGoalWriteResponseGoalMember3 { get; set; }
 #endif
-        /// <summary>The distinct_id_field property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? DistinctIdField { get; set; }
-#nullable restore
-#else
-        public string DistinctIdField { get; set; }
-#endif
-        /// <summary>The dw_source_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? DwSourceType { get; set; }
-#nullable restore
-#else
-        public string DwSourceType { get; set; }
-#endif
-        /// <summary>The event or `null` for all events.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Event { get; set; }
-#nullable restore
-#else
-        public string Event { get; set; }
-#endif
-        /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem>? FixedProperties { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem> FixedProperties { get; set; }
-#endif
-        /// <summary>The id property</summary>
-        public int? Id { get; set; }
-        /// <summary>The id_field property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? IdField { get; set; }
-#nullable restore
-#else
-        public string IdField { get; set; }
-#endif
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind? Kind { get; set; }
-        /// <summary>The limit property</summary>
-        public int? Limit { get; set; }
-        /// <summary>The math property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math? Math { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math Math { get; set; }
-#endif
-        /// <summary>The math_group_type_index property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2? MathGroupTypeIndex { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2 MathGroupTypeIndex { get; set; }
-#endif
-        /// <summary>The math_hogql property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MathHogql { get; set; }
-#nullable restore
-#else
-        public string MathHogql { get; set; }
-#endif
-        /// <summary>The math_multiplier property</summary>
-        public double? MathMultiplier { get; set; }
-        /// <summary>The math_property property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MathProperty { get; set; }
-#nullable restore
-#else
-        public string MathProperty { get; set; }
-#endif
-        /// <summary>The math_property_revenue_currency property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? MathPropertyRevenueCurrency { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig MathPropertyRevenueCurrency { get; set; }
-#endif
-        /// <summary>The math_property_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MathPropertyType { get; set; }
-#nullable restore
-#else
-        public string MathPropertyType { get; set; }
-#endif
-        /// <summary>The name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
-        /// <summary>The optionalInFunnel property</summary>
-        public bool? OptionalInFunnel { get; set; }
-        /// <summary>Columns to order by</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? OrderBy { get; set; }
-#nullable restore
-#else
-        public List<string> OrderBy { get; set; }
-#endif
-        /// <summary>Properties configurable in the interface</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem>? Properties { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem> Properties { get; set; }
-#endif
-        /// <summary>The response property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty? Response { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty Response { get; set; }
-#endif
-        /// <summary>The schema_map property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty? SchemaMap { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty SchemaMap { get; set; }
-#endif
-        /// <summary>The table_name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TableName { get; set; }
-#nullable restore
-#else
-        public string TableName { get; set; }
-#endif
-        /// <summary>The timestamp_field property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TimestampField { get; set; }
-#nullable restore
-#else
-        public string TimestampField { get; set; }
-#endif
-        /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal"/> and sets the default values.
-        /// </summary>
-        public ConversionGoalWriteResponseGoal()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -214,7 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal();
+            result.ConversionGoalWriteResponseGoalMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1();
+            result.ConversionGoalWriteResponseGoalMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2();
+            result.ConversionGoalWriteResponseGoalMember3 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -222,38 +57,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ConversionGoalWriteResponseGoalMember1 != null || ConversionGoalWriteResponseGoalMember2 != null || ConversionGoalWriteResponseGoalMember3 != null)
             {
-                { "conversion_goal_id", n => { ConversionGoalId = n.GetStringValue(); } },
-                { "conversion_goal_name", n => { ConversionGoalName = n.GetStringValue(); } },
-                { "counts_as_customer", n => { CountsAsCustomer = n.GetBoolValue(); } },
-                { "counts_as_revenue", n => { CountsAsRevenue = n.GetBoolValue(); } },
-                { "custom_name", n => { CustomName = n.GetStringValue(); } },
-                { "distinct_id_field", n => { DistinctIdField = n.GetStringValue(); } },
-                { "dw_source_type", n => { DwSourceType = n.GetStringValue(); } },
-                { "event", n => { Event = n.GetStringValue(); } },
-                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "id", n => { Id = n.GetIntValue(); } },
-                { "id_field", n => { IdField = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind>(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
-                { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math.CreateFromDiscriminatorValue); } },
-                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2.CreateFromDiscriminatorValue); } },
-                { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
-                { "math_multiplier", n => { MathMultiplier = n.GetDoubleValue(); } },
-                { "math_property", n => { MathProperty = n.GetStringValue(); } },
-                { "math_property_revenue_currency", n => { MathPropertyRevenueCurrency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig.CreateFromDiscriminatorValue); } },
-                { "math_property_type", n => { MathPropertyType = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
-                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty.CreateFromDiscriminatorValue); } },
-                { "schema_map", n => { SchemaMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty.CreateFromDiscriminatorValue); } },
-                { "table_name", n => { TableName = n.GetStringValue(); } },
-                { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ConversionGoalWriteResponseGoalMember1, ConversionGoalWriteResponseGoalMember2, ConversionGoalWriteResponseGoalMember3);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -262,36 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("conversion_goal_id", ConversionGoalId);
-            writer.WriteStringValue("conversion_goal_name", ConversionGoalName);
-            writer.WriteBoolValue("counts_as_customer", CountsAsCustomer);
-            writer.WriteBoolValue("counts_as_revenue", CountsAsRevenue);
-            writer.WriteStringValue("custom_name", CustomName);
-            writer.WriteStringValue("distinct_id_field", DistinctIdField);
-            writer.WriteStringValue("dw_source_type", DwSourceType);
-            writer.WriteStringValue("event", Event);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem>("fixedProperties", FixedProperties);
-            writer.WriteIntValue("id", Id);
-            writer.WriteStringValue("id_field", IdField);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind>("kind", Kind);
-            writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math>("math", Math);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2>("math_group_type_index", MathGroupTypeIndex);
-            writer.WriteStringValue("math_hogql", MathHogql);
-            writer.WriteDoubleValue("math_multiplier", MathMultiplier);
-            writer.WriteStringValue("math_property", MathProperty);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>("math_property_revenue_currency", MathPropertyRevenueCurrency);
-            writer.WriteStringValue("math_property_type", MathPropertyType);
-            writer.WriteStringValue("name", Name);
-            writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
-            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty>("schema_map", SchemaMap);
-            writer.WriteStringValue("table_name", TableName);
-            writer.WriteStringValue("timestamp_field", TimestampField);
-            writer.WriteDoubleValue("version", Version);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1>(null, ConversionGoalWriteResponseGoalMember1, ConversionGoalWriteResponseGoalMember2, ConversionGoalWriteResponseGoalMember3);
         }
     }
 }

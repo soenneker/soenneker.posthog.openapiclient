@@ -72,14 +72,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SampleId { get; set; }
 #endif
-        /// <summary>Type of sampled unit: generation, trace, or session.* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType? SampleType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType SampleType { get; set; }
-#endif
         /// <summary>Raw numeric score, or null when no numeric score was produced.</summary>
         public double? Score { get; set; }
         /// <summary>Trace ID if available.</summary>
@@ -123,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetBoolValue(); } },
                 { "sample_id", n => { SampleId = n.GetStringValue(); } },
-                { "sample_type", n => { SampleType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType.CreateFromDiscriminatorValue); } },
+                { "sample_type", n => { SampleType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
             };
@@ -143,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reasoning", Reasoning);
             writer.WriteBoolValue("result", Result);
             writer.WriteStringValue("sample_id", SampleId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>("sample_type", SampleType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>("sample_type", SampleType);
             writer.WriteDoubleValue("score", Score);
             writer.WriteStringValue("trace_id", TraceId);
             writer.WriteAdditionalData(AdditionalData);

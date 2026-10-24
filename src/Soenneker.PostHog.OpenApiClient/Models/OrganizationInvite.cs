@@ -53,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>List of team IDs and corresponding access levels to private projects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvitePrivateProjectAccess? PrivateProjectAccess { get; set; }
+        public UntypedNode? PrivateProjectAccess { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvitePrivateProjectAccess PrivateProjectAccess { get; set; }
+        public UntypedNode PrivateProjectAccess { get; set; }
 #endif
         /// <summary>The send_email property</summary>
         public bool? SendEmail { get; set; }
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_expired", n => { IsExpired = n.GetBoolValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "private_project_access", n => { PrivateProjectAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvitePrivateProjectAccess>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvitePrivateProjectAccess.CreateFromDiscriminatorValue); } },
+                { "private_project_access", n => { PrivateProjectAccess = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "send_email", n => { SendEmail = n.GetBoolValue(); } },
                 { "target_email", n => { TargetEmail = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteIntValue("level", Level);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvitePrivateProjectAccess>("private_project_access", PrivateProjectAccess);
+            writer.WriteObjectValue<UntypedNode>("private_project_access", PrivateProjectAccess);
             writer.WriteBoolValue("send_email", SendEmail);
             writer.WriteStringValue("target_email", TargetEmail);
             writer.WriteAdditionalData(AdditionalData);

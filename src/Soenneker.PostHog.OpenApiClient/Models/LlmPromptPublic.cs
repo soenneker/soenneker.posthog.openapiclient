@@ -61,10 +61,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Full prompt content. Omitted when &apos;content=preview&apos; or &apos;content=none&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt? Prompt { get; set; }
+        public UntypedNode? Prompt { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt Prompt { get; set; }
+        public UntypedNode Prompt { get; set; }
 #endif
         /// <summary>First 160 characters of the prompt. Only present when &apos;content=preview&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "latest_version", n => { LatestVersion = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "outline", n => { Outline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptOutlineEntry>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptOutlineEntry.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt.CreateFromDiscriminatorValue); } },
+                { "prompt", n => { Prompt = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "prompt_preview", n => { PromptPreview = n.GetStringValue(); } },
                 { "resolved_references", n => { ResolvedReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -148,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("latest_version", LatestVersion);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptOutlineEntry>("outline", Outline);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicPrompt>("prompt", Prompt);
+            writer.WriteObjectValue<UntypedNode>("prompt", Prompt);
             writer.WriteStringValue("prompt_preview", PromptPreview);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptResolvedReference>("resolved_references", ResolvedReferences);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

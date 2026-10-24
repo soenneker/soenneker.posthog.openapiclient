@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether any other PostHog project or personal connection references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization.</summary>
         public bool? InstallationShared { get; set; }
-        /// <summary>`unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise.* `connected` - connected* `unavailable` - unavailable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `connected` - connected* `unavailable` - unavailable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus? InstallationStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus InstallationStatus { get; set; }
-#endif
         /// <summary>Integration kind; always `github` for this API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Kind { get; set; }
 #endif
+        /// <summary>True when GitHub rejected the stored credentials and PostHog dropped them. The installation is still on GitHub, but PostHog cannot act as the user until they authorize it again.</summary>
+        public bool? NeedsReauthorization { get; set; }
+        /// <summary>When the stored credentials stopped working, or null while they still work.</summary>
+        public DateTimeOffset? NeedsReauthorizationAt { get; set; }
         /// <summary>Repository selection mode from GitHub (e.g. selected or all).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,8 +99,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "installation_shared", n => { InstallationShared = n.GetBoolValue(); } },
-                { "installation_status", n => { InstallationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus.CreateFromDiscriminatorValue); } },
+                { "installation_status", n => { InstallationStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus>(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
+                { "needs_reauthorization", n => { NeedsReauthorization = n.GetBoolValue(); } },
+                { "needs_reauthorization_at", n => { NeedsReauthorizationAt = n.GetDateTimeOffsetValue(); } },
                 { "repository_selection", n => { RepositorySelection = n.GetStringValue(); } },
                 { "uses_shared_installation", n => { UsesSharedInstallation = n.GetBoolValue(); } },
             };
@@ -120,8 +120,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteBoolValue("installation_shared", InstallationShared);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus>("installation_status", InstallationStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus>("installation_status", InstallationStatus);
             writer.WriteStringValue("kind", Kind);
+            writer.WriteBoolValue("needs_reauthorization", NeedsReauthorization);
+            writer.WriteDateTimeOffsetValue("needs_reauthorization_at", NeedsReauthorizationAt);
             writer.WriteStringValue("repository_selection", RepositorySelection);
             writer.WriteBoolValue("uses_shared_installation", UsesSharedInstallation);
             writer.WriteAdditionalData(AdditionalData);

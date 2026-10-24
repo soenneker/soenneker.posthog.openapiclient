@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? EstimatedCreditsPerMonth { get; set; }
         /// <summary>Projected monthly observations: quality-filtered matched sessions scaled from `window_days` to 30 days, times sampling_rate.</summary>
         public int? EstimatedObservationsPerMonth { get; set; }
+        /// <summary>The monthly credit rate the organization&apos;s free credits still cover for one more free-only scanner, after the other free-only scanners and backfills. The forecast caps a free-only scanner at this rate, because free-only scanners share one pool.</summary>
+        public int? FreeOnlyMonthlyCreditsLeft { get; set; }
         /// <summary>Distinct sessions matching the query within the scanned window (`window_days`), after the sampling_mode quality filter but before random sampling.</summary>
         public int? MatchedSessionsInWindow { get; set; }
         /// <summary>Credit-weighted projected monthly spend of the org&apos;s other enabled scanners (excluding `scanner_id`), from their cached estimates. Read from the same snapshot as this estimate so the forecast can&apos;t double-count the edited scanner.</summary>
@@ -60,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "credits_per_observation", n => { CreditsPerObservation = n.GetIntValue(); } },
                 { "estimated_credits_per_month", n => { EstimatedCreditsPerMonth = n.GetIntValue(); } },
                 { "estimated_observations_per_month", n => { EstimatedObservationsPerMonth = n.GetIntValue(); } },
+                { "free_only_monthly_credits_left", n => { FreeOnlyMonthlyCreditsLeft = n.GetIntValue(); } },
                 { "matched_sessions_in_window", n => { MatchedSessionsInWindow = n.GetIntValue(); } },
                 { "other_enabled_scanners_monthly_credits", n => { OtherEnabledScannersMonthlyCredits = n.GetIntValue(); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
@@ -77,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("credits_per_observation", CreditsPerObservation);
             writer.WriteIntValue("estimated_credits_per_month", EstimatedCreditsPerMonth);
             writer.WriteIntValue("estimated_observations_per_month", EstimatedObservationsPerMonth);
+            writer.WriteIntValue("free_only_monthly_credits_left", FreeOnlyMonthlyCreditsLeft);
             writer.WriteIntValue("matched_sessions_in_window", MatchedSessionsInWindow);
             writer.WriteIntValue("other_enabled_scanners_monthly_credits", OtherEnabledScannersMonthlyCredits);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);

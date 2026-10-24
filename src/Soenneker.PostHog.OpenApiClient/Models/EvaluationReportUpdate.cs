@@ -27,23 +27,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateDeliveryTargets? DeliveryTargets { get; set; }
+        public UntypedNode? DeliveryTargets { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateDeliveryTargets DeliveryTargets { get; set; }
+        public UntypedNode DeliveryTargets { get; set; }
 #endif
         /// <summary>Whether report delivery is active. Disabled configs do not fire.</summary>
         public bool? Enabled { get; set; }
         /// <summary>UUID of the evaluation this report config belongs to.</summary>
         public Guid? Evaluation { get; private set; }
-        /// <summary>How report generation is triggered. &apos;every_n&apos; fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). &apos;scheduled&apos; fires on the cadence defined by rrule.* `scheduled` - Scheduled* `every_n` - Every N</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `scheduled` - Scheduled* `every_n` - Every N</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateFrequency? Frequency { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateFrequency Frequency { get; set; }
-#endif
         /// <summary>Number of reports generated from this evaluation report config.</summary>
         public int? GeneratedReportCount { get; private set; }
         /// <summary>The id property</summary>
@@ -114,10 +108,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "daily_run_cap", n => { DailyRunCap = n.GetIntValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
-                { "delivery_targets", n => { DeliveryTargets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateDeliveryTargets>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateDeliveryTargets.CreateFromDiscriminatorValue); } },
+                { "delivery_targets", n => { DeliveryTargets = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation", n => { Evaluation = n.GetGuidValue(); } },
-                { "frequency", n => { Frequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateFrequency>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateFrequency.CreateFromDiscriminatorValue); } },
+                { "frequency", n => { Frequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateFrequency>(); } },
                 { "generated_report_count", n => { GeneratedReportCount = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_delivered_at", n => { LastDeliveredAt = n.GetDateTimeOffsetValue(); } },
@@ -140,9 +134,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("cooldown_minutes", CooldownMinutes);
             writer.WriteIntValue("daily_run_cap", DailyRunCap);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateDeliveryTargets>("delivery_targets", DeliveryTargets);
+            writer.WriteObjectValue<UntypedNode>("delivery_targets", DeliveryTargets);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateFrequency>("frequency", Frequency);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateFrequency>("frequency", Frequency);
             writer.WriteIntValue("max_sample_size", MaxSampleSize);
             writer.WriteStringValue("report_prompt_guidance", ReportPromptGuidance);
             writer.WriteStringValue("rrule", Rrule);

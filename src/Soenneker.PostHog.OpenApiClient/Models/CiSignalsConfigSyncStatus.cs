@@ -8,11 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncStatusEnumWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsSyncStatusEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CiSignalsConfigSyncStatus : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsSyncStatusEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsSyncStatusEnum? CiSignalsSyncStatusEnum { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -20,14 +22,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncStatusEnumWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncStatusEnumWrapper? SyncStatusEnumWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncStatusEnumWrapper SyncStatusEnumWrapper { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsConfigSyncStatus();
-            if("SyncStatusEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsSyncStatusEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsSyncStatusEnum ciSignalsSyncStatusEnumValue)
             {
-                result.SyncStatusEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.SyncStatusEnumWrapper();
+                result.CiSignalsSyncStatusEnum = ciSignalsSyncStatusEnumValue;
             }
             return result;
         }
@@ -55,10 +49,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return NullEnum.GetFieldDeserializers();
             }
-            else if(SyncStatusEnumWrapper != null)
-            {
-                return SyncStatusEnumWrapper.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -68,13 +58,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(NullEnum != null)
+            if(CiSignalsSyncStatusEnum != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsSyncStatusEnum>(null, CiSignalsSyncStatusEnum);
+            }
+            else if(NullEnum != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-            }
-            else if(SyncStatusEnumWrapper != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncStatusEnumWrapper>(null, SyncStatusEnumWrapper);
             }
         }
     }

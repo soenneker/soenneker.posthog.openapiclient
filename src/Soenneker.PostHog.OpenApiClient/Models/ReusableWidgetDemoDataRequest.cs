@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Saved demo rows in input-contract column order. Replaces this slot&apos;s entire sample, up to 20 rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Rows { get; set; }
+        public List<UntypedNode>? Rows { get; set; }
 #nullable restore
 #else
-        public UntypedNode Rows { get; set; }
+        public List<UntypedNode> Rows { get; set; }
 #endif
         /// <summary>Current or draft version whose demo data should be edited.</summary>
         public Guid? VersionId { get; set; }
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "frame_name", n => { FrameName = n.GetStringValue(); } },
-                { "rows", n => { Rows = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "rows", n => { Rows = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
                 { "version_id", n => { VersionId = n.GetGuidValue(); } },
             };
         }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("frame_name", FrameName);
-            writer.WriteObjectValue<UntypedNode>("rows", Rows);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("rows", Rows);
             writer.WriteGuidValue("version_id", VersionId);
             writer.WriteAdditionalData(AdditionalData);
         }

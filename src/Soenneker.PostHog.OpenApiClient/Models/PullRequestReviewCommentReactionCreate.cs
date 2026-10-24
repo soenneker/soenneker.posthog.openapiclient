@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Reaction to add: one of &apos;+1&apos;, &apos;-1&apos;, &apos;laugh&apos;, &apos;hooray&apos;, &apos;confused&apos;, &apos;heart&apos;, &apos;rocket&apos;, &apos;eyes&apos;.* `+1` - +1* `-1` - -1* `laugh` - laugh* `hooray` - hooray* `confused` - confused* `heart` - heart* `rocket` - rocket* `eyes` - eyes</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `+1` - +1* `-1` - -1* `laugh` - laugh* `hooray` - hooray* `confused` - confused* `heart` - heart* `rocket` - rocket* `eyes` - eyes</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent? Content { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent Content { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreate"/> and sets the default values.
         /// </summary>
@@ -48,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent>(); } },
             };
         }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent>("content", Content);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent>("content", Content);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

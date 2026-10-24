@@ -15,13 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Baseline preset deriving default policies for tools an agent has no explicit row for.* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset? AgentDefaultPreset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset AgentDefaultPreset { get; set; }
-#endif
         /// <summary>Whether non-admin members may register custom MCP servers with the gateway.</summary>
         public bool? AllowCustomServers { get; set; }
         /// <summary>Whether non-admin members may share their available MCP connections with agents and manage agent tool policies.</summary>
@@ -31,13 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether the requesting user can administer the gateway (org admin or explicit project admin).</summary>
         public bool? IsAdmin { get; private set; }
         /// <summary>Baseline preset for members. Empty until an admin applies one from Team settings.* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset? MemberDefaultPreset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset MemberDefaultPreset { get; set; }
-#endif
         /// <summary>Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,12 +59,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_default_preset", n => { AgentDefaultPreset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset.CreateFromDiscriminatorValue); } },
+                { "agent_default_preset", n => { AgentDefaultPreset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset>(); } },
                 { "allow_custom_servers", n => { AllowCustomServers = n.GetBoolValue(); } },
                 { "allow_member_agent_access", n => { AllowMemberAgentAccess = n.GetBoolValue(); } },
                 { "default_servers_enabled", n => { DefaultServersEnabled = n.GetBoolValue(); } },
                 { "is_admin", n => { IsAdmin = n.GetBoolValue(); } },
-                { "member_default_preset", n => { MemberDefaultPreset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset.CreateFromDiscriminatorValue); } },
+                { "member_default_preset", n => { MemberDefaultPreset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset>(); } },
                 { "registered_template_ids", n => { RegisteredTemplateIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
             };
         }
@@ -87,11 +75,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset>("agent_default_preset", AgentDefaultPreset);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset>("agent_default_preset", AgentDefaultPreset);
             writer.WriteBoolValue("allow_custom_servers", AllowCustomServers);
             writer.WriteBoolValue("allow_member_agent_access", AllowMemberAgentAccess);
             writer.WriteBoolValue("default_servers_enabled", DefaultServersEnabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset>("member_default_preset", MemberDefaultPreset);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset>("member_default_preset", MemberDefaultPreset);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

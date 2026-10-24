@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How much of the event history has been scanned, 0 to 100. Null outside the `scanning` phase, and while the scan is still being planned.</summary>
         public int? PercentComplete { get; set; }
-        /// <summary>What the build is doing now: `waiting` to start, `scanning` past events, or `checking` the membership it produced. A build that is queued but has not started reports `waiting` too.* `waiting` - Waiting* `scanning` - Scanning* `checking` - Checking</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `waiting` - Waiting* `scanning` - Scanning* `checking` - Checking</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuildPhase? Phase { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuildPhase Phase { get; set; }
-#endif
         /// <summary>When this build last made progress. Null while it is still queued.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -52,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "percent_complete", n => { PercentComplete = n.GetIntValue(); } },
-                { "phase", n => { Phase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuildPhase>(global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuildPhase.CreateFromDiscriminatorValue); } },
+                { "phase", n => { Phase = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuildPhase>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("percent_complete", PercentComplete);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuildPhase>("phase", Phase);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuildPhase>("phase", Phase);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

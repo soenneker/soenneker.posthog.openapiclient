@@ -8,82 +8,27 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// What the check measures and what the result must satisfy; the shape depends on `kind`.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateReportCheckRequestConfig : IAdditionalDataHolder, IParsable
+    public partial class CreateReportCheckRequestConfig : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The value observed when the check was written, recorded on each result for context.</summary>
-        public double? BaselineValue { get; set; }
-        /// <summary>What the measured value must satisfy to pass.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison? Comparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1? CreateReportCheckRequestConfigMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison Comparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1 CreateReportCheckRequestConfigMember1 { get; set; }
 #endif
-        /// <summary>What the run must establish, in the author&apos;s own words.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Instructions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2? CreateReportCheckRequestConfigMember2 { get; set; }
 #nullable restore
 #else
-        public string Instructions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2 CreateReportCheckRequestConfigMember2 { get; set; }
 #endif
-        /// <summary>Identifier of a metric on the report whose query this check measures. The metric&apos;s query is copied into `query` when the check is created.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MetricId { get; set; }
-#nullable restore
-#else
-        public string MetricId { get; set; }
-#endif
-        /// <summary>How to draw this measurement; copied from a referenced metric.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind? MetricKind { get; set; }
-        /// <summary>Concrete places to look, such as an issue id, a service name, or a query to repeat.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? ProbeHints { get; set; }
-#nullable restore
-#else
-        public List<string> ProbeHints { get; set; }
-#endif
-        /// <summary>Live InsightVizNode wrapping one TrendsQuery: supplied by the caller, or copied from the named metric when the check is created. `dateRange.date_from` must be a relative window such as `-13d`, and `date_to` must be empty, so the check measures the days before each run rather than the days before it was written. The query must produce exactly one output series: use one event or action series, or combine up to ten of them with exactly one formula. Use no breakdown and no compare mode. A `trendsFilter.display` of `Metric` turns compare mode on, so `metricShowChange` is switched off for you unless `metricSummary` is `latest`, which keeps compare mode off already.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty? Query { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty Query { get; set; }
-#endif
-        /// <summary>Scout skill that runs the check. Omit it to run on the fleet&apos;s follow-up scout, which is the right lane for a report no scout authored.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SkillName { get; set; }
-#nullable restore
-#else
-        public string SkillName { get; set; }
-#endif
-        /// <summary>Optional value suffix.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Unit { get; set; }
-#nullable restore
-#else
-        public string Unit { get; set; }
-#endif
-        /// <summary>How to format measured values; copied from a referenced metric.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat? ValueFormat { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig"/> and sets the default values.
-        /// </summary>
-        public CreateReportCheckRequestConfig()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -92,7 +37,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,19 +47,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(CreateReportCheckRequestConfigMember1 != null)
             {
-                { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
-                { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>(global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison.CreateFromDiscriminatorValue); } },
-                { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "metric_id", n => { MetricId = n.GetStringValue(); } },
-                { "metric_kind", n => { MetricKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>(); } },
-                { "probe_hints", n => { ProbeHints = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty.CreateFromDiscriminatorValue); } },
-                { "skill_name", n => { SkillName = n.GetStringValue(); } },
-                { "unit", n => { Unit = n.GetStringValue(); } },
-                { "value_format", n => { ValueFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>(); } },
-            };
+                return CreateReportCheckRequestConfigMember1.GetFieldDeserializers();
+            }
+            else if(CreateReportCheckRequestConfigMember2 != null)
+            {
+                return CreateReportCheckRequestConfigMember2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -121,17 +64,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("baseline_value", BaselineValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>("comparison", Comparison);
-            writer.WriteStringValue("instructions", Instructions);
-            writer.WriteStringValue("metric_id", MetricId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>("metric_kind", MetricKind);
-            writer.WriteCollectionOfPrimitiveValues<string>("probe_hints", ProbeHints);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>("query", Query);
-            writer.WriteStringValue("skill_name", SkillName);
-            writer.WriteStringValue("unit", Unit);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>("value_format", ValueFormat);
-            writer.WriteAdditionalData(AdditionalData);
+            if(CreateReportCheckRequestConfigMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1>(null, CreateReportCheckRequestConfigMember1);
+            }
+            else if(CreateReportCheckRequestConfigMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2>(null, CreateReportCheckRequestConfigMember2);
+            }
         }
     }
 }

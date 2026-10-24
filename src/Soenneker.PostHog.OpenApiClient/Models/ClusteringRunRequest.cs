@@ -17,32 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If provided, use this clustering job&apos;s analysis_level and event_filters instead of request params</summary>
         public Guid? ClusteringJobId { get; set; }
-        /// <summary>Clustering algorithm: &apos;hdbscan&apos; (density-based, auto-determines k) or &apos;kmeans&apos; (centroid-based)* `hdbscan` - hdbscan* `kmeans` - kmeans</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `hdbscan` - hdbscan* `kmeans` - kmeans</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod? ClusteringMethod { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod ClusteringMethod { get; set; }
-#endif
-        /// <summary>Dimensionality reduction method: &apos;none&apos; (cluster on raw), &apos;umap&apos;, or &apos;pca&apos;* `none` - none* `umap` - umap* `pca` - pca</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `umap` - umap* `pca` - pca</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod? DimensionalityReductionMethod { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod DimensionalityReductionMethod { get; set; }
-#endif
         /// <summary>Target dimensions for dimensionality reduction (ignored if method is &apos;none&apos;)</summary>
         public int? DimensionalityReductionNdims { get; set; }
-        /// <summary>Embedding normalization method: &apos;none&apos; (raw embeddings) or &apos;l2&apos; (L2 normalize before clustering)* `none` - none* `l2` - l2</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `l2` - l2</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization? EmbeddingNormalization { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization EmbeddingNormalization { get; set; }
-#endif
         /// <summary>Property filters to scope which traces are included in clustering (PostHog standard format)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,14 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RunLabel { get; set; }
 #endif
-        /// <summary>Method for 2D scatter plot visualization: &apos;umap&apos;, &apos;pca&apos;, or &apos;tsne&apos;* `umap` - umap* `pca` - pca* `tsne` - tsne</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `umap` - umap* `pca` - pca* `tsne` - tsne</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod? VisualizationMethod { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod VisualizationMethod { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequest"/> and sets the default values.
         /// </summary>
@@ -112,10 +88,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "clustering_job_id", n => { ClusteringJobId = n.GetGuidValue(); } },
-                { "clustering_method", n => { ClusteringMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod.CreateFromDiscriminatorValue); } },
-                { "dimensionality_reduction_method", n => { DimensionalityReductionMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod.CreateFromDiscriminatorValue); } },
+                { "clustering_method", n => { ClusteringMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod>(); } },
+                { "dimensionality_reduction_method", n => { DimensionalityReductionMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod>(); } },
                 { "dimensionality_reduction_ndims", n => { DimensionalityReductionNdims = n.GetIntValue(); } },
-                { "embedding_normalization", n => { EmbeddingNormalization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization.CreateFromDiscriminatorValue); } },
+                { "embedding_normalization", n => { EmbeddingNormalization = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization>(); } },
                 { "event_filters", n => { EventFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hdbscan_min_samples", n => { HdbscanMinSamples = n.GetIntValue(); } },
                 { "kmeans_max_k", n => { KmeansMaxK = n.GetIntValue(); } },
@@ -124,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "max_samples", n => { MaxSamples = n.GetIntValue(); } },
                 { "min_cluster_size_fraction", n => { MinClusterSizeFraction = n.GetDoubleValue(); } },
                 { "run_label", n => { RunLabel = n.GetStringValue(); } },
-                { "visualization_method", n => { VisualizationMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod.CreateFromDiscriminatorValue); } },
+                { "visualization_method", n => { VisualizationMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod>(); } },
             };
         }
         /// <summary>
@@ -135,10 +111,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("clustering_job_id", ClusteringJobId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod>("clustering_method", ClusteringMethod);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod>("dimensionality_reduction_method", DimensionalityReductionMethod);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod>("clustering_method", ClusteringMethod);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod>("dimensionality_reduction_method", DimensionalityReductionMethod);
             writer.WriteIntValue("dimensionality_reduction_ndims", DimensionalityReductionNdims);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization>("embedding_normalization", EmbeddingNormalization);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization>("embedding_normalization", EmbeddingNormalization);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty>("event_filters", EventFilters);
             writer.WriteIntValue("hdbscan_min_samples", HdbscanMinSamples);
             writer.WriteIntValue("kmeans_max_k", KmeansMaxK);
@@ -147,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_samples", MaxSamples);
             writer.WriteDoubleValue("min_cluster_size_fraction", MinClusterSizeFraction);
             writer.WriteStringValue("run_label", RunLabel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod>("visualization_method", VisualizationMethod);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod>("visualization_method", VisualizationMethod);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

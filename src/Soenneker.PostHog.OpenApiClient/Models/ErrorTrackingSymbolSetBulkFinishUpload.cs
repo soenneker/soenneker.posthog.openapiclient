@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty ContentHashes { get; set; }
 #endif
+        /// <summary>Optional ID from the corresponding bulk start request for upload analytics.</summary>
+        public Guid? UploadAttemptId { get; set; }
+        /// <summary>Optional ID shared by every batch in one CLI upload run, including release-ID retries.</summary>
+        public Guid? UploadRunId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload"/> and sets the default values.
         /// </summary>
@@ -48,6 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content_hashes", n => { ContentHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty.CreateFromDiscriminatorValue); } },
+                { "upload_attempt_id", n => { UploadAttemptId = n.GetGuidValue(); } },
+                { "upload_run_id", n => { UploadRunId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -58,6 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty>("content_hashes", ContentHashes);
+            writer.WriteGuidValue("upload_attempt_id", UploadAttemptId);
+            writer.WriteGuidValue("upload_run_id", UploadRunId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

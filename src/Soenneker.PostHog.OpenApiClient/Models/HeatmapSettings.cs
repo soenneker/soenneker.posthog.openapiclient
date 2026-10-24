@@ -29,13 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string GradientPreset { get; set; }
 #endif
         /// <summary>The gradientScaleMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleModeWrapper? GradientScaleMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleModeWrapper GradientScaleMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleMode? GradientScaleMode { get; set; }
         /// <summary>The nullLabel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,13 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string SortColumn { get; set; }
 #endif
         /// <summary>The sortOrder property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrderWrapper? SortOrder { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrderWrapper SortOrder { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrder? SortOrder { get; set; }
         /// <summary>The valueColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -128,11 +116,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "gradient", n => { Gradient = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "gradientPreset", n => { GradientPreset = n.GetStringValue(); } },
-                { "gradientScaleMode", n => { GradientScaleMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleModeWrapper.CreateFromDiscriminatorValue); } },
+                { "gradientScaleMode", n => { GradientScaleMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleMode>(); } },
                 { "nullLabel", n => { NullLabel = n.GetStringValue(); } },
                 { "nullValue", n => { NullValue = n.GetStringValue(); } },
                 { "sortColumn", n => { SortColumn = n.GetStringValue(); } },
-                { "sortOrder", n => { SortOrder = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrderWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrderWrapper.CreateFromDiscriminatorValue); } },
+                { "sortOrder", n => { SortOrder = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrder>(); } },
                 { "valueColumn", n => { ValueColumn = n.GetStringValue(); } },
                 { "xAxisColumn", n => { XAxisColumn = n.GetStringValue(); } },
                 { "xAxisLabel", n => { XAxisLabel = n.GetStringValue(); } },
@@ -149,11 +137,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop>("gradient", Gradient);
             writer.WriteStringValue("gradientPreset", GradientPreset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleModeWrapper>("gradientScaleMode", GradientScaleMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleMode>("gradientScaleMode", GradientScaleMode);
             writer.WriteStringValue("nullLabel", NullLabel);
             writer.WriteStringValue("nullValue", NullValue);
             writer.WriteStringValue("sortColumn", SortColumn);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrderWrapper>("sortOrder", SortOrder);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrder>("sortOrder", SortOrder);
             writer.WriteStringValue("valueColumn", ValueColumn);
             writer.WriteStringValue("xAxisColumn", XAxisColumn);
             writer.WriteStringValue("xAxisLabel", XAxisLabel);

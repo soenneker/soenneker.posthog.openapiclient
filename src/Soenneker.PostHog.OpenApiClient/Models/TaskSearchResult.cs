@@ -26,14 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Search document identifier.</summary>
         public Guid? Id { get; set; }
-        /// <summary>Type of matched resource.* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel* `canvas` - canvas</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel* `canvas` - canvas</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind Kind { get; set; }
-#endif
         /// <summary>Status of the containing task&apos;s most recent run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Resource-specific navigation metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata? Metadata { get; set; }
+        public UntypedNode? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata Metadata { get; set; }
+        public UntypedNode Metadata { get; set; }
 #endif
         /// <summary>What created the containing task, for example &apos;slack&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,9 +102,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>(); } },
                 { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary.CreateFromDiscriminatorValue); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "subtitle", n => { Subtitle = n.GetStringValue(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
@@ -129,9 +123,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("channel_id", ChannelId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteGuidValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>("latest_run", LatestRun);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<UntypedNode>("metadata", Metadata);
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteStringValue("subtitle", Subtitle);
             writer.WriteGuidValue("task_id", TaskId);

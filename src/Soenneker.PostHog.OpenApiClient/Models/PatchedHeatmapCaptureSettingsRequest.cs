@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether to capture heatmap data from every page (&apos;all&apos;) or only listed URLs (&apos;url_allowlist&apos;).* `all` - All URLs* `url_allowlist` - Only listed URLs</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `all` - All URLs* `url_allowlist` - Only listed URLs</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHeatmapCaptureSettingsRequestCaptureMode? CaptureMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHeatmapCaptureSettingsRequestCaptureMode CaptureMode { get; set; }
-#endif
         /// <summary>Full http(s) URLs that may send heatmap data. Use * to match any characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "capture_mode", n => { CaptureMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHeatmapCaptureSettingsRequestCaptureMode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHeatmapCaptureSettingsRequestCaptureMode.CreateFromDiscriminatorValue); } },
+                { "capture_mode", n => { CaptureMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHeatmapCaptureSettingsRequestCaptureMode>(); } },
                 { "url_allowlist", n => { UrlAllowlist = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHeatmapCaptureSettingsRequestCaptureMode>("capture_mode", CaptureMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHeatmapCaptureSettingsRequestCaptureMode>("capture_mode", CaptureMode);
             writer.WriteCollectionOfPrimitiveValues<string>("url_allowlist", UrlAllowlist);
             writer.WriteAdditionalData(AdditionalData);
         }

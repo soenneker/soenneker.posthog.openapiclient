@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PropertyGroupFilter tree the rule would match on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRuleSuggestNameFilterGroup? FilterGroup { get; set; }
+        public UntypedNode? FilterGroup { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRuleSuggestNameFilterGroup FilterGroup { get; set; }
+        public UntypedNode FilterGroup { get; set; }
 #endif
         /// <summary>Retention tier the rule would assign, in days.</summary>
         public int? RetentionDays { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filter_group", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRuleSuggestNameFilterGroup>(global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRuleSuggestNameFilterGroup.CreateFromDiscriminatorValue); } },
+                { "filter_group", n => { FilterGroup = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "retention_days", n => { RetentionDays = n.GetIntValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsRetentionRuleSuggestNameFilterGroup>("filter_group", FilterGroup);
+            writer.WriteObjectValue<UntypedNode>("filter_group", FilterGroup);
             writer.WriteIntValue("retention_days", RetentionDays);
             writer.WriteAdditionalData(AdditionalData);
         }

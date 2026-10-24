@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement> Placements { get; set; }
 #endif
-        /// <summary>Layout schema version. Currently always 1.* `1` - 1</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutSchemaVersion? SchemaVersion { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutSchemaVersion SchemaVersion { get; set; }
-#endif
+        /// <summary>* `1` - 1</summary>
+        public int? SchemaVersion { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout"/> and sets the default values.
         /// </summary>
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "grid", n => { Grid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid.CreateFromDiscriminatorValue); } },
                 { "placements", n => { Placements = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "schemaVersion", n => { SchemaVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutSchemaVersion>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutSchemaVersion.CreateFromDiscriminatorValue); } },
+                { "schemaVersion", n => { SchemaVersion = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid>("grid", Grid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement>("placements", Placements);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutSchemaVersion>("schemaVersion", SchemaVersion);
+            writer.WriteIntValue("schemaVersion", SchemaVersion);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

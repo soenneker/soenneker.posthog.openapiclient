@@ -23,22 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; private set; }
 #endif
-        /// <summary>What the finding is about: authentication setup (DKIM/DMARC/SPF/BIMI), recipient signals (COMPLAINT/BOUNCE/FEEDBACK_3P), or a blocklist listing (IP_LISTING).* `DKIM` - DKIM* `DMARC` - DMARC* `SPF` - SPF* `BIMI` - BIMI* `COMPLAINT` - COMPLAINT* `BOUNCE` - BOUNCE* `FEEDBACK_3P` - FEEDBACK_3P* `IP_LISTING` - IP_LISTING</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `DKIM` - DKIM* `DMARC` - DMARC* `SPF` - SPF* `BIMI` - BIMI* `COMPLAINT` - COMPLAINT* `BOUNCE` - BOUNCE* `FEEDBACK_3P` - FEEDBACK_3P* `IP_LISTING` - IP_LISTING</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingFindingType? FindingType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingFindingType FindingType { get; private set; }
-#endif
-        /// <summary>AWS&apos;s impact rating. HIGH-impact findings can pause the project&apos;s sending automatically.* `LOW` - LOW* `HIGH` - HIGH</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `LOW` - LOW* `HIGH` - HIGH</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingImpact? Impact { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingImpact Impact { get; private set; }
-#endif
         /// <summary>When AWS last updated this finding.</summary>
         public DateTimeOffset? LastUpdatedAt { get; private set; }
         /// <summary>
@@ -67,8 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "finding_type", n => { FindingType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingFindingType>(global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingFindingType.CreateFromDiscriminatorValue); } },
-                { "impact", n => { Impact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingImpact>(global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingImpact.CreateFromDiscriminatorValue); } },
+                { "finding_type", n => { FindingType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingFindingType>(); } },
+                { "impact", n => { Impact = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingImpact>(); } },
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

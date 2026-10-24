@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecodeItem>? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecodeItem> Bytecode { get; set; }
+        public UntypedNode Bytecode { get; set; }
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -163,7 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "conditionHash", n => { ConditionHash = n.GetStringValue(); } },
                 { "event_filters", n => { EventFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -193,7 +193,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecodeItem>("bytecode", Bytecode);
+            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
             writer.WriteStringValue("bytecode_error", BytecodeError);
             writer.WriteStringValue("conditionHash", ConditionHash);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem>("event_filters", EventFilters);

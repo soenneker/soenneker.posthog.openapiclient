@@ -87,10 +87,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery? Query { get; set; }
+        public UntypedNode? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery Query { get; set; }
+        public UntypedNode Query { get; set; }
 #endif
         /// <summary>The refreshing property</summary>
         public bool? Refreshing { get; private set; }
@@ -113,10 +113,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem>? Tags { get; set; }
+        public UntypedNode? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem> Tags { get; set; }
+        public UntypedNode Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -176,11 +176,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_refresh", n => { LastRefresh = n.GetDateTimeOffsetValue(); } },
                 { "last_viewed_at", n => { LastViewedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "refreshing", n => { Refreshing = n.GetBoolValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
                 { "view_count", n => { ViewCount = n.GetIntValue(); } },
@@ -199,8 +199,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("favorited", Favorited);
             writer.WriteDateTimeOffsetValue("last_modified_at", LastModifiedAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery>("query", Query);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem>("tags", Tags);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
+            writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

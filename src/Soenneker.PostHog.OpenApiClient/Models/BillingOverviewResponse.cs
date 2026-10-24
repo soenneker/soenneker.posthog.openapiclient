@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The account_owner property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner? AccountOwner { get; set; }
+        public UntypedNode? AccountOwner { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner AccountOwner { get; set; }
+        public UntypedNode AccountOwner { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod? BillingPeriod { get; set; }
+        public UntypedNode? BillingPeriod { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod BillingPeriod { get; set; }
+        public UntypedNode BillingPeriod { get; set; }
 #endif
         /// <summary>The billing_plan property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -89,21 +89,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The customer_trust_scores property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomerTrustScores? CustomerTrustScores { get; set; }
+        public UntypedNode? CustomerTrustScores { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomerTrustScores CustomerTrustScores { get; set; }
+        public UntypedNode CustomerTrustScores { get; set; }
 #endif
         /// <summary>The custom_limits_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomLimitsUsd? CustomLimitsUsd { get; set; }
+        public UntypedNode? CustomLimitsUsd { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomLimitsUsd CustomLimitsUsd { get; set; }
+        public UntypedNode CustomLimitsUsd { get; set; }
 #endif
-        /// <summary>The deactivated property</summary>
-        public bool? Deactivated { get; set; }
         /// <summary>The discount_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -137,20 +135,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The license property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseLicense? License { get; set; }
+        public UntypedNode? License { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseLicense License { get; set; }
+        public UntypedNode License { get; set; }
 #endif
         /// <summary>The never_drop_data property</summary>
         public bool? NeverDropData { get; set; }
         /// <summary>The next_period_custom_limits_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseNextPeriodCustomLimitsUsd? NextPeriodCustomLimitsUsd { get; set; }
+        public UntypedNode? NextPeriodCustomLimitsUsd { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseNextPeriodCustomLimitsUsd NextPeriodCustomLimitsUsd { get; set; }
+        public UntypedNode NextPeriodCustomLimitsUsd { get; set; }
 #endif
         /// <summary>Subscribed and available products/addons with pricing, plan, limit, usage, and entitlement metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -227,18 +225,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The trial property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseTrial? Trial { get; set; }
+        public UntypedNode? Trial { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseTrial Trial { get; set; }
+        public UntypedNode Trial { get; set; }
 #endif
         /// <summary>The usage_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseUsageSummary? UsageSummary { get; set; }
+        public UntypedNode? UsageSummary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseUsageSummary UsageSummary { get; set; }
+        public UntypedNode UsageSummary { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponse"/> and sets the default values.
@@ -265,27 +263,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account_owner", n => { AccountOwner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner.CreateFromDiscriminatorValue); } },
+                { "account_owner", n => { AccountOwner = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "amount_off_expires_at", n => { AmountOffExpiresAt = n.GetStringValue(); } },
                 { "available_product_features", n => { AvailableProductFeatures = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "billing_managed_by_partner", n => { BillingManagedByPartner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>(global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner.CreateFromDiscriminatorValue); } },
-                { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod.CreateFromDiscriminatorValue); } },
+                { "billing_period", n => { BillingPeriod = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "billing_plan", n => { BillingPlan = n.GetStringValue(); } },
                 { "current_total_amount_usd", n => { CurrentTotalAmountUsd = n.GetStringValue(); } },
                 { "current_total_amount_usd_after_discount", n => { CurrentTotalAmountUsdAfterDiscount = n.GetStringValue(); } },
-                { "custom_limits_usd", n => { CustomLimitsUsd = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomLimitsUsd>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomLimitsUsd.CreateFromDiscriminatorValue); } },
+                { "custom_limits_usd", n => { CustomLimitsUsd = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "customer_id", n => { CustomerId = n.GetStringValue(); } },
-                { "customer_trust_scores", n => { CustomerTrustScores = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomerTrustScores>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomerTrustScores.CreateFromDiscriminatorValue); } },
-                { "deactivated", n => { Deactivated = n.GetBoolValue(); } },
+                { "customer_trust_scores", n => { CustomerTrustScores = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "discount_amount_usd", n => { DiscountAmountUsd = n.GetStringValue(); } },
                 { "discount_percent", n => { DiscountPercent = n.GetDoubleValue(); } },
                 { "external_billing_provider_invoices_url", n => { ExternalBillingProviderInvoicesUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseExternalBillingProviderInvoicesUrl>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseExternalBillingProviderInvoicesUrl.CreateFromDiscriminatorValue); } },
                 { "free_trial_until", n => { FreeTrialUntil = n.GetStringValue(); } },
                 { "has_active_subscription", n => { HasActiveSubscription = n.GetBoolValue(); } },
                 { "is_annual_plan_customer", n => { IsAnnualPlanCustomer = n.GetBoolValue(); } },
-                { "license", n => { License = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseLicense>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseLicense.CreateFromDiscriminatorValue); } },
+                { "license", n => { License = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "never_drop_data", n => { NeverDropData = n.GetBoolValue(); } },
-                { "next_period_custom_limits_usd", n => { NextPeriodCustomLimitsUsd = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseNextPeriodCustomLimitsUsd>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseNextPeriodCustomLimitsUsd.CreateFromDiscriminatorValue); } },
+                { "next_period_custom_limits_usd", n => { NextPeriodCustomLimitsUsd = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "products", n => { Products = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseProductsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseProductsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "projected_total_amount_usd", n => { ProjectedTotalAmountUsd = n.GetStringValue(); } },
                 { "projected_total_amount_usd_after_discount", n => { ProjectedTotalAmountUsdAfterDiscount = n.GetStringValue(); } },
@@ -295,8 +292,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "startup_program_label_previous", n => { StartupProgramLabelPrevious = n.GetStringValue(); } },
                 { "stripe_portal_url", n => { StripePortalUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseStripePortalUrl>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseStripePortalUrl.CreateFromDiscriminatorValue); } },
                 { "subscription_level", n => { SubscriptionLevel = n.GetStringValue(); } },
-                { "trial", n => { Trial = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseTrial>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseTrial.CreateFromDiscriminatorValue); } },
-                { "usage_summary", n => { UsageSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseUsageSummary>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseUsageSummary.CreateFromDiscriminatorValue); } },
+                { "trial", n => { Trial = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "usage_summary", n => { UsageSummary = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -306,27 +303,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseAccountOwner>("account_owner", AccountOwner);
+            writer.WriteObjectValue<UntypedNode>("account_owner", AccountOwner);
             writer.WriteStringValue("amount_off_expires_at", AmountOffExpiresAt);
             writer.WriteCollectionOfPrimitiveValues<string>("available_product_features", AvailableProductFeatures);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>("billing_managed_by_partner", BillingManagedByPartner);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingPeriod>("billing_period", BillingPeriod);
+            writer.WriteObjectValue<UntypedNode>("billing_period", BillingPeriod);
             writer.WriteStringValue("billing_plan", BillingPlan);
             writer.WriteStringValue("current_total_amount_usd", CurrentTotalAmountUsd);
             writer.WriteStringValue("current_total_amount_usd_after_discount", CurrentTotalAmountUsdAfterDiscount);
             writer.WriteStringValue("customer_id", CustomerId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomerTrustScores>("customer_trust_scores", CustomerTrustScores);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseCustomLimitsUsd>("custom_limits_usd", CustomLimitsUsd);
-            writer.WriteBoolValue("deactivated", Deactivated);
+            writer.WriteObjectValue<UntypedNode>("customer_trust_scores", CustomerTrustScores);
+            writer.WriteObjectValue<UntypedNode>("custom_limits_usd", CustomLimitsUsd);
             writer.WriteStringValue("discount_amount_usd", DiscountAmountUsd);
             writer.WriteDoubleValue("discount_percent", DiscountPercent);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseExternalBillingProviderInvoicesUrl>("external_billing_provider_invoices_url", ExternalBillingProviderInvoicesUrl);
             writer.WriteStringValue("free_trial_until", FreeTrialUntil);
             writer.WriteBoolValue("has_active_subscription", HasActiveSubscription);
             writer.WriteBoolValue("is_annual_plan_customer", IsAnnualPlanCustomer);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseLicense>("license", License);
+            writer.WriteObjectValue<UntypedNode>("license", License);
             writer.WriteBoolValue("never_drop_data", NeverDropData);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseNextPeriodCustomLimitsUsd>("next_period_custom_limits_usd", NextPeriodCustomLimitsUsd);
+            writer.WriteObjectValue<UntypedNode>("next_period_custom_limits_usd", NextPeriodCustomLimitsUsd);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseProductsItemProperty>("products", Products);
             writer.WriteStringValue("projected_total_amount_usd", ProjectedTotalAmountUsd);
             writer.WriteStringValue("projected_total_amount_usd_after_discount", ProjectedTotalAmountUsdAfterDiscount);
@@ -336,8 +332,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("startup_program_label_previous", StartupProgramLabelPrevious);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseStripePortalUrl>("stripe_portal_url", StripePortalUrl);
             writer.WriteStringValue("subscription_level", SubscriptionLevel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseTrial>("trial", Trial);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseUsageSummary>("usage_summary", UsageSummary);
+            writer.WriteObjectValue<UntypedNode>("trial", Trial);
+            writer.WriteObjectValue<UntypedNode>("usage_summary", UsageSummary);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

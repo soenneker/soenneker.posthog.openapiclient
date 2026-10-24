@@ -8,20 +8,35 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Customizations for the appearance of result datasets.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsMember1"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class StickinessFilterResultCustomizations : IAdditionalDataHolder, IParsable
+    public partial class StickinessFilterResultCustomizations : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations"/> and sets the default values.
-        /// </summary>
-        public StickinessFilterResultCustomizations()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf1? StickinessFilterResultCustomizationsAnyOf1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf1 StickinessFilterResultCustomizationsAnyOf1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf2? StickinessFilterResultCustomizationsAnyOf2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf2 StickinessFilterResultCustomizationsAnyOf2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsMember1? StickinessFilterResultCustomizationsMember1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsMember1 StickinessFilterResultCustomizationsMember1 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -30,7 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations();
+            result.StickinessFilterResultCustomizationsAnyOf1 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf1();
+            result.StickinessFilterResultCustomizationsAnyOf2 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf2();
+            result.StickinessFilterResultCustomizationsMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsMember1();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -38,9 +57,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(StickinessFilterResultCustomizationsAnyOf1 != null || StickinessFilterResultCustomizationsAnyOf2 != null || StickinessFilterResultCustomizationsMember1 != null)
             {
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(StickinessFilterResultCustomizationsAnyOf1, StickinessFilterResultCustomizationsAnyOf2, StickinessFilterResultCustomizationsMember1);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -49,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizationsAnyOf1>(null, StickinessFilterResultCustomizationsAnyOf1, StickinessFilterResultCustomizationsAnyOf2, StickinessFilterResultCustomizationsMember1);
         }
     }
 }

@@ -13,13 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The funnelPathType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathTypeWrapper? FunnelPathType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathTypeWrapper FunnelPathType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathType? FunnelPathType { get; set; }
         /// <summary>The funnelSource property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "funnelPathType", n => { FunnelPathType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "funnelPathType", n => { FunnelPathType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathType>(); } },
                 { "funnelSource", n => { FunnelSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
                 { "funnelStep", n => { FunnelStep = n.GetIntValue(); } },
             };
@@ -60,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathTypeWrapper>("funnelPathType", FunnelPathType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathType>("funnelPathType", FunnelPathType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnelSource", FunnelSource);
             writer.WriteIntValue("funnelStep", FunnelStep);
         }

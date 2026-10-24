@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Property { get; set; }
 #endif
         /// <summary>The static property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCodeWrapper? Static { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCodeWrapper Static { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCode? Static { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -47,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "property", n => { Property = n.GetStringValue(); } },
-                { "static", n => { Static = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCodeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCodeWrapper.CreateFromDiscriminatorValue); } },
+                { "static", n => { Static = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCode>(); } },
             };
         }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("property", Property);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCodeWrapper>("static", Static);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CurrencyCode>("static", Static);
         }
     }
 }

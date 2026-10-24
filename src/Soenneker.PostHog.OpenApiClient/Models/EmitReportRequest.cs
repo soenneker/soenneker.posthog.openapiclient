@@ -13,14 +13,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmitReportRequest : IAdditionalDataHolder, IParsable
     {
-        /// <summary>The scout&apos;s actionability call: `immediately_actionable` -&gt; the report surfaces READY; `requires_human_input` -&gt; PENDING_INPUT; `not_actionable` -&gt; suppressed. A safety-judge failure suppresses the report regardless. A root cause you have not found is not human input: a report that names the evidence, the code surface, or a reproducible failure path is `immediately_actionable`, because investigating it is the action. Reserve `requires_human_input` for a report blocked on a decision only a person can make.* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability? Actionability { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability Actionability { get; set; }
-#endif
         /// <summary>2-3 sentence evidence-grounded justification for the actionability call below.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,6 +115,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
+        /// <summary>Optional slug tags that group the report with related ones, at most 10. Write lowercase kebab-case slugs that name the category of the report (`cost-spike`, `tracking-gap`), not the specific entity. Reuse a slug the project already uses before you coin a new one. Near-miss formats are normalized to slugs, and a tag that is empty or longer than 50 characters after normalization is rejected.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>One-line report title the inbox shows. Conventional-commit style (`type(scope): description`, e.g. `fix(insights): missing series color`) renders with type/scope styling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -155,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "actionability", n => { Actionability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability>(global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability.CreateFromDiscriminatorValue); } },
+                { "actionability", n => { Actionability = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability>(); } },
                 { "actionability_explanation", n => { ActionabilityExplanation = n.GetStringValue(); } },
                 { "already_addressed", n => { AlreadyAddressed = n.GetBoolValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -169,6 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "suggested_reviewers", n => { SuggestedReviewers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -179,7 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability>("actionability", Actionability);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability>("actionability", Actionability);
             writer.WriteStringValue("actionability_explanation", ActionabilityExplanation);
             writer.WriteBoolValue("already_addressed", AlreadyAddressed);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>("charts", Charts);
@@ -193,6 +196,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("suggested_prompts", SuggestedPrompts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>("suggested_reviewers", SuggestedReviewers);
             writer.WriteStringValue("summary", Summary);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

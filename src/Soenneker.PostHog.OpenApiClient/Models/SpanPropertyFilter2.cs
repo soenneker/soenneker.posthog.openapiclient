@@ -22,29 +22,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Comparison operator.* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains* `starts_with` - starts_with* `not_starts_with` - not_starts_with* `ends_with` - ends_with* `not_ends_with` - not_ends_with* `regex` - regex* `not_regex` - not_regex* `gt` - gt* `lt` - lt* `is_set` - is_set* `is_not_set` - is_not_set</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains* `starts_with` - starts_with* `not_starts_with` - not_starts_with* `ends_with` - ends_with* `not_ends_with` - not_ends_with* `regex` - regex* `not_regex` - not_regex* `gt` - gt* `lt` - lt* `is_set` - is_set* `is_not_set` - is_not_set</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Operator? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Operator Operator { get; set; }
-#endif
-        /// <summary>&quot;span&quot; filters built-in span fields. &quot;span_attribute&quot; filters span-level attributes. &quot;span_resource_attribute&quot; filters resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Type? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Type Type { get; set; }
-#endif
         /// <summary>Value to compare against. String, number, or array of strings. Omit for is_set/is_not_set operators.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Value? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Value Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2"/> and sets the default values.
@@ -72,9 +60,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Operator>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Operator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Type>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Type.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Value>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Value.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Operator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Type>(); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -85,9 +73,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Operator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Value>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Operator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2Type>("type", Type);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

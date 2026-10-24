@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Auto-compiled from hash. Do not set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMaskingBytecode? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMaskingBytecode Bytecode { get; set; }
+        public UntypedNode Bytecode { get; set; }
 #endif
         /// <summary>HogQL template defining the dedup/grouping key, e.g. &apos;{person.id}&apos; (once per person) within ttl.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMaskingBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMaskingBytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "hash", n => { Hash = n.GetStringValue(); } },
                 { "threshold", n => { Threshold = n.GetIntValue(); } },
                 { "ttl", n => { Ttl = n.GetIntValue(); } },
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMaskingBytecode>("bytecode", Bytecode);
+            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
             writer.WriteStringValue("hash", Hash);
             writer.WriteIntValue("threshold", Threshold);
             writer.WriteIntValue("ttl", Ttl);

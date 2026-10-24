@@ -88,14 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TargetEvent { get; set; }
 #endif
-        /// <summary>The template key that was resolved. Pass it back to re-resolve with a different target_event.* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTemplateKey? TemplateKey { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTemplateKey TemplateKey { get; set; }
-#endif
         /// <summary>Training lookback in days, sized so the horizon leaves room for training examples. Pass as &apos;training_lookback_days&apos; to autoresearch-create.</summary>
         public int? TrainingLookbackDays { get; set; }
         /// <summary>Resolved training population filter. Pass as &apos;training_population&apos; to autoresearch-create.</summary>
@@ -141,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "resolved_activity_event", n => { ResolvedActivityEvent = n.GetStringValue(); } },
                 { "suggested_name", n => { SuggestedName = n.GetStringValue(); } },
                 { "target_event", n => { TargetEvent = n.GetStringValue(); } },
-                { "template_key", n => { TemplateKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTemplateKey>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTemplateKey.CreateFromDiscriminatorValue); } },
+                { "template_key", n => { TemplateKey = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTemplateKey>(); } },
                 { "training_lookback_days", n => { TrainingLookbackDays = n.GetIntValue(); } },
                 { "training_population", n => { TrainingPopulation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTrainingPopulationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTrainingPopulationProperty.CreateFromDiscriminatorValue); } },
             };
@@ -163,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("resolved_activity_event", ResolvedActivityEvent);
             writer.WriteStringValue("suggested_name", SuggestedName);
             writer.WriteStringValue("target_event", TargetEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTemplateKey>("template_key", TemplateKey);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTemplateKey>("template_key", TemplateKey);
             writer.WriteIntValue("training_lookback_days", TrainingLookbackDays);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedTemplateTrainingPopulationProperty>("training_population", TrainingPopulation);
             writer.WriteAdditionalData(AdditionalData);

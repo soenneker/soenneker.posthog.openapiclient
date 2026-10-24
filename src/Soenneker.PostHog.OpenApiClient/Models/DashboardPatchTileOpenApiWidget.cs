@@ -41,14 +41,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Widget type identifier (cannot be changed on update).* `activity_events_list` - activity_events_list* `conversations_recent_tickets` - conversations_recent_tickets* `error_tracking_list` - error_tracking_list* `experiment_results` - experiment_results* `experiments_list` - experiments_list* `logs_list` - logs_list* `notebook_widget` - notebook_widget* `session_replay_list` - session_replay_list* `survey_results` - survey_results</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `activity_events_list` - Activity Events List* `canvas_app` - Canvas App* `conversations_recent_tickets` - Conversations Recent Tickets* `error_tracking_list` - Error Tracking List* `experiment_results` - Experiment Results* `experiments_list` - Experiments List* `logs_list` - Logs List* `metrics_table` - Metrics Table* `notebook_widget` - Notebook Widget* `session_replay_list` - Session Replay List* `survey_results` - Survey Results</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType? WidgetType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType WidgetType { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget"/> and sets the default values.
         /// </summary>
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "widget_type", n => { WidgetType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType.CreateFromDiscriminatorValue); } },
+                { "widget_type", n => { WidgetType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType>(); } },
             };
         }
         /// <summary>
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType>("widget_type", WidgetType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchWidgetOpenApiWidgetType>("widget_type", WidgetType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

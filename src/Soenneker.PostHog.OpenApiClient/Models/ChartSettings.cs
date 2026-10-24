@@ -12,6 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ChartSettings : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The barGap property</summary>
+        public double? BarGap { get; set; }
         /// <summary>The boxPlot property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,14 +54,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings LeftYAxisSettings { get; set; }
 #endif
-        /// <summary>Where the legend sits relative to the chart. Unset falls back per chart type: right for pie, top for the rest.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper? LegendPosition { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper LegendPosition { get; set; }
-#endif
+        /// <summary>Where the legend sits relative to the chart. Unset falls back per chart type: right for pie and donut, bottom for proportion bar, top for the rest.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -128,6 +124,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? ShowYAxisBorder { get; set; }
         /// <summary>Whether we fill the bars to 100% in stacked mode</summary>
         public bool? StackBars100 { get; set; }
+        /// <summary>The valueLabelBackground property</summary>
+        public bool? ValueLabelBackground { get; set; }
+        /// <summary>The valueLabelFontSize property</summary>
+        public double? ValueLabelFontSize { get; set; }
+        /// <summary>The valueLabelPosition property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValueLabelPosition? ValueLabelPosition { get; set; }
+        /// <summary>The valueLabelRotation property</summary>
+        public double? ValueLabelRotation { get; set; }
         /// <summary>The xAxis property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -135,6 +139,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis XAxis { get; set; }
+#endif
+        /// <summary>The xAxisDateFormat property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? XAxisDateFormat { get; set; }
+#nullable restore
+#else
+        public string XAxisDateFormat { get; set; }
 #endif
         /// <summary>The xAxisLabel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -144,6 +156,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string XAxisLabel { get; set; }
 #endif
+        /// <summary>The xAxisTickRotation property</summary>
+        public double? XAxisTickRotation { get; set; }
         /// <summary>The yAxis property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -172,12 +186,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "barGap", n => { BarGap = n.GetDoubleValue(); } },
                 { "boxPlot", n => { BoxPlot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings>(global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings.CreateFromDiscriminatorValue); } },
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "heatmap", n => { Heatmap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings.CreateFromDiscriminatorValue); } },
                 { "leftYAxisSettings", n => { LeftYAxisSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>(global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings.CreateFromDiscriminatorValue); } },
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper.CreateFromDiscriminatorValue); } },
+                { "legendPosition", n => { LegendPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>(); } },
                 { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings.CreateFromDiscriminatorValue); } },
                 { "pie", n => { Pie = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings.CreateFromDiscriminatorValue); } },
                 { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty.CreateFromDiscriminatorValue); } },
@@ -194,8 +209,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "showXAxisTicks", n => { ShowXAxisTicks = n.GetBoolValue(); } },
                 { "showYAxisBorder", n => { ShowYAxisBorder = n.GetBoolValue(); } },
                 { "stackBars100", n => { StackBars100 = n.GetBoolValue(); } },
+                { "valueLabelBackground", n => { ValueLabelBackground = n.GetBoolValue(); } },
+                { "valueLabelFontSize", n => { ValueLabelFontSize = n.GetDoubleValue(); } },
+                { "valueLabelPosition", n => { ValueLabelPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueLabelPosition>(); } },
+                { "valueLabelRotation", n => { ValueLabelRotation = n.GetDoubleValue(); } },
                 { "xAxis", n => { XAxis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>(global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis.CreateFromDiscriminatorValue); } },
+                { "xAxisDateFormat", n => { XAxisDateFormat = n.GetStringValue(); } },
                 { "xAxisLabel", n => { XAxisLabel = n.GetStringValue(); } },
+                { "xAxisTickRotation", n => { XAxisTickRotation = n.GetDoubleValue(); } },
                 { "yAxis", n => { YAxis = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>(global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "yAxisAtZero", n => { YAxisAtZero = n.GetBoolValue(); } },
             };
@@ -207,12 +228,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("barGap", BarGap);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings>("boxPlot", BoxPlot);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings>("heatmap", Heatmap);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>("leftYAxisSettings", LeftYAxisSettings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper>("legendPosition", LegendPosition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition>("legendPosition", LegendPosition);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings>("metric", Metric);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings>("pie", Pie);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty>("resultCustomizations", ResultCustomizations);
@@ -229,8 +251,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showXAxisTicks", ShowXAxisTicks);
             writer.WriteBoolValue("showYAxisBorder", ShowYAxisBorder);
             writer.WriteBoolValue("stackBars100", StackBars100);
+            writer.WriteBoolValue("valueLabelBackground", ValueLabelBackground);
+            writer.WriteDoubleValue("valueLabelFontSize", ValueLabelFontSize);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueLabelPosition>("valueLabelPosition", ValueLabelPosition);
+            writer.WriteDoubleValue("valueLabelRotation", ValueLabelRotation);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>("xAxis", XAxis);
+            writer.WriteStringValue("xAxisDateFormat", XAxisDateFormat);
             writer.WriteStringValue("xAxisLabel", XAxisLabel);
+            writer.WriteDoubleValue("xAxisTickRotation", XAxisTickRotation);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>("yAxis", YAxis);
             writer.WriteBoolValue("yAxisAtZero", YAxisAtZero);
         }

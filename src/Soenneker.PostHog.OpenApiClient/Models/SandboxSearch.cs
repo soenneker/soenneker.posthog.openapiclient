@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Input { get; set; }
 #endif
-        /// <summary>Business knowledge tool the agent called.* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window* `business-knowledge-repositories-search` - Repository search* `business-knowledge-repositories-file-retrieve` - Repository file</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `business-knowledge-documents-search` - Search* `business-knowledge-document-window-retrieve` - Window* `business-knowledge-repositories-search` - Repository search* `business-knowledge-repositories-file-retrieve` - Repository file</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool? Tool { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool Tool { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearch"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "input", n => { Input = n.GetStringValue(); } },
-                { "tool", n => { Tool = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool.CreateFromDiscriminatorValue); } },
+                { "tool", n => { Tool = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("input", Input);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool>("tool", Tool);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxSearchTool>("tool", Tool);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

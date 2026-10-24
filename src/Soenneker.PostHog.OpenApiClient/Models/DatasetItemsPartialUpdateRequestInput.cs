@@ -8,43 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember1"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember2"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DatasetItemsPartialUpdateRequestInput : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch2? DatasetItemsPartialUpdateRequestInputBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch2 DatasetItemsPartialUpdateRequestInputBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch3? DatasetItemsPartialUpdateRequestInputBranch3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch3 DatasetItemsPartialUpdateRequestInputBranch3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch4? DatasetItemsPartialUpdateRequestInputBranch4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch4 DatasetItemsPartialUpdateRequestInputBranch4 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch5? DatasetItemsPartialUpdateRequestInputBranch5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch5 DatasetItemsPartialUpdateRequestInputBranch5 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,6 +22,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember1 DatasetItemsPartialUpdateRequestInputMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember2? DatasetItemsPartialUpdateRequestInputMember2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember2 DatasetItemsPartialUpdateRequestInputMember2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="double"/></summary>
+        public double? Double { get; set; }
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -63,21 +51,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput();
-            if("DatasetItemsPartialUpdateRequestInputBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetBoolValue() is bool booleanValue)
             {
-                result.DatasetItemsPartialUpdateRequestInputBranch2 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch2();
+                result.Boolean = booleanValue;
             }
-            else if("DatasetItemsPartialUpdateRequestInputBranch3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetDoubleValue() is double doubleValue)
             {
-                result.DatasetItemsPartialUpdateRequestInputBranch3 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch3();
+                result.Double = doubleValue;
             }
-            else if("DatasetItemsPartialUpdateRequestInputBranch4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetStringValue() is string stringValue)
             {
-                result.DatasetItemsPartialUpdateRequestInputBranch4 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch4();
-            }
-            else if("DatasetItemsPartialUpdateRequestInputBranch5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DatasetItemsPartialUpdateRequestInputBranch5 = new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch5();
+                result.String = stringValue;
             }
             return result;
         }
@@ -87,25 +71,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DatasetItemsPartialUpdateRequestInputBranch2 != null)
-            {
-                return DatasetItemsPartialUpdateRequestInputBranch2.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestInputBranch3 != null)
-            {
-                return DatasetItemsPartialUpdateRequestInputBranch3.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestInputBranch4 != null)
-            {
-                return DatasetItemsPartialUpdateRequestInputBranch4.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestInputBranch5 != null)
-            {
-                return DatasetItemsPartialUpdateRequestInputBranch5.GetFieldDeserializers();
-            }
-            else if(DatasetItemsPartialUpdateRequestInputMember1 != null)
+            if(DatasetItemsPartialUpdateRequestInputMember1 != null)
             {
                 return DatasetItemsPartialUpdateRequestInputMember1.GetFieldDeserializers();
+            }
+            else if(DatasetItemsPartialUpdateRequestInputMember2 != null)
+            {
+                return DatasetItemsPartialUpdateRequestInputMember2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -116,25 +88,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DatasetItemsPartialUpdateRequestInputBranch2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch2>(null, DatasetItemsPartialUpdateRequestInputBranch2);
-            }
-            else if(DatasetItemsPartialUpdateRequestInputBranch3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch3>(null, DatasetItemsPartialUpdateRequestInputBranch3);
-            }
-            else if(DatasetItemsPartialUpdateRequestInputBranch4 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch4>(null, DatasetItemsPartialUpdateRequestInputBranch4);
-            }
-            else if(DatasetItemsPartialUpdateRequestInputBranch5 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputBranch5>(null, DatasetItemsPartialUpdateRequestInputBranch5);
-            }
-            else if(DatasetItemsPartialUpdateRequestInputMember1 != null)
+            if(DatasetItemsPartialUpdateRequestInputMember1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember1>(null, DatasetItemsPartialUpdateRequestInputMember1);
+            }
+            else if(DatasetItemsPartialUpdateRequestInputMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInputMember2>(null, DatasetItemsPartialUpdateRequestInputMember2);
+            }
+            else if(Boolean != null)
+            {
+                writer.WriteBoolValue(null, Boolean);
+            }
+            else if(Double != null)
+            {
+                writer.WriteDoubleValue(null, Double);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

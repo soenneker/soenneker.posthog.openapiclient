@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolAnnotationsProperty Annotations { get; set; }
 #endif
-        /// <summary>Effective gateway state. `needs_approval` tools are listed so callers can explain why a call would fail rather than pretending the capability is missing.* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolApprovalState? ApprovalState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolApprovalState ApprovalState { get; set; }
-#endif
         /// <summary>Upstream tool description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "annotations", n => { Annotations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolAnnotationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolAnnotationsProperty.CreateFromDiscriminatorValue); } },
-                { "approval_state", n => { ApprovalState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolApprovalState>(global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolApprovalState.CreateFromDiscriminatorValue); } },
+                { "approval_state", n => { ApprovalState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolApprovalState>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "input_schema", n => { InputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolInputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolInputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -94,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolAnnotationsProperty>("annotations", Annotations);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolApprovalState>("approval_state", ApprovalState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolApprovalState>("approval_state", ApprovalState);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolInputSchemaProperty>("input_schema", InputSchema);
             writer.WriteStringValue("name", Name);

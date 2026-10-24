@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>ci (red CI and CI waits), review (waiting for the first approval), queue (merge-queue time and kickouts), or rework (own failures and extra pushes).* `ci` - CI* `review` - REVIEW* `queue` - QUEUE* `rework` - REWORK</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ci` - CI* `review` - Review* `queue` - Queue* `rework` - Rework</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShareGroup? Group { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShareGroup Group { get; set; }
-#endif
         /// <summary>This group&apos;s part of the score, in the same &apos;x typical&apos; unit. The parts add up.</summary>
         public double? Score { get; set; }
         /// <summary>
@@ -49,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "group", n => { Group = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShareGroup>(global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShareGroup.CreateFromDiscriminatorValue); } },
+                { "group", n => { Group = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShareGroup>(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
             };
         }
@@ -60,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShareGroup>("group", Group);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShareGroup>("group", Group);
             writer.WriteDoubleValue("score", Score);
             writer.WriteAdditionalData(AdditionalData);
         }

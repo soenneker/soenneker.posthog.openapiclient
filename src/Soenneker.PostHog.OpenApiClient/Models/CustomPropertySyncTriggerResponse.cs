@@ -17,14 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Backfill only: true when a run was already in flight and this call queued its follow-up.</summary>
         public bool? AlreadyRunning { get; set; }
-        /// <summary>&apos;triggered&apos; (sync now started the warehouse sync), &apos;started&apos; (a new backfill began), or &apos;already_running&apos; (a backfill was in flight and a latest-state follow-up was queued).* `triggered` - triggered* `started` - started* `already_running` - already_running</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `triggered` - triggered* `started` - started* `already_running` - already_running</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse"/> and sets the default values.
         /// </summary>
@@ -51,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "already_running", n => { AlreadyRunning = n.GetBoolValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus>(); } },
             };
         }
         /// <summary>
@@ -62,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("already_running", AlreadyRunning);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponseStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

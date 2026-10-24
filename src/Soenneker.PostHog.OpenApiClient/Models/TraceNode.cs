@@ -33,13 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeKind Kind { get; set; }
-#endif
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "children", n => { Children = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceNode>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hasError", n => { HasError = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeKind>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeKind>(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeStats>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeStats.CreateFromDiscriminatorValue); } },
@@ -108,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceNode>("children", Children);
             writer.WriteBoolValue("hasError", HasError);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeKind>("kind", Kind);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeStats>("stats", Stats);

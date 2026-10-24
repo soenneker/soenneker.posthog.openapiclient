@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrimaryIssue { get; set; }
 #endif
-        /// <summary>Overall outcome: healthy if the proxy is serving requests, warn for non-blocking issues, fail otherwise.* `healthy` - healthy* `warn` - warn* `fail` - fail</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `healthy` - healthy* `warn` - warn* `fail` - fail</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryComposed"/> and sets the default values.
         /// </summary>
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "next_action", n => { NextAction = n.GetStringValue(); } },
                 { "primary_issue", n => { PrimaryIssue = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus>(); } },
             };
         }
         /// <summary>
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("next_action", NextAction);
             writer.WriteStringValue("primary_issue", PrimaryIssue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&apos;started&apos; - a scan workflow was kicked off; &apos;already_running&apos; - a scan for this session is already in flight (no-op, not recharged); &apos;already_scanned&apos; - this scanner already has a finished observation for this session, so nothing was started and nothing was charged (read it back, or use the retry action to run it again); &apos;skipped_limit&apos; - the in-flight cap was reached before this session; &apos;skipped_quota&apos; - the org&apos;s credit quota for this period would be exceeded; &apos;skipped_scanner_limit&apos; - this scanner&apos;s own credit limit would be exceeded; &apos;failed&apos; - the workflow failed to start.* `started` - Started* `already_running` - Already running* `already_scanned` - Already scanned* `skipped_limit` - Skipped, in-flight limit reached* `skipped_quota` - Skipped, the org&apos;s credit quota for this period was reached* `skipped_scanner_limit` - Skipped, scanner&apos;s own credit limit reached* `failed` - Failed to start</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `started` - Started* `already_running` - Already running* `already_scanned` - Already scanned* `skipped_limit` - Skipped, in-flight limit reached* `skipped_quota` - Skipped, the org&apos;s credit quota for this period was reached* `skipped_scanner_limit` - Skipped, scanner&apos;s own credit limit reached* `failed` - Failed to start</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome? ScanOutcome { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome ScanOutcome { get; set; }
-#endif
         /// <summary>The session recording this outcome is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "scan_outcome", n => { ScanOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome.CreateFromDiscriminatorValue); } },
+                { "scan_outcome", n => { ScanOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
             };
         }
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome>("scan_outcome", ScanOutcome);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome>("scan_outcome", ScanOutcome);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteAdditionalData(AdditionalData);
         }

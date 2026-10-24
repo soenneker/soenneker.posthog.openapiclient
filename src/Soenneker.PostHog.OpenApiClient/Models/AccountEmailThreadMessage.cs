@@ -30,14 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; private set; }
 #endif
-        /// <summary>Whether PostHog received or sent the message.* `inbound` - Inbound* `outbound` - Outbound</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `inbound` - Inbound* `outbound` - Outbound</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadMessageDirection? Direction { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadMessageDirection Direction { get; private set; }
-#endif
         /// <summary>UUID of the captured email message.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Sender from the email From header.</summary>
@@ -87,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "cc_recipients", n => { CcRecipients = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadAddress>(global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadAddress.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadMessageDirection>(global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadMessageDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadMessageDirection>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "sender", n => { Sender = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadMessageSender>(global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadMessageSender.CreateFromDiscriminatorValue); } },
                 { "sender_authenticated", n => { SenderAuthenticated = n.GetBoolValue(); } },

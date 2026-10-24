@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRuleBytecodeItem>? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRuleBytecodeItem> Bytecode { get; set; }
+        public UntypedNode Bytecode { get; set; }
 #endif
         /// <summary>The color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -29,13 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Color { get; set; }
 #endif
         /// <summary>The colorMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ColorModeWrapper? ColorMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ColorModeWrapper ColorMode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ColorMode? ColorMode { get; set; }
         /// <summary>The columnName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,9 +80,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRuleBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRuleBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "color", n => { Color = n.GetStringValue(); } },
-                { "colorMode", n => { ColorMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ColorModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ColorModeWrapper.CreateFromDiscriminatorValue); } },
+                { "colorMode", n => { ColorMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ColorMode>(); } },
                 { "columnName", n => { ColumnName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "input", n => { Input = n.GetStringValue(); } },
@@ -102,9 +96,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRuleBytecodeItem>("bytecode", Bytecode);
+            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
             writer.WriteStringValue("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ColorModeWrapper>("colorMode", ColorMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ColorMode>("colorMode", ColorMode);
             writer.WriteStringValue("columnName", ColumnName);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("input", Input);

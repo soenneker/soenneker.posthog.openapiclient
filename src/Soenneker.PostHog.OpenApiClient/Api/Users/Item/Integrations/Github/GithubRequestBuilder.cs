@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\users\{user-id}\integrations\github
+    /// Builds and executes requests for operations under \api\users\{userId}\integrations\github
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GithubRequestBuilder : BaseRequestBuilder
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GithubRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github", pathParameters)
+        public GithubRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{userId}/integrations/github", pathParameters)
         {
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GithubRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github", rawUrl)
+        public GithubRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{userId}/integrations/github", rawUrl)
         {
         }
     }

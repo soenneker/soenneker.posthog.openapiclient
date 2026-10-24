@@ -21,14 +21,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Marked { get; set; }
         /// <summary>In-flight runs of this batch not yet flagged. Non-zero on very large runs; call again.</summary>
         public int? Remaining { get; set; }
-        /// <summary>The batch run&apos;s status after this request. &apos;cancelled&apos; once every in-flight run is flagged; a completion that raced the stop wins and is reported instead.* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponse"/> and sets the default values.
         /// </summary>
@@ -57,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "done", n => { Done = n.GetBoolValue(); } },
                 { "marked", n => { Marked = n.GetIntValue(); } },
                 { "remaining", n => { Remaining = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus>(); } },
             };
         }
         /// <summary>
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("done", Done);
             writer.WriteIntValue("marked", Marked);
             writer.WriteIntValue("remaining", Remaining);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

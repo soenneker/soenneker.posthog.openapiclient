@@ -35,13 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The maxDistance property</summary>
         public double? MaxDistance { get; set; }
         /// <summary>The modelName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2? ModelName { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2 ModelName { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName? ModelName { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "maxDistance", n => { MaxDistance = n.GetDoubleValue(); } },
-                { "modelName", n => { ModelName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2.CreateFromDiscriminatorValue); } },
+                { "modelName", n => { ModelName = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "rendering", n => { Rendering = n.GetStringValue(); } },
@@ -122,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteDoubleValue("maxDistance", MaxDistance);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2>("modelName", ModelName);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>("modelName", ModelName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteStringValue("rendering", Rendering);

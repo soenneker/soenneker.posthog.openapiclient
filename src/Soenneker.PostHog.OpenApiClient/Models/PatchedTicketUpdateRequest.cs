@@ -20,10 +20,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Customer details such as name and email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestAnonymousTraits? AnonymousTraits { get; set; }
+        public UntypedNode? AnonymousTraits { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestAnonymousTraits AnonymousTraits { get; set; }
+        public UntypedNode AnonymousTraits { get; set; }
 #endif
         /// <summary>User or role to assign. Pass null to remove the current assignee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,14 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? SlaDueAt { get; set; }
         /// <summary>Time to reopen the ticket. Pass null to reopen it now.</summary>
         public DateTimeOffset? SnoozedUntil { get; set; }
-        /// <summary>Ticket status: new, open, pending, on_hold, or resolved.* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestStatus Status { get; set; }
-#endif
         /// <summary>Tag names to set on the ticket.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,13 +89,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ai_resolved", n => { AiResolved = n.GetBoolValue(); } },
-                { "anonymous_traits", n => { AnonymousTraits = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestAnonymousTraits>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestAnonymousTraits.CreateFromDiscriminatorValue); } },
+                { "anonymous_traits", n => { AnonymousTraits = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRequest>(global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRequest.CreateFromDiscriminatorValue); } },
                 { "escalation_reason", n => { EscalationReason = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestPriority>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestPriority.CreateFromDiscriminatorValue); } },
                 { "sla_due_at", n => { SlaDueAt = n.GetDateTimeOffsetValue(); } },
                 { "snoozed_until", n => { SnoozedUntil = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestStatus>(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -113,13 +107,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("ai_resolved", AiResolved);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestAnonymousTraits>("anonymous_traits", AnonymousTraits);
+            writer.WriteObjectValue<UntypedNode>("anonymous_traits", AnonymousTraits);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRequest>("assignee", Assignee);
             writer.WriteStringValue("escalation_reason", EscalationReason);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestPriority>("priority", Priority);
             writer.WriteDateTimeOffsetValue("sla_due_at", SlaDueAt);
             writer.WriteDateTimeOffsetValue("snoozed_until", SnoozedUntil);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketUpdateRequestStatus>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

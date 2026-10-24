@@ -14,16 +14,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Project-scoped custom property or relationship definition UUID.</summary>
-        public Guid? Id { get; set; }
-        /// <summary>Definition type for this default pinned account property.* `custom_property` - Custom property* `relationship` - Relationship</summary>
+        /// <summary>Project-scoped custom property or relationship definition UUID. For an account_field pin, the account field name, such as stripe_customer_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind? Kind { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind Kind { get; set; }
+        public string Id { get; set; }
 #endif
+        /// <summary>* `custom_property` - Custom property* `relationship` - Relationship* `account_field` - Account field</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind? Kind { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty"/> and sets the default values.
         /// </summary>
@@ -49,8 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind>(); } },
             };
         }
         /// <summary>
@@ -60,8 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteGuidValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind>("kind", Kind);
+            writer.WriteStringValue("id", Id);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountPropertyKind>("kind", Kind);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

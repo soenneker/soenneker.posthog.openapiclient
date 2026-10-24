@@ -74,14 +74,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Workflow runs attributed to this PR that were a 2nd+ attempt (a re-run).</summary>
         public int? RerunCycles { get; set; }
-        /// <summary>Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `open` - Open* `closed` - Closed* `merged` - Merged</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState State { get; set; }
-#endif
         /// <summary>Pull request title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -130,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ready_to_merge_seconds", n => { ReadyToMergeSeconds = n.GetIntValue(); } },
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo.CreateFromDiscriminatorValue); } },
                 { "rerun_cycles", n => { RerunCycles = n.GetIntValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -156,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("ready_to_merge_seconds", ReadyToMergeSeconds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo>("repo", Repo);
             writer.WriteIntValue("rerun_cycles", RerunCycles);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState>("state", State);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

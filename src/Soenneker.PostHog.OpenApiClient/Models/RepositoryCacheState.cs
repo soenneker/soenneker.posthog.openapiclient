@@ -14,13 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>ready means the file list was cached recently. warming means a refresh was just queued.* `ready` - Ready* `warming` - Warming</summary>
+        /// <summary>* `ready` - Ready* `warming` - Warming</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus? CacheStatus { get; set; }
+        /// <summary>GitHub description for this repository. Empty when GitHub has none or the cache has not loaded it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus? CacheStatus { get; set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus CacheStatus { get; set; }
+        public string Description { get; set; }
 #endif
         /// <summary>Lowercased owner/repo.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cache_status", n => { CacheStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus>(global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus.CreateFromDiscriminatorValue); } },
+                { "cache_status", n => { CacheStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "repo", n => { Repo = n.GetStringValue(); } },
                 { "tree_truncated", n => { TreeTruncated = n.GetBoolValue(); } },
             };
@@ -69,7 +72,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus>("cache_status", CacheStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryCacheStateCacheStatus>("cache_status", CacheStatus);
+            writer.WriteStringValue("description", Description);
             writer.WriteStringValue("repo", Repo);
             writer.WriteBoolValue("tree_truncated", TreeTruncated);
             writer.WriteAdditionalData(AdditionalData);

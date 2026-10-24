@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Notes { get; set; }
 #endif
-        /// <summary>Intent of the proposal: &apos;certified&apos; to propose trusting this source, &apos;deprecated&apos; to propose avoiding it (e.g. a stale or wrong source).* `certified` - certified* `deprecated` - deprecated</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `certified` - certified* `deprecated` - deprecated</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus? ProposedStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus ProposedStatus { get; set; }
-#endif
         /// <summary>Warehouse view (saved query) id to certify.</summary>
         public Guid? SavedQueryId { get; set; }
         /// <summary>Warehouse table id to certify (XOR the other targets).</summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "notes", n => { Notes = n.GetStringValue(); } },
-                { "proposed_status", n => { ProposedStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus.CreateFromDiscriminatorValue); } },
+                { "proposed_status", n => { ProposedStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus>(); } },
                 { "saved_query_id", n => { SavedQueryId = n.GetGuidValue(); } },
                 { "table_id", n => { TableId = n.GetGuidValue(); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("notes", Notes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus>("proposed_status", ProposedStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus>("proposed_status", ProposedStatus);
             writer.WriteGuidValue("saved_query_id", SavedQueryId);
             writer.WriteGuidValue("table_id", TableId);
             writer.WriteStringValue("table_name", TableName);

@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How the uploaded file is read: &apos;csv&apos;, &apos;json&apos;, or &apos;parquet&apos;.* `csv` - csv* `json` - json* `parquet` - parquet</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `csv` - csv* `json` - json* `parquet` - parquet</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateTableFromUploadFileFormat? FileFormat { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTableFromUploadFileFormat FileFormat { get; set; }
-#endif
         /// <summary>Sanitized filename returned by upload_file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "file_format", n => { FileFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTableFromUploadFileFormat>(global::Soenneker.PostHog.OpenApiClient.Models.CreateTableFromUploadFileFormat.CreateFromDiscriminatorValue); } },
+                { "file_format", n => { FileFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTableFromUploadFileFormat>(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
                 { "upload_id", n => { UploadId = n.GetGuidValue(); } },
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTableFromUploadFileFormat>("file_format", FileFormat);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTableFromUploadFileFormat>("file_format", FileFormat);
             writer.WriteStringValue("filename", Filename);
             writer.WriteStringValue("table_name", TableName);
             writer.WriteGuidValue("upload_id", UploadId);

@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Document id.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Content-safety verdict. Only `safe` documents are included in search. `unknown` is still waiting on classification.* `unknown` - Unknown* `safe` - Safe* `unsafe` - Unsafe</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `unknown` - Unknown* `safe` - Safe* `unsafe` - Unsafe</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceDocumentSafetyVerdict? SafetyVerdict { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceDocumentSafetyVerdict SafetyVerdict { get; private set; }
-#endif
         /// <summary>Page title extracted while indexing. Falls back to empty when the page had none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "safety_verdict", n => { SafetyVerdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceDocumentSafetyVerdict>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceDocumentSafetyVerdict.CreateFromDiscriminatorValue); } },
+                { "safety_verdict", n => { SafetyVerdict = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceDocumentSafetyVerdict>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceDocumentUrl>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceDocumentUrl.CreateFromDiscriminatorValue); } },
             };

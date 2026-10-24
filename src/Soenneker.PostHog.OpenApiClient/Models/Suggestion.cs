@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Advice shown alongside the action. Mapping suggestions always carry a &apos;fix_platform_urls&apos; entry, because a mapping is a workaround and correcting the ad platform&apos;s tracking template is the real fix.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestionAlsoRecommendedItem>? AlsoRecommended { get; set; }
+        public UntypedNode? AlsoRecommended { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestionAlsoRecommendedItem> AlsoRecommended { get; set; }
+        public UntypedNode AlsoRecommended { get; set; }
 #endif
         /// <summary>The operation that applies this suggestion, or null when there&apos;s nothing to automate. An object with an &apos;op&apos; discriminator — see the ApplyOp union in setup_types. Pass it verbatim to apply_setup_ops; never hand-craft one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SuggestionApply? Apply { get; set; }
+        public UntypedNode? Apply { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SuggestionApply Apply { get; set; }
+        public UntypedNode Apply { get; set; }
 #endif
         /// <summary>0-1. Never 1.0: these are inferences, not proofs.</summary>
         public double? Confidence { get; set; }
@@ -145,8 +145,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "also_recommended", n => { AlsoRecommended = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestionAlsoRecommendedItem>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestionAlsoRecommendedItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "apply", n => { Apply = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestionApply>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestionApply.CreateFromDiscriminatorValue); } },
+                { "also_recommended", n => { AlsoRecommended = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "apply", n => { Apply = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "deep_link", n => { DeepLink = n.GetStringValue(); } },
                 { "docs_url", n => { DocsUrl = n.GetStringValue(); } },
@@ -171,8 +171,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestionAlsoRecommendedItem>("also_recommended", AlsoRecommended);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestionApply>("apply", Apply);
+            writer.WriteObjectValue<UntypedNode>("also_recommended", AlsoRecommended);
+            writer.WriteObjectValue<UntypedNode>("apply", Apply);
             writer.WriteDoubleValue("confidence", Confidence);
             writer.WriteStringValue("deep_link", DeepLink);
             writer.WriteStringValue("docs_url", DocsUrl);

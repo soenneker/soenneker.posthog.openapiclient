@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When a worker started the job.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>Current durable job state.* `queued` - queued* `generating` - generating* `publishing` - publishing</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `queued` - queued* `generating` - generating* `publishing` - publishing</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJobStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJobStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob"/> and sets the default values.
         /// </summary>
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "phase", n => { Phase = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetJobStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetJobStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetJobStatus>(); } },
             };
         }
         /// <summary>
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("phase", Phase);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetJobStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetJobStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

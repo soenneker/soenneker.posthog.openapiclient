@@ -88,14 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string UploadedAt { get; set; }
 #endif
-        /// <summary>Whether the artifact version was uploaded by the task agent or an interactive user.* `agent` - agent* `user` - user</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `agent` - agent* `user` - user</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy? UploadedBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy UploadedBy { get; set; }
-#endif
         /// <summary>User id for an interactive user upload. Absent for agent uploads and legacy entries.</summary>
         public int? UploadedByUserId { get; set; }
         /// <summary>Stable download URL for the artifact. Populated on the finalize-upload response so the caller can link to the file; it redirects to a fresh presigned URL on each request and is not persisted on the manifest.</summary>
@@ -141,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "storage_path", n => { StoragePath = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "uploaded_at", n => { UploadedAt = n.GetStringValue(); } },
-                { "uploaded_by", n => { UploadedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy.CreateFromDiscriminatorValue); } },
+                { "uploaded_by", n => { UploadedBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy>(); } },
                 { "uploaded_by_user_id", n => { UploadedByUserId = n.GetIntValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -163,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("storage_path", StoragePath);
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("uploaded_at", UploadedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy>("uploaded_by", UploadedBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy>("uploaded_by", UploadedBy);
             writer.WriteIntValue("uploaded_by_user_id", UploadedByUserId);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

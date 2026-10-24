@@ -36,14 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Time when selection statistics were calculated, if available.</summary>
         public DateTimeOffset? StatsCalculatedAt { get; private set; }
-        /// <summary>Current deletion workflow status.* `draft` - Draft* `pending` - Pending* `approved` - Approved* `in_progress` - In Progress* `queued` - Queued* `completed` - Completed* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `draft` - Draft* `pending` - Pending* `approved` - Approved* `in_progress` - In Progress* `queued` - Queued* `completed` - Completed* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestStatus Status { get; private set; }
-#endif
         /// <summary>Client-generated idempotency identifier.</summary>
         public Guid? SubmissionId { get; private set; }
         /// <summary>Time when the request last changed.</summary>
@@ -51,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Submitted HogQL variable snapshot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestVariablesProperty? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestVariablesProperty? Variables { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestVariablesProperty Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestVariablesProperty Variables { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequest"/> and sets the default values.
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "stats_calculated_at", n => { StatsCalculatedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestStatus>(); } },
                 { "submission_id", n => { SubmissionId = n.GetGuidValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestVariablesProperty.CreateFromDiscriminatorValue); } },
@@ -102,7 +96,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataDeletionRequestVariablesProperty>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

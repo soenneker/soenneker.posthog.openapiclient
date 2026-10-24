@@ -37,13 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTargetDefinition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTargetDefinition();
-            if("AutoresearchPipelineTargetDefinitionActionTarget".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("action".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AutoresearchPipelineTargetDefinitionActionTarget = new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTargetDefinitionActionTarget();
             }
-            else if("AutoresearchPipelineTargetDefinitionEventTarget".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("event".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AutoresearchPipelineTargetDefinitionEventTarget = new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineTargetDefinitionEventTarget();
             }

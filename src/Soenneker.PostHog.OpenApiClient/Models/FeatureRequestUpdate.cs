@@ -50,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestPriority RequestPriority { get; set; }
 #endif
-        /// <summary>Updated customer-facing lifecycle status.* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestStatus? RequestStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestStatus RequestStatus { get; set; }
-#endif
         /// <summary>Updated customer-facing request title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expected_version", n => { ExpectedVersion = n.GetIntValue(); } },
                 { "product_area_ids", n => { ProductAreaIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "request_priority", n => { RequestPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestPriority>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestPriority.CreateFromDiscriminatorValue); } },
-                { "request_status", n => { RequestStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestStatus.CreateFromDiscriminatorValue); } },
+                { "request_status", n => { RequestStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestStatus>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -114,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("expected_version", ExpectedVersion);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("product_area_ids", ProductAreaIds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestPriority>("request_priority", RequestPriority);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestStatus>("request_status", RequestStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdateRequestStatus>("request_status", RequestStatus);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

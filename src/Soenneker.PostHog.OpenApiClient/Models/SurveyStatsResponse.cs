@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-question response counts and distributions. Only present when include_per_question_stats=true was passed. For rating questions includes `average`; for choice/rating questions `distribution` maps answer value to count; for open questions `distribution` is empty (use surveys-responses-list to read free-text).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem>? PerQuestionStats { get; set; }
+        public UntypedNode? PerQuestionStats { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem> PerQuestionStats { get; set; }
+        public UntypedNode PerQuestionStats { get; set; }
 #endif
         /// <summary>Calculated response and dismissal rates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
-                { "per_question_stats", n => { PerQuestionStats = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "per_question_stats", n => { PerQuestionStats = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "rates", n => { Rates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty.CreateFromDiscriminatorValue); } },
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem>("per_question_stats", PerQuestionStats);
+            writer.WriteObjectValue<UntypedNode>("per_question_stats", PerQuestionStats);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty>("rates", Rates);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty>("stats", Stats);

@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&apos;try_next&apos; asks the agent to act on this before other autonomous iterations; &apos;consider&apos; is advisory context.* `try_next` - try_next* `consider` - consider</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `try_next` - try_next* `consider` - consider</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateSuggestionPriority? Priority { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateSuggestionPriority Priority { get; set; }
-#endif
         /// <summary>Free-text hypothesis or direction for the agent to explore, e.g. &apos;try a tree-based model&apos; or &apos;remove recency features, I suspect leakage&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateSuggestionPriority>(global::Soenneker.PostHog.OpenApiClient.Models.CreateSuggestionPriority.CreateFromDiscriminatorValue); } },
+                { "priority", n => { Priority = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateSuggestionPriority>(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
             };
         }
@@ -66,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateSuggestionPriority>("priority", Priority);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateSuggestionPriority>("priority", Priority);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteAdditionalData(AdditionalData);
         }

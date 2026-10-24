@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The alerts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightAlertsItem>? Alerts { get; private set; }
+        public UntypedNode? Alerts { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightAlertsItem> Alerts { get; private set; }
+        public UntypedNode Alerts { get; private set; }
 #endif
         /// <summary>The target age of the cached results for this insight.</summary>
         public DateTimeOffset? CacheTargetAge { get; private set; }
@@ -86,22 +86,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The effective_privilege_level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectivePrivilegeLevel? EffectivePrivilegeLevel { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectivePrivilegeLevel EffectivePrivilegeLevel { get; private set; }
-#endif
-        /// <summary>The effective_restriction_level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectiveRestrictionLevel? EffectiveRestrictionLevel { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectiveRestrictionLevel EffectiveRestrictionLevel { get; private set; }
-#endif
         /// <summary>The favorited property</summary>
         public bool? Favorited { get; set; }
         /// <summary>Resolved dashboard and tile filter layers used to explain filter precedence in the UI.</summary>
@@ -165,18 +149,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>What ClickHouse read for this insight&apos;s last slow run, with the findings of its query scan.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryScan? QueryScan { get; private set; }
+        public UntypedNode? QueryScan { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryScan QueryScan { get; private set; }
+        public UntypedNode QueryScan { get; private set; }
 #endif
         /// <summary>The query_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryStatus? QueryStatus { get; private set; }
+        public UntypedNode? QueryStatus { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryStatus QueryStatus { get; private set; }
+        public UntypedNode QueryStatus { get; private set; }
 #endif
         /// <summary>The resolved_date_range property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -189,10 +173,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The result property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightResult? Result { get; private set; }
+        public UntypedNode? Result { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightResult Result { get; private set; }
+        public UntypedNode Result { get; private set; }
 #endif
         /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -213,10 +197,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTagsItem>? Tags { get; set; }
+        public UntypedNode? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTagsItem> Tags { get; set; }
+        public UntypedNode Tags { get; set; }
 #endif
         /// <summary>The timezone this chart is displayed in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -229,10 +213,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The types property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTypesItem>? Types { get; private set; }
+        public UntypedNode? Types { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTypesItem> Types { get; private set; }
+        public UntypedNode Types { get; private set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -277,7 +261,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "alerts", n => { Alerts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightAlertsItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightAlertsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "alerts", n => { Alerts = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "cache_target_age", n => { CacheTargetAge = n.GetDateTimeOffsetValue(); } },
                 { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
@@ -288,8 +272,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "derived_name", n => { DerivedName = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "effective_privilege_level", n => { EffectivePrivilegeLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectivePrivilegeLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectivePrivilegeLevel.CreateFromDiscriminatorValue); } },
-                { "effective_restriction_level", n => { EffectiveRestrictionLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectiveRestrictionLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightEffectiveRestrictionLevel.CreateFromDiscriminatorValue); } },
                 { "favorited", n => { Favorited = n.GetBoolValue(); } },
                 { "filter_override_context", n => { FilterOverrideContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext>(global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext.CreateFromDiscriminatorValue); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
@@ -305,15 +287,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "next_allowed_client_refresh", n => { NextAllowedClientRefresh = n.GetDateTimeOffsetValue(); } },
                 { "order", n => { Order = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema.CreateFromDiscriminatorValue); } },
-                { "query_scan", n => { QueryScan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryScan>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryScan.CreateFromDiscriminatorValue); } },
-                { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightQueryStatus.CreateFromDiscriminatorValue); } },
+                { "query_scan", n => { QueryScan = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "query_status", n => { QueryStatus = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightResolvedDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightResolvedDateRange.CreateFromDiscriminatorValue); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightResult>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightResult.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "timezone", n => { Timezone = n.GetStringValue(); } },
-                { "types", n => { Types = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTypesItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTypesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "types", n => { Types = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResultWarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -335,7 +317,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("order", Order);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema>("query", Query);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightTagsItem>("tags", Tags);
+            writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

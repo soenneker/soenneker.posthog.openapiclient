@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The member&apos;s organization level: 1 member, 8 admin, 15 owner. Admins and owners have full access to everything.* `1` - member* `8` - administrator* `15` - owner</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessOrganizationLevel? OrganizationLevel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessOrganizationLevel OrganizationLevel { get; set; }
-#endif
+        /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
+        public int? OrganizationLevel { get; set; }
         /// <summary>The organization membership id. Use it as `member_id` on the member rule endpoints.</summary>
         public Guid? OrganizationMembershipId { get; set; }
         /// <summary>Access to the project itself.</summary>
@@ -82,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "organization_level", n => { OrganizationLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessOrganizationLevel>(global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessOrganizationLevel.CreateFromDiscriminatorValue); } },
+                { "organization_level", n => { OrganizationLevel = n.GetIntValue(); } },
                 { "organization_membership_id", n => { OrganizationMembershipId = n.GetGuidValue(); } },
                 { "project", n => { Project = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessProject>(global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessProject.CreateFromDiscriminatorValue); } },
                 { "resources", n => { Resources = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessResourcesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessResourcesProperty.CreateFromDiscriminatorValue); } },
@@ -97,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessOrganizationLevel>("organization_level", OrganizationLevel);
+            writer.WriteIntValue("organization_level", OrganizationLevel);
             writer.WriteGuidValue("organization_membership_id", OrganizationMembershipId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessProject>("project", Project);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMemberAccessResourcesProperty>("resources", Resources);

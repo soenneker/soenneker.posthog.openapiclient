@@ -18,14 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>GitHub issue number.</summary>
         public int? IssueNumber { get; private set; }
-        /// <summary>Latest GitHub issue state.* `open` - open* `closed` - closed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `open` - open* `closed` - closed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLinkIssueState? IssueState { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLinkIssueState IssueState { get; private set; }
-#endif
         /// <summary>Latest GitHub issue title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "issue_number", n => { IssueNumber = n.GetIntValue(); } },
-                { "issue_state", n => { IssueState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLinkIssueState>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLinkIssueState.CreateFromDiscriminatorValue); } },
+                { "issue_state", n => { IssueState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLinkIssueState>(); } },
                 { "issue_title", n => { IssueTitle = n.GetStringValue(); } },
                 { "issue_url", n => { IssueUrl = n.GetStringValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },

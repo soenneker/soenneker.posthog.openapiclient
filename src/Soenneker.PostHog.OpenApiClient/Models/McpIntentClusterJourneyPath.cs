@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of sessions in this cluster that followed this exact path.</summary>
         public int? Count { get; private set; }
-        /// <summary>Terminal outcome of the sessions following this path.* `completed` - Completed* `error` - Error</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `completed` - Completed* `error` - Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPathOutcome? Outcome { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPathOutcome Outcome { get; private set; }
-#endif
         /// <summary>Ordered tool names called during the path. Length is fixed; null entries indicate the session ended before this step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
-                { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPathOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPathOutcome.CreateFromDiscriminatorValue); } },
+                { "outcome", n => { Outcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPathOutcome>(); } },
                 { "steps", n => { Steps = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

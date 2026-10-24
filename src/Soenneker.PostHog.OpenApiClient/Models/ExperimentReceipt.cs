@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; set; }
         /// <summary>Caller-supplied execution start time.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>Current upload lifecycle state.* `uploading` - Uploading* `completed` - Completed* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `uploading` - Uploading* `completed` - Completed* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceiptStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceiptStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceipt"/> and sets the default values.
         /// </summary>
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceiptStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceiptStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceiptStatus>(); } },
             };
         }
         /// <summary>
@@ -93,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("finished_at", FinishedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceiptStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentReceiptStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

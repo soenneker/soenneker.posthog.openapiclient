@@ -31,13 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filterTestAccounts property</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>How to handle entities exposed to multiple variants. &apos;exclude&apos; (default) drops them from the analysis; &apos;first_seen&apos; assigns them to the variant from their earliest exposure.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper2? MultipleVariantHandling { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper2 MultipleVariantHandling { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling? MultipleVariantHandling { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -59,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "activation_config", n => { ActivationConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig.CreateFromDiscriminatorValue); } },
                 { "exposure_config", n => { ExposureConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper2.CreateFromDiscriminatorValue); } },
+                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>(); } },
             };
         }
         /// <summary>
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig>("activation_config", ActivationConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig>("exposure_config", ExposureConfig);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper2>("multiple_variant_handling", MultipleVariantHandling);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
         }
     }
 }

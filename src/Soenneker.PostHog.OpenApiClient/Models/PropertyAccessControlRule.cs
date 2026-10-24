@@ -13,14 +13,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PropertyAccessControlRule : IAdditionalDataHolder, IParsable
     {
-        /// <summary>The access level for this rule.* `read_write` - read_write* `read` - read* `none` - none</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `read_write` - read_write* `read` - read* `none` - none</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel? AccessLevel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel AccessLevel { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -60,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "access_level", n => { AccessLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel.CreateFromDiscriminatorValue); } },
+                { "access_level", n => { AccessLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel>("access_level", AccessLevel);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel>("access_level", AccessLevel);
             writer.WriteGuidValue("organization_member", OrganizationMember);
             writer.WriteGuidValue("role", Role);
             writer.WriteAdditionalData(AdditionalData);

@@ -39,13 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Fix { get; set; }
 #endif
         /// <summary>The fix_action property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper? FixAction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper FixAction { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixAction? FixAction { get; set; }
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "column_name", n => { ColumnName = n.GetStringValue(); } },
                 { "end", n => { End = n.GetIntValue(); } },
                 { "fix", n => { Fix = n.GetStringValue(); } },
-                { "fix_action", n => { FixAction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper.CreateFromDiscriminatorValue); } },
+                { "fix_action", n => { FixAction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixAction>(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetStringValue(); } },
                 { "physical_type", n => { PhysicalType = n.GetStringValue(); } },
@@ -163,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("column_name", ColumnName);
             writer.WriteIntValue("end", End);
             writer.WriteStringValue("fix", Fix);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixActionWrapper>("fix_action", FixAction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateFixAction>("fix_action", FixAction);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("operator", Operator);
             writer.WriteStringValue("physical_type", PhysicalType);

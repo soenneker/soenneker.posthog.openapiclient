@@ -17,19 +17,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>JSON request body for write methods.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardData? Data { get; set; }
+        public UntypedNode? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardData Data { get; set; }
+        public UntypedNode Data { get; set; }
 #endif
-        /// <summary>HTTP method to use against the target project&apos;s API.* `GET` - GET* `POST` - POST* `PUT` - PUT* `PATCH` - PATCH* `DELETE` - DELETE</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `GET` - GET* `POST` - POST* `PUT` - PUT* `PATCH` - PATCH* `DELETE` - DELETE</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardMethod? Method { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardMethod Method { get; set; }
-#endif
         /// <summary>Relative target API path with no host or scheme, e.g. `api/projects/2/insights/`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,8 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardData>(global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardData.CreateFromDiscriminatorValue); } },
-                { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardMethod>(global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardMethod.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardMethod>(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardQueryProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardQueryProperty.CreateFromDiscriminatorValue); } },
             };
@@ -84,8 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardData>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardMethod>("method", Method);
+            writer.WriteObjectValue<UntypedNode>("data", Data);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardMethod>("method", Method);
             writer.WriteStringValue("path", Path);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PostHogConnectionForwardQueryProperty>("query", Query);
             writer.WriteAdditionalData(AdditionalData);

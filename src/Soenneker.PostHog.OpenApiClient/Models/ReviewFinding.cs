@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Body { get; set; }
 #endif
-        /// <summary>The priority that gates publishing: the validator&apos;s override when set, else the reviewer&apos;s.* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority? EffectivePriority { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority EffectivePriority { get; set; }
-#endif
         /// <summary>Repository-relative path of the affected file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange> Lines { get; set; }
 #endif
-        /// <summary>The reviewer&apos;s original priority, before any validator override.* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority? ReviewerPriority { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority ReviewerPriority { get; set; }
-#endif
         /// <summary>The review skill that produced the finding (perspective or blind-spot sweep).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,10 +108,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "body", n => { Body = n.GetStringValue(); } },
-                { "effective_priority", n => { EffectivePriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority.CreateFromDiscriminatorValue); } },
+                { "effective_priority", n => { EffectivePriority = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority>(); } },
                 { "file", n => { File = n.GetStringValue(); } },
                 { "lines", n => { Lines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "reviewer_priority", n => { ReviewerPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority.CreateFromDiscriminatorValue); } },
+                { "reviewer_priority", n => { ReviewerPriority = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority>(); } },
                 { "source_perspective", n => { SourcePerspective = n.GetStringValue(); } },
                 { "suggestion", n => { Suggestion = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -139,10 +127,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("body", Body);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority>("effective_priority", EffectivePriority);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority>("effective_priority", EffectivePriority);
             writer.WriteStringValue("file", File);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>("lines", Lines);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority>("reviewer_priority", ReviewerPriority);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority>("reviewer_priority", ReviewerPriority);
             writer.WriteStringValue("source_perspective", SourcePerspective);
             writer.WriteStringValue("suggestion", Suggestion);
             writer.WriteStringValue("title", Title);

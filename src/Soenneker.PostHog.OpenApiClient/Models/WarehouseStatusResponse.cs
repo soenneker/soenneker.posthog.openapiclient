@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The connection property</summary>
+        /// <summary>Postgres connection target. Null for organizations on the Trino Data ops variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection? Connection { get; set; }
@@ -76,14 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SecretsState { get; set; }
 #endif
-        /// <summary>Overall provisioning lifecycle state* `pending` - pending* `provisioning` - provisioning* `ready` - ready* `failed` - failed* `deleting` - deleting* `deleted` - deleted</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - pending* `provisioning` - provisioning* `ready` - ready* `failed` - failed* `deleting` - deleting* `deleted` - deleted</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState State { get; set; }
-#endif
         /// <summary>Human-readable detail for the current state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,6 +96,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether this project is onboarded onto the managed warehouse. False when the warehouse exists but this project has not picked a schema yet — show the onboarding screen in that case.</summary>
         public bool? TeamOnboarded { get; set; }
+        /// <summary>Trino status for organizations on the Trino Data ops variant, once the warehouse is ready. Null otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus? Trino { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus Trino { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponse"/> and sets the default values.
         /// </summary>
@@ -137,10 +139,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "s3_state", n => { S3State = n.GetStringValue(); } },
                 { "schema_name", n => { SchemaName = n.GetStringValue(); } },
                 { "secrets_state", n => { SecretsState = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState>(); } },
                 { "status_message", n => { StatusMessage = n.GetStringValue(); } },
                 { "table_suffix", n => { TableSuffix = n.GetStringValue(); } },
                 { "team_onboarded", n => { TeamOnboarded = n.GetBoolValue(); } },
+                { "trino", n => { Trino = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -160,10 +163,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("s3_state", S3State);
             writer.WriteStringValue("schema_name", SchemaName);
             writer.WriteStringValue("secrets_state", SecretsState);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState>("state", State);
             writer.WriteStringValue("status_message", StatusMessage);
             writer.WriteStringValue("table_suffix", TableSuffix);
             writer.WriteBoolValue("team_onboarded", TeamOnboarded);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus>("trino", Trino);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

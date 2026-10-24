@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How the search query matched this row: &quot;key&quot; if the attribute key matched, &quot;value&quot; if a value matched.* `key` - key* `value` - value</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `key` - key* `value` - value</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn? MatchedOn { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn MatchedOn { get; set; }
-#endif
         /// <summary>Sample matching value — only set when matchedOn is &quot;value&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "matchedOn", n => { MatchedOn = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn.CreateFromDiscriminatorValue); } },
+                { "matchedOn", n => { MatchedOn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn>(); } },
                 { "matchedValue", n => { MatchedValue = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "propertyFilterType", n => { PropertyFilterType = n.GetStringValue(); } },
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn>("matchedOn", MatchedOn);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn>("matchedOn", MatchedOn);
             writer.WriteStringValue("matchedValue", MatchedValue);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("propertyFilterType", PropertyFilterType);

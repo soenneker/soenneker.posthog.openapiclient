@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Timestamp when the run completed or failed.</summary>
         public DateTimeOffset? CompletedAt { get; set; }
+        /// <summary>Score coverage and score age at the cutoff of a live champion run. Null for backfill, shadow, validation and older runs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage? Coverage { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage Coverage { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Error message if the run failed.</summary>
@@ -28,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Unique UUID of this run.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Run metrics: rows scored, score distribution summary, validation AUC, etc.</summary>
+        /// <summary>Run metrics: score distribution summary, validation AUC, etc. An inference run records &apos;rows_eligible&apos;, the users in the inference population. When it is larger than rows_scored, the run scored a rolling part of the population: users never scored first, then users whose last score was oldest.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunMetricsProperty? Metrics { get; set; }
@@ -42,24 +50,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Pipeline { get; set; }
         /// <summary>Number of users scored in this inference run.</summary>
         public int? RowsScored { get; set; }
-        /// <summary>Type of run: &apos;inference&apos; (daily scoring) or &apos;validation&apos; (outcome evaluation).* `inference` - Inference* `validation` - Validation</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `inference` - Inference* `validation` - Validation* `property_cleanup` - Property cleanup</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunRunType? RunType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunRunType RunType { get; set; }
-#endif
         /// <summary>Timestamp when the run started.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>Run status: pending, running, completed, or failed.* `pending` - Pending* `running` - Running* `completed` - Completed* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `running` - Running* `completed` - Completed* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunStatus Status { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRun"/> and sets the default values.
         /// </summary>
@@ -86,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -93,9 +90,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetGuidValue(); } },
                 { "pipeline", n => { Pipeline = n.GetGuidValue(); } },
                 { "rows_scored", n => { RowsScored = n.GetIntValue(); } },
-                { "run_type", n => { RunType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunRunType>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunRunType.CreateFromDiscriminatorValue); } },
+                { "run_type", n => { RunType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunRunType>(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunStatus>(); } },
             };
         }
         /// <summary>
@@ -111,9 +108,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("model", Model);
             writer.WriteGuidValue("pipeline", Pipeline);
             writer.WriteIntValue("rows_scored", RowsScored);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunRunType>("run_type", RunType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunRunType>("run_type", RunType);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

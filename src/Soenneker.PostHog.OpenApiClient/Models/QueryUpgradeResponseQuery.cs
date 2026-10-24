@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCorrelationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocomplete"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadata"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogAttributesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogValuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpHarnessBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpProtocolVersionBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCallBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCallsAndErrorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCategoriesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCategoryCountsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCategoryMapQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolDailyStatsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolDescriptionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolFailureOccurrencesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolFailuresQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolNeighborsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolSampleIntentsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolStatsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolTopUsersQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Query"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionExplorerQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansTreeQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VectorSearchQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebBotsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebNotableChangesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebPageUrlSearchQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BiVisualizationNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprintProjectionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCorrelationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocomplete"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadata"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogAttributesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogValuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpHarnessBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpProtocolVersionBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCallBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCallsAndErrorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCategoriesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCategoryCountsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolCategoryMapQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolDailyStatsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolDescriptionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolFailureOccurrencesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolFailuresQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolNeighborsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityDailyStatsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolSampleIntentsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolStatsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolTopUsersQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricsHistogramQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Query"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionExplorerQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansTreeQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VectorSearchQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebBotsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebNotableChangesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebPageUrlSearchQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueryUpgradeResponseQuery : IComposedTypeWrapper, IParsable
@@ -52,6 +52,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery ActorsQuery { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BiVisualizationNode"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiVisualizationNode? BiVisualizationNode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiVisualizationNode BiVisualizationNode { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQuery"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -197,14 +205,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery ExperimentExposureQuery { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery? ExperimentFunnelsQuery { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery ExperimentFunnelsQuery { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -212,22 +212,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery ExperimentQuery { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery? ExperimentTrendsQuery { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery ExperimentTrendsQuery { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery? FunnelCorrelationQuery { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery FunnelCorrelationQuery { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -380,6 +364,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQuery MarketingAnalyticsRetentionQuery { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchQuery"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchQuery? MarketingAnalyticsSearchQuery { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchQuery MarketingAnalyticsSearchQuery { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -867,6 +859,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.ActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery();
             }
+            else if("BIVisualizationNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.BiVisualizationNode = new global::Soenneker.PostHog.OpenApiClient.Models.BiVisualizationNode();
+            }
             else if("DataTableNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.DataTableNode = new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode();
@@ -939,21 +935,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.ExperimentExposureQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery();
             }
-            else if("ExperimentFunnelsQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ExperimentFunnelsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery();
-            }
             else if("ExperimentQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery();
-            }
-            else if("ExperimentTrendsQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ExperimentTrendsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery();
-            }
-            else if("FunnelCorrelationQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.FunnelCorrelationQuery = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery();
             }
             else if("FunnelsDataWarehouseNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -1030,6 +1014,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if("MarketingAnalyticsRetentionQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.MarketingAnalyticsRetentionQuery = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQuery();
+            }
+            else if("MarketingAnalyticsSearchQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.MarketingAnalyticsSearchQuery = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchQuery();
             }
             else if("MarketingAnalyticsTableQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -1287,6 +1275,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return ActorsQuery.GetFieldDeserializers();
             }
+            else if(BiVisualizationNode != null)
+            {
+                return BiVisualizationNode.GetFieldDeserializers();
+            }
             else if(DatabaseSchemaQuery != null)
             {
                 return DatabaseSchemaQuery.GetFieldDeserializers();
@@ -1359,21 +1351,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return ExperimentExposureQuery.GetFieldDeserializers();
             }
-            else if(ExperimentFunnelsQuery != null)
-            {
-                return ExperimentFunnelsQuery.GetFieldDeserializers();
-            }
             else if(ExperimentQuery != null)
             {
                 return ExperimentQuery.GetFieldDeserializers();
-            }
-            else if(ExperimentTrendsQuery != null)
-            {
-                return ExperimentTrendsQuery.GetFieldDeserializers();
-            }
-            else if(FunnelCorrelationQuery != null)
-            {
-                return FunnelCorrelationQuery.GetFieldDeserializers();
             }
             else if(FunnelsDataWarehouseNode != null)
             {
@@ -1450,6 +1430,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(MarketingAnalyticsRetentionQuery != null)
             {
                 return MarketingAnalyticsRetentionQuery.GetFieldDeserializers();
+            }
+            else if(MarketingAnalyticsSearchQuery != null)
+            {
+                return MarketingAnalyticsSearchQuery.GetFieldDeserializers();
             }
             else if(MarketingAnalyticsTableQuery != null)
             {
@@ -1708,6 +1692,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery>(null, ActorsQuery);
             }
+            else if(BiVisualizationNode != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiVisualizationNode>(null, BiVisualizationNode);
+            }
             else if(DatabaseSchemaQuery != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQuery>(null, DatabaseSchemaQuery);
@@ -1780,21 +1768,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery>(null, ExperimentExposureQuery);
             }
-            else if(ExperimentFunnelsQuery != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery>(null, ExperimentFunnelsQuery);
-            }
             else if(ExperimentQuery != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery>(null, ExperimentQuery);
-            }
-            else if(ExperimentTrendsQuery != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery>(null, ExperimentTrendsQuery);
-            }
-            else if(FunnelCorrelationQuery != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery>(null, FunnelCorrelationQuery);
             }
             else if(FunnelsDataWarehouseNode != null)
             {
@@ -1871,6 +1847,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(MarketingAnalyticsRetentionQuery != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionQuery>(null, MarketingAnalyticsRetentionQuery);
+            }
+            else if(MarketingAnalyticsSearchQuery != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchQuery>(null, MarketingAnalyticsSearchQuery);
             }
             else if(MarketingAnalyticsTableQuery != null)
             {

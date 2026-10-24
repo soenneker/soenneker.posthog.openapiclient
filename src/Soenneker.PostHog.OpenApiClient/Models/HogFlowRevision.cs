@@ -17,12 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Full snapshot of the workflow&apos;s content fields (actions, edges, trigger, etc.) at this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowRevisionContent? Content { get; private set; }
+        public UntypedNode? Content { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowRevisionContent Content { get; private set; }
+        public UntypedNode Content { get; private set; }
 #endif
-        /// <summary>The created_at property</summary>
+        /// <summary>When this version was published.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowRevisionContent>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowRevisionContent.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },

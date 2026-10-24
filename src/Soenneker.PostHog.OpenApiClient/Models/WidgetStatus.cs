@@ -94,14 +94,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? InstanceId { get; set; }
         /// <summary>Whether this widget identity is published in the reusable widget catalog.</summary>
         public bool? IsReusable { get; set; }
-        /// <summary>Current widget and preview state.* `awaiting_generation` - awaiting_generation* `generating` - generating* `building` - building* `ready` - ready* `failed` - failed* `incompatible` - incompatible</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `awaiting_generation` - awaiting_generation* `generating` - generating* `building` - building* `ready` - ready* `failed` - failed* `incompatible` - incompatible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus? LifecycleStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus LifecycleStatus { get; set; }
-#endif
         /// <summary>Version explicitly pinned for this notebook placement, or null when it follows the latest version.</summary>
         public Guid? PinnedVersionId { get; set; }
         /// <summary>Automated review for the selected source, or null for a legacy unreviewed version.</summary>
@@ -152,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "input_contract", n => { InputContract = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "instance_id", n => { InstanceId = n.GetGuidValue(); } },
                 { "is_reusable", n => { IsReusable = n.GetBoolValue(); } },
-                { "lifecycle_status", n => { LifecycleStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus.CreateFromDiscriminatorValue); } },
+                { "lifecycle_status", n => { LifecycleStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>(); } },
                 { "pinned_version_id", n => { PinnedVersionId = n.GetGuidValue(); } },
                 { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview.CreateFromDiscriminatorValue); } },
                 { "widget_id", n => { WidgetId = n.GetGuidValue(); } },
@@ -178,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>("input_contract", InputContract);
             writer.WriteGuidValue("instance_id", InstanceId);
             writer.WriteBoolValue("is_reusable", IsReusable);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>("lifecycle_status", LifecycleStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>("lifecycle_status", LifecycleStatus);
             writer.WriteGuidValue("pinned_version_id", PinnedVersionId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>("security_review", SecurityReview);
             writer.WriteGuidValue("widget_id", WidgetId);

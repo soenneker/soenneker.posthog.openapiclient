@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>State the managed viewset is now in.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>Managed viewset that was toggled.* `revenue_analytics` - Revenue Analytics* `engineering_analytics` - Engineering Analytics</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `revenue_analytics` - Revenue Analytics* `engineering_analytics` - Engineering Analytics</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponseKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponseKind Kind { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponse"/> and sets the default values.
         /// </summary>
@@ -50,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponseKind>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponseKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponseKind>(); } },
             };
         }
         /// <summary>
@@ -61,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponseKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseManagedViewSetUpdateResponseKind>("kind", Kind);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

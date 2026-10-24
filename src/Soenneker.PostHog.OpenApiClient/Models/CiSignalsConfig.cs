@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Configured { get; set; }
         /// <summary>Whether every CI signal detector is enabled.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>Aggregate sync status for pull requests, workflow runs, and workflow jobs.* `running` - RUNNING* `completed` - COMPLETED* `failed` - FAILED</summary>
+        /// <summary>Aggregate sync status for pull requests, workflow runs, and workflow jobs.* `running` - Sync Running* `completed` - Sync Completed* `failed` - Sync Failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CiSignalsConfigSyncStatus? SyncStatus { get; set; }

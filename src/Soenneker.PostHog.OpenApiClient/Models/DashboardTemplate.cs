@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dashboard_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateDashboardFilters? DashboardFilters { get; set; }
+        public UntypedNode? DashboardFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateDashboardFilters DashboardFilters { get; set; }
+        public UntypedNode DashboardFilters { get; set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -99,18 +99,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tiles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateTiles? Tiles { get; set; }
+        public UntypedNode? Tiles { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateTiles Tiles { get; set; }
+        public UntypedNode Tiles { get; set; }
 #endif
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateVariables? Variables { get; set; }
+        public UntypedNode? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateVariables Variables { get; set; }
+        public UntypedNode Variables { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplate"/> and sets the default values.
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCreatedBy.CreateFromDiscriminatorValue); } },
                 { "dashboard_description", n => { DashboardDescription = n.GetStringValue(); } },
-                { "dashboard_filters", n => { DashboardFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateDashboardFilters>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateDashboardFilters.CreateFromDiscriminatorValue); } },
+                { "dashboard_filters", n => { DashboardFilters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "image_url", n => { ImageUrl = n.GetStringValue(); } },
@@ -151,8 +151,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "template_name", n => { TemplateName = n.GetStringValue(); } },
-                { "tiles", n => { Tiles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateTiles>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateTiles.CreateFromDiscriminatorValue); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateVariables>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateVariables.CreateFromDiscriminatorValue); } },
+                { "tiles", n => { Tiles = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -164,15 +164,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("availability_contexts", AvailabilityContexts);
             writer.WriteStringValue("dashboard_description", DashboardDescription);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateDashboardFilters>("dashboard_filters", DashboardFilters);
+            writer.WriteObjectValue<UntypedNode>("dashboard_filters", DashboardFilters);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("image_url", ImageUrl);
             writer.WriteBoolValue("is_featured", IsFeatured);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScope>("scope", Scope);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("template_name", TemplateName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateTiles>("tiles", Tiles);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateVariables>("variables", Variables);
+            writer.WriteObjectValue<UntypedNode>("tiles", Tiles);
+            writer.WriteObjectValue<UntypedNode>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

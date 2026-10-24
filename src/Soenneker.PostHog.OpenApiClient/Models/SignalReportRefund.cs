@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How the refund was executed, frozen at refund time: &apos;excluded&apos; (same UTC day as the billable PR run — the report never reaches billing) or &apos;credited&apos; (billing issues a Stripe customer-balance credit).* `excluded` - Excluded* `credited` - Credited</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `excluded` - Excluded* `credited` - Credited</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundBillingPath? BillingPath { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundBillingPath BillingPath { get; private set; }
-#endif
         /// <summary>Whether the billing service has acknowledged this refund. Always relevant for the credited path (the Stripe credit is issued asynchronously); excluded-path refunds need no billing sync and report false.</summary>
         public bool? BillingSynced { get; private set; }
         /// <summary>When the refund was created.</summary>
@@ -56,14 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrUrl { get; private set; }
 #endif
-        /// <summary>Why the user refunded this PR (feeds the refund review).* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundReason? Reason { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundReason Reason { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund"/> and sets the default values.
         /// </summary>
@@ -89,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "billing_path", n => { BillingPath = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundBillingPath>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundBillingPath.CreateFromDiscriminatorValue); } },
+                { "billing_path", n => { BillingPath = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundBillingPath>(); } },
                 { "billing_synced", n => { BillingSynced = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "credit_amount_usd", n => { CreditAmountUsd = n.GetStringValue(); } },
@@ -98,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "note", n => { Note = n.GetStringValue(); } },
                 { "pr_run_created_at", n => { PrRunCreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundReason.CreateFromDiscriminatorValue); } },
+                { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundReason>(); } },
             };
         }
         /// <summary>

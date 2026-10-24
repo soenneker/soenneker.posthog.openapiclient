@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.IqrDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.IqrDetectorConfig();
             }
-            else if("IsolationForestDetectorConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("isolation_forest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.IsolationForestDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig();
             }

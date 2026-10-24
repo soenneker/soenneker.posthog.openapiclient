@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Color { get; set; }
 #endif
-        /// <summary>Direction of the change relative to the prior period.* `Up` - Up* `Down` - Down</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `Up` - Up* `Down` - Down</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WoWChangeDirection? Direction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChangeDirection Direction { get; set; }
-#endif
         /// <summary>Verbose label, e.g. &apos;Up 12% from prior period&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "color", n => { Color = n.GetStringValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChangeDirection>(global::Soenneker.PostHog.OpenApiClient.Models.WoWChangeDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChangeDirection>(); } },
                 { "long_text", n => { LongText = n.GetStringValue(); } },
                 { "percent", n => { Percent = n.GetIntValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
@@ -88,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChangeDirection>("direction", Direction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChangeDirection>("direction", Direction);
             writer.WriteStringValue("long_text", LongText);
             writer.WriteIntValue("percent", Percent);
             writer.WriteStringValue("text", Text);

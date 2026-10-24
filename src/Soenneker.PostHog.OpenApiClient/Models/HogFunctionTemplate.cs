@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Category tags for organizing templates.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? Category { get; set; }
+#nullable restore
+#else
+        public UntypedNode Category { get; set; }
+#endif
         /// <summary>Source code of the template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,6 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>Default event filters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? Filters { get; set; }
+#nullable restore
+#else
+        public UntypedNode Filters { get; set; }
+#endif
         /// <summary>Whether available on free plans.</summary>
         public bool? Free { get; set; }
         /// <summary>URL for the template&apos;s icon.</summary>
@@ -56,6 +72,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Schema defining configurable inputs for functions created from this template.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? InputsSchema { get; set; }
+#nullable restore
+#else
+        public UntypedNode InputsSchema { get; set; }
+#endif
         /// <summary>Pre-defined mapping configurations for destination templates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,6 +87,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplate> MappingTemplates { get; set; }
+#endif
+        /// <summary>Default PII masking configuration.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? Masking { get; set; }
+#nullable restore
+#else
+        public UntypedNode Masking { get; set; }
 #endif
         /// <summary>Display name of the template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,13 +145,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "category", n => { Category = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "code_language", n => { CodeLanguage = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "free", n => { Free = n.GetBoolValue(); } },
                 { "icon_url", n => { IconUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "inputs_schema", n => { InputsSchema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "mapping_templates", n => { MappingTemplates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplate.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "masking", n => { Masking = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
@@ -132,13 +168,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<UntypedNode>("category", Category);
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("code_language", CodeLanguage);
             writer.WriteStringValue("description", Description);
+            writer.WriteObjectValue<UntypedNode>("filters", Filters);
             writer.WriteBoolValue("free", Free);
             writer.WriteStringValue("icon_url", IconUrl);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<UntypedNode>("inputs_schema", InputsSchema);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMappingTemplate>("mapping_templates", MappingTemplates);
+            writer.WriteObjectValue<UntypedNode>("masking", Masking);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("type", Type);

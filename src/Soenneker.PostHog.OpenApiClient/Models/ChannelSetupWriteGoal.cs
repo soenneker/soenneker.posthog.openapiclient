@@ -18,14 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Date the target should be reached.</summary>
         public Date? Deadline { get; set; }
-        /// <summary>Whether the target is a floor (&apos;at_least&apos;) or a ceiling (&apos;at_most&apos;).* `at_least` - At least* `at_most` - At most</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `at_least` - At least* `at_most` - At most</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection? Direction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection Direction { get; set; }
-#endif
         /// <summary>Short id of an existing insight that measures the goal, when there is one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,14 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsightShortId { get; set; }
 #endif
-        /// <summary>How often the metric is measured.* `day` - Day* `week` - Week* `month` - Month</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `day` - Day* `week` - Week* `month` - Month</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod? Period { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod Period { get; set; }
-#endif
         /// <summary>The goal in one or two sentences, e.g. &apos;Increase the weekly activation rate&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,9 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deadline", n => { Deadline = n.GetDateValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection>(global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection>(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
-                { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod>(global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod.CreateFromDiscriminatorValue); } },
+                { "period", n => { Period = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod>(); } },
                 { "statement", n => { Statement = n.GetStringValue(); } },
                 { "target", n => { Target = n.GetStringValue(); } },
             };
@@ -99,9 +87,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateValue("deadline", Deadline);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection>("direction", Direction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection>("direction", Direction);
             writer.WriteStringValue("insight_short_id", InsightShortId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod>("period", Period);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod>("period", Period);
             writer.WriteStringValue("statement", Statement);
             writer.WriteStringValue("target", Target);
             writer.WriteAdditionalData(AdditionalData);

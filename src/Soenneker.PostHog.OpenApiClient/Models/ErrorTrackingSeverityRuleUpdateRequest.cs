@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestFilters Filters { get; set; }
 #endif
-        /// <summary>Replacement severity. Omit to preserve the existing severity.* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestSeverity Severity { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestFilters.CreateFromDiscriminatorValue); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestSeverity>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestFilters>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleUpdateRequestSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> DeliveryErrors { get; private set; }
 #endif
-        /// <summary>Delivery result: &apos;pending&apos;, &apos;generated&apos;, &apos;delivered&apos;, &apos;partial_failure&apos;, or &apos;failed&apos;.* `pending` - Pending* `generated` - Generated* `delivered` - Delivered* `partial_failure` - Partial Failure* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `generated` - Generated* `delivered` - Delivered* `partial_failure` - Partial Failure* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunDeliveryStatus? DeliveryStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunDeliveryStatus DeliveryStatus { get; private set; }
-#endif
         /// <summary>UUID of this report run.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Legacy mirror of content.metrics. May contain partial boolean metrics on older runs.</summary>
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentComposed>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentComposed.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "delivery_errors", n => { DeliveryErrors = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "delivery_status", n => { DeliveryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunDeliveryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunDeliveryStatus.CreateFromDiscriminatorValue); } },
+                { "delivery_status", n => { DeliveryStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunDeliveryStatus>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics.CreateFromDiscriminatorValue); } },
                 { "period_end", n => { PeriodEnd = n.GetDateTimeOffsetValue(); } },

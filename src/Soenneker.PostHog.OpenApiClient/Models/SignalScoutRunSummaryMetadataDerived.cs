@@ -20,6 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? HasEditReport { get; set; }
         /// <summary>The has_emit_report property</summary>
         public bool? HasEmitReport { get; set; }
+        /// <summary>The has_not_in_use_closeout property</summary>
+        public bool? HasNotInUseCloseout { get; set; }
         /// <summary>The has_self_improvement property</summary>
         public bool? HasSelfImprovement { get; set; }
         /// <summary>The has_self_validation property</summary>
@@ -54,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "has_chart", n => { HasChart = n.GetBoolValue(); } },
                 { "has_edit_report", n => { HasEditReport = n.GetBoolValue(); } },
                 { "has_emit_report", n => { HasEmitReport = n.GetBoolValue(); } },
+                { "has_not_in_use_closeout", n => { HasNotInUseCloseout = n.GetBoolValue(); } },
                 { "has_self_improvement", n => { HasSelfImprovement = n.GetBoolValue(); } },
                 { "has_self_validation", n => { HasSelfValidation = n.GetBoolValue(); } },
                 { "has_structured_output", n => { HasStructuredOutput = n.GetBoolValue(); } },
@@ -69,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_chart", HasChart);
             writer.WriteBoolValue("has_edit_report", HasEditReport);
             writer.WriteBoolValue("has_emit_report", HasEmitReport);
+            writer.WriteBoolValue("has_not_in_use_closeout", HasNotInUseCloseout);
             writer.WriteBoolValue("has_self_improvement", HasSelfImprovement);
             writer.WriteBoolValue("has_self_validation", HasSelfValidation);
             writer.WriteBoolValue("has_structured_output", HasStructuredOutput);

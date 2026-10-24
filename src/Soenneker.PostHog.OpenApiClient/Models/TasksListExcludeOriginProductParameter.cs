@@ -12,6 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Onboarding,
         #pragma warning restore CS1591
+        [EnumMember(Value = "account_audit")]
+        #pragma warning disable CS1591
+        AccountAudit,
+        #pragma warning restore CS1591
         [EnumMember(Value = "error_tracking")]
         #pragma warning disable CS1591
         ErrorTracking,
@@ -103,6 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "business_knowledge")]
         #pragma warning disable CS1591
         BusinessKnowledge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "metrics_import")]
+        #pragma warning disable CS1591
+        MetricsImport,
         #pragma warning restore CS1591
     }
 }

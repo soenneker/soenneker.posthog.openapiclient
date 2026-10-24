@@ -33,13 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get; set; }
 #endif
         /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper? LimitContext { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper LimitContext { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get; set; }
         /// <summary>Name given to a query. It&apos;s used to identify the query in the UI. Up to 128 characters for a name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "async", n => { Async = n.GetBoolValue(); } },
                 { "client_query_id", n => { ClientQueryId = n.GetStringValue(); } },
                 { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter.CreateFromDiscriminatorValue); } },
-                { "limit_context", n => { LimitContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper.CreateFromDiscriminatorValue); } },
+                { "limit_context", n => { LimitContext = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery.CreateFromDiscriminatorValue); } },
                 { "refresh", n => { Refresh = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>(); } },
@@ -112,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("async", Async);
             writer.WriteStringValue("client_query_id", ClientQueryId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>("filters_override", FiltersOverride);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper>("limit_context", LimitContext);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>("limit_context", LimitContext);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery>("query", Query);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>("refresh", Refresh);

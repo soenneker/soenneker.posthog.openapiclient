@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>Height in pixels. Null for images uploaded before it was recorded.</summary>
+        public int? Height { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The file&apos;s original name.</summary>
@@ -52,6 +54,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Url { get; private set; }
 #endif
+        /// <summary>Width in pixels. Null for images uploaded before it was recorded.</summary>
+        public int? Width { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UploadedMedia"/> and sets the default values.
         /// </summary>
@@ -79,11 +83,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "height", n => { Height = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "purpose", n => { Purpose = n.GetStringValue(); } },
                 { "size_bytes", n => { SizeBytes = n.GetIntValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
+                { "width", n => { Width = n.GetIntValue(); } },
             };
         }
         /// <summary>

@@ -76,14 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
-        /// <summary>Task lifecycle status.* `open` - Open* `in_progress` - In progress* `completed` - Completed* `canceled` - Canceled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `open` - Open* `in_progress` - In progress* `completed` - Completed* `canceled` - Canceled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskStatus Status { get; private set; }
-#endif
         /// <summary>When the task was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -124,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "due_at", n => { DueAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

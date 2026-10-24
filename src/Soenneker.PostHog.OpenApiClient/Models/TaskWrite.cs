@@ -59,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>JSON schema used to validate the output of the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteJsonSchema? JsonSchema { get; set; }
+        public UntypedNode? JsonSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteJsonSchema JsonSchema { get; set; }
+        public UntypedNode JsonSchema { get; set; }
 #endif
         /// <summary>LLM model for the first run when start_run is true, or for matching a pre-warmed run. Write-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,14 +72,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct? OriginProduct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct OriginProduct { get; set; }
-#endif
         /// <summary>Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run&apos;s manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -182,9 +176,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
                 { "initial_permission_mode", n => { InitialPermissionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteInitialPermissionMode>(global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteInitialPermissionMode.CreateFromDiscriminatorValue); } },
-                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteJsonSchema>(global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteJsonSchema.CreateFromDiscriminatorValue); } },
+                { "json_schema", n => { JsonSchema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct.CreateFromDiscriminatorValue); } },
+                { "origin_product", n => { OriginProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct>(); } },
                 { "pending_user_artifact_ids", n => { PendingUserArtifactIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pending_user_message", n => { PendingUserMessage = n.GetStringValue(); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteReasoningEffort.CreateFromDiscriminatorValue); } },
@@ -213,9 +207,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteJsonSchema>("json_schema", JsonSchema);
+            writer.WriteObjectValue<UntypedNode>("json_schema", JsonSchema);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct>("origin_product", OriginProduct);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteOriginProduct>("origin_product", OriginProduct);
             writer.WriteCollectionOfPrimitiveValues<string>("pending_user_artifact_ids", PendingUserArtifactIds);
             writer.WriteStringValue("pending_user_message", PendingUserMessage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskWriteReasoningEffort>("reasoning_effort", ReasoningEffort);

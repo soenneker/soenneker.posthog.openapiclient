@@ -20,6 +20,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         EventMetadata,
         #pragma warning restore CS1591
+        [EnumMember(Value = "element")]
+        #pragma warning disable CS1591
+        Element,
+        #pragma warning restore CS1591
         [EnumMember(Value = "group")]
         #pragma warning disable CS1591
         Group,

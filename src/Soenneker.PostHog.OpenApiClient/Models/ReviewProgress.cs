@@ -16,14 +16,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Work units finished within the stage; null when the stage has no counter.</summary>
         public int? Done { get; set; }
-        /// <summary>How far the in-flight review turn has come: fetching the diff, chunking, picking each chunk&apos;s perspectives, reviewing chunks, merging overlapping findings, validating them, or finalizing (building and publishing the review).* `fetching` - fetching* `chunking` - chunking* `selecting` - selecting* `reviewing` - reviewing* `deduplicating` - deduplicating* `validating` - validating* `finalizing` - finalizing</summary>
+        /// <summary>What the in-flight turn runs: &apos;full&apos; (Deep) or &apos;flash&apos; (Standard). The row&apos;s `review_mode` describes the last completed turn, which can differ. Null until the turn records its mode, shortly before its review sessions start.* `full` - Deep* `flash` - Standard</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage? ReviewStage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode? ReviewMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage ReviewStage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode ReviewMode { get; set; }
 #endif
+        /// <summary>* `fetching` - fetching* `chunking` - chunking* `selecting` - selecting* `reviewing` - reviewing* `deduplicating` - deduplicating* `validating` - validating* `finalizing` - finalizing* `single_agent_preparing` - single_agent_preparing* `single_agent_reviewing` - single_agent_reviewing* `single_agent_finalizing` - single_agent_finalizing</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage? ReviewStage { get; set; }
         /// <summary>Work units the stage expects in total; null when unknown.</summary>
         public int? Total { get; set; }
         /// <summary>
@@ -52,7 +54,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "done", n => { Done = n.GetIntValue(); } },
-                { "review_stage", n => { ReviewStage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage.CreateFromDiscriminatorValue); } },
+                { "review_mode", n => { ReviewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode.CreateFromDiscriminatorValue); } },
+                { "review_stage", n => { ReviewStage = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage>(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };
         }
@@ -64,7 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("done", Done);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage>("review_stage", ReviewStage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode>("review_mode", ReviewMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage>("review_stage", ReviewStage);
             writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);
         }

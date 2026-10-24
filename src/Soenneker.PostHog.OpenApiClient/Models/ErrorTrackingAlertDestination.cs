@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Delivery channel for notifications.* `slack` - slack</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `slack` - slack</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType? ChannelType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType ChannelType { get; set; }
-#endif
         /// <summary>Channel-specific delivery settings, e.g. {&quot;channel&quot;: &quot;C0123&quot;} for Slack.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "channel_type", n => { ChannelType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType.CreateFromDiscriminatorValue); } },
+                { "channel_type", n => { ChannelType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType>(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationConfig.CreateFromDiscriminatorValue); } },
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -90,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType>("channel_type", ChannelType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationChannelType>("channel_type", ChannelType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertDestinationConfig>("config", Config);
             writer.WriteIntValue("integration_id", IntegrationId);
             writer.WriteAdditionalData(AdditionalData);

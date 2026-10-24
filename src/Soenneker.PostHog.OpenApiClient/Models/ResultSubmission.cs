@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Exact UUID of an existing scorer version in this project.</summary>
         public Guid? ScorerVersionId { get; set; }
-        /// <summary>Outcome of this scorer execution.* `ok` - OK* `error` - Error* `skipped` - Skipped* `not_applicable` - Not applicable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ok` - OK* `error` - Error* `skipped` - Skipped* `not_applicable` - Not applicable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionStatus Status { get; set; }
-#endif
         /// <summary>Required for ok: finite number, boolean, or distinct category keys matching the scorer version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "item_id", n => { ItemId = n.GetGuidValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayload>(global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayload.CreateFromDiscriminatorValue); } },
                 { "scorer_version_id", n => { ScorerVersionId = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionStatus>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionValue>(global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -108,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("item_id", ItemId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionPayload>("payload", Payload);
             writer.WriteGuidValue("scorer_version_id", ScorerVersionId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultSubmissionValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

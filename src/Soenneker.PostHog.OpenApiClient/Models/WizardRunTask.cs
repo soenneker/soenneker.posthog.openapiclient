@@ -38,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the server first observed this task running.</summary>
         public DateTimeOffset? StartedAt { get; private set; }
-        /// <summary>Current task status reported by the setup agent.* `created` - created* `running` - running* `completed` - completed* `failed` - failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `created` - created* `running` - running* `completed` - completed* `failed` - failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunTaskStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunTaskStatus Status { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardRunTask"/> and sets the default values.
         /// </summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "failed_at", n => { FailedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunTaskStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunTaskStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunTaskStatus>(); } },
             };
         }
         /// <summary>

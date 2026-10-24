@@ -13,28 +13,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BulkDeleteRequestFilters : IAdditionalDataHolder, IParsable
     {
-        /// <summary>&apos;true&apos; and &apos;false&apos; filter on serving state, the flag&apos;s `active` column. &apos;STALE&apos; returns enabled flags only, so a disabled flag is never STALE. An enabled flag matches when its last recorded `$feature_flag_called` event is more than 30 days old. With no recorded event, it matches when it is at least 30 days old and either stores `filters` as `{}` or serves one result to everyone through a release condition at 100% with no property filters. A flag with no recorded event and an empty `groups` list does not match, even when its `status` reads STALE. An SDK that sends no `$feature_flag_called` event leaves no record, so a STALE flag can still be in use.* `true` - true* `false` - false* `STALE` - STALE</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `true` - true* `false` - false* `STALE` - STALE</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive? Active { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive Active { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Filter by archived state. When omitted, archived flags are excluded.</summary>
         public bool? Archived { get; set; }
         /// <summary>Filter to flags created by a specific user ID.</summary>
         public int? CreatedById { get; set; }
-        /// <summary>Filter by evaluation runtime.* `server` - Server* `client` - Client* `all` - All</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `server` - Server* `client` - Client* `all` - All</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime? EvaluationRuntime { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime EvaluationRuntime { get; set; }
-#endif
         /// <summary>JSON-encoded property filter to exclude. Same shape as the list endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When true, only matches flags with at least one evaluation context.</summary>
         public bool? HasEvaluationContexts { get; set; }
-        /// <summary>Search by feature flag key or name (case-insensitive).</summary>
+        /// <summary>Search by feature flag key or name (case-insensitive). Spaces, underscores, and hyphens count as the same separator.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Search { get; set; }
@@ -69,14 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
-        /// <summary>Filter by flag type.* `boolean` - boolean* `multivariant` - multivariant* `experiment` - experiment* `remote_config` - remote_config</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `boolean` - boolean* `multivariant` - multivariant* `experiment` - experiment* `remote_config` - remote_config</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteRequestFilters"/> and sets the default values.
         /// </summary>
@@ -102,16 +84,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active", n => { Active = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive>(global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive.CreateFromDiscriminatorValue); } },
+                { "active", n => { Active = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive>(); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "created_by_id", n => { CreatedById = n.GetIntValue(); } },
-                { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime.CreateFromDiscriminatorValue); } },
+                { "evaluation_runtime", n => { EvaluationRuntime = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime>(); } },
                 { "excluded_properties", n => { ExcludedProperties = n.GetStringValue(); } },
                 { "excluded_tags", n => { ExcludedTags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "has_evaluation_contexts", n => { HasEvaluationContexts = n.GetBoolValue(); } },
                 { "search", n => { Search = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType>(global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType>(); } },
             };
         }
         /// <summary>
@@ -121,16 +103,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive>("active", Active);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive>("active", Active);
             writer.WriteBoolValue("archived", Archived);
             writer.WriteIntValue("created_by_id", CreatedById);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime>("evaluation_runtime", EvaluationRuntime);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime>("evaluation_runtime", EvaluationRuntime);
             writer.WriteStringValue("excluded_properties", ExcludedProperties);
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_tags", ExcludedTags);
             writer.WriteBoolValue("has_evaluation_contexts", HasEvaluationContexts);
             writer.WriteStringValue("search", Search);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

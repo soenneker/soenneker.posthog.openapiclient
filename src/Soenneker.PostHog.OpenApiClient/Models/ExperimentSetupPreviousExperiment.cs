@@ -90,14 +90,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Id { get; set; }
         /// <summary>Minimum detectable effect saved from the running time calculator, or null.</summary>
         public double? MinimumDetectableEffect { get; set; }
-        /// <summary>How users seen in several variants are analyzed, with the default resolved.* `exclude` - exclude* `first_seen` - first_seen</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `exclude` - exclude* `first_seen` - first_seen</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling? MultipleVariantHandling { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling MultipleVariantHandling { get; set; }
-#endif
         /// <summary>Whether the experiment sets multiple_variant_handling itself instead of using the default.</summary>
         public bool? MultipleVariantHandlingSet { get; set; }
         /// <summary>Experiment name.</summary>
@@ -108,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>From the completed result that covers the latest data in the experiment&apos;s current run. A funnel or a mean primary metric is chosen over a retention or a ratio one, because only its samples are the analyzed population. Null when no result exists for that run, which is also the case for older metric definitions that results are never stored for.</summary>
+        /// <summary>From the completed result that covers the latest data under the experiment&apos;s current configuration. A funnel or a mean primary metric is chosen over a retention or a ratio one, because only its samples are the analyzed population. Null when no result exists for that configuration, for example after a relaunch or a settings edit until the results are recalculated, and for older metric definitions that results are never stored for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome? Outcome { get; set; }
@@ -160,14 +154,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? SplitEven { get; set; }
         /// <summary>When it launched. Null for drafts.</summary>
         public DateTimeOffset? StartDate { get; set; }
-        /// <summary>&apos;draft&apos;, &apos;running&apos;, &apos;paused&apos; (running with its flag turned off), &apos;exposure_frozen&apos; (running with enrollment closed to the already-exposed users) or &apos;stopped&apos;.* `draft` - Draft* `running` - Running* `paused` - Paused* `exposure_frozen` - Exposure Frozen* `stopped` - Stopped</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `draft` - Draft* `running` - Running* `paused` - Paused* `exposure_frozen` - Exposure Frozen* `stopped` - Stopped</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentState State { get; set; }
-#endif
         /// <summary>&apos;bayesian&apos; or &apos;frequentist&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -220,7 +208,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "has_holdout", n => { HasHoldout = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "minimum_detectable_effect", n => { MinimumDetectableEffect = n.GetDoubleValue(); } },
-                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling.CreateFromDiscriminatorValue); } },
+                { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling>(); } },
                 { "multiple_variant_handling_set", n => { MultipleVariantHandlingSet = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome.CreateFromDiscriminatorValue); } },
@@ -234,7 +222,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "shared_metric_count", n => { SharedMetricCount = n.GetIntValue(); } },
                 { "split_even", n => { SplitEven = n.GetBoolValue(); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentState>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentState>(); } },
                 { "stats_method", n => { StatsMethod = n.GetStringValue(); } },
                 { "variant_count", n => { VariantCount = n.GetIntValue(); } },
             };
@@ -263,7 +251,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_holdout", HasHoldout);
             writer.WriteIntValue("id", Id);
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
             writer.WriteBoolValue("multiple_variant_handling_set", MultipleVariantHandlingSet);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome>("outcome", Outcome);
@@ -277,7 +265,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("shared_metric_count", SharedMetricCount);
             writer.WriteBoolValue("split_even", SplitEven);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentState>("state", State);
             writer.WriteStringValue("stats_method", StatsMethod);
             writer.WriteIntValue("variant_count", VariantCount);
             writer.WriteAdditionalData(AdditionalData);

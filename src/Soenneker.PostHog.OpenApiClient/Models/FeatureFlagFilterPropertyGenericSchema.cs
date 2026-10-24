@@ -32,29 +32,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Operator used to compare the property value.* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains* `starts_with` - starts_with* `not_starts_with` - not_starts_with* `ends_with` - ends_with* `not_ends_with` - not_ends_with* `regex` - regex* `not_regex` - not_regex* `gt` - gt* `gte` - gte* `lt` - lt* `lte` - lte</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains* `starts_with` - starts_with* `not_starts_with` - not_starts_with* `ends_with` - ends_with* `not_ends_with` - not_ends_with* `regex` - regex* `not_regex` - not_regex* `gt` - gt* `gte` - gte* `lt` - lt* `lte` - lte</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator? Operator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator Operator { get; set; }
-#endif
-        /// <summary>Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group&apos;s properties.* `cohort` - cohort* `person` - person* `group` - group</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType Type { get; set; }
-#endif
         /// <summary>Comparison value for the property filter. Supports strings, numbers, booleans, and arrays.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaValue? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaValue Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchema"/> and sets the default values.
@@ -84,9 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaValue>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaValue.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType>(); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -99,9 +87,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cohort_name", CohortName);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaValue>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType>("type", Type);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

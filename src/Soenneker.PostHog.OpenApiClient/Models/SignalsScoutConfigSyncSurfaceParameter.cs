@@ -20,5 +20,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Wizard,
         #pragma warning restore CS1591
+        [EnumMember(Value = "onboarding")]
+        #pragma warning disable CS1591
+        Onboarding,
+        #pragma warning restore CS1591
     }
 }

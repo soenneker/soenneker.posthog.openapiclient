@@ -38,6 +38,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry> Entries { get; set; }
 #endif
+        /// <summary>Prefilled query-logs calls for the top new or shifted patterns.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentNextCall>? Next { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentNextCall> Next { get; set; }
+#endif
+        /// <summary>Caveats that limit what the diff shows.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Notes { get; set; }
+#nullable restore
+#else
+        public List<string> Notes { get; set; }
+#endif
+        /// <summary>Stored pattern version, null for mining.</summary>
+        public int? PatternVersion { get; set; }
+        /// <summary>True on the body-mining fallback: counts are sample estimates.</summary>
+        public bool? Sampled { get; set; }
+        /// <summary>* `stored_patterns` - Stored Patterns* `body_mining` - Body Mining</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseSource? Source { get; set; }
+        /// <summary>True when `limit` cut the entry list.</summary>
+        public bool? Truncated { get; set; }
+        /// <summary>Absolute UTC bounds of the current and baseline windows.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow? Window { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow Window { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponse"/> and sets the default values.
         /// </summary>
@@ -66,6 +98,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "baseline", n => { Baseline = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseBaseline>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseBaseline.CreateFromDiscriminatorValue); } },
                 { "current", n => { Current = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseCurrent>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseCurrent.CreateFromDiscriminatorValue); } },
                 { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry>(global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "next", n => { Next = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentNextCall>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentNextCall.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "notes", n => { Notes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "pattern_version", n => { PatternVersion = n.GetIntValue(); } },
+                { "sampled", n => { Sampled = n.GetBoolValue(); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseSource>(); } },
+                { "truncated", n => { Truncated = n.GetBoolValue(); } },
+                { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,6 +117,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseBaseline>("baseline", Baseline);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseCurrent>("current", Current);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry>("entries", Entries);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentNextCall>("next", Next);
+            writer.WriteCollectionOfPrimitiveValues<string>("notes", Notes);
+            writer.WriteIntValue("pattern_version", PatternVersion);
+            writer.WriteBoolValue("sampled", Sampled);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseSource>("source", Source);
+            writer.WriteBoolValue("truncated", Truncated);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow>("window", Window);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

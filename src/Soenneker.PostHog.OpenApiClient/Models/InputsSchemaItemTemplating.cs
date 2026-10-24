@@ -8,27 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingBranch1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingWrapper"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InputsSchemaItemTemplating : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingBranch1? InputsSchemaItemTemplatingBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingBranch1 InputsSchemaItemTemplatingBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingWrapper? InputsSchemaItemTemplatingWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingWrapper InputsSchemaItemTemplatingWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingOneOf2"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingOneOf2? InputsSchemaItemTemplatingOneOf2 { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,13 +27,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplating();
-            if("InputsSchemaItemTemplatingBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingOneOf2>() is global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingOneOf2 inputsSchemaItemTemplatingOneOf2Value)
             {
-                result.InputsSchemaItemTemplatingBranch1 = new global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingBranch1();
+                result.InputsSchemaItemTemplatingOneOf2 = inputsSchemaItemTemplatingOneOf2Value;
             }
-            else if("InputsSchemaItemTemplatingWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetBoolValue() is bool booleanValue)
             {
-                result.InputsSchemaItemTemplatingWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingWrapper();
+                result.Boolean = booleanValue;
             }
             return result;
         }
@@ -55,14 +43,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(InputsSchemaItemTemplatingBranch1 != null)
-            {
-                return InputsSchemaItemTemplatingBranch1.GetFieldDeserializers();
-            }
-            else if(InputsSchemaItemTemplatingWrapper != null)
-            {
-                return InputsSchemaItemTemplatingWrapper.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -72,13 +52,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(InputsSchemaItemTemplatingBranch1 != null)
+            if(InputsSchemaItemTemplatingOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingBranch1>(null, InputsSchemaItemTemplatingBranch1);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingOneOf2>(null, InputsSchemaItemTemplatingOneOf2);
             }
-            else if(InputsSchemaItemTemplatingWrapper != null)
+            else if(Boolean != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTemplatingWrapper>(null, InputsSchemaItemTemplatingWrapper);
+                writer.WriteBoolValue(null, Boolean);
             }
         }
     }

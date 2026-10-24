@@ -31,14 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchHighlight> Highlights { get; set; }
 #endif
-        /// <summary>What the card is: &apos;behavior&apos; for an event this variant did clearly more than the other variants together, &apos;friction&apos; for the same finding on an error or rage signal, &apos;variant_only&apos; for an event no other variant fired at all, and &apos;metric&apos; for a shortcut to recordings around one of the experiment&apos;s own metric events. A &apos;variant_only&apos; card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results&apos; answer.* `behavior` - behavior* `friction` - friction* `variant_only` - variant_only* `metric` - metric</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `behavior` - behavior* `friction` - friction* `variant_only` - variant_only* `metric` - metric</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind Kind { get; set; }
-#endif
         /// <summary>The metric this card&apos;s event belongs to, on a comparison card as well as on a shortcut card. When set, the experiment&apos;s results measure this event over the whole run window with the statistics that go with a result, so say the card points there and never present the card as a second answer about that metric. Null when no metric counts the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "highlights", n => { Highlights = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchHighlight>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchHighlight.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind>(); } },
                 { "metric_name", n => { MetricName = n.GetStringValue(); } },
                 { "recording_count", n => { RecordingCount = n.GetIntValue(); } },
                 { "session_ids", n => { SessionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -117,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("event", Event);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchHighlight>("highlights", Highlights);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind>("kind", Kind);
             writer.WriteStringValue("metric_name", MetricName);
             writer.WriteIntValue("recording_count", RecordingCount);
             writer.WriteCollectionOfPrimitiveValues<string>("session_ids", SessionIds);

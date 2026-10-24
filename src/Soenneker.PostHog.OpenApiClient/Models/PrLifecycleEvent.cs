@@ -32,14 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Detail { get; set; }
 #endif
-        /// <summary>Event kind: opened, ready_for_review, converted_to_draft, ci_started, ci_finished, merged, or closed.* `opened` - OPENED* `ready_for_review` - READY_FOR_REVIEW* `converted_to_draft` - CONVERTED_TO_DRAFT* `ci_started` - CI_STARTED* `ci_finished` - CI_FINISHED* `merged` - MERGED* `closed` - CLOSED</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `opened` - Opened* `ready_for_review` - Ready For Review* `converted_to_draft` - Converted To Draft* `ci_started` - CI Started* `ci_finished` - CI Finished* `merged` - Merged* `closed` - Closed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind? Kind { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind Kind { get; set; }
-#endif
         /// <summary>GitHub Actions run id for ci_started/ci_finished events, null otherwise.</summary>
         public int? RunId { get; set; }
         /// <summary>
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "at", n => { At = n.GetDateTimeOffsetValue(); } },
                 { "ci_engine", n => { CiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine.CreateFromDiscriminatorValue); } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind>(global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind>(); } },
                 { "run_id", n => { RunId = n.GetIntValue(); } },
             };
         }
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("at", At);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventCiEngine>("ci_engine", CiEngine);
             writer.WriteStringValue("detail", Detail);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind>("kind", Kind);
             writer.WriteIntValue("run_id", RunId);
             writer.WriteAdditionalData(AdditionalData);
         }

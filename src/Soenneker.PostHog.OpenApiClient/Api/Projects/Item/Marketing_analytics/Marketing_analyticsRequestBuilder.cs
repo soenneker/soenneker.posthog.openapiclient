@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Apply_setup_ops;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_goals;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_recommendations;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_recordings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Data_sources;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Diagnose;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Explain_conversion_goal;
@@ -34,6 +36,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_goals.Conversion_goalsRequestBuilder Conversion_goals
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_goals.Conversion_goalsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The conversion_recommendations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_recommendations.Conversion_recommendationsRequestBuilder Conversion_recommendations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_recommendations.Conversion_recommendationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The conversion_recordings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_recordings.Conversion_recordingsRequestBuilder Conversion_recordings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Conversion_recordings.Conversion_recordingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The data_sources property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Data_sources.Data_sourcesRequestBuilder Data_sources

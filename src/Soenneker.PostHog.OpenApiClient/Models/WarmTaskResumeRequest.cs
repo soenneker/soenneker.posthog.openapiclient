@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Initial permission mode for the warmed successor&apos;s agent session.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode? InitialPermissionMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode InitialPermissionMode { get; set; }
-#endif
         /// <summary>LLM model to start before the next message is submitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,24 +25,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Reasoning effort to apply when the warmed successor receives its first message.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort? ReasoningEffort { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort ReasoningEffort { get; set; }
-#endif
         /// <summary>ID of the task&apos;s latest terminal run whose snapshot and conversation should be resumed.</summary>
         public Guid? ResumeFromRunId { get; set; }
-        /// <summary>Agent runtime adapter to start before the next message is submitted.* `claude` - claude* `codex` - codex</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `claude` - claude* `codex` - codex</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter? RuntimeAdapter { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter RuntimeAdapter { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequest"/> and sets the default values.
         /// </summary>
@@ -74,11 +56,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "initial_permission_mode", n => { InitialPermissionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode.CreateFromDiscriminatorValue); } },
+                { "initial_permission_mode", n => { InitialPermissionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode>(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort.CreateFromDiscriminatorValue); } },
+                { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort>(); } },
                 { "resume_from_run_id", n => { ResumeFromRunId = n.GetGuidValue(); } },
-                { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter.CreateFromDiscriminatorValue); } },
+                { "runtime_adapter", n => { RuntimeAdapter = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter>(); } },
             };
         }
         /// <summary>
@@ -88,11 +70,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteGuidValue("resume_from_run_id", ResumeFromRunId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

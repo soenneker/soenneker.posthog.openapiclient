@@ -13,8 +13,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EditReportRequest : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Optional new actionability call, for when new evidence changed your judgment. Replaces the report&apos;s actionability decision and re-runs autostart: `immediately_actionable` can open a draft PR, `requires_human_input` and `not_actionable` stop autostart from opening one. The report&apos;s inbox status does not change. Send it with `actionability_explanation`, and with `already_addressed` when the issue is handled, since the three replace the decision as one unit.* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability? Actionability { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability Actionability { get; set; }
+#endif
+        /// <summary>2-3 sentence evidence-grounded justification for `actionability`. Required when you set it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ActionabilityExplanation { get; set; }
+#nullable restore
+#else
+        public string ActionabilityExplanation { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether the issue is already handled: fixed, or with a fix in flight. Part of the actionability decision, so it requires `actionability` and `actionability_explanation` too; omitted means false. Set it when a fix lands or starts, so autostart does not open a duplicate PR.</summary>
+        public bool? AlreadyAddressed { get; set; }
         /// <summary>Optional observations to add to the report&apos;s evidence rail, each becoming a bound signal attributed to this scout — adds to the report&apos;s evidence rather than replacing it. Use this for a new observation a reader should be able to check, and `append_note` for commentary (the owning team knows, a deploy fixed it). The report&apos;s signal count and weight move with the appended rows. Emit plus every append share a cap of 50 signals per report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,6 +59,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Set only when append_note confirms the finding with no new information. After four confirmations, store only the count. Other notes remain in the work log.</summary>
         public bool? CorroborationOnly { get; set; }
+        /// <summary>Report reviewer_assignment.state read before selection began. Required when reviewer corrections are enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers? ExpectedReviewers { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers ExpectedReviewers { get; set; }
+#endif
         /// <summary>Typed, directed links from this report to others, recording how the work relates. Use `depends_on` when you split one finding into a stack and the second report&apos;s fix cannot land until the first one&apos;s does, so the order is recorded rather than left to a reader of the diffs. Additive: links join what the report already has rather than replacing them, and only this report gets a row, so link from the side the sentence starts at. Links of the same kind must stay acyclic and every report must be in this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +82,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite> Metrics { get; set; }
+#endif
+        /// <summary>Optional new priority (`P0`-`P4`), for when the issue escalated or eased. Replaces the report&apos;s priority and re-runs autostart, which needs a priority to open a draft PR. Requires `priority_explanation`.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority? Priority { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority Priority { get; set; }
+#endif
+        /// <summary>2-3 sentence justification for `priority`. Required when `priority` is set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PriorityExplanation { get; set; }
+#nullable restore
+#else
+        public string PriorityExplanation { get; set; }
 #endif
         /// <summary>Id of the report to edit (must belong to this project).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,6 +115,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
+        /// <summary>* `selected` - Selected* `no_suitable_owner` - No suitable owner* `lookup_failed` - Lookup failed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestReviewerOutcome? ReviewerOutcome { get; set; }
+        /// <summary>Reason the reviewer lookup failed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReviewerRetryReason { get; set; }
+#nullable restore
+#else
+        public string ReviewerRetryReason { get; set; }
+#endif
         /// <summary>The full set of follow-up prompts (questions or next-step actions) the report should offer above its `Ask AI` box. Replaces the report&apos;s prompts rather than adding to them, so send every one you want kept. Omit the field (or send null) to leave them untouched, and send an empty list to take them down, which is what you want once a rewrite has left them pointing at the old report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> SuggestedPrompts { get; set; }
 #endif
-        /// <summary>Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer — it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list is a no-op (existing reviewers are left untouched, never cleared).</summary>
+        /// <summary>Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer — it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list clears automatic reviewers when correction rules are enabled. Pins, exclusions, and confirmed lists are preserved. Pass expected_reviewers from the report reviewer_assignment.state read before selection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>? SuggestedReviewers { get; set; }
@@ -97,8 +149,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
-        /// <summary>Set this only when your rewrite changes what the fix should be: a different root cause, a different file or layer, a materially wider or narrower scope. More evidence for the same fix is not a reason, because the report&apos;s open pull request already implements it. Setting it true records a replacement decision for a ready report. Policy and eligibility checks gate the replacement. The existing pull request closes only after a successful, verified replacement. Technical failures retry automatically; policy blocks wait for a new edit or research trigger. Only honored alongside a `title` or `summary` that actually changes, and only within the first four content revisions, including revisions that did not request replacement.</summary>
+        /// <summary>Set this only when your rewrite changes what the fix should be: a different root cause, a different file or layer, a materially wider or narrower scope. More evidence for the same fix is not a reason, because the report&apos;s open pull request already implements it. Setting it true records a replacement decision for a ready report. Policy and eligibility checks gate the replacement. The existing pull request closes only after a successful, verified replacement. Technical failures retry automatically; policy blocks wait for a new edit or research trigger. Only honored alongside a `title` or `summary` that actually changes, and only within the first four content revisions, including revisions that did not request replacement. When the flag is not applied, `warnings` says why.</summary>
         public bool? SupersedesImplementation { get; set; }
+        /// <summary>The report&apos;s full set of slug tags, at most 10. Replaces the report&apos;s tags rather than adding to them, so send every tag you want kept. Omit the field (or send null) to leave them untouched, and send an empty list to remove them. Reuse a slug the project already uses before you coin a new one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>Optional new title. Conventional-commit style (`type(scope): description`) renders with type/scope styling. The pipeline may later re-research and overwrite it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -132,18 +192,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "actionability", n => { Actionability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability>(global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability.CreateFromDiscriminatorValue); } },
+                { "actionability_explanation", n => { ActionabilityExplanation = n.GetStringValue(); } },
+                { "already_addressed", n => { AlreadyAddressed = n.GetBoolValue(); } },
                 { "append_evidence", n => { AppendEvidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "append_note", n => { AppendNote = n.GetStringValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "corroboration_only", n => { CorroborationOnly = n.GetBoolValue(); } },
+                { "expected_reviewers", n => { ExpectedReviewers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers>(global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers.CreateFromDiscriminatorValue); } },
                 { "links", n => { Links = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>(global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority>(global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority.CreateFromDiscriminatorValue); } },
+                { "priority_explanation", n => { PriorityExplanation = n.GetStringValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
+                { "reviewer_outcome", n => { ReviewerOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestReviewerOutcome>(); } },
+                { "reviewer_retry_reason", n => { ReviewerRetryReason = n.GetStringValue(); } },
                 { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "suggested_reviewers", n => { SuggestedReviewers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "supersedes_implementation", n => { SupersedesImplementation = n.GetBoolValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -154,18 +223,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability>("actionability", Actionability);
+            writer.WriteStringValue("actionability_explanation", ActionabilityExplanation);
+            writer.WriteBoolValue("already_addressed", AlreadyAddressed);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>("append_evidence", AppendEvidence);
             writer.WriteStringValue("append_note", AppendNote);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>("charts", Charts);
             writer.WriteBoolValue("corroboration_only", CorroborationOnly);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers>("expected_reviewers", ExpectedReviewers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>("links", Links);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>("metrics", Metrics);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority>("priority", Priority);
+            writer.WriteStringValue("priority_explanation", PriorityExplanation);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteStringValue("repository", Repository);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestReviewerOutcome>("reviewer_outcome", ReviewerOutcome);
+            writer.WriteStringValue("reviewer_retry_reason", ReviewerRetryReason);
             writer.WriteCollectionOfPrimitiveValues<string>("suggested_prompts", SuggestedPrompts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>("suggested_reviewers", SuggestedReviewers);
             writer.WriteStringValue("summary", Summary);
             writer.WriteBoolValue("supersedes_implementation", SupersedesImplementation);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

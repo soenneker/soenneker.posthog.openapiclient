@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Originating surface for the connect flow; only &apos;posthog_code&apos; is recognized.* `posthog_code` - posthog_code</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `posthog_code` - posthog_code</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequestConnectFrom? ConnectFrom { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequestConnectFrom ConnectFrom { get; set; }
-#endif
         /// <summary>GitHub installation ID to carry through the User OAuth flow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "connect_from", n => { ConnectFrom = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequestConnectFrom>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequestConnectFrom.CreateFromDiscriminatorValue); } },
+                { "connect_from", n => { ConnectFrom = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequestConnectFrom>(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "next", n => { Next = n.GetStringValue(); } },
             };
@@ -75,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequestConnectFrom>("connect_from", ConnectFrom);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequestConnectFrom>("connect_from", ConnectFrom);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteStringValue("next", Next);
             writer.WriteAdditionalData(AdditionalData);

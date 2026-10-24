@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>What triggered this recalculation (manual is the default for user-initiated runs). Only client triggers are accepted; agent_mcp, timeseries_sync and scheduled are set by the server.* `manual` - Manual* `manual_retry` - Manual Retry* `cold_run` - Cold Run* `heal_latest_run` - Heal Latest Run* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `manual` - Manual* `manual_retry` - Manual Retry* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `heal_latest_run` - Heal Latest Run* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger? Trigger { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger Trigger { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequest"/> and sets the default values.
         /// </summary>
@@ -48,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger>(global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger.CreateFromDiscriminatorValue); } },
+                { "trigger", n => { Trigger = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger>(); } },
             };
         }
         /// <summary>
@@ -58,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger>("trigger", Trigger);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger>("trigger", Trigger);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -40,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Whether the track is tracked per user or per team.* `user` - user* `team` - team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user` - user* `team` - team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinitionScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinitionScope Scope { get; set; }
-#endif
         /// <summary>The five stages of this track, in ascending threshold order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "is_experiment_track", n => { IsExperimentTrack = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinitionScope>(global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinitionScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinitionScope>(); } },
                 { "stages", n => { Stages = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AchievementStage>(global::Soenneker.PostHog.OpenApiClient.Models.AchievementStage.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -100,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteBoolValue("is_experiment_track", IsExperimentTrack);
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinitionScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinitionScope>("scope", Scope);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AchievementStage>("stages", Stages);
             writer.WriteAdditionalData(AdditionalData);
         }

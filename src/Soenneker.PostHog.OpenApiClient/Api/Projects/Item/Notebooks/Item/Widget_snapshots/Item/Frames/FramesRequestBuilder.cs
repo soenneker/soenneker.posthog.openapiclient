@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widget_snapshots.Item.Frames
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{projectId}\notebooks\{notebook-id}\widget_snapshots\{snapshotId}\frames
+    /// Builds and executes requests for operations under \api\projects\{projectId}\notebooks\{notebookId}\widget_snapshots\{snapshotId}\frames
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FramesRequestBuilder : BaseRequestBuilder
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widge
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FramesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/widget_snapshots/{snapshotId}/frames", pathParameters)
+        public FramesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebookId}/widget_snapshots/{snapshotId}/frames", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widge
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FramesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/widget_snapshots/{snapshotId}/frames", rawUrl)
+        public FramesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebookId}/widget_snapshots/{snapshotId}/frames", rawUrl)
         {
         }
     }

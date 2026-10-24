@@ -40,14 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReviewVersion { get; set; }
 #endif
-        /// <summary>Highest severity found, or none when the review found no issues.* `none` - none* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `none` - none* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReviewSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReviewSeverity Severity { get; set; }
-#endif
         /// <summary>Concise result from the automated security review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "review_version", n => { ReviewVersion = n.GetStringValue(); } },
                 { "reviewed_at", n => { ReviewedAt = n.GetDateTimeOffsetValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReviewSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReviewSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReviewSeverity>(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
             };
         }
@@ -100,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteDateTimeOffsetValue("reviewed_at", ReviewedAt);
             writer.WriteStringValue("review_version", ReviewVersion);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReviewSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReviewSeverity>("severity", Severity);
             writer.WriteStringValue("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }

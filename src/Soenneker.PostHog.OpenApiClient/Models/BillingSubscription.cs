@@ -64,8 +64,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CustomerId { get; set; }
 #endif
-        /// <summary>The deactivated property</summary>
-        public bool? Deactivated { get; set; }
         /// <summary>The discount_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -162,7 +160,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "billing_portal_url", n => { BillingPortalUrl = n.GetStringValue(); } },
                 { "billing_provider", n => { BillingProvider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionBillingProvider>(global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionBillingProvider.CreateFromDiscriminatorValue); } },
                 { "customer_id", n => { CustomerId = n.GetStringValue(); } },
-                { "deactivated", n => { Deactivated = n.GetBoolValue(); } },
                 { "discount_amount_usd", n => { DiscountAmountUsd = n.GetStringValue(); } },
                 { "discount_percent", n => { DiscountPercent = n.GetIntValue(); } },
                 { "free_trial_until", n => { FreeTrialUntil = n.GetDateTimeOffsetValue(); } },
@@ -190,7 +187,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("billing_portal_url", BillingPortalUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionBillingProvider>("billing_provider", BillingProvider);
             writer.WriteStringValue("customer_id", CustomerId);
-            writer.WriteBoolValue("deactivated", Deactivated);
             writer.WriteStringValue("discount_amount_usd", DiscountAmountUsd);
             writer.WriteIntValue("discount_percent", DiscountPercent);
             writer.WriteDateTimeOffsetValue("free_trial_until", FreeTrialUntil);

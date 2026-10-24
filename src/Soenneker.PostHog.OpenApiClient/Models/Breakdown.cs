@@ -27,13 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty Property { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "histogram_bin_count", n => { HistogramBinCount = n.GetIntValue(); } },
                 { "normalize_url", n => { NormalizeUrl = n.GetBoolValue(); } },
                 { "property", n => { Property = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownType>(); } },
             };
         }
         /// <summary>
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("histogram_bin_count", HistogramBinCount);
             writer.WriteBoolValue("normalize_url", NormalizeUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty>("property", Property);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownType>("type", Type);
         }
     }
 }

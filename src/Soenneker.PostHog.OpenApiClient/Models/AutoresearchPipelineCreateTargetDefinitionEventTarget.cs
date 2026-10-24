@@ -13,8 +13,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AutoresearchPipelineCreateTargetDefinitionEventTarget : IParsable
     {
-        /// <summary>Event properties</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventValueType? Type { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinitionEventTargetType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventValueType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinitionEventTargetType>(); } },
             };
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventValueType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinitionEventTargetType>("type", Type);
         }
     }
 }

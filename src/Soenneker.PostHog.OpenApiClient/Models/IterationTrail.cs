@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AgentDescription { get; set; }
 #endif
+        /// <summary>Short title for this experiment, for people. Null if not written.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Headline { get; private set; }
+#nullable restore
+#else
+        public string Headline { get; private set; }
+#endif
         /// <summary>Holdout AUC this iteration achieved. Null if it was skipped/degenerate.</summary>
         public double? HoldoutScore { get; set; }
         /// <summary>Order of this attempt within its run (0-based).</summary>
@@ -35,13 +43,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpec ModelSpec { get; set; }
 #endif
-        /// <summary>Whether this recipe was kept (improved the best score), discarded, or crashed.* `kept` - Kept* `discarded` - Discarded* `crashed` - Crashed</summary>
+        /// <summary>* `kept` - Kept* `discarded` - Discarded* `crashed` - Crashed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus? Status { get; set; }
+        /// <summary>Plain-language sentence on what this experiment tried and what happened, for people. Null if not written.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus? Status { get; set; }
+        public string? Summary { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus Status { get; set; }
+        public string Summary { get; private set; }
 #endif
         /// <summary>Train-fold AUC for this iteration, if recorded.</summary>
         public double? TrainScore { get; set; }
@@ -71,10 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent_description", n => { AgentDescription = n.GetStringValue(); } },
+                { "headline", n => { Headline = n.GetStringValue(); } },
                 { "holdout_score", n => { HoldoutScore = n.GetDoubleValue(); } },
                 { "iteration_number", n => { IterationNumber = n.GetIntValue(); } },
                 { "model_spec", n => { ModelSpec = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpec>(global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpec.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus>(global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus>(); } },
+                { "summary", n => { Summary = n.GetStringValue(); } },
                 { "train_score", n => { TrainScore = n.GetDoubleValue(); } },
             };
         }
@@ -89,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("holdout_score", HoldoutScore);
             writer.WriteIntValue("iteration_number", IterationNumber);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpec>("model_spec", ModelSpec);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailStatus>("status", Status);
             writer.WriteDoubleValue("train_score", TrainScore);
             writer.WriteAdditionalData(AdditionalData);
         }

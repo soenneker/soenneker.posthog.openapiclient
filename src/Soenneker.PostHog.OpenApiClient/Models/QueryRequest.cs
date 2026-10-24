@@ -31,13 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get; set; }
 #endif
         /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2? LimitContext { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2 LimitContext { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get; set; }
         /// <summary>Name given to a query. It&apos;s used to identify the query in the UI. Up to 128 characters for a name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,13 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery Query { get; set; }
 #endif
         /// <summary>Whether results should be calculated sync or async, and how much to rely on the cache:- `&apos;blocking&apos;` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache- `&apos;async&apos;` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache- `&apos;lazy_async&apos;` - kick off background calculation, UNLESS there are somewhat fresh results in the cache- `&apos;force_blocking&apos;` - calculate synchronously, even if fresh results are already cached- `&apos;force_async&apos;` - kick off background calculation, even if fresh results are already cached- `&apos;force_cache&apos;` - return cached data or a cache miss; always completes immediately as it never calculates Background calculation can be tracked using the `query_status` response field.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper? Refresh { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper Refresh { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? Refresh { get; set; }
         /// <summary>The variables_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,10 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "async", n => { Async = n.GetBoolValue(); } },
                 { "client_query_id", n => { ClientQueryId = n.GetStringValue(); } },
                 { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter.CreateFromDiscriminatorValue); } },
-                { "limit_context", n => { LimitContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2.CreateFromDiscriminatorValue); } },
+                { "limit_context", n => { LimitContext = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery.CreateFromDiscriminatorValue); } },
-                { "refresh", n => { Refresh = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "refresh", n => { Refresh = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>(); } },
                 { "variables_override", n => { VariablesOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty.CreateFromDiscriminatorValue); } },
             };
         }
@@ -108,10 +96,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("async", Async);
             writer.WriteStringValue("client_query_id", ClientQueryId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>("filters_override", FiltersOverride);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2>("limit_context", LimitContext);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>("limit_context", LimitContext);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery>("query", Query);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper>("refresh", Refresh);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>("refresh", Refresh);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty>("variables_override", VariablesOverride);
         }
     }

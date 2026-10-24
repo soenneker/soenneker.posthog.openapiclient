@@ -82,6 +82,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
+        /// <summary>SQL cells only: the chart the cell opens on, set in the editor or with the visualization parameter of notebooks-add-cell. Null when the cell opens on its results table.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization? Visualization { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization Visualization { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellState"/> and sets the default values.
         /// </summary>
@@ -117,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
                 { "start", n => { Start = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "visualization", n => { Visualization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -136,6 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("node_id", NodeId);
             writer.WriteIntValue("start", Start);
             writer.WriteStringValue("status", Status);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization>("visualization", Visualization);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

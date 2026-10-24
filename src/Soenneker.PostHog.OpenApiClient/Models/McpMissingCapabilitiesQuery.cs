@@ -9,9 +9,253 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class McpMissingCapabilitiesQuery : IParsable
+    public partial class McpMissingCapabilitiesQuery : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Show events matching a given action</summary>
+        public int? ActionId { get; set; }
+        /// <summary>The actions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActionsItemProperty>? Actions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActionsItemProperty> Actions { get; set; }
+#endif
+        /// <summary>Show events matching action steps directly, used when no actionId is provided (e.g. previewing unsaved actions). Ignored if actionId is set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStep>? ActionSteps { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStep> ActionSteps { get; set; }
+#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Only fetch events that happened after this timestamp</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? After { get; set; }
+#nullable restore
+#else
+        public string After { get; set; }
+#endif
+        /// <summary>Groups aggregation - not used in Web Analytics but required for type compatibility</summary>
+        public int? AggregationGroupTypeIndex { get; set; }
+        /// <summary>Whether one person converting repeatedly counts once or every time. Null follows the goal&apos;s own math: unique-users goals count each person once, count-based goals count every conversion. Set explicitly to override. Counting every conversion makes the rate columns exceed 100%, since a person can convert more times than they visited.</summary>
+        public bool? AllowMultipleConversionsPerVisitor { get; set; }
+        /// <summary>Match accounts with no active relationship of any definition.</summary>
+        public bool? AllRolesUnassigned { get; set; }
+        /// <summary>Only count exceptions from this app namespace.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AppNamespace { get; set; }
+#nullable restore
+#else
+        public string AppNamespace { get; set; }
+#endif
+        /// <summary>Match accounts with at least one active relationship of any definition.</summary>
+        public bool? AssignedOnly { get; set; }
+        /// <summary>Match accounts where any of these user ids actively holds any relationship (CSM, Account executive, or a custom definition). Drives the &quot;My accounts&quot; shortcut (the current user&apos;s id) and the shareable &quot;Assigned to&quot; filter — the ids are explicit so a shared URL resolves identically for every viewer.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<int?>? AssignedToUserIds { get; set; }
+#nullable restore
+#else
+        public List<int?> AssignedToUserIds { get; set; }
+#endif
+        /// <summary>The assignee property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee? Assignee { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee Assignee { get; set; }
+#endif
+        /// <summary>The attributeKey property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AttributeKey { get; set; }
+#nullable restore
+#else
+        public string AttributeKey { get; set; }
+#endif
+        /// <summary>Return only attribute keys that exactly match an entry in this list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? AttributeKeys { get; set; }
+#nullable restore
+#else
+        public List<string> AttributeKeys { get; set; }
+#endif
+        /// <summary>The attributeType property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AttributeType { get; set; }
+#nullable restore
+#else
+        public string AttributeType { get; set; }
+#endif
+        /// <summary>Only fetch events that happened before this timestamp</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Before { get; set; }
+#nullable restore
+#else
+        public string Before { get; set; }
+#endif
+        /// <summary>The breakdown property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown? Breakdown { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown Breakdown { get; set; }
+#endif
+        /// <summary>Row dimension. Defaults to channel.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown? BreakdownBy { get; set; }
+        /// <summary>Attribute key to group by (e.g. `http.response.status_code`, `server.address`). For the `span` breakdown type, must be an allowlisted top-level column (`service_name`, `status_code`).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BreakdownKey { get; set; }
+#nullable restore
+#else
+        public string BreakdownKey { get; set; }
+#endif
+        /// <summary>Breakdown values kept before the rest roll into &apos;Other&apos;. Defaults to 20.</summary>
+        public int? BreakdownLimit { get; set; }
+        /// <summary>The breakdownProperties property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? BreakdownProperties { get; set; }
+#nullable restore
+#else
+        public List<string> BreakdownProperties { get; set; }
+#endif
+        /// <summary>Where the key lives: an allowlisted top-level span column, span-level attributes, or resource-level attributes.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanBreakdownType? BreakdownType { get; set; }
+        /// <summary>Properties specific to the trends insight</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter? CalendarHeatmapFilter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter CalendarHeatmapFilter { get; set; }
+#endif
+        /// <summary>Restrict to these $mcp_tool_category values; empty or omitted means all categories.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Categories { get; set; }
+#nullable restore
+#else
+        public List<string> Categories { get; set; }
+#endif
+        /// <summary>Empty when `language` is `promql` or `sql`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryClause>? Clauses { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryClause> Clauses { get; set; }
+#endif
+        /// <summary>The code property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Code { get; set; }
+#nullable restore
+#else
+        public string Code { get; set; }
+#endif
+        /// <summary>The cohort property</summary>
+        public int? Cohort { get; set; }
+        /// <summary>Columns to load for each account. Account identity fields are always returned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem>? Columns { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem> Columns { get; set; }
+#endif
+        /// <summary>The comment_text property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter? CommentText { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter CommentText { get; set; }
+#endif
+        /// <summary>The compare property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.Compare? Compare { get; set; }
+        /// <summary>Compare to date range</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
+#endif
+        /// <summary>Include the previous acquisition period in summary mode. Defaults to false.</summary>
+        public bool? ComparePreviousPeriod { get; set; }
+        /// <summary>Optional id of a direct-query-capable external data source to run against instead of ClickHouse — a pure-direct source, or a synced source with direct query enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ConnectionId { get; set; }
+#nullable restore
+#else
+        public string ConnectionId { get; set; }
+#endif
+        /// <summary>The console_log_filters property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter>? ConsoleLogFilters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter> ConsoleLogFilters { get; set; }
+#endif
+        /// <summary>The contentGrouping property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGrouping? ContentGrouping { get; set; }
+        /// <summary>The conversionGoal property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryConversionGoal? ConversionGoal { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryConversionGoal ConversionGoal { get; set; }
+#endif
+        /// <summary>conversion_goal_id of the goal to attribute. The table is meaningless without one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ConversionGoalId { get; set; }
+#nullable restore
+#else
+        public string ConversionGoalId { get; set; }
+#endif
+        /// <summary>Custom column expressions evaluated per log row. Each entry is either a source-prefixed shorthand (`attributes.&lt;key&gt;`, `resource_attributes.&lt;key&gt;`, `body.&lt;json.path&gt;`) or a scalar HogQL expression (`upper(level)`, `coalesce(attributes[&apos;a&apos;], attributes[&apos;b&apos;])`). Values come back on each result row keyed by the aliases in `LogsQueryResponse.columns`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? CustomColumns { get; set; }
+#nullable restore
+#else
+        public List<string> CustomColumns { get; set; }
+#endif
+        /// <summary>The custom_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CustomName { get; set; }
+#nullable restore
+#else
+        public string CustomName { get; set; }
+#endif
+        /// <summary>Colors used in the insight&apos;s visualization - not used in Web Analytics but required for type compatibility</summary>
+        public double? DataColorTheme { get; set; }
+        /// <summary>The date_from property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DateFrom { get; set; }
+#nullable restore
+#else
+        public string DateFrom { get; set; }
+#endif
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -20,10 +264,442 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
+        /// <summary>The date_to property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DateTo { get; set; }
+#nullable restore
+#else
+        public string DateTo { get; set; }
+#endif
+        /// <summary>The day property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay? Day { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay Day { get; set; }
+#endif
+        /// <summary>Enable more verbose output, usually run from the /debug page</summary>
+        public bool? Debug { get; set; }
+        /// <summary>Chart presentation. A node without it renders as a line chart.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings? Display { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings Display { get; set; }
+#endif
+        /// <summary>The distinctId property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DistinctId { get; set; }
+#nullable restore
+#else
+        public string DistinctId { get; set; }
+#endif
+        /// <summary>The distinct_ids property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? DistinctIds { get; set; }
+#nullable restore
+#else
+        public List<string> DistinctIds { get; set; }
+#endif
+        /// <summary>The doPathCleaning property</summary>
+        public bool? DoPathCleaning { get; set; }
+        /// <summary>Draft conversion goal that can be set in the UI without saving</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal? DraftConversionGoal { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal DraftConversionGoal { get; set; }
+#endif
+        /// <summary>Drill-down hierarchy level: channel, source, or campaign (default)</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevel? DrillDownLevel { get; set; }
+        /// <summary>The embedding property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<double?>? Embedding { get; set; }
+#nullable restore
+#else
+        public List<double?> Embedding { get; set; }
+#endif
+        /// <summary>The embeddingVersion property</summary>
+        public double? EmbeddingVersion { get; set; }
+        /// <summary>Filter to specific endpoints by name</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EndpointNames { get; set; }
+#nullable restore
+#else
+        public List<string> EndpointNames { get; set; }
+#endif
+        /// <summary>End position of the editor word</summary>
+        public int? EndPosition { get; set; }
+        /// <summary>When set, only events with this HTTP status match; when unset, only events without a status match.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ErrorStatus { get; set; }
+#nullable restore
+#else
+        public string ErrorStatus { get; set; }
+#endif
+        /// <summary>Raw $mcp_error_type bucket; &quot;unknown&quot; selects errored events without an error type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ErrorType { get; set; }
+#nullable restore
+#else
+        public string ErrorType { get; set; }
+#endif
+        /// <summary>The event or `null` for all events.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Event { get; set; }
+#nullable restore
+#else
+        public string Event { get; set; }
+#endif
+        /// <summary>Where a filter that is evaluated against events must match. &apos;session&apos; (default) matches an event anywhere in the session, including before the recording started or after it ended. &apos;recording&apos; only matches events from one minute before the recording starts until one minute after it ends. This applies to every filter the events table answers: events, actions, event properties, and, when the project resolves them on events, person, group, and cohort properties.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScope? EventMatchScope { get; set; }
+        /// <summary>Event property filters - filters sessions that contain events matching these properties</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem>? EventProperties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem> EventProperties { get; set; }
+#endif
+        /// <summary>Filter to events matching any of these event names</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Events { get; set; }
+#nullable restore
+#else
+        public List<string> Events { get; set; }
+#endif
+        /// <summary>Omit the per-log `attributes` and `resource_attributes` maps from results to keep payloads compact</summary>
+        public bool? ExcludeAttributes { get; set; }
+        /// <summary>Drop filters targeting the breakdown key itself (including `serviceNames` for a `service_name` breakdown) so a facet&apos;s value list stays complete while one of its values is selected.</summary>
+        public bool? ExcludeBreakdownFilter { get; set; }
+        /// <summary>Drop direct sessions from the touchpoint set before weights are computed, so the remaining touchpoints renormalize to full credit rather than losing direct&apos;s share.</summary>
+        public bool? ExcludeDirectTraffic { get; set; }
+        /// <summary>Drop touchpoints whose current breakdown value is empty or unknown — the &quot;(none)&quot; row — before weights are computed, so the remaining touchpoints renormalize to full credit.</summary>
+        public bool? ExcludeUnattributed { get; set; }
+        /// <summary>Compile and run this query against the hosted Trino target.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget? ExecutionTarget { get; set; }
+        /// <summary>Only sessions of persons exposed to this experiment, each ending at or after the person&apos;s first exposure as the experiment&apos;s exposure criteria count it. Resolved server-side from the experiment, so it links sessions even when the exposure events themselves carry no session id (e.g. server-side SDKs). Composes with the query&apos;s date range like any other filter, so set date_from to the experiment&apos;s start (or earlier) to cover the full run: the default window only reaches back a few days.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter? ExperimentExposure { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter ExperimentExposure { get; set; }
+#endif
+        /// <summary>The explain property</summary>
+        public bool? Explain { get; set; }
+        /// <summary>Type-ahead filter over the breakdown field&apos;s own values (case-insensitive substring match). Lets a facet&apos;s value search reach past the row limit.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FacetSearch { get; set; }
+#nullable restore
+#else
+        public string FacetSearch { get; set; }
+#endif
+        /// <summary>The filter_test_accounts property</summary>
+        public bool? Filter_test_accounts { get; set; }
+        /// <summary>Optional HogQL boolean expression AND-ed into the WHERE clause. Used by the overview tile click-to-filter affordance.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FilterExpression { get; set; }
+#nullable restore
+#else
+        public string FilterExpression { get; set; }
+#endif
+        /// <summary>The filterGroup property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter? FilterGroup { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter FilterGroup { get; set; }
+#endif
+        /// <summary>Nonempty property-filter groups are ORed together; filters within each group use AND. Global filters still apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? FilterGroups { get; set; }
+#nullable restore
+#else
+        public UntypedNode FilterGroups { get; set; }
+#endif
+        /// <summary>Extra filters applied to query via {filters} or the column-bound {filters(expr AS key, ...)} placeholder</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters? Filters { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters Filters { get; set; }
+#endif
+        /// <summary>The filterSupportTraces property</summary>
+        public bool? FilterSupportTraces { get; set; }
+        /// <summary>Filter test accounts</summary>
+        public bool? FilterTestAccounts { get; set; }
+        /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeFixedPropertiesItem>? FixedProperties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeFixedPropertiesItem> FixedProperties { get; set; }
+#endif
+        /// <summary>Return the matching spans themselves, one row per span (root and child), instead of the whole-trace grouping. Streams the matches under `ORDER BY … LIMIT` rather than grouping every matching span by trace, so a filter on a hot child attribute (e.g. `code.filepath`) stays bounded. Distinct from `rootSpans`, which scopes whole-trace selection. The single-trace waterfall never sets this.</summary>
+        public bool? FlatSpans { get; set; }
+        /// <summary>Arithmetic over clause aliases (e.g. &quot;a / b&quot;); when set, only the formula series are returned</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Formula { get; set; }
+#nullable restore
+#else
+        public string Formula { get; set; }
+#endif
+        /// <summary>Extra globals for the query</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty? Globals { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty Globals { get; set; }
+#endif
+        /// <summary>Group key. Required with group_type_index for group queries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Group_key { get; set; }
+#nullable restore
+#else
+        public string Group_key { get; set; }
+#endif
+        /// <summary>The group_type_index property</summary>
+        public int? Group_type_index { get; set; }
+        /// <summary>The groupBy property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionGroupBy?>? GroupBy { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionGroupBy?> GroupBy { get; set; }
+#endif
+        /// <summary>The groupKey property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GroupKey { get; set; }
+#nullable restore
+#else
+        public string GroupKey { get; set; }
+#endif
+        /// <summary>The groupTypeIndex property</summary>
+        public int? GroupTypeIndex { get; set; }
+        /// <summary>The having_predicates property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesItem>? HavingPredicates { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesItem> HavingPredicates { get; set; }
+#endif
+        /// <summary>Exclude recordings already viewed by the current user (&apos;current-user&apos;), by any team member (&apos;any-user&apos;), or none (default). Applied server-side so pagination and the result cursor operate on the filtered set.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordings? HideViewedRecordings { get; set; }
+        /// <summary>The id property</summary>
+        public int? Id { get; set; }
+        /// <summary>Return individual reported models, excluding Unknown, instead of the top-six grouping.</summary>
+        public bool? IncludeAllModels { get; set; }
+        /// <summary>The includeAvgTimeOnPage property</summary>
+        public bool? IncludeAvgTimeOnPage { get; set; }
+        /// <summary>The includeBounceRate property</summary>
+        public bool? IncludeBounceRate { get; set; }
+        /// <summary>Include churned accounts. Churned accounts are hidden by default.</summary>
+        public bool? IncludeChurned { get; set; }
+        /// <summary>The includeCrawlers property</summary>
+        public bool? IncludeCrawlers { get; set; }
+        /// <summary>The includeHost property</summary>
+        public bool? IncludeHost { get; set; }
+        /// <summary>Include ignored accounts. Ignored accounts are hidden by default.</summary>
+        public bool? IncludeIgnored { get; set; }
+        /// <summary>Also aggregate sessions and people per operation. Off by default: it reads the attribute maps.</summary>
+        public bool? IncludeImpact { get; set; }
+        /// <summary>Infer output column names and types without executing the query. Adds a type-resolution pass, so callers must opt in.</summary>
+        public bool? IncludeOutputTypes { get; set; }
+        /// <summary>The includePostHogConversions property</summary>
+        public bool? IncludePostHogConversions { get; set; }
+        /// <summary>The includeRecordings property</summary>
+        public bool? IncludeRecordings { get; set; }
+        /// <summary>The includeRevenue property</summary>
+        public bool? IncludeRevenue { get; set; }
+        /// <summary>The includeScrollDepth property</summary>
+        public bool? IncludeScrollDepth { get; set; }
+        /// <summary>Include stored sentiment evaluation results for returned traces and direct generation events.</summary>
+        public bool? IncludeSentiment { get; set; }
+        /// <summary>The includeTrafficMetrics property</summary>
+        public bool? IncludeTrafficMetrics { get; set; }
+        /// <summary>Analyze how each property filter reads its data. Costs a second type-resolution pass, so only editors that render the result should ask for it.</summary>
+        public bool? IndexUsage { get; set; }
+        /// <summary>Filter by integration type</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter? IntegrationFilter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter IntegrationFilter { get; set; }
+#endif
+        /// <summary>The intentKey property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IntentKey { get; set; }
+#nullable restore
+#else
+        public string IntentKey { get; set; }
+#endif
+        /// <summary>An interval selected out of available intervals in source query.</summary>
+        public int? Interval { get; set; }
+        /// <summary>Filter to a specific error tracking issue by ID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssueId { get; set; }
+#nullable restore
+#else
+        public string IssueId { get; set; }
+#endif
+        /// <summary>Opaque journey identifier returned by the journeys list, used to load one journey&apos;s timeline.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? JourneyKey { get; set; }
+#nullable restore
+#else
+        public string JourneyKey { get; set; }
+#endif
+        /// <summary>The keyword property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Keyword { get; set; }
+#nullable restore
+#else
+        public string Keyword { get; set; }
+#endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryKind? Kind { get; set; }
-        /// <summary>Page size; defaults to 100, capped at 500.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
+        /// <summary>Language to validate</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage? Language { get; set; }
+        /// <summary>The limit property</summary>
         public int? Limit { get; set; }
+        /// <summary>The liveLogsCheckpoint property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LiveLogsCheckpoint { get; set; }
+#nullable restore
+#else
+        public string LiveLogsCheckpoint { get; set; }
+#endif
+        /// <summary>The llmsTxtUrl property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LlmsTxtUrl { get; set; }
+#nullable restore
+#else
+        public string LlmsTxtUrl { get; set; }
+#endif
+        /// <summary>How many days before each conversion a touchpoint can earn credit, overriding the team&apos;s configured attribution window for this query only.</summary>
+        public int? LookbackWindowDays { get; set; }
+        /// <summary>Filter by materialization type</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType? MaterializationType { get; set; }
+        /// <summary>The math property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMath? Math { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMath Math { get; set; }
+#endif
+        /// <summary>The math_group_type_index property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMathGroupTypeIndex? MathGroupTypeIndex { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMathGroupTypeIndex MathGroupTypeIndex { get; set; }
+#endif
+        /// <summary>The math_hogql property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MathHogql { get; set; }
+#nullable restore
+#else
+        public string MathHogql { get; set; }
+#endif
+        /// <summary>The math_multiplier property</summary>
+        public double? MathMultiplier { get; set; }
+        /// <summary>The math_property property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MathProperty { get; set; }
+#nullable restore
+#else
+        public string MathProperty { get; set; }
+#endif
+        /// <summary>The math_property_revenue_currency property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? MathPropertyRevenueCurrency { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig MathPropertyRevenueCurrency { get; set; }
+#endif
+        /// <summary>The math_property_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MathPropertyType { get; set; }
+#nullable restore
+#else
+        public string MathPropertyType { get; set; }
+#endif
+        /// <summary>The maxDistance property</summary>
+        public double? MaxDistance { get; set; }
+        /// <summary>How many releases to return on their own; the rest fold into `other`.</summary>
+        public int? MaxReleases { get; set; }
+        /// <summary>Only paths with at most this many touchpoints, counted before truncation.</summary>
+        public int? MaxTouchpoints { get; set; }
+        /// <summary>The maxValuesPerProperty property</summary>
+        public int? MaxValuesPerProperty { get; set; }
+        /// <summary>The metric property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric? Metric { get; set; }
+        /// <summary>The metricName property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MetricName { get; set; }
+#nullable restore
+#else
+        public string MetricName { get; set; }
+#endif
+        /// <summary>Aggregation expressions evaluated against the filtered account set; one value per metric is returned in `metricsResults`. When `metrics` is set without a `select`, the runner skips the regular row fetch and returns only the aggregated values.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Metrics { get; set; }
+#nullable restore
+#else
+        public List<string> Metrics { get; set; }
+#endif
+        /// <summary>Pins the OTel type, as on a MetricsQuery clause: one name can exist as more than one type, and the heatmap must grid only the distribution series.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType? MetricType { get; set; }
+        /// <summary>Only paths with at least this many touchpoints, counted before truncation.</summary>
+        public int? MinTouchpoints { get; set; }
+        /// <summary>The modelName property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName? ModelName { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,23 +708,329 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
-        /// <summary>Reports to skip before returning results. Combine with limit to page through them; the response&apos;s has_next flag indicates whether more remain.</summary>
+        /// <summary>The name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
+        /// <summary>Whether to count tools called immediately before or after the target tool.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.NeighborDirection? NeighborDirection { get; set; }
+        /// <summary>How far back to look for a prior session. Defaults to 90, clamped to 365.</summary>
+        public int? NewUserLookbackDays { get; set; }
+        /// <summary>The normalizePageUrls property</summary>
+        public bool? NormalizePageUrls { get; set; }
+        /// <summary>The offset property</summary>
         public int? Offset { get; set; }
+        /// <summary>Only count persons with no session before the range, so a channel&apos;s cohorts are not inflated by users it acquired long ago. Defaults to true.</summary>
+        public bool? OnlyNewUsers { get; set; }
+        /// <summary>The operand property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator? Operand { get; set; }
+        /// <summary>The optionalInFunnel property</summary>
+        public bool? OptionalInFunnel { get; set; }
+        /// <summary>The order property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder? Order { get; set; }
+        /// <summary>Replay originally had all ordering as descending by specifying the field name, this runs counter to Django behavior where the field name specifies ascending sorting (e.g. the_field_name) and -the_field_name would indicate descending order to avoid invalidating or migrating all existing filters we keep DESC as the default or allow specification of an explicit order direction here</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirection? Order_direction { get; set; }
+        /// <summary>Columns to order by</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? OrderBy { get; set; }
+#nullable restore
+#else
+        public List<string> OrderBy { get; set; }
+#endif
+        /// <summary>Sort direction.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2? OrderDirection { get; set; }
+        /// <summary>The page property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Page { get; set; }
+#nullable restore
+#else
+        public string Page { get; set; }
+#endif
+        /// <summary>Pending fingerprint issue state updates UNIONed into the fingerprint issue state subquery. The backend caps the list at 50 entries; extras are dropped silently.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate>? PendingFingerprintIssueStateUpdates { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate> PendingFingerprintIssueStateUpdates { get; set; }
+#endif
+        /// <summary>The percentile property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile? Percentile { get; set; }
+        /// <summary>Person ID to fetch metrics for. Mutually exclusive with group parameters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Person_id { get; set; }
+#nullable restore
+#else
+        public string Person_id { get; set; }
+#endif
+        /// <summary>Show events for a given person</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PersonId { get; set; }
+#nullable restore
+#else
+        public string PersonId { get; set; }
+#endif
+        /// <summary>The person_uuid property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PersonUuid { get; set; }
+#nullable restore
+#else
+        public string PersonUuid { get; set; }
+#endif
+        /// <summary>Prefetch up to this many spans per trace and include them in results</summary>
+        public int? PrefetchSpans { get; set; }
+        /// <summary>PromQL expression, run as a range query. Used when `language` is `promql`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Promql { get; set; }
+#nullable restore
+#else
+        public string Promql { get; set; }
+#endif
+        /// <summary>Properties configurable in the interface</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodePropertiesItem>? Properties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodePropertiesItem> Properties { get; set; }
+#endif
+        /// <summary>The query property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Query { get; set; }
+#nullable restore
+#else
+        public string Query { get; set; }
+#endif
+        /// <summary>The queryType property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryType? QueryType { get; set; }
+        /// <summary>Use random ordering instead of timestamp DESC. Useful for representative sampling to avoid recency bias.</summary>
+        public bool? RandomOrder { get; set; }
+        /// <summary>Restrict results to recordings above the replay relevance threshold.</summary>
+        public bool? RecommendedOnly { get; set; }
+        /// <summary>The rendering property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Rendering { get; set; }
+#nullable restore
+#else
+        public string Rendering { get; set; }
+#endif
+        /// <summary>Number of time buckets across the date range.</summary>
+        public int? Resolution { get; set; }
+        /// <summary>The resourceFingerprint property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResourceFingerprint { get; set; }
+#nullable restore
+#else
+        public string ResourceFingerprint { get; set; }
+#endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty Response { get; set; }
 #endif
-        /// <summary>Case-insensitive substring match over the report text.</summary>
+        /// <summary>Period for both the cohort rows and the return columns. Defaults to week.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval? RetentionInterval { get; set; }
+        /// <summary>The rootSpans property</summary>
+        public bool? RootSpans { get; set; }
+        /// <summary>The sampling property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling? Sampling { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling Sampling { get; set; }
+#endif
+        /// <summary>Sampling rate</summary>
+        public double? SamplingFactor { get; set; }
+        /// <summary>The search property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Search { get; set; }
 #nullable restore
 #else
         public string Search { get; set; }
+#endif
+        /// <summary>Free-text search across exception type, message, and stack frames.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SearchQuery { get; set; }
+#nullable restore
+#else
+        public string SearchQuery { get; set; }
+#endif
+        /// <summary>The searchTerm property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SearchTerm { get; set; }
+#nullable restore
+#else
+        public string SearchTerm { get; set; }
+#endif
+        /// <summary>When true, the search query also matches attribute values (not just keys).</summary>
+        public bool? SearchValues { get; set; }
+        /// <summary>Return a limited set of data. Required.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Select { get; set; }
+#nullable restore
+#else
+        public List<string> Select { get; set; }
+#endif
+        /// <summary>Run the selected connection query directly without translating it through HogQL first</summary>
+        public bool? SendRawQuery { get; set; }
+        /// <summary>The series property</summary>
+        public int? Series { get; set; }
+        /// <summary>Service name that scopes the returned tree. Applied to the spans CTE so the call-tree only contains spans from this service, even when matched traces span multiple services.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceName { get; set; }
+#nullable restore
+#else
+        public string ServiceName { get; set; }
+#endif
+        /// <summary>The serviceNames property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ServiceNames { get; set; }
+#nullable restore
+#else
+        public List<string> ServiceNames { get; set; }
+#endif
+        /// <summary>Show logs for a given session ID</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionId { get; set; }
+#nullable restore
+#else
+        public string SessionId { get; set; }
+#endif
+        /// <summary>The session_ids property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SessionIds { get; set; }
+#nullable restore
+#else
+        public List<string> SessionIds { get; set; }
+#endif
+        /// <summary>If provided, this recording will be fetched and prepended to the results, even if it doesn&apos;t match the filters</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionRecordingId { get; set; }
+#nullable restore
+#else
+        public string SessionRecordingId { get; set; }
+#endif
+        /// <summary>The severityLevels property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?>? SeverityLevels { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?> SeverityLevels { get; set; }
+#endif
+        /// <summary>The showColumnConfigurator property</summary>
+        public bool? ShowColumnConfigurator { get; set; }
+        /// <summary>The sort property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort? Sort { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort Sort { get; set; }
+#endif
+        /// <summary>Aggregate column used to order tools. Defaults to total_calls.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn? SortColumn { get; set; }
+        /// <summary>Sort direction. Defaults to DESC.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection? SortDirection { get; set; }
+        /// <summary>source for querying events for insights</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery? Source { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery Source { get; set; }
+#endif
+        /// <summary>Query within which &quot;expr&quot; and &quot;template&quot; are validated. Defaults to &quot;select * from events&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery? SourceQuery { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery SourceQuery { get; set; }
+#endif
+        /// <summary>The sources property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource>? Sources { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource> Sources { get; set; }
+#endif
+        /// <summary>Span name to scope the matched trace set. Required because the `(trace_id, parent_span_id)` self-join is prohibitive without bounding the matched traces — at high name cardinality the query becomes unsafe to run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SpanName { get; set; }
+#nullable restore
+#else
+        public string SpanName { get; set; }
+#endif
+        /// <summary>Field to break down sparkline data by (used only by sparkline endpoint)</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy? SparklineBreakdownBy { get; set; }
+        /// <summary>Metric used to rank breakdown values before the tail is collapsed into a single &quot;other&quot; bucket, so the returned row count stays bounded (used only by sparkline endpoint). Defaults to ranking by log count.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankBy? SparklineRankBy { get; set; }
+        /// <summary>HogQL SELECT over the posthog.metric* tables. Used when `language` is `sql`. It must return a `time` and a `value` column; every other column is a series label. `{date_from}`, `{date_to}`, `{interval}` and `{interval_seconds}` are filled in from the date range and interval.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Sql { get; set; }
+#nullable restore
+#else
+        public string Sql { get; set; }
+#endif
+        /// <summary>Start position of the editor word</summary>
+        public int? StartPosition { get; set; }
+        /// <summary>The status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Status { get; set; }
+#nullable restore
+#else
+        public string Status { get; set; }
+#endif
+        /// <summary>The statusCodes property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<int?>? StatusCodes { get; set; }
+#nullable restore
+#else
+        public List<int?> StatusCodes { get; set; }
+#endif
+        /// <summary>The stripQueryParams property</summary>
+        public bool? StripQueryParams { get; set; }
+        /// <summary>Return session-based 7/30-day metrics instead of the cohort matrix. Defaults to false.</summary>
+        public bool? Summary { get; set; }
+        /// <summary>The tagNames property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? TagNames { get; set; }
+#nullable restore
+#else
+        public List<string> TagNames { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,8 +1040,106 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
+        /// <summary>The thresholds property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<double?>? Thresholds { get; set; }
+#nullable restore
+#else
+        public List<double?> Thresholds { get; set; }
+#endif
+        /// <summary>Timestamp of the current trace to find neighbors for</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Timestamp { get; set; }
+#nullable restore
+#else
+        public string Timestamp { get; set; }
+#endif
+        /// <summary>When set, scope to a single effective tool&apos;s new-SDK calls (the per-tool &quot;By harness&quot; table).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ToolName { get; set; }
+#nullable restore
+#else
+        public string ToolName { get; set; }
+#endif
+        /// <summary>Return columns, counting period 0. Defaults to 8, clamped to 40.</summary>
+        public int? TotalIntervals { get; set; }
+        /// <summary>The traceId property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TraceId { get; set; }
+#nullable restore
+#else
+        public string TraceId { get; set; }
+#endif
+        /// <summary>UCUM unit for the y-axis bounds, e.g. &quot;s&quot;, &quot;ms&quot;. Presentation only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Unit { get; set; }
+#nullable restore
+#else
+        public string Unit { get; set; }
+#endif
+        /// <summary>The useQueryV2 property</summary>
+        public bool? UseQueryV2 { get; set; }
+        /// <summary>The useQueryV3 property</summary>
+        public bool? UseQueryV3 { get; set; }
+        /// <summary>The user_modified_filters property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty? UserModifiedFilters { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty UserModifiedFilters { get; set; }
+#endif
+        /// <summary>The useSessionsTable property</summary>
+        public bool? UseSessionsTable { get; set; }
+        /// <summary>Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team&apos;s organization for the gate to pass. *</summary>
+        public bool? UseWebAnalyticsPrecompute { get; set; }
+        /// <summary>Constant values that can be referenced with the {placeholder} syntax in the query</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty? Values { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty Values { get; set; }
+#endif
+        /// <summary>Variables to be substituted into the query</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty? Variables { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty Variables { get; set; }
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
+        /// <summary>The volumeResolution property</summary>
+        public int? VolumeResolution { get; set; }
+        /// <summary>HogQL filters to apply on returned data</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Where { get; set; }
+#nullable restore
+#else
+        public List<string> Where { get; set; }
+#endif
+        /// <summary>The withAggregations property</summary>
+        public bool? WithAggregations { get; set; }
+        /// <summary>The withFirstEvent property</summary>
+        public bool? WithFirstEvent { get; set; }
+        /// <summary>The withLastEvent property</summary>
+        public bool? WithLastEvent { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery"/> and sets the default values.
+        /// </summary>
+        public McpMissingCapabilitiesQuery()
+        {
+            AdditionalData = new Dictionary<string, object>();
+            DateFrom = "-3d";
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -78,15 +1158,223 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "actionId", n => { ActionId = n.GetIntValue(); } },
+                { "actionSteps", n => { ActionSteps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStep>(global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStep.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActionsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActionsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "after", n => { After = n.GetStringValue(); } },
+                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
+                { "allRolesUnassigned", n => { AllRolesUnassigned = n.GetBoolValue(); } },
+                { "allowMultipleConversionsPerVisitor", n => { AllowMultipleConversionsPerVisitor = n.GetBoolValue(); } },
+                { "appNamespace", n => { AppNamespace = n.GetStringValue(); } },
+                { "assignedOnly", n => { AssignedOnly = n.GetBoolValue(); } },
+                { "assignedToUserIds", n => { AssignedToUserIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee.CreateFromDiscriminatorValue); } },
+                { "attributeKey", n => { AttributeKey = n.GetStringValue(); } },
+                { "attributeKeys", n => { AttributeKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "attributeType", n => { AttributeType = n.GetStringValue(); } },
+                { "before", n => { Before = n.GetStringValue(); } },
+                { "breakdown", n => { Breakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown.CreateFromDiscriminatorValue); } },
+                { "breakdownBy", n => { BreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown>(); } },
+                { "breakdownKey", n => { BreakdownKey = n.GetStringValue(); } },
+                { "breakdownLimit", n => { BreakdownLimit = n.GetIntValue(); } },
+                { "breakdownProperties", n => { BreakdownProperties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "breakdownType", n => { BreakdownType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanBreakdownType>(); } },
+                { "calendarHeatmapFilter", n => { CalendarHeatmapFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter.CreateFromDiscriminatorValue); } },
+                { "categories", n => { Categories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "clauses", n => { Clauses = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryClause>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryClause.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "code", n => { Code = n.GetStringValue(); } },
+                { "cohort", n => { Cohort = n.GetIntValue(); } },
+                { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "comment_text", n => { CommentText = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.CreateFromDiscriminatorValue); } },
+                { "compare", n => { Compare = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>(); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
+                { "comparePreviousPeriod", n => { ComparePreviousPeriod = n.GetBoolValue(); } },
+                { "connectionId", n => { ConnectionId = n.GetStringValue(); } },
+                { "console_log_filters", n => { ConsoleLogFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "contentGrouping", n => { ContentGrouping = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGrouping>(); } },
+                { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryConversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryConversionGoal.CreateFromDiscriminatorValue); } },
+                { "conversionGoalId", n => { ConversionGoalId = n.GetStringValue(); } },
+                { "customColumns", n => { CustomColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "custom_name", n => { CustomName = n.GetStringValue(); } },
+                { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
+                { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryKind>(); } },
+                { "date_to", n => { DateTo = n.GetStringValue(); } },
+                { "day", n => { Day = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay.CreateFromDiscriminatorValue); } },
+                { "debug", n => { Debug = n.GetBoolValue(); } },
+                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings.CreateFromDiscriminatorValue); } },
+                { "distinctId", n => { DistinctId = n.GetStringValue(); } },
+                { "distinct_ids", n => { DistinctIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "doPathCleaning", n => { DoPathCleaning = n.GetBoolValue(); } },
+                { "draftConversionGoal", n => { DraftConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal.CreateFromDiscriminatorValue); } },
+                { "drillDownLevel", n => { DrillDownLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevel>(); } },
+                { "embedding", n => { Embedding = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "embeddingVersion", n => { EmbeddingVersion = n.GetDoubleValue(); } },
+                { "endPosition", n => { EndPosition = n.GetIntValue(); } },
+                { "endpointNames", n => { EndpointNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "errorStatus", n => { ErrorStatus = n.GetStringValue(); } },
+                { "errorType", n => { ErrorType = n.GetStringValue(); } },
+                { "event", n => { Event = n.GetStringValue(); } },
+                { "event_match_scope", n => { EventMatchScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScope>(); } },
+                { "eventProperties", n => { EventProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "excludeAttributes", n => { ExcludeAttributes = n.GetBoolValue(); } },
+                { "excludeBreakdownFilter", n => { ExcludeBreakdownFilter = n.GetBoolValue(); } },
+                { "excludeDirectTraffic", n => { ExcludeDirectTraffic = n.GetBoolValue(); } },
+                { "excludeUnattributed", n => { ExcludeUnattributed = n.GetBoolValue(); } },
+                { "executionTarget", n => { ExecutionTarget = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>(); } },
+                { "experiment_exposure", n => { ExperimentExposure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter.CreateFromDiscriminatorValue); } },
+                { "explain", n => { Explain = n.GetBoolValue(); } },
+                { "facetSearch", n => { FacetSearch = n.GetStringValue(); } },
+                { "filterExpression", n => { FilterExpression = n.GetStringValue(); } },
+                { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter.CreateFromDiscriminatorValue); } },
+                { "filterGroups", n => { FilterGroups = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "filterSupportTraces", n => { FilterSupportTraces = n.GetBoolValue(); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters.CreateFromDiscriminatorValue); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "flatSpans", n => { FlatSpans = n.GetBoolValue(); } },
+                { "formula", n => { Formula = n.GetStringValue(); } },
+                { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty.CreateFromDiscriminatorValue); } },
+                { "groupBy", n => { GroupBy = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionGroupBy>()?.AsList(); } },
+                { "groupKey", n => { GroupKey = n.GetStringValue(); } },
+                { "groupTypeIndex", n => { GroupTypeIndex = n.GetIntValue(); } },
+                { "having_predicates", n => { HavingPredicates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesItem>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "hide_viewed_recordings", n => { HideViewedRecordings = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordings>(); } },
+                { "id", n => { Id = n.GetIntValue(); } },
+                { "includeAllModels", n => { IncludeAllModels = n.GetBoolValue(); } },
+                { "includeAvgTimeOnPage", n => { IncludeAvgTimeOnPage = n.GetBoolValue(); } },
+                { "includeBounceRate", n => { IncludeBounceRate = n.GetBoolValue(); } },
+                { "includeChurned", n => { IncludeChurned = n.GetBoolValue(); } },
+                { "includeCrawlers", n => { IncludeCrawlers = n.GetBoolValue(); } },
+                { "includeHost", n => { IncludeHost = n.GetBoolValue(); } },
+                { "includeIgnored", n => { IncludeIgnored = n.GetBoolValue(); } },
+                { "includeImpact", n => { IncludeImpact = n.GetBoolValue(); } },
+                { "includeOutputTypes", n => { IncludeOutputTypes = n.GetBoolValue(); } },
+                { "includePostHogConversions", n => { IncludePostHogConversions = n.GetBoolValue(); } },
+                { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
+                { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
+                { "includeScrollDepth", n => { IncludeScrollDepth = n.GetBoolValue(); } },
+                { "includeSentiment", n => { IncludeSentiment = n.GetBoolValue(); } },
+                { "includeTrafficMetrics", n => { IncludeTrafficMetrics = n.GetBoolValue(); } },
+                { "indexUsage", n => { IndexUsage = n.GetBoolValue(); } },
+                { "integrationFilter", n => { IntegrationFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter.CreateFromDiscriminatorValue); } },
+                { "intentKey", n => { IntentKey = n.GetStringValue(); } },
+                { "interval", n => { Interval = n.GetIntValue(); } },
+                { "issueId", n => { IssueId = n.GetStringValue(); } },
+                { "journeyKey", n => { JourneyKey = n.GetStringValue(); } },
+                { "keyword", n => { Keyword = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "language", n => { Language = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
+                { "liveLogsCheckpoint", n => { LiveLogsCheckpoint = n.GetStringValue(); } },
+                { "llmsTxtUrl", n => { LlmsTxtUrl = n.GetStringValue(); } },
+                { "lookbackWindowDays", n => { LookbackWindowDays = n.GetIntValue(); } },
+                { "materializationType", n => { MaterializationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType>(); } },
+                { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMath>(global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMath.CreateFromDiscriminatorValue); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMathGroupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMathGroupTypeIndex.CreateFromDiscriminatorValue); } },
+                { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
+                { "math_multiplier", n => { MathMultiplier = n.GetDoubleValue(); } },
+                { "math_property", n => { MathProperty = n.GetStringValue(); } },
+                { "math_property_revenue_currency", n => { MathPropertyRevenueCurrency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig.CreateFromDiscriminatorValue); } },
+                { "math_property_type", n => { MathPropertyType = n.GetStringValue(); } },
+                { "maxDistance", n => { MaxDistance = n.GetDoubleValue(); } },
+                { "maxReleases", n => { MaxReleases = n.GetIntValue(); } },
+                { "maxTouchpoints", n => { MaxTouchpoints = n.GetIntValue(); } },
+                { "maxValuesPerProperty", n => { MaxValuesPerProperty = n.GetIntValue(); } },
+                { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric>(); } },
+                { "metricName", n => { MetricName = n.GetStringValue(); } },
+                { "metricType", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType>(); } },
+                { "metrics", n => { Metrics = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "minTouchpoints", n => { MinTouchpoints = n.GetIntValue(); } },
+                { "modelName", n => { ModelName = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "neighborDirection", n => { NeighborDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NeighborDirection>(); } },
+                { "newUserLookbackDays", n => { NewUserLookbackDays = n.GetIntValue(); } },
+                { "normalizePageUrls", n => { NormalizePageUrls = n.GetBoolValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryResponse.CreateFromDiscriminatorValue); } },
+                { "onlyNewUsers", n => { OnlyNewUsers = n.GetBoolValue(); } },
+                { "operand", n => { Operand = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>(); } },
+                { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
+                { "order", n => { Order = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder>(); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>(); } },
+                { "page", n => { Page = n.GetStringValue(); } },
+                { "pendingFingerprintIssueStateUpdates", n => { PendingFingerprintIssueStateUpdates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "percentile", n => { Percentile = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile>(); } },
+                { "personId", n => { PersonId = n.GetStringValue(); } },
+                { "person_uuid", n => { PersonUuid = n.GetStringValue(); } },
+                { "prefetchSpans", n => { PrefetchSpans = n.GetIntValue(); } },
+                { "promql", n => { Promql = n.GetStringValue(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodePropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.EventsNodePropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "query", n => { Query = n.GetStringValue(); } },
+                { "queryType", n => { QueryType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryType>(); } },
+                { "randomOrder", n => { RandomOrder = n.GetBoolValue(); } },
+                { "recommended_only", n => { RecommendedOnly = n.GetBoolValue(); } },
+                { "rendering", n => { Rendering = n.GetStringValue(); } },
+                { "resolution", n => { Resolution = n.GetIntValue(); } },
+                { "resourceFingerprint", n => { ResourceFingerprint = n.GetStringValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty.CreateFromDiscriminatorValue); } },
+                { "retentionInterval", n => { RetentionInterval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval>(); } },
+                { "rootSpans", n => { RootSpans = n.GetBoolValue(); } },
+                { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling.CreateFromDiscriminatorValue); } },
+                { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
                 { "search", n => { Search = n.GetStringValue(); } },
+                { "searchQuery", n => { SearchQuery = n.GetStringValue(); } },
+                { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
+                { "searchValues", n => { SearchValues = n.GetBoolValue(); } },
+                { "select", n => { Select = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "sendRawQuery", n => { SendRawQuery = n.GetBoolValue(); } },
+                { "series", n => { Series = n.GetIntValue(); } },
+                { "serviceName", n => { ServiceName = n.GetStringValue(); } },
+                { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "sessionId", n => { SessionId = n.GetStringValue(); } },
+                { "session_ids", n => { SessionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "session_recording_id", n => { SessionRecordingId = n.GetStringValue(); } },
+                { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>()?.AsList(); } },
+                { "showColumnConfigurator", n => { ShowColumnConfigurator = n.GetBoolValue(); } },
+                { "sort", n => { Sort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort.CreateFromDiscriminatorValue); } },
+                { "sortColumn", n => { SortColumn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn>(); } },
+                { "sortDirection", n => { SortDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection>(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery.CreateFromDiscriminatorValue); } },
+                { "sourceQuery", n => { SourceQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery>(global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery.CreateFromDiscriminatorValue); } },
+                { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "spanName", n => { SpanName = n.GetStringValue(); } },
+                { "sparklineBreakdownBy", n => { SparklineBreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy>(); } },
+                { "sparklineRankBy", n => { SparklineRankBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankBy>(); } },
+                { "sql", n => { Sql = n.GetStringValue(); } },
+                { "startPosition", n => { StartPosition = n.GetIntValue(); } },
+                { "status", n => { Status = n.GetStringValue(); } },
+                { "statusCodes", n => { StatusCodes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "stripQueryParams", n => { StripQueryParams = n.GetBoolValue(); } },
+                { "summary", n => { Summary = n.GetBoolValue(); } },
+                { "tagNames", n => { TagNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "thresholds", n => { Thresholds = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "timestamp", n => { Timestamp = n.GetStringValue(); } },
+                { "toolName", n => { ToolName = n.GetStringValue(); } },
+                { "totalIntervals", n => { TotalIntervals = n.GetIntValue(); } },
+                { "traceId", n => { TraceId = n.GetStringValue(); } },
+                { "unit", n => { Unit = n.GetStringValue(); } },
+                { "useQueryV2", n => { UseQueryV2 = n.GetBoolValue(); } },
+                { "useQueryV3", n => { UseQueryV3 = n.GetBoolValue(); } },
+                { "useSessionsTable", n => { UseSessionsTable = n.GetBoolValue(); } },
+                { "useWebAnalyticsPrecompute", n => { UseWebAnalyticsPrecompute = n.GetBoolValue(); } },
+                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty.CreateFromDiscriminatorValue); } },
+                { "values", n => { Values = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
+                { "volumeResolution", n => { VolumeResolution = n.GetIntValue(); } },
+                { "where", n => { Where = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "withAggregations", n => { WithAggregations = n.GetBoolValue(); } },
+                { "withFirstEvent", n => { WithFirstEvent = n.GetBoolValue(); } },
+                { "withLastEvent", n => { WithLastEvent = n.GetBoolValue(); } },
+                { "filter_test_accounts", n => { Filter_test_accounts = n.GetBoolValue(); } },
+                { "group_key", n => { Group_key = n.GetStringValue(); } },
+                { "group_type_index", n => { Group_type_index = n.GetIntValue(); } },
+                { "order_direction", n => { Order_direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirection>(); } },
+                { "person_id", n => { Person_id = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -96,15 +1384,224 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("actionId", ActionId);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActionsItemProperty>("actions", Actions);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStep>("actionSteps", ActionSteps);
+            writer.WriteStringValue("after", After);
+            writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
+            writer.WriteBoolValue("allowMultipleConversionsPerVisitor", AllowMultipleConversionsPerVisitor);
+            writer.WriteBoolValue("allRolesUnassigned", AllRolesUnassigned);
+            writer.WriteStringValue("appNamespace", AppNamespace);
+            writer.WriteBoolValue("assignedOnly", AssignedOnly);
+            writer.WriteCollectionOfPrimitiveValues<int?>("assignedToUserIds", AssignedToUserIds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee>("assignee", Assignee);
+            writer.WriteStringValue("attributeKey", AttributeKey);
+            writer.WriteCollectionOfPrimitiveValues<string>("attributeKeys", AttributeKeys);
+            writer.WriteStringValue("attributeType", AttributeType);
+            writer.WriteStringValue("before", Before);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryBreakdown>("breakdown", Breakdown);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionBreakdown>("breakdownBy", BreakdownBy);
+            writer.WriteStringValue("breakdownKey", BreakdownKey);
+            writer.WriteIntValue("breakdownLimit", BreakdownLimit);
+            writer.WriteCollectionOfPrimitiveValues<string>("breakdownProperties", BreakdownProperties);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanBreakdownType>("breakdownType", BreakdownType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter>("calendarHeatmapFilter", CalendarHeatmapFilter);
+            writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryClause>("clauses", Clauses);
+            writer.WriteStringValue("code", Code);
+            writer.WriteIntValue("cohort", Cohort);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem>("columns", Columns);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter>("comment_text", CommentText);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>("compare", Compare);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
+            writer.WriteBoolValue("comparePreviousPeriod", ComparePreviousPeriod);
+            writer.WriteStringValue("connectionId", ConnectionId);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter>("console_log_filters", ConsoleLogFilters);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentContentGrouping>("contentGrouping", ContentGrouping);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryConversionGoal>("conversionGoal", ConversionGoal);
+            writer.WriteStringValue("conversionGoalId", ConversionGoalId);
+            writer.WriteCollectionOfPrimitiveValues<string>("customColumns", CustomColumns);
+            writer.WriteStringValue("custom_name", CustomName);
+            writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
+            writer.WriteStringValue("date_from", DateFrom);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryKind>("kind", Kind);
+            writer.WriteStringValue("date_to", DateTo);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryDay>("day", Day);
+            writer.WriteBoolValue("debug", Debug);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings>("display", Display);
+            writer.WriteStringValue("distinctId", DistinctId);
+            writer.WriteCollectionOfPrimitiveValues<string>("distinct_ids", DistinctIds);
+            writer.WriteBoolValue("doPathCleaning", DoPathCleaning);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal>("draftConversionGoal", DraftConversionGoal);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevel>("drillDownLevel", DrillDownLevel);
+            writer.WriteCollectionOfPrimitiveValues<double?>("embedding", Embedding);
+            writer.WriteDoubleValue("embeddingVersion", EmbeddingVersion);
+            writer.WriteCollectionOfPrimitiveValues<string>("endpointNames", EndpointNames);
+            writer.WriteIntValue("endPosition", EndPosition);
+            writer.WriteStringValue("errorStatus", ErrorStatus);
+            writer.WriteStringValue("errorType", ErrorType);
+            writer.WriteStringValue("event", Event);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventMatchScope>("event_match_scope", EventMatchScope);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem>("eventProperties", EventProperties);
+            writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
+            writer.WriteBoolValue("excludeAttributes", ExcludeAttributes);
+            writer.WriteBoolValue("excludeBreakdownFilter", ExcludeBreakdownFilter);
+            writer.WriteBoolValue("excludeDirectTraffic", ExcludeDirectTraffic);
+            writer.WriteBoolValue("excludeUnattributed", ExcludeUnattributed);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>("executionTarget", ExecutionTarget);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>("experiment_exposure", ExperimentExposure);
+            writer.WriteBoolValue("explain", Explain);
+            writer.WriteStringValue("facetSearch", FacetSearch);
+            writer.WriteBoolValue("filter_test_accounts", Filter_test_accounts);
+            writer.WriteStringValue("filterExpression", FilterExpression);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>("filterGroup", FilterGroup);
+            writer.WriteObjectValue<UntypedNode>("filterGroups", FilterGroups);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>("filters", Filters);
+            writer.WriteBoolValue("filterSupportTraces", FilterSupportTraces);
+            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeFixedPropertiesItem>("fixedProperties", FixedProperties);
+            writer.WriteBoolValue("flatSpans", FlatSpans);
+            writer.WriteStringValue("formula", Formula);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty>("globals", Globals);
+            writer.WriteStringValue("group_key", Group_key);
+            writer.WriteIntValue("group_type_index", Group_type_index);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionGroupBy>("groupBy", GroupBy);
+            writer.WriteStringValue("groupKey", GroupKey);
+            writer.WriteIntValue("groupTypeIndex", GroupTypeIndex);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesItem>("having_predicates", HavingPredicates);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordings>("hide_viewed_recordings", HideViewedRecordings);
+            writer.WriteIntValue("id", Id);
+            writer.WriteBoolValue("includeAllModels", IncludeAllModels);
+            writer.WriteBoolValue("includeAvgTimeOnPage", IncludeAvgTimeOnPage);
+            writer.WriteBoolValue("includeBounceRate", IncludeBounceRate);
+            writer.WriteBoolValue("includeChurned", IncludeChurned);
+            writer.WriteBoolValue("includeCrawlers", IncludeCrawlers);
+            writer.WriteBoolValue("includeHost", IncludeHost);
+            writer.WriteBoolValue("includeIgnored", IncludeIgnored);
+            writer.WriteBoolValue("includeImpact", IncludeImpact);
+            writer.WriteBoolValue("includeOutputTypes", IncludeOutputTypes);
+            writer.WriteBoolValue("includePostHogConversions", IncludePostHogConversions);
+            writer.WriteBoolValue("includeRecordings", IncludeRecordings);
+            writer.WriteBoolValue("includeRevenue", IncludeRevenue);
+            writer.WriteBoolValue("includeScrollDepth", IncludeScrollDepth);
+            writer.WriteBoolValue("includeSentiment", IncludeSentiment);
+            writer.WriteBoolValue("includeTrafficMetrics", IncludeTrafficMetrics);
+            writer.WriteBoolValue("indexUsage", IndexUsage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>("integrationFilter", IntegrationFilter);
+            writer.WriteStringValue("intentKey", IntentKey);
+            writer.WriteIntValue("interval", Interval);
+            writer.WriteStringValue("issueId", IssueId);
+            writer.WriteStringValue("journeyKey", JourneyKey);
+            writer.WriteStringValue("keyword", Keyword);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage>("language", Language);
             writer.WriteIntValue("limit", Limit);
+            writer.WriteStringValue("liveLogsCheckpoint", LiveLogsCheckpoint);
+            writer.WriteStringValue("llmsTxtUrl", LlmsTxtUrl);
+            writer.WriteIntValue("lookbackWindowDays", LookbackWindowDays);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType>("materializationType", MaterializationType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMath>("math", Math);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeMathGroupTypeIndex>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteStringValue("math_hogql", MathHogql);
+            writer.WriteDoubleValue("math_multiplier", MathMultiplier);
+            writer.WriteStringValue("math_property", MathProperty);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>("math_property_revenue_currency", MathPropertyRevenueCurrency);
+            writer.WriteStringValue("math_property_type", MathPropertyType);
+            writer.WriteDoubleValue("maxDistance", MaxDistance);
+            writer.WriteIntValue("maxReleases", MaxReleases);
+            writer.WriteIntValue("maxTouchpoints", MaxTouchpoints);
+            writer.WriteIntValue("maxValuesPerProperty", MaxValuesPerProperty);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric>("metric", Metric);
+            writer.WriteStringValue("metricName", MetricName);
+            writer.WriteCollectionOfPrimitiveValues<string>("metrics", Metrics);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType>("metricType", MetricType);
+            writer.WriteIntValue("minTouchpoints", MinTouchpoints);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>("modelName", ModelName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteStringValue("name", Name);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NeighborDirection>("neighborDirection", NeighborDirection);
+            writer.WriteIntValue("newUserLookbackDays", NewUserLookbackDays);
+            writer.WriteBoolValue("normalizePageUrls", NormalizePageUrls);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQueryResponse>("response", Response);
+            writer.WriteBoolValue("onlyNewUsers", OnlyNewUsers);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>("operand", Operand);
+            writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder>("order", Order);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirection>("order_direction", Order_direction);
+            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>("orderDirection", OrderDirection);
+            writer.WriteStringValue("page", Page);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate>("pendingFingerprintIssueStateUpdates", PendingFingerprintIssueStateUpdates);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile>("percentile", Percentile);
+            writer.WriteStringValue("person_id", Person_id);
+            writer.WriteStringValue("personId", PersonId);
+            writer.WriteStringValue("person_uuid", PersonUuid);
+            writer.WriteIntValue("prefetchSpans", PrefetchSpans);
+            writer.WriteStringValue("promql", Promql);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodePropertiesItem>("properties", Properties);
+            writer.WriteStringValue("query", Query);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAgentAnalyticsQueryType>("queryType", QueryType);
+            writer.WriteBoolValue("randomOrder", RandomOrder);
+            writer.WriteBoolValue("recommended_only", RecommendedOnly);
+            writer.WriteStringValue("rendering", Rendering);
+            writer.WriteIntValue("resolution", Resolution);
+            writer.WriteStringValue("resourceFingerprint", ResourceFingerprint);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty>("response", Response);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionInterval>("retentionInterval", RetentionInterval);
+            writer.WriteBoolValue("rootSpans", RootSpans);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>("sampling", Sampling);
+            writer.WriteDoubleValue("samplingFactor", SamplingFactor);
             writer.WriteStringValue("search", Search);
+            writer.WriteStringValue("searchQuery", SearchQuery);
+            writer.WriteStringValue("searchTerm", SearchTerm);
+            writer.WriteBoolValue("searchValues", SearchValues);
+            writer.WriteCollectionOfPrimitiveValues<string>("select", Select);
+            writer.WriteBoolValue("sendRawQuery", SendRawQuery);
+            writer.WriteIntValue("series", Series);
+            writer.WriteStringValue("serviceName", ServiceName);
+            writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
+            writer.WriteStringValue("sessionId", SessionId);
+            writer.WriteCollectionOfPrimitiveValues<string>("session_ids", SessionIds);
+            writer.WriteStringValue("session_recording_id", SessionRecordingId);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>("severityLevels", SeverityLevels);
+            writer.WriteBoolValue("showColumnConfigurator", ShowColumnConfigurator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort>("sort", Sort);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn>("sortColumn", SortColumn);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection>("sortDirection", SortDirection);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery>("sourceQuery", SourceQuery);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource>("sources", Sources);
+            writer.WriteStringValue("spanName", SpanName);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy>("sparklineBreakdownBy", SparklineBreakdownBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineRankBy>("sparklineRankBy", SparklineRankBy);
+            writer.WriteStringValue("sql", Sql);
+            writer.WriteIntValue("startPosition", StartPosition);
+            writer.WriteStringValue("status", Status);
+            writer.WriteCollectionOfPrimitiveValues<int?>("statusCodes", StatusCodes);
+            writer.WriteBoolValue("stripQueryParams", StripQueryParams);
+            writer.WriteBoolValue("summary", Summary);
+            writer.WriteCollectionOfPrimitiveValues<string>("tagNames", TagNames);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteCollectionOfPrimitiveValues<double?>("thresholds", Thresholds);
+            writer.WriteStringValue("timestamp", Timestamp);
+            writer.WriteStringValue("toolName", ToolName);
+            writer.WriteIntValue("totalIntervals", TotalIntervals);
+            writer.WriteStringValue("traceId", TraceId);
+            writer.WriteStringValue("unit", Unit);
+            writer.WriteBoolValue("useQueryV2", UseQueryV2);
+            writer.WriteBoolValue("useQueryV3", UseQueryV3);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty>("user_modified_filters", UserModifiedFilters);
+            writer.WriteBoolValue("useSessionsTable", UseSessionsTable);
+            writer.WriteBoolValue("useWebAnalyticsPrecompute", UseWebAnalyticsPrecompute);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty>("values", Values);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty>("variables", Variables);
             writer.WriteDoubleValue("version", Version);
+            writer.WriteIntValue("volumeResolution", VolumeResolution);
+            writer.WriteCollectionOfPrimitiveValues<string>("where", Where);
+            writer.WriteBoolValue("withAggregations", WithAggregations);
+            writer.WriteBoolValue("withFirstEvent", WithFirstEvent);
+            writer.WriteBoolValue("withLastEvent", WithLastEvent);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

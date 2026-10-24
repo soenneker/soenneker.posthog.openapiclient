@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnumWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AffectedCohortRequestVerdict : IComposedTypeWrapper, IParsable
@@ -21,14 +21,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnumWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnumWrapper? ObservationVerdictEnumWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnumWrapper ObservationVerdictEnumWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnum"/></summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnum? ObservationVerdictEnum { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.AffectedCohortRequestVerdict();
-            if("ObservationVerdictEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnum observationVerdictEnumValue)
             {
-                result.ObservationVerdictEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnumWrapper();
+                result.ObservationVerdictEnum = observationVerdictEnumValue;
             }
             return result;
         }
@@ -54,10 +48,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
-            }
-            else if(ObservationVerdictEnumWrapper != null)
-            {
-                return ObservationVerdictEnumWrapper.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,9 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
             }
-            else if(ObservationVerdictEnumWrapper != null)
+            else if(ObservationVerdictEnum != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnumWrapper>(null, ObservationVerdictEnumWrapper);
+                writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVerdictEnum>(null, ObservationVerdictEnum);
             }
         }
     }

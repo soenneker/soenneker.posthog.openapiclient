@@ -7,15 +7,24 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// A shared metric&apos;s link to one experiment, as the experiment API returns it.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ExperimentToSavedMetric : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>The metric this experiment calculates for this shared metric: `query` with the per-experiment overrides from `metadata` applied (breakdowns, breakdown_limit, and funnel breakdown attribution). Results, fingerprints and queries for this metric use this definition, not `query`. Null when `query` is not an ExperimentMetric, such as a legacy shared metric (kind ExperimentTrendsQuery or ExperimentFunnelsQuery), which takes no overrides.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetric? EffectiveQuery { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetric EffectiveQuery { get; private set; }
+#endif
         /// <summary>The experiment property</summary>
         public int? Experiment { get; set; }
         /// <summary>The id property</summary>
@@ -23,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricMetadata? Metadata { get; set; }
+        public UntypedNode? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricMetadata Metadata { get; set; }
+        public UntypedNode Metadata { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,10 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricQuery? Query { get; private set; }
+        public UntypedNode? Query { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricQuery Query { get; private set; }
+        public UntypedNode Query { get; private set; }
 #endif
         /// <summary>The saved_metric property</summary>
         public int? SavedMetric { get; set; }
@@ -72,11 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "effective_query", n => { EffectiveQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetric.CreateFromDiscriminatorValue); } },
                 { "experiment", n => { Experiment = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "saved_metric", n => { SavedMetric = n.GetIntValue(); } },
             };
         }
@@ -88,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("experiment", Experiment);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetricMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<UntypedNode>("metadata", Metadata);
             writer.WriteIntValue("saved_metric", SavedMetric);
             writer.WriteAdditionalData(AdditionalData);
         }

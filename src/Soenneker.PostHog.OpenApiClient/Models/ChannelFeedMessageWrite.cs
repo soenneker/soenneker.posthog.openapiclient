@@ -17,21 +17,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional explicit timestamp (within 10 minutes of now), so a client can order a burst of announcements.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>Lifecycle event key.* `context_created` - context_created* `context_md_building` - context_md_building</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `context_created` - context_created* `context_md_building` - context_md_building</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent? Event { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent Event { get; set; }
-#endif
         /// <summary>Structured event data, e.g. {&quot;context_name&quot;: &quot;mobile&quot;}. At most 8 KB of JSON.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWritePayload? Payload { get; set; }
+        public UntypedNode? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWritePayload Payload { get; set; }
+        public UntypedNode Payload { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWrite"/> and sets the default values.
@@ -59,8 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "event", n => { Event = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent.CreateFromDiscriminatorValue); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWritePayload>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWritePayload.CreateFromDiscriminatorValue); } },
+                { "event", n => { Event = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent>(); } },
+                { "payload", n => { Payload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -71,8 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent>("event", Event);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWritePayload>("payload", Payload);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent>("event", Event);
+            writer.WriteObjectValue<UntypedNode>("payload", Payload);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

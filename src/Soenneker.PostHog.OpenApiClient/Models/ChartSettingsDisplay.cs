@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Color { get; set; }
 #endif
         /// <summary>The displayType property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DisplayTypeWrapper? DisplayType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DisplayTypeWrapper DisplayType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.DisplayType? DisplayType { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,13 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The trendLine property</summary>
         public bool? TrendLine { get; set; }
         /// <summary>The yAxisPosition property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisPositionWrapper? YAxisPosition { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisPositionWrapper YAxisPosition { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition? YAxisPosition { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -65,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "color", n => { Color = n.GetStringValue(); } },
-                { "displayType", n => { DisplayType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.DisplayTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "displayType", n => { DisplayType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayType>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "trendLine", n => { TrendLine = n.GetBoolValue(); } },
-                { "yAxisPosition", n => { YAxisPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisPositionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.YAxisPositionWrapper.CreateFromDiscriminatorValue); } },
+                { "yAxisPosition", n => { YAxisPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition>(); } },
             };
         }
         /// <summary>
@@ -79,10 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayTypeWrapper>("displayType", DisplayType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayType>("displayType", DisplayType);
             writer.WriteStringValue("label", Label);
             writer.WriteBoolValue("trendLine", TrendLine);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisPositionWrapper>("yAxisPosition", YAxisPosition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition>("yAxisPosition", YAxisPosition);
         }
     }
 }

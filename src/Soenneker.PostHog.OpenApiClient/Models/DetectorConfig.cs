@@ -42,13 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Lower bound - values below this are anomalies</summary>
         public double? LowerBound { get; set; }
         /// <summary>Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper? Method { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper Method { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MethodObject? Method { get; set; }
         /// <summary>IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)</summary>
         public double? Multiplier { get; set; }
         /// <summary>Number of histogram bins (default: 10)</summary>
@@ -112,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "kernel", n => { Kernel = n.GetStringValue(); } },
                 { "lower_bound", n => { LowerBound = n.GetDoubleValue(); } },
-                { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper.CreateFromDiscriminatorValue); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodObject>(); } },
                 { "multiplier", n => { Multiplier = n.GetDoubleValue(); } },
                 { "n_bins", n => { NBins = n.GetIntValue(); } },
                 { "n_estimators", n => { NEstimators = n.GetIntValue(); } },
@@ -137,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("kernel", Kernel);
             writer.WriteDoubleValue("lower_bound", LowerBound);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>("method", Method);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodObject>("method", Method);
             writer.WriteDoubleValue("multiplier", Multiplier);
             writer.WriteIntValue("n_bins", NBins);
             writer.WriteIntValue("n_estimators", NEstimators);

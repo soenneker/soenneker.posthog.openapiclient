@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The rule_values property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleSampleRuleValuesProperty? RuleValues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleSampleRuleValuesProperty? RuleValues { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleSampleRuleValuesProperty RuleValues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleSampleRuleValuesProperty RuleValues { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleSample"/> and sets the default values.
@@ -78,7 +78,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleSampleRuleValuesProperty>("rule_values", RuleValues);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Use this completed generation&apos;s governing source for the whole saved rubric. Omit to keep its source.</summary>
+        public Guid? AdoptGenerationId { get; set; }
         /// <summary>Complete set of criteria to save.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "adopt_generation_id", n => { AdoptGenerationId = n.GetGuidValue(); } },
                 { "criteria", n => { Criteria = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "revision", n => { Revision = n.GetIntValue(); } },
             };
@@ -60,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteGuidValue("adopt_generation_id", AdoptGenerationId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion>("criteria", Criteria);
             writer.WriteIntValue("revision", Revision);
             writer.WriteAdditionalData(AdditionalData);

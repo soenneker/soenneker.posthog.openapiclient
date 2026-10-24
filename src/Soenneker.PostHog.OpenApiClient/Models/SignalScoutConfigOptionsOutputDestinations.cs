@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether this scout&apos;s reports appear in the shared inbox. Defaults to true. Set false to keep the reports this scout authors out of the inbox and its Slack notifications, for example for a digest scout read in Slack. Reports this scout only edits are not affected. An update that omits this key keeps the stored value.</summary>
+        public bool? Inbox { get; set; }
         /// <summary>Slack destination for each emitted scout finding or report. Null or omitted disables Slack delivery.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "inbox", n => { Inbox = n.GetBoolValue(); } },
                 { "slack", n => { Slack = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination.CreateFromDiscriminatorValue); } },
                 { "webhook", n => { Webhook = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination.CreateFromDiscriminatorValue); } },
             };
@@ -67,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("inbox", Inbox);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination>("slack", Slack);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination>("webhook", Webhook);
             writer.WriteAdditionalData(AdditionalData);

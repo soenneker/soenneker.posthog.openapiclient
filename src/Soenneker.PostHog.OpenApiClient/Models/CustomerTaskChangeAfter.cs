@@ -8,35 +8,13 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember2"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember2"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomerTaskChangeAfter : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch1? CustomerTaskChangeAfterBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch1 CustomerTaskChangeAfterBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch2? CustomerTaskChangeAfterBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch2 CustomerTaskChangeAfterBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch3? CustomerTaskChangeAfterBranch3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch3 CustomerTaskChangeAfterBranch3 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,6 +31,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember2 CustomerTaskChangeAfterMember2 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="double"/></summary>
+        public double? Double { get; set; }
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,17 +51,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfter();
-            if("CustomerTaskChangeAfterBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetBoolValue() is bool booleanValue)
             {
-                result.CustomerTaskChangeAfterBranch1 = new global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch1();
+                result.Boolean = booleanValue;
             }
-            else if("CustomerTaskChangeAfterBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetDoubleValue() is double doubleValue)
             {
-                result.CustomerTaskChangeAfterBranch2 = new global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch2();
+                result.Double = doubleValue;
             }
-            else if("CustomerTaskChangeAfterBranch3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetStringValue() is string stringValue)
             {
-                result.CustomerTaskChangeAfterBranch3 = new global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch3();
+                result.String = stringValue;
             }
             return result;
         }
@@ -83,19 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CustomerTaskChangeAfterBranch1 != null)
-            {
-                return CustomerTaskChangeAfterBranch1.GetFieldDeserializers();
-            }
-            else if(CustomerTaskChangeAfterBranch2 != null)
-            {
-                return CustomerTaskChangeAfterBranch2.GetFieldDeserializers();
-            }
-            else if(CustomerTaskChangeAfterBranch3 != null)
-            {
-                return CustomerTaskChangeAfterBranch3.GetFieldDeserializers();
-            }
-            else if(CustomerTaskChangeAfterMember1 != null)
+            if(CustomerTaskChangeAfterMember1 != null)
             {
                 return CustomerTaskChangeAfterMember1.GetFieldDeserializers();
             }
@@ -112,25 +88,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(CustomerTaskChangeAfterBranch1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch1>(null, CustomerTaskChangeAfterBranch1);
-            }
-            else if(CustomerTaskChangeAfterBranch2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch2>(null, CustomerTaskChangeAfterBranch2);
-            }
-            else if(CustomerTaskChangeAfterBranch3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterBranch3>(null, CustomerTaskChangeAfterBranch3);
-            }
-            else if(CustomerTaskChangeAfterMember1 != null)
+            if(CustomerTaskChangeAfterMember1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember1>(null, CustomerTaskChangeAfterMember1);
             }
             else if(CustomerTaskChangeAfterMember2 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChangeAfterMember2>(null, CustomerTaskChangeAfterMember2);
+            }
+            else if(Boolean != null)
+            {
+                writer.WriteBoolValue(null, Boolean);
+            }
+            else if(Double != null)
+            {
+                writer.WriteDoubleValue(null, Double);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

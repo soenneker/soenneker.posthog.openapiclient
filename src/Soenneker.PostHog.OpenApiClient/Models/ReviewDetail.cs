@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Deletions { get; set; }
         /// <summary>The latest turn&apos;s findings the validator dismissed as not worth publishing.</summary>
         public int? DismissedCount { get; set; }
-        /// <summary>The latest turn&apos;s findings the validator dismissed, with its reasoning.</summary>
+        /// <summary>The returned turn&apos;s findings the validator dismissed, with its reasoning.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding>? DismissedFindings { get; set; }
@@ -38,9 +38,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding> DismissedFindings { get; set; }
 #endif
+        /// <summary>The returned turn&apos;s findings a single-agent (Standard) review raised but did not post, each with the reason. Empty for pipeline turns and for turns that predate the record.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding>? DroppedFindings { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding> DroppedFindings { get; set; }
+#endif
         /// <summary>Meaningful files the latest turn actually read, after skipping generated/lock/snapshot files; null if unknown.</summary>
         public int? FilesReviewed { get; set; }
-        /// <summary>The latest turn&apos;s validated findings, most urgent first.</summary>
+        /// <summary>The returned turn&apos;s validated findings, most urgent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding>? Findings { get; set; }
@@ -48,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding> Findings { get; set; }
 #endif
+        /// <summary>Whether a Deep review of this pull request has been published. No Standard review runs after one.</summary>
+        public bool? FullReviewPublished { get; set; }
         /// <summary>Where to see the review on GitHub: the pull request when its URL is known, otherwise the head branch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string HeadBranch { get; set; }
 #endif
-        /// <summary>The PR head commit the latest turn reviewed — anchors GitHub links to the exact code.</summary>
+        /// <summary>The PR head commit the returned turn reviewed. Anchors GitHub links to the exact code. Null for an older turn whose head was not recorded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HeadSha { get; set; }
@@ -78,6 +88,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? InProgress { get; set; }
         /// <summary>When the latest review turn completed; null while the first is in flight.</summary>
         public DateTimeOffset? LastRunAt { get; set; }
+        /// <summary>The report&apos;s latest resolution run, completed runs included: its status, counts, and fix commits. Null when no resolution run has queued threads on this report.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? LatestResolution { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution LatestResolution { get; set; }
+#endif
         /// <summary>The latest turn&apos;s valid findings at must_fix effective priority.</summary>
         public int? MustFixCount { get; set; }
         /// <summary>Review perspectives that read each chunk in the latest turn; null if unknown.</summary>
@@ -118,9 +136,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrTitle { get; set; }
 #endif
-        /// <summary>Whether a review has been published back to GitHub.</summary>
+        /// <summary>Whether any turn of this report has been published back to GitHub. See `turn_published` for the returned turn.</summary>
         public bool? Published { get; set; }
-        /// <summary>The rendered review body published to GitHub, as markdown.</summary>
+        /// <summary>The rendered review body published to GitHub, as markdown. Only kept for the latest turn, so null when `run_index` selects an older turn.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReportMarkdown { get; set; }
@@ -144,9 +162,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus Resolution { get; set; }
 #endif
+        /// <summary>How the returned turn found its issues. &apos;pipeline&apos;: chunks, perspectives, a blind-spot sweep and a separate validation step. &apos;single_agent&apos;: one main review plus focused lenses, with no separate validation step. Null when the turn recorded no design (turns from before it was recorded ran the pipeline).* `pipeline` - Pipeline* `single_agent` - Single agent</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign? ReviewDesign { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign ReviewDesign { get; set; }
+#endif
+        /// <summary>What the returned turn ran: &apos;full&apos; (Deep) or &apos;flash&apos; (Standard). Null when the turn did not record its mode (turns from before the mode was recorded).* `full` - Deep* `flash` - Standard</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode? ReviewMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode ReviewMode { get; set; }
+#endif
         /// <summary>How many review turns have completed on this report.</summary>
         public int? RunCount { get; set; }
-        /// <summary>The urgency threshold the completed turn&apos;s publishing gated on (stamped at finalize from the run&apos;s own resolve snapshot); null for turns that predate its recording — readers fall back to the viewer&apos;s current setting as an approximation.* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
+        /// <summary>The review turn this detail describes, from 1 to `run_count`.</summary>
+        public int? RunIndex { get; set; }
+        /// <summary>The urgency threshold the returned turn&apos;s publishing gated on (stamped at finalize from the run&apos;s own resolve snapshot); null for turns that predate its recording — readers fall back to the viewer&apos;s current setting as an approximation.* `consider` - Consider (all)* `should_fix` - Should fix* `must_fix` - Must fix</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailRunUrgencyThreshold? RunUrgencyThreshold { get; set; }
@@ -156,6 +192,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The latest turn&apos;s valid findings at should_fix effective priority.</summary>
         public int? ShouldFixCount { get; set; }
+        /// <summary>Link to the review&apos;s status comment on the pull request; null when there is no status comment or no pull request URL.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StatusCommentUrl { get; set; }
+#nullable restore
+#else
+        public string StatusCommentUrl { get; set; }
+#endif
+        /// <summary>Whether the returned turn (the latest completed one, or `run_index` on the detail) was published to GitHub. False when it found nothing to post or publishing was off.</summary>
+        public bool? TurnPublished { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetail"/> and sets the default values.
         /// </summary>
@@ -190,14 +236,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deletions", n => { Deletions = n.GetIntValue(); } },
                 { "dismissed_count", n => { DismissedCount = n.GetIntValue(); } },
                 { "dismissed_findings", n => { DismissedFindings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "dropped_findings", n => { DroppedFindings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "files_reviewed", n => { FilesReviewed = n.GetIntValue(); } },
                 { "findings", n => { Findings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "full_review_published", n => { FullReviewPublished = n.GetBoolValue(); } },
                 { "github_url", n => { GithubUrl = n.GetStringValue(); } },
                 { "head_branch", n => { HeadBranch = n.GetStringValue(); } },
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "in_progress", n => { InProgress = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
+                { "latest_resolution", n => { LatestResolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution.CreateFromDiscriminatorValue); } },
                 { "must_fix_count", n => { MustFixCount = n.GetIntValue(); } },
                 { "perspective_count", n => { PerspectiveCount = n.GetIntValue(); } },
                 { "perspective_issue_count", n => { PerspectiveIssueCount = n.GetIntValue(); } },
@@ -210,9 +259,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "report_markdown", n => { ReportMarkdown = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "resolution", n => { Resolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus.CreateFromDiscriminatorValue); } },
+                { "review_design", n => { ReviewDesign = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign.CreateFromDiscriminatorValue); } },
+                { "review_mode", n => { ReviewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode.CreateFromDiscriminatorValue); } },
                 { "run_count", n => { RunCount = n.GetIntValue(); } },
+                { "run_index", n => { RunIndex = n.GetIntValue(); } },
                 { "run_urgency_threshold", n => { RunUrgencyThreshold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailRunUrgencyThreshold>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailRunUrgencyThreshold.CreateFromDiscriminatorValue); } },
                 { "should_fix_count", n => { ShouldFixCount = n.GetIntValue(); } },
+                { "status_comment_url", n => { StatusCommentUrl = n.GetStringValue(); } },
+                { "turn_published", n => { TurnPublished = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -231,14 +285,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("deletions", Deletions);
             writer.WriteIntValue("dismissed_count", DismissedCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding>("dismissed_findings", DismissedFindings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding>("dropped_findings", DroppedFindings);
             writer.WriteIntValue("files_reviewed", FilesReviewed);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding>("findings", Findings);
+            writer.WriteBoolValue("full_review_published", FullReviewPublished);
             writer.WriteStringValue("github_url", GithubUrl);
             writer.WriteStringValue("head_branch", HeadBranch);
             writer.WriteStringValue("head_sha", HeadSha);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("in_progress", InProgress);
             writer.WriteDateTimeOffsetValue("last_run_at", LastRunAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution>("latest_resolution", LatestResolution);
             writer.WriteIntValue("must_fix_count", MustFixCount);
             writer.WriteIntValue("perspective_count", PerspectiveCount);
             writer.WriteIntValue("perspective_issue_count", PerspectiveIssueCount);
@@ -251,9 +308,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("report_markdown", ReportMarkdown);
             writer.WriteStringValue("repository", Repository);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus>("resolution", Resolution);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign>("review_design", ReviewDesign);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode>("review_mode", ReviewMode);
             writer.WriteIntValue("run_count", RunCount);
+            writer.WriteIntValue("run_index", RunIndex);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailRunUrgencyThreshold>("run_urgency_threshold", RunUrgencyThreshold);
             writer.WriteIntValue("should_fix_count", ShouldFixCount);
+            writer.WriteStringValue("status_comment_url", StatusCommentUrl);
+            writer.WriteBoolValue("turn_published", TurnPublished);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

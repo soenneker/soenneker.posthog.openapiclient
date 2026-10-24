@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum?> DeviceTypes { get; set; }
 #endif
-        /// <summary>URL/device matching types: &apos;regex&apos; (matches regex pattern), &apos;not_regex&apos; (does not match regex pattern), &apos;exact&apos; (exact string match), &apos;is_not&apos; (not exact match), &apos;icontains&apos; (case-insensitive contains), &apos;not_icontains&apos; (case-insensitive does not contain).* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType? DeviceTypesMatchType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType DeviceTypesMatchType { get; set; }
-#endif
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,14 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>URL/device matching types: &apos;regex&apos; (matches regex pattern), &apos;not_regex&apos; (does not match regex pattern), &apos;exact&apos; (exact string match), &apos;is_not&apos; (not exact match), &apos;icontains&apos; (case-insensitive contains), &apos;not_icontains&apos; (case-insensitive does not contain).* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType? UrlMatchType { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType UrlMatchType { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema"/> and sets the default values.
         /// </summary>
@@ -98,13 +86,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deviceTypes", n => { DeviceTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum>()?.AsList(); } },
-                { "deviceTypesMatchType", n => { DeviceTypesMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType.CreateFromDiscriminatorValue); } },
+                { "deviceTypesMatchType", n => { DeviceTypesMatchType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType>(); } },
                 { "events", n => { Events = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema.CreateFromDiscriminatorValue); } },
                 { "linkedFlagVariant", n => { LinkedFlagVariant = n.GetStringValue(); } },
                 { "seenSurveyWaitPeriodInDays", n => { SeenSurveyWaitPeriodInDays = n.GetIntValue(); } },
                 { "selector", n => { Selector = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "urlMatchType", n => { UrlMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType.CreateFromDiscriminatorValue); } },
+                { "urlMatchType", n => { UrlMatchType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType>(); } },
             };
         }
         /// <summary>
@@ -115,13 +103,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum>("deviceTypes", DeviceTypes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType>("deviceTypesMatchType", DeviceTypesMatchType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType>("deviceTypesMatchType", DeviceTypesMatchType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema>("events", Events);
             writer.WriteStringValue("linkedFlagVariant", LinkedFlagVariant);
             writer.WriteIntValue("seenSurveyWaitPeriodInDays", SeenSurveyWaitPeriodInDays);
             writer.WriteStringValue("selector", Selector);
             writer.WriteStringValue("url", Url);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType>("urlMatchType", UrlMatchType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType>("urlMatchType", UrlMatchType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

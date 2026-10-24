@@ -34,16 +34,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Identifier for this generation attempt.</summary>
         public Guid? Id { get; set; }
-        /// <summary>When generation was requested.</summary>
-        public DateTimeOffset? RequestedAt { get; set; }
-        /// <summary>Background generation status.* `queued` - Queued* `running` - Running* `completed` - Completed* `failed` - Failed</summary>
+        /// <summary>Immutable governing source captured for this generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument? ReferenceContext { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument ReferenceContext { get; private set; }
 #endif
+        /// <summary>When generation was requested.</summary>
+        public DateTimeOffset? RequestedAt { get; set; }
+        /// <summary>* `queued` - Queued* `running` - Running* `completed` - Completed* `failed` - Failed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus? Status { get; set; }
         /// <summary>Draft criteria awaiting review and explicit saving.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,8 +95,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "context", n => { Context = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "reference_context", n => { ReferenceContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument.CreateFromDiscriminatorValue); } },
                 { "requested_at", n => { RequestedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus>(); } },
                 { "suggestions", n => { Suggestions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
@@ -113,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("error", Error);
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("requested_at", RequestedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGenerationStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion>("suggestions", Suggestions);
             writer.WriteStringValue("summary", Summary);
             writer.WriteGuidValue("task_id", TaskId);

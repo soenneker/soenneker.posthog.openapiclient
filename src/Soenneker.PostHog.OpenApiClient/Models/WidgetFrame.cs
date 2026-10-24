@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Requested page of dataframe rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Rows { get; set; }
+        public List<UntypedNode>? Rows { get; set; }
 #nullable restore
 #else
-        public UntypedNode Rows { get; set; }
+        public List<UntypedNode> Rows { get; set; }
 #endif
         /// <summary>Completed notebook run used for every page in this iframe load.</summary>
         public Guid? RunId { get; set; }
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "nextOffset", n => { NextOffset = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "rows", n => { Rows = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "rows", n => { Rows = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
                 { "runId", n => { RunId = n.GetGuidValue(); } },
                 { "totalRowCount", n => { TotalRowCount = n.GetIntValue(); } },
                 { "truncated", n => { Truncated = n.GetBoolValue(); } },
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("nextOffset", NextOffset);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<UntypedNode>("rows", Rows);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("rows", Rows);
             writer.WriteGuidValue("runId", RunId);
             writer.WriteIntValue("totalRowCount", TotalRowCount);
             writer.WriteBoolValue("truncated", Truncated);

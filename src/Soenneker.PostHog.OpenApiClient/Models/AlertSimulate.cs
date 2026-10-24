@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ID of the saved alert this preview is for. The AI detector reads the points that the alert&apos;s earlier AI checks fired on, the same way a live check does. Omit it for a new alert.</summary>
+        public Guid? Alert { get; set; }
         /// <summary>Per-insight-kind alert config. For SQL insights, selects the evaluated column and read direction (last_row/first_row) so the preview matches the alert; ignored for trends.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "alert", n => { Alert = n.GetGuidValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>(global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion.CreateFromDiscriminatorValue); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig.CreateFromDiscriminatorValue); } },
@@ -92,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteGuidValue("alert", Alert);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>("config", Config);
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig>("detector_config", DetectorConfig);

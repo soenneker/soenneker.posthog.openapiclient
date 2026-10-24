@@ -56,14 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Optimistic concurrency version.</summary>
         public int? Version { get; private set; }
-        /// <summary>Whether the view is personal or available to the project.* `private` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `private` - Personal* `team` - Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility? Visibility { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility Visibility { get; private set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountView"/> and sets the default values.
         /// </summary>
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "text_content", n => { TextContent = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
-                { "visibility", n => { Visibility = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility>(global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility.CreateFromDiscriminatorValue); } },
+                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountViewVisibility>(); } },
             };
         }
         /// <summary>

@@ -17,14 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Upper bound of the analysis window, in days before the run (0 = now). Required for &apos;days_ago_range&apos; and must be less than start_days_ago; ignored for other modes. 0-365.</summary>
         public int? EndDaysAgo { get; set; }
-        /// <summary>What the report analyzes each run:* `since_last_sent` (default) — everything since the previous successful scheduled delivery (gap-free; test/manual sends don&apos;t move the anchor)* `last_n_days` — a fixed trailing window of start_days_ago days* `days_ago_range` — the explicit range from start_days_ago to end_days_ago days ago* `since_last_sent` - Since last report* `last_n_days` - Last N days* `days_ago_range` - Between X and Y days ago</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `since_last_sent` - Since last report* `last_n_days` - Last N days* `days_ago_range` - Between X and Y days ago</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode? Mode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode Mode { get; set; }
-#endif
         /// <summary>Lower bound of the analysis window, in days before the run. Required for &apos;last_n_days&apos; (the N) and &apos;days_ago_range&apos;; ignored for &apos;since_last_sent&apos;. 1-365.</summary>
         public int? StartDaysAgo { get; set; }
         /// <summary>
@@ -53,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "end_days_ago", n => { EndDaysAgo = n.GetIntValue(); } },
-                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode>(global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode.CreateFromDiscriminatorValue); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode>(); } },
                 { "start_days_ago", n => { StartDaysAgo = n.GetIntValue(); } },
             };
         }
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("end_days_ago", EndDaysAgo);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode>("mode", Mode);
             writer.WriteIntValue("start_days_ago", StartDaysAgo);
             writer.WriteAdditionalData(AdditionalData);
         }

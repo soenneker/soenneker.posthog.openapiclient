@@ -17,6 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, this source&apos;s content is injected into every support reply prompt as general context.</summary>
         public bool? AlwaysInclude { get; set; }
+        /// <summary>Replaces the libraries this source belongs to. Omit to leave membership unchanged. An empty list removes it from every library.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Guid?>? LibraryIds { get; set; }
+#nullable restore
+#else
+        public List<Guid?> LibraryIds { get; set; }
+#endif
         /// <summary>New human label for the source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "always_include", n => { AlwaysInclude = n.GetBoolValue(); } },
+                { "library_ids", n => { LibraryIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
@@ -71,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("always_include", AlwaysInclude);
+            writer.WriteCollectionOfPrimitiveValues<Guid?>("library_ids", LibraryIds);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("text", Text);
             writer.WriteAdditionalData(AdditionalData);

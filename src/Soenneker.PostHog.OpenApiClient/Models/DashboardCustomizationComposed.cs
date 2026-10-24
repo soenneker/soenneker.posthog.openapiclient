@@ -15,22 +15,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How tiles rearrange after a move or resize. vertical stacks tiles upward, horizontal stacks tiles to the left, and stable preserves positions while moving colliding tiles.* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
+        /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups? Groups { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups Groups { get; set; }
+#endif
+        /// <summary>Deprecated: use groups. Titles for tile groups, keyed by group_key. A write replaces all titles and keeps the other group settings. Send an empty object or null to clear titles. Do not send it with groups.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles? GroupTitles { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles GroupTitles { get; set; }
+#endif
+        /// <summary>* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction? LayoutCompaction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction LayoutCompaction { get; set; }
-#endif
-        /// <summary>Named tile density preset.* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing? TileSpacing { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing TileSpacing { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposed"/> and sets the default values.
         /// </summary>
@@ -56,8 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "layout_compaction", n => { LayoutCompaction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction.CreateFromDiscriminatorValue); } },
-                { "tile_spacing", n => { TileSpacing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing.CreateFromDiscriminatorValue); } },
+                { "group_titles", n => { GroupTitles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles.CreateFromDiscriminatorValue); } },
+                { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups.CreateFromDiscriminatorValue); } },
+                { "layout_compaction", n => { LayoutCompaction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction>(); } },
+                { "tile_spacing", n => { TileSpacing = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing>(); } },
             };
         }
         /// <summary>
@@ -67,8 +73,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction>("layout_compaction", LayoutCompaction);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing>("tile_spacing", TileSpacing);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups>("groups", Groups);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles>("group_titles", GroupTitles);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction>("layout_compaction", LayoutCompaction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing>("tile_spacing", TileSpacing);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

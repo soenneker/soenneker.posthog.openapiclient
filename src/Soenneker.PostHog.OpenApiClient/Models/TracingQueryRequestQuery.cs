@@ -47,22 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Limit { get; set; }
         /// <summary>Pagination offset, used when ordering by a column (e.g. duration). Defaults to 0.</summary>
         public int? Offset { get; set; }
-        /// <summary>Column to order by. Defaults to timestamp. Ordering by timestamp paginates via the keyset cursor (&apos;after&apos;); ordering by duration paginates via &apos;offset&apos;.* `timestamp` - timestamp* `duration` - duration</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `timestamp` - timestamp* `duration` - duration</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderBy? OrderBy { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderBy OrderBy { get; set; }
-#endif
-        /// <summary>Order direction. Defaults to DESC (e.g. timestamp+DESC = newest first, duration+DESC = slowest first).* `ASC` - ASC* `DESC` - DESC</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ASC` - ASC* `DESC` - DESC</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderDirection? OrderDirection { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderDirection OrderDirection { get; set; }
-#endif
         /// <summary>Number of child spans to prefetch per trace (1-100).</summary>
         public int? PrefetchSpans { get; set; }
         /// <summary>Filter to root spans only. Defaults to true.</summary>
@@ -127,8 +115,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "flatSpans", n => { FlatSpans = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderBy.CreateFromDiscriminatorValue); } },
-                { "orderDirection", n => { OrderDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderDirection>(global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderDirection.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderBy>(); } },
+                { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderDirection>(); } },
                 { "prefetchSpans", n => { PrefetchSpans = n.GetIntValue(); } },
                 { "rootSpans", n => { RootSpans = n.GetBoolValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -150,8 +138,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("flatSpans", FlatSpans);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderBy>("orderBy", OrderBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderDirection>("orderDirection", OrderDirection);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderBy>("orderBy", OrderBy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingQueryBodyOrderDirection>("orderDirection", OrderDirection);
             writer.WriteIntValue("prefetchSpans", PrefetchSpans);
             writer.WriteBoolValue("rootSpans", RootSpans);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);

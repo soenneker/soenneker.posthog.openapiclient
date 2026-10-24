@@ -14,14 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Format of the changes produced by the run.* `pull_request` - pull_request</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pull_request` - pull_request</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunPullRequestArtifactArtifactType? ArtifactType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunPullRequestArtifactArtifactType ArtifactType { get; private set; }
-#endif
         /// <summary>Branch that the pull request targets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "artifact_type", n => { ArtifactType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunPullRequestArtifactArtifactType>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunPullRequestArtifactArtifactType.CreateFromDiscriminatorValue); } },
+                { "artifact_type", n => { ArtifactType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunPullRequestArtifactArtifactType>(); } },
                 { "base_branch", n => { BaseBranch = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "head_branch", n => { HeadBranch = n.GetStringValue(); } },

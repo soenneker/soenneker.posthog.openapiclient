@@ -63,14 +63,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether exposures were served from the precomputation system</summary>
         public bool? IsPrecomputed { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseKind? Kind { get; set; }
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric? Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric? Metric { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric Metric { get; set; }
 #endif
         /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,13 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The p_value property</summary>
         public double? PValue { get; set; }
         /// <summary>The significance_code property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper? SignificanceCode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper SignificanceCode { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode? SignificanceCode { get; set; }
         /// <summary>The significant property</summary>
         public bool? Significant { get; set; }
         /// <summary>The stats_version property</summary>
@@ -143,11 +137,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "insight", n => { Insight = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_precomputed", n => { IsPrecomputed = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryKind>(); } },
-                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseKind>(); } },
+                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric.CreateFromDiscriminatorValue); } },
                 { "p_value", n => { PValue = n.GetDoubleValue(); } },
                 { "probability", n => { Probability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseProbabilityProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseProbabilityProperty.CreateFromDiscriminatorValue); } },
-                { "significance_code", n => { SignificanceCode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper.CreateFromDiscriminatorValue); } },
+                { "significance_code", n => { SignificanceCode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>(); } },
                 { "significant", n => { Significant = n.GetBoolValue(); } },
                 { "stats_version", n => { StatsVersion = n.GetIntValue(); } },
                 { "variant_results", n => { VariantResults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults.CreateFromDiscriminatorValue); } },
@@ -169,11 +163,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty>("insight", Insight);
             writer.WriteBoolValue("is_precomputed", IsPrecomputed);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryKind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric>("metric", Metric);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseKind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric>("metric", Metric);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseProbabilityProperty>("probability", Probability);
             writer.WriteDoubleValue("p_value", PValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper>("significance_code", SignificanceCode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>("significance_code", SignificanceCode);
             writer.WriteBoolValue("significant", Significant);
             writer.WriteIntValue("stats_version", StatsVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults>("variant_results", VariantResults);

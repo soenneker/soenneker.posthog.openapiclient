@@ -17,26 +17,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operations that were applied</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseAppliedItem>? Applied { get; set; }
+        public UntypedNode? Applied { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseAppliedItem> Applied { get; set; }
+        public UntypedNode Applied { get; set; }
 #endif
         /// <summary>The config as it now stands</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseMarketingAnalyticsConfig? MarketingAnalyticsConfig { get; set; }
+        public UntypedNode? MarketingAnalyticsConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseMarketingAnalyticsConfig MarketingAnalyticsConfig { get; set; }
+        public UntypedNode MarketingAnalyticsConfig { get; set; }
 #endif
         /// <summary>Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state — POST them back to undo.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseUndoOpsItem>? UndoOps { get; set; }
+        public UntypedNode? UndoOps { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseUndoOpsItem> UndoOps { get; set; }
+        public UntypedNode UndoOps { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponse"/> and sets the default values.
@@ -63,9 +63,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "applied", n => { Applied = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseAppliedItem>(global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseAppliedItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "marketing_analytics_config", n => { MarketingAnalyticsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseMarketingAnalyticsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseMarketingAnalyticsConfig.CreateFromDiscriminatorValue); } },
-                { "undo_ops", n => { UndoOps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseUndoOpsItem>(global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseUndoOpsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "applied", n => { Applied = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "marketing_analytics_config", n => { MarketingAnalyticsConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "undo_ops", n => { UndoOps = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -75,9 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseAppliedItem>("applied", Applied);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseMarketingAnalyticsConfig>("marketing_analytics_config", MarketingAnalyticsConfig);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApplySetupOpsResponseUndoOpsItem>("undo_ops", UndoOps);
+            writer.WriteObjectValue<UntypedNode>("applied", Applied);
+            writer.WriteObjectValue<UntypedNode>("marketing_analytics_config", MarketingAnalyticsConfig);
+            writer.WriteObjectValue<UntypedNode>("undo_ops", UndoOps);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -42,14 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Review and export lifecycle status.* `generating` - Generating* `ready_for_review` - Ready for review* `rejected` - Rejected* `exported` - Exported* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `generating` - Generating* `ready_for_review` - Ready for review* `rejected` - Rejected* `exported` - Exported* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalLifecycleStatus? LifecycleStatus { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalLifecycleStatus LifecycleStatus { get; private set; }
-#endif
         /// <summary>Existing content for page-improvement diffs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,14 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OriginalMarkdown { get; private set; }
 #endif
-        /// <summary>New article or bounded page improvement.* `new_content` - New content* `page_improvement` - Page improvement</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `new_content` - New content* `page_improvement` - Page improvement</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalProposalType? ProposalType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalProposalType ProposalType { get; private set; }
-#endif
         /// <summary>Full proposed Markdown after edits.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -148,9 +136,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "lifecycle_status", n => { LifecycleStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalLifecycleStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalLifecycleStatus.CreateFromDiscriminatorValue); } },
+                { "lifecycle_status", n => { LifecycleStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalLifecycleStatus>(); } },
                 { "original_markdown", n => { OriginalMarkdown = n.GetStringValue(); } },
-                { "proposal_type", n => { ProposalType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalProposalType>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalProposalType.CreateFromDiscriminatorValue); } },
+                { "proposal_type", n => { ProposalType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalProposalType>(); } },
                 { "proposed_markdown", n => { ProposedMarkdown = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
                 { "source_ledger", n => { SourceLedger = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry>(global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry.CreateFromDiscriminatorValue)?.AsList(); } },

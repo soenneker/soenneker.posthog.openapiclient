@@ -22,12 +22,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Logs in the baseline. Null without one.</summary>
+        public int? BaselineLogCount { get; set; }
         /// <summary>Count of logs at severity &quot;error&quot; or &quot;fatal&quot;.</summary>
         public int? ErrorCount { get; set; }
         /// <summary>Pre-computed error_count / log_count, rounded to 4 decimals. Useful for ranking noisy services.</summary>
         public double? ErrorRate { get; set; }
+        /// <summary>Error rate change against the baseline, in percentage points.</summary>
+        public double? ErrorRateDeltaPp { get; set; }
+        /// <summary>Error rate in percent, rounded to 1 decimal.</summary>
+        public double? ErrorRatePct { get; set; }
+        /// <summary>Latest log time (UTC). From the rollup, and for silent services, the start of the last 5-minute bucket.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LastSeen { get; set; }
+#nullable restore
+#else
+        public string LastSeen { get; set; }
+#endif
         /// <summary>Total log entries from this service in the window.</summary>
         public int? LogCount { get; set; }
+        /// <summary>Log volume change against the baseline, in percent.</summary>
+        public double? LogCountChangePct { get; set; }
+        /// <summary>Short reason for the status, e.g. &quot;error rate 0.4% → 3.1%&quot;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Reason { get; set; }
+#nullable restore
+#else
+        public string Reason { get; set; }
+#endif
         /// <summary>Service name, or &quot;(no value)&quot; / &quot;(no service)&quot; placeholder for unset entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,6 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown SeverityBreakdown { get; set; }
 #endif
+        /// <summary>* `ok` - OK* `degraded` - Error rate 5% or more* `regressed` - Error rate worse than the baseline* `improved` - Error rate better than the baseline* `recovered` - No longer degraded* `new` - No logs in the baseline* `silent` - Logs stopped</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateStatus? Status { get; set; }
         /// <summary>Share of total log volume in the window for this service (0–100).</summary>
         public double? VolumeSharePct { get; set; }
         /// <summary>
@@ -72,11 +98,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active_rules", n => { ActiveRules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "baseline_log_count", n => { BaselineLogCount = n.GetIntValue(); } },
                 { "error_count", n => { ErrorCount = n.GetIntValue(); } },
                 { "error_rate", n => { ErrorRate = n.GetDoubleValue(); } },
+                { "error_rate_delta_pp", n => { ErrorRateDeltaPp = n.GetDoubleValue(); } },
+                { "error_rate_pct", n => { ErrorRatePct = n.GetDoubleValue(); } },
+                { "last_seen", n => { LastSeen = n.GetStringValue(); } },
                 { "log_count", n => { LogCount = n.GetIntValue(); } },
+                { "log_count_change_pct", n => { LogCountChangePct = n.GetDoubleValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
                 { "service_name", n => { ServiceName = n.GetStringValue(); } },
                 { "severity_breakdown", n => { SeverityBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateStatus>(); } },
                 { "volume_share_pct", n => { VolumeSharePct = n.GetDoubleValue(); } },
             };
         }
@@ -88,11 +121,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>("active_rules", ActiveRules);
+            writer.WriteIntValue("baseline_log_count", BaselineLogCount);
             writer.WriteIntValue("error_count", ErrorCount);
             writer.WriteDoubleValue("error_rate", ErrorRate);
+            writer.WriteDoubleValue("error_rate_delta_pp", ErrorRateDeltaPp);
+            writer.WriteDoubleValue("error_rate_pct", ErrorRatePct);
+            writer.WriteStringValue("last_seen", LastSeen);
             writer.WriteIntValue("log_count", LogCount);
+            writer.WriteDoubleValue("log_count_change_pct", LogCountChangePct);
+            writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("service_name", ServiceName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown>("severity_breakdown", SeverityBreakdown);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateStatus>("status", Status);
             writer.WriteDoubleValue("volume_share_pct", VolumeSharePct);
             writer.WriteAdditionalData(AdditionalData);
         }

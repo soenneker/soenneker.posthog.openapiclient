@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Provider { get; set; }
 #endif
-        /// <summary>True when this provider&apos;s models can only be listed by passing `key_id` for one of the team&apos;s provider keys. PostHog funds no models for it, so `model_count` is 0 until a key is supplied.</summary>
+        /// <summary>True when this provider&apos;s models can only be listed by passing `key_id` for one of the team&apos;s provider keys, so `model_count` is 0 until a key is supplied. False means PostHog funds some of the provider&apos;s models in the playground. LLM-judge evaluations and LLM taggers always run on one of the team&apos;s own provider keys, whatever this value is.</summary>
         public bool? RequiresProviderKey { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderModelsSummary"/> and sets the default values.

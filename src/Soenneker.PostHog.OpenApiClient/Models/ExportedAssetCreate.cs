@@ -32,19 +32,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The export_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportContext? ExportContext { get; set; }
+        public UntypedNode? ExportContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportContext ExportContext { get; set; }
+        public UntypedNode ExportContext { get; set; }
 #endif
-        /// <summary>File format to generate. Dataset JSONL exports use the dataset export endpoint.* `image/png` - image/png* `application/pdf` - application/pdf* `text/csv` - text/csv* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet* `video/webm` - video/webm* `video/mp4` - video/mp4* `image/gif` - image/gif* `application/json` - application/json</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `image/png` - image/png* `application/pdf` - application/pdf* `text/csv` - text/csv* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet* `video/webm` - video/webm* `video/mp4` - video/mp4* `image/gif` - image/gif* `application/json` - application/json</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat? ExportFormat { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat ExportFormat { get; set; }
-#endif
         /// <summary>The filename property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Filename { get; private set; }
 #endif
-        /// <summary>The has_content property</summary>
+        /// <summary>Whether the export finished and its content is ready to download. Create can return before the export finishes; poll the asset until has_content is true or exception is set.</summary>
         public bool? HasContent { get; private set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -96,8 +90,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dashboard", n => { Dashboard = n.GetIntValue(); } },
                 { "exception", n => { Exception = n.GetStringValue(); } },
                 { "expires_after", n => { ExpiresAfter = n.GetDateTimeOffsetValue(); } },
-                { "export_context", n => { ExportContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportContext>(global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportContext.CreateFromDiscriminatorValue); } },
-                { "export_format", n => { ExportFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat>(global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat.CreateFromDiscriminatorValue); } },
+                { "export_context", n => { ExportContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "export_format", n => { ExportFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat>(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "has_content", n => { HasContent = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -113,8 +107,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("dashboard", Dashboard);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportContext>("export_context", ExportContext);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat>("export_format", ExportFormat);
+            writer.WriteObjectValue<UntypedNode>("export_context", ExportContext);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat>("export_format", ExportFormat);
             writer.WriteIntValue("insight", Insight);
             writer.WriteAdditionalData(AdditionalData);
         }

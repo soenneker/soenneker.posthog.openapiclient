@@ -38,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The start of the data interval.</summary>
         public DateTimeOffset? StartAt { get; set; }
-        /// <summary>The status of this backfill.* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus? Status { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus Status { get; set; }
-#endif
         /// <summary>The team this belongs to.</summary>
         public int? Team { get; set; }
         /// <summary>The total number of records to export. Initially estimated, updated with actual count after completion.</summary>
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "progress", n => { Progress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillProgress>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillProgress.CreateFromDiscriminatorValue); } },
                 { "start_at", n => { StartAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus>(); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "total_records_count", n => { TotalRecordsCount = n.GetLongValue(); } },
             };
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("end_at", EndAt);
             writer.WriteDateTimeOffsetValue("finished_at", FinishedAt);
             writer.WriteDateTimeOffsetValue("start_at", StartAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus>("status", Status);
             writer.WriteIntValue("team", Team);
             writer.WriteLongValue("total_records_count", TotalRecordsCount);
             writer.WriteAdditionalData(AdditionalData);

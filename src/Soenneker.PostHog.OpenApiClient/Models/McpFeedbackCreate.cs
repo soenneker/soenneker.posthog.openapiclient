@@ -22,14 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AttemptedTool { get; set; }
 #endif
-        /// <summary>High-level category for the feedback.* `results` - Results* `usability` - Usability* `bug` - Bug* `docs` - Docs* `other` - Other</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `results` - Results* `usability` - Usability* `bug` - Bug* `docs` - Docs* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory? Category { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory Category { get; set; }
-#endif
         /// <summary>Concrete feedback about the MCP experience, tool result, or workflow friction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attempted_tool", n => { AttemptedTool = n.GetStringValue(); } },
-                { "category", n => { Category = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory>(global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory.CreateFromDiscriminatorValue); } },
+                { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory>(); } },
                 { "feedback", n => { Feedback = n.GetStringValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
                 { "mcp_client_name", n => { McpClientName = n.GetStringValue(); } },
@@ -139,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("attempted_tool", AttemptedTool);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory>("category", Category);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory>("category", Category);
             writer.WriteStringValue("feedback", Feedback);
             writer.WriteStringValue("goal", Goal);
             writer.WriteStringValue("mcp_client_name", McpClientName);

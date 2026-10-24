@@ -16,14 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of added lines in the diff.</summary>
         public int? Additions { get; private set; }
-        /// <summary>Format of the changes produced by the run.* `git_diff` - git_diff</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `git_diff` - git_diff</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunGitDiffArtifactArtifactType? ArtifactType { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunGitDiffArtifactArtifactType ArtifactType { get; private set; }
-#endif
         /// <summary>SHA-256 hash of the stored artifact content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "additions", n => { Additions = n.GetIntValue(); } },
-                { "artifact_type", n => { ArtifactType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunGitDiffArtifactArtifactType>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunGitDiffArtifactArtifactType.CreateFromDiscriminatorValue); } },
+                { "artifact_type", n => { ArtifactType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunGitDiffArtifactArtifactType>(); } },
                 { "content_hash", n => { ContentHash = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

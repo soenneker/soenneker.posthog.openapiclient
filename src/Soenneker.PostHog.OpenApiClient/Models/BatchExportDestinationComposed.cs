@@ -27,14 +27,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Integration { get; set; }
         /// <summary>ID of a team-scoped Integration providing credentials, for destinations that authenticate through one. Required for all of them.</summary>
         public int? IntegrationId { get; set; }
-        /// <summary>A choice of supported BatchExportDestination types.* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `AwsS3` - Aws S3* `S3Compatible` - S3 Compatible* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationComposed"/> and sets the default values.
         /// </summary>
@@ -63,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposed>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposed.CreateFromDiscriminatorValue); } },
                 { "integration", n => { Integration = n.GetIntValue(); } },
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType>(); } },
             };
         }
         /// <summary>
@@ -76,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposed>("config", Config);
             writer.WriteIntValue("integration", Integration);
             writer.WriteIntValue("integration_id", IntegrationId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

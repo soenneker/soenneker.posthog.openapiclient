@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Evaluations that finished with a verdict. Null for legacy runs.</summary>
+        public int? CompletedCount { get; private set; }
         /// <summary>Condition sets frozen at creation, so an edit to the evaluation does not change this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,34 +36,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Units the backfill has started an evaluation for so far.</summary>
         public int? DispatchedCount { get; private set; }
-        /// <summary>Units whose evaluation failed to start. They have no result and count toward remaining_count.</summary>
+        /// <summary>Evaluations that finished with a recorded skip instead of a verdict.</summary>
+        public int? EvaluationSkippedCount { get; private set; }
+        /// <summary>Units whose evaluation failed to start or finish. Legacy runs only counted start failures.</summary>
         public int? FailedCount { get; private set; }
         /// <summary>When the backfill reached a terminal status; null while it runs.</summary>
         public DateTimeOffset? FinishedAt { get; private set; }
         /// <summary>Backfill identifier.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Units still holding no result when the run finished, counted at that moment. Zero means the window is covered, whoever graded it.</summary>
+        /// <summary>Units left to retry after completion. Legacy runs estimated this before evaluations finished.</summary>
         public int? RemainingCount { get; private set; }
         /// <summary>Whether units with an existing result are evaluated again.</summary>
         public bool? RerunExisting { get; private set; }
         /// <summary>Units the live path had already covered, so nothing was dispatched.</summary>
         public int? SkippedCount { get; private set; }
-        /// <summary>running while the walk is dispatching, then completed or cancelled.* `running` - Running* `completed` - Completed* `cancelled` - Cancelled</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `running` - Running* `completed` - Completed* `cancelled` - Cancelled* `interrupted` - Interrupted</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillStatus Status { get; private set; }
-#endif
-        /// <summary>What one unit is, frozen at creation: a generation, a trace, or a session.* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
+        /// <summary>Reason an interrupted backfill stopped; empty otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillTarget? Target { get; private set; }
+        public string? StatusReason { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillTarget Target { get; private set; }
+        public string StatusReason { get; private set; }
 #endif
+        /// <summary>* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillTarget? Target { get; private set; }
         /// <summary>Units matched at creation. Units that land in the window later can take dispatched_count and skipped_count past it.</summary>
         public int? TotalCount { get; private set; }
         /// <summary>Exclusive end of the window.</summary>
@@ -93,18 +93,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "completed_count", n => { CompletedCount = n.GetIntValue(); } },
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCondition>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "dispatched_count", n => { DispatchedCount = n.GetIntValue(); } },
+                { "evaluation_skipped_count", n => { EvaluationSkippedCount = n.GetIntValue(); } },
                 { "failed_count", n => { FailedCount = n.GetIntValue(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "remaining_count", n => { RemainingCount = n.GetIntValue(); } },
                 { "rerun_existing", n => { RerunExisting = n.GetBoolValue(); } },
                 { "skipped_count", n => { SkippedCount = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillStatus>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillStatus.CreateFromDiscriminatorValue); } },
-                { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillTarget>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillTarget.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillStatus>(); } },
+                { "status_reason", n => { StatusReason = n.GetStringValue(); } },
+                { "target", n => { Target = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillTarget>(); } },
                 { "total_count", n => { TotalCount = n.GetIntValue(); } },
                 { "window_end", n => { WindowEnd = n.GetDateTimeOffsetValue(); } },
                 { "window_start", n => { WindowStart = n.GetDateTimeOffsetValue(); } },

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `zeabur` - Zeabur AI Hub* `system_one` - System One* `openai_compatible` - OpenAI-compatible</summary>
+    /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI* `minimax` - MiniMax* `system_one` - System One* `openai_compatible` - OpenAI-compatible</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LlmProviderEnum
     {
@@ -38,10 +38,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "minimax")]
         #pragma warning disable CS1591
         Minimax,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "zeabur")]
-        #pragma warning disable CS1591
-        Zeabur,
         #pragma warning restore CS1591
         [EnumMember(Value = "system_one")]
         #pragma warning disable CS1591

@@ -44,14 +44,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; private set; }
 #endif
-        /// <summary>How the entry landed on the list: `BOUNCE` for automatic (bounce-driven), `COMPLAINT` for automatic (the recipient reported a message as spam), `MANUAL` for user-added via the UI/API.* `BOUNCE` - Bounce* `MANUAL` - Manual* `COMPLAINT` - Complaint</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `BOUNCE` - Bounce* `MANUAL` - Manual* `COMPLAINT` - Complaint</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MessageSuppressionSource? Source { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageSuppressionSource Source { get; private set; }
-#endif
         /// <summary>Whether the address is actively suppressed. A BOUNCE row can exist while still only counting bounces (suppressed=false) before it crosses the threshold.</summary>
         public bool? Suppressed { get; private set; }
         /// <summary>Timestamp when the address was first suppressed.</summary>
@@ -91,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_bounce_at", n => { LastBounceAt = n.GetDateTimeOffsetValue(); } },
                 { "last_bounce_diagnostic", n => { LastBounceDiagnostic = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageSuppressionSource>(global::Soenneker.PostHog.OpenApiClient.Models.MessageSuppressionSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageSuppressionSource>(); } },
                 { "suppressed", n => { Suppressed = n.GetBoolValue(); } },
                 { "suppressed_at", n => { SuppressedAt = n.GetDateTimeOffsetValue(); } },
                 { "transient_bounce_count", n => { TransientBounceCount = n.GetIntValue(); } },

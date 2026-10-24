@@ -48,14 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastComputedByEmail { get; private set; }
 #endif
-        /// <summary>Whether a snapshot is current (idle), being recomputed (computing), or failed (error).* `idle` - Idle* `computing` - Computing* `error` - Error</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `idle` - Idle* `computing` - Computing* `error` - Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotStatus Status { get; private set; }
-#endif
         /// <summary>Tool pairs competing for the same intent clusters, by contested call volume desc, capped at 50.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "last_computed_at", n => { LastComputedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_computed_by_email", n => { LastComputedByEmail = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotStatus>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotStatus>(); } },
                 { "tool_overlaps", n => { ToolOverlaps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolOverlap>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolOverlap.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivot>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivot.CreateFromDiscriminatorValue)?.AsList(); } },
             };

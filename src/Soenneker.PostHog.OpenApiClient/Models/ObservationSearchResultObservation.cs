@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DistinctId { get; private set; }
 #endif
-        /// <summary>Populated on terminal non-success statuses; formatted as `kind:human-readable message`. For `ineligible`, kind is one of no_recording / too_short / too_inactive / too_long / no_events / no_snapshots / too_large / not_exposed / experiment_unresolved. For `failed`, kind is one of provider_transient / provider_rejected / rasterization_failed / validation_failed / infra_transient / internal_error / orphaned.</summary>
+        /// <summary>Populated on terminal non-success statuses; formatted as `kind:human-readable message`. For `ineligible`, kind is one of no_recording / too_short / too_inactive / too_long / no_events / no_snapshots / too_large / not_exposed / experiment_unresolved. For `failed`, kind is one of provider_transient / provider_rejected / rasterization_failed / validation_failed / infra_transient / internal_error / orphaned / pii_detected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorReason { get; private set; }
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel Label { get; private set; }
 #endif
-        /// <summary>Thumbnails and clips illustrating this observation, in order. Empty until the media render finishes.</summary>
+        /// <summary>Frames illustrating this observation, in order. Empty until the media render finishes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia>? Media { get; private set; }
@@ -67,6 +67,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PromptQuestion { get; private set; }
 #endif
+        /// <summary>For a monitor or scorer: `good` when a yes or a high score is good news for the team, `bad` when it is a problem, `neutral` when neither. Judged by AI from the prompt. Null for other scanner types, when not judged, or when the prompt has changed since this observation was scanned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationPromptValence? PromptValence { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationPromptValence PromptValence { get; private set; }
+#endif
         /// <summary>Email of the person in the recorded session (the subject being watched, not the user who triggered the observation), captured at scan time. Null when the session had no identified person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,14 +85,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The scanner that produced this observation.</summary>
         public Guid? ScannerId { get; private set; }
-        /// <summary>Where the producing scanner came from. `configured` scanners are saved, named, and have a detail page; `inline` ones are throwaways minted for a one-off scan and are not addressable, so callers must not link to them.* `configured` - Configured* `inline` - Inline</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `configured` - Configured* `inline` - Inline</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin? ScannerOrigin { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin ScannerOrigin { get; private set; }
-#endif
         /// <summary>Result data persisted on success; null until the observation succeeds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,14 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The started_at property</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>Observation status (pending, running, succeeded, failed, ineligible).* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed* `ineligible` - Ineligible</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed* `ineligible` - Ineligible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus Status { get; private set; }
-#endif
         /// <summary>One line of plain text saying what the scanner found: its verdict, score, tags or title, then its own words, with markdown flattened and the text truncated. An observation that produced no result carries the reason instead, and one still in flight carries an empty string. Read this in place of `scanner_result` when you scan a list of observations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,14 +123,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SummaryLine { get; private set; }
 #endif
-        /// <summary>Whether this observation came from the schedule, an on-demand request, a retry of a failed or ineligible observation, or a historical backfill.* `schedule` - Schedule* `on_demand` - On demand* `retry` - Retry* `backfill` - Backfill</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `schedule` - Schedule* `on_demand` - On demand* `retry` - Retry* `backfill` - Backfill</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy? TriggeredBy { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy TriggeredBy { get; private set; }
-#endif
         /// <summary>User who triggered an on-demand observation; null for scheduled observations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -189,16 +179,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "next_observation_id", n => { NextObservationId = n.GetGuidValue(); } },
                 { "previous_observation_id", n => { PreviousObservationId = n.GetGuidValue(); } },
                 { "prompt_question", n => { PromptQuestion = n.GetStringValue(); } },
+                { "prompt_valence", n => { PromptValence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationPromptValence>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationPromptValence.CreateFromDiscriminatorValue); } },
                 { "recording_subject_email", n => { RecordingSubjectEmail = n.GetStringValue(); } },
                 { "scanner_id", n => { ScannerId = n.GetGuidValue(); } },
-                { "scanner_origin", n => { ScannerOrigin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin.CreateFromDiscriminatorValue); } },
+                { "scanner_origin", n => { ScannerOrigin = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin>(); } },
                 { "scanner_result", n => { ScannerResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult.CreateFromDiscriminatorValue); } },
                 { "scanner_snapshot", n => { ScannerSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus>(); } },
                 { "summary_line", n => { SummaryLine = n.GetStringValue(); } },
-                { "triggered_by", n => { TriggeredBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy.CreateFromDiscriminatorValue); } },
+                { "triggered_by", n => { TriggeredBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy>(); } },
                 { "triggered_by_user", n => { TriggeredByUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },

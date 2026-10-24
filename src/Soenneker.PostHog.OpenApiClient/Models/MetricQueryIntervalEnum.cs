@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `second` - second* `minute` - minute* `minute_5` - minute_5* `minute_15` - minute_15* `hour` - hour* `hour_6` - hour_6* `day` - day* `week` - week</summary>
+    /// <summary>* `second_15` - second_15* `second_30` - second_30* `minute` - minute* `minute_5` - minute_5* `minute_15` - minute_15* `minute_30` - minute_30* `hour` - hour* `hour_6` - hour_6* `day` - day* `week` - week</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum MetricQueryIntervalEnum
     {
-        [EnumMember(Value = "second")]
+        [EnumMember(Value = "second_15")]
         #pragma warning disable CS1591
-        Second,
+        Second15,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "second_30")]
+        #pragma warning disable CS1591
+        Second30,
         #pragma warning restore CS1591
         [EnumMember(Value = "minute")]
         #pragma warning disable CS1591
@@ -22,6 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "minute_15")]
         #pragma warning disable CS1591
         Minute15,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "minute_30")]
+        #pragma warning disable CS1591
+        Minute30,
         #pragma warning restore CS1591
         [EnumMember(Value = "hour")]
         #pragma warning disable CS1591

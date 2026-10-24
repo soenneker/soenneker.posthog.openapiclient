@@ -15,14 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether the credential delegated to the agent is ready to use.* `ready` - ready* `pending_oauth` - pending_oauth* `needs_reauth` - needs_reauth* `disabled` - disabled* `missing_credential` - missing_credential</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `ready` - ready* `pending_oauth` - pending_oauth* `needs_reauth` - needs_reauth* `disabled` - disabled* `missing_credential` - missing_credential</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState? ConnectionState { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState ConnectionState { get; set; }
-#endif
         /// <summary>Server description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,14 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether agent runs can use this grant: the server is enabled for the project and an admin has not revoked the sharing member&apos;s access. Independent of connection_state, which reports credential health.</summary>
         public bool? Reachable { get; set; }
-        /// <summary>&apos;personal&apos; lets the agent use this connection only when working for the member who shared it. &apos;team&apos; lets it use the connection for the whole project&apos;s agent runs.* `personal` - Personal* `team` - Team</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `personal` - Personal* `team` - Team</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope? Scope { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope Scope { get; set; }
-#endif
         /// <summary>The member whose connection the agent uses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -108,14 +96,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "connection_state", n => { ConnectionState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState.CreateFromDiscriminatorValue); } },
+                { "connection_state", n => { ConnectionState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "icon_domain", n => { IconDomain = n.GetStringValue(); } },
                 { "icon_key", n => { IconKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "reachable", n => { Reachable = n.GetBoolValue(); } },
-                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope.CreateFromDiscriminatorValue); } },
+                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope>(); } },
                 { "shared_by", n => { SharedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -127,14 +115,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState>("connection_state", ConnectionState);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState>("connection_state", ConnectionState);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("icon_domain", IconDomain);
             writer.WriteStringValue("icon_key", IconKey);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("reachable", Reachable);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope>("scope", Scope);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope>("scope", Scope);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy>("shared_by", SharedBy);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

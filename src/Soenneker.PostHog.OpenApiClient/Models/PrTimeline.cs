@@ -60,14 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Where the timeline starts: the last ready_for_review before the end, else created_at. A PR listed for an author or a team starts no earlier than 30 days before the window, because older CI is not read.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>open, merged, or closed. Author and team scopes list open and merged PRs only; a pull_request scope returns the PR whatever its state.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `open` - Open* `closed` - Closed* `merged` - Merged</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineState? State { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineState State { get; set; }
-#endif
         /// <summary>Pull request title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -112,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRepo>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRepo.CreateFromDiscriminatorValue); } },
                 { "segments", n => { Segments = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegment>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineState>(global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineState.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineState>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -134,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRepo>("repo", Repo);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineSegment>("segments", Segments);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineState>("state", State);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

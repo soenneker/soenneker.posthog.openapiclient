@@ -41,14 +41,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
-        /// <summary>&apos;error&apos; blocks publishing; &apos;warning&apos; is advisory and does not block.* `error` - error* `warning` - warning</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `error` - error* `warning` - warning</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnosticSeverity? Severity { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnosticSeverity Severity { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic"/> and sets the default values.
         /// </summary>
@@ -78,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "line", n => { Line = n.GetIntValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnosticSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnosticSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnosticSeverity>(); } },
             };
         }
         /// <summary>
@@ -92,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("line", Line);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("path", Path);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnosticSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnosticSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

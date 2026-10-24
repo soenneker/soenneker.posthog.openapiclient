@@ -38,14 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? PostedAt { get; private set; }
         /// <summary>Number of merged PRs included in the posted digest.</summary>
         public int? PrCount { get; private set; }
-        /// <summary>Why the digest went to this channel: &apos;slack_name_match&apos; (no declaration anywhere, so the audience_key matched a same-named Slack channel), &apos;stamphog_config&apos; (the channel the repo declared under &apos;digest:&apos; in .stamphog/policy.yml), &apos;owners_contact&apos; (a teams: entry in a root owners.yaml named it), or &apos;manual&apos; (no longer produced).* `manual` - MANUAL* `slack_name_match` - SLACK_NAME_MATCH* `stamphog_config` - STAMPHOG_CONFIG* `owners_contact` - OWNERS_CONTACT</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `manual` - MANUAL* `slack_name_match` - SLACK_NAME_MATCH* `stamphog_config` - STAMPHOG_CONFIG* `owners_contact` - OWNERS_CONTACT</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource? ResolutionSource { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource ResolutionSource { get; private set; }
-#endif
         /// <summary>Slack channel this digest was posted to, e.g. &apos;C012AB3CD&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,14 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SlackMessageTs { get; private set; }
 #endif
-        /// <summary>Current state of the digest run (pending, completed, failed).* `pending` - PENDING* `completed` - COMPLETED* `failed` - FAILED</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - PENDING* `completed` - COMPLETED* `failed` - FAILED</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus Status { get; private set; }
-#endif
         /// <summary>What the digest posted: its headline and the merged pull requests it listed. Both are empty on a run with nothing to post, and on runs stored before this format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,11 +105,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "posted_at", n => { PostedAt = n.GetDateTimeOffsetValue(); } },
                 { "pr_count", n => { PrCount = n.GetIntValue(); } },
-                { "resolution_source", n => { ResolutionSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource>(global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource.CreateFromDiscriminatorValue); } },
+                { "resolution_source", n => { ResolutionSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource>(); } },
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "slack_channel_name", n => { SlackChannelName = n.GetStringValue(); } },
                 { "slack_message_ts", n => { SlackMessageTs = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus>(); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.DigestRunSummary.CreateFromDiscriminatorValue); } },
             };
         }

@@ -32,23 +32,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Terminal failure per metric_uuid: {step, message, error_type, retriable, timestamp}. retriable is true when a transient error exhausted its attempts, so a heal_latest_run or manual_retry can succeed; false when the metric config, the data, or a resource limit must change first</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobMetricErrors? MetricErrors { get; private set; }
+        public UntypedNode? MetricErrors { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobMetricErrors MetricErrors { get; private set; }
+        public UntypedNode MetricErrors { get; private set; }
 #endif
         /// <summary>Upper time bound the metrics in this run were calculated against (the data freshness cutoff). Shared by every metric in the run; null until processing starts</summary>
         public DateTimeOffset? QueryTo { get; private set; }
         /// <summary>When processing started</summary>
         public DateTimeOffset? StartedAt { get; private set; }
-        /// <summary>Current status of the recalculation job* `pending` - Pending* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `pending` - Pending* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobStatus? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobStatus Status { get; private set; }
-#endif
         /// <summary>Total number of metrics to recalculate</summary>
         public int? TotalMetrics { get; private set; }
         /// <summary>
@@ -83,10 +77,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "failed_metrics", n => { FailedMetrics = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_existing", n => { IsExisting = n.GetBoolValue(); } },
-                { "metric_errors", n => { MetricErrors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobMetricErrors>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobMetricErrors.CreateFromDiscriminatorValue); } },
+                { "metric_errors", n => { MetricErrors = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "query_to", n => { QueryTo = n.GetDateTimeOffsetValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationJobStatus>(); } },
                 { "total_metrics", n => { TotalMetrics = n.GetIntValue(); } },
             };
         }

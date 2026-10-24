@@ -43,14 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Product the warm Run is for. Fixed when the sandbox boots — it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship — so a submit only reuses a warm born under the same origin. Defaults to the Code app.* `user_created` - user_created* `posthog_ai` - posthog_ai* `signal_report` - signal_report</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `user_created` - user_created* `posthog_ai` - posthog_ai* `signal_report` - signal_report</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct? OriginProduct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct OriginProduct { get; set; }
-#endif
         /// <summary>Reasoning effort to warm the sandbox on for models that expose an effort control.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "initial_permission_mode", n => { InitialPermissionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct.CreateFromDiscriminatorValue); } },
+                { "origin_product", n => { OriginProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct>(); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort.CreateFromDiscriminatorValue); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -138,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct>("origin_product", OriginProduct);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct>("origin_product", OriginProduct);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("repository", Repository);

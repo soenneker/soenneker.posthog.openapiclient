@@ -52,14 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail PendingVersion { get; set; }
 #endif
-        /// <summary>Catalog lifecycle of the reusable widget.* `published` - published* `deprecated` - deprecated</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `published` - published* `deprecated` - deprecated</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus? PublicationStatus { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus PublicationStatus { get; set; }
-#endif
         /// <summary>When the widget became reusable.</summary>
         public DateTimeOffset? PublishedAt { get; set; }
         /// <summary>Searchable widget labels.</summary>
@@ -106,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "instance_count", n => { InstanceCount = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pending_version", n => { PendingVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail>(global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail.CreateFromDiscriminatorValue); } },
-                { "publication_status", n => { PublicationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus.CreateFromDiscriminatorValue); } },
+                { "publication_status", n => { PublicationStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus>(); } },
                 { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -127,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("instance_count", InstanceCount);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail>("pending_version", PendingVersion);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus>("publication_status", PublicationStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus>("publication_status", PublicationStatus);
             writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

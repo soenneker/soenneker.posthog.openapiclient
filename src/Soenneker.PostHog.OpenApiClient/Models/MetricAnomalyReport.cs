@@ -64,14 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>anomaly_mean / baseline_mean. A zero baseline yields anomaly_mean itself.</summary>
         public double? ChangeRatio { get; set; }
-        /// <summary>Which way the metric moved versus the baseline.* `up` - up* `down` - down* `flat` - flat</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+        /// <summary>* `up` - up* `down` - down* `flat` - flat</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportDirection? Direction { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportDirection Direction { get; set; }
-#endif
         /// <summary>Bucket size of the analysis grid.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "baseline_stddev", n => { BaselineStddev = n.GetDoubleValue(); } },
                 { "baseline_to", n => { BaselineTo = n.GetStringValue(); } },
                 { "change_ratio", n => { ChangeRatio = n.GetDoubleValue(); } },
-                { "direction", n => { Direction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportDirection>(global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportDirection.CreateFromDiscriminatorValue); } },
+                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportDirection>(); } },
                 { "interval", n => { Interval = n.GetStringValue(); } },
                 { "metric_name", n => { MetricName = n.GetStringValue(); } },
                 { "onset_time", n => { OnsetTime = n.GetStringValue(); } },
@@ -172,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("baseline_stddev", BaselineStddev);
             writer.WriteStringValue("baseline_to", BaselineTo);
             writer.WriteDoubleValue("change_ratio", ChangeRatio);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportDirection>("direction", Direction);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReportDirection>("direction", Direction);
             writer.WriteStringValue("interval", Interval);
             writer.WriteStringValue("metric_name", MetricName);
             writer.WriteStringValue("onset_time", OnsetTime);

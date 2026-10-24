@@ -14,6 +14,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Badge on the tile. winner shows a crown in the top left corner, for example to mark the best tile in a group. cheeky-hog shows a hedgehog when a person hovers over the tile. Null removes the badge. More than one tile in a group can have the winner badge.* `winner` - Winner* `cheeky-hog` - Cheeky hog</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge? Badge { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge Badge { get; set; }
+#endif
+        /// <summary>Key that puts this tile in a group with the other tiles that have the same key on this dashboard. Set the group&apos;s title and style in the dashboard&apos;s groups. Null or an empty string removes the tile from its group.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GroupKey { get; set; }
+#nullable restore
+#else
+        public string GroupKey { get; set; }
+#endif
         /// <summary>Dashboard tile ID to update.</summary>
         public int? Id { get; set; }
         /// <summary>Grid position and size per breakpoint. Works for every tile type, including insight tiles. A write replaces the tile&apos;s whole layout, so send a complete sm box rather than the one value you want to change. Boxes are stored as sent and overlaps are not resolved, so send sm boxes that do not overlap, and include every tile you move in the same request.</summary>
@@ -24,6 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts Layouts { get; set; }
 #endif
+        /// <summary>Whether to show the tile&apos;s description underneath its title on the dashboard. Works for every tile type. The description itself is unaffected and still comes from the tile&apos;s insight, text, or widget content — this only toggles whether it renders on the dashboard.</summary>
+        public bool? ShowDescription { get; set; }
         /// <summary>Nested widget row updates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,8 +75,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "badge", n => { Badge = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge.CreateFromDiscriminatorValue); } },
+                { "group_key", n => { GroupKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts.CreateFromDiscriminatorValue); } },
+                { "show_description", n => { ShowDescription = n.GetBoolValue(); } },
                 { "widget", n => { Widget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget.CreateFromDiscriminatorValue); } },
             };
         }
@@ -69,8 +90,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge>("badge", Badge);
+            writer.WriteStringValue("group_key", GroupKey);
             writer.WriteIntValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts>("layouts", Layouts);
+            writer.WriteBoolValue("show_description", ShowDescription);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget>("widget", Widget);
             writer.WriteAdditionalData(AdditionalData);
         }
