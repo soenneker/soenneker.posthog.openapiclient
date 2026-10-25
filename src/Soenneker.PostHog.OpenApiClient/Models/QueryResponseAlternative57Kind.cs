@@ -8,9 +8,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public enum QueryResponseAlternative57Kind
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "AccountsTableQuery")]
+        [EnumMember(Value = "AccountsQuery")]
         #pragma warning disable CS1591
-        AccountsTableQuery,
+        AccountsQuery,
         #pragma warning restore CS1591
     }
 }

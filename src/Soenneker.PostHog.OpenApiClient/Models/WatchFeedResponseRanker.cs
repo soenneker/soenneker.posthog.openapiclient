@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `weighted-score` - weighted-score* `jev` - jev</summary>
+    /// <summary>* `weighted-score` - Weighted Score* `jev` - Jev* `embedding` - Embedding</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WatchFeedResponseRanker
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "jev")]
         #pragma warning disable CS1591
         Jev,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "embedding")]
+        #pragma warning disable CS1591
+        Embedding,
         #pragma warning restore CS1591
     }
 }

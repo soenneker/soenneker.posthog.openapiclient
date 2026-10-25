@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs/{?after*,all_engines*,before*,engine*,limit*,offset*,saved_query_id*,status*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs/{?after*,all_engines*,before*,engine*,limit*,offset*,saved_query_id*,saved_query_ids,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs/{?after*,all_engines*,before*,engine*,limit*,offset*,saved_query_id*,status*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs/{?after*,all_engines*,before*,engine*,limit*,offset*,saved_query_id*,saved_query_ids,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -107,6 +107,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
             [QueryParameter("saved_query_id")]
             public Guid? SavedQueryId { get; set; }
             #pragma warning restore CS1591
+            /// <summary>Comma-separated materialized view IDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("saved_query_ids")]
+            public Guid?[]? SavedQueryIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("saved_query_ids")]
+            public Guid?[] SavedQueryIds { get; set; }
+#endif
             /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `Failed` - Failed* `Running` - Running* `Skipped` - Skipped</summary>
             [QueryParameter("status")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobsListStatusParameter? Status { get; set; }

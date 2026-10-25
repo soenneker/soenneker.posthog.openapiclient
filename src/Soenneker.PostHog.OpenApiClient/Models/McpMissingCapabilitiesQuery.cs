@@ -386,6 +386,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? ExcludeBreakdownFilter { get; set; }
         /// <summary>Drop direct sessions from the touchpoint set before weights are computed, so the remaining touchpoints renormalize to full credit rather than losing direct&apos;s share.</summary>
         public bool? ExcludeDirectTraffic { get; set; }
+        /// <summary>The excludeStaticAssets property</summary>
+        public bool? ExcludeStaticAssets { get; set; }
         /// <summary>Drop touchpoints whose current breakdown value is empty or unknown — the &quot;(none)&quot; row — before weights are computed, so the remaining touchpoints renormalize to full credit.</summary>
         public bool? ExcludeUnattributed { get; set; }
         /// <summary>Compile and run this query against the hosted Trino target.</summary>
@@ -540,6 +542,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IncludeScrollDepth { get; set; }
         /// <summary>Include stored sentiment evaluation results for returned traces and direct generation events.</summary>
         public bool? IncludeSentiment { get; set; }
+        /// <summary>The includeSiteTotals property</summary>
+        public bool? IncludeSiteTotals { get; set; }
         /// <summary>The includeTrafficMetrics property</summary>
         public bool? IncludeTrafficMetrics { get; set; }
         /// <summary>Analyze how each property filter reads its data. Costs a second type-resolution pass, so only editors that render the result should ask for it.</summary>
@@ -686,13 +690,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricName { get; set; }
 #endif
-        /// <summary>Aggregation expressions evaluated against the filtered account set; one value per metric is returned in `metricsResults`. When `metrics` is set without a `select`, the runner skips the regular row fetch and returns only the aggregated values.</summary>
+        /// <summary>The metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Metrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryMetric?>? Metrics { get; set; }
 #nullable restore
 #else
-        public List<string> Metrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryMetric?> Metrics { get; set; }
 #endif
         /// <summary>Pins the OTel type, as on a MetricsQuery clause: one name can exist as more than one type, and the heatmap must grid only the distribution series.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType? MetricType { get; set; }
@@ -751,6 +755,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Page { get; set; }
+#endif
+        /// <summary>The pageKeys property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? PageKeys { get; set; }
+#nullable restore
+#else
+        public List<string> PageKeys { get; set; }
 #endif
         /// <summary>Pending fingerprint issue state updates UNIONed into the fingerprint issue state subquery. The backend caps the list at 50 entries; extras are dropped silently.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -954,10 +966,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort Sort { get; set; }
 #endif
+        /// <summary>The sortBy property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectorySortBy? SortBy { get; set; }
         /// <summary>Aggregate column used to order tools. Defaults to total_calls.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn? SortColumn { get; set; }
-        /// <summary>Sort direction. Defaults to DESC.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection? SortDirection { get; set; }
+        /// <summary>The sortDirection property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SortDirection? SortDirection { get; set; }
         /// <summary>source for querying events for insights</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1221,6 +1235,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "excludeAttributes", n => { ExcludeAttributes = n.GetBoolValue(); } },
                 { "excludeBreakdownFilter", n => { ExcludeBreakdownFilter = n.GetBoolValue(); } },
                 { "excludeDirectTraffic", n => { ExcludeDirectTraffic = n.GetBoolValue(); } },
+                { "excludeStaticAssets", n => { ExcludeStaticAssets = n.GetBoolValue(); } },
                 { "excludeUnattributed", n => { ExcludeUnattributed = n.GetBoolValue(); } },
                 { "executionTarget", n => { ExecutionTarget = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>(); } },
                 { "experiment_exposure", n => { ExperimentExposure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter.CreateFromDiscriminatorValue); } },
@@ -1256,6 +1271,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "includeScrollDepth", n => { IncludeScrollDepth = n.GetBoolValue(); } },
                 { "includeSentiment", n => { IncludeSentiment = n.GetBoolValue(); } },
+                { "includeSiteTotals", n => { IncludeSiteTotals = n.GetBoolValue(); } },
                 { "includeTrafficMetrics", n => { IncludeTrafficMetrics = n.GetBoolValue(); } },
                 { "indexUsage", n => { IndexUsage = n.GetBoolValue(); } },
                 { "integrationFilter", n => { IntegrationFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter.CreateFromDiscriminatorValue); } },
@@ -1285,7 +1301,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric>(); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
                 { "metricType", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType>(); } },
-                { "metrics", n => { Metrics = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "metrics", n => { Metrics = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryMetric>()?.AsList(); } },
                 { "minTouchpoints", n => { MinTouchpoints = n.GetIntValue(); } },
                 { "modelName", n => { ModelName = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -1301,6 +1317,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>(); } },
                 { "page", n => { Page = n.GetStringValue(); } },
+                { "pageKeys", n => { PageKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pendingFingerprintIssueStateUpdates", n => { PendingFingerprintIssueStateUpdates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "percentile", n => { Percentile = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile>(); } },
                 { "personId", n => { PersonId = n.GetStringValue(); } },
@@ -1335,8 +1352,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>()?.AsList(); } },
                 { "showColumnConfigurator", n => { ShowColumnConfigurator = n.GetBoolValue(); } },
                 { "sort", n => { Sort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort.CreateFromDiscriminatorValue); } },
+                { "sortBy", n => { SortBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectorySortBy>(); } },
                 { "sortColumn", n => { SortColumn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn>(); } },
-                { "sortDirection", n => { SortDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection>(); } },
+                { "sortDirection", n => { SortDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SortDirection>(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery.CreateFromDiscriminatorValue); } },
                 { "sourceQuery", n => { SourceQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery>(global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery.CreateFromDiscriminatorValue); } },
                 { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -1447,6 +1465,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("excludeAttributes", ExcludeAttributes);
             writer.WriteBoolValue("excludeBreakdownFilter", ExcludeBreakdownFilter);
             writer.WriteBoolValue("excludeDirectTraffic", ExcludeDirectTraffic);
+            writer.WriteBoolValue("excludeStaticAssets", ExcludeStaticAssets);
             writer.WriteBoolValue("excludeUnattributed", ExcludeUnattributed);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExecutionTarget>("executionTarget", ExecutionTarget);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>("experiment_exposure", ExperimentExposure);
@@ -1485,6 +1504,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteBoolValue("includeScrollDepth", IncludeScrollDepth);
             writer.WriteBoolValue("includeSentiment", IncludeSentiment);
+            writer.WriteBoolValue("includeSiteTotals", IncludeSiteTotals);
             writer.WriteBoolValue("includeTrafficMetrics", IncludeTrafficMetrics);
             writer.WriteBoolValue("indexUsage", IndexUsage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>("integrationFilter", IntegrationFilter);
@@ -1513,7 +1533,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("maxValuesPerProperty", MaxValuesPerProperty);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric>("metric", Metric);
             writer.WriteStringValue("metricName", MetricName);
-            writer.WriteCollectionOfPrimitiveValues<string>("metrics", Metrics);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryMetric>("metrics", Metrics);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsOtelType>("metricType", MetricType);
             writer.WriteIntValue("minTouchpoints", MinTouchpoints);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>("modelName", ModelName);
@@ -1531,6 +1551,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2>("orderDirection", OrderDirection);
             writer.WriteStringValue("page", Page);
+            writer.WriteCollectionOfPrimitiveValues<string>("pageKeys", PageKeys);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate>("pendingFingerprintIssueStateUpdates", PendingFingerprintIssueStateUpdates);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile>("percentile", Percentile);
             writer.WriteStringValue("person_id", Person_id);
@@ -1566,8 +1587,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>("severityLevels", SeverityLevels);
             writer.WriteBoolValue("showColumnConfigurator", ShowColumnConfigurator);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSort>("sort", Sort);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectorySortBy>("sortBy", SortBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumn>("sortColumn", SortColumn);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirection>("sortDirection", SortDirection);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SortDirection>("sortDirection", SortDirection);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery>("source", Source);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpMissingCapabilitiesQuery>("sourceQuery", SourceQuery);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource>("sources", Sources);

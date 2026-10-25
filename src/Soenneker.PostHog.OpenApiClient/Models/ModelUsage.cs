@@ -37,6 +37,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview Overview { get; set; }
 #endif
+        /// <summary>Latest run status for each model and engine in the selected complete-day range.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown>? StatusBreakdown { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown> StatusBreakdown { get; set; }
+#endif
         /// <summary>Daily usage, attributed to when each run finished.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "date_to", n => { DateTo = n.GetDateValue(); } },
                 { "models", n => { Models = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow>(global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "overview", n => { Overview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview>(global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview.CreateFromDiscriminatorValue); } },
+                { "status_breakdown", n => { StatusBreakdown = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "trends", n => { Trends = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay>(global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "usage_updated_at", n => { UsageUpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -93,6 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateValue("date_to", DateTo);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow>("models", Models);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview>("overview", Overview);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown>("status_breakdown", StatusBreakdown);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay>("trends", Trends);
             writer.WriteDateTimeOffsetValue("usage_updated_at", UsageUpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

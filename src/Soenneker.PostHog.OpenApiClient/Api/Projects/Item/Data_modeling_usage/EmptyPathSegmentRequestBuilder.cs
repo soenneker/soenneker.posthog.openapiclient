@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_usage
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*,saved_query_ids*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_usage
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*,saved_query_ids*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelUsage"/></returns>
@@ -99,6 +99,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_usage
             /// <summary>Limit usage to one accessible materialized view.</summary>
             [QueryParameter("saved_query_id")]
             public Guid? SavedQueryId { get; set; }
+            /// <summary>Comma-separated materialized view IDs. Usage is limited to accessible views.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("saved_query_ids")]
+            public string? SavedQueryIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("saved_query_ids")]
+            public string SavedQueryIds { get; set; }
+#endif
         }
     }
 }

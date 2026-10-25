@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The decision model&apos;s 0-1 judgment that the session is worth watching, for `jev_watchable`.</summary>
         public double? JevProbability { get; set; }
-        /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `jev_watchable` - Jev Watchable* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
+        /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `jev_watchable` - Jev Watchable* `embedding_pick` - Embedding Pick* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind? Kind { get; set; }
         /// <summary>The scan&apos;s own 0-1 judgment of how much a team would benefit from watching, for `notable`.</summary>
         public double? Notability { get; set; }
@@ -49,6 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Signals this observation emitted, for `signal_emitted`.</summary>
         public int? SignalsCount { get; set; }
+        /// <summary>Other sessions from the same scanner in the window that describe nearly the same thing, for `embedding_pick`. The feed shows one session per group.</summary>
+        public int? SimilarCount { get; set; }
         /// <summary>The rare tag that ranked the observation, for `rare_tag`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Share (0-1) of the scanner&apos;s window observations with this answer, for `unusual_verdict`.</summary>
         public double? VerdictShare { get; set; }
+        /// <summary>* `failure` - Failure* `struggle` - Struggle* `revenue` - Revenue</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchCategory? WatchCategory { get; set; }
         /// <summary>* `visible_error` - Error on screen* `silent_failure` - Action silently failed* `unresponsive` - Clicks went nowhere* `slow_or_stuck` - Slow or stuck* `blocked` - Blocked* `cant_find` - Couldn&apos;t find it* `confused` - Confused* `workaround` - Took a workaround* `abandoned` - Gave up* `churn_signal` - Churn signal* `success` - Worked well</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchReason? WatchReason { get; set; }
         /// <summary>The scanner&apos;s mean score in the window, for `outlier_score`.</summary>
@@ -106,10 +110,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "score", n => { Score = n.GetDoubleValue(); } },
                 { "signals", n => { Signals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal>(global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "signals_count", n => { SignalsCount = n.GetIntValue(); } },
+                { "similar_count", n => { SimilarCount = n.GetIntValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
                 { "tag_share", n => { TagShare = n.GetDoubleValue(); } },
                 { "verdict", n => { Verdict = n.GetStringValue(); } },
                 { "verdict_share", n => { VerdictShare = n.GetDoubleValue(); } },
+                { "watch_category", n => { WatchCategory = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchCategory>(); } },
                 { "watch_reason", n => { WatchReason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchReason>(); } },
                 { "window_mean", n => { WindowMean = n.GetDoubleValue(); } },
             };
@@ -129,10 +135,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("score", Score);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedSignal>("signals", Signals);
             writer.WriteIntValue("signals_count", SignalsCount);
+            writer.WriteIntValue("similar_count", SimilarCount);
             writer.WriteStringValue("tag", Tag);
             writer.WriteDoubleValue("tag_share", TagShare);
             writer.WriteStringValue("verdict", Verdict);
             writer.WriteDoubleValue("verdict_share", VerdictShare);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchCategory>("watch_category", WatchCategory);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonWatchReason>("watch_reason", WatchReason);
             writer.WriteDoubleValue("window_mean", WindowMean);
             writer.WriteAdditionalData(AdditionalData);

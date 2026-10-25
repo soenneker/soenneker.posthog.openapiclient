@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed/{?created_by*,date_from*,date_to*,limit*,scanner_ids*,scanner_type*,search*,tags*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed/{?as_of*,created_by*,date_from*,date_to*,limit*,offset*,scanner_ids*,scanner_type*,search*,tags*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed/{?created_by*,date_from*,date_to*,limit*,scanner_ids*,scanner_type*,search*,tags*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/watch_feed/{?as_of*,created_by*,date_from*,date_to*,limit*,offset*,scanner_ids*,scanner_type*,search*,tags*}", rawUrl)
         {
         }
         /// <summary>
@@ -85,6 +85,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>The time the first page loaded. Later pages rank as of that time: observations, views, dismissals and impressions after it are ignored, so pages do not shift under a reader who scrolls.</summary>
+            [QueryParameter("as_of")]
+            public DateTimeOffset? AsOf { get; set; }
             /// <summary>Comma-separated user IDs. Restrict the feed to observations from scanners those users created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,9 +118,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watc
             [QueryParameter("date_to")]
             public string DateTo { get; set; }
 #endif
-            /// <summary>Ceiling on feed items to return, at most 50. The feed is bounded, not paginated, and routinely returns far fewer: a window is not padded to this number with clips that carry no finding.</summary>
+            /// <summary>Ceiling on feed items to return per page, at most 50. A page routinely returns fewer: a window is not padded to this number with clips that carry no finding.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>How many ranked items to skip. Send `as_of` with every page after the first.</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
             /// <summary>Comma-separated scanner UUIDs to restrict the feed to. Defaults to every scanner you can read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
