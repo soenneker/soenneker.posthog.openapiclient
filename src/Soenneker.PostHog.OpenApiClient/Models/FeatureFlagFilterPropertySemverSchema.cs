@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
+        /// <summary>* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator? Operator { get; set; }
         /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType? Type { get; set; }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/thumbnail/{?chapter*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/thumbnail/{?chapter*,size*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/thumbnail/{?chapter*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/thumbnail/{?chapter*,size*}", rawUrl)
         {
         }
         /// <summary>
@@ -92,6 +92,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             /// <summary>Index into the summary&apos;s `model_output.chapters`. Serves that chapter&apos;s frame instead of the observation&apos;s thumbnail.</summary>
             [QueryParameter("chapter")]
             public int? Chapter { get; set; }
+            /// <summary>`large` is up to 1280px wide, for detail views. `small` is up to 480px wide, for lists and grids. A frame rendered before small copies existed serves the large image for both.* `large` - Large* `small` - Small</summary>
+            [QueryParameter("size")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.VisionObservationsThumbnailRetrieveSizeParameter? Size { get; set; }
         }
     }
 }

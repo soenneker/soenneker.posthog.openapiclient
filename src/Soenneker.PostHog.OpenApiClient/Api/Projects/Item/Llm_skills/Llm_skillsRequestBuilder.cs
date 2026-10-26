@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Bundle;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Import;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Manifests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Marketplace;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Resolve;
@@ -34,6 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Import.ImportRequestBuilder Import
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Import.ImportRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The manifests property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Manifests.ManifestsRequestBuilder Manifests
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Manifests.ManifestsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The marketplace property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Marketplace.MarketplaceRequestBuilder Marketplace

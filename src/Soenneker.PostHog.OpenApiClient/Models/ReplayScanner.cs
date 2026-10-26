@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreditLimit { get; set; }
         /// <summary>Credits one observation by this scanner costs (1 credit = $0.01), derived from `model`.</summary>
         public int? CreditsPerObservation { get; private set; }
-        /// <summary>Credits this scanner&apos;s succeeded observations consumed in the current billing period (1 credit = $0.01). Matches the window of the org-wide quota meter.</summary>
+        /// <summary>Credits billed for this scanner&apos;s observations created in the current billing period (1 credit = $0.01), each at the price frozen when it succeeded. Deleted observations still count.</summary>
         public int? CreditsThisMonth { get; private set; }
         /// <summary>Credits counted against `credit_limit` for the current billing period: settled receipts plus in-flight observations, priced from their frozen snapshot model. This is what the limit gate measures, so it includes work still in progress. It is not the same as `credits_this_month`, which counts only succeeded observations. For a `free_only` scanner bound by the organization&apos;s free credits, this is the organization&apos;s usage, not the scanner&apos;s own.</summary>
         public int? CreditsUsedAgainstLimit { get; private set; }
@@ -99,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Succeeded observations this scanner produced in the current billing period.</summary>
+        /// <summary>Billed observations this scanner created in the current billing period, including deleted ones.</summary>
         public int? ObservationsThisMonth { get; private set; }
         /// <summary>The current prompt condensed by AI into the one question the scanner answers about a session. Falls back to the prompt&apos;s first line when no question matches the current prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

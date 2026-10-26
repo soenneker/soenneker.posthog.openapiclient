@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Dup
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Files;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.FilesRename;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Manifest;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.PublishCommunity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Rename;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.SkillMd;
@@ -51,6 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.FilesRename.FilesRenameRequestBuilder FilesRename
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.FilesRename.FilesRenameRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The manifest property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Manifest.ManifestRequestBuilder Manifest
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Manifest.ManifestRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The publishCommunity property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.PublishCommunity.PublishCommunityRequestBuilder PublishCommunity

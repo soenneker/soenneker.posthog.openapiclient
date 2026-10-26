@@ -12,6 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class BoxPlotDatum : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The count property</summary>
+        public int? Count { get; set; }
         /// <summary>The day property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "count", n => { Count = n.GetIntValue(); } },
                 { "day", n => { Day = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "max", n => { Max = n.GetDoubleValue(); } },
@@ -87,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("count", Count);
             writer.WriteStringValue("day", Day);
             writer.WriteStringValue("label", Label);
             writer.WriteDoubleValue("max", Max);

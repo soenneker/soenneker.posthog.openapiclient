@@ -16,6 +16,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Annotations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Announcements;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Approval_policies;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports;
@@ -106,6 +107,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_registry;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_servers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_tools;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_categories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_preferences;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_suppressions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_templates;
@@ -261,6 +263,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Announcements.AnnouncementsRequestBuilder Announcements
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Announcements.AnnouncementsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The apm property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.ApmRequestBuilder Apm
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.ApmRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The approval_policies property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Approval_policies.Approval_policiesRequestBuilder Approval_policies
@@ -711,6 +718,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_tools.Mcp_toolsRequestBuilder Mcp_tools
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_tools.Mcp_toolsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The messaging_categories property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_categories.Messaging_categoriesRequestBuilder Messaging_categories
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_categories.Messaging_categoriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messaging_preferences property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_preferences.Messaging_preferencesRequestBuilder Messaging_preferences

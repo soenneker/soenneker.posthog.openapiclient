@@ -24,6 +24,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft Draft { get; set; }
 #endif
+        /// <summary>First investigation outcome.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState? FirstReport { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState FirstReport { get; set; }
+#endif
+        /// <summary>Whether the current user can receive an in-app notification when this investigation finishes.</summary>
+        public bool? FirstReportCompletionNotification { get; set; }
+        /// <summary>The current user&apos;s email when enrolled for a first-report notification.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstReportNotificationEmail { get; set; }
+#nullable restore
+#else
+        public string FirstReportNotificationEmail { get; set; }
+#endif
         /// <summary>Background work started by quick activation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,6 +85,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "draft", n => { Draft = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft.CreateFromDiscriminatorValue); } },
+                { "first_report", n => { FirstReport = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState>(global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState.CreateFromDiscriminatorValue); } },
+                { "first_report_completion_notification", n => { FirstReportCompletionNotification = n.GetBoolValue(); } },
+                { "first_report_notification_email", n => { FirstReportNotificationEmail = n.GetStringValue(); } },
                 { "jobs", n => { Jobs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs.CreateFromDiscriminatorValue); } },
                 { "variant", n => { Variant = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant.CreateFromDiscriminatorValue); } },
             };
@@ -80,6 +101,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft>("draft", Draft);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState>("first_report", FirstReport);
+            writer.WriteBoolValue("first_report_completion_notification", FirstReportCompletionNotification);
+            writer.WriteStringValue("first_report_notification_email", FirstReportNotificationEmail);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs>("jobs", Jobs);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant>("variant", Variant);
             writer.WriteAdditionalData(AdditionalData);

@@ -40,8 +40,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
-        /// <summary>The missing_actors_count property</summary>
-        public int? MissingActorsCount { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
+#endif
+        /// <summary>Cursor for fetching the next page of results</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NextCursor { get; set; }
+#nullable restore
+#else
+        public string NextCursor { get; set; }
 #endif
         /// <summary>The offset property</summary>
         public int? Offset { get; set; }
@@ -139,8 +145,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "missing_actors_count", n => { MissingActorsCount = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "nextCursor", n => { NextCursor = n.GetStringValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
@@ -164,8 +170,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteIntValue("missing_actors_count", MissingActorsCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteStringValue("nextCursor", NextCursor);
             writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_compare_date_range", ResolvedCompareDateRange);

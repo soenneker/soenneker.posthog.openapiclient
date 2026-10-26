@@ -12,10 +12,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class SignalReportTaskActionRunRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>* `get_it_merged` - Get it merged* `make_it_green` - Make it green* `suggested_prompt` - Suggested prompt</summary>
+        /// <summary>* `get_it_merged` - Get it merged* `make_it_green` - Make it green* `suggested_prompt` - Suggested prompt* `ask` - Ask</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskActionRunRequestAction? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Your own request for the run. Required for `ask`, where it is the question or the work you want done on the report. Optional for `get_it_merged` and `make_it_green`, where it replaces the action&apos;s fixed request and keeps its instructions and gates: pass it when you know something the report does not, such as a merge order, a failure that is already on the base branch, or an expected conflict. Not accepted for `suggested_prompt`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Message { get; set; }
+#nullable restore
+#else
+        public string Message { get; set; }
+#endif
         /// <summary>Required for `suggested_prompt`: the `suggested_prompt_index` from the actions list.</summary>
         public int? SuggestedPromptIndex { get; set; }
         /// <summary>
@@ -44,6 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action", n => { Action = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskActionRunRequestAction>(); } },
+                { "message", n => { Message = n.GetStringValue(); } },
                 { "suggested_prompt_index", n => { SuggestedPromptIndex = n.GetIntValue(); } },
             };
         }
@@ -55,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskActionRunRequestAction>("action", Action);
+            writer.WriteStringValue("message", Message);
             writer.WriteIntValue("suggested_prompt_index", SuggestedPromptIndex);
             writer.WriteAdditionalData(AdditionalData);
         }

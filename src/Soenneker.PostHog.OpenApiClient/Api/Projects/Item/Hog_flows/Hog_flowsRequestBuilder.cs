@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Apply_utm_defaults;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Broadcast_conversion_candidates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Bulk_delete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Bulk_update_tags;
@@ -23,6 +24,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Hog_flowsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The apply_utm_defaults property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Apply_utm_defaults.Apply_utm_defaultsRequestBuilder Apply_utm_defaults
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Apply_utm_defaults.Apply_utm_defaultsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The broadcast_conversion_candidates property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Broadcast_conversion_candidates.Broadcast_conversion_candidatesRequestBuilder Broadcast_conversion_candidates
         {

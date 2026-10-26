@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_approve;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_delete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item;
@@ -17,6 +18,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk.BulkRequestBuilder Bulk
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk.BulkRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The bulk_approve property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_approve.Bulk_approveRequestBuilder Bulk_approve
         {

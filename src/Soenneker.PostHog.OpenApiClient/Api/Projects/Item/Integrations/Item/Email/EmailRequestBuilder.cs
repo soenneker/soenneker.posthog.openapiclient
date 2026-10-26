@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email.Status;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email.Verify;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Em
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The status property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email.Status.StatusRequestBuilder Status
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email.Status.StatusRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The verify property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email.Verify.VerifyRequestBuilder Verify

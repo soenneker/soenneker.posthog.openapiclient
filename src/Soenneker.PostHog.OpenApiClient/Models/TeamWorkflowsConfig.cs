@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailUtmParams EmailUtmParams { get; set; }
 #endif
-        /// <summary>Whether new email steps and broadcasts start with UTM tags on their links. Each email can still change it. Existing emails keep their current values.</summary>
+        /// <summary>Whether new email steps and broadcasts start with UTM tags on their links. Each email can still change it. Existing emails change only through apply_utm_defaults.</summary>
         public bool? EmailUtmTagsEnabled { get; set; }
         /// <summary>Most marketing messages one person can get in the window, across all workflows. Set this together with marketing_frequency_cap_window_days. Set both to null to turn the cap off.</summary>
         public int? MarketingFrequencyCapMaxMessages { get; set; }

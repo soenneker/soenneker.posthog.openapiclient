@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Distinct people across the session&apos;s duplicate group in the window, for `embedding_pick`. A finding that reached more people ranks higher.</summary>
+        public int? AffectedPeople { get; set; }
         /// <summary>The decision model&apos;s 0-1 judgment that the session is worth watching, for `jev_watchable`.</summary>
         public double? JevProbability { get; set; }
         /// <summary>* `signal_emitted` - Signal Emitted* `unusual_verdict` - Unusual Verdict* `notable` - Notable* `verdict_yes` - Verdict Yes* `outlier_score` - Outlier Score* `rare_tag` - Rare Tag* `novel_summary` - Novel Summary* `friction` - Friction* `jev_watchable` - Jev Watchable* `embedding_pick` - Embedding Pick* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
@@ -102,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "affected_people", n => { AffectedPeople = n.GetIntValue(); } },
                 { "jev_probability", n => { JevProbability = n.GetDoubleValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>(); } },
                 { "notability", n => { Notability = n.GetDoubleValue(); } },
@@ -127,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("affected_people", AffectedPeople);
             writer.WriteDoubleValue("jev_probability", JevProbability);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WatchFeedReasonKind>("kind", Kind);
             writer.WriteDoubleValue("notability", Notability);

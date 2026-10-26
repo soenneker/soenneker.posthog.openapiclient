@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Inbox_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Processing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reviewer_exclusions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_configs;
 using System.Collections.Generic;
@@ -57,6 +58,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.ReportsRequestBuilder Reports
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.ReportsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reviewer_exclusions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reviewer_exclusions.Reviewer_exclusionsRequestBuilder Reviewer_exclusions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reviewer_exclusions.Reviewer_exclusionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scout property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.ScoutRequestBuilder Scout

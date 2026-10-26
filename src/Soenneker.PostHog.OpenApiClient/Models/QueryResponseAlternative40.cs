@@ -38,10 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Hogql { get; set; }
 #endif
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative40Kind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
+        /// <summary>The missing_actors_count property</summary>
+        public int? MissingActorsCount { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,8 +138,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative40Kind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
+                { "missing_actors_count", n => { MissingActorsCount = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
@@ -163,8 +163,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("error", Error);
             writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("hogql", Hogql);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative40Kind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
+            writer.WriteIntValue("missing_actors_count", MissingActorsCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);

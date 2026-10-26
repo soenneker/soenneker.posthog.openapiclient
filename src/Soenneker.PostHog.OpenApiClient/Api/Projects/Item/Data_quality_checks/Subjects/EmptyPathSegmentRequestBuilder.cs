@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/subjects/", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/subjects/{?include_columns*,limit*,offset*,search*,subject_type*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,22 +30,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/subjects/", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_quality_checks/subjects/{?include_columns*,limit*,offset*,search*,subject_type*}", rawUrl)
         {
         }
         /// <summary>
-        /// Everything in this project you can author a check on, with each subject&apos;s columns.
+        /// Everything in this project you can author a check on, with each subject&apos;s columns. Filter by subject_type or search, and page with limit and offset.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubject&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubject>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubject>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubject>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubject>> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -53,17 +53,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Everything in this project you can author a check on, with each subject&apos;s columns.
+        /// Everything in this project you can author a check on, with each subject&apos;s columns. Filter by subject_type or search, and page with limit and offset.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -79,6 +79,35 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.EmptyPathSegmentRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_checks.Subjects.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Everything in this project you can author a check on, with each subject&apos;s columns. Filter by subject_type or search, and page with limit and offset.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Set to false to return an empty columns map for every subject. Use it to find a subject id without reading every column schema.</summary>
+            [QueryParameter("include_columns")]
+            public bool? IncludeColumns { get; set; }
+            /// <summary>Maximum number of subjects to return. Omit to return every match.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Number of matching subjects to skip. Subjects are sorted by subject_type, then name. When a response has limit rows, call again with offset increased by limit to read the next page.</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
+            /// <summary>Return only subjects whose name or display name contains this text, ignoring case.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>Return only subjects of this kind: &apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
+            [QueryParameter("subject_type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityChecksSubjectsListSubjectTypeParameter? SubjectType { get; set; }
         }
     }
 }

@@ -3,10 +3,18 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
+    /// <summary>* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FeatureFlagFilterPropertySemverSchemaOperator
     {
+        [EnumMember(Value = "semver_eq")]
+        #pragma warning disable CS1591
+        SemverEq,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "semver_neq")]
+        #pragma warning disable CS1591
+        SemverNeq,
+        #pragma warning restore CS1591
         [EnumMember(Value = "semver_gt")]
         #pragma warning disable CS1591
         SemverGt,
@@ -22,14 +30,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "semver_lte")]
         #pragma warning disable CS1591
         SemverLte,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "semver_eq")]
-        #pragma warning disable CS1591
-        SemverEq,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "semver_neq")]
-        #pragma warning disable CS1591
-        SemverNeq,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_tilde")]
         #pragma warning disable CS1591

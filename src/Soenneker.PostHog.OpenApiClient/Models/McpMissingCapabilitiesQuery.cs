@@ -730,6 +730,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Offset { get; set; }
         /// <summary>Only count persons with no session before the range, so a channel&apos;s cohorts are not inflated by users it acquired long ago. Defaults to true.</summary>
         public bool? OnlyNewUsers { get; set; }
+        /// <summary>Keep only the exceptions whose session has a recording the player can open.</summary>
+        public bool? OnlyWithRecording { get; set; }
         /// <summary>The operand property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator? Operand { get; set; }
         /// <summary>The optionalInFunnel property</summary>
@@ -1311,6 +1313,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "normalizePageUrls", n => { NormalizePageUrls = n.GetBoolValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "onlyNewUsers", n => { OnlyNewUsers = n.GetBoolValue(); } },
+                { "onlyWithRecording", n => { OnlyWithRecording = n.GetBoolValue(); } },
                 { "operand", n => { Operand = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "order", n => { Order = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder>(); } },
@@ -1544,6 +1547,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("normalizePageUrls", NormalizePageUrls);
             writer.WriteIntValue("offset", Offset);
             writer.WriteBoolValue("onlyNewUsers", OnlyNewUsers);
+            writer.WriteBoolValue("onlyWithRecording", OnlyWithRecording);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>("operand", Operand);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder>("order", Order);

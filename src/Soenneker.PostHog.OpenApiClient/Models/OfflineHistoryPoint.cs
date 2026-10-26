@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Breakdown value for this summary; null when unspecified or no breakdown is selected.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BreakdownValue { get; set; }
+#nullable restore
+#else
+        public string BreakdownValue { get; set; }
+#endif
         /// <summary>Experiment execution and cohort context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "breakdown_value", n => { BreakdownValue = n.GetStringValue(); } },
                 { "experiment", n => { Experiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointExperiment>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointExperiment.CreateFromDiscriminatorValue); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointSummary>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointSummary.CreateFromDiscriminatorValue); } },
             };
@@ -66,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("breakdown_value", BreakdownValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointExperiment>("experiment", Experiment);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointSummary>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);

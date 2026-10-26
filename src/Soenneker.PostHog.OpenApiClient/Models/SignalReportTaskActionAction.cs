@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `get_it_merged` - Get it merged* `make_it_green` - Make it green* `suggested_prompt` - Suggested prompt</summary>
+    /// <summary>* `get_it_merged` - Get it merged* `make_it_green` - Make it green* `suggested_prompt` - Suggested prompt* `ask` - Ask</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalReportTaskActionAction
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "suggested_prompt")]
         #pragma warning disable CS1591
         SuggestedPrompt,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ask")]
+        #pragma warning disable CS1591
+        Ask,
         #pragma warning restore CS1591
     }
 }

@@ -19,6 +19,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Request_fi
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Revert;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Tools;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Validate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.View;
@@ -123,6 +124,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.StateRequestBuilder State
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.StateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tools property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Tools.ToolsRequestBuilder Tools
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Tools.ToolsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The validate property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Validate.ValidateRequestBuilder Validate

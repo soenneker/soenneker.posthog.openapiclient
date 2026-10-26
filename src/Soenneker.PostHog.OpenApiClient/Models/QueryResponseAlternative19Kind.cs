@@ -8,9 +8,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public enum QueryResponseAlternative19Kind
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "ExperimentExposureQuery")]
+        [EnumMember(Value = "ExperimentQuery")]
         #pragma warning disable CS1591
-        ExperimentExposureQuery,
+        ExperimentQuery,
         #pragma warning restore CS1591
     }
 }

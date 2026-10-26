@@ -32,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCreatedBy CreatedBy { get; private set; }
 #endif
+        /// <summary>Display settings that a dashboard made from this template starts with: tile spacing, layout compaction, and the tile groups that tiles join through their group_key.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization? Customization { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization Customization { get; set; }
+#endif
         /// <summary>The dashboard_description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -140,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "availability_contexts", n => { AvailabilityContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCreatedBy.CreateFromDiscriminatorValue); } },
+                { "customization", n => { Customization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization.CreateFromDiscriminatorValue); } },
                 { "dashboard_description", n => { DashboardDescription = n.GetStringValue(); } },
                 { "dashboard_filters", n => { DashboardFilters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
@@ -163,6 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("availability_contexts", AvailabilityContexts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization>("customization", Customization);
             writer.WriteStringValue("dashboard_description", DashboardDescription);
             writer.WriteObjectValue<UntypedNode>("dashboard_filters", DashboardFilters);
             writer.WriteBoolValue("deleted", Deleted);

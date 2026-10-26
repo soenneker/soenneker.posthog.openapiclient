@@ -50,6 +50,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The offset property</summary>
         public int? Offset { get; set; }
+        /// <summary>When the oldest precomputed window this response used was computed. Unset for live responses.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PreComputedAt { get; set; }
+#nullable restore
+#else
+        public string PreComputedAt { get; set; }
+#endif
+        /// <summary>Why a live response skipped precompute: the eligibility-gate reason that refused it. Unset when the query was eligible.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PreComputeIneligibleReason { get; set; }
+#nullable restore
+#else
+        public string PreComputeIneligibleReason { get; set; }
+#endif
+        /// <summary>Whether a lazy-precompute read was served from expired-within-grace (stale) jobs instead of recomputing inline.</summary>
+        public bool? PreComputeStale { get; set; }
+        /// <summary>The preComputeStrategy property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsPreComputeStrategy? PreComputeStrategy { get; set; }
         /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,6 +167,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
+                { "preComputeIneligibleReason", n => { PreComputeIneligibleReason = n.GetStringValue(); } },
+                { "preComputeStale", n => { PreComputeStale = n.GetBoolValue(); } },
+                { "preComputeStrategy", n => { PreComputeStrategy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsPreComputeStrategy>(); } },
+                { "preComputedAt", n => { PreComputedAt = n.GetStringValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
@@ -172,6 +196,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
+            writer.WriteStringValue("preComputedAt", PreComputedAt);
+            writer.WriteStringValue("preComputeIneligibleReason", PreComputeIneligibleReason);
+            writer.WriteBoolValue("preComputeStale", PreComputeStale);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsPreComputeStrategy>("preComputeStrategy", PreComputeStrategy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_compare_date_range", ResolvedCompareDateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);

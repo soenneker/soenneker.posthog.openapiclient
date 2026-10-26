@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions/{?event_type*,exclude_hidden*,exclude_stale*,excluded_properties*,limit*,names*,offset*,ordering*,search*,tags*,verified*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions/{?event_type*,exclude_hidden*,exclude_stale*,excluded_properties*,fuzzy_search*,limit*,names*,offset*,ordering*,search*,tags*,verified*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions/{?event_type*,exclude_hidden*,exclude_stale*,excluded_properties*,limit*,names*,offset*,ordering*,search*,tags*,verified*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions/{?event_type*,exclude_hidden*,exclude_stale*,excluded_properties*,fuzzy_search*,limit*,names*,offset*,ordering*,search*,tags*,verified*}", rawUrl)
         {
         }
         /// <summary>
@@ -140,6 +140,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
             /// <summary>When true, omit events whose last ingested occurrence is older than 30 days. Events that have never been seen (`last_seen_at` is null) are kept so newly-defined events remain discoverable. Default false. If a search returns zero results with this filter on, retry with `exclude_stale=false` and tell the user the matches are stale.</summary>
             [QueryParameter("exclude_stale")]
             public bool? ExcludeStale { get; set; }
+            /// <summary>When true, find similar event names only if the filtered search has no matches.</summary>
+            [QueryParameter("fuzzy_search")]
+            public bool? FuzzySearch { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

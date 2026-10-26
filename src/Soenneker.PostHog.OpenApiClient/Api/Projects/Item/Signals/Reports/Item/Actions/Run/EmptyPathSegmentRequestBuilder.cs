@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
         }
         /// <summary>
-        /// Create a task linked to the report and start its first run in the background, with the instructions the inbox uses for the same action. The run shows in the report&apos;s runs and counts toward the report&apos;s task limit. Nobody can answer questions in a background run, so the agent writes a note to the report&apos;s work log when it needs a decision.
+        /// Create a task linked to the report and start its first run in the background, with the instructions the inbox uses for the same action. `ask` sends your own message with the framing of the inbox&apos;s Ask AI. The run shows in the report&apos;s runs and counts toward the report&apos;s task limit. Nobody can answer questions in a background run, so the agent writes a note to the report&apos;s work log when it needs a decision.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskActionRunResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskActionRunResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskActionRunResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a task linked to the report and start its first run in the background, with the instructions the inbox uses for the same action. The run shows in the report&apos;s runs and counts toward the report&apos;s task limit. Nobody can answer questions in a background run, so the agent writes a note to the report&apos;s work log when it needs a decision.
+        /// Create a task linked to the report and start its first run in the background, with the instructions the inbox uses for the same action. `ask` sends your own message with the framing of the inbox&apos;s Ask AI. The run shows in the report&apos;s runs and counts toward the report&apos;s task limit. Nobody can answer questions in a background run, so the agent writes a note to the report&apos;s work log when it needs a decision.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

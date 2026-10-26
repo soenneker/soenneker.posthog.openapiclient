@@ -93,6 +93,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing? GridSpacing { get; set; }
+        /// <summary>* `sections` - sections* `tabs` - tabs</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupDisplay? GroupDisplay { get; set; }
         /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -240,6 +242,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "folder", n => { Folder = n.GetStringValue(); } },
                 { "grid_spacing", n => { GridSpacing = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing>(); } },
+                { "group_display", n => { GroupDisplay = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupDisplay>(); } },
                 { "group_titles", n => { GroupTitles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty.CreateFromDiscriminatorValue); } },
                 { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -276,6 +279,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("delete_insights", DeleteInsights);
             writer.WriteStringValue("description", Description);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGridSpacing>("grid_spacing", GridSpacing);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupDisplay>("group_display", GroupDisplay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupsProperty>("groups", Groups);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardGroupTitlesProperty>("group_titles", GroupTitles);
             writer.WriteDateTimeOffsetValue("last_refresh", LastRefresh);

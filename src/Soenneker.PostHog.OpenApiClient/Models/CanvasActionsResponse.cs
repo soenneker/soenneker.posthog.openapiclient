@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The action registry: every verb a canvas may declare and invoke.
+    /// The action registry: every verb and PostHog MCP tool a canvas may declare and invoke.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasActionsResponse : IAdditionalDataHolder, IParsable
@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>PostHog MCP tools a canvas may declare in capabilities.posthog.tools, sorted by name. Read each tool&apos;s input schema with the MCP `info` command.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasToolDefinition>? Tools { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasToolDefinition> Tools { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasActionsResponse"/> and sets the default values.
         /// </summary>
@@ -49,6 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasActionDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasActionDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasToolDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasToolDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -59,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasActionDefinition>("actions", Actions);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasToolDefinition>("tools", Tools);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

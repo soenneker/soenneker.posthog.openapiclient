@@ -45,6 +45,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing? GridSpacing { get; set; }
+        /// <summary>* `sections` - sections* `tabs` - tabs</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay? GroupDisplay { get; set; }
         /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -139,6 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters.CreateFromDiscriminatorValue); } },
                 { "grid_spacing", n => { GridSpacing = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>(); } },
+                { "group_display", n => { GroupDisplay = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay>(); } },
                 { "group_titles", n => { GroupTitles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty.CreateFromDiscriminatorValue); } },
                 { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty.CreateFromDiscriminatorValue); } },
                 { "layout_compaction", n => { LayoutCompaction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>(); } },
@@ -164,6 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters>("filters", Filters);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>("grid_spacing", GridSpacing);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay>("group_display", GroupDisplay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty>("groups", Groups);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty>("group_titles", GroupTitles);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>("layout_compaction", LayoutCompaction);

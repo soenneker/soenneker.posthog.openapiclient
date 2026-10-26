@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportTaskAction : IAdditionalDataHolder, IParsable
     {
-        /// <summary>* `get_it_merged` - Get it merged* `make_it_green` - Make it green* `suggested_prompt` - Suggested prompt</summary>
+        /// <summary>* `get_it_merged` - Get it merged* `make_it_green` - Make it green* `suggested_prompt` - Suggested prompt* `ask` - Ask</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskActionAction? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }

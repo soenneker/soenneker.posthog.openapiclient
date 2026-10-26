@@ -105,9 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? TypeAwareCastSimplification { get; set; }
         /// <summary>The useMaterializedViews property</summary>
         public bool? UseMaterializedViews { get; set; }
-        /// <summary>Read this query from the native events cluster and native JSON events table (`true`), or keep its existing connection (`false` or unset). This is an internal rollout switch for eligible projects. PostHog staff manage eligibility through instance settings. Each query must opt in; project defaults cannot enable it. Only synchronous HogQLQuery SQL comparisons are supported.</summary>
-        public bool? UseNewEventsCluster { get; set; }
-        /// <summary>Read events from the native JSON events table (`true`) or the legacy events table (`false`). When unset, the project&apos;s stored value applies, then the `CLICKHOUSE_HOGQL_USE_NEW_EVENTS_SCHEMA` instance settings. This is an internal rollout switch. PostHog staff set the project value in Django admin and the project settings API ignores it.</summary>
+        /// <summary>Read events from the native JSON events table (`true`) or the legacy events table (`false`). When unset, a staff person&apos;s `ph_new_events_schema` cookie applies, then the project&apos;s listing in the `CLICKHOUSE_HOGQL_USE_NEW_EVENTS_SCHEMA_TEAMS` instance setting, then the `CLICKHOUSE_HOGQL_USE_NEW_EVENTS_SCHEMA` instance setting. This is an internal rollout switch, and the project settings API ignores it.</summary>
         public bool? UseNewEventsSchema { get; set; }
         /// <summary>The usePreaggregatedIntermediateResults property</summary>
         public bool? UsePreaggregatedIntermediateResults { get; set; }
@@ -169,7 +167,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "timings", n => { Timings = n.GetBoolValue(); } },
                 { "typeAwareCastSimplification", n => { TypeAwareCastSimplification = n.GetBoolValue(); } },
                 { "useMaterializedViews", n => { UseMaterializedViews = n.GetBoolValue(); } },
-                { "useNewEventsCluster", n => { UseNewEventsCluster = n.GetBoolValue(); } },
                 { "useNewEventsSchema", n => { UseNewEventsSchema = n.GetBoolValue(); } },
                 { "usePreaggregatedIntermediateResults", n => { UsePreaggregatedIntermediateResults = n.GetBoolValue(); } },
                 { "usePreaggregatedTableTransforms", n => { UsePreaggregatedTableTransforms = n.GetBoolValue(); } },
@@ -218,7 +215,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("timings", Timings);
             writer.WriteBoolValue("typeAwareCastSimplification", TypeAwareCastSimplification);
             writer.WriteBoolValue("useMaterializedViews", UseMaterializedViews);
-            writer.WriteBoolValue("useNewEventsCluster", UseNewEventsCluster);
             writer.WriteBoolValue("useNewEventsSchema", UseNewEventsSchema);
             writer.WriteBoolValue("usePreaggregatedIntermediateResults", UsePreaggregatedIntermediateResults);
             writer.WriteBoolValue("usePreaggregatedTableTransforms", UsePreaggregatedTableTransforms);

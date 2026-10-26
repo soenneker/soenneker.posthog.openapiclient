@@ -50,6 +50,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?> State { get; set; }
 #endif
+        /// <summary>PostHog MCP tools the canvas may run via ph.tools (e.g. &apos;feature-flag-get-definition&apos;, &apos;feature-flag-set-release-condition-rollout&apos;). Each runs as the viewer; declaring one shows it in the promote review.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tools { get; set; }
+#nullable restore
+#else
+        public List<string> Tools { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities"/> and sets the default values.
         /// </summary>
@@ -82,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "inlineQueries", n => { InlineQueries = n.GetBoolValue(); } },
                 { "insights", n => { Insights = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "state", n => { State = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum>()?.AsList(); } },
+                { "tools", n => { Tools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -97,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("inlineQueries", InlineQueries);
             writer.WriteCollectionOfPrimitiveValues<string>("insights", Insights);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum>("state", State);
+            writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

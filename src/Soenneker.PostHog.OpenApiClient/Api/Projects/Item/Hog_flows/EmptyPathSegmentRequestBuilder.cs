@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,status*,tags*,trigger*,type*,updated_at*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,status*,tags*,trigger*,type*,updated_at*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList"/></returns>
@@ -159,6 +159,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
 #else
             [QueryParameter("search")]
             public string Search { get; set; }
+#endif
+            /// <summary>Filter to workflows started from this record, as &apos;&lt;kind&gt;:&lt;id&gt;&apos;, e.g. `early_access:&lt;id&gt;`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("source_record")]
+            public string? SourceRecord { get; set; }
+#nullable restore
+#else
+            [QueryParameter("source_record")]
+            public string SourceRecord { get; set; }
 #endif
             /// <summary>* `draft` - Draft* `active` - Active* `archived` - Archived</summary>
             [QueryParameter("status")]

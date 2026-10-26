@@ -67,6 +67,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> StateScopesAdded { get; set; }
 #endif
+        /// <summary>PostHog MCP tools the draft newly declares it may run via ph.tools.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ToolsAdded { get; set; }
+#nullable restore
+#else
+        public List<string> ToolsAdded { get; set; }
+#endif
         /// <summary>True when the draft declares any capability the current head does not.</summary>
         public bool? Widens { get; set; }
         /// <summary>
@@ -102,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "insights_added", n => { InsightsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "network_origins_added", n => { NetworkOriginsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "state_scopes_added", n => { StateScopesAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "tools_added", n => { ToolsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "widens", n => { Widens = n.GetBoolValue(); } },
             };
         }
@@ -120,6 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("insights_added", InsightsAdded);
             writer.WriteCollectionOfPrimitiveValues<string>("network_origins_added", NetworkOriginsAdded);
             writer.WriteCollectionOfPrimitiveValues<string>("state_scopes_added", StateScopesAdded);
+            writer.WriteCollectionOfPrimitiveValues<string>("tools_added", ToolsAdded);
             writer.WriteBoolValue("widens", Widens);
             writer.WriteAdditionalData(AdditionalData);
         }

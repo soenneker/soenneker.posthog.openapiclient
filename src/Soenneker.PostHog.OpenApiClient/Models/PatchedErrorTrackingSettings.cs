@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether the project ingests exception events. When false, ingestion drops every $exception event for this project before it is stored or billed, and the events cannot be recovered.</summary>
+        public bool? IngestionEnabled { get; set; }
         /// <summary>Bucket window over which the per-issue rate limit applies, in minutes.</summary>
         public int? PerIssueRateLimitBucketSizeMinutes { get; set; }
         /// <summary>Maximum number of exception events ingested per bucket for each individual issue. Null removes the limit.</summary>
@@ -47,6 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ingestion_enabled", n => { IngestionEnabled = n.GetBoolValue(); } },
                 { "per_issue_rate_limit_bucket_size_minutes", n => { PerIssueRateLimitBucketSizeMinutes = n.GetIntValue(); } },
                 { "per_issue_rate_limit_value", n => { PerIssueRateLimitValue = n.GetIntValue(); } },
                 { "project_rate_limit_bucket_size_minutes", n => { ProjectRateLimitBucketSizeMinutes = n.GetIntValue(); } },
@@ -60,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("ingestion_enabled", IngestionEnabled);
             writer.WriteIntValue("per_issue_rate_limit_bucket_size_minutes", PerIssueRateLimitBucketSizeMinutes);
             writer.WriteIntValue("per_issue_rate_limit_value", PerIssueRateLimitValue);
             writer.WriteIntValue("project_rate_limit_bucket_size_minutes", ProjectRateLimitBucketSizeMinutes);

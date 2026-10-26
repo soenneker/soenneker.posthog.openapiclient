@@ -157,6 +157,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule> Schedules { get; private set; }
 #endif
+        /// <summary>The record another product&apos;s entry point started this workflow from, as &apos;&lt;kind&gt;:&lt;id&gt;&apos;. Set only when creating a workflow. Filter the list with `?source_record=`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceRecord { get; set; }
+#nullable restore
+#else
+        public string SourceRecord { get; set; }
+#endif
         /// <summary>* `draft` - Draft* `active` - Active* `archived` - Archived</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatus? Status { get; set; }
         /// <summary>Tags for organizing workflows, for example by team or use case. Tags are shared with the rest of the project. Omit to keep the current tags, send an empty list to remove them all.</summary>
@@ -251,6 +259,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct.CreateFromDiscriminatorValue); } },
                 { "schedules", n => { Schedules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "source_record", n => { SourceRecord = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatus>(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "trigger", n => { Trigger = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -276,6 +285,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition>("exit_condition", ExitCondition);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct>("origin_product", OriginProduct);
+            writer.WriteStringValue("source_record", SourceRecord);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatus>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking>("trigger_masking", TriggerMasking);

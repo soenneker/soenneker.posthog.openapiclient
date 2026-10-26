@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `sections` - sections* `tabs` - tabs</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupDisplay? GroupDisplay { get; set; }
         /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "group_display", n => { GroupDisplay = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupDisplay>(); } },
                 { "group_titles", n => { GroupTitles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles.CreateFromDiscriminatorValue); } },
                 { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups.CreateFromDiscriminatorValue); } },
                 { "layout_compaction", n => { LayoutCompaction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction>(); } },
@@ -73,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupDisplay>("group_display", GroupDisplay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroups>("groups", Groups);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationComposedGroupTitles>("group_titles", GroupTitles);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction>("layout_compaction", LayoutCompaction);

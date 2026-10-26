@@ -54,6 +54,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? ExperimentId { get; set; }
         /// <summary>Stable item UUID.</summary>
         public Guid? Id { get; set; }
+        /// <summary>Model used for the item, falling back to the experiment&apos;s model.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelVersion { get; set; }
+#nullable restore
+#else
+        public string ModelVersion { get; set; }
+#endif
         /// <summary>Payload retention deadline; cleanup is not yet enabled.</summary>
         public DateTimeOffset? PayloadExpiresAt { get; set; }
         /// <summary>* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
@@ -107,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dataset_item_version_identifier", n => { DatasetItemVersionIdentifier = n.GetStringValue(); } },
                 { "experiment_id", n => { ExperimentId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "model_version", n => { ModelVersion = n.GetStringValue(); } },
                 { "payload_expires_at", n => { PayloadExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "payload_state", n => { PayloadState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState>(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -128,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("dataset_item_version_identifier", DatasetItemVersionIdentifier);
             writer.WriteGuidValue("experiment_id", ExperimentId);
             writer.WriteGuidValue("id", Id);
+            writer.WriteStringValue("model_version", ModelVersion);
             writer.WriteDateTimeOffsetValue("payload_expires_at", PayloadExpiresAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState>("payload_state", PayloadState);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>("results", Results);

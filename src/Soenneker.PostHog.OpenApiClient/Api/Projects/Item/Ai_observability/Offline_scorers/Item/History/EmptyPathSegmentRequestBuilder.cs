@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_scorers/{id}/history/{?application_version*,created_by*,created_by_is_null*,cursor*,dataset_identifier*,dataset_revision_identifier*,dataset_source*,date_from*,date_to*,limit*,model_version*,prompt_version*,run_source*,scorer_version_ids*,search*,statuses*,suite_key*,tag_match*,tags*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_scorers/{id}/history/{?application_version*,breakdown*,created_by*,created_by_is_null*,cursor*,dataset_identifier*,dataset_revision_identifier*,dataset_source*,date_from*,date_to*,limit*,model_version*,prompt_version*,run_source*,scorer_version_ids*,search*,statuses*,suite_key*,tag_match*,tags*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_scorers/{id}/history/{?application_version*,created_by*,created_by_is_null*,cursor*,dataset_identifier*,dataset_revision_identifier*,dataset_source*,date_from*,date_to*,limit*,model_version*,prompt_version*,run_source*,scorer_version_ids*,search*,statuses*,suite_key*,tag_match*,tags*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/ai_observability/offline_scorers/{id}/history/{?application_version*,breakdown*,created_by*,created_by_is_null*,cursor*,dataset_identifier*,dataset_revision_identifier*,dataset_source*,date_from*,date_to*,limit*,model_version*,prompt_version*,run_source*,scorer_version_ids*,search*,statuses*,suite_key*,tag_match*,tags*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPage"/></returns>
@@ -103,6 +103,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
             [QueryParameter("application_version")]
             public string ApplicationVersion { get; set; }
 #endif
+            /// <summary>Split history by this property. Model uses each item&apos;s model, falling back to the experiment&apos;s model.* `model_version` - Model* `prompt_version` - Prompt version* `application_version` - Application version* `suite_key` - Suite* `run_source` - Run source</summary>
+            [QueryParameter("breakdown")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.AiObservabilityOfflineScorersHistoryListBreakdownParameter? Breakdown { get; set; }
             /// <summary>Filter experiments by the author&apos;s user ID.</summary>
             [QueryParameter("created_by")]
             public int? CreatedBy { get; set; }

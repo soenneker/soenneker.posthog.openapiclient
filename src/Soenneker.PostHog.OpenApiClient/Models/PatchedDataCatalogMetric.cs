@@ -92,13 +92,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Email of the human accountable for this metric, or null.</summary>
+        /// <summary>Email of the human accountable for this metric, or null. Set it to the email of a member of this organization to reassign the metric, or to null to clear it. Changing the owner keeps the metric&apos;s approval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Owner { get; private set; }
+        public string? Owner { get; set; }
 #nullable restore
 #else
-        public string Owner { get; private set; }
+        public string Owner { get; set; }
 #endif
         /// <summary>Why the definition is shaped this way, in 1-3 short sentences. Name the main design decisions and trade-offs: the source table or view, a filter or exclusion, the grain, an approximation. Leave out the use case, who asked, run results, validation figures, and edit history.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -205,6 +205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("owner", Owner);
             writer.WriteStringValue("reasoning", Reasoning);
             writer.WriteStringValue("source_insight_short_id", SourceInsightShortId);
             writer.WriteStringValue("unit", Unit);

@@ -36,6 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TableName { get; set; }
 #endif
+        /// <summary>Whether the query read a history table of this source</summary>
+        public bool? UsesHistoryTable { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -57,6 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "source_type", n => { SourceType = n.GetStringValue(); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
+                { "uses_history_table", n => { UsesHistoryTable = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -69,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("source_type", SourceType);
             writer.WriteStringValue("table_name", TableName);
+            writer.WriteBoolValue("uses_history_table", UsesHistoryTable);
         }
     }
 }

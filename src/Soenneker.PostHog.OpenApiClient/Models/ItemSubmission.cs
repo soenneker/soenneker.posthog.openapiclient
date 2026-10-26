@@ -50,6 +50,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Caller-generated UUID for one input/output execution. Reuse for exact retries.</summary>
         public Guid? Id { get; set; }
+        /// <summary>Model used for this item. Omitted or null values inherit the experiment&apos;s model.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelVersion { get; set; }
+#nullable restore
+#else
+        public string ModelVersion { get; set; }
+#endif
         /// <summary>Optional input/output payload, up to 1 MiB and 32 JSON levels. Omission, {} and null properties differ.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dataset_item_version_id", n => { DatasetItemVersionId = n.GetGuidValue(); } },
                 { "dataset_item_version_identifier", n => { DatasetItemVersionIdentifier = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "model_version", n => { ModelVersion = n.GetStringValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayload>(global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayload.CreateFromDiscriminatorValue); } },
                 { "trial", n => { Trial = n.GetStringValue(); } },
             };
@@ -114,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("dataset_item_version_id", DatasetItemVersionId);
             writer.WriteStringValue("dataset_item_version_identifier", DatasetItemVersionIdentifier);
             writer.WriteGuidValue("id", Id);
+            writer.WriteStringValue("model_version", ModelVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayload>("payload", Payload);
             writer.WriteStringValue("trial", Trial);
             writer.WriteAdditionalData(AdditionalData);
