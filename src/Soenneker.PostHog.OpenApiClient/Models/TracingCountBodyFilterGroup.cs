@@ -37,15 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroup CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroup();
-            if("TracingCountBodyFilterGroupOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.TracingCountBodyFilterGroupOneOf2 = new global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroupOneOf2();
-            }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> spanPropertyFilter2Value)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> spanPropertyFilter2Value)
             {
                 result.SpanPropertyFilter2 = spanPropertyFilter2Value;
+            }
+            else {
+                result.TracingCountBodyFilterGroupOneOf2 = new global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroupOneOf2();
             }
             return result;
         }
@@ -57,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(TracingCountBodyFilterGroupOneOf2 != null)
             {
-                return TracingCountBodyFilterGroupOneOf2.GetFieldDeserializers();
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(TracingCountBodyFilterGroupOneOf2);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -68,13 +66,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(TracingCountBodyFilterGroupOneOf2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroupOneOf2>(null, TracingCountBodyFilterGroupOneOf2);
-            }
-            else if(SpanPropertyFilter2 != null)
+            if(SpanPropertyFilter2 != null)
             {
                 writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(null, SpanPropertyFilter2);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingCountBodyFilterGroupOneOf2>(null, TracingCountBodyFilterGroupOneOf2);
             }
         }
     }

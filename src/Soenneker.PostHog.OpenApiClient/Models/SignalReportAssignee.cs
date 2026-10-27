@@ -28,6 +28,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? ClaimId { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalActorKindEnum? Kind { get; set; }
+        /// <summary>The person who answers for the claim: the user for a user claim, the user an MCP agent acts for, or the user who started an internal task. Null when no person stands behind the claim.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.User2? ResponsibleUser { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.User2 ResponsibleUser { get; set; }
+#endif
         /// <summary>The task_id property</summary>
         public Guid? TaskId { get; set; }
         /// <summary>The user property</summary>
@@ -67,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "claimed_at", n => { ClaimedAt = n.GetDateTimeOffsetValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalActorKindEnum>(); } },
+                { "responsible_user", n => { ResponsibleUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>(global::Soenneker.PostHog.OpenApiClient.Models.User2.CreateFromDiscriminatorValue); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>(global::Soenneker.PostHog.OpenApiClient.Models.User2.CreateFromDiscriminatorValue); } },
             };
@@ -82,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("claimed_at", ClaimedAt);
             writer.WriteGuidValue("claim_id", ClaimId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalActorKindEnum>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>("responsible_user", ResponsibleUser);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>("user", User);
             writer.WriteAdditionalData(AdditionalData);

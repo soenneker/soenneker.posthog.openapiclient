@@ -22,6 +22,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AnswerText { get; set; }
 #endif
+        /// <summary>Sentiment of the sentences that name the brand: &apos;positive&apos;, &apos;neutral&apos; or &apos;negative&apos;. Null until scored, and when the answer never names the brand.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BrandSentiment { get; set; }
+#nullable restore
+#else
+        public string BrandSentiment { get; set; }
+#endif
+        /// <summary>Classifier confidence (0-1) in &apos;brand_sentiment&apos;. Null when &apos;brand_sentiment&apos; is null.</summary>
+        public double? BrandSentimentScore { get; set; }
         /// <summary>The engine did not answer. When true, &apos;cited&apos; is false and says nothing about citations.</summary>
         public bool? CheckFailed { get; set; }
         /// <summary>Whether the answer cited a URL on one of the target domains.</summary>
@@ -130,6 +140,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "answer_text", n => { AnswerText = n.GetStringValue(); } },
+                { "brand_sentiment", n => { BrandSentiment = n.GetStringValue(); } },
+                { "brand_sentiment_score", n => { BrandSentimentScore = n.GetDoubleValue(); } },
                 { "check_failed", n => { CheckFailed = n.GetBoolValue(); } },
                 { "cited", n => { Cited = n.GetBoolValue(); } },
                 { "cited_urls", n => { CitedUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -154,6 +166,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("answer_text", AnswerText);
+            writer.WriteStringValue("brand_sentiment", BrandSentiment);
+            writer.WriteDoubleValue("brand_sentiment_score", BrandSentimentScore);
             writer.WriteBoolValue("check_failed", CheckFailed);
             writer.WriteBoolValue("cited", Cited);
             writer.WriteCollectionOfPrimitiveValues<string>("cited_urls", CitedUrls);

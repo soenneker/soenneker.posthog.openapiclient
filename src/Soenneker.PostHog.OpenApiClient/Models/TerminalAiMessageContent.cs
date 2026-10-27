@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContentMember1>(global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContentMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContentMember1> terminalAiMessageContentMember1Value)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContentMember1>(global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContentMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessageContentMember1> terminalAiMessageContentMember1Value)
             {
                 result.TerminalAiMessageContentMember1 = terminalAiMessageContentMember1Value;
             }

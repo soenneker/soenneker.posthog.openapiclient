@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreationMode? CreationMode { get; private set; }
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; private set; }
-        /// <summary>Description of the dashboard.</summary>
+        /// <summary>Short note for people who open the dashboard. Say what it shows in one or two sentences, about 30 words. Leave it empty when the name already says it. Do not write how it was built or changed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; private set; }

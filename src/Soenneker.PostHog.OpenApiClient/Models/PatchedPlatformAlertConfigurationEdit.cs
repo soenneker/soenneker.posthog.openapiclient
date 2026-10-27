@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedPlatformAlertConfigurationEdit : IComposedTypeWrapper, IParsable
@@ -29,6 +29,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit PatchedLogsPlatformAlertConfigurationEdit { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit? PatchedWarehouseDestinationPlatformAlertConfigurationEdit { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit PatchedWarehouseDestinationPlatformAlertConfigurationEdit { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit? PatchedWarehouseSourcePlatformAlertConfigurationEdit { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit PatchedWarehouseSourcePlatformAlertConfigurationEdit { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -47,6 +63,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.PatchedLogsPlatformAlertConfigurationEdit = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit();
             }
+            else if("warehouse_destination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.PatchedWarehouseDestinationPlatformAlertConfigurationEdit = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit();
+            }
+            else if("warehouse_source".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.PatchedWarehouseSourcePlatformAlertConfigurationEdit = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit();
+            }
             return result;
         }
         /// <summary>
@@ -62,6 +86,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(PatchedLogsPlatformAlertConfigurationEdit != null)
             {
                 return PatchedLogsPlatformAlertConfigurationEdit.GetFieldDeserializers();
+            }
+            else if(PatchedWarehouseDestinationPlatformAlertConfigurationEdit != null)
+            {
+                return PatchedWarehouseDestinationPlatformAlertConfigurationEdit.GetFieldDeserializers();
+            }
+            else if(PatchedWarehouseSourcePlatformAlertConfigurationEdit != null)
+            {
+                return PatchedWarehouseSourcePlatformAlertConfigurationEdit.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -79,6 +111,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(PatchedLogsPlatformAlertConfigurationEdit != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit>(null, PatchedLogsPlatformAlertConfigurationEdit);
+            }
+            else if(PatchedWarehouseDestinationPlatformAlertConfigurationEdit != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit>(null, PatchedWarehouseDestinationPlatformAlertConfigurationEdit);
+            }
+            else if(PatchedWarehouseSourcePlatformAlertConfigurationEdit != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit>(null, PatchedWarehouseSourcePlatformAlertConfigurationEdit);
             }
         }
     }

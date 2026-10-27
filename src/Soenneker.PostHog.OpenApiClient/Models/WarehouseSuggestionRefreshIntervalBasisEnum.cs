@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `source_sync` - Source sync* `fastest_schedule` - Fastest schedule* `read_rate` - Read rate* `savings` - Savings</summary>
+    /// <summary>* `source_sync` - Source sync* `fastest_schedule` - Fastest schedule* `read_rate` - Read rate* `consumer_refresh` - Consumer refresh* `savings` - Savings</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WarehouseSuggestionRefreshIntervalBasisEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "read_rate")]
         #pragma warning disable CS1591
         ReadRate,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "consumer_refresh")]
+        #pragma warning disable CS1591
+        ConsumerRefresh,
         #pragma warning restore CS1591
         [EnumMember(Value = "savings")]
         #pragma warning disable CS1591

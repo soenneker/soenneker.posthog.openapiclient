@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/{?backfill_id*,date_from*,date_to*,labeled*,max_score*,min_score*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/{?backfill_id*,date_from*,date_to*,labeled*,max_score*,min_score*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_group*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/{?backfill_id*,date_from*,date_to*,labeled*,max_score*,min_score*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/observations/{id}/{?backfill_id*,date_from*,date_to*,labeled*,max_score*,min_score*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_group*}", rawUrl)
         {
         }
         /// <summary>
@@ -203,6 +203,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
 #else
             [QueryParameter("verdict")]
             public string Verdict { get; set; }
+#endif
+            /// <summary>Only observations the watch feed groups with this observation as near duplicates, including itself. Pair it with the feed&apos;s `date_from` to list the sessions a feed card counts.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("watch_group")]
+            public string? WatchGroup { get; set; }
+#nullable restore
+#else
+            [QueryParameter("watch_group")]
+            public string WatchGroup { get; set; }
 #endif
         }
     }

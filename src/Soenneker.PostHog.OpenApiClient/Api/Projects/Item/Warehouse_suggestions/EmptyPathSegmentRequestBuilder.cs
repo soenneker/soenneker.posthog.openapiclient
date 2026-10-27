@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestion
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_suggestions/{?kind*,limit*,offset*,status*,subject_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_suggestions/{?assignee_id*,kind*,limit*,offset*,status*,subject_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestion
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_suggestions/{?kind*,limit*,offset*,status*,subject_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_suggestions/{?assignee_id*,kind*,limit*,offset*,status*,subject_id*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseSuggestionList"/></returns>
@@ -78,6 +78,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestion
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Only return suggestions assigned to the user with this ID.</summary>
+            [QueryParameter("assignee_id")]
+            public int? AssigneeId { get; set; }
             /// <summary>Only return suggestions of this kind.* `certify` - Certify* `deprecate` - Deprecate* `materialize` - Materialize* `unmaterialize` - Unmaterialize</summary>
             [QueryParameter("kind")]
             public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionsListKindParameter? Kind { get; set; }

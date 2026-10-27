@@ -8,7 +8,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Estimate
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Inline_scan;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Stats;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Suggest_tags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed_impressions;
 using System.Collections.Generic;
@@ -52,11 +51,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Stats.StatsRequestBuilder Stats
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Stats.StatsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The suggest_tags property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Suggest_tags.Suggest_tagsRequestBuilder Suggest_tags
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Suggest_tags.Suggest_tagsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The watch_feed property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed.Watch_feedRequestBuilder Watch_feed

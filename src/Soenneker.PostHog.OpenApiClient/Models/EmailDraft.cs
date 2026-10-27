@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Subject { get; set; }
 #endif
-        /// <summary>Why the template was used instead of a model draft. Null for a model draft.* `flag_off` - AI drafts are not enabled for this project* `ai_not_approved` - The organization has not approved AI data processing* `gateway_unconfigured` - The AI gateway is not configured* `rate_limited` - The project used its hourly AI drafts* `timeout` - The model took too long* `model_error` - The model call failed* `invalid_output` - The model returned an unusable draft</summary>
+        /// <summary>Why the template was used instead of a model draft. Null for a model draft.* `ai_not_approved` - The organization has not approved AI data processing* `gateway_unconfigured` - The AI gateway is not configured* `rate_limited` - The project used its hourly AI drafts* `timeout` - The model took too long* `model_error` - The model call failed* `invalid_output` - The model returned an unusable draft</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailDraftTemplateReason? TemplateReason { get; set; }

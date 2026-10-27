@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryProperties();
-            if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesAnyOf1Item> actorsQueryPropertiesAnyOf1ItemValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesAnyOf1Item> actorsQueryPropertiesAnyOf1ItemValue)
             {
                 result.ActorsQueryPropertiesAnyOf1Item = actorsQueryPropertiesAnyOf1ItemValue;
             }

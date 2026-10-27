@@ -21,6 +21,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Pause;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Recalculate_timeseries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Reset;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Resume;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Running_time_target;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_buckets;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_event_deltas;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Ship_variant;
@@ -138,6 +139,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Resume.ResumeRequestBuilder Resume
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Resume.ResumeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The running_time_target property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Running_time_target.Running_time_targetRequestBuilder Running_time_target
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Running_time_target.Running_time_targetRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The session_buckets property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_buckets.Session_bucketsRequestBuilder Session_buckets

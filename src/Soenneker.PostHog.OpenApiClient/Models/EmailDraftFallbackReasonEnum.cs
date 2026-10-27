@@ -3,14 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `flag_off` - AI drafts are not enabled for this project* `ai_not_approved` - The organization has not approved AI data processing* `gateway_unconfigured` - The AI gateway is not configured* `rate_limited` - The project used its hourly AI drafts* `timeout` - The model took too long* `model_error` - The model call failed* `invalid_output` - The model returned an unusable draft</summary>
+    /// <summary>* `ai_not_approved` - The organization has not approved AI data processing* `gateway_unconfigured` - The AI gateway is not configured* `rate_limited` - The project used its hourly AI drafts* `timeout` - The model took too long* `model_error` - The model call failed* `invalid_output` - The model returned an unusable draft</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EmailDraftFallbackReasonEnum
     {
-        [EnumMember(Value = "flag_off")]
-        #pragma warning disable CS1591
-        FlagOff,
-        #pragma warning restore CS1591
         [EnumMember(Value = "ai_not_approved")]
         #pragma warning disable CS1591
         AiNotApproved,

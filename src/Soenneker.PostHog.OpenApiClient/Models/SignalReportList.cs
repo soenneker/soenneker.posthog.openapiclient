@@ -94,6 +94,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Coarse sort key from the ranker named by the list response&apos;s ranker field, for sort=recommended only. Lower keys rank first. It is the score decile of the ranker&apos;s outcome (open, action or fix), then the priority as a tiebreak. The priority ranker uses the priority only. Reports without a usable score sort after scored ones. Null for every other sort.</summary>
         public int? InboxMergeKey { get; private set; }
+        /// <summary>Whether this is a scout self-improvement report. Most update a team-owned skill in the skills store, but reports with a selected repository can still produce a pull request.</summary>
+        public bool? IsSelfImprovementReport { get; private set; }
         /// <summary>The is_suggested_reviewer property</summary>
         public bool? IsSuggestedReviewer { get; private set; }
         /// <summary>Snapshot-only impact measurements for inbox rows. Live query definitions and authored comparisons are available from the report detail endpoint.</summary>
@@ -106,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Original implementation-complete time for this Monitoring period, null before entry. Present only when Monitoring is enabled.</summary>
         public DateTimeOffset? MonitoringStartedAt { get; private set; }
-        /// <summary>The plan this report leads or is a step of, with every step in it. A report that other reports link to with `part_of` is a plan. Null when the report is in no plan, and always null in list responses, because finding a plan&apos;s steps scans the project&apos;s report links.</summary>
+        /// <summary>The plan this report leads or is a step of, with every step in it. A report that other reports link to with `part_of` is a plan. Null when the report is in no plan, and always null in list responses, because finding a plan&apos;s steps costs several queries per report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan? Plan { get; private set; }
@@ -328,6 +330,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "implementation_pr_state", n => { ImplementationPrState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListImplementationPrState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListImplementationPrState.CreateFromDiscriminatorValue); } },
                 { "implementation_pr_url", n => { ImplementationPrUrl = n.GetStringValue(); } },
                 { "inbox_merge_key", n => { InboxMergeKey = n.GetIntValue(); } },
+                { "is_self_improvement_report", n => { IsSelfImprovementReport = n.GetBoolValue(); } },
                 { "is_suggested_reviewer", n => { IsSuggestedReviewer = n.GetBoolValue(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricList>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricList.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "monitoring_started_at", n => { MonitoringStartedAt = n.GetDateTimeOffsetValue(); } },

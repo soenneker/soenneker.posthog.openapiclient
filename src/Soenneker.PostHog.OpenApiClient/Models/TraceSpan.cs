@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// A span in a single trace. The trace action adds self time, which the list does not compute.
+    /// A span in a single trace. The trace action adds self time and span events, which the list does not return.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TraceSpan : IAdditionalDataHolder, IParsable
@@ -27,6 +27,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? DurationNano { get; set; }
         /// <summary>When the span ended.</summary>
         public DateTimeOffset? EndTime { get; set; }
+        /// <summary>OpenTelemetry span events, earliest first. Omitted when `excludeAttributes` is true.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanEvent>? Events { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanEvent> Events { get; set; }
+#endif
         /// <summary>Whether the span has no parent in the trace.</summary>
         public bool? IsRootSpan { get; set; }
         /// <summary>OpenTelemetry span kind.</summary>
@@ -127,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanAttributesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "duration_nano", n => { DurationNano = n.GetDoubleValue(); } },
                 { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
+                { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanEvent>(global::Soenneker.PostHog.OpenApiClient.Models.SpanEvent.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_root_span", n => { IsRootSpan = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetIntValue(); } },
                 { "matched_filter", n => { MatchedFilter = n.GetIntValue(); } },
@@ -154,6 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanAttributesProperty>("attributes", Attributes);
             writer.WriteDoubleValue("duration_nano", DurationNano);
             writer.WriteDateTimeOffsetValue("end_time", EndTime);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanEvent>("events", Events);
             writer.WriteBoolValue("is_root_span", IsRootSpan);
             writer.WriteIntValue("kind", Kind);
             writer.WriteIntValue("matched_filter", MatchedFilter);

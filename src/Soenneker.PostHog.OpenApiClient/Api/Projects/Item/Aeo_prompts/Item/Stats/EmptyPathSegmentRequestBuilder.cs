@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Item.Sta
         {
         }
         /// <summary>
-        /// Gets citation totals per answer engine for one prompt, plus per-day counts for the last 30 days in the project&apos;s timezone.
+        /// Gets citation and brand-mention totals per answer engine for one prompt, plus, for the last 30 days in the project&apos;s timezone, per-day counts, which engines cite which domains, brand sentiment per engine, and the words of the web searches the engines ran.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptStats"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Item.Sta
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptStats>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptStats.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Gets citation totals per answer engine for one prompt, plus per-day counts for the last 30 days in the project&apos;s timezone.
+        /// Gets citation and brand-mention totals per answer engine for one prompt, plus, for the last 30 days in the project&apos;s timezone, per-day counts, which engines cite which domains, brand sentiment per engine, and the words of the web searches the engines ran.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

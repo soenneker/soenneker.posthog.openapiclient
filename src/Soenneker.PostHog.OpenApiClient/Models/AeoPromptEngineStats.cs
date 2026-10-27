@@ -34,6 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? FirstCheckedAt { get; set; }
         /// <summary>When the engine last ran the prompt.</summary>
         public DateTimeOffset? LastCheckedAt { get; set; }
+        /// <summary>Checks whose answer names the brand (the registrable name of a target domain, case ignored). A cited check always counts as mentioned.</summary>
+        public int? Mentioned { get; set; }
+        /// <summary>Share (0-1) of answered checks whose answer names the brand. Failed checks are left out. Null when no check was answered.</summary>
+        public double? MentionRate { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats"/> and sets the default values.
         /// </summary>
@@ -66,6 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "failed", n => { Failed = n.GetIntValue(); } },
                 { "first_checked_at", n => { FirstCheckedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_checked_at", n => { LastCheckedAt = n.GetDateTimeOffsetValue(); } },
+                { "mention_rate", n => { MentionRate = n.GetDoubleValue(); } },
+                { "mentioned", n => { Mentioned = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -81,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("failed", Failed);
             writer.WriteDateTimeOffsetValue("first_checked_at", FirstCheckedAt);
             writer.WriteDateTimeOffsetValue("last_checked_at", LastCheckedAt);
+            writer.WriteIntValue("mentioned", Mentioned);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

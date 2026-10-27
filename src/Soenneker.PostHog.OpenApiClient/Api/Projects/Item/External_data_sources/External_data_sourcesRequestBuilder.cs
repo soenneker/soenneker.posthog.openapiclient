@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Cr
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Database_schema;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Direct_connection_options;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Draft_custom_manifest;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Exists;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Oauth_accounts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Preview_resource;
@@ -68,6 +69,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The exists property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Exists.ExistsRequestBuilder Exists
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Exists.ExistsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The oauth_accounts property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Oauth_accounts.Oauth_accountsRequestBuilder Oauth_accounts

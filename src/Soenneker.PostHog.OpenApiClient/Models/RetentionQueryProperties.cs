@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryProperties();
-            if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryPropertiesAnyOf1Item> retentionQueryPropertiesAnyOf1ItemValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryPropertiesAnyOf1Item> retentionQueryPropertiesAnyOf1ItemValue)
             {
                 result.RetentionQueryPropertiesAnyOf1Item = retentionQueryPropertiesAnyOf1ItemValue;
             }

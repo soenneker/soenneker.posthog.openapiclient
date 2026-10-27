@@ -76,6 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether PostHog has recorded any call of the flag. The flag traffic check reads it on a draft. Null when the experiment has no flag, or the organization&apos;s flag calls are stored where the checks can&apos;t read them.</summary>
         public bool? FlagCalled { get; set; }
+        /// <summary>Whether PostHog has recorded a call of the flag after the end. The flag state check reads it on an ended experiment whose flag is still active with multiple variants. False only after 3 days without a recorded call. Null before the end, before those 3 days are over, or when the organization&apos;s flag calls can&apos;t be read.</summary>
+        public bool? FlagCalledAfterEnd { get; set; }
         /// <summary>Whether PostHog has recorded a call of the flag between launch and the end, or until now. The zero exposures check reads it to say whether the flag is called. Null before launch, after a latest call that came after the end, or when the organization&apos;s flag calls can&apos;t be read.</summary>
         public bool? FlagCalledDuringRun { get; set; }
         /// <summary>The changes of the flag since launch that can move exposed people. Null when the experiment is not running, is archived, its flag is missing or deleted, or the read failed.</summary>
@@ -96,6 +98,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsPaused { get; set; }
         /// <summary>Whether the experiment is launched and not ended.</summary>
         public bool? IsRunning { get; set; }
+        /// <summary>The compile of each metric&apos;s query without running it, as the reader, which the metric queries check reads. A metric that compiles is cached per reader for a day, and a failing metric compiles again on every request. Null when the compile itself failed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles? MetricCompiles { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles MetricCompiles { get; set; }
+#endif
         /// <summary>Single-use primary metrics plus shared metrics linked as primary.</summary>
         public int? PrimaryMetricCount { get; set; }
         /// <summary>Facts about the project that no check reads yet, from the same providers as the setup context.</summary>
@@ -151,6 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "exposures", n => { Exposures = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed.CreateFromDiscriminatorValue); } },
                 { "flag", n => { Flag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag.CreateFromDiscriminatorValue); } },
                 { "flag_called", n => { FlagCalled = n.GetBoolValue(); } },
+                { "flag_called_after_end", n => { FlagCalledAfterEnd = n.GetBoolValue(); } },
                 { "flag_called_during_run", n => { FlagCalledDuringRun = n.GetBoolValue(); } },
                 { "flag_history", n => { FlagHistory = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory.CreateFromDiscriminatorValue); } },
                 { "flag_last_called_at", n => { FlagLastCalledAt = n.GetDateTimeOffsetValue(); } },
@@ -158,6 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_launched", n => { IsLaunched = n.GetBoolValue(); } },
                 { "is_paused", n => { IsPaused = n.GetBoolValue(); } },
                 { "is_running", n => { IsRunning = n.GetBoolValue(); } },
+                { "metric_compiles", n => { MetricCompiles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles.CreateFromDiscriminatorValue); } },
                 { "primary_metric_count", n => { PrimaryMetricCount = n.GetIntValue(); } },
                 { "project", n => { Project = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed.CreateFromDiscriminatorValue); } },
                 { "reader_access", n => { ReaderAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed.CreateFromDiscriminatorValue); } },
@@ -181,6 +193,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed>("exposures", Exposures);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag>("flag", Flag);
             writer.WriteBoolValue("flag_called", FlagCalled);
+            writer.WriteBoolValue("flag_called_after_end", FlagCalledAfterEnd);
             writer.WriteBoolValue("flag_called_during_run", FlagCalledDuringRun);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory>("flag_history", FlagHistory);
             writer.WriteDateTimeOffsetValue("flag_last_called_at", FlagLastCalledAt);
@@ -188,6 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_launched", IsLaunched);
             writer.WriteBoolValue("is_paused", IsPaused);
             writer.WriteBoolValue("is_running", IsRunning);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles>("metric_compiles", MetricCompiles);
             writer.WriteIntValue("primary_metric_count", PrimaryMetricCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed>("project", Project);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed>("reader_access", ReaderAccess);

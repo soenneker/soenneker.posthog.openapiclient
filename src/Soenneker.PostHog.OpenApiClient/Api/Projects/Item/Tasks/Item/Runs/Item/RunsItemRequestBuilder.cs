@@ -12,7 +12,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Com
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Connection_token;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Living_artifacts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Logs;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Peers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Preview;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Relay_message;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Resume_in_cloud;
@@ -91,11 +90,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Logs.LogsRequestBuilder Logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The peers property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Peers.PeersRequestBuilder Peers
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Peers.PeersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The preview property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item.Preview.PreviewRequestBuilder Preview

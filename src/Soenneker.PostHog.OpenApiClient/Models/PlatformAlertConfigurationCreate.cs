@@ -7,73 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreate"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationCreate"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourcePlatformAlertConfigurationCreate"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class PlatformAlertConfigurationCreate : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class PlatformAlertConfigurationCreate : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Minimum minutes between notifications for the same alert. Defaults to 0.</summary>
-        public int? CooldownMinutes { get; set; }
-        /// <summary>Number of breaching checks within evaluation_periods required to fire. Cannot exceed evaluation_periods. Defaults to 1.</summary>
-        public int? DatapointsToAlarm { get; set; }
-        /// <summary>Whether the alert is evaluated on schedule. Defaults to true.</summary>
-        public bool? Enabled { get; set; }
-        /// <summary>Number of recent checks considered when deciding to fire. Defaults to 1.</summary>
-        public int? EvaluationPeriods { get; set; }
-        /// <summary>How the alert splits its results into instances. Defaults to mode single.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreate"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateGrouping? Grouping { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreate? LogsPlatformAlertConfigurationCreate { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateGrouping Grouping { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreate LogsPlatformAlertConfigurationCreate { get; set; }
 #endif
-        /// <summary>Human-readable name of the alert. Defaults to &apos;Untitled alert&apos;.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationCreate"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationCreate? WarehouseDestinationPlatformAlertConfigurationCreate { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationCreate WarehouseDestinationPlatformAlertConfigurationCreate { get; set; }
 #endif
-        /// <summary>Blocked local time windows (HH:MM in the project timezone) when the alert does not notify. Null means no quiet hours. Defaults to null.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourcePlatformAlertConfigurationCreate"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourcePlatformAlertConfigurationCreate? WarehouseSourcePlatformAlertConfigurationCreate { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourcePlatformAlertConfigurationCreate WarehouseSourcePlatformAlertConfigurationCreate { get; set; }
 #endif
-        /// <summary>Settings for a logs alert. The bound the alert is evaluated against is under condition.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateSourceConfig? SourceConfig { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateSourceConfig SourceConfig { get; set; }
-#endif
-        /// <summary>The source_kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SourceKind { get; set; }
-#nullable restore
-#else
-        public string SourceKind { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationCreate"/> and sets the default values.
-        /// </summary>
-        public PlatformAlertConfigurationCreate()
-        {
-            AdditionalData = new Dictionary<string, object>();
-            CooldownMinutes = 0;
-            DatapointsToAlarm = 1;
-            Enabled = true;
-            EvaluationPeriods = 1;
-            Name = "Untitled alert";
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -82,7 +45,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationCreate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationCreate();
+            var mappingValue = parseNode.GetChildNode("source_kind")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationCreate();
+            if("logs".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.LogsPlatformAlertConfigurationCreate = new global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreate();
+            }
+            else if("warehouse_destination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WarehouseDestinationPlatformAlertConfigurationCreate = new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationCreate();
+            }
+            else if("warehouse_source".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WarehouseSourcePlatformAlertConfigurationCreate = new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourcePlatformAlertConfigurationCreate();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,18 +67,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(LogsPlatformAlertConfigurationCreate != null)
             {
-                { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
-                { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
-                { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
-                { "grouping", n => { Grouping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateGrouping>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateGrouping.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
-                { "source_config", n => { SourceConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateSourceConfig>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateSourceConfig.CreateFromDiscriminatorValue); } },
-                { "source_kind", n => { SourceKind = n.GetStringValue(); } },
-            };
+                return LogsPlatformAlertConfigurationCreate.GetFieldDeserializers();
+            }
+            else if(WarehouseDestinationPlatformAlertConfigurationCreate != null)
+            {
+                return WarehouseDestinationPlatformAlertConfigurationCreate.GetFieldDeserializers();
+            }
+            else if(WarehouseSourcePlatformAlertConfigurationCreate != null)
+            {
+                return WarehouseSourcePlatformAlertConfigurationCreate.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -110,16 +88,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("cooldown_minutes", CooldownMinutes);
-            writer.WriteIntValue("datapoints_to_alarm", DatapointsToAlarm);
-            writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateGrouping>("grouping", Grouping);
-            writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreateSourceConfig>("source_config", SourceConfig);
-            writer.WriteStringValue("source_kind", SourceKind);
-            writer.WriteAdditionalData(AdditionalData);
+            if(LogsPlatformAlertConfigurationCreate != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertConfigurationCreate>(null, LogsPlatformAlertConfigurationCreate);
+            }
+            else if(WarehouseDestinationPlatformAlertConfigurationCreate != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationCreate>(null, WarehouseDestinationPlatformAlertConfigurationCreate);
+            }
+            else if(WarehouseSourcePlatformAlertConfigurationCreate != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourcePlatformAlertConfigurationCreate>(null, WarehouseSourcePlatformAlertConfigurationCreate);
+            }
         }
     }
 }

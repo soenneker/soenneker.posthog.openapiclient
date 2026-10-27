@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Sum of the metric values across the control group (for funnels, the numerator/conversions).</summary>
         public double? Sum { get; set; }
-        /// <summary>Sum of squared metric values. Required for ratio/retention variance.</summary>
+        /// <summary>Sum of squared metric values. Mean metrics read their variance from it, and ratio/retention metrics need it. Without it, a mean metric&apos;s variance is approximated from the baseline value.</summary>
         public double? SumSquares { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats"/> and sets the default values.

@@ -23,6 +23,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linear
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linear_teams;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linkedin_ads_accounts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linkedin_ads_conversion_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Push_tokens;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Twilio_phone_numbers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Users;
 using System.Collections.Generic;
@@ -146,6 +147,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linkedin_ads_conversion_rules.Linkedin_ads_conversion_rulesRequestBuilder Linkedin_ads_conversion_rules
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linkedin_ads_conversion_rules.Linkedin_ads_conversion_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The push_tokens property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Push_tokens.Push_tokensRequestBuilder Push_tokens
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Push_tokens.Push_tokensRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The twilio_phone_numbers property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Twilio_phone_numbers.Twilio_phone_numbersRequestBuilder Twilio_phone_numbers

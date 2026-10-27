@@ -107,6 +107,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_registry;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_servers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_tools;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_categories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_preferences;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_suppressions;
@@ -157,6 +158,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_customer_analytics_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_column_annotations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_column_statistics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_expressions;
@@ -719,6 +721,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_tools.Mcp_toolsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The messaging property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.MessagingRequestBuilder Messaging
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.MessagingRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The messaging_categories property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_categories.Messaging_categoriesRequestBuilder Messaging_categories
         {
@@ -968,6 +975,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Visual_reviewRequestBuilder Visual_review
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Visual_reviewRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The warehouse_alerts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_alerts.Warehouse_alertsRequestBuilder Warehouse_alerts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_alerts.Warehouse_alertsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The warehouse_column_annotations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_column_annotations.Warehouse_column_annotationsRequestBuilder Warehouse_column_annotations

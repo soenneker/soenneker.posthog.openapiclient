@@ -889,6 +889,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Hypothesis { get; set; }
 #endif
+        /// <summary>The id_board property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IdBoard { get; set; }
+#nullable restore
+#else
+        public string IdBoard { get; set; }
+#endif
         /// <summary>The identifier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -896,6 +904,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Identifier { get; set; }
+#endif
+        /// <summary>The id_list property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IdList { get; set; }
+#nullable restore
+#else
+        public string IdList { get; set; }
 #endif
         /// <summary>The iid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -928,6 +944,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string ImpactLevel { get; set; }
+#endif
+        /// <summary>The importance property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Importance { get; set; }
+#nullable restore
+#else
+        public string Importance { get; set; }
 #endif
         /// <summary>The impressions property</summary>
         public int? Impressions { get; set; }
@@ -1831,6 +1855,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Shortlink { get; set; }
 #endif
+        /// <summary>The site property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Site { get; set; }
+#nullable restore
+#else
+        public string Site { get; set; }
+#endif
         /// <summary>The skill_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1992,6 +2024,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string SysCreatedOn { get; set; }
+#endif
+        /// <summary>The tag_names property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? TagNames { get; set; }
+#nullable restore
+#else
+        public UntypedNode TagNames { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -2426,11 +2466,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "hs_ticket_priority", n => { HsTicketPriority = n.GetStringValue(); } },
                 { "html_url", n => { HtmlUrl = n.GetStringValue(); } },
                 { "hypothesis", n => { Hypothesis = n.GetStringValue(); } },
+                { "id_board", n => { IdBoard = n.GetStringValue(); } },
+                { "id_list", n => { IdList = n.GetStringValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "iid", n => { Iid = n.GetStringValue(); } },
                 { "images", n => { Images = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketImage>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketImage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "impact", n => { Impact = n.GetStringValue(); } },
                 { "impact_level", n => { ImpactLevel = n.GetStringValue(); } },
+                { "importance", n => { Importance = n.GetStringValue(); } },
                 { "impressions", n => { Impressions = n.GetIntValue(); } },
                 { "incident_identifier", n => { IncidentIdentifier = n.GetStringValue(); } },
                 { "incident_url", n => { IncidentUrl = n.GetStringValue(); } },
@@ -2555,6 +2598,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "severitycode", n => { Severitycode = n.GetStringValue(); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
                 { "shortlink", n => { Shortlink = n.GetStringValue(); } },
+                { "site", n => { Site = n.GetStringValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "skill_version", n => { SkillVersion = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
@@ -2576,6 +2620,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "survey_id", n => { SurveyId = n.GetStringValue(); } },
                 { "synced_at", n => { SyncedAt = n.GetStringValue(); } },
                 { "sys_created_on", n => { SysCreatedOn = n.GetStringValue(); } },
+                { "tag_names", n => { TagNames = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "target_event_id", n => { TargetEventId = n.GetStringValue(); } },
                 { "target_event_type", n => { TargetEventType = n.GetStringValue(); } },
@@ -2748,11 +2793,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("hs_ticket_priority", HsTicketPriority);
             writer.WriteStringValue("html_url", HtmlUrl);
             writer.WriteStringValue("hypothesis", Hypothesis);
+            writer.WriteStringValue("id_board", IdBoard);
             writer.WriteStringValue("identifier", Identifier);
+            writer.WriteStringValue("id_list", IdList);
             writer.WriteStringValue("iid", Iid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketImage>("images", Images);
             writer.WriteStringValue("impact", Impact);
             writer.WriteStringValue("impact_level", ImpactLevel);
+            writer.WriteStringValue("importance", Importance);
             writer.WriteIntValue("impressions", Impressions);
             writer.WriteStringValue("incident_identifier", IncidentIdentifier);
             writer.WriteStringValue("incident_url", IncidentUrl);
@@ -2877,6 +2925,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("severity_value", SeverityValue);
             writer.WriteStringValue("short_id", ShortId);
             writer.WriteStringValue("shortlink", Shortlink);
+            writer.WriteStringValue("site", Site);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteIntValue("skill_version", SkillVersion);
             writer.WriteStringValue("source", Source);
@@ -2898,6 +2947,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("survey_id", SurveyId);
             writer.WriteStringValue("synced_at", SyncedAt);
             writer.WriteStringValue("sys_created_on", SysCreatedOn);
+            writer.WriteObjectValue<UntypedNode>("tag_names", TagNames);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("target_event_id", TargetEventId);
             writer.WriteStringValue("target_event_type", TargetEventType);

@@ -34,6 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.HighlightItemLabel? Label { get; set; }
         /// <summary>* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HighlightItemPriority? Priority { get; set; }
+        /// <summary>Product that declares the source, for example feature_flags. Null for items stored before this field existed and for sources that no product declares any more.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Product { get; set; }
+#nullable restore
+#else
+        public string Product { get; set; }
+#endif
         /// <summary>Importance weighted by relevance, from 0 to 1.</summary>
         public double? Score { get; set; }
         /// <summary>Values behind the item for a small trend line, oldest first. Null when the item has no trend.</summary>
@@ -97,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItemLabel>(); } },
                 { "priority", n => { Priority = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItemPriority>(); } },
+                { "product", n => { Product = n.GetStringValue(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
                 { "series", n => { Series = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
@@ -115,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItemLabel>("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItemPriority>("priority", Priority);
+            writer.WriteStringValue("product", Product);
             writer.WriteDoubleValue("score", Score);
             writer.WriteCollectionOfPrimitiveValues<double?>("series", Series);
             writer.WriteStringValue("source", Source);

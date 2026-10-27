@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Count_by_path;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Frequent;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Home_folder;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Log_view;
@@ -30,6 +31,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The frequent property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Frequent.FrequentRequestBuilder Frequent
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Frequent.FrequentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The home_folder property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.Home_folder.Home_folderRequestBuilder Home_folder

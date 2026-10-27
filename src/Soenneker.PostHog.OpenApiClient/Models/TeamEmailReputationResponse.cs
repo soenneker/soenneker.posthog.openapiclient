@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingRates Reputation { get; private set; }
 #endif
-        /// <summary>The project&apos;s sending tier, what it allows, and how much of it has been used; null when the caller lacks project-wide workflow access.</summary>
+        /// <summary>The project&apos;s sending tier, what it allows, and how much of it has been used; null when the caller lacks project-wide workflow access. Tiers grow on their own as the project builds a clean sending record.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingAllowance? SendingAllowance { get; private set; }

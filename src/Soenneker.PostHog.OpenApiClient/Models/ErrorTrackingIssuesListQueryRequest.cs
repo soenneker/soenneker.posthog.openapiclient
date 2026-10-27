@@ -56,6 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestFingerprint Fingerprint { get; set; }
 #endif
+        /// <summary>Only include issues first seen strictly after this ISO timestamp or relative date, such as -24h or -7d. Independent of dateRange, which filters occurrences.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstSeenAfter { get; set; }
+#nullable restore
+#else
+        public string FirstSeenAfter { get; set; }
+#endif
         /// <summary>Filter by SDK/library value from event $lib, for example posthog-js.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -145,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "fingerprint", n => { Fingerprint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestFingerprint>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestFingerprint.CreateFromDiscriminatorValue); } },
+                { "firstSeenAfter", n => { FirstSeenAfter = n.GetStringValue(); } },
                 { "library", n => { Library = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestLibrary>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestLibrary.CreateFromDiscriminatorValue); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -172,6 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>("filterGroup", FilterGroup);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestFingerprint>("fingerprint", Fingerprint);
+            writer.WriteStringValue("firstSeenAfter", FirstSeenAfter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestLibrary>("library", Library);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("offset", Offset);

@@ -20,13 +20,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition Comparison { get; set; }
 #endif
-        /// <summary>Always null. The platform owns threshold alerts only, so no detector applies.</summary>
+        /// <summary>The anomaly detector the alert uses in place of its threshold, or null for a threshold alert. It can&apos;t change through this API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Detector { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty? Detector { get; set; }
 #nullable restore
 #else
-        public UntypedNode Detector { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty Detector { get; set; }
 #endif
         /// <summary>The bounds the insight&apos;s value is checked against, absolute or as a percentage change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition.CreateFromDiscriminatorValue); } },
-                { "detector", n => { Detector = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "detector", n => { Detector = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold>(global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold.CreateFromDiscriminatorValue); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition>("comparison", Comparison);
-            writer.WriteObjectValue<UntypedNode>("detector", Detector);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty>("detector", Detector);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold>("threshold", Threshold);
         }
     }

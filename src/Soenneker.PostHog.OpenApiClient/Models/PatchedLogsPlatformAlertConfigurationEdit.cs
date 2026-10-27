@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Context for whoever responds, such as {&quot;runbook_url&quot;: &quot;https://...&quot;}. Values can use {{ $labels.&lt;name&gt; }} for a grouping key or label of the alert, and {{ $value }}. An annotation whose name ends in _url must start with https://.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditAnnotationsProperty? Annotations { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditAnnotationsProperty Annotations { get; set; }
+#endif
         /// <summary>Minimum minutes between notifications for the same alert.</summary>
         public int? CooldownMinutes { get; set; }
         /// <summary>Number of breaching checks within evaluation_periods required to fire. Cannot exceed evaluation_periods.</summary>
@@ -30,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping Grouping { get; set; }
+#endif
+        /// <summary>Labels that say who owns the alert and how urgent it is, such as {&quot;team&quot;: &quot;checkout&quot;, &quot;severity&quot;: &quot;critical&quot;}. Names use letters, digits and underscores. alertname and names that start with posthog_ are reserved. Values cannot use templates.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditLabelsProperty? Labels { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditLabelsProperty Labels { get; set; }
 #endif
         /// <summary>Human-readable name of the alert.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,11 +104,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "annotations", n => { Annotations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditAnnotationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditAnnotationsProperty.CreateFromDiscriminatorValue); } },
                 { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
                 { "grouping", n => { Grouping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping.CreateFromDiscriminatorValue); } },
+                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditLabelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "source_config", n => { SourceConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditSourceConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditSourceConfig.CreateFromDiscriminatorValue); } },
@@ -106,11 +124,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditAnnotationsProperty>("annotations", Annotations);
             writer.WriteIntValue("cooldown_minutes", CooldownMinutes);
             writer.WriteIntValue("datapoints_to_alarm", DatapointsToAlarm);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping>("grouping", Grouping);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditLabelsProperty>("labels", Labels);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditSourceConfig>("source_config", SourceConfig);

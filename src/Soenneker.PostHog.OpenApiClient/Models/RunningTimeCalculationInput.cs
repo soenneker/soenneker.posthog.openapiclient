@@ -31,9 +31,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType? MetricType { get; set; }
         /// <summary>Smallest relative change to detect, as a percentage (e.g. 5 means a 5% lift). Must be &gt; 0.</summary>
         public double? MinimumDetectableEffect { get; set; }
-        /// <summary>Total number of variants including control (default 2).</summary>
+        /// <summary>Total number of variants including control (default 2, at most 100).</summary>
         public int? NumberOfVariants { get; set; }
-        /// <summary>Pre-computed variance for ratio/retention metrics. Provide this or baseline_stats when metric_type is ratio/retention and baseline_value is given directly.</summary>
+        /// <summary>Pre-computed variance per user. Provide this or baseline_stats when metric_type is ratio/retention and baseline_value is given directly. When given, it replaces the variance the calculator derives for any metric type, including p(1-p) for funnels.</summary>
         public double? Variance { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInput"/> and sets the default values.

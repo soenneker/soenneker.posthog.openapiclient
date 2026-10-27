@@ -42,6 +42,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepStatus? Status { get; private set; }
+        /// <summary>Who or what suppressed the step, with the same values as the report&apos;s `suppression_source`. Null unless the step is suppressed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepSuppressionSource? SuppressionSource { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepSuppressionSource SuppressionSource { get; private set; }
+#endif
         /// <summary>The step&apos;s report title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "implementation_pr_state", n => { ImplementationPrState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepImplementationPrState>(global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepImplementationPrState.CreateFromDiscriminatorValue); } },
                 { "implementation_pr_url", n => { ImplementationPrUrl = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepStatus>(); } },
+                { "suppression_source", n => { SuppressionSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepSuppressionSource>(global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepSuppressionSource.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }

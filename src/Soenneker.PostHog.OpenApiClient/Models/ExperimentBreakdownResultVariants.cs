@@ -38,11 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants();
-            if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian> experimentVariantResultBayesianValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian> experimentVariantResultBayesianValue)
             {
                 result.ExperimentVariantResultBayesian = experimentVariantResultBayesianValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist> experimentVariantResultFrequentistValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist> experimentVariantResultFrequentistValue)
             {
                 result.ExperimentVariantResultFrequentist = experimentVariantResultFrequentistValue;
             }

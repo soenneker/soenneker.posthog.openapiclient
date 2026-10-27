@@ -31,6 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Checks that day where the engine did not answer.</summary>
         public int? Failed { get; set; }
+        /// <summary>Checks that day whose answer names the brand. Checks whose answer names the brand (the registrable name of a target domain, case ignored). A cited check always counts as mentioned.</summary>
+        public int? Mentioned { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats"/> and sets the default values.
         /// </summary>
@@ -61,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "date", n => { Date = n.GetDateValue(); } },
                 { "engine", n => { Engine = n.GetStringValue(); } },
                 { "failed", n => { Failed = n.GetIntValue(); } },
+                { "mentioned", n => { Mentioned = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -75,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateValue("date", Date);
             writer.WriteStringValue("engine", Engine);
             writer.WriteIntValue("failed", Failed);
+            writer.WriteIntValue("mentioned", Mentioned);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

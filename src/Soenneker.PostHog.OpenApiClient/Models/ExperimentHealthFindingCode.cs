@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `flag_off_while_running` - Flag Off While Running* `variant_shipped_while_running` - Variant Shipped While Running* `flag_live_after_end` - Flag Live After End* `flag_live_before_launch` - Flag Live Before Launch* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `srm` - Sample Ratio Mismatch* `zero_exposures` - Zero Exposures* `forced_variant_release_condition` - Forced Variant Release Condition* `flag_variants_mismatch` - Flag Variants Mismatch* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `new_flag_no_traffic` - New Flag No Traffic* `early_significance` - Early Significance</summary>
+    /// <summary>* `flag_off_while_running` - Flag Off While Running* `variant_shipped_while_running` - Variant Shipped While Running* `flag_live_after_end` - Flag Live After End* `flag_live_before_launch` - Flag Live Before Launch* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `metric_cannot_compile` - Metric Cannot Compile* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `srm` - Sample Ratio Mismatch* `zero_exposures` - Zero Exposures* `forced_variant_release_condition` - Forced Variant Release Condition* `flag_variants_mismatch` - Flag Variants Mismatch* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `new_flag_no_traffic` - New Flag No Traffic* `early_significance` - Early Significance</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ExperimentHealthFindingCode
     {
@@ -38,6 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "metric_event_not_ingested")]
         #pragma warning disable CS1591
         MetricEventNotIngested,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "metric_cannot_compile")]
+        #pragma warning disable CS1591
+        MetricCannotCompile,
         #pragma warning restore CS1591
         [EnumMember(Value = "exposure_criteria_cannot_match")]
         #pragma warning disable CS1591

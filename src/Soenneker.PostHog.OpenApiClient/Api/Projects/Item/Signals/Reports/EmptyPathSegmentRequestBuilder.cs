@@ -91,9 +91,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>Filter by whether the latest actionability judgment says the issue is already being handled. False also includes older reports where that judgment did not record a value.</summary>
             [QueryParameter("already_addressed")]
             public bool? AlreadyAddressed { get; set; }
-            /// <summary>Use &apos;me&apos; to return reports claimed by the current user, task, or MCP agent.</summary>
+            /// <summary>&apos;me&apos; returns reports claimed by exactly the requesting actor: the user, the internal task, or the MCP agent. &apos;mine&apos; returns every report the requesting user answers for: their own claims, claims by MCP agents acting for them, and claims by internal tasks they started.</summary>
             [QueryParameter("assignee")]
-            public global::Soenneker.PostHog.OpenApiClient.Models.MeAssignee? Assignee { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.SignalsReportsListAssigneeParameter? Assignee { get; set; }
             /// <summary>Narrow to reports assigned to one space (channel). Absent or empty means all reports regardless of assignment.</summary>
             [QueryParameter("channel_id")]
             public Guid? ChannelId { get; set; }

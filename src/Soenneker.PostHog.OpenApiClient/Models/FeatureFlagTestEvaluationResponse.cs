@@ -14,15 +14,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The index of the condition that matched, if applicable</summary>
+        /// <summary>The index of the condition that matched, if applicable. For a flag with config version 2, the zero-based index of the rule in `filters.rules` that decided the result, or null when no rule decided it.</summary>
         public int? ConditionIndex { get; set; }
-        /// <summary>Detailed analysis of each condition in the feature flag</summary>
+        /// <summary>Detailed analysis of each condition in the feature flag. Always empty for a flag with config version 2, which `conditions_unavailable_reason` then explains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>? Conditions { get; set; }
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis> Conditions { get; set; }
+#endif
+        /// <summary>Present only when `conditions` is empty because the evaluated config has no per-condition analysis. An empty list then does not mean the flag has no conditions or rules.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ConditionsUnavailableReason { get; set; }
+#nullable restore
+#else
+        public string ConditionsUnavailableReason { get; set; }
 #endif
         /// <summary>The distinct_id used for rollout/variant bucketing. Echoes the caller-provided distinct_id when one was sent; null on the person_id path so the endpoint doesn&apos;t leak the person&apos;s other distinct_ids to a feature_flag:read-only token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "condition_index", n => { ConditionIndex = n.GetIntValue(); } },
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "conditions_unavailable_reason", n => { ConditionsUnavailableReason = n.GetStringValue(); } },
                 { "evaluation_distinct_id", n => { EvaluationDistinctId = n.GetStringValue(); } },
                 { "flag_key", n => { FlagKey = n.GetStringValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -125,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("condition_index", ConditionIndex);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>("conditions", Conditions);
+            writer.WriteStringValue("conditions_unavailable_reason", ConditionsUnavailableReason);
             writer.WriteStringValue("evaluation_distinct_id", EvaluationDistinctId);
             writer.WriteStringValue("flag_key", FlagKey);
             writer.WriteObjectValue<UntypedNode>("payload", Payload);

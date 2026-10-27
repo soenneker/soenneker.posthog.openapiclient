@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Customer_tasks.Bulk_update;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Customer_tasks.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Customer_tasks
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Customer_tasksRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk_update property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Customer_tasks.Bulk_update.Bulk_updateRequestBuilder Bulk_update
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Customer_tasks.Bulk_update.Bulk_updateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Customer_tasks.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {

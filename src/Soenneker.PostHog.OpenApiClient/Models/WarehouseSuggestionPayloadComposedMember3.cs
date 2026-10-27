@@ -36,7 +36,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>How far before the last refresh&apos;s highest incremental_key value each refresh reads again, in seconds. The last incremental_key value is always read again.</summary>
         public int? LookbackSeconds { get; set; }
-        /// <summary>Why the interval is not shorter. source_sync: the view&apos;s sources sync no faster. fastest_schedule: PostHog refreshes views no more often. read_rate: people read the view no more often. savings: a shorter interval would cost more than it saves. Null on suggestions made before this was recorded.* `source_sync` - Source sync* `fastest_schedule` - Fastest schedule* `read_rate` - Read rate* `savings` - Savings</summary>
+        /// <summary>How many materialized views compute this view again on every refresh, because it is not stored. 0 when the saving comes only from people&apos;s reads.</summary>
+        public int? RecomputedByViews { get; set; }
+        /// <summary>Why the interval is not shorter. source_sync: the view&apos;s sources sync no faster. fastest_schedule: PostHog refreshes views no more often. read_rate: people read the view no more often. consumer_refresh: the materialized views that read it refresh no more often. savings: a shorter interval would cost more than it saves. Null on suggestions made before this was recorded.* `source_sync` - Source sync* `fastest_schedule` - Fastest schedule* `read_rate` - Read rate* `consumer_refresh` - Consumer refresh* `savings` - Savings</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshIntervalBasis? RefreshIntervalBasis { get; set; }
@@ -106,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "incremental_key", n => { IncrementalKey = n.GetStringValue(); } },
                 { "live_sources", n => { LiveSources = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadLiveSources>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadLiveSources.CreateFromDiscriminatorValue); } },
                 { "lookback_seconds", n => { LookbackSeconds = n.GetIntValue(); } },
+                { "recomputed_by_views", n => { RecomputedByViews = n.GetIntValue(); } },
                 { "refresh_interval_basis", n => { RefreshIntervalBasis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshIntervalBasis>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshIntervalBasis.CreateFromDiscriminatorValue); } },
                 { "refresh_interval_seconds", n => { RefreshIntervalSeconds = n.GetIntValue(); } },
                 { "refresh_mode", n => { RefreshMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshMode>(); } },
@@ -128,6 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("incremental_key", IncrementalKey);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadLiveSources>("live_sources", LiveSources);
             writer.WriteIntValue("lookback_seconds", LookbackSeconds);
+            writer.WriteIntValue("recomputed_by_views", RecomputedByViews);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshIntervalBasis>("refresh_interval_basis", RefreshIntervalBasis);
             writer.WriteIntValue("refresh_interval_seconds", RefreshIntervalSeconds);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshMode>("refresh_mode", RefreshMode);

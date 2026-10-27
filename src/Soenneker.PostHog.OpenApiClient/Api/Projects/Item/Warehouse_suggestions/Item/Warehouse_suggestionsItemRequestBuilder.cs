@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Accept;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Assign;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Dismiss;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Resume;
 using System.Collections.Generic;
@@ -21,6 +22,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestion
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Accept.AcceptRequestBuilder Accept
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Accept.AcceptRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The assign property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Assign.AssignRequestBuilder Assign
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Assign.AssignRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The dismiss property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_suggestions.Item.Dismiss.DismissRequestBuilder Dismiss

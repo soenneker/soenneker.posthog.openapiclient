@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AnchorTime { get; private set; }
 #endif
+        /// <summary>Context for whoever responds, such as {&quot;runbook_url&quot;: &quot;https://...&quot;}. Values can use {{ $labels.&lt;name&gt; }} for a grouping key or label of the alert, and {{ $value }}. An annotation whose name ends in _url must start with https://.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationAnnotationsProperty? Annotations { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationAnnotationsProperty Annotations { get; private set; }
+#endif
         /// <summary>Minutes between scheduled checks. Applies when recurrence_unit is null.</summary>
         public int? CheckIntervalMinutes { get; private set; }
         /// <summary>* `ok` - OK* `errored` - Errored* `broken` - Broken</summary>
@@ -56,6 +64,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Unique identifier of the alert configuration.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Labels that say who owns the alert and how urgent it is, such as {&quot;team&quot;: &quot;checkout&quot;, &quot;severity&quot;: &quot;critical&quot;}. Names use letters, digits and underscores. alertname and names that start with posthog_ are reserved. Values cannot use templates.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationLabelsProperty? Labels { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationLabelsProperty Labels { get; private set; }
+#endif
         /// <summary>ID of the legacy source configuration this row was backfilled from. Null for alerts created on the platform.</summary>
         public Guid? LegacyConfigurationId { get; private set; }
         /// <summary>Human-readable name of the alert.</summary>
@@ -100,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty SourceConfig { get; private set; }
 #endif
-        /// <summary>* `logs` - Logs* `insight` - Insight</summary>
+        /// <summary>* `logs` - Logs* `insight` - Insight* `warehouse_source` - Warehouse source* `warehouse_destination` - Warehouse destination</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind? SourceKind { get; private set; }
         /// <summary>When the configuration was last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -131,6 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "alerts", n => { Alerts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlert.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "anchor_time", n => { AnchorTime = n.GetStringValue(); } },
+                { "annotations", n => { Annotations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationAnnotationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationAnnotationsProperty.CreateFromDiscriminatorValue); } },
                 { "check_interval_minutes", n => { CheckIntervalMinutes = n.GetIntValue(); } },
                 { "check_status", n => { CheckStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationCheckStatus>(); } },
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
@@ -141,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
                 { "grouping", n => { Grouping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationGrouping>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationGrouping.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationLabelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "legacy_configuration_id", n => { LegacyConfigurationId = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },

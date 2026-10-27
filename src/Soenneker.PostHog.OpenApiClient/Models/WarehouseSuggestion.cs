@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome AssetOutcome { get; set; }
 #endif
+        /// <summary>Who should accept or dismiss this suggestion. When a view&apos;s suggestion is first shown, it goes to the person who created the view, if they can accept it. Null when nobody is assigned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? Assignee { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer Assignee { get; set; }
+#endif
         /// <summary>Whether the caller has edit access to the subject and so may accept, dismiss or resume.</summary>
         public bool? CanAct { get; set; }
         /// <summary>What accepting this suggestion created. Null until accepted.</summary>
@@ -128,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "asset_outcome", n => { AssetOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer.CreateFromDiscriminatorValue); } },
                 { "can_act", n => { CanAct = n.GetBoolValue(); } },
                 { "created_asset", n => { CreatedAsset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty.CreateFromDiscriminatorValue); } },
                 { "dismissal_note", n => { DismissalNote = n.GetStringValue(); } },
@@ -160,6 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome>("asset_outcome", AssetOutcome);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer>("assignee", Assignee);
             writer.WriteBoolValue("can_act", CanAct);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty>("created_asset", CreatedAsset);
             writer.WriteStringValue("dismissal_note", DismissalNote);

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequestDateRange DateRange { get; set; }
 #endif
-        /// <summary>Omit the per-span attributes and resource attributes maps from results to keep payloads compact. Defaults to false.</summary>
+        /// <summary>Omit the per-span attributes, resource attributes and events from results to keep payloads compact. Defaults to false.</summary>
         public bool? ExcludeAttributes { get; set; }
         /// <summary>Pagination offset into the trace&apos;s spans (ordered by start time ascending). Each page returns up to 2000 spans; pass the response&apos;s `nextOffset` to load the next page. Defaults to 0.</summary>
         public int? Offset { get; set; }

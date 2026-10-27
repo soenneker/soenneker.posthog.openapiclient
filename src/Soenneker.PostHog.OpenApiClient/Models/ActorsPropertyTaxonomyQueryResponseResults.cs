@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResults();
-            if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse> actorsPropertyTaxonomyResponseValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse> actorsPropertyTaxonomyResponseValue)
             {
                 result.ActorsPropertyTaxonomyResponse = actorsPropertyTaxonomyResponseValue;
             }

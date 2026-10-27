@@ -15,6 +15,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Lower-cased brand names, derived from the project&apos;s target domains. An answer that contains one of them as a word counts as a mention.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? BrandNames { get; set; }
+#nullable restore
+#else
+        public List<string> BrandNames { get; set; }
+#endif
+        /// <summary>One row per engine and per domain for the 10 most cited domains of the last 30 days: how many of the engine&apos;s answers cited the domain. Shows which sources the engines agree on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare>? Consensus { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare> Consensus { get; set; }
+#endif
         /// <summary>Counts per day and engine from &apos;daily_from&apos; to &apos;daily_to&apos; (30 days). Days and engines without a check are left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,6 +50,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats> Engines { get; set; }
+#endif
+        /// <summary>Brand sentiment of the answers in the last 30 days, one row per engine. Only the sentences that name the brand are scored.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment>? Sentiment { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment> Sentiment { get; set; }
+#endif
+        /// <summary>Most used words across the web searches the engines ran in the last 30 days, at most 20. Only engines that report their searches contribute.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord>? TopWords { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord> TopWords { get; set; }
 #endif
         /// <summary>Checks of the prompt across all engines, failed ones included.</summary>
         public int? TotalChecks { get; set; }
@@ -62,10 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "brand_names", n => { BrandNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "consensus", n => { Consensus = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare>(global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "daily", n => { Daily = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats>(global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "daily_from", n => { DailyFrom = n.GetDateValue(); } },
                 { "daily_to", n => { DailyTo = n.GetDateValue(); } },
                 { "engines", n => { Engines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats>(global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "sentiment", n => { Sentiment = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment>(global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "top_words", n => { TopWords = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord>(global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_checks", n => { TotalChecks = n.GetIntValue(); } },
             };
         }
@@ -76,10 +112,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("brand_names", BrandNames);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare>("consensus", Consensus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats>("daily", Daily);
             writer.WriteDateValue("daily_from", DailyFrom);
             writer.WriteDateValue("daily_to", DailyTo);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats>("engines", Engines);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment>("sentiment", Sentiment);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord>("top_words", TopWords);
             writer.WriteIntValue("total_checks", TotalChecks);
             writer.WriteAdditionalData(AdditionalData);
         }
