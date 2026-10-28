@@ -75,8 +75,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The owner property</summary>
-        public int? Owner { get; set; }
+        /// <summary>The user responsible for the event, or null when it has no owner.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? Owner { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic Owner { get; private set; }
+#endif
         /// <summary>The post_to_slack property</summary>
         public bool? PostToSlack { get; set; }
         /// <summary>Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property&apos;s value next to the event name without the user having to open the event.</summary>
@@ -158,7 +164,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "media_preview_urls", n => { MediaPreviewUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "owner", n => { Owner = n.GetIntValue(); } },
+                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "primary_property", n => { PrimaryProperty = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -181,7 +187,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaEnforcementModeEnum>("enforcement_mode", EnforcementMode);
             writer.WriteBoolValue("hidden", Hidden);
             writer.WriteStringValue("name", Name);
-            writer.WriteIntValue("owner", Owner);
             writer.WriteBoolValue("post_to_slack", PostToSlack);
             writer.WriteStringValue("primary_property", PrimaryProperty);
             writer.WriteObjectValue<UntypedNode>("tags", Tags);

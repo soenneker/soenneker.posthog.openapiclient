@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         {
         }
         /// <summary>
-        /// Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard&apos;s activity view; always computed fresh so polling callers watch data arrive.
+        /// Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard&apos;s activity view. Results are cached for up to 5 minutes, or 20 seconds when the caller has property restrictions. An empty result is never cached.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpActivityOverview"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpActivityOverview>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpActivityOverview.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard&apos;s activity view; always computed fresh so polling callers watch data arrive.
+        /// Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard&apos;s activity view. Results are cached for up to 5 minutes, or 20 seconds when the caller has property restrictions. An empty result is never cached.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessions.Activity_overview.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard&apos;s activity view; always computed fresh so polling callers watch data arrive.
+        /// Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard&apos;s activity view. Results are cached for up to 5 minutes, or 20 seconds when the caller has property restrictions. An empty result is never cached.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

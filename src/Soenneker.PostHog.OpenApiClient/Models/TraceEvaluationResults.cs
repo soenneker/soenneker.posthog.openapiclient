@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResult> Results { get; set; }
 #endif
+        /// <summary>Counts the latest run of each evaluation on each node, by when the run started, so re-runs and backfillscount once. Inconclusive results count as unrated. Computed over the results returned, at most 250.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationSummary? Summary { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationSummary Summary { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResults"/> and sets the default values.
         /// </summary>
@@ -48,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResult>(global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResult.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationSummary.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResult>("results", Results);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationSummary>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentExposureCriteria : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Additional event (or action) an entity must emit at/after their first default exposure event before they count as exposed; exposure time becomes this event&apos;s timestamp. Only valid with the default exposure event, not a custom `exposure_config`.</summary>
+        /// <summary>Additional event (or action) an entity must emit at/after their first default exposure event before they count as exposed; exposure time becomes this event&apos;s timestamp. Only valid with the default exposure event, not a custom `exposure_config`. Warehouse-native activation has no defined semantics yet, so only events and actions apply here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteriaActivationConfig? ActivationConfig { get; set; }

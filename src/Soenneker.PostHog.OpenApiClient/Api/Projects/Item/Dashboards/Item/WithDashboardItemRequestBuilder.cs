@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_group;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Create_text_tile;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Delete_tile;
@@ -26,6 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithDashboardItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The copy_group property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_group.Copy_groupRequestBuilder Copy_group
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_group.Copy_groupRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The copy_tile property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile.Copy_tileRequestBuilder Copy_tile
         {

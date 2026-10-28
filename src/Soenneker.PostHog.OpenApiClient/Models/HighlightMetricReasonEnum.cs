@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `routine` - You open this often* `dashboard` - On a dashboard you open often* `key_metric` - Project key metric</summary>
+    /// <summary>* `routine` - You open this often* `dashboard` - On a dashboard you open often* `key_metric` - Project key metric* `popular` - Opened often in this project</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HighlightMetricReasonEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "key_metric")]
         #pragma warning disable CS1591
         KeyMetric,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "popular")]
+        #pragma warning disable CS1591
+        Popular,
         #pragma warning restore CS1591
     }
 }

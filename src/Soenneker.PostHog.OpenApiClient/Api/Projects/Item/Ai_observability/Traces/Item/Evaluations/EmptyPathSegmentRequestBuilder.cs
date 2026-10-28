@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
         {
         }
         /// <summary>
-        /// A trace&apos;s evaluation results, newest first and at most 250, each with its outcome and label ready to render.
+        /// A trace&apos;s evaluation results, newest first and at most 250, each with its outcome and label ready to render,plus a roll-up of the latest run of each evaluation on each node.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResults"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResults>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResults.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// A trace&apos;s evaluation results, newest first and at most 250, each with its outcome and label ready to render.
+        /// A trace&apos;s evaluation results, newest first and at most 250, each with its outcome and label ready to render,plus a roll-up of the latest run of each evaluation on each node.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

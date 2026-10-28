@@ -10,6 +10,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Ranking_
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Read_state;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Refresh_metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Section_counts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Source_metadata;
 using System.Collections.Generic;
 using System.IO;
@@ -62,6 +63,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary.RefundSummaryRequestBuilder RefundSummary
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary.RefundSummaryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The section_counts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Section_counts.Section_countsRequestBuilder Section_counts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Section_counts.Section_countsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The source_metadata property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Source_metadata.Source_metadataRequestBuilder Source_metadata

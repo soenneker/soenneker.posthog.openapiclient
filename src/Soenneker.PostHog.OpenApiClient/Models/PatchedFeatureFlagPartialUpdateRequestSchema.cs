@@ -78,6 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
+        /// <summary>The `version` from your most recent read of this flag. Required when the flag&apos;s `filters.version` is 2: the update is then refused with 409 if anyone else changed the flag after that version. Other flags do not check it.</summary>
+        public int? Version { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema"/> and sets the default values.
         /// </summary>
@@ -114,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "version", n => { Version = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -134,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

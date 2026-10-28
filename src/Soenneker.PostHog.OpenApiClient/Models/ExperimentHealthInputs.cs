@@ -98,6 +98,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsPaused { get; set; }
         /// <summary>Whether the experiment is launched and not ended.</summary>
         public bool? IsRunning { get; set; }
+        /// <summary>The latest finished calculation of the metrics, which the metric results check reads. Null before launch, on an archived experiment, or when the read failed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation? LatestCalculation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation LatestCalculation { get; set; }
+#endif
         /// <summary>The compile of each metric&apos;s query without running it, as the reader, which the metric queries check reads. A metric that compiles is cached per reader for a day, and a failing metric compiles again on every request. Null when the compile itself failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -169,6 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_launched", n => { IsLaunched = n.GetBoolValue(); } },
                 { "is_paused", n => { IsPaused = n.GetBoolValue(); } },
                 { "is_running", n => { IsRunning = n.GetBoolValue(); } },
+                { "latest_calculation", n => { LatestCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation.CreateFromDiscriminatorValue); } },
                 { "metric_compiles", n => { MetricCompiles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles.CreateFromDiscriminatorValue); } },
                 { "primary_metric_count", n => { PrimaryMetricCount = n.GetIntValue(); } },
                 { "project", n => { Project = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed.CreateFromDiscriminatorValue); } },
@@ -201,6 +210,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_launched", IsLaunched);
             writer.WriteBoolValue("is_paused", IsPaused);
             writer.WriteBoolValue("is_running", IsRunning);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation>("latest_calculation", LatestCalculation);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles>("metric_compiles", MetricCompiles);
             writer.WriteIntValue("primary_metric_count", PrimaryMetricCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed>("project", Project);

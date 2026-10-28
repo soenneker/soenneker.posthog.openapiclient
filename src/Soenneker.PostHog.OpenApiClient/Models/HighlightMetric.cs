@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Value for the period before the last complete one, the base of `change_pct`. Null when unknown.</summary>
         public double? PreviousValue { get; set; }
-        /// <summary>Why the pulse suggests the metric: `routine` for an insight the person opens often, `dashboard` for a tile of a dashboard they open often, `key_metric` for a key metric of the project. Null for a number the person pinned, which `pins` lists, and for metrics computed before this field existed.* `routine` - You open this often* `dashboard` - On a dashboard you open often* `key_metric` - Project key metric</summary>
+        /// <summary>Why the pulse suggests the metric: `routine` for an insight the person opens often, `dashboard` for a tile of a dashboard they open often, `key_metric` for a key metric of the project, `popular` for an insight that many people in the project open. Null for metrics computed before this field existed.* `routine` - You open this often* `dashboard` - On a dashboard you open often* `key_metric` - Project key metric* `popular` - Opened often in this project</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricReason? Reason { get; set; }

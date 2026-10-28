@@ -21,6 +21,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Approval_policies;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Billing;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Broadcast_audience_suggestions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases;
@@ -110,6 +111,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_tools;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_categories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_preferences;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_provider_imports;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_supabase_auth_emails;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_suppressions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics;
@@ -290,6 +293,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Billing.BillingRequestBuilder Billing
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Billing.BillingRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The broadcast_audience_suggestions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Broadcast_audience_suggestions.Broadcast_audience_suggestionsRequestBuilder Broadcast_audience_suggestions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Broadcast_audience_suggestions.Broadcast_audience_suggestionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The business_knowledge property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Business_knowledgeRequestBuilder Business_knowledge
@@ -735,6 +743,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_preferences.Messaging_preferencesRequestBuilder Messaging_preferences
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_preferences.Messaging_preferencesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The messaging_provider_imports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_provider_imports.Messaging_provider_importsRequestBuilder Messaging_provider_imports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_provider_imports.Messaging_provider_importsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The messaging_supabase_auth_emails property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_supabase_auth_emails.Messaging_supabase_auth_emailsRequestBuilder Messaging_supabase_auth_emails
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_supabase_auth_emails.Messaging_supabase_auth_emailsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messaging_suppressions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_suppressions.Messaging_suppressionsRequestBuilder Messaging_suppressions

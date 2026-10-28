@@ -39,6 +39,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Before { get; set; }
 #endif
+        /// <summary>Why the editor removed reviewers: wrong_area, already_covered, unavailable, or other.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RemovalReason { get; set; }
+#nullable restore
+#else
+        public string RemovalReason { get; set; }
+#endif
+        /// <summary>The removed identities that `removal_reason` applies to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? RemovalReasonReviewers { get; set; }
+#nullable restore
+#else
+        public List<string> RemovalReasonReviewers { get; set; }
+#endif
         /// <summary>UUID of the report whose reviewers a human edited.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,6 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "after", n => { After = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "at", n => { At = n.GetStringValue(); } },
                 { "before", n => { Before = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "removal_reason", n => { RemovalReason = n.GetStringValue(); } },
+                { "removal_reason_reviewers", n => { RemovalReasonReviewers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
                 { "report_title", n => { ReportTitle = n.GetStringValue(); } },
             };
@@ -97,6 +115,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("after", After);
             writer.WriteStringValue("at", At);
             writer.WriteCollectionOfPrimitiveValues<string>("before", Before);
+            writer.WriteStringValue("removal_reason", RemovalReason);
+            writer.WriteCollectionOfPrimitiveValues<string>("removal_reason_reviewers", RemovalReasonReviewers);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteStringValue("report_title", ReportTitle);
             writer.WriteAdditionalData(AdditionalData);

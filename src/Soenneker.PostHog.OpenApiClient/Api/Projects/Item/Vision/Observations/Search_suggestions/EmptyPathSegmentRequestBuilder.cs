@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         {
         }
         /// <summary>
-        /// Example searches drawn from recent observations, for the Search tab&apos;s empty state. Reads what thescheduled refresher stored; `search_viewed` records the view separately so this GET has no side effect.
+        /// Example searches for the Search tab&apos;s empty state: the labels of the largest active themes theembedding consumer named from recent issue observations. Reads only, with no side effect.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SearchSuggestionsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SearchSuggestionsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SearchSuggestionsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Example searches drawn from recent observations, for the Search tab&apos;s empty state. Reads what thescheduled refresher stored; `search_viewed` records the view separately so this GET has no side effect.
+        /// Example searches for the Search tab&apos;s empty state: the labels of the largest active themes theembedding consumer named from recent issue observations. Reads only, with no side effect.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search_suggestions.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Example searches drawn from recent observations, for the Search tab&apos;s empty state. Reads what thescheduled refresher stored; `search_viewed` records the view separately so this GET has no side effect.
+        /// Example searches for the Search tab&apos;s empty state: the labels of the largest active themes theembedding consumer named from recent issue observations. Reads only, with no side effect.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

@@ -200,6 +200,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion SourceSuggestion { get; private set; }
 #endif
+        /// <summary>Startup failure from the latest failed research attempt, when available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure? StartupFailure { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure StartupFailure { get; private set; }
+#endif
         /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListStatus? Status { get; private set; }
         /// <summary>Follow-up prompts the report&apos;s author suggests sending about it (questions to ask, or next-step actions to request), in the order they were written. The inbox offers them above the `Ask AI` box; clicking one fills the box with it.</summary>
@@ -347,6 +355,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "signals_at_run", n => { SignalsAtRun = n.GetIntValue(); } },
                 { "source_products", n => { SourceProducts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "source_suggestion", n => { SourceSuggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion>(global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion.CreateFromDiscriminatorValue); } },
+                { "startup_failure", n => { StartupFailure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure>(global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListStatus>(); } },
                 { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },

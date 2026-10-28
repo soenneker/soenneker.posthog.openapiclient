@@ -2,6 +2,8 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Endpoints;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Service_map;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Services;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApmRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The endpoints property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Endpoints.EndpointsRequestBuilder Endpoints
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Endpoints.EndpointsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The service_map property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Service_map.Service_mapRequestBuilder Service_map
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Service_map.Service_mapRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The services property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Apm.Services.ServicesRequestBuilder Services
         {

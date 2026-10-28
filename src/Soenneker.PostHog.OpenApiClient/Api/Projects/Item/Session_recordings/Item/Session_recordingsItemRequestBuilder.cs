@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Item.Console_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Item.Sharing;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.I
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Session_recordingsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The console_logs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Item.Console_logs.Console_logsRequestBuilder Console_logs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Item.Console_logs.Console_logsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {

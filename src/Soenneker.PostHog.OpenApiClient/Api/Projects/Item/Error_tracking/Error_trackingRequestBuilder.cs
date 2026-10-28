@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Built_in_filters;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Bypass_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Fingerprints;
@@ -41,6 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules.Assignment_rulesRequestBuilder Assignment_rules
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules.Assignment_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The built_in_filters property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Built_in_filters.Built_in_filtersRequestBuilder Built_in_filters
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Built_in_filters.Built_in_filtersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bypass_rules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Bypass_rules.Bypass_rulesRequestBuilder Bypass_rules

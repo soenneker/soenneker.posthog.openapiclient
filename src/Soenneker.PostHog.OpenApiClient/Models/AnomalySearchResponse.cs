@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>True when `limit` or a read cap left rows out.</summary>
         public bool? Truncated { get; set; }
-        /// <summary>Insights that scoring watches: saved trends insights on a dashboard or viewed in the last 30 days.</summary>
+        /// <summary>Active insights that scoring checks: saved trends insights that a person viewed, that sit on a dashboard someone opened, or that were edited in the active window (90 days by default), or that have an enabled alert or subscription.</summary>
         public int? WatchedInsights { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponse"/> and sets the default values.

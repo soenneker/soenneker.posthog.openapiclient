@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The owner property</summary>
+        /// <summary>ID of the user responsible for the event. Null removes the owner.</summary>
         public int? Owner { get; set; }
         /// <summary>The post_to_slack property</summary>
         public bool? PostToSlack { get; set; }

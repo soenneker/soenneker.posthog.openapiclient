@@ -32,6 +32,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers ExpectedReviewers { get; set; }
 #endif
+        /// <summary>Optional context for the removal, such as the area the person does not work on. Remove action only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RemovalNote { get; set; }
+#nullable restore
+#else
+        public string RemovalNote { get; set; }
+#endif
+        /// <summary>* `wrong_area` - Not their area* `already_covered` - Someone else is on it* `unavailable` - No bandwidth* `other` - Other</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason? RemovalReason { get; set; }
         /// <summary>Explicit add or remove targets. When supplied, content is only a fallback for older servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "action", n => { Action = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction>(); } },
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "expected_reviewers", n => { ExpectedReviewers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers.CreateFromDiscriminatorValue); } },
+                { "removal_note", n => { RemovalNote = n.GetStringValue(); } },
+                { "removal_reason", n => { RemovalReason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason>(); } },
                 { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,6 +93,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction>("action", Action);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>("content", Content);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers>("expected_reviewers", ExpectedReviewers);
+            writer.WriteStringValue("removal_note", RemovalNote);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason>("removal_reason", RemovalReason);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>("targets", Targets);
             writer.WriteAdditionalData(AdditionalData);
         }

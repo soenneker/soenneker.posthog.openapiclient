@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Emails;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Send;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MessagingRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The emails property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Emails.EmailsRequestBuilder Emails
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The send property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Send.SendRequestBuilder Send
         {

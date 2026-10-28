@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destin
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class External_data_destinationsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The connect_link property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link.Connect_linkRequestBuilder Connect_link
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link.Connect_linkRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {

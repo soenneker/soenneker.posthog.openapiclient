@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EmitReport;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.EmitSignal;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.LighthouseAudit;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.Monitoring_result;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RecordOutput;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCancel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.ReportCheckCreate;
@@ -58,6 +59,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.I
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.LighthouseAudit.LighthouseAuditRequestBuilder LighthouseAudit
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.LighthouseAudit.LighthouseAuditRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The monitoring_result property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.Monitoring_result.Monitoring_resultRequestBuilder Monitoring_result
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.Monitoring_result.Monitoring_resultRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recordOutput property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RecordOutput.RecordOutputRequestBuilder RecordOutput

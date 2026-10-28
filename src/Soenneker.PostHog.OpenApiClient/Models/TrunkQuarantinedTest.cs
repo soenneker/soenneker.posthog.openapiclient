@@ -44,14 +44,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When Trunk quarantined the test.</summary>
         public DateTimeOffset? QuarantinedAt { get; set; }
-        /// <summary>How the quarantine was applied in Trunk, e.g. &apos;AUTO_QUARANTINE&apos;.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? QuarantineSetting { get; set; }
-#nullable restore
-#else
-        public string QuarantineSetting { get; set; }
-#endif
         /// <summary>Test runner: &apos;pytest&apos; or &apos;jest&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Runner { get; set; }
 #endif
-        /// <summary>Trunk&apos;s current health verdict on the test, e.g. &apos;FLAKY&apos; or &apos;BROKEN&apos;.</summary>
+        /// <summary>Trunk&apos;s current health verdict on the test, e.g. &apos;flaky&apos; or &apos;broken&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -68,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The Trunk app&apos;s page for this test; null when the connected source has no organization slug or the row carries no test case id.</summary>
+        /// <summary>The Trunk app&apos;s page for this test; null when Trunk returned no URL and the source has no organization slug or the row carries no test id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TrunkUrl { get; set; }
@@ -106,7 +98,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "nodeid", n => { Nodeid = n.GetStringValue(); } },
                 { "overdue", n => { Overdue = n.GetBoolValue(); } },
                 { "owner_team", n => { OwnerTeam = n.GetStringValue(); } },
-                { "quarantine_setting", n => { QuarantineSetting = n.GetStringValue(); } },
                 { "quarantined_at", n => { QuarantinedAt = n.GetDateTimeOffsetValue(); } },
                 { "runner", n => { Runner = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -126,7 +117,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("overdue", Overdue);
             writer.WriteStringValue("owner_team", OwnerTeam);
             writer.WriteDateTimeOffsetValue("quarantined_at", QuarantinedAt);
-            writer.WriteStringValue("quarantine_setting", QuarantineSetting);
             writer.WriteStringValue("runner", Runner);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("trunk_url", TrunkUrl);

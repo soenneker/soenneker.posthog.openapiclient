@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Up to 4 example searches naming themes in recent observations. Empty until a scheduled refresh has run for a scanner someone viewed.</summary>
+        /// <summary>Up to 4 example searches naming the largest active themes in recent issue observations. Empty until a scanner has a named theme.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Queries { get; set; }

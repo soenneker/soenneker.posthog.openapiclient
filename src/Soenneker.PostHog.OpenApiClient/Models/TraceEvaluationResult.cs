@@ -58,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reasoning { get; set; }
 #endif
+        /// <summary>The numeric result of a numeric evaluation, null for every other type.</summary>
+        public double? Score { get; set; }
         /// <summary>The tree node the result grades: the generation&apos;s event uuid, or the trace id for a trace-level result.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,6 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "outcome", n => { Outcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResultOutcome>(); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
+                { "score", n => { Score = n.GetDoubleValue(); } },
                 { "targetNodeId", n => { TargetNodeId = n.GetStringValue(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
             };
@@ -118,6 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceEvaluationResultOutcome>("outcome", Outcome);
             writer.WriteStringValue("reasoning", Reasoning);
+            writer.WriteDoubleValue("score", Score);
             writer.WriteStringValue("targetNodeId", TargetNodeId);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);
             writer.WriteAdditionalData(AdditionalData);

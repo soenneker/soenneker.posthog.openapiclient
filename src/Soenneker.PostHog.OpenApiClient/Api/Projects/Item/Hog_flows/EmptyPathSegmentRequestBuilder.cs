@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,latest_send_first*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,latest_send_first*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList"/></returns>
@@ -138,6 +138,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             [QueryParameter("id")]
             public Guid? Id { get; set; }
             #pragma warning restore CS1591
+            /// <summary>Pass `true` to order by when each workflow&apos;s newest completed run finished, newest first. Workflows that never finished a run come last.</summary>
+            [QueryParameter("latest_send_first")]
+            public bool? LatestSendFirst { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

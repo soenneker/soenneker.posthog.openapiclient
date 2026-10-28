@@ -8837,6 +8837,7 @@ paths:
           - EarlyAccessFeature
           - SessionRecordingPlaylist
           - ReplayScanner
+          - ReplayObservation
           - VisionAlertConfiguration
           - Comment
           - Team
@@ -8942,6 +8943,7 @@ paths:
           * `EarlyAccessFeature` - EarlyAccessFeature
           * `SessionRecordingPlaylist` - SessionRecordingPlaylist
           * `ReplayScanner` - ReplayScanner
+          * `ReplayObservation` - ReplayObservation
           * `VisionAlertConfiguration` - VisionAlertConfiguration
           * `Comment` - Comment
           * `Team` - Team
@@ -9048,6 +9050,7 @@ paths:
             - EarlyAccessFeature
             - SessionRecordingPlaylist
             - ReplayScanner
+            - ReplayObservation
             - VisionAlertConfiguration
             - Comment
             - Team
@@ -9150,6 +9153,7 @@ paths:
               * `EarlyAccessFeature` - EarlyAccessFeature
               * `SessionRecordingPlaylist` - SessionRecordingPlaylist
               * `ReplayScanner` - ReplayScanner
+              * `ReplayObservation` - ReplayObservation
               * `VisionAlertConfiguration` - VisionAlertConfiguration
               * `Comment` - Comment
               * `Team` - Team
@@ -11352,8 +11356,9 @@ paths:
   /api/projects/{project_id}/ai_observability/traces/{id}/evaluations/:
     get:
       operationId: ai_observability_traces_evaluations_retrieve
-      description: A trace's evaluation results, newest first and at most 250, each
-        with its outcome and label ready to render.
+      description: |-
+        A trace's evaluation results, newest first and at most 250, each with its outcome and label ready to render,
+        plus a roll-up of the latest run of each evaluation on each node.
       parameters:
       - in: path
         name: id
@@ -12105,6 +12110,95 @@ paths:
           description: ''
       x-product:
       - customer_analytics
+  /api/projects/{project_id}/apm/endpoints/:
+    get:
+      operationId: apm_endpoints_list
+      description: One health row per service and entry span name, worst first. Same
+        gate and window as services.
+      parameters:
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          format: date-time
+        description: Start of the window, ISO 8601. Defaults to one hour before date_to.
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          format: date-time
+        description: End of the window, ISO 8601. Defaults to now.
+      - in: query
+        name: environment
+        schema:
+          type: string
+          maxLength: 200
+          minLength: 1
+        description: Environment to list, as resolved from span resource attributes.
+          Defaults to 'default'.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: service
+        schema:
+          type: string
+          maxLength: 400
+          minLength: 1
+        description: Only list the endpoints of this service.
+      tags:
+      - apm
+      security:
+      - PersonalAPIKeyAuth:
+        - tracing:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointsHealthResponse'
+          description: ''
+      x-product:
+      - apm
+  /api/projects/{project_id}/apm/service_map/:
+    get:
+      operationId: apm_service_map_list
+      description: Service-to-service call edges in an environment and window. Same
+        gate and window as services.
+      parameters:
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          format: date-time
+        description: Start of the window, ISO 8601. Defaults to one hour before date_to.
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          format: date-time
+        description: End of the window, ISO 8601. Defaults to now.
+      - in: query
+        name: environment
+        schema:
+          type: string
+          maxLength: 200
+          minLength: 1
+        description: Environment to list, as resolved from span resource attributes.
+          Defaults to 'default'.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - apm
+      security:
+      - PersonalAPIKeyAuth:
+        - tracing:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceMapResponse'
+          description: ''
+      x-product:
+      - apm
   /api/projects/{project_id}/apm/services/:
     get:
       operationId: apm_services_list
@@ -15020,6 +15114,61 @@ paths:
           description: ''
       x-product:
       - billing
+  /api/projects/{project_id}/broadcast_audience_suggestions/current/:
+    get:
+      operationId: broadcast_audience_suggestions_current
+      description: Broadcast audiences written by AI from the project's own events.
+        Both calls are free for the customer.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - broadcast_audience_suggestions
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceSuggestionsResponse'
+          description: ''
+      x-product:
+      - workflows
+  /api/projects/{project_id}/broadcast_audience_suggestions/generate/:
+    post:
+      operationId: broadcast_audience_suggestions_generate
+      description: Broadcast audiences written by AI from the project's own events.
+        Both calls are free for the customer.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - broadcast_audience_suggestions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSuggestionGenerateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataSuggestionGenerateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataSuggestionGenerateRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceSuggestionsResponse'
+          description: ''
+      x-product:
+      - workflows
   /api/projects/{project_id}/business_knowledge/documents/{id}/window/:
     get:
       operationId: business_knowledge_documents_window_list
@@ -22478,6 +22627,54 @@ paths:
       responses:
         '405':
           description: No response body
+      x-product:
+      - dashboards
+  /api/projects/{project_id}/dashboards/{id}/copy_group/:
+    post:
+      operationId: dashboards_copy_group_create
+      description: Copy a group of tiles and its settings to another dashboard.
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - txt
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this dashboard.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - dashboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopyDashboardGroupRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CopyDashboardGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CopyDashboardGroupRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - dashboard:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+          description: ''
       x-product:
       - dashboards
   /api/projects/{project_id}/dashboards/{id}/copy_tile/:
@@ -31128,6 +31325,63 @@ paths:
           description: No response body
       x-product:
       - error_tracking
+  /api/projects/{project_id}/error_tracking/built_in_filters/:
+    get:
+      operationId: error_tracking_built_in_filters_list
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - error_tracking
+      security:
+      - PersonalAPIKeyAuth:
+        - error_tracking:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ErrorTrackingBuiltInFilter'
+          description: ''
+      x-product:
+      - error_tracking
+  /api/projects/{project_id}/error_tracking/built_in_filters/{key}/:
+    patch:
+      operationId: error_tracking_built_in_filters_partial_update
+      parameters:
+      - in: path
+        name: key
+        schema:
+          type: string
+          pattern: ^[a-z0-9_]+$
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - error_tracking
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedErrorTrackingBuiltInFilterUpdateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedErrorTrackingBuiltInFilterUpdateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedErrorTrackingBuiltInFilterUpdateRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - error_tracking:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingBuiltInFilter'
+          description: ''
+      x-product:
+      - error_tracking
   /api/projects/{project_id}/error_tracking/bypass_rules/:
     get:
       operationId: error_tracking_bypass_rules_list
@@ -34617,13 +34871,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EnterpriseEventDefinition'
+              $ref: '#/components/schemas/EnterpriseEventDefinitionRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/EnterpriseEventDefinition'
+              $ref: '#/components/schemas/EnterpriseEventDefinitionRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/EnterpriseEventDefinition'
+              $ref: '#/components/schemas/EnterpriseEventDefinitionRequest'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -34678,13 +34932,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EnterpriseEventDefinition'
+              $ref: '#/components/schemas/EnterpriseEventDefinitionRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/EnterpriseEventDefinition'
+              $ref: '#/components/schemas/EnterpriseEventDefinitionRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/EnterpriseEventDefinition'
+              $ref: '#/components/schemas/EnterpriseEventDefinitionRequest'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -36763,10 +37017,24 @@ paths:
         reads a warehouse table or view the caller may not query is not checked for them. The finding
         names each failing metric in the `evidence` keys `metric_N`, `metric_N_role`, `metric_N_error`
         (the error class, which is also the subcode of the first metric) and `metric_N_message` (the
-        compiler's message). It is a warning when a primary metric fails before the end, and info
-        otherwise. A failure inside ClickHouse, such as a type that the data holds, isn't found. A
-        failing metric compiles again on every request. A metric that compiles is cached per caller
-        for a day, so a cohort or table that is deleted after a compile can take up to a day to show.
+        compiler's message). It is a warning when a primary metric fails, also after the end, because
+        the calculation after the fix reads the events up to the end. It is info otherwise. A failure
+        inside ClickHouse, such as a type that the data holds, isn't found. A failing metric compiles
+        again on every request. A metric that compiles is cached per caller for a day, so a cohort or
+        table that is deleted after a compile can take up to a day to show.
+
+        `metric_calculation_failed` reports each metric whose latest calculation failed, from the
+        latest finished calculation that the results page shows. It leaves out a metric that
+        `metric_cannot_compile` reports. The subcode is the kind of the first failure: `busy`,
+        `query_limit` (the query reached the read, memory, time or length limit), `settings` (a setting of
+        the metric or the experiment), `not_enough_data`, `experiment_too_old` (the experiment
+        started too long ago to calculate again) or `unexpected_error`. Each metric is in the
+        `evidence` keys `metric_N`, `metric_N_role`, `metric_N_failure` (the kind), `metric_N_error`
+        (the limit, or the family of a setting) and `metric_N_message` (only a message that PostHog
+        wrote for users), and `calculated_at` is when the calculation finished. It is a
+        warning when a primary metric fails for a kind that a change fixes (`query_limit`,
+        `settings`, `experiment_too_old`), also after the end, because the calculation after the fix
+        reads the events up to the end. It is info otherwise.
 
         The severity of the `some_conditions_pinned` finding follows the largest share that the
         users of the pinned release conditions make up among the users who got one variant from
@@ -38280,6 +38548,9 @@ paths:
             schema:
               $ref: '#/components/schemas/AddSourcesRequest'
         required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - external_data_source:write
       responses:
         '200':
           content:
@@ -38305,12 +38576,71 @@ paths:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - external_data_destinations
+      security:
+      - PersonalAPIKeyAuth:
+        - external_data_source:write
       responses:
         '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DestinationConnectionTestResponse'
+          description: ''
+      x-product:
+      - warehouse_sources
+  /api/projects/{project_id}/external_data_destinations/connect_link/:
+    get:
+      operationId: external_data_destinations_connect_link_retrieve
+      description: |-
+        Return a secure browser link where the user connects the credentials for a destination.
+
+        The page saves an integration and does not create the destination, so secrets never pass
+        through the agent. The agent then creates the destination with the new integration's id.
+      parameters:
+      - in: query
+        name: destination_type
+        schema:
+          enum:
+          - Redshift
+          - Snowflake
+          - BigQuery
+          - Postgres
+          - Databricks
+          - AzureBlob
+          - S3
+          type: string
+          minLength: 1
+        description: |-
+          The destination type to connect, e.g. 'Snowflake' or 'S3'.
+
+          * `Redshift` - Redshift
+          * `Snowflake` - Snowflake
+          * `BigQuery` - BigQuery
+          * `Postgres` - Postgres
+          * `Databricks` - Databricks
+          * `AzureBlob` - Azure Blob
+          * `S3` - S3
+        required: true
+      - in: query
+        name: integration_kind
+        schema:
+          type: string
+          minLength: 1
+        description: 'Which integration kind to connect when the type accepts more
+          than one. Only S3 does: ''aws-s3'' (the default) or ''s3-compatible'' for
+          MinIO, Wasabi, R2, GCS and similar.'
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - external_data_destinations
+      security:
+      - PersonalAPIKeyAuth:
+        - external_data_source:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinationConnectLink'
           description: ''
       x-product:
       - warehouse_sources
@@ -44920,6 +45250,12 @@ paths:
         schema:
           type: string
           format: uuid
+      - in: query
+        name: latest_send_first
+        schema:
+          type: boolean
+        description: Pass `true` to order by when each workflow's newest completed
+          run finished, newest first. Workflows that never finished a run come last.
       - name: limit
         required: false
         in: query
@@ -57618,7 +57954,8 @@ paths:
       operationId: mcp_analytics_sessions_activity_overview
       description: Aggregate counters, top tools, agent clients, and the most recent
         tool calls for the last 30 days, computed in one request. Powers the dashboard's
-        activity view; always computed fresh so polling callers watch data arrive.
+        activity view. Results are cached for up to 5 minutes, or 20 seconds when
+        the caller has property restrictions. An empty result is never cached.
       parameters:
       - in: query
         name: filter_test_accounts
@@ -59609,6 +59946,42 @@ paths:
       x-product:
       - docs
       - posthog_ai
+  /api/projects/{project_id}/messaging/emails/{id}/:
+    get:
+      operationId: messaging_emails_retrieve
+      description: Get the status of one transactional email by the `message_id` that
+        the send returned, for 30 days after the send. Needs a project secret API
+        key with the `hog_flow:read` scope.
+      summary: Get a transactional email's status
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: The `message_id` that the send returned.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailStatus'
+          description: ''
+        '401':
+          description: The request has no project secret API key.
+        '404':
+          description: No email of this project has this ID, or it is older than 30
+            days. A send can also answer 404 for a few seconds right after it was
+            queued.
+      x-product:
+      - messaging
   /api/projects/{project_id}/messaging/send/email/:
     post:
       operationId: messaging_send_email_create
@@ -60278,6 +60651,232 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebhookUrl'
           description: ''
+      x-product:
+      - messaging
+  /api/projects/{project_id}/messaging_provider_imports/:
+    get:
+      operationId: messaging_provider_imports_list
+      description: |-
+        Background imports from other messaging tools, such as Customer.io suppressions and global unsubscribes.
+
+        A run executes outside the request, so a long provider list does not time out. Poll a run to show its progress.
+      summary: List the most recent provider imports
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_provider_imports
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProviderImportRun'
+          description: ''
+      x-product:
+      - messaging
+    post:
+      operationId: messaging_provider_imports_create
+      description: |-
+        Background imports from other messaging tools, such as Customer.io suppressions and global unsubscribes.
+
+        A run executes outside the request, so a long provider list does not time out. Poll a run to show its progress.
+      summary: Start a background import from another messaging tool
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_provider_imports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartProviderImport'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StartProviderImport'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StartProviderImport'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderImportRun'
+          description: ''
+        '400':
+          description: The provider or a step is unknown, or the API key is missing
+            or rejected.
+        '409':
+          description: An import from this provider is running, or a different key
+            is stored.
+        '503':
+          description: The provider did not respond while checking the API key.
+      x-product:
+      - messaging
+  /api/projects/{project_id}/messaging_provider_imports/{id}/:
+    get:
+      operationId: messaging_provider_imports_retrieve
+      description: |-
+        Background imports from other messaging tools, such as Customer.io suppressions and global unsubscribes.
+
+        A run executes outside the request, so a long provider list does not time out. Poll a run to show its progress.
+      summary: Get a provider import and its progress
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_provider_imports
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderImportRun'
+          description: ''
+      x-product:
+      - messaging
+  /api/projects/{project_id}/messaging_provider_imports/providers/:
+    get:
+      operationId: messaging_provider_imports_providers_list
+      description: |-
+        Background imports from other messaging tools, such as Customer.io suppressions and global unsubscribes.
+
+        A run executes outside the request, so a long provider list does not time out. Poll a run to show its progress.
+      summary: List the providers and what each can import
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_provider_imports
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImportProviderOption'
+          description: ''
+      x-product:
+      - messaging
+  /api/projects/{project_id}/messaging_supabase_auth_emails/settings/:
+    get:
+      operationId: messaging_supabase_auth_emails_settings_retrieve
+      description: Send a Supabase project's auth emails through transactional email
+        templates.
+      summary: Get the Supabase auth email settings
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_supabase_auth_emails
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupabaseAuthEmailSettings'
+          description: ''
+      x-product:
+      - messaging
+    patch:
+      operationId: messaging_supabase_auth_emails_settings_partial_update
+      description: Send a Supabase project's auth emails through transactional email
+        templates.
+      summary: Update the Supabase auth email settings
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_supabase_auth_emails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSupabaseAuthEmailSettingsUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSupabaseAuthEmailSettingsUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSupabaseAuthEmailSettingsUpdate'
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupabaseAuthEmailSettings'
+          description: The saved settings
+        '400':
+          description: A field is invalid. The error names the field to fix.
+      x-product:
+      - messaging
+    delete:
+      operationId: messaging_supabase_auth_emails_settings_destroy
+      description: Remove the project URL, hook secret and template mappings. The
+        hook then refuses every call, so turn off the Send Email hook in Supabase
+        first. The templates themselves stay.
+      summary: Disconnect the Supabase project
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_supabase_auth_emails
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupabaseAuthEmailSettings'
+          description: The empty settings
+      x-product:
+      - messaging
+  /api/projects/{project_id}/messaging_supabase_auth_emails/starter_templates/:
+    post:
+      operationId: messaging_supabase_auth_emails_starter_templates_create
+      description: Create a transactional template for each core Supabase auth email
+        that has no template yet, and map it. Needs a verified email sender.
+      summary: Create starter templates for the Supabase auth emails
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - messaging_supabase_auth_emails
+      security:
+      - PersonalAPIKeyAuth:
+        - hog_flow:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupabaseAuthEmailSettings'
+          description: The saved settings
+        '400':
+          description: The team has no verified email sender
       x-product:
       - messaging
   /api/projects/{project_id}/messaging_suppressions/add_suppression/:
@@ -70253,6 +70852,81 @@ paths:
           description: No response body
       x-product:
       - replay
+  /api/projects/{project_id}/session_recordings/{id}/console_logs/:
+    get:
+      operationId: session_recordings_console_logs_retrieve
+      description: Returns the browser console messages captured during a recording,
+        oldest first.
+      summary: List console logs of a session recording
+      parameters:
+      - in: query
+        name: after
+        schema:
+          type: string
+          format: date-time
+        description: Only return entries at or after this ISO 8601 timestamp. The
+          results never extend outside the recording's own start and end time.
+      - in: query
+        name: before
+        schema:
+          type: string
+          format: date-time
+        description: Only return entries at or before this ISO 8601 timestamp. The
+          results never extend outside the recording's own start and end time.
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this session recording.
+        required: true
+      - in: query
+        name: level
+        schema:
+          enum:
+          - info
+          - warn
+          - error
+          type: string
+          minLength: 1
+        description: |-
+          Only return entries at this level. Omit to return every level.
+
+          * `info` - Info
+          * `warn` - Warn
+          * `error` - Error
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 500
+          minimum: 1
+          default: 100
+        description: Maximum number of entries to return (1-500, default 100).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of entries to skip. Use with `limit` to page through a
+          long recording.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay
+      - session_recordings
+      security:
+      - PersonalAPIKeyAuth:
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionRecordingConsoleLogsResponse'
+          description: ''
+      x-product:
+      - replay
   /api/projects/{project_id}/session_recordings/{recording_id}/sharing/:
     get:
       operationId: session_recordings_sharing_list
@@ -71023,7 +71697,7 @@ paths:
             type: string
             format: uuid
           maxItems: 100
-        description: Report ids to leave out of `results` and `count`, for example
+        description: Report ids to leave out of the results and counts, for example
           the reports a client already shows, as repeated parameters or comma-separated.
           The other reports keep their order. At most 100.
       - in: query
@@ -72209,12 +72883,52 @@ paths:
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/{id}/reviewers/me/:
+    post:
+      operationId: signals_reports_reviewers_me_create
+      description: Take the calling user off this report's suggested reviewers, and
+        record why. The other reviewers stay, and the report stays open. Succeeds
+        whether or not the caller was on the list.
+      summary: Step off a report's suggested reviewers, with a reason
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this signal report.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignalReportLeaveReviewers'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignalReportLeaveReviewers'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignalReportLeaveReviewers'
+      security:
+      - PersonalAPIKeyAuth:
+        - task:write
+      - PersonalAPIKeyAuth:
+        - task:write
+      responses:
+        '204':
+          description: The caller is no longer a suggested reviewer.
+        '400':
+          description: The reason is invalid, or a reviewer who stays no longer resolves.
+      x-product:
+      - signals
     delete:
       operationId: signals_reports_reviewers_me_destroy
       description: 'Take the calling user off this report''s suggested reviewers,
         leaving the other reviewers as they are. The report itself is untouched: it
         stays open for whoever is left, and for the project. Succeeds whether or not
-        the caller was on the list.'
+        the caller was on the list. POST to the same path to say why.'
       summary: Step off a report's suggested reviewers
       parameters:
       - in: path
@@ -72903,7 +73617,8 @@ paths:
         name: query
         schema:
           type: string
-        description: Case-insensitive filter on name or email.
+        description: Case-insensitive filter on name or email. Use search to find
+          members outside the first 100 results.
       tags:
       - signals
       security:
@@ -72929,7 +73644,7 @@ paths:
                   required:
                   - name
                   - email
-          description: Candidate reviewers keyed by user UUID.
+          description: Up to 100 candidate reviewers keyed by user UUID.
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/bulk-state/:
@@ -73148,6 +73863,195 @@ paths:
           description: Org-wide credited-refund totals for the current billing period.
         '404':
           description: Refunds are not enabled for this organization.
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/reports/section_counts/:
+    get:
+      operationId: signals_reports_section_counts_retrieve
+      description: Count the ready reports with and without an implementation pull
+        request, in one query. Accepts the list's filters, so each count matches a
+        `count_only` list request with `status=ready` and the matching `has_implementation_pr`.
+        Rejects `status`, `has_implementation_pr`, `include_all_statuses` and `view`,
+        because the counts set those.
+      parameters:
+      - in: query
+        name: actionability
+        schema:
+          type: string
+        description: 'Comma-separated actionability judgments to include. Valid values:
+          immediately_actionable, requires_human_input, not_actionable. Reports without
+          a judgment are excluded.'
+      - in: query
+        name: already_addressed
+        schema:
+          type: boolean
+        description: Filter by whether the latest actionability judgment says the
+          issue is already being handled. False also includes older reports where
+          that judgment did not record a value.
+      - in: query
+        name: assignee
+        schema:
+          type: string
+          enum:
+          - me
+          - mine
+        description: '''me'' returns reports claimed by exactly the requesting actor:
+          the user, the internal task, or the MCP agent. ''mine'' returns every report
+          the requesting user answers for: their own claims, claims by MCP agents
+          acting for them, and claims by internal tasks they started.'
+      - in: query
+        name: channel_id
+        schema:
+          type: string
+          format: uuid
+        description: Narrow to reports assigned to one space (channel). Absent or
+          empty means all reports regardless of assignment.
+      - in: query
+        name: created_after
+        schema:
+          type: string
+          format: date-time
+        description: ISO 8601 datetime. Keeps reports created at or after this time.
+      - in: query
+        name: exclude
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+          maxItems: 100
+        description: Report ids to leave out of the results and counts, for example
+          the reports a client already shows, as repeated parameters or comma-separated.
+          The other reports keep their order. At most 100.
+      - in: query
+        name: include_unlisted
+        schema:
+          type: boolean
+          default: false
+        description: Include reports kept out of the shared inbox. A report is kept
+          out when the scout that authored it turned off its `inbox` output destination.
+          Defaults to false. Fetching a report by id always works, whatever this value
+          is.
+      - in: query
+        name: priority
+        schema:
+          type: string
+        description: 'Comma-separated list of priorities to include. Valid values:
+          P0, P1, P2, P3, P4. Reports without a priority assignment are excluded when
+          this filter is set.'
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: ranking_min_lift
+        schema:
+          type: string
+        description: 'Comma-separated <outcome>:<lift> pairs, e.g. fix:2,open:1.5.
+          Keeps reports whose served ranking lift is at least the value for every
+          named outcome. Outcomes: open, action, fix. Read inbox-ranking-outcomes-list
+          for what each outcome means. Unscored and stale reports never match. Needs
+          staff or the inbox model sort rollout: other users get a 400.'
+      - in: query
+        name: ranking_min_probability
+        schema:
+          type: string
+        description: 'Comma-separated <outcome>:<probability> pairs, e.g. fix:0.3.
+          Keeps reports whose served ranking probability is at least the value for
+          every named outcome. Outcomes: open, action, fix. Read inbox-ranking-outcomes-list
+          for what each outcome means. Unscored and stale reports never match. Needs
+          staff or the inbox model sort rollout: other users get a 400.'
+      - in: query
+        name: scope
+        schema:
+          type: string
+        description: 'Reviewer scope: for_me, entire_project, or teammate. Pass teammate_uuid
+          with teammate.'
+      - in: query
+        name: scout
+        schema:
+          type: string
+        description: Comma-separated list of scout skill_name slugs (e.g. signals-scout-error-tracking).
+          Reports are kept if at least one of their contributing signals was authored
+          by one of these scouts. Combines with source_product as an AND.
+      - in: query
+        name: scout_prefix
+        schema:
+          type: string
+        description: Scout skill_name prefix (e.g. signals-scout-customer-analytics).
+          Reports are kept if at least one of their contributing signals was authored
+          by a scout whose skill_name starts with this prefix — new scouts in the
+          family match without callers listing every name. Combines with the other
+          filters as an AND.
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Case-insensitive substring match against report title and summary.
+      - in: query
+        name: source_id
+        schema:
+          type: string
+        description: Comma-separated list of source record ids. Reports are kept if
+          at least one of their contributing signals came from one of these records
+          — e.g. pass a support ticket's UUID to see what the inbox already found
+          for that ticket. Requires exactly one source_product, since a source id
+          is only unique within its product.
+      - in: query
+        name: source_product
+        schema:
+          type: string
+        description: Comma-separated list of source products to include. Reports are
+          kept if at least one of their contributing signals comes from one of these
+          products (e.g. error_tracking, session_replay).
+      - in: query
+        name: suggested_reviewers
+        schema:
+          type: string
+        description: Comma-separated list of PostHog user UUIDs. Reports are kept
+          if their suggested reviewers include any of the given users.
+      - in: query
+        name: task_id
+        schema:
+          type: string
+          format: uuid
+        description: Only reports associated with this task (via the report's task
+          associations).
+      - in: query
+        name: teammate_uuid
+        schema:
+          type: string
+          format: uuid
+        description: PostHog user UUID used when scope=teammate.
+      - in: query
+        name: unclaimed
+        schema:
+          type: boolean
+        description: Filter by whether the report has no owner and no draft, open,
+          or unknown PR. Resolved reports are never unclaimed.
+      - in: query
+        name: unread
+        schema:
+          type: boolean
+        description: Filter by the current user's report read state.
+      - in: query
+        name: use_priority_preference
+        schema:
+          type: boolean
+        description: When true and priority is omitted, include priorities at or above
+          the requesting user's personal PR-generation threshold, falling back to
+          the project threshold.
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - task:read
+      - PersonalAPIKeyAuth:
+        - task:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalReportSectionCounts'
+          description: ''
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/source_metadata/:
@@ -75283,6 +76187,59 @@ paths:
         '503':
           description: The browser fleet is at capacity, so no audit ran and the run
             keeps the slot. Retry later.
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/scout/runs/{run_id}/monitoring_result/:
+    post:
+      operationId: signals_scout_submit_monitoring_result
+      description: 'Submit the assigned Monitoring check''s evidence and verdict while
+        the scout is running. Only the owning Monitoring scout can call this endpoint.
+        The server derives the check, attempt, definition, and fixed window from the
+        run. Validation errors record nothing: correct the fields and retry in the
+        same run. An identical accepted submission is idempotent. This records an
+        evaluation and leaves the report in Monitoring.'
+      summary: Submit the result of an authored Monitoring check
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: run_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the `SignalScoutRun` bridge row.
+        required: true
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitMonitoringResultRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubmitMonitoringResultRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SubmitMonitoringResultRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout_monitoring:write
+      - PersonalAPIKeyAuth:
+        - signal_scout_monitoring:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmitMonitoringResultResponse'
+          description: ''
+        '400':
+          description: Invalid result or an assignment that is no longer eligible.
+        '404':
+          description: The caller does not own this Monitoring run.
+        '409':
+          description: A different result was already submitted for this assignment.
       x-product:
       - signals
   /api/projects/{project_id}/signals/scout/runs/{run_id}/record-output/:
@@ -87218,8 +88175,8 @@ paths:
     get:
       operationId: vision_observations_search_suggestions_retrieve
       description: |-
-        Example searches drawn from recent observations, for the Search tab's empty state. Reads what the
-        scheduled refresher stored; `search_viewed` records the view separately so this GET has no side effect.
+        Example searches for the Search tab's empty state: the labels of the largest active themes the
+        embedding consumer named from recent issue observations. Reads only, with no side effect.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
@@ -87248,8 +88205,8 @@ paths:
     post:
       operationId: vision_observations_search_viewed_create
       description: |-
-        Record that the Search tab showed suggestions for this scope. The scheduled refresher serves viewed
-        scanners first, so the stamp lives on a CSRF-protected POST rather than the read.
+        Warm the query vectors for the suggestions the Search tab showed, so a click on one searches at once.
+        It embeds text, so it is a POST rather than part of the read.
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -91891,6 +92848,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SavedQueryRunResponse'
           description: ''
+        '403':
+          description: You can't edit every view in the run, or engine is 'trino'
+            and the organization has no managed warehouse.
+        '409':
+          description: engine is 'trino' and a managed warehouse run is already in
+            progress.
       x-product:
       - data_warehouse
   /api/projects/{project_id}/warehouse_saved_queries/{id}/run_history/:
@@ -105120,8 +106083,10 @@ components:
           description: Whether anomaly scoring covers this project.
         watched_insights:
           type: integer
-          description: 'Insights that scoring watches: saved trends insights on a
-            dashboard or viewed in the last 30 days.'
+          description: 'Active insights that scoring checks: saved trends insights
+            that a person viewed, that sit on a dashboard someone opened, or that
+            were edited in the active window (90 days by default), or that have an
+            enabled alert or subscription.'
         insights_scored_in_range:
           type: integer
           description: Insights with at least one scored bucket in the range. Results
@@ -106342,6 +107307,100 @@ components:
       description: |-
         * `members` - members
         * `agents` - agents
+    AudienceSuggestion:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Opaque id of this suggestion, valid while the suggestions stay
+            cached.
+        name:
+          type: string
+          description: Suggested audience name, written by AI from the project's events.
+        description:
+          type: string
+          description: Who the people are and what to tell them. Used as the cohort
+            description and the email brief.
+        reason:
+          type: string
+          description: One sentence on why the audience is worth a broadcast.
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/AudienceSuggestionKindEnum'
+          description: |-
+            not_yet: did event in the window but not missing_event. regulars: did event at least min_count times in the window. lapsed: did event in the last 90 days but not in the window.
+
+            * `not_yet` - Not Yet
+            * `regulars` - Regulars
+            * `lapsed` - Lapsed
+        event:
+          type: string
+          description: The project event the audience is built on.
+        missing_event:
+          type:
+          - string
+          - 'null'
+          description: 'For not_yet: the event the audience has not done yet. Null
+            otherwise.'
+        window_days:
+          type: integer
+          description: The time window in days.
+        min_count:
+          type:
+          - integer
+          - 'null'
+          description: 'For regulars: how many times the event must happen in the
+            window.'
+        reachable_count:
+          type: integer
+          description: People in the audience with an email address, counted when
+            the suggestion was made.
+        cohort_filters:
+          description: The audience's cohort filters, in the cohorts endpoint's `filters`
+            format. Saved as a static cohort.
+      required:
+      - cohort_filters
+      - description
+      - event
+      - id
+      - kind
+      - min_count
+      - missing_event
+      - name
+      - reachable_count
+      - reason
+      - window_days
+    AudienceSuggestionKindEnum:
+      enum:
+      - not_yet
+      - regulars
+      - lapsed
+      type: string
+      description: |-
+        * `not_yet` - Not Yet
+        * `regulars` - Regulars
+        * `lapsed` - Lapsed
+    AudienceSuggestionsResponse:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/DataSuggestionsStatusEnum'
+          description: |-
+            ready when suggestions were made (the list can still be empty), generating while a background run makes them (poll current until it ends), ai_not_approved when the organization has not approved AI data processing, unavailable when nothing was made or the run failed.
+
+            * `ready` - Ready
+            * `generating` - Generating
+            * `ai_not_approved` - Ai Not Approved
+            * `unavailable` - Unavailable
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AudienceSuggestion'
+          description: Up to 3 suggested broadcast audiences.
+      required:
+      - status
+      - suggestions
     AuditActorServiceAccount:
       type: object
       properties:
@@ -113749,6 +114808,14 @@ components:
         * `building` - building
         * `ready` - ready
         * `failed` - failed
+    BuiltInFilterEvaluationEnum:
+      enum:
+      - client
+      - server
+      type: string
+      description: |-
+        * `client` - Client
+        * `server` - Server
     BuiltInScanKeyEnum:
       enum:
       - summarize_recording
@@ -121673,6 +122740,16 @@ components:
       description: |-
         * `native` - Native
         * `mcp` - Mcp
+    ConsoleLogLevelEnum:
+      enum:
+      - info
+      - warn
+      - error
+      type: string
+      description: |-
+        * `info` - Info
+        * `warn` - Warn
+        * `error` - Error
     ContentAutopilotBrief:
       type: object
       properties:
@@ -124308,6 +125385,19 @@ components:
         * `0` - Disabled
         * `1` - Stateless
         * `2` - Stateful
+    CopyDashboardGroupRequest:
+      type: object
+      properties:
+        fromDashboardId:
+          type: integer
+          description: Dashboard id the group currently belongs to.
+        groupKey:
+          type: string
+          description: Key of the tile group to copy.
+          maxLength: 100
+      required:
+      - fromDashboardId
+      - groupKey
     CopyDashboardTemplate:
       type: object
       properties:
@@ -134297,6 +135387,7 @@ components:
             * `AwsS3Tables` - AwsS3Tables
             * `Beacons` - Beacons
             * `WooPayments` - WooPayments
+            * `Soniox` - Soniox
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -136046,6 +137137,28 @@ components:
         * `bug` - Bug
         * `feature` - Feature
         * `general` - General
+    DestinationConnectLink:
+      type: object
+      properties:
+        destination_type:
+          type: string
+          description: The destination type the link is for.
+        integration_kind:
+          type: string
+          description: The integration kind the page creates.
+        connect_url:
+          type: string
+          description: Full URL to share with the user. It opens the connection form
+            for this integration kind in PostHog, so credentials never pass through
+            the agent or the chat.
+        instructions:
+          type: string
+          description: Next steps for the agent to relay to the user.
+      required:
+      - connect_url
+      - destination_type
+      - instructions
+      - integration_kind
     DestinationConnectionTestResponse:
       type: object
       properties:
@@ -137972,6 +139085,7 @@ components:
             * `AwsS3Tables` - AwsS3Tables
             * `Beacons` - Beacons
             * `WooPayments` - WooPayments
+            * `Soniox` - Soniox
         label:
           type: string
           readOnly: true
@@ -139894,6 +141008,22 @@ components:
           description: A distinct value of the requested element property
       required:
       - name
+    EmailDeliveryStatusEnum:
+      enum:
+      - queued
+      - failed
+      - sent
+      - delivered
+      - bounced
+      - complained
+      type: string
+      description: |-
+        * `queued` - Queued
+        * `failed` - Failed
+        * `sent` - Sent
+        * `delivered` - Delivered
+        * `bounced` - Bounced
+        * `complained` - Complained
     EmailDomainConnectCheck:
       type: object
       properties:
@@ -140410,6 +141540,50 @@ components:
       - email_sending_suspended
       - email_sending_suspended_at
       - email_sending_suspension_reason
+    EmailStatus:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The `message_id` that the send returned.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/EmailDeliveryStatusEnum'
+          description: |-
+            What happened to the email. `queued` means it waits to go out. `sent` means PostHog handed it to the email provider. `failed` means it was not sent, and `reason` says why. A rerun of the send can still move it to `sent`. `delivered` means the recipient's mail server accepted it. `bounced` and `complained` come later from the recipient's mail provider.
+
+            * `queued` - Queued
+            * `failed` - Failed
+            * `sent` - Sent
+            * `delivered` - Delivered
+            * `bounced` - Bounced
+            * `complained` - Complained
+        created_at:
+          type: string
+          format: date-time
+          description: When the send was queued.
+        status_at:
+          type: string
+          format: date-time
+          description: When the email reached its current status.
+        reason:
+          type:
+          - string
+          - 'null'
+          description: Why a failed email was not sent, or the bounce type of a bounced
+            email. A failed send has `provider_error`, or `provider_rejected` when
+            the provider refused the email after it accepted the send. A skipped send
+            has `recipient_suppressed`, `recipient_unreachable`, `recipient_opted_out`,
+            `missing_recipient`, `sending_paused`, `sending_suspended` or `frequency_capped`.
+            A run that stopped before the send has `canceled`, `workflow_unavailable`
+            or an error kind such as `timeout`, and more error kinds can be added.
+            A bounce has `hard`, `soft` or `unknown`. Null otherwise.
+      required:
+      - created_at
+      - id
+      - reason
+      - status
+      - status_at
     EmailTemplate:
       type: object
       properties:
@@ -141147,6 +142321,39 @@ components:
       - error_message
       title: EndpointExecutionFailedSignalExtra
       type: object
+    EndpointHealth:
+      type: object
+      properties:
+        service_name:
+          type: string
+          description: The service.name resource attribute.
+        endpoint:
+          type: string
+          description: The entry span name, for example the HTTP route or the job
+            name.
+        environment:
+          type: string
+          description: The environment the row was computed for.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/HealthStatusEnum'
+          description: |-
+            Health band from the error rate.
+
+            * `good` - Good
+            * `warning` - Warning
+            * `serious` - Serious
+            * `critical` - Critical
+        health:
+          allOf:
+          - $ref: '#/components/schemas/HealthRow'
+          description: The health row every surface renders.
+      required:
+      - endpoint
+      - environment
+      - health
+      - service_name
+      - status
     EndpointLastExecutionTimesRequest:
       additionalProperties: false
       properties:
@@ -141677,6 +142884,36 @@ components:
       - version_id
       - version_updated_at
       - versions_count
+    EndpointsHealthResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/EndpointHealth'
+          description: One row per service and endpoint, worst status first.
+        environment:
+          type: string
+          description: The environment the rows were computed for.
+        service:
+          type:
+          - string
+          - 'null'
+          description: The service filter applied, if any.
+        date_from:
+          type: string
+          format: date-time
+          description: Start of the window used.
+        date_to:
+          type: string
+          format: date-time
+          description: End of the window used.
+      required:
+      - date_from
+      - date_to
+      - environment
+      - results
+      - service
     EndpointsUsageBreakdown:
       enum:
       - Endpoint
@@ -142462,9 +143699,132 @@ components:
           type: string
           maxLength: 400
         owner:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: The user responsible for the event, or null when it has no
+            owner.
+        description:
+          type:
+          - string
+          - 'null'
+        tags:
+          type: array
+          items: {}
+        created_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        last_seen_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        verified:
+          type: boolean
+        verified_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        verified_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        hidden:
+          type:
+          - boolean
+          - 'null'
+        enforcement_mode:
+          $ref: '#/components/schemas/SchemaEnforcementModeEnum'
+        primary_property:
+          type:
+          - string
+          - 'null'
+          description: Name of a single property on this event that PostHog UIs should
+            display alongside the event (for example `$pathname` on `$pageview`).
+            When set, surfaces like the session replay inspector show the property's
+            value next to the event name without the user having to open the event.
+          maxLength: 400
+        is_action:
+          type: boolean
+          readOnly: true
+        action_id:
+          type: integer
+          readOnly: true
+        is_calculating:
+          type: boolean
+          readOnly: true
+        last_calculated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        post_to_slack:
+          type: boolean
+          default: false
+        default_columns:
+          type: array
+          items:
+            type: string
+        media_preview_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+      - action_id
+      - created_at
+      - created_by
+      - id
+      - is_action
+      - is_calculating
+      - last_calculated_at
+      - last_seen_at
+      - last_updated_at
+      - media_preview_urls
+      - name
+      - updated_at
+      - updated_by
+      - verified_at
+      - verified_by
+    EnterpriseEventDefinitionRequest:
+      type: object
+      description: Serializer mixin that handles tags for objects.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 400
+        owner:
           type:
           - integer
           - 'null'
+          description: ID of the user responsible for the event. Null removes the
+            owner.
         description:
           type:
           - string
@@ -143284,6 +144644,48 @@ components:
       - results
       title: ErrorTrackingBreakdownsQueryResponse
       type: object
+    ErrorTrackingBuiltInFilter:
+      type: object
+      properties:
+        key:
+          type: string
+          readOnly: true
+          description: Stable identifier of the built-in filter, for example `web_crawlers`.
+        name:
+          type: string
+          readOnly: true
+          description: Display name of the built-in filter.
+        description:
+          type: string
+          readOnly: true
+          description: One sentence on which exceptions the filter drops.
+        evaluation:
+          allOf:
+          - $ref: '#/components/schemas/BuiltInFilterEvaluationEnum'
+          readOnly: true
+          description: |-
+            Where the filter runs. `client` filters also run in the web SDK, which drops matching exceptions before it sends them. `server` filters run only during ingestion.
+
+            * `client` - Client
+            * `server` - Server
+        enabled:
+          type: boolean
+          readOnly: true
+          description: Whether the filter drops exceptions for this project.
+        disabled_reason:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Set when ingestion turned the filter off because it failed
+            on an event. Turning the filter on again resets it.
+      required:
+      - description
+      - disabled_reason
+      - enabled
+      - evaluation
+      - key
+      - name
     ErrorTrackingBypassRule:
       type: object
       properties:
@@ -151028,6 +152430,7 @@ components:
           anyOf:
           - $ref: '#/components/schemas/ExperimentEventExposureConfig'
           - $ref: '#/components/schemas/ActionsNode'
+          - $ref: '#/components/schemas/ExperimentWarehouseNativeExposureConfig'
           - type: 'null'
           default: null
           description: Exposure configuration for filtering events. Defines when users
@@ -152068,12 +153471,14 @@ components:
           description: Additional event (or action) an entity must emit at/after their
             first default exposure event before they count as exposed; exposure time
             becomes this event's timestamp. Only valid with the default exposure event,
-            not a custom `exposure_config`.
+            not a custom `exposure_config`. Warehouse-native activation has no defined
+            semantics yet, so only events and actions apply here.
           title: Activation Config
         exposure_config:
           anyOf:
           - $ref: '#/components/schemas/ExperimentEventExposureConfig'
           - $ref: '#/components/schemas/ActionsNode'
+          - $ref: '#/components/schemas/ExperimentWarehouseNativeExposureConfig'
           - type: 'null'
           default: null
           title: Exposure Config
@@ -152773,6 +154178,7 @@ components:
       - no_metric
       - metric_event_not_ingested
       - metric_cannot_compile
+      - metric_calculation_failed
       - exposure_criteria_cannot_match
       - early_significance
       - zero_exposures
@@ -152792,6 +154198,7 @@ components:
         * `no_metric` - No Metric
         * `metric_event_not_ingested` - Metric Event Not Ingested
         * `metric_cannot_compile` - Metric Cannot Compile
+        * `metric_calculation_failed` - Metric Calculation Failed
         * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
         * `early_significance` - Early Significance
         * `zero_exposures` - Zero Exposures
@@ -152818,6 +154225,7 @@ components:
             * `no_metric` - No Metric
             * `metric_event_not_ingested` - Metric Event Not Ingested
             * `metric_cannot_compile` - Metric Cannot Compile
+            * `metric_calculation_failed` - Metric Calculation Failed
             * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
             * `early_significance` - Early Significance
             * `zero_exposures` - Zero Exposures
@@ -152879,6 +154287,7 @@ components:
             * `no_metric` - No Metric
             * `metric_event_not_ingested` - Metric Event Not Ingested
             * `metric_cannot_compile` - Metric Cannot Compile
+            * `metric_calculation_failed` - Metric Calculation Failed
             * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
             * `srm` - Sample Ratio Mismatch
             * `zero_exposures` - Zero Exposures
@@ -152975,6 +154384,7 @@ components:
       - no_metric
       - metric_event_not_ingested
       - metric_cannot_compile
+      - metric_calculation_failed
       - exposure_criteria_cannot_match
       - srm
       - zero_exposures
@@ -152996,6 +154406,7 @@ components:
         * `no_metric` - No Metric
         * `metric_event_not_ingested` - Metric Event Not Ingested
         * `metric_cannot_compile` - Metric Cannot Compile
+        * `metric_calculation_failed` - Metric Calculation Failed
         * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
         * `srm` - Sample Ratio Mismatch
         * `zero_exposures` - Zero Exposures
@@ -153121,6 +154532,13 @@ components:
             reader, which the metric queries check reads. A metric that compiles is
             cached per reader for a day, and a failing metric compiles again on every
             request. Null when the compile itself failed.
+        latest_calculation:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentHealthInputsLatestCalculation'
+          - type: 'null'
+          description: The latest finished calculation of the metrics, which the metric
+            results check reads. Null before launch, on an archived experiment, or
+            when the read failed.
         flag_history:
           oneOf:
           - $ref: '#/components/schemas/ExperimentHealthInputsFlagHistory'
@@ -153180,6 +154598,7 @@ components:
       - is_launched
       - is_paused
       - is_running
+      - latest_calculation
       - metric_compiles
       - primary_metric_count
       - project
@@ -153483,6 +154902,65 @@ components:
       - launched_at
       - not_checked_reason
       - team_timezone
+    ExperimentHealthInputsLatestCalculation:
+      type: object
+      properties:
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the latest calculation that the results page shows finished.
+            Null when none has finished.
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentHealthInputsMetricCalculationFailure'
+          description: The metrics whose latest calculation failed, with the error
+            that the results page shows.
+      required:
+      - failures
+      - finished_at
+    ExperimentHealthInputsMetricCalculationFailure:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The metric's name as the experiment shows it.
+        role:
+          type: string
+          description: '''primary'' or ''secondary''.'
+        error_type:
+          type:
+          - string
+          - 'null'
+          description: The class that the calculation stored for the error, such as
+            'timeout' or 'rate_limited'. Null for a failure stored without a class.
+        step:
+          type:
+          - string
+          - 'null'
+          description: The step of the calculation that failed, such as 'calculation'.
+            Null when the failure names none.
+        retriable:
+          type: boolean
+          description: Whether the results page shows a button to try the metric again,
+            which it does for a retriable error.
+        message:
+          type:
+          - string
+          - 'null'
+          description: The stored message as the results page shows it, without the
+            names that HogQL suggests and the list of a scope's fields. Null when
+            it can hold evaluation rules that the AI evaluation markers keep out of
+            the browser.
+      required:
+      - error_type
+      - message
+      - name
+      - retriable
+      - role
+      - step
     ExperimentHealthInputsMetricCompileFailure:
       type: object
       properties:
@@ -153898,11 +155376,13 @@ components:
               ActionsNode: '#/components/schemas/ActionsNode'
               EventsNode: '#/components/schemas/EventsNode'
               ExperimentDataWarehouseNode: '#/components/schemas/ExperimentDataWarehouseNode'
+              ExperimentWarehouseNativeNode: '#/components/schemas/ExperimentWarehouseNativeNode'
             propertyName: kind
           oneOf:
           - $ref: '#/components/schemas/EventsNode'
           - $ref: '#/components/schemas/ActionsNode'
           - $ref: '#/components/schemas/ExperimentDataWarehouseNode'
+          - $ref: '#/components/schemas/ExperimentWarehouseNativeNode'
           title: Source
         threshold:
           anyOf:
@@ -154549,11 +156029,13 @@ components:
               ActionsNode: '#/components/schemas/ActionsNode'
               EventsNode: '#/components/schemas/EventsNode'
               ExperimentDataWarehouseNode: '#/components/schemas/ExperimentDataWarehouseNode'
+              ExperimentWarehouseNativeNode: '#/components/schemas/ExperimentWarehouseNativeNode'
             propertyName: kind
           oneOf:
           - $ref: '#/components/schemas/EventsNode'
           - $ref: '#/components/schemas/ActionsNode'
           - $ref: '#/components/schemas/ExperimentDataWarehouseNode'
+          - $ref: '#/components/schemas/ExperimentWarehouseNativeNode'
           title: Denominator
         denominator_outlier_handling:
           anyOf:
@@ -154599,11 +156081,13 @@ components:
               ActionsNode: '#/components/schemas/ActionsNode'
               EventsNode: '#/components/schemas/EventsNode'
               ExperimentDataWarehouseNode: '#/components/schemas/ExperimentDataWarehouseNode'
+              ExperimentWarehouseNativeNode: '#/components/schemas/ExperimentWarehouseNativeNode'
             propertyName: kind
           oneOf:
           - $ref: '#/components/schemas/EventsNode'
           - $ref: '#/components/schemas/ActionsNode'
           - $ref: '#/components/schemas/ExperimentDataWarehouseNode'
+          - $ref: '#/components/schemas/ExperimentWarehouseNativeNode'
           title: Numerator
         numerator_outlier_handling:
           anyOf:
@@ -157145,6 +158629,110 @@ components:
       - unattributed_count
       - variants
       - window
+    ExperimentWarehouseNativeExposureConfig:
+      additionalProperties: false
+      properties:
+        connection_id:
+          description: The direct-query source (an ExternalDataSource id) the SQL
+            is written for.
+          title: Connection Id
+          type: string
+        kind:
+          const: ExperimentWarehouseNativeExposureConfig
+          default: ExperimentWarehouseNativeExposureConfig
+          title: Kind
+          type: string
+        query:
+          description: Read-only SQL in the warehouse's dialect, returning one row
+            per exposure with `entity_id`, `variant` and `timestamp` columns. PostHog
+            keeps the first exposure per entity and applies the experiment's date
+            range and multiple-variant handling.
+          title: Query
+          type: string
+        response:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          default: null
+          title: Response
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      required:
+      - connection_id
+      - query
+      title: ExperimentWarehouseNativeExposureConfig
+      type: object
+    ExperimentWarehouseNativeMathType:
+      enum:
+      - total
+      - sum
+      title: ExperimentWarehouseNativeMathType
+      type: string
+    ExperimentWarehouseNativeNode:
+      additionalProperties: false
+      properties:
+        connection_id:
+          description: The direct-query source (an ExternalDataSource id) the SQL
+            is written for.
+          title: Connection Id
+          type: string
+        custom_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Custom Name
+        kind:
+          const: ExperimentWarehouseNativeNode
+          default: ExperimentWarehouseNativeNode
+          title: Kind
+          type: string
+        math:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentWarehouseNativeMathType'
+          - type: 'null'
+          default: null
+          description: How to aggregate the rows per entity. Defaults to `total` (row
+            count).
+        math_property:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The numeric column `math` reads. Required when `math` is `sum`.
+            One SQL relation can serve several metrics, each reading a different column.
+          title: Math Property
+        query:
+          description: Read-only SQL in the warehouse's dialect, returning one row
+            per outcome with `entity_id` and `timestamp` columns plus any numeric
+            columns a metric can measure.
+          title: Query
+          type: string
+        response:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          default: null
+          title: Response
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      required:
+      - connection_id
+      - query
+      title: ExperimentWarehouseNativeNode
+      type: object
     ExperimentWatchCard:
       type: object
       description: |-
@@ -160078,6 +161666,7 @@ components:
             * `AwsS3Tables` - AwsS3Tables
             * `Beacons` - Beacons
             * `WooPayments` - WooPayments
+            * `Soniox` - Soniox
         access_method:
           allOf:
           - $ref: '#/components/schemas/ExternalDataSourceAccessMethodEnum'
@@ -161534,6 +163123,7 @@ components:
             * `AwsS3Tables` - AwsS3Tables
             * `Beacons` - Beacons
             * `WooPayments` - WooPayments
+            * `Soniox` - Soniox
         payload:
           type: object
           additionalProperties: true
@@ -163260,6 +164850,7 @@ components:
       - AwsS3Tables
       - Beacons
       - WooPayments
+      - Soniox
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -164673,6 +166264,7 @@ components:
         * `AwsS3Tables` - AwsS3Tables
         * `Beacons` - Beacons
         * `WooPayments` - WooPayments
+        * `Soniox` - Soniox
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -173779,11 +175371,12 @@ components:
             in the project's timezone. Same length and order as `series`.
         reason:
           description: |-
-            Why the pulse suggests the metric: `routine` for an insight the person opens often, `dashboard` for a tile of a dashboard they open often, `key_metric` for a key metric of the project. Null for a number the person pinned, which `pins` lists, and for metrics computed before this field existed.
+            Why the pulse suggests the metric: `routine` for an insight the person opens often, `dashboard` for a tile of a dashboard they open often, `key_metric` for a key metric of the project, `popular` for an insight that many people in the project open. Null for metrics computed before this field existed.
 
             * `routine` - You open this often
             * `dashboard` - On a dashboard you open often
             * `key_metric` - Project key metric
+            * `popular` - Opened often in this project
           oneOf:
           - $ref: '#/components/schemas/HighlightMetricReasonEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -173848,11 +175441,13 @@ components:
       - routine
       - dashboard
       - key_metric
+      - popular
       type: string
       description: |-
         * `routine` - You open this often
         * `dashboard` - On a dashboard you open often
         * `key_metric` - Project key metric
+        * `popular` - Opened often in this project
     HighlightMover:
       type: object
       properties:
@@ -177569,6 +179164,14 @@ components:
           - $ref: '#/components/schemas/MaterializationMode'
           - type: 'null'
           default: null
+        materializeRepeatedCTEs:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Reuse eligible bounded event aggregates within one query execution.
+            When unset, the server may enable it via the cloud feature flag.
+          title: Materializerepeatedctes
         materializedColumnsOptimizationMode:
           anyOf:
           - $ref: '#/components/schemas/MaterializedColumnsOptimizationMode'
@@ -178365,6 +179968,107 @@ components:
       required:
       - expression
       - result
+    ImportProviderKeyEnum:
+      enum:
+      - customerio
+      type: string
+      description: '* `customerio` - Customer.io'
+    ImportProviderOption:
+      type: object
+      properties:
+        key:
+          allOf:
+          - $ref: '#/components/schemas/ImportProviderKeyEnum'
+          description: |-
+            Provider key to send when starting an import.
+
+            * `customerio` - Customer.io
+        label:
+          type: string
+          description: Display name of the provider.
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportStepOption'
+          description: What the provider can import, in the order the steps run.
+      required:
+      - key
+      - label
+      - steps
+    ImportStepOption:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Step key to send in `steps` when starting an import, for example
+            `suppressions`.
+        label:
+          type: string
+          description: Display name of the step.
+        description:
+          type: string
+          description: What the step imports and where it lands in PostHog.
+      required:
+      - description
+      - key
+      - label
+    ImportStepProgress:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Step key, for example `suppressions`.
+        label:
+          type: string
+          description: Display name of the step.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ImportStepStatusEnum'
+          description: |-
+            `pending` until the step starts, `running` while it imports or waits to retry, then `completed` or `failed`.
+
+            * `pending` - Not started
+            * `running` - Importing
+            * `completed` - Imported
+            * `failed` - Failed
+        processed:
+          type: integer
+          description: How many records the step read from the provider so far.
+        imported:
+          type: integer
+          description: How many records the step added or updated in PostHog so far.
+            Records that already existed and need no change may not count.
+        warnings:
+          type: array
+          items:
+            type: string
+          description: Problems with single records that did not fail the step.
+        last_error:
+          type:
+          - string
+          - 'null'
+          description: The error from the step's most recent failed attempt. A running
+            step retries after an error; a failed step stopped.
+      required:
+      - imported
+      - key
+      - label
+      - last_error
+      - processed
+      - status
+      - warnings
+    ImportStepStatusEnum:
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      type: string
+      description: |-
+        * `pending` - Not started
+        * `running` - Importing
+        * `completed` - Imported
+        * `failed` - Failed
     ImportedMcpServer:
       type: object
       description: One client-imported MCP server, in the agent server's --mcpServers
@@ -199302,6 +201006,14 @@ components:
       - uuid
       title: MatchedRecordingEvent
       type: object
+    MaterializationEngineEnum:
+      enum:
+      - clickhouse
+      - trino
+      type: string
+      description: |-
+        * `clickhouse` - ClickHouse
+        * `trino` - Trino
     MaterializationMode:
       enum:
       - auto
@@ -217216,6 +218928,8 @@ components:
           type:
           - integer
           - 'null'
+          description: ID of the user responsible for the event. Null removes the
+            owner.
         description:
           type:
           - string
@@ -217419,6 +219133,13 @@ components:
           - $ref: '#/components/schemas/ErrorTrackingAssignmentRuleAssigneeRequest'
           - type: 'null'
           description: User or role to assign matching issues to.
+    PatchedErrorTrackingBuiltInFilterUpdateRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: '`true` drops matching exceptions for this project. `false`
+            stops dropping them.'
     PatchedErrorTrackingBypassRuleReorderRequest:
       type: object
       properties:
@@ -219218,6 +220939,13 @@ components:
           oneOf:
           - $ref: '#/components/schemas/BucketingIdentifierEnum'
           - $ref: '#/components/schemas/NullEnum'
+        version:
+          type: integer
+          minimum: 0
+          description: 'The `version` from your most recent read of this flag. Required
+            when the flag''s `filters.version` is 2: the update is then refused with
+            409 if anyone else changed the flag after that version. Other flags do
+            not check it.'
     PatchedFeatureRequestProductArea:
       type: object
       properties:
@@ -225153,6 +226881,35 @@ components:
             subscription kind or delivery target only, and each option's own description
             says where it applies and whether a mismatch is rejected or ignored. Omit
             this field unless the user asks for one of the options.
+    PatchedSupabaseAuthEmailSettingsUpdate:
+      type: object
+      properties:
+        supabase_url:
+          type: string
+          description: The Supabase project URL, such as https://abcdefgh.supabase.co,
+            from the project's API settings in the Supabase dashboard. It must use
+            https.
+          maxLength: 200
+        hook_secret:
+          type: string
+          writeOnly: true
+          description: The Send Email Hook secret, starting with v1,whsec_. Supabase
+            generates it under Authentication, Hooks, Send Email hook. Leave it out
+            to keep the stored secret.
+          maxLength: 500
+        templates:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+          description: 'Supabase email action type to the id of the email template
+            that sends it. Each template must be transactional and marked sensitive.
+            This replaces the whole mapping: include every type to keep, and leave
+            a type out to unmap it. A core auth email with no template fails in Supabase,
+            and a notification with no template is skipped. Valid action types: signup,
+            invite, magiclink, email, recovery, email_change, reauthentication, password_changed_notification,
+            email_changed_notification, phone_changed_notification, identity_linked_notification,
+            identity_unlinked_notification, mfa_factor_enrolled_notification, mfa_factor_unenrolled_notification.'
     PatchedSurveySerializerCreateUpdateOnlySchema:
       type: object
       properties:
@@ -234799,6 +236556,71 @@ components:
       description: |-
         * `certified` - certified
         * `deprecated` - deprecated
+    ProviderImportRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Import run ID.
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/ImportProviderKeyEnum'
+          description: |-
+            The provider the run imports from.
+
+            * `customerio` - Customer.io
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ProviderImportStatusEnum'
+          description: |-
+            `queued` until the first step starts, `running`, then `completed` when every step completed or `failed` when any step failed.
+
+            * `queued` - Waiting to start
+            * `running` - Importing
+            * `completed` - Imported
+            * `failed` - Failed
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportStepProgress'
+          description: Progress of each selected step, in run order.
+        created_at:
+          type: string
+          format: date-time
+          description: When the run was requested.
+        started_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the first step started.
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the last step ended.
+      required:
+      - created_at
+      - finished_at
+      - id
+      - provider
+      - started_at
+      - status
+      - steps
+    ProviderImportStatusEnum:
+      enum:
+      - queued
+      - running
+      - completed
+      - failed
+      type: string
+      description: |-
+        * `queued` - Waiting to start
+        * `running` - Importing
+        * `completed` - Imported
+        * `failed` - Failed
     ProvisionWarehouseRequest:
       type: object
       properties:
@@ -253252,6 +255074,60 @@ components:
       required:
       - product
       - reason
+    ReportStartupFailure:
+      type: object
+      properties:
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/StartupProviderEnum'
+          description: |-
+            Agent provider that failed to start.
+
+            * `claude` - Claude
+            * `codex` - Codex
+            * `pi` - Pi
+        phase:
+          allOf:
+          - $ref: '#/components/schemas/StartupPhaseEnum'
+          description: |-
+            Startup stage that failed.
+
+            * `session_setup` - Session setup
+            * `sdk_initialization` - SDK initialization
+            * `setup_hooks` - Setup hooks
+        reason:
+          type:
+          - string
+          - 'null'
+          description: Validated provider reason code, when available.
+        retryability:
+          allOf:
+          - $ref: '#/components/schemas/StartupRetryabilityEnum'
+          description: |-
+            Whether an unchanged startup can be retried.
+
+            * `requires_action` - Requires action
+            * `transient` - Transient
+            * `unknown` - Unknown
+        task_id:
+          type: string
+          format: uuid
+          description: Research task that could not start.
+        run_id:
+          type: string
+          format: uuid
+          description: Failed research task run.
+        message:
+          type: string
+          description: Safe explanation and suggested next action.
+      required:
+      - message
+      - phase
+      - provider
+      - reason
+      - retryability
+      - run_id
+      - task_id
     ReportTaskActionKindEnum:
       enum:
       - get_it_merged
@@ -260461,6 +262337,17 @@ components:
           items:
             type: string
           description: GitHub logins on the report after the human edit (lowercased).
+        removal_reason:
+          type:
+          - string
+          - 'null'
+          description: 'Why the editor removed reviewers: wrong_area, already_covered,
+            unavailable, or other.'
+        removal_reason_reviewers:
+          type: array
+          items:
+            type: string
+          description: The removed identities that `removal_reason` applies to.
         at:
           type:
           - string
@@ -260596,6 +262483,18 @@ components:
           description: Why the request failed.
       required:
       - detail
+    ReviewerRemovalReasonEnum:
+      enum:
+      - wrong_area
+      - already_covered
+      - unavailable
+      - other
+      type: string
+      description: |-
+        * `wrong_area` - Not their area
+        * `already_covered` - Someone else is on it
+        * `unavailable` - No bandwidth
+        * `other` - Other
     ReviewerSelectionOutcomeEnum:
       enum:
       - selected
@@ -262720,6 +264619,15 @@ components:
 
             * `upstream` - Upstream
             * `downstream` - Downstream
+        engine:
+          allOf:
+          - $ref: '#/components/schemas/MaterializationEngineEnum'
+          default: clickhouse
+          description: |-
+            Where to build the views. 'clickhouse' (the default) refreshes the tables that queries read. 'trino' builds the same views on the organization's managed warehouse only, and leaves the ClickHouse tables as they are. 'trino' returns 403 when the organization has no managed warehouse, and 409 while another managed warehouse run of these views is in progress.
+
+            * `clickhouse` - ClickHouse
+            * `trino` - Trino
     SavedQueryRunResponse:
       type: object
       properties:
@@ -266584,8 +268492,8 @@ components:
           type: array
           items:
             type: string
-          description: Up to 4 example searches naming themes in recent observations.
-            Empty until a scheduled refresh has run for a scanner someone viewed.
+          description: Up to 4 example searches naming the largest active themes in
+            recent issue observations. Empty until a scanner has a named theme.
       required:
       - queries
     SelectionModeEnum:
@@ -267141,6 +269049,33 @@ components:
       required:
       - enabled
       - gateway_server_id
+    ServiceEdge:
+      type: object
+      properties:
+        caller:
+          type: string
+          description: The calling service.
+        callee:
+          type: string
+          description: The called service.
+        calls:
+          type: integer
+          description: Calls from the caller into the callee in the sampled traces.
+        error_count:
+          type: integer
+          description: Calls with an error status on the callee span.
+        p95_ms:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: 95th percentile duration of the callee span, in ms.
+      required:
+      - callee
+      - caller
+      - calls
+      - error_count
+      - p95_ms
     ServiceHealth:
       type: object
       properties:
@@ -267276,6 +269211,34 @@ components:
         * `recovered` - Recovered
         * `improved` - Improved
         * `ok` - Ok
+    ServiceMapResponse:
+      type: object
+      properties:
+        edges:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceEdge'
+          description: One edge per calling and called service, most calls first.
+        trace_count:
+          type: integer
+          description: Traces sampled to build the map.
+        environment:
+          type: string
+          description: The environment the map was built for.
+        date_from:
+          type: string
+          format: date-time
+          description: Start of the window used.
+        date_to:
+          type: string
+          format: date-time
+          description: End of the window used.
+      required:
+      - date_from
+      - date_to
+      - edges
+      - environment
+      - trace_count
     ServicenowIncidentSignalExtra:
       additionalProperties: false
       properties:
@@ -268098,6 +270061,62 @@ components:
       - failed_ids
       - success
       - total_requested
+    SessionRecordingConsoleLogEntry:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: When the browser logged the message.
+        level:
+          allOf:
+          - $ref: '#/components/schemas/ConsoleLogLevelEnum'
+          description: |-
+            Console level of the message.
+
+            * `info` - Info
+            * `warn` - Warn
+            * `error` - Error
+        message:
+          type: string
+          description: The logged text. String arguments are joined with spaces, and
+            non-string arguments are left out. Cut to 3000 characters.
+        truncated:
+          type: boolean
+          description: True when the message was cut to fit the length limit.
+      required:
+      - level
+      - message
+      - timestamp
+      - truncated
+    SessionRecordingConsoleLogsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionRecordingConsoleLogEntry'
+          description: Console log entries in chronological order.
+        has_more:
+          type: boolean
+          description: True when more entries exist after this page.
+        console_log_capture_enabled:
+          type: boolean
+          description: Whether the project captures console logs now. When false,
+            an empty result means that nothing was captured, not that the session
+            had no console output.
+        logs_expired:
+          type: boolean
+          description: True when the recording started longer ago than the console
+            log retention period. The recording can still exist after its console
+            log entries are deleted. Entries expire one at a time, so a recording
+            close to the retention period can already miss its earliest entries while
+            this is false.
+      required:
+      - console_log_capture_enabled
+      - has_more
+      - logs_expired
+      - results
     SessionRecordingExternalReference:
       additionalProperties: false
       properties:
@@ -269806,6 +271825,13 @@ components:
           description: How many scout notes this report received beyond the few its
             work log keeps as entries. 0 when nothing was dropped. These say the finding
             still holds, so the count is shown in place of the entries.
+        startup_failure:
+          oneOf:
+          - $ref: '#/components/schemas/ReportStartupFailure'
+          - type: 'null'
+          readOnly: true
+          description: Startup failure from the latest failed research attempt, when
+            available.
         created_at:
           type: string
           format: date-time
@@ -270089,6 +272115,7 @@ components:
       - signals_at_run
       - source_products
       - source_suggestion
+      - startup_failure
       - status
       - suggested_prompts
       - summary
@@ -270340,6 +272367,21 @@ components:
           description: Explicit add or remove targets. When supplied, content is only
             a fallback for older servers.
           maxItems: 10
+        removal_reason:
+          allOf:
+          - $ref: '#/components/schemas/ReviewerRemovalReasonEnum'
+          description: |-
+            Why the people in `targets` are removed. Remove action only. 'wrong_area': the work should not be on them, because it is outside their area, they moved off it, or someone else owns it. 'already_covered': another reviewer already covers the report. 'unavailable': they do not have bandwidth right now. The last two say nothing about ownership. 'other': explain in removal_note. Research and scouts read the reason when they pick reviewers for later reports.
+
+            * `wrong_area` - Not their area
+            * `already_covered` - Someone else is on it
+            * `unavailable` - No bandwidth
+            * `other` - Other
+        removal_note:
+          type: string
+          description: Optional context for the removal, such as the area the person
+            does not work on. Remove action only.
+          maxLength: 500
       required:
       - content
     SignalReportArtefactWriteResponse:
@@ -270486,7 +272528,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DismissalReasonEnum'
           description: |-
-            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_assignee, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, verified_manually, no_action_needed, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). Use 'no_action_needed' with state='resolved' when the report was useful but needs no implementation. A report that failed in processing resolves too, so a fix that landed is recorded as a fix rather than as a dismissal. These three codes claim the issue is gone, so a later signal about the same issue starts a fresh report linked to this one. Fixed reason codes require state='suppressed' or state='resolved', not 'potential'. The dismissal codes (report_unclear, analysis_wrong, wrong_assignee, wrong_repo, wontfix_*) go with state='suppressed' and absorb later signals silently. Use 'wrong_assignee' when the report was routed to the wrong person or team. 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. Use 'verified_manually' with state='resolved' to stop Monitoring after manual verification. It requires Monitoring to be enabled and a report with a Monitoring period, and records no automatic verification result or evidence amendment. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
+            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_assignee, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, verified_manually, no_action_needed, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). Use 'no_action_needed' with state='resolved' when the report was useful but needs no implementation. A report that failed in processing resolves too, so a fix that landed is recorded as a fix rather than as a dismissal. These three codes claim the issue is gone, so a later signal about the same issue starts a fresh report linked to this one. Fixed reason codes require state='suppressed' or state='resolved', not 'potential'. The dismissal codes (report_unclear, analysis_wrong, wrong_assignee, wontfix_*) go with state='suppressed' and absorb later signals silently. 'wrong_assignee' is accepted from older clients, but a report sent to the wrong person still holds work: remove the person from the report's reviewers with a removal_reason instead of suppressing it. 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. The report stays suppressed, but a later matching signal starts a fresh linked report with a new repository selection informed by the project's correction feedback, even when no corrected_repository was supplied. Use 'verified_manually' with state='resolved' to stop Monitoring after manual verification. It requires Monitoring to be enabled and a report with a Monitoring period, and records no automatic verification result or evidence amendment. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
 
             * `already_fixed` - Already fixed
             * `report_unclear` - Report is unclear to me
@@ -270957,6 +272999,24 @@ components:
       required:
       - note
       - sentiment
+    SignalReportLeaveReviewers:
+      type: object
+      properties:
+        removal_reason:
+          allOf:
+          - $ref: '#/components/schemas/ReviewerRemovalReasonEnum'
+          description: |-
+            Why the user steps off. 'wrong_area': the work should not be on them, for example they moved off the area or left the team. 'already_covered': someone else is on it. 'unavailable': they do not have bandwidth right now. 'other': explain in removal_note. Research reads the reason when it picks reviewers for later reports.
+
+            * `wrong_area` - Not their area
+            * `already_covered` - Someone else is on it
+            * `unavailable` - No bandwidth
+            * `other` - Other
+        removal_note:
+          type: string
+          description: The user's own words for why, such as "I'm not on the payments
+            team any more". Scouts read it when they route later reports.
+          maxLength: 500
     SignalReportList:
       type: object
       properties:
@@ -271017,6 +273077,13 @@ components:
           description: How many scout notes this report received beyond the few its
             work log keeps as entries. 0 when nothing was dropped. These say the finding
             still holds, so the count is shown in place of the entries.
+        startup_failure:
+          oneOf:
+          - $ref: '#/components/schemas/ReportStartupFailure'
+          - type: 'null'
+          readOnly: true
+          description: Startup failure from the latest failed research attempt, when
+            available.
         created_at:
           type: string
           format: date-time
@@ -271311,6 +273378,7 @@ components:
       - signals_at_run
       - source_products
       - source_suggestion
+      - startup_failure
       - status
       - suggested_prompts
       - summary
@@ -271434,6 +273502,18 @@ components:
       required:
       - id
       - metrics
+    SignalReportMonitoringResultEvidenceStatusEnum:
+      enum:
+      - sufficient
+      - insufficient
+      - unsupported
+      - errored
+      type: string
+      description: |-
+        * `sufficient` - Sufficient
+        * `insufficient` - Insufficient
+        * `unsupported` - Unsupported
+        * `errored` - Errored
     SignalReportPriorityUpdate:
       type: object
       properties:
@@ -271837,6 +273917,18 @@ components:
       description: |-
         * `reingestion_started` - reingestion_started
         * `already_running` - already_running
+    SignalReportSectionCounts:
+      type: object
+      properties:
+        pull_requests:
+          type: integer
+          description: Ready reports with an implementation pull request.
+        reports:
+          type: integer
+          description: Ready reports without an implementation pull request.
+      required:
+      - pull_requests
+      - reports
     SignalReportSourceMetadata:
       type: object
       properties:
@@ -271918,7 +274010,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DismissalReasonEnum'
           description: |-
-            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_assignee, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, verified_manually, no_action_needed, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). Use 'no_action_needed' with state='resolved' when the report was useful but needs no implementation. A report that failed in processing resolves too, so a fix that landed is recorded as a fix rather than as a dismissal. These three codes claim the issue is gone, so a later signal about the same issue starts a fresh report linked to this one. Fixed reason codes require state='suppressed' or state='resolved', not 'potential'. The dismissal codes (report_unclear, analysis_wrong, wrong_assignee, wrong_repo, wontfix_*) go with state='suppressed' and absorb later signals silently. Use 'wrong_assignee' when the report was routed to the wrong person or team. 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. Use 'verified_manually' with state='resolved' to stop Monitoring after manual verification. It requires Monitoring to be enabled and a report with a Monitoring period, and records no automatic verification result or evidence amendment. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
+            Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_assignee, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, verified_manually, no_action_needed, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' with 'fixed_outside_posthog' (the fix landed without a pull request), 'pr_merged' (a pull request with the fix was merged but did not resolve the report on its own), or 'already_fixed' (it was fixed before the report was filed). Use 'no_action_needed' with state='resolved' when the report was useful but needs no implementation. A report that failed in processing resolves too, so a fix that landed is recorded as a fix rather than as a dismissal. These three codes claim the issue is gone, so a later signal about the same issue starts a fresh report linked to this one. Fixed reason codes require state='suppressed' or state='resolved', not 'potential'. The dismissal codes (report_unclear, analysis_wrong, wrong_assignee, wontfix_*) go with state='suppressed' and absorb later signals silently. 'wrong_assignee' is accepted from older clients, but a report sent to the wrong person still holds work: remove the person from the report's reviewers with a removal_reason instead of suppressing it. 'wrong_repo' when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. The report stays suppressed, but a later matching signal starts a fresh linked report with a new repository selection informed by the project's correction feedback, even when no corrected_repository was supplied. Use 'verified_manually' with state='resolved' to stop Monitoring after manual verification. It requires Monitoring to be enabled and a report with a Monitoring period, and records no automatic verification result or evidence amendment. Use 'other' together with a dismissal_note for anything that doesn't fit a code.
 
             * `already_fixed` - Already fixed
             * `report_unclear` - Report is unclear to me
@@ -277695,6 +279787,7 @@ components:
             * `AwsS3Tables` - AwsS3Tables
             * `Beacons` - Beacons
             * `WooPayments` - WooPayments
+            * `Soniox` - Soniox
         payload:
           type: object
           additionalProperties: true
@@ -279805,6 +281898,7 @@ components:
             * `AwsS3Tables` - AwsS3Tables
             * `Beacons` - Beacons
             * `WooPayments` - WooPayments
+            * `Soniox` - Soniox
         payload:
           type: object
           additionalProperties: true
@@ -281293,6 +283387,7 @@ components:
             * `AwsS3Tables` - AwsS3Tables
             * `Beacons` - Beacons
             * `WooPayments` - WooPayments
+            * `Soniox` - Soniox
         payload:
           type: object
           additionalProperties: true
@@ -282149,6 +284244,32 @@ components:
       - last_seen
       title: StartHandling
       type: string
+    StartProviderImport:
+      type: object
+      properties:
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/ImportProviderKeyEnum'
+          description: |-
+            The provider to import from.
+
+            * `customerio` - Customer.io
+        steps:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+          description: Keys of the steps to run, from the `providers` endpoint. They
+            run in the provider's order, whatever order you send.
+          minItems: 1
+        api_key:
+          type: string
+          writeOnly: true
+          description: The provider's API key. For Customer.io, an App API key. Leave
+            it out to reuse the stored key.
+      required:
+      - provider
+      - steps
     StartTrainingRequest:
       type: object
       properties:
@@ -282158,6 +284279,36 @@ components:
           minimum: 1
           description: Iterations for this training run. Defaults to the pipeline's
             iterations_per_run.
+    StartupPhaseEnum:
+      enum:
+      - session_setup
+      - sdk_initialization
+      - setup_hooks
+      type: string
+      description: |-
+        * `session_setup` - Session setup
+        * `sdk_initialization` - SDK initialization
+        * `setup_hooks` - Setup hooks
+    StartupProviderEnum:
+      enum:
+      - claude
+      - codex
+      - pi
+      type: string
+      description: |-
+        * `claude` - Claude
+        * `codex` - Codex
+        * `pi` - Pi
+    StartupRetryabilityEnum:
+      enum:
+      - requires_action
+      - transient
+      - unknown
+      type: string
+      description: |-
+        * `requires_action` - Requires action
+        * `transient` - Transient
+        * `unknown` - Unknown
     StaticFilters:
       type: object
       properties:
@@ -282983,6 +285134,75 @@ components:
         * `view` - view
         * `metric` - metric
         * `posthog_table` - posthog_table
+    SubmitMonitoringResultRequest:
+      type: object
+      properties:
+        evidence_status:
+          allOf:
+          - $ref: '#/components/schemas/SignalReportMonitoringResultEvidenceStatusEnum'
+          description: |-
+            Whether the fixed-window evidence is sufficient, insufficient, unsupported, or errored.
+
+            * `sufficient` - Sufficient
+            * `insufficient` - Insufficient
+            * `unsupported` - Unsupported
+            * `errored` - Errored
+        evidence_reason:
+          type: string
+          description: Explain why the evidence supports this qualification. Must
+            not be blank.
+          maxLength: 2000
+          minLength: 1
+        expectation_matches:
+          type:
+          - boolean
+          - 'null'
+          description: 'Whether the authored expectation holds: a boolean for sufficient
+            evidence, null for unsupported or errored evidence.'
+        explanation:
+          type: string
+          description: Explain the conclusion using evidence from the assignment's
+            fixed window.
+          maxLength: 16000
+          minLength: 1
+        evidence_refs:
+          type: array
+          items:
+            type: string
+            minLength: 1
+          description: Evidence references supporting the conclusion, or an empty
+            list when none are available.
+          maxItems: 50
+      required:
+      - evidence_reason
+      - evidence_refs
+      - evidence_status
+      - expectation_matches
+      - explanation
+    SubmitMonitoringResultResponse:
+      type: object
+      properties:
+        accepted:
+          type: boolean
+          description: True when the result is stored, including an identical retry.
+        result_id:
+          type: string
+          format: uuid
+          description: The immutable Monitoring result's identifier.
+        outcome:
+          allOf:
+          - $ref: '#/components/schemas/SignalReportCheckOutcomeEnum'
+          description: |-
+            The recorded verdict; this does not change the report's status.
+
+            * `passed` - Passed
+            * `failed` - Failed
+            * `errored` - Errored
+            * `inconclusive` - Inconclusive
+      required:
+      - accepted
+      - outcome
+      - result_id
     Subscription:
       type: object
       description: Standard Subscription serializer.
@@ -284276,6 +286496,107 @@ components:
       required:
       - line_refs
       - text
+    SupabaseAuthEmailSettings:
+      type: object
+      properties:
+        supabase_url:
+          type: string
+          description: The Supabase project URL, such as https://abcdefgh.supabase.co.
+            Confirmation links point at its /auth/v1/verify endpoint.
+        has_hook_secret:
+          type: boolean
+          description: Whether a Send Email Hook secret is stored. The secret itself
+            is never returned.
+        templates:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+          description: Supabase email action type (such as `signup` or `recovery`)
+            to the transactional message template that sends it. An auth email with
+            no template fails in Supabase.
+        hook_url:
+          type: string
+          description: The URL to paste into Supabase as the HTTPS endpoint of the
+            Send Email Hook.
+        email_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupabaseEmailType'
+          description: Every email Supabase can send through the hook, core auth emails
+            first.
+      required:
+      - email_types
+      - has_hook_secret
+      - hook_url
+      - supabase_url
+      - templates
+    SupabaseEmailActionTypeEnum:
+      enum:
+      - signup
+      - invite
+      - magiclink
+      - email
+      - recovery
+      - email_change
+      - reauthentication
+      - password_changed_notification
+      - email_changed_notification
+      - phone_changed_notification
+      - identity_linked_notification
+      - identity_unlinked_notification
+      - mfa_factor_enrolled_notification
+      - mfa_factor_unenrolled_notification
+      type: string
+      description: |-
+        * `signup` - Confirm sign up
+        * `invite` - Invite user
+        * `magiclink` - Magic link
+        * `email` - Email sign-in code
+        * `recovery` - Reset password
+        * `email_change` - Change email address
+        * `reauthentication` - Reauthentication
+        * `password_changed_notification` - Password changed
+        * `email_changed_notification` - Email address changed
+        * `phone_changed_notification` - Phone number changed
+        * `identity_linked_notification` - Sign-in method linked
+        * `identity_unlinked_notification` - Sign-in method removed
+        * `mfa_factor_enrolled_notification` - MFA method added
+        * `mfa_factor_unenrolled_notification` - MFA method removed
+    SupabaseEmailType:
+      type: object
+      properties:
+        value:
+          allOf:
+          - $ref: '#/components/schemas/SupabaseEmailActionTypeEnum'
+          description: |-
+            The `email_action_type` Supabase sends for this email.
+
+            * `signup` - Confirm sign up
+            * `invite` - Invite user
+            * `magiclink` - Magic link
+            * `email` - Email sign-in code
+            * `recovery` - Reset password
+            * `email_change` - Change email address
+            * `reauthentication` - Reauthentication
+            * `password_changed_notification` - Password changed
+            * `email_changed_notification` - Email address changed
+            * `phone_changed_notification` - Phone number changed
+            * `identity_linked_notification` - Sign-in method linked
+            * `identity_unlinked_notification` - Sign-in method removed
+            * `mfa_factor_enrolled_notification` - MFA method added
+            * `mfa_factor_unenrolled_notification` - MFA method removed
+        label:
+          type: string
+          description: What the email is for, in words a person reads.
+        has_starter_template:
+          type: boolean
+          description: Whether creating starter templates makes a template for this
+            email.
+      required:
+      - has_starter_template
+      - label
+      - value
     SupportTicket:
       type: object
       description: A support ticket linked to an account, sourced from the conversations
@@ -295619,6 +297940,13 @@ components:
             type: string
           title: Nodeidsbyalias
           type: object
+        git:
+          anyOf:
+          - $ref: '#/components/schemas/TraceGit'
+          - type: 'null'
+          description: 'The branch the trace''s work ran on: the latest stamped branch
+            other than main or master, else the first stamp. Null when no event carries
+            a branch.'
       required:
       - id
       - name
@@ -295634,6 +297962,7 @@ components:
       - threadNodeIds
       - defaultNodeId
       - nodeIdsByAlias
+      - git
       title: Trace
       type: object
     TraceEvaluationResult:
@@ -295663,6 +297992,13 @@ components:
             "Skipped".
           title: Label
           type: string
+        score:
+          anyOf:
+          - type: number
+          - type: 'null'
+          description: The numeric result of a numeric evaluation, null for every
+            other type.
+          title: Score
         reasoning:
           anyOf:
           - type: string
@@ -295682,6 +298018,7 @@ components:
       - targetNodeId
       - outcome
       - label
+      - score
       - reasoning
       - timestamp
       - isBackfill
@@ -295701,9 +298038,57 @@ components:
             $ref: '#/components/schemas/TraceEvaluationResult'
           title: Results
           type: array
+        summary:
+          $ref: '#/components/schemas/TraceEvaluationSummary'
       required:
       - results
+      - summary
       title: TraceEvaluationResults
+      type: object
+    TraceEvaluationSummary:
+      description: |-
+        Counts the latest run of each evaluation on each node, by when the run started, so re-runs and backfills
+        count once. Inconclusive results count as unrated. Computed over the results returned, at most 250.
+      properties:
+        passed:
+          title: Passed
+          type: integer
+        failed:
+          title: Failed
+          type: integer
+        unrated:
+          title: Unrated
+          type: integer
+        nodes:
+          description: One entry per node with results, sorted by node id.
+          items:
+            $ref: '#/components/schemas/TraceNodeEvaluationRollup'
+          title: Nodes
+          type: array
+      required:
+      - passed
+      - failed
+      - unrated
+      - nodes
+      title: TraceEvaluationSummary
+      type: object
+    TraceGit:
+      properties:
+        branch:
+          description: The git branch checked out when the trace ran.
+          title: Branch
+          type: string
+        repo:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: The repository as owner/name, or null when the branch's event
+            has none.
+          title: Repo
+      required:
+      - branch
+      - repo
+      title: TraceGit
       type: object
     TraceNeighborsQuery:
       additionalProperties: false
@@ -295917,6 +298302,29 @@ components:
       - event
       title: TraceNodeDetail
       type: object
+    TraceNodeEvaluationRollup:
+      properties:
+        nodeId:
+          description: The tree node the results grade.
+          title: Nodeid
+          type: string
+        outcome:
+          allOf:
+          - $ref: '#/components/schemas/TraceNodeEvaluationRollupOutcomeEnum'
+          description: Fail if any evaluation fails on the node, else pass if any
+            passes, else unrated.
+          title: Outcome
+      required:
+      - nodeId
+      - outcome
+      title: TraceNodeEvaluationRollup
+      type: object
+    TraceNodeEvaluationRollupOutcomeEnum:
+      enum:
+      - pass
+      - fail
+      - unrated
+      type: string
     TraceNodeEvent:
       properties:
         name:
@@ -299485,11 +301893,8 @@ components:
             path.
         status:
           type: string
-          description: Trunk's current health verdict on the test, e.g. 'FLAKY' or
-            'BROKEN'.
-        quarantine_setting:
-          type: string
-          description: How the quarantine was applied in Trunk, e.g. 'AUTO_QUARANTINE'.
+          description: Trunk's current health verdict on the test, e.g. 'flaky' or
+            'broken'.
         quarantined_at:
           type: string
           format: date-time
@@ -299505,15 +301910,15 @@ components:
           type:
           - string
           - 'null'
-          description: The Trunk app's page for this test; null when the connected
-            source has no organization slug or the row carries no test case id.
+          description: The Trunk app's page for this test; null when Trunk returned
+            no URL and the source has no organization slug or the row carries no test
+            id.
       required:
       - age_days
       - file
       - nodeid
       - overdue
       - owner_team
-      - quarantine_setting
       - quarantined_at
       - runner
       - status
@@ -318936,6 +321341,7 @@ tags:
 - name: autoresearch
 - name: batch_exports
 - name: billing
+- name: broadcast_audience_suggestions
 - name: business_knowledge
 - name: calendar_sync
 - name: canvases
@@ -319037,6 +321443,8 @@ tags:
 - name: messaging
 - name: messaging_categories
 - name: messaging_preferences
+- name: messaging_provider_imports
+- name: messaging_supabase_auth_emails
 - name: messaging_suppressions
 - name: messaging_templates
 - name: metrics
@@ -319158,6 +321566,7 @@ x-tagGroups:
   - autoresearch
   - batch_exports
   - billing
+  - broadcast_audience_suggestions
   - business_knowledge
   - calendar_sync
   - canvases
@@ -319259,6 +321668,8 @@ x-tagGroups:
   - messaging
   - messaging_categories
   - messaging_preferences
+  - messaging_provider_imports
+  - messaging_supabase_auth_emails
   - messaging_suppressions
   - messaging_templates
   - metrics

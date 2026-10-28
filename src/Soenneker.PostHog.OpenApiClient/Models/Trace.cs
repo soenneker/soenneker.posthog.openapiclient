@@ -26,6 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The errorCount property</summary>
         public int? ErrorCount { get; set; }
+        /// <summary>The branch the trace&apos;s work ran on: the latest stamped branch other than main or master, else the first stamp. Null when no event carries a branch.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceGit? Git { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceGit Git { get; set; }
+#endif
         /// <summary>The hasError property</summary>
         public bool? HasError { get; set; }
         /// <summary>The id property</summary>
@@ -130,6 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "defaultNodeId", n => { DefaultNodeId = n.GetStringValue(); } },
                 { "errorCount", n => { ErrorCount = n.GetIntValue(); } },
+                { "git", n => { Git = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceGit>(global::Soenneker.PostHog.OpenApiClient.Models.TraceGit.CreateFromDiscriminatorValue); } },
                 { "hasError", n => { HasError = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -153,6 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
             writer.WriteStringValue("defaultNodeId", DefaultNodeId);
             writer.WriteIntValue("errorCount", ErrorCount);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceGit>("git", Git);
             writer.WriteBoolValue("hasError", HasError);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);

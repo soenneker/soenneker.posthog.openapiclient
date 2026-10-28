@@ -65,6 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationMode? MaterializationMode { get; set; }
         /// <summary>The materializedColumnsOptimizationMode property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationMode? MaterializedColumnsOptimizationMode { get; set; }
+        /// <summary>Reuse eligible bounded event aggregates within one query execution. When unset, the server may enable it via the cloud feature flag.</summary>
+        public bool? MaterializeRepeatedCTEs { get; set; }
         /// <summary>Merge sibling aggregating LEFT JOINs over federated Postgres tables into one UNION ALL join, so their scans overlap</summary>
         public bool? MergeFederatedAggregateJoins { get; set; }
         /// <summary>Replace negated person-property filters in the WHERE of an `events` query (such as `email not_icontains`) with `person_id NOT IN (SELECT id FROM persons WHERE &lt;the filters fail&gt;)`, so the query no longer joins every person. Applies only when every filtered person property has a materialized column, nothing else in the query reads that persons join, and the join would be a LEFT JOIN.</summary>
@@ -146,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "inCohortVia", n => { InCohortVia = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InCohortVia>(); } },
                 { "inlineCohortCalculation", n => { InlineCohortCalculation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculation>(); } },
                 { "materializationMode", n => { MaterializationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationMode>(); } },
+                { "materializeRepeatedCTEs", n => { MaterializeRepeatedCTEs = n.GetBoolValue(); } },
                 { "materializedColumnsOptimizationMode", n => { MaterializedColumnsOptimizationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationMode>(); } },
                 { "mergeFederatedAggregateJoins", n => { MergeFederatedAggregateJoins = n.GetBoolValue(); } },
                 { "negatedPersonFiltersNotIn", n => { NegatedPersonFiltersNotIn = n.GetBoolValue(); } },
@@ -195,6 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculation>("inlineCohortCalculation", InlineCohortCalculation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationMode>("materializationMode", MaterializationMode);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializedColumnsOptimizationMode>("materializedColumnsOptimizationMode", MaterializedColumnsOptimizationMode);
+            writer.WriteBoolValue("materializeRepeatedCTEs", MaterializeRepeatedCTEs);
             writer.WriteBoolValue("mergeFederatedAggregateJoins", MergeFederatedAggregateJoins);
             writer.WriteBoolValue("negatedPersonFiltersNotIn", NegatedPersonFiltersNotIn);
             writer.WriteBoolValue("optimizeJoinedFilters", OptimizeJoinedFilters);
