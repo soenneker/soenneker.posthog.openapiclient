@@ -16,5 +16,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Page,
         #pragma warning restore CS1591
+        [EnumMember(Value = "search_term")]
+        #pragma warning disable CS1591
+        SearchTerm,
+        #pragma warning restore CS1591
     }
 }

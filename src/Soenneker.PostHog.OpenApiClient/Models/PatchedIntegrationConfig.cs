@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `oauth` - OAuth* `token` - Token* `credentials` - Credentials</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigAuthType? AuthType { get; private set; }
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "auth_type", n => { AuthType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigAuthType>(); } },
                 { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedIntegrationConfigCreatedBy.CreateFromDiscriminatorValue); } },

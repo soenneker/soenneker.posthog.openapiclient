@@ -2,8 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Clusters;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Evaluations;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Feedback;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Nodes;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Search;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Summary;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -16,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracesItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The clusters property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Clusters.ClustersRequestBuilder Clusters
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Clusters.ClustersRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
@@ -26,10 +35,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Evaluations.EvaluationsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The feedback property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Feedback.FeedbackRequestBuilder Feedback
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Feedback.FeedbackRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The nodes property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Nodes.NodesRequestBuilder Nodes
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Nodes.NodesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The search property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Search.SearchRequestBuilder Search
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The summary property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Summary.SummaryRequestBuilder Summary
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Summary.SummaryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.TracesItemRequestBuilder"/> and sets the default values.

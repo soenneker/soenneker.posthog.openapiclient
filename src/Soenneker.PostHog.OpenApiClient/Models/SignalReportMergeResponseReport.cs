@@ -163,6 +163,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RepoSlug { get; private set; }
 #endif
+        /// <summary>Evidence available to the latest research pass. Null for legacy reports.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext? ResearchContext { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext ResearchContext { get; private set; }
+#endif
         /// <summary>Reviewer control and state token for preparing an automatic proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -207,7 +215,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure StartupFailure { get; private set; }
 #endif
-        /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
+        /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `closed` - Closed* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus? Status { get; private set; }
         /// <summary>Follow-up prompts the report&apos;s author suggests sending about it (questions to ask, or next-step actions to request), in the order they were written. The inbox offers them above the `Ask AI` box; clicking one fills the box with it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -347,6 +355,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund.CreateFromDiscriminatorValue); } },
                 { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
                 { "repo_slug", n => { RepoSlug = n.GetStringValue(); } },
+                { "research_context", n => { ResearchContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext>(global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext.CreateFromDiscriminatorValue); } },
                 { "reviewer_assignment", n => { ReviewerAssignment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse.CreateFromDiscriminatorValue); } },
                 { "scout_name", n => { ScoutName = n.GetStringValue(); } },
                 { "signal_count", n => { SignalCount = n.GetIntValue(); } },

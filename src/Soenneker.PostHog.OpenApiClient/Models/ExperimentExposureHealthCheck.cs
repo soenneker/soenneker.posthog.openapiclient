@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stable identifier of the check.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthCheckKey? Key { get; set; }
-        /// <summary>What the check looks at, as the health panel lists it.</summary>
+        /// <summary>The problem the check looks for, as the health panel lists it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

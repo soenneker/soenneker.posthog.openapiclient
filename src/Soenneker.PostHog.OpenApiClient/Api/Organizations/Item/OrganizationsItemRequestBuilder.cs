@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cross_project_dashboards;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Desktop_beta_terms;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Events_retention_setting;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites;
@@ -74,6 +75,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The events_retention_setting property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Events_retention_setting.Events_retention_settingRequestBuilder Events_retention_setting
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Events_retention_setting.Events_retention_settingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The identity_provider_configs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Identity_provider_configsRequestBuilder Identity_provider_configs

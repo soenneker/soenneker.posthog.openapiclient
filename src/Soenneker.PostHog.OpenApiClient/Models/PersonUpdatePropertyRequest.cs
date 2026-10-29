@@ -14,13 +14,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The property key to set.</summary>
+        /// <summary>The property key to set. Pair it with &apos;value&apos; to set one property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Key { get; set; }
 #nullable restore
 #else
         public string Key { get; set; }
+#endif
+        /// <summary>Property keys and values to set together, instead of &apos;key&apos; and &apos;value&apos;. One request sets up to 1000 properties and emits a single $set event.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonUpdatePropertyRequestPropertiesProperty? Properties { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonUpdatePropertyRequestPropertiesProperty Properties { get; set; }
 #endif
         /// <summary>The property value. Can be a string, number, boolean, or object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonUpdatePropertyRequestPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PersonUpdatePropertyRequestPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
@@ -67,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonUpdatePropertyRequestPropertiesProperty>("properties", Properties);
             writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

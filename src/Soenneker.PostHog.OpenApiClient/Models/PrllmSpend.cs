@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Total prompt tokens written to the provider&apos;s prompt cache across the attributed generations ($ai_cache_creation_input_tokens). Not included in input_tokens.</summary>
+        public int? CacheCreationInputTokens { get; set; }
+        /// <summary>Total prompt tokens read from the provider&apos;s prompt cache across the attributed generations ($ai_cache_read_input_tokens). Not included in input_tokens.</summary>
+        public int? CacheReadInputTokens { get; set; }
         /// <summary>Total agent LLM token cost in USD attributed to this PR (sum of $ai_total_cost_usd over the matched $ai_generation events).</summary>
         public double? CostUsd { get; set; }
         /// <summary>Number of $ai_generation events attributed to this PR by git branch ($ai_git_branch).</summary>
@@ -22,6 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? InputTokens { get; set; }
         /// <summary>Total output (completion) tokens across the attributed generations.</summary>
         public int? OutputTokens { get; set; }
+        /// <summary>Largest prompt any single attributed generation sent: input plus cache read plus cache write tokens.</summary>
+        public int? PeakContextTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend"/> and sets the default values.
         /// </summary>
@@ -47,10 +53,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cache_creation_input_tokens", n => { CacheCreationInputTokens = n.GetIntValue(); } },
+                { "cache_read_input_tokens", n => { CacheReadInputTokens = n.GetIntValue(); } },
                 { "cost_usd", n => { CostUsd = n.GetDoubleValue(); } },
                 { "generations", n => { Generations = n.GetIntValue(); } },
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
+                { "peak_context_tokens", n => { PeakContextTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -60,10 +69,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("cache_creation_input_tokens", CacheCreationInputTokens);
+            writer.WriteIntValue("cache_read_input_tokens", CacheReadInputTokens);
             writer.WriteDoubleValue("cost_usd", CostUsd);
             writer.WriteIntValue("generations", Generations);
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteIntValue("output_tokens", OutputTokens);
+            writer.WriteIntValue("peak_context_tokens", PeakContextTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

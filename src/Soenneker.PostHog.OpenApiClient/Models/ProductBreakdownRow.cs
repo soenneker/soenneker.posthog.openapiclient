@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether this product is eligible for PostHog AI or Desktop credit billing, independent of event-level billing rules.</summary>
+        public bool? Billable { get; set; }
         /// <summary>Total cost in USD for this product over the lookback window.</summary>
         public double? CostUsd { get; set; }
         /// <summary>Number of $ai_generation + $ai_embedding events for this product.</summary>
@@ -51,6 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "billable", n => { Billable = n.GetBoolValue(); } },
                 { "cost_usd", n => { CostUsd = n.GetDoubleValue(); } },
                 { "event_count", n => { EventCount = n.GetIntValue(); } },
                 { "product", n => { Product = n.GetStringValue(); } },
@@ -63,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("billable", Billable);
             writer.WriteDoubleValue("cost_usd", CostUsd);
             writer.WriteIntValue("event_count", EventCount);
             writer.WriteStringValue("product", Product);

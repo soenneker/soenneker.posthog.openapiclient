@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation LatestCalculation { get; set; }
 #endif
-        /// <summary>The compile of each metric&apos;s query without running it, as the reader, which the metric queries check reads. A metric that compiles is cached per reader for a day, and a failing metric compiles again on every request. Null when the compile itself failed.</summary>
+        /// <summary>The compile of each metric&apos;s query without running it, as the reader, which the &apos;Invalid metric definitions&apos; check reads. A metric that compiles is cached per reader for a day, and a failing metric compiles again on every request. Null when the compile itself failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles? MetricCompiles { get; set; }

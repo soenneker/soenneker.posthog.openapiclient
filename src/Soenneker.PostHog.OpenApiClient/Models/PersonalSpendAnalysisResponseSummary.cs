@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Raw LLM cost in USD for products eligible for AI or Desktop credit billing, independent of the product filter and breakdown limit. Excludes credit markup and does not represent an invoiced amount.</summary>
+        public double? BillableCostUsd { get; set; }
         /// <summary>Inclusive UTC start of the spend window resolved from the request.</summary>
         public DateTimeOffset? DateFrom { get; set; }
         /// <summary>Exclusive UTC end of the spend window resolved from the request.</summary>
@@ -60,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "billable_cost_usd", n => { BillableCostUsd = n.GetDoubleValue(); } },
                 { "date_from", n => { DateFrom = n.GetDateTimeOffsetValue(); } },
                 { "date_to", n => { DateTo = n.GetDateTimeOffsetValue(); } },
                 { "event_count", n => { EventCount = n.GetIntValue(); } },
@@ -76,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("billable_cost_usd", BillableCostUsd);
             writer.WriteDateTimeOffsetValue("date_from", DateFrom);
             writer.WriteDateTimeOffsetValue("date_to", DateTo);
             writer.WriteIntValue("event_count", EventCount);

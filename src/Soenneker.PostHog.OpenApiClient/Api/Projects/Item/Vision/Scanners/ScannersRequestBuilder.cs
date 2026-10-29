@@ -5,11 +5,11 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Creators;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Draft;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Estimate;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Highlight_feed;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Highlight_feed_impressions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Inline_scan;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Stats;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed_impressions;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -42,6 +42,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Estimate.EstimateRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The highlight_feed property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Highlight_feed.Highlight_feedRequestBuilder Highlight_feed
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Highlight_feed.Highlight_feedRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The highlight_feed_impressions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Highlight_feed_impressions.Highlight_feed_impressionsRequestBuilder Highlight_feed_impressions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Highlight_feed_impressions.Highlight_feed_impressionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The inline_scan property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Inline_scan.Inline_scanRequestBuilder Inline_scan
         {
@@ -51,16 +61,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Stats.StatsRequestBuilder Stats
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Stats.StatsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The watch_feed property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed.Watch_feedRequestBuilder Watch_feed
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed.Watch_feedRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The watch_feed_impressions property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed_impressions.Watch_feed_impressionsRequestBuilder Watch_feed_impressions
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Watch_feed_impressions.Watch_feed_impressionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.vision.scanners.item collection</summary>
         /// <param name="position">A UUID string identifying this replay scanner.</param>

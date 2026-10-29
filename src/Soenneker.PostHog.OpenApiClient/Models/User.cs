@@ -216,6 +216,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PendingInvite> PendingInvites { get; private set; }
 #endif
+        /// <summary>How many personal API keys the user may hold, from the `personal_api_keys` billing entitlement of the user&apos;s organizations. The highest limit across their organizations applies, and 10 when no organization grants a limit. Creating a key beyond it is rejected with a validation error. Read-only.</summary>
+        public int? PersonalApiKeysLimit { get; private set; }
         /// <summary>True if the user belongs to an organization that a partner provisioned, has not yet acknowledged the access on their account, and has at least one Personal API Key or passkey, or a third-party OAuth application that can currently act as them. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only.</summary>
         public bool? RequiresCredentialReview { get; private set; }
         /// <summary>* `engineering` - Engineering* `data` - Data* `product` - Product Management* `founder` - Founder* `leadership` - Leadership* `marketing` - Marketing* `sales` - Sales / Success* `student` - Student* `other` - Other</summary>
@@ -360,6 +362,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "password", n => { Password = n.GetStringValue(); } },
                 { "pending_email", n => { PendingEmail = n.GetStringValue(); } },
                 { "pending_invites", n => { PendingInvites = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PendingInvite>(global::Soenneker.PostHog.OpenApiClient.Models.PendingInvite.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "personal_api_keys_limit", n => { PersonalApiKeysLimit = n.GetIntValue(); } },
                 { "requires_credential_review", n => { RequiresCredentialReview = n.GetBoolValue(); } },
                 { "role_at_organization", n => { RoleAtOrganization = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum>(); } },
                 { "scene_personalisation", n => { ScenePersonalisation = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScenePersonalisationBasic>(global::Soenneker.PostHog.OpenApiClient.Models.ScenePersonalisationBasic.CreateFromDiscriminatorValue)?.AsList(); } },

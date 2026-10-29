@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ImplementationPrUrl { get; private set; }
 #endif
-        /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
+        /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `closed` - Closed* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlanStepStatus? Status { get; private set; }
         /// <summary>Who or what suppressed the step, with the same values as the report&apos;s `suppression_source`. Null unless the step is suppressed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_group*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_category*,watch_group*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_group*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_category*,watch_group*}", rawUrl)
         {
         }
         /// <summary>
@@ -196,7 +196,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
             [QueryParameter("verdict")]
             public string Verdict { get; set; }
 #endif
-            /// <summary>Only observations the watch feed groups with this observation as near duplicates, including itself. Pair it with the feed&apos;s `date_from` to list the sessions a feed card counts.</summary>
+            /// <summary>Only observations the watch feed ranks under any of these kinds (comma-separated: failure, struggle, revenue). Pair it with `watch_group` and the feed&apos;s `categories`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("watch_category")]
+            public string? WatchCategory { get; set; }
+#nullable restore
+#else
+            [QueryParameter("watch_category")]
+            public string WatchCategory { get; set; }
+#endif
+            /// <summary>Only observations the highlight feed groups with this observation as near duplicates, including itself. Pair it with the feed&apos;s `date_from` to list the sessions a feed card counts.</summary>
             [QueryParameter("watch_group")]
             public Guid? WatchGroup { get; set; }
         }

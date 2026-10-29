@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Why the calling user marked an observation not useful in What to watch.
+    /// Why the calling user marked an observation not useful in the Highlights feed.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ObservationFeedDismissal : IAdditionalDataHolder, IParsable

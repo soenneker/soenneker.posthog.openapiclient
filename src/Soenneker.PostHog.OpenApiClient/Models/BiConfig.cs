@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CatalogMetric { get; set; }
 #endif
+        /// <summary>Catalog metadata at copy time, not a live approval of the worksheet.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogMetricContext? CatalogMetricContext { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogMetricContext CatalogMetricContext { get; set; }
+#endif
         /// <summary>The chartType property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? ChartType { get; set; }
         /// <summary>The colorBy property</summary>
@@ -215,6 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "catalogMetric", n => { CatalogMetric = n.GetStringValue(); } },
+                { "catalogMetricContext", n => { CatalogMetricContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogMetricContext>(global::Soenneker.PostHog.OpenApiClient.Models.CatalogMetricContext.CreateFromDiscriminatorValue); } },
                 { "chartType", n => { ChartType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); } },
                 { "colorBy", n => { ColorBy = n.GetStringValue(); } },
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BiField>(global::Soenneker.PostHog.OpenApiClient.Models.BiField.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -250,6 +259,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("catalogMetric", CatalogMetric);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogMetricContext>("catalogMetricContext", CatalogMetricContext);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("chartType", ChartType);
             writer.WriteStringValue("colorBy", ColorBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BiField>("columns", Columns);

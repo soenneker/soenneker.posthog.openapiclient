@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.Complete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.Expose;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.Reconcile;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -31,11 +30,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.Expose.ExposeRequestBuilder Expose
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.Expose.ExposeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The reconcile property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.Reconcile.ReconcileRequestBuilder Reconcile
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.Reconcile.ReconcileRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Onboarding.OnboardingRequestBuilder"/> and sets the default values.

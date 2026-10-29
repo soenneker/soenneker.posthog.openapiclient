@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether anomaly scoring covers this project, so anomaly_scoring_enabled has an effect. PostHog decides which projects anomaly scoring covers.</summary>
+        public bool? AnomalyScoringAvailable { get; private set; }
+        /// <summary>Whether anomaly scoring scores this project&apos;s active trends insights every hour and writes the results as $anomaly_score events, which are not billed. True by default. Set false to stop new scores; events written before stay. Turning it on does not enroll a project that anomaly_scoring_available reports as not covered.</summary>
+        public bool? AnomalyScoringEnabled { get; set; }
         /// <summary>Per-repository base branch overrides for auto-started inbox PRs, keyed by &apos;organization/repository&apos;. The branch is what the auto-PR targets; omit a repo (or send {}) to keep targeting the repo default branch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -119,6 +123,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "anomaly_scoring_available", n => { AnomalyScoringAvailable = n.GetBoolValue(); } },
+                { "anomaly_scoring_enabled", n => { AnomalyScoringEnabled = n.GetBoolValue(); } },
                 { "autostart_base_branches", n => { AutostartBaseBranches = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty.CreateFromDiscriminatorValue); } },
                 { "autostart_enabled", n => { AutostartEnabled = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -147,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("anomaly_scoring_enabled", AnomalyScoringEnabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty>("autostart_base_branches", AutostartBaseBranches);
             writer.WriteBoolValue("autostart_enabled", AutostartEnabled);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum>("default_autostart_priority", DefaultAutostartPriority);

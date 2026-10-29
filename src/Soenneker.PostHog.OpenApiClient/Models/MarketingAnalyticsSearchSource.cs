@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string KeywordTable { get; set; }
 #endif
+        /// <summary>Google Ads search terms from Performance Max campaigns.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PerformanceMaxSearchTermTable { get; set; }
+#nullable restore
+#else
+        public string PerformanceMaxSearchTermTable { get; set; }
+#endif
         /// <summary>The placementTable property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,9 +38,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The queryPageTable property</summary>
         public bool? QueryPageTable { get; set; }
+        /// <summary>Google Ads search terms from Search campaigns.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SearchTermTable { get; set; }
+#nullable restore
+#else
+        public string SearchTermTable { get; set; }
+#endif
         /// <summary>The sourceType property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SourceType? SourceType { get; set; }
-        /// <summary>The statsTable property</summary>
+        /// <summary>For the Google Ads search term breakdown, the campaign table, which carries the account currency.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatsTable { get; set; }
@@ -59,8 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "keywordTable", n => { KeywordTable = n.GetStringValue(); } },
+                { "performanceMaxSearchTermTable", n => { PerformanceMaxSearchTermTable = n.GetStringValue(); } },
                 { "placementTable", n => { PlacementTable = n.GetStringValue(); } },
                 { "queryPageTable", n => { QueryPageTable = n.GetBoolValue(); } },
+                { "searchTermTable", n => { SearchTermTable = n.GetStringValue(); } },
                 { "sourceType", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceType>(); } },
                 { "statsTable", n => { StatsTable = n.GetStringValue(); } },
             };
@@ -73,8 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("keywordTable", KeywordTable);
+            writer.WriteStringValue("performanceMaxSearchTermTable", PerformanceMaxSearchTermTable);
             writer.WriteStringValue("placementTable", PlacementTable);
             writer.WriteBoolValue("queryPageTable", QueryPageTable);
+            writer.WriteStringValue("searchTermTable", SearchTermTable);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceType>("sourceType", SourceType);
             writer.WriteStringValue("statsTable", StatsTable);
         }

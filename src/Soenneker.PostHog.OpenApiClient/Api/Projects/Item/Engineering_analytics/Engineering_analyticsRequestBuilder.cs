@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Attention_pull_requests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction_detail;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_llm_spend;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_workflow_costs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Broken_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.CiSignalsConfig;
@@ -19,6 +20,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Do
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_log_insights;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Llm_spend_coverage;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Master_failures;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_cost;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_lifecycle;
@@ -68,6 +70,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction_detail.Author_friction_detailRequestBuilder Author_friction_detail
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_friction_detail.Author_friction_detailRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The author_llm_spend property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_llm_spend.Author_llm_spendRequestBuilder Author_llm_spend
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_llm_spend.Author_llm_spendRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The author_workflow_costs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Author_workflow_costs.Author_workflow_costsRequestBuilder Author_workflow_costs
@@ -138,6 +145,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_log_insights.Job_log_insightsRequestBuilder Job_log_insights
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_log_insights.Job_log_insightsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The llm_spend_coverage property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Llm_spend_coverage.Llm_spend_coverageRequestBuilder Llm_spend_coverage
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Llm_spend_coverage.Llm_spend_coverageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The master_failures property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Master_failures.Master_failuresRequestBuilder Master_failures

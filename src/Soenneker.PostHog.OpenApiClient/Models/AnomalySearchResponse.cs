@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
-        /// <summary>Whether anomaly scoring covers this project.</summary>
+        /// <summary>Whether anomaly scoring scores this project now. False when scoring does not cover the project, or when the project turned it off in its self-driving settings. Scores written before scoring was turned off are still returned.</summary>
         public bool? ScoringEnabled { get; set; }
         /// <summary>One row per series, most anomalous first. Empty unless `group_by` is `series`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

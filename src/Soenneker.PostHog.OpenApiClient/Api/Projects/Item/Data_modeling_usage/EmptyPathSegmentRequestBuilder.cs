@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_usage
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*,saved_query_ids*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*,saved_query_ids*,sort_by*,sort_direction*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_usage
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*,saved_query_ids*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_usage/{?date_from*,date_to*,days*,engine*,page*,page_size*,saved_query_id*,saved_query_ids*,sort_by*,sort_direction*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelUsage"/></returns>
@@ -109,6 +109,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_usage
             [QueryParameter("saved_query_ids")]
             public string SavedQueryIds { get; set; }
 #endif
+            /// <summary>Column to sort models by.* `name` - Model* `read_bytes` - Bytes read* `clickhouse_read_bytes` - ClickHouse bytes* `managed_warehouse_read_bytes` - Managed warehouse bytes* `cpu_microseconds` - CPU time* `runs` - Runs</summary>
+            [QueryParameter("sort_by")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingUsageListSortByParameter? SortBy { get; set; }
+            /// <summary>Sort direction. Unmeasured values are always last.* `asc` - Ascending* `desc` - Descending</summary>
+            [QueryParameter("sort_direction")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingUsageListSortDirectionParameter? SortDirection { get; set; }
         }
     }
 }

@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Scored buckets, summed over the series.</summary>
         public int? ScoredBuckets { get; set; }
-        /// <summary>Whether anomaly scoring covers this project.</summary>
+        /// <summary>Whether anomaly scoring scores this project now. False when scoring does not cover the project, or when the project turned it off in its self-driving settings. Scores written before scoring was turned off are still returned.</summary>
         public bool? ScoringEnabled { get; set; }
         /// <summary>Every scored series, most anomalous first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

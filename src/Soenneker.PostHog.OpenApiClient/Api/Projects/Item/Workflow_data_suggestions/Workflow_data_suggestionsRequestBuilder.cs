@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Build;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Build_for_events;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Current;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Generate;
 using System.Collections.Generic;
@@ -21,6 +22,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_sugges
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Build.BuildRequestBuilder Build
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Build.BuildRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The build_for_events property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Build_for_events.Build_for_eventsRequestBuilder Build_for_events
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Build_for_events.Build_for_eventsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The current property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions.Current.CurrentRequestBuilder Current

@@ -18,6 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).</summary>
         public bool? Archived { get; set; }
+        /// <summary>When true, the edit lowers the flag&apos;s exposure, and the request sends no `rollback_reason`, the flag is not saved and the response is a 409 with the code `rollback_reason_required`. Send the edit again without this field to save it, with or without a `rollback_reason`. Ignored for an edit that needs approval and for a config version 2 flag.</summary>
+        public bool? AskRollbackReason { get; set; }
         /// <summary>Identifier used to bucket users into rollout percentages and variants: &apos;distinct_id&apos; (user ID, the default) or &apos;device_id&apos;. Using &apos;device_id&apos; is incompatible with ensure_experience_continuity=True.* `distinct_id` - User ID (default)* `device_id` - Device ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,6 +72,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Why this edit lowers the flag&apos;s exposure, for example a rollback after errors. Stored on the activity log entry of the edit. Not stored for an edit that needs approval or for a config version 2 flag.* `errors` - Errors or bugs* `metrics` - Metrics got worse* `planned` - It was planned* `wrong_configuration` - Wrong configuration* `other` - Other</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason? RollbackReason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason RollbackReason { get; set; }
+#endif
+        /// <summary>A free-text note for `rollback_reason`. Requires `rollback_reason`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RollbackReasonNote { get; set; }
+#nullable restore
+#else
+        public string RollbackReasonNote { get; set; }
+#endif
         /// <summary>Organizational tags for this feature flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PatchedFeatureFlagPartialUpdateRequestSchema()
         {
             AdditionalData = new Dictionary<string, object>();
+            AskRollbackReason = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -107,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
+                { "ask_rollback_reason", n => { AskRollbackReason = n.GetBoolValue(); } },
                 { "bucketing_identifier", n => { BucketingIdentifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier.CreateFromDiscriminatorValue); } },
                 { "ensure_experience_continuity", n => { EnsureExperienceContinuity = n.GetBoolValue(); } },
                 { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -115,6 +135,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_remote_configuration", n => { IsRemoteConfiguration = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "rollback_reason", n => { RollbackReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason.CreateFromDiscriminatorValue); } },
+                { "rollback_reason_note", n => { RollbackReasonNote = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -128,6 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteBoolValue("archived", Archived);
+            writer.WriteBoolValue("ask_rollback_reason", AskRollbackReason);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier>("bucketing_identifier", BucketingIdentifier);
             writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
             writer.WriteCollectionOfPrimitiveValues<string>("evaluation_contexts", EvaluationContexts);
@@ -136,6 +159,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_remote_configuration", IsRemoteConfiguration);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason>("rollback_reason", RollbackReason);
+            writer.WriteStringValue("rollback_reason_note", RollbackReasonNote);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);

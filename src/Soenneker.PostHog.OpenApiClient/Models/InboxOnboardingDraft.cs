@@ -12,6 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class InboxOnboardingDraft : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>* `github_optional` - GitHub optional</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftActivationMode? ActivationMode { get; set; }
         /// <summary>Scouts enabled by an unfinished activation, retained to undo later deselections.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,6 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> ScannerIds { get; set; }
 #endif
+        /// <summary>* `quick` - Quick* `guided` - Guided</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftSetupMode? SetupMode { get; set; }
         /// <summary>Staged signal source choices.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,10 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "activation_mode", n => { ActivationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftActivationMode>(); } },
                 { "activation_scouts", n => { ActivationScouts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "automatic_implementation", n => { AutomaticImplementation = n.GetBoolValue(); } },
                 { "implementation_priority", n => { ImplementationPriority = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftImplementationPriority>(); } },
                 { "scanner_ids", n => { ScannerIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
+                { "setup_mode", n => { SetupMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftSetupMode>(); } },
                 { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "step", n => { Step = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftStep>(); } },
                 { "suggestions", n => { Suggestions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -93,10 +99,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftActivationMode>("activation_mode", ActivationMode);
             writer.WriteCollectionOfPrimitiveValues<string>("activation_scouts", ActivationScouts);
             writer.WriteBoolValue("automatic_implementation", AutomaticImplementation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftImplementationPriority>("implementation_priority", ImplementationPriority);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("scanner_ids", ScannerIds);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftSetupMode>("setup_mode", SetupMode);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource>("sources", Sources);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftStep>("step", Step);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>("suggestions", Suggestions);

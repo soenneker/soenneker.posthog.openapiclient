@@ -13,6 +13,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Email;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_assignees;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_branches;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_repos;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_repository_access;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_teams;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Gitlab_members;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Google_accessible_accounts;
@@ -97,6 +98,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_repos.Github_reposRequestBuilder Github_repos
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_repos.Github_reposRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The github_repository_access property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_repository_access.Github_repository_accessRequestBuilder Github_repository_access
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_repository_access.Github_repository_accessRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The github_teams property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Github_teams.Github_teamsRequestBuilder Github_teams

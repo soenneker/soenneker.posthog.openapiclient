@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class TrendsQueryResponse : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The name of each action the query&apos;s series reference, keyed by action id. A series saved without a `name` displays this name, because the query holds only the action&apos;s id.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponseActionNamesProperty? ActionNames { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponseActionNamesProperty ActionNames { get; set; }
+#endif
         /// <summary>The boxplot_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,6 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "action_names", n => { ActionNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponseActionNamesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponseActionNamesProperty.CreateFromDiscriminatorValue); } },
                 { "boxplot_data", n => { BoxplotData = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum>(global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
@@ -141,6 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQueryResponseActionNamesProperty>("action_names", ActionNames);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum>("boxplot_data", BoxplotData);
             writer.WriteStringValue("error", Error);
             writer.WriteBoolValue("hasMore", HasMore);

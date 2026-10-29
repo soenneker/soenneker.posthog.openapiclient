@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Push_tokens
         {
         }
         /// <summary>
-        /// Idempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created.
+        /// Register the device for the authenticated user, removing registrations for the same token belonging to other users on this instance. Re-registration refreshes `platform` and `last_seen_at`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Push_tokens
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Idempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created.
+        /// Register the device for the authenticated user, removing registrations for the same token belonging to other users on this instance. Re-registration refreshes `platform` and `last_seen_at`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

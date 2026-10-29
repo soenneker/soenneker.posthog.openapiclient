@@ -184,6 +184,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_vitals;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_data_suggestions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_email_drafts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_imports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_people_imports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_sending_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_setup;
@@ -1108,6 +1109,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_email_drafts.Workflow_email_draftsRequestBuilder Workflow_email_drafts
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_email_drafts.Workflow_email_draftsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The workflow_imports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_imports.Workflow_importsRequestBuilder Workflow_imports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_imports.Workflow_importsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflow_people_imports property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_people_imports.Workflow_people_importsRequestBuilder Workflow_people_imports

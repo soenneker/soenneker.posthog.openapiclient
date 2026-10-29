@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Date? DateFrom { get; set; }
         /// <summary>Exclusive UTC end date. Today&apos;s incomplete usage is excluded.</summary>
         public Date? DateTo { get; set; }
-        /// <summary>Model breakdown, highest measured bytes first.</summary>
+        /// <summary>Model breakdown in the requested sort order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow>? Models { get; set; }

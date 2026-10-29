@@ -42,6 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FirstReportNotificationEmail { get; set; }
 #endif
+        /// <summary>Whether this project can activate Self-driving without connecting GitHub.</summary>
+        public bool? GithubOptionalAvailable { get; set; }
         /// <summary>Background work started by quick activation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,14 +51,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs Jobs { get; set; }
-#endif
-        /// <summary>Variant recorded at the first eligible impression.* `control` - Control* `test-ui` - Focused steps* `test-github` - Activate and explore</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant? Variant { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant Variant { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingState"/> and sets the default values.
@@ -88,8 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "first_report", n => { FirstReport = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState>(global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState.CreateFromDiscriminatorValue); } },
                 { "first_report_completion_notification", n => { FirstReportCompletionNotification = n.GetBoolValue(); } },
                 { "first_report_notification_email", n => { FirstReportNotificationEmail = n.GetStringValue(); } },
+                { "github_optional_available", n => { GithubOptionalAvailable = n.GetBoolValue(); } },
                 { "jobs", n => { Jobs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs.CreateFromDiscriminatorValue); } },
-                { "variant", n => { Variant = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -104,8 +98,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState>("first_report", FirstReport);
             writer.WriteBoolValue("first_report_completion_notification", FirstReportCompletionNotification);
             writer.WriteStringValue("first_report_notification_email", FirstReportNotificationEmail);
+            writer.WriteBoolValue("github_optional_available", GithubOptionalAvailable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs>("jobs", Jobs);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateVariant>("variant", Variant);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -23,6 +23,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DocsUrl { get; private set; }
 #endif
+        /// <summary>The longest window an admin can set, in months. Never longer than the plan&apos;s window.</summary>
+        public int? MaxRetentionMonths { get; private set; }
+        /// <summary>The shortest window an admin can set, in months.</summary>
+        public int? MinRetentionMonths { get; private set; }
+        /// <summary>The window, in months, that every project without its own window uses. Null while the organization keeps events for its plan&apos;s window.</summary>
+        public int? OrganizationRetentionMonths { get; private set; }
+        /// <summary>The longest window the organization&apos;s plan allows, in months.</summary>
+        public int? PlanRetentionMonths { get; private set; }
+        /// <summary>The window, in months, set for this project. Null while the project uses the organization&apos;s window.</summary>
+        public int? ProjectRetentionMonths { get; private set; }
         /// <summary>The earliest date whose events are still queryable, in the project&apos;s timezone. Null while no retention window applies to the project.</summary>
         public Date? RetainedFrom { get; private set; }
         /// <summary>How many months of events stay queryable, counted back from today. Null while no retention window applies to the project.</summary>
@@ -53,6 +63,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "docs_url", n => { DocsUrl = n.GetStringValue(); } },
+                { "max_retention_months", n => { MaxRetentionMonths = n.GetIntValue(); } },
+                { "min_retention_months", n => { MinRetentionMonths = n.GetIntValue(); } },
+                { "organization_retention_months", n => { OrganizationRetentionMonths = n.GetIntValue(); } },
+                { "plan_retention_months", n => { PlanRetentionMonths = n.GetIntValue(); } },
+                { "project_retention_months", n => { ProjectRetentionMonths = n.GetIntValue(); } },
                 { "retained_from", n => { RetainedFrom = n.GetDateValue(); } },
                 { "retention_months", n => { RetentionMonths = n.GetIntValue(); } },
             };
